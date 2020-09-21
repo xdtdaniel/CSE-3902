@@ -14,7 +14,7 @@ namespace Sprint_2.Player
         Texture2D Texture;
         public Boomerang(ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("Boomerang");
+            Texture = Content.Load<Texture2D>("Player/Boomerang");
         }
         public void Update()
         {

@@ -18,7 +18,7 @@ namespace Sprint_2.Player
         Texture2D Texture;
         public Link(ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("Link");
+            Texture = Content.Load<Texture2D>("Player/Link");
             currentFrame = 0;
             totalFrame = 2;
             Columns = 8;

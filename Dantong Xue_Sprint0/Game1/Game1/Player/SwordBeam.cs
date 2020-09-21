@@ -14,7 +14,7 @@ namespace Sprint_2.Player
         Texture2D Texture;
         public SwordBeam(ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("SwordBeam");
+            Texture = Content.Load<Texture2D>("Player/SwordBeam");
         }
         public void Update()
         {

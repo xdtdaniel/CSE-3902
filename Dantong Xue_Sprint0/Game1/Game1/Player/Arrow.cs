@@ -14,7 +14,7 @@ namespace Sprint_2.Player
         Texture2D Texture;
         public Arrow(ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("Arrow");
+            Texture = Content.Load<Texture2D>("Player/Arrow");
         }
         public void Update()
         {

@@ -14,7 +14,7 @@ namespace Sprint_2.Player
         Texture2D Texture;
         public BlueCandle(ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("BlueCandle");
+            Texture = Content.Load<Texture2D>("Player/BlueCandle");
         }
         public void Update()
         {

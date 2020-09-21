@@ -14,7 +14,7 @@ namespace Sprint_2.Player
         Texture2D Texture;
         public BlueRing(ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("BlueRing");
+            Texture = Content.Load<Texture2D>("Player/BlueRing");
         }
         public void Update()
         {

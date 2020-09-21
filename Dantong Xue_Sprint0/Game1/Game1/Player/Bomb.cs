@@ -14,7 +14,7 @@ namespace Sprint_2.Player
         Texture2D Texture;
         public Bomb(ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("Bomb");
+            Texture = Content.Load<Texture2D>("Player/Bomb");
         }
         public void Update()
         {

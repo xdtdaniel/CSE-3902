@@ -14,7 +14,7 @@ namespace Sprint_2.Player
         Texture2D Texture;
         public BluePotion(ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("BluePotion");
+            Texture = Content.Load<Texture2D>("Player/BluePotion");
         }
         public void Update()
         {
