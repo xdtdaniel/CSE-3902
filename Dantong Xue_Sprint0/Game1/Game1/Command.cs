@@ -74,14 +74,6 @@ namespace Game1
         private void DrawMovingAnimated(Game1 g, SpriteBatch spriteBatch)
         {
             g.GraphicsDevice.Clear(Color.CornflowerBlue);
-            /*
-                if (count >= 400)
-                {
-                    count = 0;
-                }
-            
-            count++;
-            */
             g.movingAnimatedLuigi.Draw(spriteBatch, new Vector2(200, 200));
             g.movingAnimatedLuigi.Update();
         }

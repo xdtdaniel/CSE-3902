@@ -61,10 +61,10 @@ namespace Game1
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            animatedLuigi = new AnimatedSprite(imgMoving, 8, 8);
-            stillLuigi = new NonAnimatedSprite(imgStand);
-            movingLuigi = new NonAnimatedMoving(imgStand);
-            movingAnimatedLuigi = new MovingAnimated(imgMoving, 8, 8);
+            animatedLuigi = new NonMovingAnimatedSprite(imgMoving, 8, 8);
+            stillLuigi = new NonMovingNonAnimatedSprite(imgStand);
+            movingLuigi = new MovingNonAnimatedSprite(imgStand, 480, new Vector2(0, 0), new Vector2(480, 480));
+            movingAnimatedLuigi = new MovingAnimatedSprite(imgMoving, 8, 8, 200, new Vector2(480, 480), new Vector2(0, 0));
 
             textToDraw = new TextSprite(font, "Credit\nProgram Made by: Dantong Xue\nSprites from: http://www.mariouniverse.com/sprites-nes-smb/");
         }
