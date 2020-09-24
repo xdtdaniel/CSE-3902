@@ -1,3 +1,0 @@
-Add a new file to test the git
-
-Try to pull it.
