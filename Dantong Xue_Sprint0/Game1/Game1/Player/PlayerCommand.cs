@@ -14,46 +14,48 @@ namespace Sprint_2
     {
         private SpriteBatch spriteBatch;
         private Game1 game;
+        private PlayerKeyboardController kc;
         public PlayerCommand(SpriteBatch spriteBatch, Game1 game)
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
+            kc = new PlayerKeyboardController();
         }
 
         public void PlayerUpdate()
         {
 
-            game.keyboardController.Update();
+            kc.Update();
 
-            game.link.Update(game.keyboardController.Direction(), game.keyboardController.IsMoving());
-            game.item.Update(game.link.x, game.link.y, game.keyboardController.Direction());
+            game.link.Update(kc.Direction(), kc.IsMoving());
+            game.item.Update(game.link.x, game.link.y, kc.Direction());
         }
         public void PlayerDraw()
         {
 
 
-            if (game.keyboardController.PressedAttackN())
+            if (kc.PressedAttackN())
             {
                 game.link.AttackN();
             }
-            else if (game.keyboardController.PressedAttackZ())
+            else if (kc.PressedAttackZ())
             {
                 game.link.AttackZ();
             }
-            if (game.keyboardController.ItemNum() != -1)
+            if (kc.ItemNum() != -1)
             {
                 game.link.UseItem();
-                game.item.UseItem(game.keyboardController.ItemNum());
+                game.item.UseItem(kc.ItemNum());
             }
-            if (game.keyboardController.IsDamaged())
+            if (kc.IsDamaged())
             {
                 game.link.TakeDamage();
             }
-            if (game.keyboardController.PickUp() != -1)
+            if (kc.PickUp() != -1)
             {
-                game.link.PickUp(game.keyboardController.PickUp());
+                game.link.PickUp(kc.PickUp());
             }
-            game.link.Draw(spriteBatch, game.keyboardController.Direction());
+            game.link.Draw(spriteBatch, kc.Direction());
             game.item.Draw(spriteBatch);
 
         }
