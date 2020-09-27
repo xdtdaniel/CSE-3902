@@ -1,0 +1,148 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+namespace Sprint_2
+{
+    public class PlayerKeyboardController : IPlayerController
+    {
+        private int direction;
+        private bool isMoving;
+        private bool attackN;
+        private bool attackZ;
+        private int itemNum;
+        private bool isDamaged;
+        private int pickUp;
+        public PlayerKeyboardController()
+        {
+            direction = 0;
+            isMoving = false;
+            attackN = false;
+            attackZ = false;
+            itemNum = -1;
+            isDamaged = false;
+            pickUp = -1;
+        }
+        public void Update()
+        {
+            isMoving = false;
+            attackN = false;
+            attackZ = false;
+            itemNum = -1;
+            isDamaged = false;
+            pickUp = -1;
+            KeyboardState state = Keyboard.GetState();
+
+            if (state.IsKeyDown(Keys.N))
+            {
+                attackN = true;
+            }
+            else if (state.IsKeyDown(Keys.Z))
+            {
+                attackZ = true;
+            }
+            else if (state.IsKeyDown(Keys.D1))
+            {
+                itemNum = 1;
+            }
+            else if (state.IsKeyDown(Keys.D2))
+            {
+                itemNum = 2;
+            }
+            else if (state.IsKeyDown(Keys.D3))
+            {
+                itemNum = 3;
+            }
+            else if (state.IsKeyDown(Keys.D4))
+            {
+                itemNum = 4;
+            }
+            else if (state.IsKeyDown(Keys.D5))
+            {
+                itemNum = 5;
+            }
+            else if (state.IsKeyDown(Keys.D6))
+            {
+                itemNum = 6;
+            }
+            else if (state.IsKeyDown(Keys.D7))
+            {
+                itemNum = 7;
+            }
+            else if (state.IsKeyDown(Keys.D8))
+            {
+                itemNum = 8;
+            }
+            else if (state.IsKeyDown(Keys.E))
+            {
+                isDamaged = true;
+            }
+            else if (state.IsKeyDown(Keys.F))
+            {
+                pickUp = 0;
+            }
+            else if (state.IsKeyDown(Keys.G))
+            {
+                pickUp = 1;
+            }
+            else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
+            {
+                direction = 0;
+                isMoving = true;
+            }
+            else if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
+            {
+                direction = 1;
+                isMoving = true;
+            }
+            else if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
+            {
+                direction = 2;
+                isMoving = true;
+            }
+            else if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
+            {
+                direction = 3;
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+        }
+
+        public int Direction()
+        {
+            return direction;
+        }
+        public bool IsMoving()
+        {
+            return isMoving;
+        }
+        public bool PressedAttackN()
+        {
+            return attackN;
+        }
+        public bool PressedAttackZ()
+        {
+            return attackZ;
+        }
+        public int ItemNum()
+        {
+            return itemNum;
+        }
+        public bool IsDamaged()
+        {
+            return isDamaged;
+        }
+        public int PickUp()
+        {
+            return pickUp;
+        }
+    }
+}
