@@ -15,7 +15,7 @@ namespace Game1.Code.Item.ItemSprite
         Texture2D Texture;
         int height;
         int width;
-        public Ruby(Texture2D texture)
+        public  Triforce(Texture2D texture)
         {
             Texture = texture;
         }
@@ -30,6 +30,10 @@ namespace Game1.Code.Item.ItemSprite
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+        }
+        public void Update()
+        {
+
         }
     }
 }

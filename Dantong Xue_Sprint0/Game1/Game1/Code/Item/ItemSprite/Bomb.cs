@@ -31,6 +31,9 @@ namespace Game1.Code.Item.ItemSprite
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
         }
+        public void Update()
+        {
 
+        }
     }
 }
