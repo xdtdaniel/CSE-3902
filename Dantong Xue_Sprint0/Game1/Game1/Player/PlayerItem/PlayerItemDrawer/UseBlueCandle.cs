@@ -12,7 +12,7 @@ namespace Sprint_2.Player.PlayerCharacter
 {
     class UseBlueCandle : IPlayerItemDrawer
     {
-        Item item;
+        PlayerItem item;
         bool used;
         int direction;
         int x;
@@ -21,7 +21,7 @@ namespace Sprint_2.Player.PlayerCharacter
 
         IPlayerSprite blueCandle;
 
-        public UseBlueCandle(Item item)
+        public UseBlueCandle(PlayerItem item)
         {
             used = false;
             direction = item.direction;

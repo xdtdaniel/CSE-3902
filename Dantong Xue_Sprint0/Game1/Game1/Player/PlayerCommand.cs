@@ -28,7 +28,6 @@ namespace Sprint_2
             kc.Update();
 
             game.link.Update(kc.Direction(), kc.IsMoving());
-            game.item.Update(game.link.x, game.link.y, kc.Direction());
         }
         public void PlayerDraw()
         {
@@ -44,8 +43,7 @@ namespace Sprint_2
             }
             if (kc.ItemNum() != -1)
             {
-                game.link.UseItem();
-                game.item.UseItem(kc.ItemNum());
+                game.link.UseItem(kc.ItemNum());
             }
             if (kc.IsDamaged())
             {
@@ -56,7 +54,6 @@ namespace Sprint_2
                 game.link.PickUp(kc.PickUp());
             }
             game.link.Draw(spriteBatch, kc.Direction());
-            game.item.Draw(spriteBatch);
 
         }
     }

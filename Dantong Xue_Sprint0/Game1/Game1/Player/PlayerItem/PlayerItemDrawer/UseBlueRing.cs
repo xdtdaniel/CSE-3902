@@ -12,7 +12,7 @@ namespace Sprint_2.Player.PlayerCharacter
 {
     class UseBlueRing : IPlayerItemDrawer
     {
-        Item item;
+        PlayerItem item;
         bool used;
         int direction;
         int x;
@@ -21,7 +21,7 @@ namespace Sprint_2.Player.PlayerCharacter
 
         IPlayerSprite blueRing;
 
-        public UseBlueRing(Item item)
+        public UseBlueRing(PlayerItem item)
         {
             used = false;
             direction = item.direction;

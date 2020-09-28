@@ -13,9 +13,9 @@ namespace Sprint_2.Player.PlayerCharacter
     class NoItem : IPlayerItemDrawer
     {
 
-        Item item;
+        PlayerItem item;
 
-        public NoItem(Item item)
+        public NoItem(PlayerItem item)
         {
             this.item = item;
         }

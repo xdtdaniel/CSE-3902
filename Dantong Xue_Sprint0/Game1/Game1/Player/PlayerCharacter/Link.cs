@@ -15,6 +15,8 @@ namespace Sprint_2.Player.PlayerCharacter
         public int damageTimeCounter;
         public bool isDamaged;
 
+        PlayerItem item;
+
         public IPlayerLinkState state;
         public Link()
         {
@@ -24,6 +26,9 @@ namespace Sprint_2.Player.PlayerCharacter
             isDamaged = false;
 
             state = new NormalLink(this);
+
+            item = new PlayerItem();
+            item.state = new NoItem(item);
         }
 
         public void AttackN()
@@ -34,9 +39,10 @@ namespace Sprint_2.Player.PlayerCharacter
         {
             state.AttackZ();
         }
-        public void UseItem()
+        public void UseItem(int itemNum)
         {
             state.UseItem();
+            item.UseItem(itemNum);
         }
         public void TakeDamage()
         {
@@ -49,10 +55,12 @@ namespace Sprint_2.Player.PlayerCharacter
         public void Update(int direction, bool isMoving)
         {
             state.Update(ref x, ref y, direction, isMoving);
+            item.Update(x, y, direction);
         }
         public void Draw(SpriteBatch spriteBatch, int direction)
         {
             state.Draw(spriteBatch, x, y, direction);
+            item.Draw(spriteBatch);
         }
     }
 }

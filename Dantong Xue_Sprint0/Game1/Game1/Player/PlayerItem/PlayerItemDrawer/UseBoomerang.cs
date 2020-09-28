@@ -12,7 +12,7 @@ namespace Sprint_2.Player.PlayerCharacter
 {
     class UseBoomerang : IPlayerItemDrawer
     {
-        Item item;
+        PlayerItem item;
         int direction;
         int x;
         int y;
@@ -26,7 +26,7 @@ namespace Sprint_2.Player.PlayerCharacter
         IPlayerSprite backBoomerang;
         IPlayerSprite leftBoomerang;
 
-        public UseBoomerang(Item item)
+        public UseBoomerang(PlayerItem item)
         {
             direction = item.direction;
             x = item.x;

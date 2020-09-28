@@ -12,7 +12,7 @@ namespace Sprint_2.Player.PlayerCharacter
 {
     class UseBomb : IPlayerItemDrawer
     {
-        Item item;
+        PlayerItem item;
         bool used; /* indicate if an item is used */
         int x;
         int y;
@@ -24,7 +24,7 @@ namespace Sprint_2.Player.PlayerCharacter
         IPlayerSprite bomb;
         IPlayerSprite bombExplosion;
 
-        public UseBomb(Item item)
+        public UseBomb(PlayerItem item)
         {
             used = false;
             this.x = item.x;

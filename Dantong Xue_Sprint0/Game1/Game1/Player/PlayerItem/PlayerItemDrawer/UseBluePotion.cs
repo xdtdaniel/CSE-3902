@@ -12,7 +12,7 @@ namespace Sprint_2.Player.PlayerCharacter
 {
     class UseBluePotion : IPlayerItemDrawer
     {
-        Item item;
+        PlayerItem item;
         bool used;
         int direction;
         int x;
@@ -21,7 +21,7 @@ namespace Sprint_2.Player.PlayerCharacter
 
         IPlayerSprite bluePotion;
 
-        public UseBluePotion(Item item)
+        public UseBluePotion(PlayerItem item)
         {
             used = false;
             direction = item.direction;

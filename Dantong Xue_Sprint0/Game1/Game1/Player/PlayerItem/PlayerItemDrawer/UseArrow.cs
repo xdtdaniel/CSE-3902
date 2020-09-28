@@ -12,7 +12,7 @@ namespace Sprint_2.Player.PlayerCharacter
 {
     class UseArrow : IPlayerItemDrawer
     {
-        Item item;
+        PlayerItem item;
         bool used; 
         int direction;
         int x;
@@ -24,7 +24,7 @@ namespace Sprint_2.Player.PlayerCharacter
         IPlayerSprite backArrow;
         IPlayerSprite leftArrow;
 
-        public UseArrow(Item item)
+        public UseArrow(PlayerItem item)
         {
             used = false;
             direction = item.direction;
