@@ -40,5 +40,25 @@ namespace Game1
         {
             return stalfosSpriteSheet;
         }
+
+        public static Texture2D GetGoriyaSpriteSheet()
+        {
+            return goriyaSpriteSheet;
+        }
+
+        public static Texture2D GetGoriyaProjectileSpriteSheet()
+        {
+            return goriyaProjectileSpriteSheet;
+        }
+
+        public static Texture2D GetAquamentusSpriteSheet()
+        {
+            return aquamentusSpriteSheet;
+        }
+
+        public static Texture2D GetAquamentusProjectileSpriteSheet()
+        {
+            return aquamentusProjectileSpriteSheet;
+        }
     }
 }

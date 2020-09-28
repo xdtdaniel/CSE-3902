@@ -1,6 +1,7 @@
 ﻿using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
+using Game1.Enemy;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -30,6 +31,9 @@ namespace Game1
         private IController keyboardController;
         private IController mouseController;
 
+        //Test code for enemy classes
+        public IEnemy enemy;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -51,7 +55,10 @@ namespace Game1
             controllerList.Add(keyboardController);
             controllerList.Add(mouseController);
 
-            
+            /*
+            //Test code for enemy classes
+            enemy = new Goriya();
+            */
         }
 
         protected override void LoadContent()
@@ -77,6 +84,11 @@ namespace Game1
             item = new Arrow(arrow);// // Zhihan added
 
             textToDraw = new TextSprite(font, "Credit\nProgram Made by: Dantong Xue\nSprites from: http://www.mariouniverse.com/sprites-nes-smb/");
+
+            /*
+            //Test code for enemy classes
+            EnemyTextureStorage.LoadTextures(Content);
+            */
         }
 
         protected override void Update(GameTime gameTime)
@@ -90,6 +102,11 @@ namespace Game1
             command.Execute(command.getCurr(), this, _spriteBatch);
 
             base.Update(gameTime);
+
+            /*
+            //Test code for enemy classes
+            enemy.UpdateEnemy(this);
+            */
         }
 
 
@@ -97,6 +114,13 @@ namespace Game1
         {
             command.Execute(Command.Actions.text, this, _spriteBatch);
             base.Draw(gameTime);
+
+            /*
+            //Test code for enemy classes            
+            _spriteBatch.Begin();
+            enemy.DrawEnemy(_spriteBatch);
+            _spriteBatch.End();
+            */
         }
     }
 }

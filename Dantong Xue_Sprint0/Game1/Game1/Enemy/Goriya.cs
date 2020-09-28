@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Game1
+namespace Game1.Enemy
 {
-    class Stalfos : IEnemy
+    class Goriya : IEnemy
     {
         private Texture2D Texture;
         private int Columns;
@@ -19,17 +19,25 @@ namespace Game1
         private int FrameRateModifier = 0;
         private Random Rnd;
         private int Velocity = 3;
-        private bool CanTurn = false;
+        private bool CanTurn = true;
+        private int FrameBound;
 
-        public Stalfos()
+        private int FireTimer;
+        private bool CanFire;
+        private IProjectile Projectile;
+
+        public Goriya()
         {
-            Texture = EnemyTextureStorage.GetStalfosSpriteSheet();
+            Texture = EnemyTextureStorage.GetGoriyaSpriteSheet();
             Rnd = new Random();
-            TotalFrames = 2;
-            Columns = TotalFrames;
+            TotalFrames = 8;
             CurrentFrame = 0;
+            Columns = TotalFrames;
             Location = new Vector2(400, 200);
             Direction = Rnd.Next(3);
+            Projectile = new GoriyaProjectile();
+            CanFire = true;
+            FireTimer = 0;
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -43,16 +51,51 @@ namespace Game1
             Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * 5, height * 5);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+
+            if (Projectile.GetIsOnScreen())
+            {
+                Projectile.DrawProjectile(spriteBatch);
+            }
         }
 
         public void FireProjectile()
         {
-            // Do Nothing.
+            Velocity = 0;
+            Projectile.SetIsOnScreen();
+            Projectile.SetLocation(Location);
+            Projectile.SetDirection(Direction);
+            FireTimer = 0;
+            CanFire = false;
         }
 
         public void UpdateEnemy(Game game)
         {
-            if (FrameRateModifier < 20)
+            if (FireTimer > Rnd.Next(150, 200) || Projectile.GetIsOnScreen())
+            {
+                if (CanFire)
+                {
+                    FireProjectile();
+                }
+                Projectile.UpdateProjectile(game);
+            }
+            else
+            {
+                Velocity = 3;
+
+                UpdateCanTurn(game);
+
+                if (CanTurn)
+                {
+                    UpdateDirection(game);
+                    FrameBound = UpdateFacing();
+                }
+
+                FireTimer++;
+
+                CanFire = true;
+            }
+
+            if (FrameRateModifier < 16)
             {
                 FrameRateModifier++;
             }
@@ -61,20 +104,42 @@ namespace Game1
                 CurrentFrame++;
                 FrameRateModifier = 0;
             }
-
-            UpdateCanTurn(game);
-
-            if (CanTurn)
+            if (CurrentFrame > FrameBound)
             {
-                UpdateDirection(game);
+                CurrentFrame -= 2;
             }
 
             UpdateLocation();
+        }
 
-            if (CurrentFrame == TotalFrames)
+        public int GetDirection()
+        {
+            return Direction;
+        }
+
+        public Vector2 GetLocation()
+        {
+            return Location;
+        }
+
+        private int UpdateFacing()
+        {
+            switch (Direction)
             {
-                CurrentFrame = 0;
+                case 0:
+                    CurrentFrame = 2;
+                    return 3;
+                case 1:
+                    CurrentFrame = 4;
+                    return 5;
+                case 2:
+                    CurrentFrame = 0;
+                    return 1;
+                case 3:
+                    CurrentFrame = 6;
+                    return 7;
             }
+            return -99;
         }
 
         private void UpdateCanTurn(Game game)
@@ -84,7 +149,7 @@ namespace Game1
                 CanTurn = true;
             }
 
-            if (CanTurnTimer < 16)
+            if (CanTurnTimer < 32)
             {
                 CanTurnTimer++;
             }
