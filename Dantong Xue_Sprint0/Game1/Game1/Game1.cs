@@ -38,8 +38,7 @@ namespace Game1
         private IController blockKeyboardController;
         private IController mouseController;
 
-        //Test code for enemy classes
-        public IEnemy enemy;
+        private EnemyKeyboardController enemyKeyboradController;
 
         public Game1()
         {
@@ -61,13 +60,10 @@ namespace Game1
             
             controllerList.Add(blockKeyboardController);
 
+            enemyKeyboradController = new EnemyKeyboardController();
+
             link = new Link();
             playerCommand = new PlayerCommand(_spriteBatch, this);
-
-            /*
-            //Test code for enemy classes
-            enemy = new Goriya();
-            */
         }
 
         protected override void LoadContent()
@@ -101,14 +97,10 @@ namespace Game1
 
             // textToDraw = new TextSprite(font, "Credit\nProgram Made by: Dantong Xue\nSprites from: http://www.mariouniverse.com/sprites-nes-smb/");
 
-            /*
-            //Test code for enemy classes
-            EnemyTextureStorage.LoadTextures(Content);
-            */
-
             PlayerCharacterFactory.Instance.LoadAllTextures(Content);
             PlayerItemFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
+            EnemyTextureStorage.LoadTextures(Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -118,15 +110,12 @@ namespace Game1
                 controller.Update(this.GraphicsDevice, this._spriteBatch, this);
             }
 
+            enemyKeyboradController.Update(this);
+
             // Keep executing the previous event if no event changes happen
             // command.Execute(command.getCurr(), this, _spriteBatch);
 
             base.Update(gameTime);
-
-            /*
-            //Test code for enemy classes
-            enemy.UpdateEnemy(this);
-            */
         }
 
 
@@ -135,14 +124,7 @@ namespace Game1
             // command.Execute(Command.Actions.text, this, _spriteBatch);
             base.Draw(gameTime);
 
-            /*
-            //Test code for enemy classes            
-            _spriteBatch.Begin();
-            enemy.DrawEnemy(_spriteBatch);
-            _spriteBatch.End();
-            */
-
-            
+            enemyKeyboradController.Draw(_spriteBatch);
         }
     }
 }
