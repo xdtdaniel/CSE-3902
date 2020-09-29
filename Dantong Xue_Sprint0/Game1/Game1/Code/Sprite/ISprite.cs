@@ -10,5 +10,6 @@ namespace Game1
     {
         public void Update();
         public void Draw(SpriteBatch spriteBatch, Vector2 location);
+        public void SetPath(Vector2 from, Vector2 to);
     }
 }

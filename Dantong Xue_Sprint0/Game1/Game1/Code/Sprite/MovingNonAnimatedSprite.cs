@@ -10,18 +10,22 @@ namespace Game1
 {
     class MovingNonAnimatedSprite:ISprite
     {
-        public Texture2D Texture { get; set; }
+        private Texture2D Texture;
         private static int frame;
         private Vector2 From;
         private Vector2 To;
         private int FrameThreshold;
 
-        public MovingNonAnimatedSprite(Texture2D texture, int frameThreshold, Vector2 from, Vector2 to)
+        public MovingNonAnimatedSprite(Texture2D texture, int frameThreshold)
         {
             Texture = texture;
+            FrameThreshold = frameThreshold;
+        }
+
+        public void SetPath(Vector2 from, Vector2 to)
+        {
             From = from;
             To = to;
-            FrameThreshold = frameThreshold;
         }
 
         private Vector2 NewLocation()

@@ -10,13 +10,11 @@ namespace Game1.Code.Block
     public class NonMovingAnimatedBlock : IBlock
     {
 
-        ISprite Block;
-        Vector2 Location;
+        private ISprite Block;
 
-        public NonMovingAnimatedBlock(Texture2D texture, Vector2 location, int rows, int columns)
+        public NonMovingAnimatedBlock(Texture2D texture, int rows, int columns)
         {
             Block = new NonMovingAnimatedSprite(texture, rows, columns);
-            Location = location;
         }
 
         public void UpdateBlock()
@@ -24,9 +22,14 @@ namespace Game1.Code.Block
             Block.Update();
         }
 
-        public void DrawBlock(SpriteBatch spriteBatch)
+        public void DrawBlock(SpriteBatch spriteBatch, Vector2 location)
         {
-            Block.Draw(spriteBatch, Location);
+            Block.Draw(spriteBatch, location);
+        }
+
+        public void SetPath(Vector2 from, Vector2 to)
+        {
+            //nonmoving
         }
 
     }

@@ -10,9 +10,9 @@ namespace Game1
     class MovingAnimatedSprite:ISprite
     {
 
-        public Texture2D Texture { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        private Texture2D Texture;
+        private int Rows;
+        private int Columns;
         private int FrameThreshold;
         private Vector2 From;
         private Vector2 To;
@@ -22,7 +22,7 @@ namespace Game1
         private static int moveFrame;
 
 
-        public MovingAnimatedSprite(Texture2D texture, int rows, int columns, int frameThreshold, Vector2 from, Vector2 to)
+        public MovingAnimatedSprite(Texture2D texture, int rows, int columns, int frameThreshold)
         {
             Texture = texture;
             Rows = rows;
@@ -30,6 +30,10 @@ namespace Game1
             currentFrame = 0;
             totalFrames = Rows * Columns;
             FrameThreshold = frameThreshold;
+        }
+
+        public void SetPath(Vector2 from, Vector2 to)
+        {
             From = from;
             To = to;
         }

@@ -45,5 +45,10 @@ namespace Game1
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
+
+        public void SetPath(Vector2 from, Vector2 to)
+        {
+            // nonmoving, nothing here
+        }
     }
 }

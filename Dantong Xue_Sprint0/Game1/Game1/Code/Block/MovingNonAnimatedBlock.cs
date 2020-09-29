@@ -12,12 +12,17 @@ namespace Game1.Code.Block
     {
         private ISprite Block;
 
-        public MovingNonAnimatedBlock(Texture2D texture, int frameThreshold, Vector2 from, Vector2 to)
+        public MovingNonAnimatedBlock(Texture2D texture, int frameThreshold)
         {
-            Block = new MovingNonAnimatedSprite(texture, frameThreshold, from, to);
+            Block = new MovingNonAnimatedSprite(texture, frameThreshold);
         }
 
-        public void DrawBlock(SpriteBatch spriteBatch)
+        public void SetPath(Vector2 from, Vector2 to)
+        {
+            Block.SetPath(from, to);
+        }
+
+        public void DrawBlock(SpriteBatch spriteBatch, Vector2 location)
         {
             // the location (0, 0) here is not necessarily needed since the trace of movement is based on from and to above
             Block.Draw(spriteBatch, new Vector2(0, 0));

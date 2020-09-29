@@ -10,22 +10,25 @@ namespace Game1
     {
 
         private ISprite Block;
-        Vector2 Location;
 
-        public NonMovingNonAnimatedBlock(Texture2D texture, Vector2 location)
+        public NonMovingNonAnimatedBlock(Texture2D texture)
         {
             Block = new NonMovingNonAnimatedSprite(texture);
-            Location = location;
         }
 
-        public void DrawBlock(SpriteBatch spriteBatch)
+        public void DrawBlock(SpriteBatch spriteBatch, Vector2 location)
         {
-            Block.Draw(spriteBatch, Location);
+            Block.Draw(spriteBatch, location);
         }
 
         public void UpdateBlock()
         {
             // nothing to do for static sprites
+        }
+
+        public void SetPath(Vector2 from, Vector2 to)
+        {
+            //nonmoving
         }
     }
 }

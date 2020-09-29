@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Game1
 {
@@ -25,6 +24,7 @@ namespace Game1
         public KeyboardController(Game1 g)
         {
             keymap = new Dictionary<Keys, Command.Actions>();
+
             keymap.Add(Keys.D0, Command.Actions.exit);
             keymap.Add(Keys.NumPad0, Command.Actions.exit);
             keymap.Add(Keys.D1, Command.Actions.non_moving_still);

@@ -1,4 +1,5 @@
-﻿using Game1.Code.Item.ItemFactory;
+﻿using Game1.Code.Block;
+using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
 using Game1.Enemy;
@@ -27,8 +28,11 @@ namespace Game1
         public IItemSprite item; // Zhihan added
         public Command command;
 
+
+
         private List<object> controllerList;
-        private IController keyboardController;
+
+        private IController blockKeyboardController;
         private IController mouseController;
 
         //Test code for enemy classes
@@ -50,10 +54,9 @@ namespace Game1
             command = new Command();
 
             controllerList = new List<object>();
-            keyboardController = new KeyboardController(this);
-            mouseController = new MouseController(this);
-            controllerList.Add(keyboardController);
-            controllerList.Add(mouseController);
+            blockKeyboardController = new BlockKeyboardController();
+            
+            controllerList.Add(blockKeyboardController);
 
             /*
             //Test code for enemy classes
@@ -65,25 +68,32 @@ namespace Game1
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-            imgMoving = this.Content.Load<Texture2D>("Sprite/walk/final_2");
-            imgStand = this.Content.Load<Texture2D>("Sprite/stand");
-            imgJump = this.Content.Load<Texture2D>("Sprite/jump");
-            font = this.Content.Load<SpriteFont>("font");
+            /*
+             *  Sprint 0 Code
+             * 
+                imgMoving = this.Content.Load<Texture2D>("Sprite/walk/final_2");
+                imgStand = this.Content.Load<Texture2D>("Sprite/stand");
+                imgJump = this.Content.Load<Texture2D>("Sprite/jump");
+                font = this.Content.Load<SpriteFont>("font");
+            */
 
             arrow = this.Content.Load<Texture2D>("Sprite/items/arrow_sprite");// Zhihan added
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            animatedLuigi = new NonMovingAnimatedSprite(imgMoving, 8, 8);
-            stillLuigi = new NonMovingNonAnimatedSprite(imgStand);
-            movingLuigi = new MovingNonAnimatedSprite(imgStand, 480, new Vector2(0, 0), new Vector2(480, 480));
-            movingAnimatedLuigi = new MovingAnimatedSprite(imgMoving, 8, 8, 200, new Vector2(480, 480), new Vector2(0, 0));
+            /*
+             *  Sprint 0 Code
+             * 
+                animatedLuigi = new NonMovingAnimatedSprite(imgMoving, 8, 8);
+                stillLuigi = new NonMovingNonAnimatedSprite(imgStand);
+                movingLuigi = new MovingNonAnimatedSprite(imgStand, 480, new Vector2(0, 0), new Vector2(480, 480));
+                movingAnimatedLuigi = new MovingAnimatedSprite(imgMoving, 8, 8, 200, new Vector2(480, 480), new Vector2(0, 0));
+            */
 
             item = ItemSpriteFactory.Instance.CreateArrow(); //// Zhihan added
             item = new Arrow(arrow);// // Zhihan added
 
-            textToDraw = new TextSprite(font, "Credit\nProgram Made by: Dantong Xue\nSprites from: http://www.mariouniverse.com/sprites-nes-smb/");
+            // textToDraw = new TextSprite(font, "Credit\nProgram Made by: Dantong Xue\nSprites from: http://www.mariouniverse.com/sprites-nes-smb/");
 
             /*
             //Test code for enemy classes
@@ -112,7 +122,7 @@ namespace Game1
 
         protected override void Draw(GameTime gameTime)
         {
-            command.Execute(Command.Actions.text, this, _spriteBatch);
+            // command.Execute(Command.Actions.text, this, _spriteBatch);
             base.Draw(gameTime);
 
             /*
