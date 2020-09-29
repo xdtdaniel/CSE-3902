@@ -1,5 +1,6 @@
 ﻿using Game1.Code.Block;
 using Game1.Code.Block.BlockFactory;
+using Game1.Code.Item;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
@@ -19,7 +20,6 @@ namespace Game1
         private Texture2D imgStand;
         private Texture2D imgJump;
         private Texture2D imgMoving;
-        private Texture2D arrow;// Zhihan added
 
         public ISprite animatedLuigi;
         public SpriteFont font;
@@ -27,7 +27,7 @@ namespace Game1
         public ISprite textToDraw;
         public ISprite movingLuigi;
         public ISprite movingAnimatedLuigi;
-        public IItemSprite item; // Zhihan added
+        public IItemSprite item; 
         public Command command;
 
         public Link link;
@@ -37,6 +37,7 @@ namespace Game1
 
         private IController blockKeyboardController;
         private IController mouseController;
+        private ItemKeyboardController itemKeyboardController;
 
         private EnemyKeyboardController enemyKeyboradController;
 
@@ -57,10 +58,11 @@ namespace Game1
 
             controllerList = new List<object>();
             blockKeyboardController = new BlockKeyboardController();
-            
+
             controllerList.Add(blockKeyboardController);
 
             enemyKeyboradController = new EnemyKeyboardController();
+            itemKeyboardController = new ItemKeyboardController();
 
             link = new Link();
             playerCommand = new PlayerCommand(_spriteBatch, this);
@@ -79,7 +81,6 @@ namespace Game1
                 font = this.Content.Load<SpriteFont>("font");
             */
 
-            arrow = this.Content.Load<Texture2D>("Sprite/items/arrow_sprite");// Zhihan added
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
@@ -92,8 +93,6 @@ namespace Game1
                 movingAnimatedLuigi = new MovingAnimatedSprite(imgMoving, 8, 8, 200, new Vector2(480, 480), new Vector2(0, 0));
             */
 
-            item = ItemSpriteFactory.Instance.CreateArrow(); //// Zhihan added
-            item = new Arrow(arrow);// // Zhihan added
 
             // textToDraw = new TextSprite(font, "Credit\nProgram Made by: Dantong Xue\nSprites from: http://www.mariouniverse.com/sprites-nes-smb/");
 
@@ -101,6 +100,7 @@ namespace Game1
             PlayerItemFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
             EnemyTextureStorage.LoadTextures(Content);
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -111,6 +111,7 @@ namespace Game1
             }
 
             enemyKeyboradController.Update(this);
+            itemKeyboardController.Update(this);
 
             // Keep executing the previous event if no event changes happen
             // command.Execute(command.getCurr(), this, _spriteBatch);
@@ -124,7 +125,8 @@ namespace Game1
             // command.Execute(Command.Actions.text, this, _spriteBatch);
             base.Draw(gameTime);
 
-            enemyKeyboradController.Draw(_spriteBatch);
+            //enemyKeyboradController.Draw(_spriteBatch);
+            itemKeyboardController.Draw(_spriteBatch, 400, 200);
         }
     }
 }
