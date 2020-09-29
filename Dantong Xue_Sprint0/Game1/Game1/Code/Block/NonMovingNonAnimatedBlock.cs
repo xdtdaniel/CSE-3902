@@ -14,6 +14,7 @@ namespace Game1
         public NonMovingNonAnimatedBlock(Texture2D texture)
         {
             Block = new NonMovingNonAnimatedSprite(texture);
+            
         }
 
         public void DrawBlock(SpriteBatch spriteBatch, Vector2 location)

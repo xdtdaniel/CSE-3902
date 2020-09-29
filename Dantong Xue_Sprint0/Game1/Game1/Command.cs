@@ -43,45 +43,6 @@ namespace Game1
             return current_item;
         }
 
-        public void Execute(Actions a, Game1 g, SpriteBatch spriteBatch)
-        {
-            spriteBatch.Begin();
-            System.Diagnostics.Debug.WriteLine(a);
-            if (prev == Actions.none)
-            {
-                prev = a;
-                if (a != Actions.text && a != Actions.none)
-                {
-                    curr = a;
-                }
-
-                switch (a)
-                {
-                    case Actions.non_moving_animated:
-                        DrawNonmovingAnimated(g, spriteBatch);
-                        break;
-                    case Actions.exit:
-                        g.Exit();
-                        break;
-                    case Actions.non_moving_still:
-                        DrawNonmovingStill(g, spriteBatch);
-                        break;
-                    case Actions.moving_animated:
-                        DrawMovingAnimated(g, spriteBatch);
-                        break;
-                    case Actions.moving_still:
-                        DrawMovingStill(g, spriteBatch);
-                        break;
-                    case Actions.text:
-                        DrawText(g, spriteBatch);
-                        break;
-                }
-
-                prev = Actions.none;
-            }
-
-            spriteBatch.End();
-        }
         public void DisplayItem(ItemSelect i, Game1 g) {
             System.Diagnostics.Debug.WriteLine(i);
             //  initial should display item arrow
@@ -132,32 +93,6 @@ namespace Game1
 
          }
 
-        private void DrawMovingAnimated(Game1 g, SpriteBatch spriteBatch)
-        {
-            g.GraphicsDevice.Clear(Color.CornflowerBlue);
-            g.movingAnimatedLuigi.Draw(spriteBatch, new Vector2(200, 200));
-            g.movingAnimatedLuigi.Update();
-        }
-
-        private void DrawNonmovingAnimated(Game1 g, SpriteBatch spriteBatch)
-        {
-            g.GraphicsDevice.Clear(Color.CornflowerBlue);
-            g.animatedLuigi.Draw(spriteBatch, new Vector2(200, 200));
-            g.animatedLuigi.Update();
-        }
-
-        private void DrawNonmovingStill(Game1 g, SpriteBatch spriteBatch)
-        {
-            g.GraphicsDevice.Clear(Color.CornflowerBlue);
-            g.stillLuigi.Draw(spriteBatch, new Vector2(200, 200));
-        }
-
-        private void DrawMovingStill(Game1 g, SpriteBatch spriteBatch)
-        {
-            g.GraphicsDevice.Clear(Color.CornflowerBlue);
-            g.movingLuigi.Draw(spriteBatch, new Vector2(200, 200));
-            g.movingLuigi.Update();
-        }
 
         private void DrawText(Game1 g, SpriteBatch spriteBatch)
         {

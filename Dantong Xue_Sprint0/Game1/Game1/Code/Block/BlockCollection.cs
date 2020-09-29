@@ -15,6 +15,8 @@ namespace Game1.Code.Block
 
         public BlockCollection()
         {
+            
+            blockList = new List<IBlock>();
             blockList.Add(BlockFactory.BlockFactory.Instance.CreateBackHole());
             blockList.Add(BlockFactory.BlockFactory.Instance.CreateBackLockedDoor());
             blockList.Add(BlockFactory.BlockFactory.Instance.CreateBackOpenDoor());
@@ -56,6 +58,7 @@ namespace Game1.Code.Block
         public void DrawCurrent(SpriteBatch spriteBatch, Vector2 location)
         {
             spriteBatch.Begin();
+            
             blockList[index].DrawBlock(spriteBatch, location);
             spriteBatch.End();
         }

@@ -1,8 +1,10 @@
 ﻿using Game1.Code.Block;
+using Game1.Code.Block.BlockFactory;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
 using Game1.Enemy;
+using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -28,7 +30,8 @@ namespace Game1
         public IItemSprite item; // Zhihan added
         public Command command;
 
-
+        public Link link;
+        private PlayerCommand playerCommand;
 
         private List<object> controllerList;
 
@@ -57,6 +60,9 @@ namespace Game1
             blockKeyboardController = new BlockKeyboardController();
             
             controllerList.Add(blockKeyboardController);
+
+            link = new Link();
+            playerCommand = new PlayerCommand(_spriteBatch, this);
 
             /*
             //Test code for enemy classes
@@ -99,6 +105,10 @@ namespace Game1
             //Test code for enemy classes
             EnemyTextureStorage.LoadTextures(Content);
             */
+
+            PlayerCharacterFactory.Instance.LoadAllTextures(Content);
+            PlayerItemFactory.Instance.LoadAllTextures(Content);
+            BlockFactory.Instance.LoadAllTexture(Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -109,7 +119,7 @@ namespace Game1
             }
 
             // Keep executing the previous event if no event changes happen
-            command.Execute(command.getCurr(), this, _spriteBatch);
+            // command.Execute(command.getCurr(), this, _spriteBatch);
 
             base.Update(gameTime);
 
@@ -131,6 +141,8 @@ namespace Game1
             enemy.DrawEnemy(_spriteBatch);
             _spriteBatch.End();
             */
+
+            
         }
     }
 }

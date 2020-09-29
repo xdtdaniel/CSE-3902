@@ -33,6 +33,7 @@ namespace Game1.Code.Block
                 blockCollection.MoveNext();
             }
 
+            graphicsDevice.Clear(Color.White);
             blockCollection.DrawCurrent(spriteBatch, new Vector2(150, 150));
 
             this.oldState = this.newState;

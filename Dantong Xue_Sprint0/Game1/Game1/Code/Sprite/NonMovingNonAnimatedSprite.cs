@@ -9,7 +9,7 @@ namespace Game1
     public class NonMovingNonAnimatedSprite : ISprite
     {
 
-        public Texture2D Texture { get; set; }
+        private Texture2D Texture;
 
         public NonMovingNonAnimatedSprite(Texture2D texture)
         {

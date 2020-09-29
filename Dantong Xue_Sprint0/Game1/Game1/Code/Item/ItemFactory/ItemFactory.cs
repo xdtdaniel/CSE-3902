@@ -5,7 +5,7 @@ using Game1.Code.Item.ItemSprite;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Sprint_2.Player;
+using Game1.Player;
 
 namespace Game1.Code.Item.ItemFactory
 {
