@@ -24,11 +24,11 @@ namespace Game1.Code.Item.ItemSprite
             width = Texture.Width;
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+            Rectangle destinationRectangle = new Rectangle(x, y, width*2, height*2);
 
-            spriteBatch.Begin();
+
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
+
         }
         public void Update()
         {

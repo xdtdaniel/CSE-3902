@@ -86,7 +86,6 @@ namespace Game1.Code.Item.ItemFactory
 		{
 			return new ItemSprite.Fairy(fairy);
 		}
-		//related to player current value of heart, Map HUD element
 		public IItemSprite CreateHeartContainer()
 		{
 			return new ItemSprite.HeartContainer(heart_container);

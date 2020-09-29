@@ -24,14 +24,14 @@ namespace Game1.Code.Item.ItemSprite
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
             height = Texture.Height; 
-            width = Texture.Width / 4;  //heart container is 4 pieces
+            width = Texture.Width / 4;  
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+            Rectangle destinationRectangle = new Rectangle(x, y, width * 16, height * 16);
 
-            spriteBatch.Begin();
+
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
+
         }
         public void Update() {
             currentFrame++;
