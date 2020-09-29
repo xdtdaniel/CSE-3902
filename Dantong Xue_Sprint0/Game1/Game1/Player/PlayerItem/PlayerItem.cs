@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Sprint_2.Player.Interface;
+using Game1.Player.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint_2.Player.PlayerCharacter
+namespace Game1.Player.PlayerCharacter
 {
     public class PlayerItem
     {

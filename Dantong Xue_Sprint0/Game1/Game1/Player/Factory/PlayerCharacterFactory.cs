@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint_2.Player;
-using Sprint_2.Player.Interface;
+using Game1.Player;
+using Game1.Player.Interface;
 
-namespace Sprint_2
+namespace Game1
 {
     class PlayerCharacterFactory
     {

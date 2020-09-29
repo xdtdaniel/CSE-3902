@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint_2.Player.Interface
+namespace Game1.Player.Interface
 {
     public interface IPlayerLinkState
     {

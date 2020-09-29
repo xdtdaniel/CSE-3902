@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint_2.Player;
+using Game1.Player;
 
-namespace Sprint_2
+namespace Game1
 {
     class PlayerItemFactory
     {

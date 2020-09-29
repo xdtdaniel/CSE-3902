@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Sprint_2
+namespace Game1
 {
     public class PlayerKeyboardController : IPlayerController
     {

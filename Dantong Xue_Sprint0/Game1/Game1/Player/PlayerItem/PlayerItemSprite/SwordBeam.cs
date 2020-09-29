@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Sprint_2.Player
+namespace Game1.Player
 {
     class SwordBeam : IPlayerSprite
     {
