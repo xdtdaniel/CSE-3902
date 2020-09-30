@@ -31,12 +31,10 @@ namespace Game1.Player
             destinationRectangles[5] = new Rectangle(x - 20 - 100 / 2, y + 100, 100, 100);
             destinationRectangles[6] = new Rectangle(x - 20 + 100 / 2, y + 100, 100, 100);
 
-            spriteBatch.Begin();
             for (int i = 0; i < 7; i++)
             {
                 spriteBatch.Draw(Texture, destinationRectangles[i], sourceRectangle, Color.White);
             }
-            spriteBatch.End();
         }
     }
 }
