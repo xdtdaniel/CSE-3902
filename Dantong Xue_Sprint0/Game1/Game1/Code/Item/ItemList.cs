@@ -16,7 +16,8 @@ namespace Game1.Code.Item
 
         public ItemList() {
             itemList = new List<IItemSprite>();
-
+            index = 0;
+ 
             itemList.Add(ItemFactory.ItemSpriteFactory.Instance.CreateArrow());
             itemList.Add(ItemFactory.ItemSpriteFactory.Instance.CreateBomb());
             itemList.Add(ItemFactory.ItemSpriteFactory.Instance.CreateBoomerang());
@@ -31,7 +32,6 @@ namespace Game1.Code.Item
             itemList.Add(ItemFactory.ItemSpriteFactory.Instance.CreateRuby());
             itemList.Add(ItemFactory.ItemSpriteFactory.Instance.CreateTriforce());
 
-            index = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
@@ -43,6 +43,7 @@ namespace Game1.Code.Item
         public void Update() {
 
             itemList[index].Update();
+
         }
 
         public void MoveNext()
@@ -50,16 +51,16 @@ namespace Game1.Code.Item
             index++;
             if (index == itemList.Count)
             {
-                index = itemList.Count-1;
+                index = 0;
             }
         }
 
         public void MovePrev()
         {
             index--;
-            if (index < 0)
+            if (index <0)
             {
-                index = 0;
+                index = itemList.Count-1;
             }
         }
     }

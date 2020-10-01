@@ -15,28 +15,27 @@ namespace Game1.Code.Item.ItemSprite
         Texture2D Texture;
         int height;
         int width;
-        int currentFrame = 0;
-        int totalFrames = 3;
+
         public HeartContainer(Texture2D texture)
         {
             Texture = texture;
+
         }
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-            height = Texture.Height; 
-            width = Texture.Width / 4;  
+            height = Texture.Height;
+            width = Texture.Width;
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width * 16, height * 16);
+            Rectangle destinationRectangle = new Rectangle(x, y, width * 3, height * 3);
 
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
         }
-        public void Update() {
-            currentFrame++;
-            if (currentFrame == totalFrames)
-                currentFrame = 0;
-        }
+        public void Update()
+        {
+           
+        }   
     }
 }

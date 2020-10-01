@@ -25,7 +25,7 @@ namespace Game1.Code.Item.ItemSprite
             width = Texture.Width;
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width * 2, height * 2);
+            Rectangle destinationRectangle = new Rectangle(x, y, width * 3, height * 3);
 
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);

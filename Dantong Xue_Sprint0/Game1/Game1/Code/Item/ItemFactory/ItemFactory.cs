@@ -25,6 +25,7 @@ namespace Game1.Code.Item.ItemFactory
 		private Texture2D ruby;
 		private Texture2D triforce;
 
+		public Game1 Game { get; set; }
 
 		private static ItemSpriteFactory instance = new ItemSpriteFactory();
 

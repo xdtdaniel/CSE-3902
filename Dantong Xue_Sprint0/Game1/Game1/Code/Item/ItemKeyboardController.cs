@@ -19,8 +19,7 @@ namespace Game1.Code.Item
         public ItemKeyboardController() {
             itemlist = new ItemList();
         }
-
-        public void Update(Game1 g)
+        public void Update(Game1 game)
         {
             this.newState = Keyboard.GetState();
 
@@ -35,6 +34,7 @@ namespace Game1.Code.Item
             }
 
             itemlist.Update();
+            game.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / 10.0f);
 
             this.oldState = this.newState;
         }

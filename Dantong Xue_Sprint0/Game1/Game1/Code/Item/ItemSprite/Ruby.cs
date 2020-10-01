@@ -16,34 +16,35 @@ namespace Game1.Code.Item.ItemSprite
         int height;
         int width;
         private int Columns;
-        private int Rows = 1;
+        private int Rows;
         private int TotalFrames;
         private int CurrentFrame;
         public Ruby(Texture2D texture)
         {
             Texture = texture;
-            TotalFrames = 2;
-            Columns = TotalFrames;
+            TotalFrames =2;
+            Rows = 1;
+            Columns = 2;
             CurrentFrame = 0;
         }
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-             width = Texture.Width / Columns;
+            width = Texture.Width / Columns;
             height = Texture.Height / Rows;
             int row = (int)((float)CurrentFrame / (float)Columns);
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width * 3, height * 3);
+            Rectangle destinationRectangle = new Rectangle(x, y, width*3, height*3);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
         }
         public void Update()
         {
-            if (CurrentFrame == TotalFrames)
-            {
-                CurrentFrame = 0;
+            CurrentFrame++;
+            if (CurrentFrame == TotalFrames) { 
+            CurrentFrame = 0;
             }
         }
     }

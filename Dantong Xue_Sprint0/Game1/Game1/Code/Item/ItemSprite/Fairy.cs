@@ -14,25 +14,44 @@ namespace Game1.Code.Item.ItemSprite
         Texture2D Texture;
         int height;
         int width;
+       
+        private int Columns;
+        private int Rows;
+        private int TotalFrames;
+        private int CurrentFrame;
+        private readonly double Sin15 = 0.2588190451;
+        private readonly double Cos15 = 0.9659258262;
         public Fairy(Texture2D texture)
         {
             Texture = texture;
+            TotalFrames = 2;
+            Rows = 1;
+            Columns = 2;
+            CurrentFrame = 0;
         }
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-            height = Texture.Height;
-            width = Texture.Width;
+            width = Texture.Width / Columns;
+            height = Texture.Height / Rows;
+            int row = (int)((float)CurrentFrame / (float)Columns);
+            int column = CurrentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width*2, height*2);
-
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle(x, y, width * 3, height * 3);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
         }
+        /// <summary>
+        /// Fairy should move randomly
+        /// </summary>
         public void Update()
         {
-
+            CurrentFrame++;
+            if (CurrentFrame == TotalFrames)
+            {
+                CurrentFrame = 0;
+            }
         }
     }
 }
