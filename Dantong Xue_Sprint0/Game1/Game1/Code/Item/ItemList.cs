@@ -40,9 +40,9 @@ namespace Game1.Code.Item
             itemList[index].Draw(spriteBatch, x, y);
             spriteBatch.End();
         }
-        public void Update() {
+        public void Update(Game game) {
 
-            itemList[index].Update();
+            itemList[index].Update(game);
 
         }
 

@@ -31,7 +31,7 @@ namespace Game1.Code.Item.ItemSprite
  
         }
 
-        public void Update()
+        public void Update(Game game)
         {
            
         }
