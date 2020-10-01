@@ -40,6 +40,7 @@ namespace Game1
         private ItemKeyboardController itemKeyboardController;
 
         private EnemyKeyboardController enemyKeyboradController;
+        private QuitResetController quitResetController;
 
         public Game1()
         {
@@ -66,6 +67,7 @@ namespace Game1
 
             link = new Link();
             playerCommand = new PlayerCommand(_spriteBatch, this);
+            quitResetController = new QuitResetController();
         }
 
         protected override void LoadContent()
@@ -100,7 +102,7 @@ namespace Game1
             PlayerItemFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
             EnemyTextureStorage.LoadTextures(Content);
-            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);     
         }
 
         protected override void Update(GameTime gameTime)
@@ -112,6 +114,7 @@ namespace Game1
 
             enemyKeyboradController.Update(this);
             itemKeyboardController.Update(this);
+            quitResetController.Update(this);
 
             // Keep executing the previous event if no event changes happen
             // command.Execute(command.getCurr(), this, _spriteBatch);
