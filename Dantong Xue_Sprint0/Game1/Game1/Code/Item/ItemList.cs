@@ -36,9 +36,9 @@ namespace Game1.Code.Item
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-            spriteBatch.Begin();
+           
             itemList[index].Draw(spriteBatch, x, y);
-            spriteBatch.End();
+
         }
         public void Update(Game game) {
 
