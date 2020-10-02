@@ -1,0 +1,22 @@
+﻿Description: This is the qualiy Code Review file for Link.cs
+
+Author: Jason Lian
+Date: 10/02/2020
+Sprint number: 2
+Name of the .cs file: Link.cs
+Author of the .cs file: Baihua Yang
+
+Specific comments on code quality:
+
+Looking at the fields of the class, it only uses two objects from the other class so the overall coupling should be low.
+Although, the class uses the PlayerItem concrete class instead of a interface for item and that may cause a tighter coupling.
+In term of cohesion, methods of the class gnerally have small sizes since most of the implementation details are covered
+in other classes. Since there is little implementation details, the class should have a high cohesion.
+Variable names, field names and method names are all readable and the size of the class is small. Code should be easy to maintain.
+
+A hypothetical change and how to implement it:
+
+A possible feature to be added to the game is that we can have a new state which allow Link to not take any damage from enemies
+or the environment for a limited amount of time. We can easily add a method in the Link.cs class which calls a state method which
+handles this state. If the player character need to have different visual effect in this state, such as flashing or changing color,
+we should use a decorator class to the Link.cs class.

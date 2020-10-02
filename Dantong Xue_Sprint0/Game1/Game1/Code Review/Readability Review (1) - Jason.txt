@@ -1,0 +1,15 @@
+﻿Description: This is the readability Code Review file for the Player Class.
+
+Author: Jason Lian
+Review date: 10/02/2020
+Sprint number: 2
+Name of the .cs file being reviewed: Link.cs
+Author of the .cs file being reviewed: Baihua Yang
+Number of minutes taken to complete the code review: 2-3 minutes
+
+Specific comments on what is readable and what is not: 
+I didn't notice anything unreadable in the code of this class. 
+Field names and method names are all simple and make sense, and there is not 
+much of specific logic and implementation covered in the Link class. Implementation
+details are mainly covered in the state classes and sprite drawing classes, which is
+just the way the state design pattern works. 
