@@ -16,5 +16,13 @@ public class Game1 : Game
             PlayerCharacterFactory.Instance.LoadAllTextures(Content);
             PlayerItemFactory.Instance.LoadAllTextures(Content);
         }
+        protected override void Update(GameTime gameTime)
+        {
+            playerCommand.PlayerUpdate();
+        }
+        protected override void Draw(GameTime gameTime)
+        {
+            playerCommand.PlayerDraw();
+        }
     }
 }
