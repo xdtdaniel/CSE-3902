@@ -34,7 +34,6 @@ namespace Game1.Code.Item
             }
 
             itemlist.Update(game);
-            game.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / 10.0f);
 
             this.oldState = this.newState;
         }

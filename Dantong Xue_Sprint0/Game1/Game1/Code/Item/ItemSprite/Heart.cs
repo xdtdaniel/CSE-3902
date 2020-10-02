@@ -19,6 +19,8 @@ namespace Game1.Code.Item.ItemSprite
         private int Rows;
         private int TotalFrames;
         private int CurrentFrame;
+        private int count = 0;
+        private int maxcount = 6;
         public Heart(Texture2D texture)
         {
             Texture = texture;
@@ -42,12 +44,16 @@ namespace Game1.Code.Item.ItemSprite
         }
         public void Update(Game game)
         {
-            CurrentFrame++;
-            if (CurrentFrame == TotalFrames)
+            count++;
+            if (count == maxcount)
             {
-                CurrentFrame = 0;
+                CurrentFrame++;
+                if (CurrentFrame == TotalFrames)
+                {
+                    CurrentFrame = 0;
+                }
+                count = 0;
             }
         }
-
     }
 }
