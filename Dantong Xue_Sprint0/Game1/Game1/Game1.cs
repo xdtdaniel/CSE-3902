@@ -28,7 +28,6 @@ namespace Game1
         public ISprite movingLuigi;
         public ISprite movingAnimatedLuigi;
         public IItemSprite item; 
-        public Command command;
 
         public Link link;
         private PlayerCommand playerCommand;
@@ -54,8 +53,6 @@ namespace Game1
             // TODO: Add your initialization logic here
 
             base.Initialize();
-
-            command = new Command();
 
             controllerList = new List<object>();
             blockKeyboardController = new BlockKeyboardController();
@@ -115,7 +112,7 @@ namespace Game1
             enemyKeyboradController.Update(this);
             itemKeyboardController.Update(this);
             quitResetController.Update(this);
-
+            playerCommand.PlayerUpdate();
             // Keep executing the previous event if no event changes happen
             // command.Execute(command.getCurr(), this, _spriteBatch);
 
@@ -127,9 +124,12 @@ namespace Game1
         {
             // command.Execute(Command.Actions.text, this, _spriteBatch);
             base.Draw(gameTime);
-
-            //enemyKeyboradController.Draw(_spriteBatch);
+         
+            enemyKeyboradController.Draw(_spriteBatch);
+            _spriteBatch.Begin();
+            playerCommand.PlayerDraw();
             itemKeyboardController.Draw(_spriteBatch, 400, 200);
+            _spriteBatch.End();
         }
     }
 }
