@@ -1,0 +1,10 @@
+﻿Sprint2 Reflection
+
+Author:  Zhihan
+Date:   10/03/2020
+
+This sprint mainly have 4 parts, Player, Enemy, Block, Item. Each teammate completes their own part independently,
+and merge all parts together at the end. Overall this sprint performed well. Even everyone follow the same framework,
+it still need more time for me to understand the code from other parts since everyone have it own coding style.
+On next sprint, we might need to communicate more than sprint2, since there are lots of things need to interact with each other.
+
