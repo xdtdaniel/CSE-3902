@@ -15,8 +15,15 @@ namespace Game1
 {
     public class Game1 : Game
     {
+
+#pragma warning disable CA2213 // Disposable fields should be disposed
         private GraphicsDeviceManager _graphics;
+#pragma warning restore CA2213 // Disposable fields should be disposed
+
+#pragma warning disable CA2213 // Disposable fields should be disposed
         private SpriteBatch _spriteBatch;
+#pragma warning restore CA2213 // Disposable fields should be disposed
+
 
         public ISprite animatedLuigi;
         public SpriteFont font;
