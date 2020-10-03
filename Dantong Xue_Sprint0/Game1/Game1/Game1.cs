@@ -17,9 +17,6 @@ namespace Game1
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Texture2D imgStand;
-        private Texture2D imgJump;
-        private Texture2D imgMoving;
 
         public ISprite animatedLuigi;
         public SpriteFont font;
@@ -35,7 +32,6 @@ namespace Game1
         private List<object> controllerList;
 
         private IController blockKeyboardController;
-        private IController mouseController;
         private ItemKeyboardController itemKeyboardController;
 
         private EnemyKeyboardController enemyKeyboradController;
