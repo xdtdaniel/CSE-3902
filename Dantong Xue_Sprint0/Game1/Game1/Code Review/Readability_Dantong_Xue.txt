@@ -1,0 +1,8 @@
+Author: Dantong Xue
+Date: Oct 2, 2020
+Sprint: 2
+Reviewing Code: Fairy.cs
+Code from: Zhihan Li
+Minutes taken: 10 mins
+Comment: This is a concrete item class for "fairy" item. The special thing about that is that the fairy will randomly change position. It also requires frame delays so that the animation is not too fast.
+For readablility, each function has a summary which interprets what it will do per the function. The variable names are pretty informative. It calls the random function for several times. The readability compromised a little with "magical numbers" -15, 50, and 100. Zhihan should consider giving parameters as variables instead of "magical numbers". Overall, this class is very readable.
