@@ -14,7 +14,6 @@ namespace Game1
         public int Columns { get; set; }
         private int currentFrame;
         private int totalFrames;
-        private int frameDelay;
 
         public NonMovingAnimatedSprite(Texture2D texture, int rows, int columns)
         {

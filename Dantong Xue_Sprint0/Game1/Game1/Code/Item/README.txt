@@ -45,3 +45,13 @@ public class Game1 : Game
 
     }
 }
+
+Code Analysis Result:
+2 Warnings
+Severity	Code	Description	Project	File	Line	Suppression State
+Warning	CA2213	'Game1' contains field '_graphics' that is of IDisposable type 'GraphicsDeviceManager', but it is never disposed. Change the Dispose method on 'Game1' to call Close or Dispose on this field.	Game1	C:\Users\~!\Downloads\CSE-3902-master\CSE-3902-master\Dantong Xue_Sprint0\Game1\Game1\Game1.cs	19	Active
+Severity	Code	Description	Project	File	Line	Suppression State
+Warning	CA2213	'Game1' contains field '_spriteBatch' that is of IDisposable type 'SpriteBatch', but it is never disposed. Change the Dispose method on 'Game1' to call Close or Dispose on this field.	Game1	C:\Users\~!\Downloads\CSE-3902-master\CSE-3902-master\Dantong Xue_Sprint0\Game1\Game1\Game1.cs	21	Active
+
+Fiexed by suppress in Source: #pragma warning disable CA2213 // Disposable fields should be disposed
+Problem Fixed.

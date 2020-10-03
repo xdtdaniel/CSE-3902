@@ -25,6 +25,8 @@ namespace Game1.Code.Item.ItemSprite
         public int y = 260;
         private int count = 0;
         private int maxcount = 10;
+        private int displacement = 15;
+        private int max_displacement = 100;
 
         public Fairy(Texture2D texture)
         {
@@ -51,27 +53,27 @@ namespace Game1.Code.Item.ItemSprite
                     CurrentFrame = 0;
                 }
                 Random rdm = new Random();
-                //move inside edges,if touch the edges, go back and change direction in degree
+                //move inside edges,if touch the edges, go back and change direction(x,y)
                 if (x >= width)
                 {
-                    x -= rdm.Next(50, 100);
+                    x -= rdm.Next(displacement, max_displacement);
                 }
                 else if (x <= 0)
                 {
-                    x += rdm.Next(50, 100);
+                    x += rdm.Next(displacement, max_displacement);
                 }
                 else if (y >= height)
                 {
-                    y -= rdm.Next(50, 100);
+                    y -= rdm.Next(displacement, max_displacement);
                 }
                 else if (y <= 0)
                 {
-                    y += rdm.Next(50, 100);
+                    y += rdm.Next(displacement, max_displacement);
                 }
                 else
                 {
-                    x += rdm.Next(-15, 15);
-                    y += rdm.Next(-15, 15);
+                    x += rdm.Next(-displacement, displacement);
+                    y += rdm.Next(-displacement, displacement);
                 }
                 count = 0;
             }

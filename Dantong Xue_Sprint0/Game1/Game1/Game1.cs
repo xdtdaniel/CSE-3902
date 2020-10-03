@@ -15,11 +15,15 @@ namespace Game1
 {
     public class Game1 : Game
     {
+
+#pragma warning disable CA2213 // Disposable fields should be disposed
         private GraphicsDeviceManager _graphics;
+#pragma warning restore CA2213 // Disposable fields should be disposed
+
+#pragma warning disable CA2213 // Disposable fields should be disposed
         private SpriteBatch _spriteBatch;
-        private Texture2D imgStand;
-        private Texture2D imgJump;
-        private Texture2D imgMoving;
+#pragma warning restore CA2213 // Disposable fields should be disposed
+
 
         public ISprite animatedLuigi;
         public SpriteFont font;
@@ -35,7 +39,6 @@ namespace Game1
         private List<object> controllerList;
 
         private IController blockKeyboardController;
-        private IController mouseController;
         private ItemKeyboardController itemKeyboardController;
 
         private EnemyKeyboardController enemyKeyboradController;
