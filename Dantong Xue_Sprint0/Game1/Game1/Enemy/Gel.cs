@@ -51,9 +51,10 @@ namespace Game1
         {
             Random rnd = new Random();
 
-            if (CurrentFrame == TotalFrames)
+            if (FrameRateModifier == 5)
             {
-                CurrentFrame = 0;
+                CurrentFrame++;
+                FrameRateModifier = 0;
             }
 
             FrameRateModifier++;
@@ -68,16 +69,17 @@ namespace Game1
                 }
                 Move(Direction, game);
             }
-            if (FrameRateModifier == 3)
+
+            if (CurrentFrame == TotalFrames)
             {
-                CurrentFrame++;
-                FrameRateModifier = 0;
+                CurrentFrame = 0;
             }
+
         }
 
         private void UpdateMovingState(Random random)
         {
-            if (StateTimer < 4)
+            if (StateTimer < 8 )
             {
                 StateTimer++;
             }

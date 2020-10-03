@@ -20,6 +20,10 @@ namespace Game1.Enemy
             EnemyList.Add(new Keese());
             EnemyList.Add(new Stalfos());
             EnemyList.Add(new Gel());
+            EnemyList.Add(new OldMan());
+            EnemyList.Add(new Merchant());
+            EnemyList.Add(new Fire());
+            EnemyList.Add(new Wallmaster());
 
             index = 0;
         }
