@@ -73,7 +73,7 @@ namespace Game1.Code.Block
             index++;
             if (index == blockList.Count)
             {
-                index = blockList.Count - 1;
+                index = 0;
             }
         }
 
@@ -82,7 +82,7 @@ namespace Game1.Code.Block
             index--;
             if (index < 0)
             {
-                index = 0;
+                index = blockList.Count - 1;
             }
         }
     }

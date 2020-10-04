@@ -1,0 +1,13 @@
+Author of the code review:  Dantong Xue
+Date: Oct 2, 2020.
+Sprint number: 2
+Reviewing Code: ItemFactory.cs
+Code From: Zhihan Li
+
+Specific comments on code quality: 
+Everything follows the requirement of maintainablity.
+All codes used Interfaces from IItemSprite. 
+All the methods are short, and this class has low coupling.
+This class is used sheerly as item factory, thus it has high cohesion.
+
+Hyporhetical change: Adding new features are easy and may only require loading the content and adding one-line new method. This can be easily done with current implementation.

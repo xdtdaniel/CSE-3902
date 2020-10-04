@@ -25,12 +25,6 @@ namespace Game1
 #pragma warning restore CA2213 // Disposable fields should be disposed
 
 
-        public ISprite animatedLuigi;
-        public SpriteFont font;
-        public ISprite stillLuigi;
-        public ISprite textToDraw;
-        public ISprite movingLuigi;
-        public ISprite movingAnimatedLuigi;
         public IItemSprite item; 
 
         public Link link;
@@ -74,29 +68,9 @@ namespace Game1
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            /*
-             *  Sprint 0 Code
-             * 
-                imgMoving = this.Content.Load<Texture2D>("Sprite/walk/final_2");
-                imgStand = this.Content.Load<Texture2D>("Sprite/stand");
-                imgJump = this.Content.Load<Texture2D>("Sprite/jump");
-                font = this.Content.Load<SpriteFont>("font");
-            */
-
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            /*
-             *  Sprint 0 Code
-             * 
-                animatedLuigi = new NonMovingAnimatedSprite(imgMoving, 8, 8);
-                stillLuigi = new NonMovingNonAnimatedSprite(imgStand);
-                movingLuigi = new MovingNonAnimatedSprite(imgStand, 480, new Vector2(0, 0), new Vector2(480, 480));
-                movingAnimatedLuigi = new MovingAnimatedSprite(imgMoving, 8, 8, 200, new Vector2(480, 480), new Vector2(0, 0));
-            */
-
-
-            // textToDraw = new TextSprite(font, "Credit\nProgram Made by: Dantong Xue\nSprites from: http://www.mariouniverse.com/sprites-nes-smb/");
 
             PlayerCharacterFactory.Instance.LoadAllTextures(Content);
             PlayerItemFactory.Instance.LoadAllTextures(Content);
@@ -116,8 +90,6 @@ namespace Game1
             itemKeyboardController.Update(this);
             quitResetController.Update(this);
             playerCommand.PlayerUpdate();
-            // Keep executing the previous event if no event changes happen
-            // command.Execute(command.getCurr(), this, _spriteBatch);
 
             base.Update(gameTime);
         }
@@ -125,7 +97,6 @@ namespace Game1
 
         protected override void Draw(GameTime gameTime)
         {
-            // command.Execute(Command.Actions.text, this, _spriteBatch);
             base.Draw(gameTime);
          
             enemyKeyboradController.Draw(_spriteBatch);
