@@ -1,6 +1,6 @@
 ﻿This is README file for sprint 2, it includes the description of program control, and code analysis.
 
-This program have 4 main parts, Player, Enemy, Block, Item. And a keyboard controller to quiz and reset a game.
+This program have 4 main parts, Player, Enemy, Block, Item. And a keyboard controller to quit and reset a game.
 
 
 //Player description//  Press 'W', 'A', 'S', 'D' to move the Link. Press 'Z', 'N' to control the Link to attack. Press number keys to switch items used by Link. Press 'e' to display an injured Link.
