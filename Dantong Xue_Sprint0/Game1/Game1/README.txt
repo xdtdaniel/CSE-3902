@@ -1,4 +1,4 @@
-﻿This is README file for sprint 2, it includes program control, and code analysis.
+﻿This is README file for sprint 2, it includes the description of program control, and code analysis.
 
 This program have 4 main parts, Player, Enemy, Block, Item. And a keyboard controller to quiz and reset a game.
 
