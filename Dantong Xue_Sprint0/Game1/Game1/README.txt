@@ -137,6 +137,7 @@ public class Game1 : Game
 }
 
 //QuitResetController description//  Press 'Q' to quit current game, press 'R' to quit current game and start a new game.
+Author: Zhihan Li
 This controller used to quit or restart a game based on user's keyboard input.
 
 
