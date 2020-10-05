@@ -1,4 +1,4 @@
-﻿This is README file for sprint 2, it includes the description of program control, and code analysis.
+﻿This is README file for sprint 2, it includes the description of program control, and code analysis. The reflection is also in this zipped file with name "Sprint 2 Reflection.pdf". Please contact us if you have any questions.
 
 This program have 4 main parts, Player, Enemy, Block, Item. And a keyboard controller to quit and reset a game.
 
@@ -83,6 +83,31 @@ BlockKeyboardController as the name will change between different blocks. "t" sw
 BlockCollection is used to show different blocks.
 
 BlockFactory will load all contents related to blocks and handle the instantiation process.
+
+//Code required in Game1.cs
+protected override void Initialize()
+        {
+
+            base.Initialize();
+
+            controllerList = new List<object>();
+            blockKeyboardController = new BlockKeyboardController();
+
+            controllerList.Add(blockKeyboardController);
+         }
+
+protected override void LoadContent()
+        {
+	BlockFactory.Instance.LoadAllTexture(Content);
+        }
+
+protected override void Update(GameTime gameTime)
+        {
+            foreach(IController controller in controllerList)
+            {
+                controller.Update(this.GraphicsDevice, this._spriteBatch, this);
+            }
+        }
 
 
 //Item description// Switch between items by press 'U' and 'I'.
