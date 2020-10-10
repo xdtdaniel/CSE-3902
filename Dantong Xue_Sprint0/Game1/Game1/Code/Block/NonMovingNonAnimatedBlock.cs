@@ -11,9 +11,9 @@ namespace Game1
 
         private ISprite Block;
 
-        public NonMovingNonAnimatedBlock(Texture2D texture)
+        public NonMovingNonAnimatedBlock(Texture2D texture, Vector2 location)
         {
-            Block = new NonMovingNonAnimatedSprite(texture);
+            Block = new NonMovingNonAnimatedSprite(texture,location);
             
         }
 
