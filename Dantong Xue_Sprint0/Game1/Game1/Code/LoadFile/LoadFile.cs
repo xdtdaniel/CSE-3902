@@ -46,16 +46,16 @@ namespace Game1.Code.LoadFile
             }
 
             //switch case for each string
-            for (int j = 0; j < mapElementList.count; j++)
+            for (int index = 0;index < mapElementList.Count; index++)
             {
-                switch (mapelementlist[j])
+                switch (mapElementList[index].Item3)
                 {
-                    case "black":
-                        blockfactory.instance.createblackblock();// need to pass row anad columbs and multiply by the block's width and height
+                    case "black": 
+                        BlockFactory.Instance.CreateBlackBlock();// need to pass row anad columbs and multiply by the block's width and height?
                     case "block":
-                        blockfactory.instance.createflatblock();
+                        BlockFactory.Instance.CreateFlatBlock();
                     case "dragon":
-                        blockfactory.instance.createdragon();
+                        BlockFactory.Instance.CreateDragon();
                 }
 
             }
