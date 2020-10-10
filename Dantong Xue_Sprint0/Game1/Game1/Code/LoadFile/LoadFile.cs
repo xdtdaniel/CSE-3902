@@ -52,10 +52,13 @@ namespace Game1.Code.LoadFile
                 {
                     case "black": 
                         BlockFactory.Instance.CreateBlackBlock();// need to pass row anad columbs and multiply by the block's width and height?
+                        break;
                     case "block":
                         BlockFactory.Instance.CreateFlatBlock();
+                         break;
                     case "dragon":
                         BlockFactory.Instance.CreateDragon();
+                         break;
                 }
 
             }
