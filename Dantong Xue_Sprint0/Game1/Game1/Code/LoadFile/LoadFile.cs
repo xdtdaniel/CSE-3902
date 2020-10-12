@@ -75,6 +75,89 @@ namespace Game1.Code.LoadFile
                     case "fishBlue":
                         BlockFactory.Instance.CreateBlueFish(location);
                         break;
+                    case "floatBlock":
+                        BlockFactory.Instance.CreateFloatBlock(location);
+                        break;
+                    case "grey":
+                        BlockFactory.Instance.CreateGreyBlock(location);
+                        break;
+                    case "holeFront":
+                        BlockFactory.Instance.CreateFrontHole(location);
+                        break;
+                    case "holeLeft":
+                        BlockFactory.Instance.CreateLeftHole(location);
+                        break;
+                    case "holeRight":
+                        BlockFactory.Instance.CreateRightHole(location);
+                        break;
+                    case "holeBack":
+                        BlockFactory.Instance.CreateBackHole(location);
+                        break;
+                    case "lockedDoorFront":
+                        BlockFactory.Instance.CreateFrontLockedDoor(location);
+                        break;
+                    case "lockedDoorLeft":                       
+                        BlockFactory.Instance.CreateLeftLockedDoor(location);
+                        break;
+                    case "lockedDoorRight":
+                        BlockFactory.Instance.CreateRightLockedDoor(location);
+                        break;
+                    case "lockedDoorBack":
+                        BlockFactory.Instance.CreateBackLockedDoor(location);
+                        break;
+                    case "openDoorFront":
+                        BlockFactory.Instance.CreateFrontOpenDoor(location);
+                        break;
+                    case "openDoorLeft":
+                        BlockFactory.Instance.CreateLeftOpenDoor(location);
+                        break;
+                    case "openDoorRight":
+                        BlockFactory.Instance.CreateRightOpenDoor(location);
+                        break;
+                    case "openDoorBack":
+                        BlockFactory.Instance.CreateBackOpenDoor(location);
+                        break;
+                    case "shutDoorFront":
+                        BlockFactory.Instance.CreateFrontShutDoor(location);
+                        break;
+                    case "shutDoorLeft":
+                        BlockFactory.Instance.CreateLeftShutDoor(location);
+                        break;
+                    case "shutDoorRight":
+                        BlockFactory.Instance.CreateRightShutDoor(location);
+                        break;
+                    case "shutDoorBack":
+                        BlockFactory.Instance.CreateBackShutDoor(location);
+                        break;
+                    case "sandFloor":
+                        BlockFactory.Instance.CreateSandFloor(location);
+                        break;
+                    case "stair":
+                        BlockFactory.Instance.CreateStair(location);
+                        break;
+                    case "wallFront":
+                        BlockFactory.Instance.CreateFrontWall(location);
+                        break;
+                    case "wallLeft":
+                        BlockFactory.Instance.CreateLeftWall(location);
+                        break;
+                    case "wallRight":
+                        BlockFactory.Instance.CreateRightWall(location);
+                        break;
+                    case "wallBack":
+                        BlockFactory.Instance.CreateBackWall(location);
+                        break;
+                    case "wallBW":
+                        BlockFactory.Instance.CreateBWWall(location);
+                        break;
+                    case "wallGrey":
+                        BlockFactory.Instance.CreateGreyWall(location);
+                        break;
+                    case "water":
+                        BlockFactory.Instance.CreateWater(location);
+                        break;
+
+
                 }
 
             }
