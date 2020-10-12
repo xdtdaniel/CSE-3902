@@ -132,139 +132,139 @@ namespace Game1.Code.Block.BlockFactory
             return new NonMovingNonAnimatedBlock(fishBlue,location);
         }
 
-        public IBlock CreateFloatBlock()
+        public IBlock CreateFloatBlock(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(floatBlock);
+            return new NonMovingNonAnimatedBlock(floatBlock, location);
         }
 
-        public IBlock CreateGreyBlock()
+        public IBlock CreateGreyBlock(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(grey);
+            return new NonMovingNonAnimatedBlock(grey, location);
         }
 
-        public IBlock CreateFrontHole()
+        public IBlock CreateFrontHole(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(holeFront);
+            return new NonMovingNonAnimatedBlock(holeFront, location);
         }
 
-        public IBlock CreateLeftHole()
+        public IBlock CreateLeftHole(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(holeLeft);
+            return new NonMovingNonAnimatedBlock(holeLeft, location);
         }
 
-        public IBlock CreateRightHole()
+        public IBlock CreateRightHole(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(holeRight);
+            return new NonMovingNonAnimatedBlock(holeRight, location);
         }
 
-        public IBlock CreateBackHole()
+        public IBlock CreateBackHole(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(holeBack);
+            return new NonMovingNonAnimatedBlock(holeBack, location);
         }
 
-        public IBlock CreateFrontLockedDoor()
+        public IBlock CreateFrontLockedDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(lockedDoorFront);
+            return new NonMovingNonAnimatedBlock(lockedDoorFront, location);
         }
 
-        public IBlock CreateLeftLockedDoor()
+        public IBlock CreateLeftLockedDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(lockedDoorLeft);
+            return new NonMovingNonAnimatedBlock(lockedDoorLeft, location);
         }
 
-        public IBlock CreateRightLockedDoor()
+        public IBlock CreateRightLockedDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(lockedDoorRight);
+            return new NonMovingNonAnimatedBlock(lockedDoorRight, location);
         }
 
-        public IBlock CreateBackLockedDoor()
+        public IBlock CreateBackLockedDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(lockedDoorBack);
+            return new NonMovingNonAnimatedBlock(lockedDoorBack, location);
         }
 
-        public IBlock CreateFrontOpenDoor()
+        public IBlock CreateFrontOpenDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(openDoorFront);
+            return new NonMovingNonAnimatedBlock(openDoorFront, location);
         }
 
-        public IBlock CreateLeftOpenDoor()
+        public IBlock CreateLeftOpenDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(openDoorLeft);
+            return new NonMovingNonAnimatedBlock(openDoorLeft, location);
         }
 
-        public IBlock CreateRightOpenDoor()
+        public IBlock CreateRightOpenDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(openDoorRight);
+            return new NonMovingNonAnimatedBlock(openDoorRight, location);
         }
 
-        public IBlock CreateBackOpenDoor()
+        public IBlock CreateBackOpenDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(openDoorBack);
+            return new NonMovingNonAnimatedBlock(openDoorBack, location);
         }
 
-        public IBlock CreateFrontShutDoor()
+        public IBlock CreateFrontShutDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(shutDoorFront);
+            return new NonMovingNonAnimatedBlock(shutDoorFront, location);
         }
 
-        public IBlock CreateLeftShutDoor()
+        public IBlock CreateLeftShutDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(shutDoorLeft);
+            return new NonMovingNonAnimatedBlock(shutDoorLeft, location);
         }
 
-        public IBlock CreateRightShutDoor()
+        public IBlock CreateRightShutDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(shutDoorRight);
+            return new NonMovingNonAnimatedBlock(shutDoorRight, location);
         }
 
-        public IBlock CreateBackShutDoor()
+        public IBlock CreateBackShutDoor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(shutDoorBack);
+            return new NonMovingNonAnimatedBlock(shutDoorBack, location);
         }
 
-        public IBlock CreateSandFloor()
+        public IBlock CreateSandFloor(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(sandFloor);
+            return new NonMovingNonAnimatedBlock(sandFloor, location);
         }
 
-        public IBlock CreateStair()
+        public IBlock CreateStair(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(stair);
+            return new NonMovingNonAnimatedBlock(stair, location);
         }
 
-        public IBlock CreateFrontWall()
+        public IBlock CreateFrontWall(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(wallFront);
+            return new NonMovingNonAnimatedBlock(wallFront, location);
         }
 
-        public IBlock CreateLeftWall()
+        public IBlock CreateLeftWall(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(wallLeft);
+            return new NonMovingNonAnimatedBlock(wallLeft, location);
         }
 
-        public IBlock CreateRightWall()
+        public IBlock CreateRightWall(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(wallRight);
+            return new NonMovingNonAnimatedBlock(wallRight, location);
         }
 
-        public IBlock CreateBackWall()
+        public IBlock CreateBackWall(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(wallBack);
+            return new NonMovingNonAnimatedBlock(wallBack, location);
         }
 
-        public IBlock CreateBWWall()
+        public IBlock CreateBWWall(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(wallBW);
+            return new NonMovingNonAnimatedBlock(wallBW, location);
         }
 
-        public IBlock CreateGreyWall()
+        public IBlock CreateGreyWall(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(wallGrey);
+            return new NonMovingNonAnimatedBlock(wallGrey, location);
         }
 
-        public IBlock CreateWater()
+        public IBlock CreateWater(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(water);
+            return new NonMovingNonAnimatedBlock(water, location);
         }
     }
 }
