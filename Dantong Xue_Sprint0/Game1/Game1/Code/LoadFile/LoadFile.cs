@@ -24,6 +24,7 @@ namespace Game1.Code.LoadFile
             In this case, we shall expect to have 22 rows and 32 columns.
         */
         private int multiplier = 8;
+        public int scale = 2;
 
         private SpriteBatch spriteBatch;
 
@@ -94,8 +95,8 @@ namespace Game1.Code.LoadFile
             for (int index = 0;index < mapElementList.Count; index++)
             {
                 
-                int X = mapElementList[index].Item1 * multiplier;
-                int Y = mapElementList[index].Item2 * multiplier;
+                int X = mapElementList[index].Item1 * multiplier * scale;
+                int Y = mapElementList[index].Item2 * multiplier * scale;
                 location = new Vector2(X, Y);
 
                 IBlock blockToDraw;

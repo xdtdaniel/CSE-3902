@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Code.LoadFile;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Game1
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             //multiply by picture's width and height, but the number might not big enough, can change to constant later
-            spriteBatch.Draw(Texture, new Rectangle((int)location.X, (int)location.Y, Texture.Width, Texture.Height), Color.White);
+            spriteBatch.Draw(Texture, new Rectangle((int)location.X, (int)location.Y, Texture.Width * LoadFile.Instance.scale, Texture.Height * LoadFile.Instance.scale), Color.White);
         }
 
         public void Update()
