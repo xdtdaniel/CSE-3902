@@ -17,7 +17,7 @@ namespace Game1.Player.PlayerCharacter
         public int damageTimeCounter;
         public bool isDamaged;
 
-        PlayerItem item;
+        PlayerItem item; //
 
         public IPlayerLinkState state;
         public Link()
