@@ -20,6 +20,7 @@ namespace Game1.Player.PlayerCharacter
 
         Link link;
 
+        Rectangle rectangle;
         public OneHandPickUpLink(Link link)
         {
             currentFrame = 0;
@@ -27,12 +28,12 @@ namespace Game1.Player.PlayerCharacter
 
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             
-
             damagedLinkSprite = new IPlayerSprite[4];
             damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedPickUpLink();
             
-
             this.link = link;
+
+            rectangle = new Rectangle();
         }
         public void AttackN() { }
         public void AttackZ() { }
@@ -71,13 +72,16 @@ namespace Game1.Player.PlayerCharacter
         {
             if (!link.isDamaged)
             {
-                linkSprite.Draw(spriteBatch, x, y, 0, direction);
+                rectangle = linkSprite.Draw(spriteBatch, x, y, 0, direction);
             }
             else
             {
-                damagedLinkSprite[thirdFrame].Draw(spriteBatch, x, y, 0, direction);
-
+                rectangle = damagedLinkSprite[thirdFrame].Draw(spriteBatch, x, y, 0, direction);
             }
+        }
+        public Rectangle ToRectangle()
+        {
+            return rectangle;
         }
     }
 }

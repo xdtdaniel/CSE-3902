@@ -20,7 +20,7 @@ namespace Game1.Player
             Columns = 4;
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
+        public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height;
@@ -82,6 +82,8 @@ namespace Game1.Player
             Rectangle destinationRectangle = new Rectangle(x, y, width, height);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+
+            return destinationRectangle;
         }
     }
 }

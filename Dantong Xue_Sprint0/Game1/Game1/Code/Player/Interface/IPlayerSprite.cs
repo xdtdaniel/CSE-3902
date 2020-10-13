@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Game1
     interface IPlayerSprite
     {
 
-        void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction);
+        Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction);
     }
 }
