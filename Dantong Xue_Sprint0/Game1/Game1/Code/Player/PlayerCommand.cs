@@ -15,7 +15,11 @@ namespace Game1
     {
         private SpriteBatch spriteBatch;
         private Game1 game;
-        private PlayerKeyboardController kc;
+        private PlayerKeyboardController kc;/// <summary>
+        /// 
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="game"></param>
         public PlayerCommand(SpriteBatch spriteBatch, Game1 game)
         {
             this.spriteBatch = spriteBatch;
