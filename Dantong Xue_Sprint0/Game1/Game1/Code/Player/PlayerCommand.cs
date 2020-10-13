@@ -15,7 +15,7 @@ namespace Game1
     {
         private SpriteBatch spriteBatch;
         private Game1 game;
-        private PlayerKeyboardController kc;/// <summary>
+        private PlayerKeyboardController kc;/// <summary>///
         /// 
         /// </summary>
         /// <param name="spriteBatch"></param>
