@@ -18,10 +18,10 @@ namespace Game1.Code.LoadFile
         private int MAX_COLUMNS = 32;
 
         /*
-            The default XNA framework has a screen size of 800*480
+            The default room layout has a size of 256*176
             Also, the sizes of blocks are either 16*16 or 32*32 (for doors).
-            In this case, we shall expect to have 30 rows and 50 columns as
-            we calculated 800/16=50 and 480/16=30.
+            Grids are splitted in a 8*8 order as shown in csv file.
+            In this case, we shall expect to have 22 rows and 32 columns.
         */
         private int multiplier = 8;
 
@@ -53,9 +53,10 @@ namespace Game1.Code.LoadFile
         public void LoadMap(SpriteBatch currSpriteBatch) {
             spriteBatch = currSpriteBatch;
             mapElementList = new List<Tuple<int, int, string>>();
-            StreamReader streamReader = new StreamReader("test.csv");
+            string filePath = System.IO.Path.GetFullPath("test.csv");
+            StreamReader streamReader = new StreamReader(filePath);
             string line;
-            string[] str = new string[MAX_COLUMNS];
+            string[] strList = new string[MAX_COLUMNS];
             int cell_x = 0;
             int cell_y = 0;
             //each loop add 1 line to list
@@ -63,30 +64,43 @@ namespace Game1.Code.LoadFile
             {
                 line = streamReader.ReadLine();
                 //seperate a line by comma. this string array should have all strings seperately.              
-                    str = line.Split(',');   
+                strList = line.Split(',');
+
+                cell_x = 0;
 
                 //cell_x, and cell_y represent the postion in csv
                 for (int i = 0; i < MAX_COLUMNS; i++)
                 {
-                    mapElementList.Add(new Tuple<int, int, string>(cell_x, cell_y, str[i]));
+                    if (strList[i] != "_")
+                    {
+                        mapElementList.Add(new Tuple<int, int, string>(cell_x, cell_y, strList[i]));
+                    }
+                    
                     cell_x++;
                 }
                 cell_y++;
 
             }
 
+
             IBlock room;
             room = BlockFactory.Instance.CreateRoom();
             room.DrawBlock(spriteBatch, new Vector2(0, 0));
+
 
             Vector2 location;
             
             //switch case for each string
             for (int index = 0;index < mapElementList.Count; index++)
             {
-                location.X = mapElementList[index].Item1 * multiplier;
-                location.Y = mapElementList[index].Item2 * multiplier;
+                
+                int X = mapElementList[index].Item1 * multiplier;
+                int Y = mapElementList[index].Item2 * multiplier;
+                location = new Vector2(X, Y);
+
                 IBlock blockToDraw;
+
+                Console.WriteLine(mapElementList[index].Item3);
 
                 switch (mapElementList[index].Item3)
                 {
