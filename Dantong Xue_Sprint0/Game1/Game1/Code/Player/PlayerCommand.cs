@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace Game1
 {
@@ -28,6 +29,7 @@ namespace Game1
             kc.Update();
 
             game.link.Update(kc.Direction(), kc.IsMoving());
+
         }
         public void PlayerDraw()
         {
@@ -53,8 +55,7 @@ namespace Game1
             {
                 game.link.PickUp(kc.PickUp());
             }
-            game.link.Draw(spriteBatch, kc.Direction());
-
+            game.link.Draw(spriteBatch, kc.Direction()); 
         }
     }
 }

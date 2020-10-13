@@ -22,6 +22,8 @@ namespace Game1.Player.PlayerCharacter
 
         Link link;
 
+        Rectangle rectangle;
+
         public NormalLink(Link link)
         {
             currentFrame = 0;
@@ -41,6 +43,8 @@ namespace Game1.Player.PlayerCharacter
                 damagedLinkSprite[i] = PlayerCharacterFactory.Instance.CreateDamagedLink(i);
             }
             this.link = link;
+
+            rectangle = new Rectangle();
         }
 
         public void AttackN()
@@ -136,13 +140,16 @@ namespace Game1.Player.PlayerCharacter
         {
             if (!link.isDamaged)
             {
-                linkSprite[direction].Draw(spriteBatch, x, y, currentFrame, direction);
+                rectangle = linkSprite[direction].Draw(spriteBatch, x, y, currentFrame, direction);
             }
             else
             {
-                damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
-                
+                rectangle = damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
             }
+        }
+        public Rectangle ToRectangle()
+        {
+            return rectangle;
         }
     }
 }

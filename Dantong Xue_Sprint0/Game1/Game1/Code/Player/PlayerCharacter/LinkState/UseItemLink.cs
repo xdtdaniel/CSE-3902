@@ -20,6 +20,7 @@ namespace Game1.Player.PlayerCharacter
 
         Link link;
 
+        Rectangle rectangle;
         public UseItemLink(Link link)
         {
             currentFrame = 0;
@@ -38,6 +39,8 @@ namespace Game1.Player.PlayerCharacter
             }
 
             this.link = link;
+
+            rectangle = new Rectangle();
         }
         public void AttackN() { }
         public void AttackZ() { }
@@ -77,13 +80,17 @@ namespace Game1.Player.PlayerCharacter
         {
             if (!link.isDamaged)
             {
-                linkSprite[direction].Draw(spriteBatch, x, y, currentFrame, direction);
+                rectangle = linkSprite[direction].Draw(spriteBatch, x, y, currentFrame, direction);
             }
             else
             {
-                damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
+                rectangle = damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
 
             }
+        }
+        public Rectangle ToRectangle()
+        {
+            return rectangle;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Game1.Player
         {
             Texture = texture;
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
+        public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
         {
             int width = Texture.Width;
             int height = Texture.Height;
@@ -25,6 +25,8 @@ namespace Game1.Player
             Rectangle destinationRectangle = new Rectangle(x, y, width / 5, height / 5); 
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+
+            return destinationRectangle;
         }
     }
 }

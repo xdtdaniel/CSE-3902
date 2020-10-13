@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using Microsoft.Xna.Framework;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -29,6 +31,7 @@ namespace Game1.Player.PlayerCharacter
 
             item = new PlayerItem();
             item.state = new NoItem(item);
+
         }
 
         public void AttackN()
@@ -52,10 +55,15 @@ namespace Game1.Player.PlayerCharacter
         {
             state.PickUp(pickUp);
         }
+        public Rectangle ToRectangle()
+        {
+            return state.ToRectangle();
+        }
         public void Update(int direction, bool isMoving)
         {
             state.Update(ref x, ref y, direction, isMoving);
             item.Update(x, y, direction);
+            
         }
         public void Draw(SpriteBatch spriteBatch, int direction)
         {

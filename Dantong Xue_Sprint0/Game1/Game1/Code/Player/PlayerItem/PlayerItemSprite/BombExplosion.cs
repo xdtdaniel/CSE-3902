@@ -16,7 +16,7 @@ namespace Game1.Player
         {
             Texture = texture;
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
+        public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
         {
             int width = Texture.Width / 3;
             int height = Texture.Height;
@@ -35,6 +35,8 @@ namespace Game1.Player
             {
                 spriteBatch.Draw(Texture, destinationRectangles[i], sourceRectangle, Color.White);
             }
+
+            return destinationRectangles[0];
         }
     }
 }
