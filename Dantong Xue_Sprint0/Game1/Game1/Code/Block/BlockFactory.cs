@@ -95,16 +95,18 @@ namespace Game1.Code.Block.BlockFactory
             wallBW = content.Load<Texture2D>("Sprite/Blocks/wall_b_w");
             wallGrey = content.Load<Texture2D>("Sprite/Blocks/wall_grey");
             water = content.Load<Texture2D>("Sprite/Blocks/water");
+            room = content.Load<Texture2D>("Sprite/Blocks/room_interior");
         }
+
 
         public IBlock CreateBlackBlock(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(black,location);
+            return new NonMovingNonAnimatedBlock(black, location);
         }
 
         public IBlock CreateFlatBlock(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(block,location);
+            return new NonMovingNonAnimatedBlock(block, location);
         }
 
         public IBlock CreateDragon(Vector2 location)
@@ -114,7 +116,7 @@ namespace Game1.Code.Block.BlockFactory
 
         public IBlock CreateBlueDragon(Vector2 location)
         {
-            return new NonMovingNonAnimatedBlock(dragonBlue,location);
+            return new NonMovingNonAnimatedBlock(dragonBlue, location);
         }
 
         public IBlock CreateFire(Vector2 location)

@@ -4,6 +4,7 @@ using Game1.Code.Item;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
+using Game1.Code.LoadFile;
 using Game1.Enemy;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
@@ -58,8 +59,10 @@ namespace Game1
             enemyKeyboradController = new EnemyKeyboardController();
             itemKeyboardController = new ItemKeyboardController();
 
+
             link = new Link();
             playerCommand = new PlayerCommand(_spriteBatch, this);
+
             quitResetController = new QuitResetController();
         }
 
@@ -101,6 +104,9 @@ namespace Game1
             enemyKeyboradController.Draw(_spriteBatch);
             _spriteBatch.Begin();
             playerCommand.PlayerDraw();
+
+            LoadFile.Instance.LoadMap(_spriteBatch);
+
             itemKeyboardController.Draw(_spriteBatch, 400, 200);
             _spriteBatch.End();
         }

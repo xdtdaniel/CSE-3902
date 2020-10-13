@@ -42,6 +42,7 @@ namespace Game1.Code.Block.BlockFactory
         private Texture2D wallBW;
         private Texture2D wallGrey;
         private Texture2D water;
+        private Texture2D room;
 
         private static BlockFactory instance = new BlockFactory();
 
@@ -94,6 +95,12 @@ namespace Game1.Code.Block.BlockFactory
             wallBW = content.Load<Texture2D>("Sprite/Blocks/wall_b_w");
             wallGrey = content.Load<Texture2D>("Sprite/Blocks/wall_grey");
             water = content.Load<Texture2D>("Sprite/Blocks/water");
+            room = content.Load<Texture2D>("Sprite/Blocks/room_interior");
+        }
+
+        public IBlock CreateRoom()
+        {
+            return new NonMovingNonAnimatedBlock(room);
         }
 
         public IBlock CreateBlackBlock()

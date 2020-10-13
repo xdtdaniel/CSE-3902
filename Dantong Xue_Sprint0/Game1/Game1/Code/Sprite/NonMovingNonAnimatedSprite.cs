@@ -10,22 +10,24 @@ namespace Game1
     {
 
         private Texture2D Texture;
-        private Vector2 location;
+        // private Vector2 location;
 
         public NonMovingNonAnimatedSprite(Texture2D texture)
         {
             Texture = texture;
         }
 
-        public NonMovingNonAnimatedSprite(Texture2D texture, Vector2 location) : this(texture)
-        {
-            this.location = location;
-        }
+        /*
+            public NonMovingNonAnimatedSprite(Texture2D texture, Vector2 location) : this(texture)
+            {
+                this.location = location;
+            }
+        */
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             //multiply by picture's width and height, but the number might not big enough, can change to constant later
-            spriteBatch.Draw(Texture, new Rectangle((int)location.X*Texture.Width, (int)location.Y * Texture.Height, Texture.Width * 4, Texture.Height * 4), Color.White);
+            spriteBatch.Draw(Texture, new Rectangle((int)location.X, (int)location.Y, Texture.Width, Texture.Height), Color.White);
         }
 
         public void Update()

@@ -7,13 +7,26 @@ using System.DirectoryServices.ActiveDirectory;
 using Game1.Code.Block.BlockFactory;
 using System.Drawing;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Code.LoadFile
 {
     class LoadFile
     {
-        int MAX_ROWS = 23;
-        int MAX_COLUMNS = 26;
+
+        private int MAX_ROWS = 22;
+        private int MAX_COLUMNS = 32;
+
+        /*
+            The default XNA framework has a screen size of 800*480
+            Also, the sizes of blocks are either 16*16 or 32*32 (for doors).
+            In this case, we shall expect to have 30 rows and 50 columns as
+            we calculated 800/16=50 and 480/16=30.
+        */
+        private int multiplier = 8;
+
+        private SpriteBatch spriteBatch;
+
         private class Cell {
             private int column { get; set; }
             private int row { get; set; }            
@@ -22,9 +35,25 @@ namespace Game1.Code.LoadFile
         }
         List<Tuple<int, int, string>> mapElementList;
 
-        public LoadFile() {
+        private static LoadFile instance = new LoadFile();
+
+        public static LoadFile Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        private LoadFile()
+        {
+
+        }
+
+        public void LoadMap(SpriteBatch currSpriteBatch) {
+            spriteBatch = currSpriteBatch;
             mapElementList = new List<Tuple<int, int, string>>();
-            StreamReader streamReader = new StreamReader("PartialLevelOne.csv");
+            StreamReader streamReader = new StreamReader("test.csv");
             string line;
             string[] str = new string[MAX_COLUMNS];
             int cell_x = 0;
@@ -45,116 +74,157 @@ namespace Game1.Code.LoadFile
                 cell_y++;
 
             }
+
+            IBlock room;
+            room = BlockFactory.Instance.CreateRoom();
+            room.DrawBlock(spriteBatch, new Vector2(0, 0));
+
             Vector2 location;
             
             //switch case for each string
             for (int index = 0;index < mapElementList.Count; index++)
             {
-                location.X = mapElementList[index].Item1;
-                location.Y = mapElementList[index].Item2;
+                location.X = mapElementList[index].Item1 * multiplier;
+                location.Y = mapElementList[index].Item2 * multiplier;
+                IBlock blockToDraw;
+
                 switch (mapElementList[index].Item3)
                 {
-                    case "black": 
-                        BlockFactory.Instance.CreateBlackBlock(location);// need to pass row anad columbs and multiply by the block's width and height?
+                    case "black":
+                        blockToDraw = BlockFactory.Instance.CreateBlackBlock();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "block":
-                        BlockFactory.Instance.CreateFlatBlock(location);
+                        blockToDraw = BlockFactory.Instance.CreateFlatBlock();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "dragon":
-                        BlockFactory.Instance.CreateDragon(location);
+                        blockToDraw = BlockFactory.Instance.CreateDragon();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "dragonBlue":
-                        BlockFactory.Instance.CreateBlueDragon(location);
+                        blockToDraw = BlockFactory.Instance.CreateBlueDragon();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "fire":
-                        BlockFactory.Instance.CreateFire(location);
+                        blockToDraw = BlockFactory.Instance.CreateFire();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "fish":
-                        BlockFactory.Instance.CreateFish(location);
+                        blockToDraw = BlockFactory.Instance.CreateFish();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "fishBlue":
-                        BlockFactory.Instance.CreateBlueFish(location);
+                        blockToDraw = BlockFactory.Instance.CreateBlueFish();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "floatBlock":
-                        BlockFactory.Instance.CreateFloatBlock(location);
+                        blockToDraw = BlockFactory.Instance.CreateFloatBlock();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "grey":
-                        BlockFactory.Instance.CreateGreyBlock(location);
+                        blockToDraw = BlockFactory.Instance.CreateGreyBlock();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "holeFront":
-                        BlockFactory.Instance.CreateFrontHole(location);
+                        blockToDraw = BlockFactory.Instance.CreateFrontHole();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "holeLeft":
-                        BlockFactory.Instance.CreateLeftHole(location);
+                        blockToDraw = BlockFactory.Instance.CreateLeftHole();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "holeRight":
-                        BlockFactory.Instance.CreateRightHole(location);
+                        blockToDraw = BlockFactory.Instance.CreateRightHole();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "holeBack":
-                        BlockFactory.Instance.CreateBackHole(location);
+                        blockToDraw = BlockFactory.Instance.CreateBackHole();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "lockedDoorFront":
-                        BlockFactory.Instance.CreateFrontLockedDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateFrontLockedDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
-                    case "lockedDoorLeft":                       
-                        BlockFactory.Instance.CreateLeftLockedDoor(location);
+                    case "lockedDoorLeft":
+                        blockToDraw = BlockFactory.Instance.CreateLeftLockedDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "lockedDoorRight":
-                        BlockFactory.Instance.CreateRightLockedDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateRightLockedDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "lockedDoorBack":
-                        BlockFactory.Instance.CreateBackLockedDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateBackLockedDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "openDoorFront":
-                        BlockFactory.Instance.CreateFrontOpenDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateFrontOpenDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "openDoorLeft":
-                        BlockFactory.Instance.CreateLeftOpenDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateLeftOpenDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "openDoorRight":
-                        BlockFactory.Instance.CreateRightOpenDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateRightOpenDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "openDoorBack":
-                        BlockFactory.Instance.CreateBackOpenDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateBackOpenDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "shutDoorFront":
-                        BlockFactory.Instance.CreateFrontShutDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateFrontShutDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "shutDoorLeft":
-                        BlockFactory.Instance.CreateLeftShutDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateLeftShutDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "shutDoorRight":
-                        BlockFactory.Instance.CreateRightShutDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateRightShutDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "shutDoorBack":
-                        BlockFactory.Instance.CreateBackShutDoor(location);
+                        blockToDraw = BlockFactory.Instance.CreateBackShutDoor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "sandFloor":
-                        BlockFactory.Instance.CreateSandFloor(location);
+                        blockToDraw = BlockFactory.Instance.CreateSandFloor();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "stair":
-                        BlockFactory.Instance.CreateStair(location);
+                        blockToDraw = BlockFactory.Instance.CreateStair();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "wallFront":
-                        BlockFactory.Instance.CreateFrontWall(location);
+                        blockToDraw = BlockFactory.Instance.CreateFrontWall();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "wallLeft":
-                        BlockFactory.Instance.CreateLeftWall(location);
+                        blockToDraw = BlockFactory.Instance.CreateLeftWall();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "wallRight":
-                        BlockFactory.Instance.CreateRightWall(location);
+                        blockToDraw = BlockFactory.Instance.CreateRightWall();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "wallBack":
-                        BlockFactory.Instance.CreateBackWall(location);
+                        blockToDraw = BlockFactory.Instance.CreateBackWall();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "wallBW":
-                        BlockFactory.Instance.CreateBWWall(location);
+                        blockToDraw = BlockFactory.Instance.CreateBWWall();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "wallGrey":
-                        BlockFactory.Instance.CreateGreyWall(location);
+                        blockToDraw = BlockFactory.Instance.CreateGreyWall();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
                     case "water":
-                        BlockFactory.Instance.CreateWater(location);
+                        blockToDraw = BlockFactory.Instance.CreateWater();
+                        blockToDraw.DrawBlock(spriteBatch, location);
                         break;
 
 

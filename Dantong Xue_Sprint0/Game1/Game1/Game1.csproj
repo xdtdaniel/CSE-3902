@@ -11,6 +11,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Code\Block\BlockFactory.cs" />
     <Compile Remove="KeyboardController.cs" />
     <Compile Remove="MouseController.cs" />
   </ItemGroup>
