@@ -22,6 +22,8 @@ namespace Game1.Enemy
         private int ChangeDirectionTimer = 0;
         private int FrameRateModifier = 0;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
 
         public GoriyaProjectile()
         {
@@ -32,6 +34,9 @@ namespace Game1.Enemy
             CurrentFrame = Rnd.Next(8);
             Velocity = 5.0;
             NegativeVelocity = -5.0;
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * 5, 8 * 5, 8 * 5);
         }
 
         public void DrawProjectile(SpriteBatch spriteBatch)
@@ -115,6 +120,9 @@ namespace Game1.Enemy
             }
 
             Location = new Vector2(x, y);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * 5, 8 * 5, 8 * 5);
         }
 
         private bool HitEdge(Game game)
@@ -146,6 +154,11 @@ namespace Game1.Enemy
         public void SetDirection(int direction)
         {
             Direction = direction;
+        }
+
+        Rectangle IProjectile.GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

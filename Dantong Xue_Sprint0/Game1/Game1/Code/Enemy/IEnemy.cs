@@ -11,5 +11,6 @@ namespace Game1
         public void UpdateEnemy(Game game);
         public void DrawEnemy(SpriteBatch spriteBatch);
         public void FireProjectile();
+        public Rectangle GetRectangle();
     }
 }

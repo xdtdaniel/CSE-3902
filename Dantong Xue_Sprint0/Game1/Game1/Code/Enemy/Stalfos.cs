@@ -21,6 +21,9 @@ namespace Game1
         private int Velocity = 3;
         private bool CanTurn = false;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
+
         public Stalfos()
         {
             Texture = EnemyTextureStorage.GetStalfosSpriteSheet();
@@ -30,6 +33,9 @@ namespace Game1
             CurrentFrame = 0;
             Location = new Vector2(400, 200);
             Direction = Rnd.Next(3);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * 5, 16 * 5);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -190,6 +196,14 @@ namespace Game1
             }
 
             Location = new Vector2(x, y);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * 5, 16 * 5);
+        }
+
+        Rectangle IEnemy.GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

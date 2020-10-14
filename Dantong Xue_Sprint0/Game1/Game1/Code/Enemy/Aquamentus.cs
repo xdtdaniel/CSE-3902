@@ -27,6 +27,9 @@ namespace Game1.Enemy
         private IProjectile Projectile1;
         private IProjectile Projectile2;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
+
         public Aquamentus() 
         {
             Texture = EnemyTextureStorage.GetAquamentusSpriteSheet();
@@ -44,6 +47,9 @@ namespace Game1.Enemy
             Projectile0.SetDirection(0);
             Projectile1.SetDirection(1);
             Projectile2.SetDirection(2);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 24 * 5, 32 * 5);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -201,6 +207,14 @@ namespace Game1.Enemy
             }
 
             Location = new Vector2(x, y);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 24 * 5, 32 * 5);
+        }
+
+        Rectangle IEnemy.GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

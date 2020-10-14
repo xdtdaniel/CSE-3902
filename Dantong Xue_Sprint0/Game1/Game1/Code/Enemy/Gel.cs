@@ -20,13 +20,19 @@ namespace Game1
         private int MoveTimer = 0;
         private int FrameRateModifier = 0;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
+
         public Gel()
         {
             Texture = EnemyTextureStorage.GetGelSpriteSheet();
             TotalFrames = 2;
             Columns = TotalFrames;
             CurrentFrame = 0;
-            Location = new Vector2(400, 200);           
+            Location = new Vector2(400, 200);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)(Location.X + 4 * 5), (int)(Location.Y + 4 * 5), 8 * 5, 8 * 5);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -135,6 +141,9 @@ namespace Game1
 
                 Location = new Vector2(x, y);
 
+                // Test code for sprint 3 rectangle
+                CollisionRectangle = new Rectangle((int)(Location.X + 4 * 5), (int)(Location.Y + 4 * 5), 8 * 5, 8 * 5);
+
                 MoveTimer++;
             }
             else
@@ -143,6 +152,11 @@ namespace Game1
                 StateTimer = 0;
                 MovingState = 0;
             }
+        }
+
+        Rectangle IEnemy.GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

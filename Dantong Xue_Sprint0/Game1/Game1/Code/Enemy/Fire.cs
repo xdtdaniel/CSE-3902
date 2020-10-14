@@ -16,6 +16,9 @@ namespace Game1.Enemy
         private Vector2 Location;
         private int FrameRateModifier = 0;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
+
         public Fire()
         {
             Texture = EnemyTextureStorage.GetFireSpriteSheet();
@@ -23,6 +26,9 @@ namespace Game1.Enemy
             Columns = TotalFrames;
             CurrentFrame = 0;
             Location = new Vector2(600, 200);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int) Location.X, (int) Location.Y, 16 * 5, 16 * 5);
 
         }
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -59,6 +65,11 @@ namespace Game1.Enemy
             {
                 CurrentFrame = 0;
             }
+        }
+
+        Rectangle IEnemy.GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

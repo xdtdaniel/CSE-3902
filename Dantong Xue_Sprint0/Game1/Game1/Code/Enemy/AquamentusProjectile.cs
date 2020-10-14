@@ -20,6 +20,9 @@ namespace Game1.Enemy
         private readonly double Sin15 = 0.2588190451 ;
         private readonly double Cos15 = 0.96592582628;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
+
         public AquamentusProjectile() 
         {
             Texture = EnemyTextureStorage.GetAquamentusProjectileSpriteSheet();
@@ -27,6 +30,9 @@ namespace Game1.Enemy
             Columns = TotalFrames;
             CurrentFrame = 0;
             Velocity = 3.0;
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X + 4 * 5, (int)Location.Y + 3 * 5, 8 * 5, 10 * 5);
         }
 
         public void DrawProjectile(SpriteBatch spriteBatch)
@@ -99,6 +105,9 @@ namespace Game1.Enemy
             }
 
             Location = new Vector2(x, y);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X + 4 * 5, (int)Location.Y + 3 * 5, 8 * 5, 10 * 5);
         }
 
         private bool HitEdge(Game game)
@@ -109,6 +118,11 @@ namespace Game1.Enemy
                 outside = true;
             }
             return outside;
+        }
+
+        Rectangle IProjectile.GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

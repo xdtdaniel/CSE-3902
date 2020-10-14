@@ -14,5 +14,6 @@ namespace Game1.Enemy
         public void SetIsOnScreen();
         public void SetLocation(Vector2 location);
         public void SetDirection(int direction);
+        public Rectangle GetRectangle();
     }
 }

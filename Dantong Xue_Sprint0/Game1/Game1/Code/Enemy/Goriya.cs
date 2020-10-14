@@ -26,6 +26,9 @@ namespace Game1.Enemy
         private bool CanFire;
         private IProjectile Projectile;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
+
         public Goriya()
         {
             Texture = EnemyTextureStorage.GetGoriyaSpriteSheet();
@@ -38,6 +41,9 @@ namespace Game1.Enemy
             Projectile = new GoriyaProjectile();
             CanFire = true;
             FireTimer = 0;
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * 5, 16 * 5);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -255,6 +261,14 @@ namespace Game1.Enemy
             }
 
             Location = new Vector2(x, y);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * 5, 16 * 5);
+        }
+
+        Rectangle IEnemy.GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

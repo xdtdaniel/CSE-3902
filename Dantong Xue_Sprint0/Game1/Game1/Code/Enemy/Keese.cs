@@ -2,7 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
+using Color = Microsoft.Xna.Framework.Color;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace Game1
 {
@@ -22,6 +25,10 @@ namespace Game1
         private double MaxVelocity = 5;
         private Random Rnd;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
+        private Pen blackPen = new Pen(System.Drawing.Color.Black, 5);
+
         public Keese()
         {
             Texture = EnemyTextureStorage.GetKeeseSpriteSheet();
@@ -31,6 +38,9 @@ namespace Game1
             Location = new Vector2(400, 200);
             Rnd = new Random();
             Direction = Rnd.Next(7);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * 5), 16 * 5, 10 * 5);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -255,6 +265,15 @@ namespace Game1
             }
 
             Location = new Vector2(x, y);
+
+            // Test code for sprint 3 rectangle
+            CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * 5), 16 * 5, 10 * 5);
+        }
+
+        // Test code for sprint 3 rectangle
+        public Rectangle GetRectangle() 
+        {
+            return CollisionRectangle;
         }
     }
 }
