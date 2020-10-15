@@ -1,0 +1,60 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Game1.Player;
+
+namespace Game1
+{
+    class BlockCollision
+    {
+
+        public BlockCollision()
+        {
+            
+        }
+
+        public string isCollided(IBlock blocks,Rectangle rectangle1, Rectangle rectangle2)
+        {
+            String direction="";
+            Rectangle rec1 = rectangle1;
+            Rectangle rec2 = rectangle2;
+            Rectangle intersectionRectangle;
+
+            intersectionRectangle = Rectangle.Intersect(rec1,rec2);
+
+            if (!intersectionRectangle.IsEmpty)
+             {
+                // check the collison direction
+                if ((intersectionRectangle.Width >= intersectionRectangle.Height)) // above and below
+                 {
+                    if (rec1.Y > rec2.Y) // from below
+                    {
+                            direction = "down";
+                    }
+                    else //from above
+                    {
+                            direction = "up";
+                    }
+                    }
+                    else // left and right
+                    {
+                        if (rec1.X > rec2.X)//from right
+                        {
+                        direction = "right";
+                        }
+                        else //from left
+                        {
+                        direction = "left";
+                        }
+                    }
+                }           
+
+            return direction;
+        }
+
+    }
+}
