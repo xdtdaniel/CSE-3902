@@ -21,6 +21,7 @@ namespace Game1.Code.Item.ItemSprite
         private int CurrentFrame;
         private int count = 0;
         private int maxcount = 6;
+        private Rectangle CollisionRectangle;
         public Ruby(Texture2D texture)
         {
             Texture = texture;
@@ -38,6 +39,7 @@ namespace Game1.Code.Item.ItemSprite
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(x, y, width*3, height*3);
+            CollisionRectangle = destinationRectangle;
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
@@ -52,6 +54,10 @@ namespace Game1.Code.Item.ItemSprite
                 }
                 count = 0;
             }
+        }
+        public Rectangle GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

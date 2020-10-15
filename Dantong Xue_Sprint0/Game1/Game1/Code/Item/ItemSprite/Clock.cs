@@ -15,6 +15,7 @@ namespace Game1.Code.Item.ItemSprite
         Texture2D Texture;
         int height;
         int width;
+        private Rectangle CollisionRectangle;
         public Clock(Texture2D texture)
         {
             Texture = texture;
@@ -26,13 +27,17 @@ namespace Game1.Code.Item.ItemSprite
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
             Rectangle destinationRectangle = new Rectangle(x, y, width * 3, height * 3);
-
+            CollisionRectangle = destinationRectangle;
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
         public void Update(Game game)
         {
 
+        }
+        public Rectangle GetRectangle()
+        {
+            return CollisionRectangle;
         }
     }
 }

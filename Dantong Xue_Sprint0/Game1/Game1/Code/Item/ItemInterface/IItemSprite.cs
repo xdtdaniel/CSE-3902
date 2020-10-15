@@ -12,5 +12,6 @@ namespace Game1.Code.Item.ItemInterface
     {
         void Draw(SpriteBatch spriteBatch, int x, int y);
         void Update(Game game);
+        Rectangle GetRectangle();
     }
 }

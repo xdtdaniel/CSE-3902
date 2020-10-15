@@ -27,6 +27,7 @@ namespace Game1.Code.Item.ItemSprite
         private int maxcount = 10;
         private int displacement = 15;
         private int max_displacement = 100;
+        private Rectangle CollisionRectangle;
 
         public Fairy(Texture2D texture)
         {
@@ -77,7 +78,6 @@ namespace Game1.Code.Item.ItemSprite
                 }
                 count = 0;
             }
-            
 
         }
         public void Draw(SpriteBatch spriteBatch, int positionx, int positiony)
@@ -89,10 +89,14 @@ namespace Game1.Code.Item.ItemSprite
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(x, y, width * 3, height * 3);
-
+            CollisionRectangle = destinationRectangle;
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
         }
-      
+        public Rectangle GetRectangle()
+        {
+            return CollisionRectangle;
+        }
+
     }
 }
