@@ -26,6 +26,8 @@ namespace Game1.Player.PlayerCharacter
         IPlayerSprite backBoomerang;
         IPlayerSprite leftBoomerang;
 
+        Rectangle rectangle;
+
         public UseBoomerang(PlayerItem item)
         {
             direction = item.direction;
@@ -43,6 +45,8 @@ namespace Game1.Player.PlayerCharacter
             leftBoomerang = PlayerItemFactory.Instance.CreateLeftBoomerang();
 
             this.item = item;
+
+            rectangle = new Rectangle();
         }
         public void UseItem(int itemNum) 
         {
@@ -123,20 +127,24 @@ namespace Game1.Player.PlayerCharacter
             switch (currentFrame)
             {
                 case 0:
-                    frontBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = frontBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 1:
-                    rightBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = rightBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 2:
-                    backBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = backBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 3:
-                    leftBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = leftBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 default:
                     break;
             }
+        }
+        public Rectangle GetRectangle()
+        {
+            return rectangle;
         }
     }
 }

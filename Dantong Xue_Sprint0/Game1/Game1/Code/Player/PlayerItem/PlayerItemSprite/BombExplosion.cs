@@ -22,21 +22,23 @@ namespace Game1.Player
             int height = Texture.Height;
 
             Rectangle sourceRectangle = new Rectangle(currentFrame * width, 0, width, height);
-            Rectangle[] destinationRectangles = new Rectangle[7];
-            destinationRectangles[0] = new Rectangle(x - 20, y, 100, 100);
+            Rectangle[] destinationRectangles = new Rectangle[9];
+            destinationRectangles[0] = new Rectangle(x - 20, y, 100, 100);              
             destinationRectangles[1] = new Rectangle(x - 20 - 100, y, 100, 100);
             destinationRectangles[2] = new Rectangle(x - 20 + 100, y, 100, 100);
-            destinationRectangles[3] = new Rectangle(x - 20 - 100 / 2, y - 100, 100, 100);
-            destinationRectangles[4] = new Rectangle(x - 20 + 100 / 2, y - 100, 100, 100);
-            destinationRectangles[5] = new Rectangle(x - 20 - 100 / 2, y + 100, 100, 100);
-            destinationRectangles[6] = new Rectangle(x - 20 + 100 / 2, y + 100, 100, 100);
+            destinationRectangles[3] = new Rectangle(x - 20, y - 100, 100, 100);
+            destinationRectangles[4] = new Rectangle(x - 20 - 100, y - 100, 100, 100);
+            destinationRectangles[5] = new Rectangle(x - 20 + 100, y - 100, 100, 100);
+            destinationRectangles[6] = new Rectangle(x - 20, y + 100, 100, 100);
+            destinationRectangles[7] = new Rectangle(x - 20 - 100, y + 100, 100, 100);
+            destinationRectangles[8] = new Rectangle(x - 20 + 100, y + 100, 100, 100);
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 9; i++)
             {
                 spriteBatch.Draw(Texture, destinationRectangles[i], sourceRectangle, Color.White);
             }
 
-            return destinationRectangles[0];
+            return new Rectangle(x - 20 - 100, y - 100, 300, 300);
         }
     }
 }

@@ -21,6 +21,8 @@ namespace Game1.Player.PlayerCharacter
 
         IPlayerSprite bluePotion;
 
+        Rectangle rectangle;
+
         public UseBluePotion(PlayerItem item)
         {
             used = false;
@@ -32,6 +34,8 @@ namespace Game1.Player.PlayerCharacter
             bluePotion = PlayerItemFactory.Instance.CreateBluePotion();
 
             this.item = item;
+
+            rectangle = new Rectangle();
         }
         public void UseItem(int itemNum) 
         {
@@ -68,8 +72,13 @@ namespace Game1.Player.PlayerCharacter
                         break;
                 }
             }
-            bluePotion.Draw(spriteBatch, x, y, currentFrame, direction);
+            rectangle = bluePotion.Draw(spriteBatch, x, y, currentFrame, direction);
             used = true;
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return rectangle;
         }
     }
 }

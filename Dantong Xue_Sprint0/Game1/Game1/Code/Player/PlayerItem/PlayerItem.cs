@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -33,6 +34,10 @@ namespace Game1.Player.PlayerCharacter
             this.x = x;
             this.y = y;
             this.direction = direction;
+        }
+        public Rectangle GetRectangle()
+        {
+            return state.GetRectangle();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
