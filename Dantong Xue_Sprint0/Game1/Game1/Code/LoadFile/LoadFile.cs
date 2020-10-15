@@ -13,10 +13,7 @@ namespace Game1.Code.LoadFile
 {
     class LoadFile
     {
-
-        private int MAX_ROWS = 22;
         private int MAX_COLUMNS = 32;
-
         /*
             The default room layout has a size of 256*176
             Also, the sizes of blocks are either 16*16 or 32*32 (for doors).
