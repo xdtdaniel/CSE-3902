@@ -5,6 +5,7 @@ using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
 using Game1.Code.LoadFile;
+using Game1.Code.Player;
 using Game1.Enemy;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
@@ -23,22 +24,27 @@ namespace Game1
 
 #pragma warning disable CA2213 // Disposable fields should be disposed
         private SpriteBatch _spriteBatch;
+        public SpriteFont _spriteFont;
 #pragma warning restore CA2213 // Disposable fields should be disposed
 
 
         public IItemSprite item; 
 
         public Link link;
-        private PlayerCommand playerCommand;
+        public PlayerCommand playerCommand;
 
         private List<object> controllerList;
 
         private IController blockKeyboardController;
         private ItemKeyboardController itemKeyboardController;
+        public PlayerKeyboardController playerKeyboardController;
 
         private EnemyKeyboardController enemyKeyboradController;
         private QuitResetController quitResetController;
 
+        private BlockCollision collisionDetector; 
+
+        private PlayerAquamentusCollisionHandler playerAquamentusCollisionHandler;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -58,12 +64,17 @@ namespace Game1
 
             enemyKeyboradController = new EnemyKeyboardController();
             itemKeyboardController = new ItemKeyboardController();
+            playerKeyboardController = new PlayerKeyboardController();
 
 
             link = new Link();
             playerCommand = new PlayerCommand(_spriteBatch, this);
 
             quitResetController = new QuitResetController();
+
+            collisionDetector = new BlockCollision();
+
+            playerAquamentusCollisionHandler = new PlayerAquamentusCollisionHandler();
         }
 
         protected override void LoadContent()
@@ -78,7 +89,9 @@ namespace Game1
             PlayerItemFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
             EnemyTextureStorage.LoadTextures(Content);
-            ItemSpriteFactory.Instance.LoadAllTextures(Content);     
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+
+            _spriteFont = Content.Load<SpriteFont>("font");
         }
 
         protected override void Update(GameTime gameTime)
@@ -90,22 +103,26 @@ namespace Game1
 
             enemyKeyboradController.Update(this);
             itemKeyboardController.Update(this);
+            playerKeyboardController.Update();
             quitResetController.Update(this);
             playerCommand.PlayerUpdate();
 
             base.Update(gameTime);
+
+            // for collision test
+            playerAquamentusCollisionHandler.HandleCollision(link, enemyKeyboradController.EnemyCollection.EnemyList[0], playerKeyboardController.Direction(), playerKeyboardController.side);
         }
 
 
         protected override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
-         
-            enemyKeyboradController.Draw(_spriteBatch);
+
             _spriteBatch.Begin();
+            LoadFile.Instance.LoadMap(_spriteBatch);
+            enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();
 
-            LoadFile.Instance.LoadMap(_spriteBatch);
 
             itemKeyboardController.Draw(_spriteBatch, 400, 200);
             _spriteBatch.End();
