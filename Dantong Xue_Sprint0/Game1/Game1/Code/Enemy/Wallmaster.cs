@@ -18,6 +18,9 @@ namespace Game1.Enemy
         private Vector2 Location;
         private int FrameRateModifier = 0;
 
+        // Test code for sprint 3 rectangle
+        private Rectangle CollisionRectangle;
+
         public Wallmaster()
         {
             Texture = EnemyTextureStorage.GetWallmasterSpriteSheet();
@@ -62,6 +65,12 @@ namespace Game1.Enemy
             {
                 CurrentFrame = 0;
             }
+        }
+
+        Rectangle IEnemy.GetRectangle()
+        {
+            // To Do
+            return CollisionRectangle;
         }
     }
 }
