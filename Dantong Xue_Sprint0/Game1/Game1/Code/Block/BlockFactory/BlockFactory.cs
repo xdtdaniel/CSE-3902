@@ -125,7 +125,7 @@ namespace Game1.Code.Block.BlockFactory
 
         public IBlock CreateFire()
         {
-            return new NonMovingAnimatedBlock(fire, 1, 2);
+            return new NonMovingNonAnimatedBlock(fire);
         }
 
         public IBlock CreateFish()

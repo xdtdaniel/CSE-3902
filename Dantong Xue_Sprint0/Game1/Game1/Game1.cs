@@ -58,9 +58,6 @@ namespace Game1
             base.Initialize();
 
             controllerList = new List<object>();
-            blockKeyboardController = new BlockKeyboardController();
-
-            controllerList.Add(blockKeyboardController);
 
             enemyKeyboradController = new EnemyKeyboardController();
             itemKeyboardController = new ItemKeyboardController();
@@ -82,7 +79,7 @@ namespace Game1
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
 
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            
 
 
             PlayerCharacterFactory.Instance.LoadAllTextures(Content);
@@ -119,11 +116,12 @@ namespace Game1
             base.Draw(gameTime);
 
             _spriteBatch.Begin();
-            LoadFile.Instance.LoadMap(_spriteBatch);
+            LoadAll.Instance.LoadRoom(_spriteBatch);
             LoadItem.Instance.LoadRoomItem(_spriteBatch);
             enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();
 
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //itemKeyboardController.Draw(_spriteBatch, 400, 200);
             _spriteBatch.End();
