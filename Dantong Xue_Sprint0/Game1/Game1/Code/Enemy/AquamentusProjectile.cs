@@ -19,6 +19,7 @@ namespace Game1.Enemy
         private bool IsOnScreen;
         private readonly double Sin15 = 0.2588190451 ;
         private readonly double Cos15 = 0.96592582628;
+        private int scale = 3;
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
@@ -32,7 +33,7 @@ namespace Game1.Enemy
             Velocity = 3.0;
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X + 4 * 5, (int)Location.Y + 3 * 5, 8 * 5, 10 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X + 4 * scale, (int)Location.Y + 3 * scale, 8 * scale, 10 * scale);
         }
 
         public void DrawProjectile(SpriteBatch spriteBatch)
@@ -43,13 +44,13 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X - 20, (int)Location.Y, width * 4, height * 4);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X - 4 * scale, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
 
-        public void UpdateProjectile(Game game)
+        public void UpdateProjectile()
         {
             CurrentFrame++;
             if (CurrentFrame > TotalFrames) {
@@ -58,7 +59,7 @@ namespace Game1.Enemy
 
             UpdateLocation();
 
-            if (HitEdge(game)) 
+            if (HitEdge()) 
             {
                 IsOnScreen = false;
             }
@@ -107,13 +108,13 @@ namespace Game1.Enemy
             Location = new Vector2(x, y);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X + 4 * 5, (int)Location.Y + 3 * 5, 8 * 5, 10 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X + 4 * scale, (int)Location.Y + 3 * scale, 8 * scale, 10 * scale);
         }
 
-        private bool HitEdge(Game game)
+        private bool HitEdge()
         {
             Boolean outside = false;
-            if (Location.X <= 0 || Location.X >= game.Window.ClientBounds.Width - 68 || Location.Y <= 0 - 16 || Location.Y >= game.Window.ClientBounds.Height - 60)
+            if (Location.X <= 0 || Location.Y <= 0 || Location.Y >= 144 * scale || Location.X >= 128 * scale)
             {
                 outside = true;
             }

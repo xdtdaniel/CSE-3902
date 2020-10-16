@@ -21,6 +21,8 @@ namespace Game1.Enemy
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
+        private int scale = 3;
+
         public Wallmaster()
         {
             Texture = EnemyTextureStorage.GetWallmasterSpriteSheet();
@@ -39,7 +41,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * 5, height * 5);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -49,7 +51,7 @@ namespace Game1.Enemy
             // Do nothing.
         }
 
-        public void UpdateEnemy(Game game)
+        public void UpdateEnemy()
         {
             if (FrameRateModifier < 11)
             {

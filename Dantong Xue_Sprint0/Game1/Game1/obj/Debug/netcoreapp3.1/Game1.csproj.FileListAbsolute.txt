@@ -230,3 +230,14 @@ C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Gam
 C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.dll
 C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.pdb
 C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.genruntimeconfig.cache
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Player\BluePotion.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Player\BlueRing.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\Blocks\locked_door_2.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\Blocks\locked_door_3.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\Blocks\room_interior.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\Blocks\shut_door_1.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\NES - The Legend of Zelda - NPCs.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\SmileyWalk.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\walk\15.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\walk\final.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\runtimes\rhel-x64\native\libuv.so

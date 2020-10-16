@@ -14,11 +14,11 @@ namespace Game1.Enemy
         private int Rows = 1;
         private int TotalFrames;
         private int CurrentFrame;
-        private Vector2 Location;
+        private Vector2 Location { get; set; }
         private int Direction = 0;
         private int FrameRateModifier = 0;
         private Random Rnd;
-        private int Velocity = 1;       
+        private double Velocity = 0.5;       
         private int FiringStateTimer = 0;
         private int FireTimer;
         private bool Firing;
@@ -26,18 +26,19 @@ namespace Game1.Enemy
         private IProjectile Projectile0;
         private IProjectile Projectile1;
         private IProjectile Projectile2;
+        private int scale = 3;
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
-        public Aquamentus() 
+        public Aquamentus(Vector2 location) 
         {
             Texture = EnemyTextureStorage.GetAquamentusSpriteSheet();
             Rnd = new Random();
             TotalFrames = 4;
             CurrentFrame = 2;
             Columns = TotalFrames;
-            Location = new Vector2(550, 150);
+            Location = location;
             Direction = 0;
             Firing = false;
             FireTimer = 0;
@@ -49,7 +50,7 @@ namespace Game1.Enemy
             Projectile2.SetDirection(2);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 24 * 5, 32 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X * scale, (int)Location.Y * scale, 24, 32 );
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -60,7 +61,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height); 
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * 5, height * 5);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
@@ -84,14 +85,14 @@ namespace Game1.Enemy
         {
             if (CanFire) 
             {
-                Projectile0.SetLocation(new Vector2(Location.X, Location.Y - 60));
+                Projectile0.SetLocation(new Vector2(Location.X, Location.Y - 12 * scale));
                 Projectile1.SetLocation(Location);
-                Projectile2.SetLocation(new Vector2(Location.X, Location.Y + 60));
+                Projectile2.SetLocation(new Vector2(Location.X, Location.Y + 12 * scale));
                 CanFire = false;
             }
         }
 
-        public void UpdateEnemy(Game game)
+        public void UpdateEnemy()
         {
             if (FireTimer < (Rnd.Next(7, 10) * 24))
             {
@@ -116,7 +117,7 @@ namespace Game1.Enemy
                 FrameRateModifier = 0;
             }
 
-            if (OutsideMovingRange(game) == true) {
+            if (OutsideMovingRange() == true) {
                 if (Direction == 0) 
                 {
                     Direction = 1;
@@ -133,15 +134,15 @@ namespace Game1.Enemy
 
             if (Projectile0.GetIsOnScreen())
             {
-                Projectile0.UpdateProjectile(game);
+                Projectile0.UpdateProjectile();
             }
             if (Projectile1.GetIsOnScreen())
             {
-                Projectile1.UpdateProjectile(game);
+                Projectile1.UpdateProjectile();
             }
             if (Projectile2.GetIsOnScreen())
             {
-                Projectile2.UpdateProjectile(game);
+                Projectile2.UpdateProjectile();
             }
                                 
             if (Firing)
@@ -182,10 +183,10 @@ namespace Game1.Enemy
             }
         }
 
-        private bool OutsideMovingRange(Game game)
+        private bool OutsideMovingRange()
         {
             Boolean outside = false;
-            if (Location.X <= 450 || Location.X >= game.Window.ClientBounds.Width - 160)
+            if (Location.X <= 96 * scale || Location.X >= 128 * scale)
             {
                 outside = true;
             }
@@ -199,17 +200,17 @@ namespace Game1.Enemy
 
             if (Direction == 0)
             {
-                x -= Velocity;
+                x -= (float)Velocity;
             }
             else if (Direction == 1)
             {
-                x += Velocity;
+                x += (float)Velocity;
             }
 
             Location = new Vector2(x, y);
 
-            // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 24 * 5, 32 * 5);
+            // Test code for sprint 3 rectangle 
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 24 * scale, 32 * scale);
         }
 
         Rectangle IEnemy.GetRectangle()

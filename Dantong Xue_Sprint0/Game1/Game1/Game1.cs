@@ -39,7 +39,6 @@ namespace Game1
         private ItemKeyboardController itemKeyboardController;
         public PlayerKeyboardController playerKeyboardController;
 
-        private EnemyKeyboardController enemyKeyboradController;
         private QuitResetController quitResetController;
 
         private BlockCollision collisionDetector; 
@@ -59,7 +58,6 @@ namespace Game1
 
             controllerList = new List<object>();
 
-            enemyKeyboradController = new EnemyKeyboardController();
             itemKeyboardController = new ItemKeyboardController();
             playerKeyboardController = new PlayerKeyboardController();
 
@@ -78,10 +76,6 @@ namespace Game1
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-            
-
-
             PlayerCharacterFactory.Instance.LoadAllTextures(Content);
             PlayerItemFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
@@ -89,6 +83,8 @@ namespace Game1
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
 
             _spriteFont = Content.Load<SpriteFont>("font");
+
+            LoadEnemy.Instance.LoadAllEnemy(_spriteBatch);
         }
 
         protected override void Update(GameTime gameTime)
@@ -98,7 +94,7 @@ namespace Game1
                 controller.Update(this.GraphicsDevice, this._spriteBatch, this);
             }
 
-            enemyKeyboradController.Update(this);
+            LoadEnemy.Instance.UpdateAllEnemy();
             itemKeyboardController.Update(this);
             playerKeyboardController.Update();
             quitResetController.Update(this);
@@ -118,7 +114,9 @@ namespace Game1
             _spriteBatch.Begin();
             LoadAll.Instance.LoadRoom(_spriteBatch);
             LoadItem.Instance.LoadRoomItem(_spriteBatch);
-            enemyKeyboradController.Draw(_spriteBatch);
+            LoadEnemy.Instance.DrawAllEnemy();
+
+            // enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();
 
             GraphicsDevice.Clear(Color.CornflowerBlue);

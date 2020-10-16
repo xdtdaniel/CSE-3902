@@ -24,6 +24,8 @@ namespace Game1
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
+        private int scale = 3;
+
         public Stalfos()
         {
             Texture = EnemyTextureStorage.GetStalfosSpriteSheet();
@@ -35,8 +37,10 @@ namespace Game1
             Direction = Rnd.Next(3);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * 5, 16 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
         }
+
+
 
         public void DrawEnemy(SpriteBatch spriteBatch)
         {
@@ -46,7 +50,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * 5, height * 5);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -56,7 +60,7 @@ namespace Game1
             // Do Nothing.
         }
 
-        public void UpdateEnemy(Game game)
+        public void UpdateEnemy()
         {
             if (FrameRateModifier < 20)
             {
@@ -68,11 +72,11 @@ namespace Game1
                 FrameRateModifier = 0;
             }
 
-            UpdateCanTurn(game);
+            UpdateCanTurn();
 
             if (CanTurn)
             {
-                UpdateDirection(game);
+                UpdateDirection();
             }
 
             UpdateLocation();
@@ -83,9 +87,9 @@ namespace Game1
             }
         }
 
-        private void UpdateCanTurn(Game game)
+        private void UpdateCanTurn()
         {
-            if ((UpBlocked() == 0 && Direction == 0) || (RightBlocked(game) == 0 && Direction == 1) || (DownBlocked(game) == 0 && Direction == 2) || (LeftBlocked() == 0 && Direction == 3))
+            if ((UpBlocked() == 0 && Direction == 0) || (RightBlocked() == 0 && Direction == 1) || (DownBlocked() == 0 && Direction == 2) || (LeftBlocked() == 0 && Direction == 3))
             {
                 CanTurn = true;
             }
@@ -104,9 +108,9 @@ namespace Game1
             }
         }
 
-        private void UpdateDirection(Game game)
+        private void UpdateDirection()
         {
-            int[] blockedStatus = { UpBlocked(), RightBlocked(game), DownBlocked(game), LeftBlocked() };
+            int[] blockedStatus = { UpBlocked(), RightBlocked(), DownBlocked(), LeftBlocked() };
             int[] turnableDirections = new int[4];
             int size = 0;
 
@@ -127,7 +131,7 @@ namespace Game1
 
         private int UpBlocked()
         {
-            if (Location.Y <= 0)
+            if (Location.Y <= 32 * scale)
             {
                 return 0;
             }
@@ -137,9 +141,9 @@ namespace Game1
             }
         }
 
-        private int RightBlocked(Game game)
+        private int RightBlocked()
         {
-            if (Location.X >= game.Window.ClientBounds.Width - 80)
+            if (Location.X >= 192 * scale)
             {
                 return 0;
             }
@@ -149,9 +153,9 @@ namespace Game1
             }
         }
 
-        private int DownBlocked(Game game)
+        private int DownBlocked()
         {
-            if (Location.Y >= game.Window.ClientBounds.Height - 80)
+            if (Location.Y >= 144 * scale)
             {
                 return 0;
             }
@@ -163,7 +167,7 @@ namespace Game1
 
         private int LeftBlocked()
         {
-            if (Location.X <= 0)
+            if (Location.X <= 32 * scale)
             {
                 return 0;
             }
@@ -198,7 +202,7 @@ namespace Game1
             Location = new Vector2(x, y);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * 5, 16 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
         }
 
         Rectangle IEnemy.GetRectangle()
