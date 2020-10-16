@@ -120,11 +120,12 @@ namespace Game1
 
             _spriteBatch.Begin();
             LoadFile.Instance.LoadMap(_spriteBatch);
+            LoadItem.Instance.LoadRoomItem(_spriteBatch);
             enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();
 
 
-            itemKeyboardController.Draw(_spriteBatch, 400, 200);
+            //itemKeyboardController.Draw(_spriteBatch, 400, 200);
             _spriteBatch.End();
         }
     }
