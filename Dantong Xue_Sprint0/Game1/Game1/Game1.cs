@@ -110,7 +110,7 @@ namespace Game1
             base.Update(gameTime);
 
             // for collision test
-            playerAquamentusCollisionHandler.HandleCollision(link, enemyKeyboradController.EnemyCollection.EnemyList[0], playerKeyboardController.Direction(), playerKeyboardController.side);
+            // playerAquamentusCollisionHandler.HandleCollision(link, enemyKeyboradController.EnemyCollection.EnemyList[0], playerKeyboardController.Direction(), playerKeyboardController.side);
         }
 
 
