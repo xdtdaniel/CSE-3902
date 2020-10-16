@@ -30,9 +30,7 @@ namespace Game1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
             EnemyList[index].DrawEnemy(spriteBatch);
-            spriteBatch.End();
         }
 
         public void Update(Game game)
