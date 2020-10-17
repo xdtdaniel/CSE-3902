@@ -22,7 +22,7 @@ namespace Game1.Player.PlayerCharacter
         public int defaultSpeed;
         public int downSpeed, upSpeed, rightSpeed, leftSpeed;
 
-        private int directionIndex;     
+        public string direction;
 
         PlayerItem item; 
 
@@ -36,7 +36,7 @@ namespace Game1.Player.PlayerCharacter
             hp = 100;
             defaultSpeed = downSpeed = upSpeed = rightSpeed = leftSpeed = 5;
 
-            directionIndex = 0;
+            direction = "down";
 
             
 
@@ -72,12 +72,13 @@ namespace Game1.Player.PlayerCharacter
         {
             return state.GetRectangle();
         }
-        public void KnockedBack(string direction, string collisionSide)
+        public void KnockedBack(string collisionSide)
         {
-            state.KnockedBack(direction, collisionSide);
+            state.KnockedBack(collisionSide);
         }
-        public void Update(string direction, bool isMoving)
+        public void Update(bool isMoving)
         {
+            int directionIndex = 0;
             switch (direction)
             {
                 case "down":
@@ -100,8 +101,9 @@ namespace Game1.Player.PlayerCharacter
             
            
         }
-        public void Draw(SpriteBatch spriteBatch, string direction)
+        public void Draw(SpriteBatch spriteBatch)
         {
+            int directionIndex = 0;
             switch (direction)
             {
                 case "down":

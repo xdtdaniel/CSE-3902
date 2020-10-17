@@ -22,10 +22,11 @@ namespace Game1
         // test
         string collidedSide;
         private BlockCollision blockCollision;
-        private Dictionary<string, List<Rectangle>> blockDict;
+        private Dictionary<string, List<Rectangle>> blockList;
+        private List<IEnemy> enemyList;
 
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
-        private PlayerAquamentusCollisionHandler playerAquamentusCollisionHandler;
+        private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
 
         public PlayerCommand(SpriteBatch spriteBatch, Game1 game)
         {
@@ -34,18 +35,21 @@ namespace Game1
             //
             collidedSide = "";
             blockCollision = new BlockCollision();
-            blockDict = LoadAll.Instance.GetMapArtifacts();
+            blockList = LoadAll.Instance.GetMapArtifacts();
+            enemyList = LoadEnemy.Instance.GetEnemyList();
 
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
-            playerAquamentusCollisionHandler = new PlayerAquamentusCollisionHandler();
+            playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
 
         }
 
         public void PlayerUpdate()
         {
-            game.link.Update(game.playerKeyboardController.Direction(), game.playerKeyboardController.IsMoving());
+            game.link.direction = game.playerKeyboardController.Direction();
+            game.link.Update(game.playerKeyboardController.IsMoving());
 
-            playerBlockCollisionHandler.HandleCollision(game.link, blockDict, blockCollision);
+            playerBlockCollisionHandler.HandleCollision(game.link, blockList, blockCollision);
+            playerEnemyCollisionHandler.HandleCollision(game.link, enemyList, blockCollision);
         }
         public void PlayerDraw()
         {
@@ -71,13 +75,14 @@ namespace Game1
             {
                 game.link.PickUp(game.playerKeyboardController.PickUp());
             }
-            game.link.Draw(spriteBatch, game.playerKeyboardController.Direction());
+            game.link.Draw(spriteBatch);
 
             // for collision test
             string x = "x: " + game.link.x.ToString();
             string y = "y: " + game.link.y.ToString();
             string damagedTimeRemain = "time: " + game.link.damageTimeCounter.ToString();
             string hp = "hp: " + game.link.hp.ToString();
+
 
             spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 125), Color.Black);
             spriteBatch.DrawString(game._spriteFont, y, new Vector2(game.link.x, game.link.y - 100), Color.Black);
