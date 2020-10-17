@@ -13,7 +13,7 @@ namespace Game1.Enemy
         private int Rows = 1;
         private int TotalFrames;
         private int CurrentFrame;
-        private Vector2 Location;
+        private Vector2 Location { get; set; }
         private int Direction = 0;
         private int CanTurnTimer = 0;
         private int FrameRateModifier = 0;
@@ -31,14 +31,14 @@ namespace Game1.Enemy
 
         private int scale = 3;
 
-        public Goriya()
+        public Goriya(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetGoriyaSpriteSheet();
             Rnd = new Random();
             TotalFrames = 8;
             CurrentFrame = 0;
             Columns = TotalFrames;
-            Location = new Vector2(400, 200);
+            Location = location;
             Direction = Rnd.Next(3);
             Projectile = new GoriyaProjectile();
             CanFire = true;

@@ -13,12 +13,12 @@ namespace Game1
         private int Rows = 1;
         private int TotalFrames;
         private int CurrentFrame;
-        private Vector2 Location;
+        private Vector2 Location { get; set; }
         private int Direction = 0;
         private int CanTurnTimer = 0;
         private int FrameRateModifier = 0;
         private Random Rnd;
-        private int Velocity = 3;
+        private int Velocity = 1;
         private bool CanTurn = false;
 
         // Test code for sprint 3 rectangle
@@ -26,14 +26,14 @@ namespace Game1
 
         private int scale = 3;
 
-        public Stalfos()
+        public Stalfos(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetStalfosSpriteSheet();
             Rnd = new Random();
             TotalFrames = 2;
             Columns = TotalFrames;
             CurrentFrame = 0;
-            Location = new Vector2(400, 200);
+            Location = location;
             Direction = Rnd.Next(3);
 
             // Test code for sprint 3 rectangle
@@ -92,19 +92,7 @@ namespace Game1
             if ((UpBlocked() == 0 && Direction == 0) || (RightBlocked() == 0 && Direction == 1) || (DownBlocked() == 0 && Direction == 2) || (LeftBlocked() == 0 && Direction == 3))
             {
                 CanTurn = true;
-            }
-
-            if (CanTurnTimer < 16)
-            {
-                CanTurnTimer++;
-            }
-            else
-            {
                 CanTurnTimer = 0;
-                if (Rnd.Next(5) == 0)
-                {
-                    CanTurn = true;
-                }
             }
         }
 
@@ -143,7 +131,7 @@ namespace Game1
 
         private int RightBlocked()
         {
-            if (Location.X >= 192 * scale)
+            if (Location.X >= 208 * scale)
             {
                 return 0;
             }
@@ -155,7 +143,7 @@ namespace Game1
 
         private int DownBlocked()
         {
-            if (Location.Y >= 144 * scale)
+            if (Location.Y >= 128 * scale)
             {
                 return 0;
             }
@@ -179,26 +167,41 @@ namespace Game1
 
         private void UpdateLocation()
         {
+
             float x = Location.X;
             float y = Location.Y;
 
-            if (Direction == 0)
+            if (CanTurnTimer < 48)
             {
-                y -= Velocity;
-            }
-            else if (Direction == 1)
-            {
-                x += Velocity;
-            }
-            else if (Direction == 2)
-            {
-                y += Velocity;
-            }
-            else if (Direction == 3)
-            {
-                x -= Velocity;
-            }
+                if (Direction == 0)
+                {
+                    y -= Velocity;
+                }
+                else if (Direction == 1)
+                {
+                    x += Velocity;
+                }
+                else if (Direction == 2)
+                {
+                    y += Velocity;
+                }
+                else if (Direction == 3)
+                {
+                    x -= Velocity;
+                }
 
+                CanTurnTimer++;
+            }
+            else 
+            {
+                CanTurnTimer = 0;
+
+                if (Rnd.Next(5) == 0)
+                {
+                    CanTurn = true;
+                }
+            }
+          
             Location = new Vector2(x, y);
 
             // Test code for sprint 3 rectangle

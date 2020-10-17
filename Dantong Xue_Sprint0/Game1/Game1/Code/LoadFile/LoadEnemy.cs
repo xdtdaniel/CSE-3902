@@ -21,16 +21,7 @@ namespace Game1.Code.LoadFile
     {
         private int MAX_COLUMNS = 32;
         private int multiplier = 8;
-        public int scale = 2;
-        private SpriteBatch spriteBatch;
-
-        private class Cell
-        {
-            private int column { get; set; }
-            private int row { get; set; }
-            private string element { get; set; }
-
-        }
+        public int scale = 3;
 
         List<Tuple<int, int, string>> EnemyList;
 
@@ -44,16 +35,10 @@ namespace Game1.Code.LoadFile
             }
         }
 
-        private LoadEnemy()
-        {
-            // ???
-        }
-
         private List<IEnemy> Enemies = new List<IEnemy>();
 
-        public void LoadAllEnemy(SpriteBatch currSpriteBatch)
+        public void LoadAllEnemy()
         {
-            spriteBatch = currSpriteBatch;
             EnemyList = new List<Tuple<int, int, string>>();
             string filePath = System.IO.Path.GetFullPath("test_loadenemy.csv");
             StreamReader streamReader = new StreamReader(filePath);
@@ -96,25 +81,31 @@ namespace Game1.Code.LoadFile
                         Enemy = new Aquamentus(location);
                         Enemies.Add(Enemy);
                         break;
-                    
+                    case "gel":
+                        Enemy = new Gel(location);
+                        Enemies.Add(Enemy);
+                        break;
+                    case "keese":
+                        Enemy = new Keese(location);
+                        Enemies.Add(Enemy);
+                        break;
+                    case "stalfos":
+                        Enemy = new Stalfos(location);
+                        Enemies.Add(Enemy);
+                        break;
+                    case "goriya":
+                        Enemy = new Goriya(location);
+                        Enemies.Add(Enemy);
+                        break;
                 }
 
             }
 
         }
 
-        public void DrawAllEnemy() {
-            for (int i = 0; i < Enemies.Count; i++)
-            {
-                Enemies[i].DrawEnemy(spriteBatch);
-            }
+        public List<IEnemy> GetEnemyList() 
+        {
+            return Enemies;
         }
-
-        public void UpdateAllEnemy() {
-            for (int i = 0; i < Enemies.Count; i++) 
-            {
-                Enemies[i].UpdateEnemy();
-            }
-        }  
     }
 }

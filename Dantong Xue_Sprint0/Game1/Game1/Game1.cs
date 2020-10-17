@@ -1,5 +1,6 @@
 ﻿using Game1.Code.Block;
 using Game1.Code.Block.BlockFactory;
+using Game1.Code.Enemy;
 using Game1.Code.Item;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
@@ -34,6 +35,8 @@ namespace Game1
         public PlayerCommand playerCommand;
 
         private List<object> controllerList;
+
+        private List<IEnemy> EnemyList;
 
         private IController blockKeyboardController;
         private ItemKeyboardController itemKeyboardController;
@@ -84,7 +87,8 @@ namespace Game1
 
             _spriteFont = Content.Load<SpriteFont>("font");
 
-            LoadEnemy.Instance.LoadAllEnemy(_spriteBatch);
+            LoadEnemy.Instance.LoadAllEnemy();
+            EnemyList = LoadEnemy.Instance.GetEnemyList();
 
             LoadAll.Instance.LoadRoom();
         }
@@ -96,7 +100,7 @@ namespace Game1
                 controller.Update(this.GraphicsDevice, this._spriteBatch, this);
             }
 
-            LoadEnemy.Instance.UpdateAllEnemy();
+            DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
             itemKeyboardController.Update(this);
             playerKeyboardController.Update();
             quitResetController.Update(this);
@@ -116,10 +120,11 @@ namespace Game1
             _spriteBatch.Begin();
             
             LoadItem.Instance.LoadRoomItem(_spriteBatch);
-            LoadEnemy.Instance.DrawAllEnemy();
+            
 
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
 
+            DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
             // enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();
 

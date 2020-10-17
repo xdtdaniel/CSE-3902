@@ -16,13 +16,13 @@ namespace Game1
         private int Rows = 1;
         private int TotalFrames;
         private int CurrentFrame;
-        private Vector2 Location;
+        private Vector2 Location { get; set; }
         private int MovingState = 0;
         private int Direction;
         private int StateTimer = 0;
         private int FrameRateModifier = 0;
         private double Velocity = 0;
-        private double MaxVelocity = 5;
+        private double MaxVelocity = 3;
         private Random Rnd;
 
         // Test code for sprint 3 rectangle
@@ -31,13 +31,13 @@ namespace Game1
 
         private int scale = 3;
 
-        public Keese()
+        public Keese(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetKeeseSpriteSheet();
             TotalFrames = 2;
             Columns = TotalFrames;
-            CurrentFrame = 0;
-            Location = new Vector2(400, 200);
+            CurrentFrame = 1;
+            Location = location;
             Rnd = new Random();
             Direction = Rnd.Next(7);
 
@@ -53,7 +53,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X - scale, (int)Location.Y - scale, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -119,7 +119,7 @@ namespace Game1
                     }
                     else
                     {
-                        if (Rnd.Next(20) == 3)
+                        if (Rnd.Next(25) == 3)
                         {
                             MovingState = 3;
                         }
@@ -216,7 +216,7 @@ namespace Game1
         private Boolean IsOutsideBound()
         {
             Boolean outside = false;
-            if (Location.X <= 32 * scale || Location.Y <= 32 * scale || Location.Y >= 144 * scale || Location.X <= 192 * scale)
+            if (Location.X <= 32 * scale || Location.Y <= (32 - 4) * scale || Location.Y >= 128 * scale || Location.X >= 208 * scale)
             {
                 outside = true;
             }

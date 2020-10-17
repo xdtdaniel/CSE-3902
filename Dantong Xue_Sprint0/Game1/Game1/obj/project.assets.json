@@ -7373,19 +7373,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\xdtda\\.nuget\\packages\\": {}
+    "C:\\Users\\Lianz\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git_repo\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
+      "projectUniqueName": "C:\\Users\\Lianz\\OneDrive\\桌面\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
       "projectName": "Game1",
-      "projectPath": "C:\\git_repo\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
-      "packagesPath": "C:\\Users\\xdtda\\.nuget\\packages\\",
-      "outputPath": "C:\\git_repo\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\obj\\",
+      "projectPath": "C:\\Users\\Lianz\\OneDrive\\桌面\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
+      "packagesPath": "C:\\Users\\Lianz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lianz\\OneDrive\\桌面\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\xdtda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lianz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

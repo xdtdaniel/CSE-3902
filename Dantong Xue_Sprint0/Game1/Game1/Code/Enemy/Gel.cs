@@ -13,7 +13,7 @@ namespace Game1
         private int Rows = 1;
         private int TotalFrames;
         private int CurrentFrame;
-        private Vector2 Location;
+        private Vector2 Location { get; set; }
         private int MovingState = 0;
         private int Direction = 0;
         private int StateTimer = 0;
@@ -25,16 +25,16 @@ namespace Game1
 
         private int scale = 3;
 
-        public Gel()
+        public Gel(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetGelSpriteSheet();
             TotalFrames = 2;
             Columns = TotalFrames;
             CurrentFrame = 0;
-            Location = new Vector2(400, 200);
+            Location = location;
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)(Location.X + 4 * scale), (int)(Location.Y + 4 * scale), 8 * scale, 8 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X + 1 * scale), (int)(Location.Y + 1 * scale), 8 * scale, 8 * scale);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -87,7 +87,7 @@ namespace Game1
 
         private void UpdateMovingState(Random random)
         {
-            if (StateTimer < 8 )
+            if (StateTimer < 6 )
             {
                 StateTimer++;
             }
@@ -106,8 +106,8 @@ namespace Game1
             {
                 if (direction == 0)
                 {
-                    y -= 20;
-                    if (Location.Y < 32 * scale)
+                    y -= 4 * scale;
+                    if (Location.Y <= 32 * scale)
                     {
                         y = 32 * scale;
                         MovingState = 0;
@@ -115,26 +115,26 @@ namespace Game1
                 }
                 else if (direction == 1)
                 {
-                    x += 20;
-                    if (Location.X >= 192 * scale)
+                    x += 4 * scale;
+                    if (Location.X >= 208 * scale)
                     {
-                        x = 192 * scale;
+                        x = 208 * scale;
                         MovingState = 0;
                     }
                 }
                 else if (direction == 2)
                 {
-                    y += 20;
-                    if (Location.Y > 144 * scale)
+                    y += 4 * scale;
+                    if (Location.Y >= 128 * scale)
                     {
-                        y = 144 * scale;
+                        y = 128 * scale;
                         MovingState = 0;
                     }
                 }
                 else if (direction == 3)
                 {
-                    x -= 20;
-                    if (Location.X < 32 * scale)
+                    x -= 4 * scale;
+                    if (Location.X <= 32 * scale)
                     {
                         x = 32 * scale;
                         MovingState = 0;

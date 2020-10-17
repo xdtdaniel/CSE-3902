@@ -114,7 +114,7 @@ namespace Game1.Enemy
         private bool HitEdge()
         {
             Boolean outside = false;
-            if (Location.X <= 0 || Location.Y <= 0 || Location.Y >= 144 * scale || Location.X >= 128 * scale)
+            if (Location.X <= 48 || Location.Y <= 48 || Location.Y >= 144 * scale * 1.5)
             {
                 outside = true;
             }

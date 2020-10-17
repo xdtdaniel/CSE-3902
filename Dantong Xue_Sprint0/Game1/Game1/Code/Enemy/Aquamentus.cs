@@ -26,7 +26,7 @@ namespace Game1.Enemy
         private IProjectile Projectile0;
         private IProjectile Projectile1;
         private IProjectile Projectile2;
-        private int scale = 3;
+        private double scale = 3;
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
@@ -50,7 +50,7 @@ namespace Game1.Enemy
             Projectile2.SetDirection(2);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X * scale, (int)Location.Y * scale, 24, 32 );
+            CollisionRectangle = new Rectangle((int)(Location.X * scale), (int)(Location.Y * scale), 24, 32 );
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -61,7 +61,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height); 
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, (int)(width * scale), (int)(height * scale));
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
@@ -85,9 +85,9 @@ namespace Game1.Enemy
         {
             if (CanFire) 
             {
-                Projectile0.SetLocation(new Vector2(Location.X, Location.Y - 12 * scale));
+                Projectile0.SetLocation(new Vector2(Location.X, (float)(Location.Y - 12 * scale)));
                 Projectile1.SetLocation(Location);
-                Projectile2.SetLocation(new Vector2(Location.X, Location.Y + 12 * scale));
+                Projectile2.SetLocation(new Vector2(Location.X, (float)(Location.Y + 12 * scale)));
                 CanFire = false;
             }
         }
@@ -186,7 +186,7 @@ namespace Game1.Enemy
         private bool OutsideMovingRange()
         {
             Boolean outside = false;
-            if (Location.X <= 96 * scale || Location.X >= 128 * scale)
+            if (Location.X <= 96 * scale * 1.5 || Location.X >= 184 * scale)
             {
                 outside = true;
             }
@@ -210,7 +210,7 @@ namespace Game1.Enemy
             Location = new Vector2(x, y);
 
             // Test code for sprint 3 rectangle 
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 24 * scale, 32 * scale);
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, (int)(24 * scale), (int)(32 * scale));
         }
 
         Rectangle IEnemy.GetRectangle()
