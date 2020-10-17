@@ -23,6 +23,8 @@ namespace Game1
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
+        private int scale = 3;
+
         public Gel()
         {
             Texture = EnemyTextureStorage.GetGelSpriteSheet();
@@ -32,7 +34,7 @@ namespace Game1
             Location = new Vector2(400, 200);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)(Location.X + 4 * 5), (int)(Location.Y + 4 * 5), 8 * 5, 8 * 5);
+            CollisionRectangle = new Rectangle((int)(Location.X + 4 * scale), (int)(Location.Y + 4 * scale), 8 * scale, 8 * scale);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -43,7 +45,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * 5, height * 5);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -53,7 +55,7 @@ namespace Game1
             // Do nothing.
         }
 
-        public void UpdateEnemy(Game game)
+        public void UpdateEnemy()
         {
             Random rnd = new Random();
 
@@ -73,7 +75,7 @@ namespace Game1
                 {
                     Direction = rnd.Next(4);
                 }
-                Move(Direction, game);
+                Move(Direction);
             }
 
             if (CurrentFrame == TotalFrames)
@@ -96,7 +98,7 @@ namespace Game1
             }
         }
 
-        private void Move(int direction, Game game)
+        private void Move(int direction)
         {
             float x = Location.X;
             float y = Location.Y;
@@ -105,36 +107,36 @@ namespace Game1
                 if (direction == 0)
                 {
                     y -= 20;
-                    if (Location.Y < 0)
+                    if (Location.Y < 32 * scale)
                     {
-                        y = 0;
+                        y = 32 * scale;
                         MovingState = 0;
                     }
                 }
                 else if (direction == 1)
                 {
                     x += 20;
-                    if (Location.X > game.Window.ClientBounds.Width - 80)
+                    if (Location.X >= 192 * scale)
                     {
-                        x = game.Window.ClientBounds.Width - 80;
+                        x = 192 * scale;
                         MovingState = 0;
                     }
                 }
                 else if (direction == 2)
                 {
                     y += 20;
-                    if (Location.Y > game.Window.ClientBounds.Height - 80)
+                    if (Location.Y > 144 * scale)
                     {
-                        y = game.Window.ClientBounds.Height - 80;
+                        y = 144 * scale;
                         MovingState = 0;
                     }
                 }
                 else if (direction == 3)
                 {
                     x -= 20;
-                    if (Location.X < 0)
+                    if (Location.X < 32 * scale)
                     {
-                        x = 0;
+                        x = 32 * scale;
                         MovingState = 0;
                     }
                 }
@@ -142,7 +144,7 @@ namespace Game1
                 Location = new Vector2(x, y);
 
                 // Test code for sprint 3 rectangle
-                CollisionRectangle = new Rectangle((int)(Location.X + 4 * 5), (int)(Location.Y + 4 * 5), 8 * 5, 8 * 5);
+                CollisionRectangle = new Rectangle((int)(Location.X + 4 * scale), (int)(Location.Y + 4 * scale), 8 * scale, 8 * scale);
 
                 MoveTimer++;
             }

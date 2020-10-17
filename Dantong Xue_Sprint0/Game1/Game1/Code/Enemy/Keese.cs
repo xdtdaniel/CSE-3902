@@ -27,7 +27,9 @@ namespace Game1
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
-        private Pen blackPen = new Pen(System.Drawing.Color.Black, 5);
+        private Pen blackPen = new Pen(System.Drawing.Color.Black, 5); 
+
+        private int scale = 3;
 
         public Keese()
         {
@@ -40,7 +42,7 @@ namespace Game1
             Direction = Rnd.Next(7);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * 5), 16 * 5, 10 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -51,7 +53,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * 5, height * 5);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -61,11 +63,11 @@ namespace Game1
             // Do nothing. 
         }
 
-        public void UpdateEnemy(Game game)
+        public void UpdateEnemy()
         {
             Random rnd = new Random();
 
-            UpdateDirection(game);
+            UpdateDirection();
 
             UpdateMovingState();
 
@@ -157,9 +159,9 @@ namespace Game1
             }
         }
 
-        private void UpdateDirection(Game game)
+        private void UpdateDirection()
         {
-            if (IsOutsideBound(game))
+            if (IsOutsideBound())
             {
                 switch (Direction)
                 {
@@ -211,10 +213,10 @@ namespace Game1
             }
         }
 
-        private Boolean IsOutsideBound(Game game)
+        private Boolean IsOutsideBound()
         {
             Boolean outside = false;
-            if (Location.X < 0 || Location.X > game.Window.ClientBounds.Width - 80 || Location.Y < 0 - 16 || Location.Y > game.Window.ClientBounds.Height - 70)
+            if (Location.X <= 32 * scale || Location.Y <= 32 * scale || Location.Y >= 144 * scale || Location.X <= 192 * scale)
             {
                 outside = true;
             }
@@ -267,7 +269,7 @@ namespace Game1
             Location = new Vector2(x, y);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * 5), 16 * 5, 10 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
         }
 
         // Test code for sprint 3 rectangle

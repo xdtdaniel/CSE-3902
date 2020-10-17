@@ -11,6 +11,7 @@ namespace Game1.Code.Item.ItemInterface
     public interface IItemSprite
     {
         void Draw(SpriteBatch spriteBatch, int x, int y);
-        void Update(Game game);
+        void Update();
+        Rectangle GetRectangle();
     }
 }

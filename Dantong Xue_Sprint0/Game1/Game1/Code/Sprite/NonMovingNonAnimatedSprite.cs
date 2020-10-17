@@ -18,17 +18,12 @@ namespace Game1
             Texture = texture;
         }
 
-        /*
-            public NonMovingNonAnimatedSprite(Texture2D texture, Vector2 location) : this(texture)
-            {
-                this.location = location;
-            }
-        */
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             //multiply by picture's width and height, but the number might not big enough, can change to constant later
-            spriteBatch.Draw(Texture, new Rectangle((int)location.X, (int)location.Y, Texture.Width * LoadFile.Instance.scale, Texture.Height * LoadFile.Instance.scale), Color.White);
+
+            spriteBatch.Draw(Texture, new Rectangle((int)location.X, (int)location.Y, Texture.Width * LoadAll.Instance.scale, Texture.Height * LoadAll.Instance.scale), Color.White);
         }
 
         public void Update()

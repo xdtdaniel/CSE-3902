@@ -1520,18 +1520,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprite/Blocks/room_interior.png
 
-#begin Sprite/Blocks/room_interior.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprite/Blocks/room_interior.png
-
 #begin Sprite/Blocks/sand_floor.png
 /importer:TextureImporter
 /processor:TextureProcessor

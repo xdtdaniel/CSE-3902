@@ -8,7 +8,7 @@ namespace Game1.Enemy
 {
     interface IProjectile
     {
-        public void UpdateProjectile(Game game);
+        public void UpdateProjectile();
         public void DrawProjectile(SpriteBatch spriteBatch);
         public bool GetIsOnScreen();
         public void SetIsOnScreen();

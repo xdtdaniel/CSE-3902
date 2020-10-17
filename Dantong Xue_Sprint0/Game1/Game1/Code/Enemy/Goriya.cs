@@ -29,6 +29,8 @@ namespace Game1.Enemy
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
+        private int scale = 3;
+
         public Goriya()
         {
             Texture = EnemyTextureStorage.GetGoriyaSpriteSheet();
@@ -74,7 +76,7 @@ namespace Game1.Enemy
             CanFire = false;
         }
 
-        public void UpdateEnemy(Game game)
+        public void UpdateEnemy()
         {
             if (FireTimer > Rnd.Next(150, 200) || Projectile.GetIsOnScreen())
             {
@@ -82,17 +84,17 @@ namespace Game1.Enemy
                 {
                     FireProjectile();
                 }
-                Projectile.UpdateProjectile(game);
+                Projectile.UpdateProjectile();
             }
             else
             {
                 Velocity = 3;
 
-                UpdateCanTurn(game);
+                UpdateCanTurn();
 
                 if (CanTurn)
                 {
-                    UpdateDirection(game);
+                    UpdateDirection();
                     FrameBound = UpdateFacing();
                 }
 
@@ -148,9 +150,9 @@ namespace Game1.Enemy
             return -99;
         }
 
-        private void UpdateCanTurn(Game game)
+        private void UpdateCanTurn()
         {
-            if ((UpBlocked() == 0 && Direction == 0) || (RightBlocked(game) == 0 && Direction == 1) || (DownBlocked(game) == 0 && Direction == 2) || (LeftBlocked() == 0 && Direction == 3))
+            if ((UpBlocked() == 0 && Direction == 0) || (RightBlocked() == 0 && Direction == 1) || (DownBlocked() == 0 && Direction == 2) || (LeftBlocked() == 0 && Direction == 3))
             {
                 CanTurn = true;
             }
@@ -169,9 +171,9 @@ namespace Game1.Enemy
             }
         }
 
-        private void UpdateDirection(Game game)
+        private void UpdateDirection()
         {
-            int[] blockedStatus = { UpBlocked(), RightBlocked(game), DownBlocked(game), LeftBlocked() };
+            int[] blockedStatus = { UpBlocked(), RightBlocked(), DownBlocked(), LeftBlocked() };
             int[] turnableDirections = new int[4];
             int size = 0;
 
@@ -192,7 +194,7 @@ namespace Game1.Enemy
 
         private int UpBlocked()
         {
-            if (Location.Y <= 0)
+            if (Location.Y <= 32 * scale)
             {
                 return 0;
             }
@@ -202,9 +204,9 @@ namespace Game1.Enemy
             }
         }
 
-        private int RightBlocked(Game game)
+        private int RightBlocked()
         {
-            if (Location.X >= game.Window.ClientBounds.Width - 80)
+            if (Location.X >= 192 * scale)
             {
                 return 0;
             }
@@ -214,9 +216,9 @@ namespace Game1.Enemy
             }
         }
 
-        private int DownBlocked(Game game)
+        private int DownBlocked()
         {
-            if (Location.Y >= game.Window.ClientBounds.Height - 80)
+            if (Location.Y >= 144 * scale)
             {
                 return 0;
             }
@@ -228,7 +230,7 @@ namespace Game1.Enemy
 
         private int LeftBlocked()
         {
-            if (Location.X <= 0)
+            if (Location.X <= 32 * scale)
             {
                 return 0;
             }

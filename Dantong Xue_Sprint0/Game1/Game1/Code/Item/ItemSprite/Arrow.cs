@@ -15,8 +15,11 @@ namespace Game1.Code.Item.ItemSprite
         Texture2D Texture;
         int height;
         int width;
-        public Arrow(Texture2D texture)
+        private Rectangle CollisionRectangle;
+        private Game game;
+        public  Arrow(Texture2D texture, Game g)
         {
+            game = g;
             Texture = texture;
         }
         public void Draw(SpriteBatch spriteBatch, int x, int y)
@@ -26,14 +29,20 @@ namespace Game1.Code.Item.ItemSprite
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
             Rectangle destinationRectangle = new Rectangle(x, y, width*3, height*3);
+            CollisionRectangle = destinationRectangle;
           
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
  
+        }     
+
+        public void Update()
+        {
+
         }
 
-        public void Update(Game game)
+        public Rectangle GetRectangle()
         {
-           
+            return CollisionRectangle;
         }
     }
 }

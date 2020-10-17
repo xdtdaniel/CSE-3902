@@ -18,6 +18,8 @@ namespace Game1.Enemy
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
+        private int scale = 3;
+
         public OldMan() {
             Texture = EnemyTextureStorage.GetOldManSpriteSheet();
             TotalFrames = 1;
@@ -26,7 +28,7 @@ namespace Game1.Enemy
             Location = new Vector2(600, 200);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * 5, 16 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -37,7 +39,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * 5, height * 5);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -47,7 +49,7 @@ namespace Game1.Enemy
             // Do nothing.
         }
 
-        public void UpdateEnemy(Game game)
+        public void UpdateEnemy()
         {
             // Do nothing.
         }

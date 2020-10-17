@@ -17,7 +17,7 @@ namespace Game1
             
         }
 
-        public string isCollided(IBlock blocks,Rectangle rectangle1, Rectangle rectangle2)
+        public string isCollided(Rectangle rectangle1, Rectangle rectangle2)
         {
             String direction="";
             Rectangle rec1 = rectangle1;

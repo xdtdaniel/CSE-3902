@@ -8,7 +8,7 @@ namespace Game1
 {
     public interface IEnemy
     {
-        public void UpdateEnemy(Game game);
+        public void UpdateEnemy();
         public void DrawEnemy(SpriteBatch spriteBatch);
         public void FireProjectile();
         public Rectangle GetRectangle();

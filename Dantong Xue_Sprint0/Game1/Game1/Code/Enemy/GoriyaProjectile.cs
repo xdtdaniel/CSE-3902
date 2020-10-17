@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.Direct2D1.Effects;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,6 +26,8 @@ namespace Game1.Enemy
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
+        private int scale = 3;
+
         public GoriyaProjectile()
         {
             Random Rnd = new Random();
@@ -36,7 +39,7 @@ namespace Game1.Enemy
             NegativeVelocity = -5.0;
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * 5, 8 * 5, 8 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * scale, 8 * scale, 8 * scale);
         }
 
         public void DrawProjectile(SpriteBatch spriteBatch)
@@ -52,7 +55,7 @@ namespace Game1.Enemy
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void UpdateProjectile(Game game)
+        public void UpdateProjectile()
         {
             if (FrameRateModifier < 3)
             {
@@ -80,7 +83,7 @@ namespace Game1.Enemy
             }
             else
             {
-                if (HitEdge(game))
+                if (HitEdge())
                 {
                     Velocity = 0.0 - Velocity;
                     ChangeDirectionTimer = 0;
@@ -125,10 +128,10 @@ namespace Game1.Enemy
             CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * 5, 8 * 5, 8 * 5);
         }
 
-        private bool HitEdge(Game game)
+        private bool HitEdge()
         {
             Boolean outside = false;
-            if (Location.X <= 0 - 20 || Location.X >= game.Window.ClientBounds.Width - 68 || Location.Y <= 0 - 16 || Location.Y >= game.Window.ClientBounds.Height - 60)
+            if (Location.X <= 32 * scale || Location.Y <= 32 * scale || Location.Y >= 144 * scale || Location.X <= 192 * scale)
             {
                 outside = true;
             }
