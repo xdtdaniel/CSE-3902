@@ -14,7 +14,7 @@ namespace Game1.Player.Interface
         void AttackZ();
         void UseItem();
         void TakeDamage();
-        void KnockedBack(string direction, string collisionSide);
+        void KnockedBack(string collisionSide);
         void PickUp(int pickUp);
         void Update(ref int x, ref int y, int direction, bool isMoving);
         void Draw(SpriteBatch spriteBatch, int x, int y, int direction);

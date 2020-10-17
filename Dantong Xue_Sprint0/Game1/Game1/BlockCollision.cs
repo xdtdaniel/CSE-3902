@@ -31,7 +31,7 @@ namespace Game1
                 // check the collison direction
                 if ((intersectionRectangle.Width >= intersectionRectangle.Height)) // above and below
                  {
-                    if (rec1.Y > rec2.Y) // from below
+                    if (rec1.Y < rec2.Y) // from below
                     {
                             direction = "down";
                     }
@@ -42,7 +42,7 @@ namespace Game1
                     }
                     else // left and right
                     {
-                        if (rec1.X > rec2.X)//from right
+                        if (rec1.X < rec2.X)//from right
                         {
                         direction = "right";
                         }

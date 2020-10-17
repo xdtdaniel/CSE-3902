@@ -48,9 +48,9 @@ namespace Game1.Player.PlayerCharacter
             // test collision
             link.hp -= 10;
         }
-        public void KnockedBack(string direction, string collisionSide)
+        public void KnockedBack(string collisionSide)
         {
-            link.state = new KnockedBackLink(link, direction, collisionSide);
+            link.state = new KnockedBackLink(link, collisionSide);
         }
         public void Update(ref int x, ref int y, int direction, bool isMoving)
         {

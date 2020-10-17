@@ -21,14 +21,14 @@ namespace Game1.Player.PlayerCharacter
         Link link;
 
         Rectangle rectangle;
-        public KnockedBackLink(Link link, string direction, string collisionSide)
+        public KnockedBackLink(Link link, string collisionSide)
         {
             currentFrame = 0;
             thirdFrame = 0;
             this.collisionSide = collisionSide;
 
             int index = 0;
-            switch (direction)
+            switch (link.direction)
             {
                 case "down":
                     index = 0;
@@ -61,7 +61,7 @@ namespace Game1.Player.PlayerCharacter
         public void TakeDamage()
         {
         }
-        public void KnockedBack(string direction, string collisionSide)
+        public void KnockedBack(string collisionSide)
         {
         }
         public void Update(ref int x, ref int y, int direction, bool isMoving)
@@ -87,10 +87,10 @@ namespace Game1.Player.PlayerCharacter
             switch (collisionSide)
             {
                 case "down":
-                    y -= 10;
+                    y -= 5;
                     break;
                 case "right":
-                    x -= 10;
+                    x -= 5;
                     if (currentFrame < 10)
                     {
                         y -= 5;
@@ -101,10 +101,10 @@ namespace Game1.Player.PlayerCharacter
                     }
                     break;
                 case "up":
-                    y += 10;
+                    y += 5;
                     break;
                 case "left":
-                    x += 10;
+                    x += 5;
                     if (currentFrame < 10)
                     {
                         y -= 5;

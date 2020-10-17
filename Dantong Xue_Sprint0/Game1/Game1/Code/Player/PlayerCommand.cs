@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using Game1.Code.Player;
 using Game1.Player.Interface;
 using Game1.Enemy;
+using Game1.Code.LoadFile;
 
 namespace Game1
 {
@@ -18,27 +19,37 @@ namespace Game1
     {
         private SpriteBatch spriteBatch;
         private Game1 game;
+        // test
+        string collidedSide;
+        private BlockCollision blockCollision;
+        private Dictionary<string, List<Rectangle>> blockList;
+        private List<IEnemy> enemyList;
 
-        private PlayerAquamentusCollisionHandler playerAquamentusCollisionHandler;
+        private PlayerBlockCollisionHandler playerBlockCollisionHandler;
+        private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
 
         public PlayerCommand(SpriteBatch spriteBatch, Game1 game)
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
+            //
+            collidedSide = "";
+            blockCollision = new BlockCollision();
+            blockList = LoadAll.Instance.GetMapArtifacts();
+            enemyList = LoadEnemy.Instance.GetEnemyList();
 
-            playerAquamentusCollisionHandler = new PlayerAquamentusCollisionHandler();
+            playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
+            playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
 
         }
 
         public void PlayerUpdate()
         {
-            game.link.Update(game.playerKeyboardController.Direction(), game.playerKeyboardController.IsMoving());
+            game.link.direction = game.playerKeyboardController.Direction();
+            game.link.Update(game.playerKeyboardController.IsMoving());
 
-            // traverse enemy list
-            /*for (int i = 0; i < 9; i++)
-            {
-                collisionSide =
-            }*/
+            playerBlockCollisionHandler.HandleCollision(game.link, blockList, blockCollision);
+            playerEnemyCollisionHandler.HandleCollision(game.link, enemyList, blockCollision);
         }
         public void PlayerDraw()
         {
@@ -64,7 +75,7 @@ namespace Game1
             {
                 game.link.PickUp(game.playerKeyboardController.PickUp());
             }
-            game.link.Draw(spriteBatch, game.playerKeyboardController.Direction());
+            game.link.Draw(spriteBatch);
 
             // for collision test
             string x = "x: " + game.link.x.ToString();
@@ -72,10 +83,11 @@ namespace Game1
             string damagedTimeRemain = "time: " + game.link.damageTimeCounter.ToString();
             string hp = "hp: " + game.link.hp.ToString();
 
-            spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 100), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, y, new Vector2(game.link.x, game.link.y - 75), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, damagedTimeRemain, new Vector2(game.link.x, game.link.y - 50), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 25), Color.Black);
+
+            spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 125), Color.Black);
+            spriteBatch.DrawString(game._spriteFont, y, new Vector2(game.link.x, game.link.y - 100), Color.Black);
+            spriteBatch.DrawString(game._spriteFont, damagedTimeRemain, new Vector2(game.link.x, game.link.y - 75), Color.Black);
+            spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 50), Color.Black);
         }
     }
 }
