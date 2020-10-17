@@ -35,7 +35,7 @@ namespace Game1.Code.LoadFile
             }
         }
 
-        private List<IEnemy> Enemies = new List<IEnemy>();
+        private List<Tuple<IEnemy, string>> Enemies = new List<Tuple<IEnemy, string>>();
 
         public void LoadAllEnemy()
         {
@@ -79,23 +79,23 @@ namespace Game1.Code.LoadFile
                 {
                     case "aquamentus":
                         Enemy = new Aquamentus(location);
-                        Enemies.Add(Enemy);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "aquamentus"));
                         break;
                     case "gel":
                         Enemy = new Gel(location);
-                        Enemies.Add(Enemy);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "gel"));
                         break;
                     case "keese":
                         Enemy = new Keese(location);
-                        Enemies.Add(Enemy);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "keese"));
                         break;
                     case "stalfos":
                         Enemy = new Stalfos(location);
-                        Enemies.Add(Enemy);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "stalfos"));
                         break;
                     case "goriya":
                         Enemy = new Goriya(location);
-                        Enemies.Add(Enemy);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "goriya"));
                         break;
                 }
 
@@ -103,7 +103,8 @@ namespace Game1.Code.LoadFile
 
         }
 
-        public List<IEnemy> GetEnemyList() 
+
+        public List<Tuple<IEnemy, string>> GetEnemyList() 
         {
             return Enemies;
         }

@@ -12,6 +12,7 @@ using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Game1
@@ -36,7 +37,7 @@ namespace Game1
 
         private List<object> controllerList;
 
-        private List<IEnemy> EnemyList;
+        private List<Tuple<IEnemy, string>> EnemyList;
 
         private IController blockKeyboardController;
         private ItemKeyboardController itemKeyboardController;

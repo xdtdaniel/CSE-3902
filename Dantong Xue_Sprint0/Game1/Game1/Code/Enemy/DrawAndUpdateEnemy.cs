@@ -17,19 +17,19 @@ namespace Game1.Code.Enemy
             }
         }
 
-        public void DrawAllEnemy(List<IEnemy> Enemies, SpriteBatch spriteBatch)
+        public void DrawAllEnemy(List<Tuple<IEnemy, string>> Enemies, SpriteBatch spriteBatch)
         {
             for (int i = 0; i < Enemies.Count; i++)
             {
-                Enemies[i].DrawEnemy(spriteBatch);
+                Enemies[i].Item1.DrawEnemy(spriteBatch);
             }
         }
 
-        public void UpdateAllEnemy(List<IEnemy> Enemies, SpriteBatch spriteBatch)
+        public void UpdateAllEnemy(List<Tuple<IEnemy, string>> Enemies, SpriteBatch spriteBatch)
         {
             for (int i = 0; i < Enemies.Count; i++)
             {
-                Enemies[i].UpdateEnemy();
+                Enemies[i].Item1.UpdateEnemy();
             }
         }
     }
