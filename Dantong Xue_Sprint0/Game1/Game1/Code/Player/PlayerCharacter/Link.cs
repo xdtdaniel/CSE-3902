@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Microsoft.Xna.Framework;
+using Game1.Code.Player;
+using Game1.Enemy;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -16,8 +18,11 @@ namespace Game1.Player.PlayerCharacter
         public int y;
         public int damageTimeCounter;
         public bool isDamaged;
+        public int hp;
 
-        PlayerItem item; //
+        private int directionIndex;     
+
+        PlayerItem item; 
 
         public IPlayerLinkState state;
         public Link()
@@ -26,6 +31,11 @@ namespace Game1.Player.PlayerCharacter
             y = 300;
             damageTimeCounter = 0;
             isDamaged = false;
+            hp = 100;
+
+            directionIndex = 0;
+
+            
 
             state = new NormalLink(this);
 
@@ -55,19 +65,58 @@ namespace Game1.Player.PlayerCharacter
         {
             state.PickUp(pickUp);
         }
-        public Rectangle ToRectangle()
+        public Rectangle GetRectangle()
         {
-            return state.ToRectangle();
+            return state.GetRectangle();
         }
-        public void Update(int direction, bool isMoving)
+        public void KnockedBack(string direction, string collisionSide)
         {
-            state.Update(ref x, ref y, direction, isMoving);
-            item.Update(x, y, direction);
+            state.KnockedBack(direction, collisionSide);
+        }
+        public void Update(string direction, bool isMoving)
+        {
+            switch (direction)
+            {
+                case "down":
+                    directionIndex = 0;
+                    break;
+                case "right":
+                    directionIndex = 1;
+                    break;
+                case "up":
+                    directionIndex = 2;
+                    break;
+                case "left":
+                    directionIndex = 3;
+                    break;
+                default:
+                    break;
+            }
+            state.Update(ref x, ref y, directionIndex, isMoving);
+            item.Update(x, y, directionIndex);
             
+           
         }
-        public void Draw(SpriteBatch spriteBatch, int direction)
+        public void Draw(SpriteBatch spriteBatch, string direction)
         {
-            state.Draw(spriteBatch, x, y, direction);
+            switch (direction)
+            {
+                case "down":
+                    directionIndex = 0;
+                    break;
+                case "right":
+                    directionIndex = 1;
+                    break;
+                case "up":
+                    directionIndex = 2;
+                    break;
+                case "left":
+                    directionIndex = 3;
+                    break;
+                default:
+                    break;
+            }
+            state.Draw(spriteBatch, x, y, directionIndex);
             item.Draw(spriteBatch);
         }
     }

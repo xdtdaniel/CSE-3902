@@ -24,6 +24,7 @@ namespace Game1.Player.PlayerCharacter
         IPlayerSprite bomb;
         IPlayerSprite bombExplosion;
 
+        Rectangle rectangle;
         public UseBomb(PlayerItem item)
         {
             used = false;
@@ -83,13 +84,18 @@ namespace Game1.Player.PlayerCharacter
             }
             if (currentFrame == 0)
             {
-                bomb.Draw(spriteBatch, x, y, currentFrame, direction);
+                rectangle = bomb.Draw(spriteBatch, x, y, currentFrame, direction);
             }
             else 
             {
-                bombExplosion.Draw(spriteBatch, x, y, currentFrame, direction);
+                rectangle = bombExplosion.Draw(spriteBatch, x, y, currentFrame, direction);
             }
             used = true;
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return rectangle;
         }
     }
 }
