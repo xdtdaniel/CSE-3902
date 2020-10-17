@@ -12,13 +12,15 @@ using Game1.Enemy;
 
 namespace Game1.Player.PlayerCharacter
 {
-    public class Link 
+    public class Link
     {
         public int x;
         public int y;
         public int damageTimeCounter;
         public bool isDamaged;
         public int hp;
+        public int defaultSpeed;
+        public int downSpeed, upSpeed, rightSpeed, leftSpeed;
 
         private int directionIndex;     
 
@@ -32,6 +34,7 @@ namespace Game1.Player.PlayerCharacter
             damageTimeCounter = 0;
             isDamaged = false;
             hp = 100;
+            defaultSpeed = downSpeed = upSpeed = rightSpeed = leftSpeed = 5;
 
             directionIndex = 0;
 

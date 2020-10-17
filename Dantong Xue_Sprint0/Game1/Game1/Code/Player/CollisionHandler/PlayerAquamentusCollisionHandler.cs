@@ -9,21 +9,64 @@ namespace Game1.Code.Player
 {
     class PlayerAquamentusCollisionHandler 
     {
-        string direction;
+        string collidedSide;
         public PlayerAquamentusCollisionHandler()
         {
-            direction = "down";
+            collidedSide = "";
         }
-        public void HandleCollision(Link link, IEnemy enemy, string direction, string side)
+        public void HandleCollision(Link link, Dictionary<string, List<Rectangle>> blockDict, BlockCollision blockCollision)
         {
-            //direction = side.isCollided(link.GetRectangle(), new Rectangle()/*enemy rectangle*/);
-            // for collision test
-            if (side != "")
+            foreach (KeyValuePair<string, List<Rectangle>> kvp in blockDict)
             {
-                link.TakeDamage();
-                link.KnockedBack(direction, side);
+                foreach (Rectangle rect in kvp.Value)
+                {
+                    collidedSide = blockCollision.isCollided(link.GetRectangle(), rect);
+                    if (collidedSide != "")
+                    {
+                        switch (kvp.Key)
+                        {
+                            case "blocks":
+                                if (collidedSide == "down")
+                                {
+                                    link.y -= link.downSpeed;
+                                }
+                                if (collidedSide == "right")
+                                {
+                                    link.x -= link.rightSpeed;
+                                }
+                                if (collidedSide == "up")
+                                {
+                                    link.y += link.upSpeed;
+                                }
+                                if (collidedSide == "left")
+                                {
+                                    link.x += link.leftSpeed;
+                                }
+                                break;
+                            case "holes":
+                                // to do
+                                break;
+                            case "openDoors":
+                                // to do
+                                break;
+                            case "shutDoors":
+                                // to do
+                                break;
+                            case "lockedDoors":
+                                // to do
+                                break;
+                            case "stairs":
+                                // to do
+                                break;
+                            default:
+                                break;
+                        }
+
+                    }
+                }
             }
-            
+
+
 
         }
 

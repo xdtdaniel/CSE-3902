@@ -120,25 +120,25 @@ namespace Game1.Player.PlayerCharacter
                     case 0: /* front */
                         if (y < 2560)
                         {
-                            y += 5;
+                            y += link.downSpeed;
                         }
                         break;
                     case 1: /* right */
                         if (x < 1440)
                         {
-                            x += 5;
+                            x += link.rightSpeed;
                         }
                         break;
                     case 2: /* back */
                         if (y > 0)
                         {
-                            y -= 5;
+                            y -= link.upSpeed;
                         }
                         break;
                     case 3: /* left */
                         if (x > 0)
                         {
-                            x -= 5;
+                            x -= link.leftSpeed;
                         }
                         break;
                     default:

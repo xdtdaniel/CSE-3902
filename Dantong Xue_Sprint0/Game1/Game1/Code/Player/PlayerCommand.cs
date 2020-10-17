@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using Game1.Code.Player;
 using Game1.Player.Interface;
 using Game1.Enemy;
+using Game1.Code.LoadFile;
 
 namespace Game1
 {
@@ -18,14 +19,24 @@ namespace Game1
     {
         private SpriteBatch spriteBatch;
         private Game1 game;
+        // test
+        string collidedSide;
+        private BlockCollision blockCollision;
+        private Dictionary<string, List<Rectangle>> blockDict;
 
+        private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerAquamentusCollisionHandler playerAquamentusCollisionHandler;
 
         public PlayerCommand(SpriteBatch spriteBatch, Game1 game)
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
+            //
+            collidedSide = "";
+            blockCollision = new BlockCollision();
+            blockDict = LoadAll.Instance.GetMapArtifacts();
 
+            playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerAquamentusCollisionHandler = new PlayerAquamentusCollisionHandler();
 
         }
@@ -34,11 +45,7 @@ namespace Game1
         {
             game.link.Update(game.playerKeyboardController.Direction(), game.playerKeyboardController.IsMoving());
 
-            // traverse enemy list
-            /*for (int i = 0; i < 9; i++)
-            {
-                collisionSide =
-            }*/
+            playerBlockCollisionHandler.HandleCollision(game.link, blockDict, blockCollision);
         }
         public void PlayerDraw()
         {
@@ -72,10 +79,10 @@ namespace Game1
             string damagedTimeRemain = "time: " + game.link.damageTimeCounter.ToString();
             string hp = "hp: " + game.link.hp.ToString();
 
-            spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 100), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, y, new Vector2(game.link.x, game.link.y - 75), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, damagedTimeRemain, new Vector2(game.link.x, game.link.y - 50), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 25), Color.Black);
+            spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 125), Color.Black);
+            spriteBatch.DrawString(game._spriteFont, y, new Vector2(game.link.x, game.link.y - 100), Color.Black);
+            spriteBatch.DrawString(game._spriteFont, damagedTimeRemain, new Vector2(game.link.x, game.link.y - 75), Color.Black);
+            spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 50), Color.Black);
         }
     }
 }
