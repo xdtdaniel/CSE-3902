@@ -22,7 +22,7 @@ namespace Game1.Code.LoadFile
         private LoadAll()
         {
             multiplier = 8;
-            scale = 2;
+            scale = 3;
             startPos = new Vector2(0, 0);
             currMapID = 2;
         }
