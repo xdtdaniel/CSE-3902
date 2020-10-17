@@ -20,10 +20,10 @@ namespace Game1
             
         }
 
-        public Rectangle DrawBlock(SpriteBatch spriteBatch, Vector2 location)
+        public void DrawBlock(SpriteBatch spriteBatch, Vector2 location)
         {
             Block.Draw(spriteBatch, location);
-            return new Rectangle((int)location.X, (int)location.Y, currTexture.Width * LoadAll.Instance.scale, currTexture.Height * LoadAll.Instance.scale);
+            
         }
 
         public void UpdateBlock()
@@ -34,6 +34,11 @@ namespace Game1
         public void SetPath(Vector2 from, Vector2 to)
         {
             //nonmoving
+        }
+
+        public Rectangle GetRectangle(Vector2 location)
+        {
+            return new Rectangle((int)location.X, (int)location.Y, currTexture.Width * LoadAll.Instance.Scale, currTexture.Height * LoadAll.Instance.Scale);
         }
     }
 }

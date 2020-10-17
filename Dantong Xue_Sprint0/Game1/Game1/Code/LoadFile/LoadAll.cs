@@ -21,24 +21,23 @@ namespace Game1.Code.LoadFile
 
         private LoadAll()
         {
-            multiplier = 8;
-            scale = 2;
-            startPos = new Vector2(0, 0);
+            Multiplier = 8;
+            Scale = 2;
+            StartPos = new Vector2(0, 0);
             currMapID = 2;
         }
 
         private List<string> mapList;
         private int currMapID = 1;
-        private Dictionary<string, List<Rectangle>> artifacts;
 
-        public int multiplier { get; set; }
-        public int scale { get; set; }
-        public Vector2 startPos { get; set; }
+        public int Multiplier { get; set; }
+        public int Scale { get; set; }
+        public Vector2 StartPos { get; set; }
 
-        public void LoadRoom(SpriteBatch currSpriteBatch)
+        public void LoadRoom()
         {
             string mapName = currMapID.ToString() + ".csv";
-            artifacts = LoadMap.Instance.LoadOneMap(currSpriteBatch, mapName);
+            LoadMap.Instance.LoadOneMap(mapName);
         }
 
         public void ChangeMap(int mapID)
@@ -46,9 +45,14 @@ namespace Game1.Code.LoadFile
             currMapID = mapID;
         }
 
-        public Dictionary<string, List<Rectangle>> GetArtifacts()
+        public Dictionary<string, List<Rectangle>> GetMapArtifacts()
         {
-            return artifacts;
+            return LoadMap.Instance.GetArtifacts();
+        }
+
+        public List<Tuple<IBlock, Vector2>> GetMapBlocksToDraw()
+        {
+            return LoadMap.Instance.GetBlocksToDraw();
         }
 
 

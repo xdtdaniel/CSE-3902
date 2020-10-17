@@ -85,6 +85,8 @@ namespace Game1
             _spriteFont = Content.Load<SpriteFont>("font");
 
             LoadEnemy.Instance.LoadAllEnemy(_spriteBatch);
+
+            LoadAll.Instance.LoadRoom();
         }
 
         protected override void Update(GameTime gameTime)
@@ -112,9 +114,11 @@ namespace Game1
             base.Draw(gameTime);
 
             _spriteBatch.Begin();
-            LoadAll.Instance.LoadRoom(_spriteBatch);
+            
             LoadItem.Instance.LoadRoomItem(_spriteBatch);
             LoadEnemy.Instance.DrawAllEnemy();
+
+            DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
 
             // enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();

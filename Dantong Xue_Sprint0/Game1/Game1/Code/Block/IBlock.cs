@@ -9,7 +9,8 @@ namespace Game1
     public interface IBlock
     {
         public void UpdateBlock();
-        public Rectangle DrawBlock(SpriteBatch spriteBatch, Vector2 location);
+        public void DrawBlock(SpriteBatch spriteBatch, Vector2 location);
         public void SetPath(Vector2 from, Vector2 to);
+        public Rectangle GetRectangle(Vector2 location);
     }
 }

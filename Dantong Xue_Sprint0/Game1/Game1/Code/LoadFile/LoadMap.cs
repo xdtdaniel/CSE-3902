@@ -24,15 +24,7 @@ namespace Game1.Code.LoadFile
         private int scale;
         private Vector2 startPos;
 
-        private SpriteBatch spriteBatch;
-
-        private class Cell 
-        {
-            private int column { get; set; }
-            private int row { get; set; }            
-            private string element { get; set; }
-
-        }
+        private List<Tuple<IBlock, Vector2>> blocksListToDraw;
 
 
         List<Tuple<int, int, string>> mapElementList;
@@ -49,9 +41,9 @@ namespace Game1.Code.LoadFile
 
         private LoadMap()
         {
-            multiplier = LoadAll.Instance.multiplier;
-            scale = LoadAll.Instance.scale;
-            startPos = LoadAll.Instance.startPos;
+            multiplier = LoadAll.Instance.Multiplier;
+            scale = LoadAll.Instance.Scale;
+            startPos = LoadAll.Instance.StartPos;
         }
 
 
@@ -64,9 +56,10 @@ namespace Game1.Code.LoadFile
 
         private Dictionary<string, List<Rectangle>> artifacts;
 
-        public Dictionary<string, List<Rectangle>> LoadOneMap(SpriteBatch currSpriteBatch, string mapName) 
+        public void LoadOneMap(string mapName) 
         
         {
+            blocksListToDraw = new List<Tuple<IBlock, Vector2>>();
 
             // initialization of lists and artifacts dictionary
 
@@ -79,7 +72,6 @@ namespace Game1.Code.LoadFile
 
             artifacts = new Dictionary<string, List<Rectangle>>();
 
-            spriteBatch = currSpriteBatch;
             mapElementList = new List<Tuple<int, int, string>>();
 
             string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -118,7 +110,7 @@ namespace Game1.Code.LoadFile
 
             IBlock room;
             room = BlockFactory.Instance.CreateRoom();
-            room.DrawBlock(spriteBatch, startPos);
+            blocksListToDraw.Add(new Tuple<IBlock, Vector2>(room, startPos));
 
             Vector2 location;
             
@@ -138,145 +130,177 @@ namespace Game1.Code.LoadFile
                 {
                     case "black":
                         blockToDraw = BlockFactory.Instance.CreateBlackBlock();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "block":
                         blockToDraw = BlockFactory.Instance.CreateFlatBlock();
-                        blockToDraw.DrawBlock(spriteBatch, location);
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
                         break;
                     case "dragon":
                         blockToDraw = BlockFactory.Instance.CreateDragon();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "dragonBlue":
                         blockToDraw = BlockFactory.Instance.CreateBlueDragon();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "fire":
                         blockToDraw = BlockFactory.Instance.CreateFire();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "fish":
                         blockToDraw = BlockFactory.Instance.CreateFish();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "fishBlue":
                         blockToDraw = BlockFactory.Instance.CreateBlueFish();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "floatBlock":
                         blockToDraw = BlockFactory.Instance.CreateFloatBlock();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "grey":
                         blockToDraw = BlockFactory.Instance.CreateGreyBlock();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "holeFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontHole();
-                        holes.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        holes.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "holeLeft":
                         blockToDraw = BlockFactory.Instance.CreateLeftHole();
-                        holes.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        holes.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "holeRight":
                         blockToDraw = BlockFactory.Instance.CreateRightHole();
-                        holes.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        holes.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "holeBack":
                         blockToDraw = BlockFactory.Instance.CreateBackHole();
-                        holes.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        holes.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "lockedDoorFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontLockedDoor();
-                        lockedDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        lockedDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "lockedDoorLeft":
                         blockToDraw = BlockFactory.Instance.CreateLeftLockedDoor();
-                        lockedDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        lockedDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "lockedDoorRight":
                         blockToDraw = BlockFactory.Instance.CreateRightLockedDoor();
-                        lockedDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        lockedDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "lockedDoorBack":
                         blockToDraw = BlockFactory.Instance.CreateBackLockedDoor();
-                        lockedDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        lockedDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "openDoorFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontOpenDoor();
-                        openDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        openDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "openDoorLeft":
                         blockToDraw = BlockFactory.Instance.CreateLeftOpenDoor();
-                        openDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        openDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "openDoorRight":
                         blockToDraw = BlockFactory.Instance.CreateRightOpenDoor();
-                        openDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        openDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "openDoorBack":
                         blockToDraw = BlockFactory.Instance.CreateBackOpenDoor();
-                        openDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        openDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "shutDoorFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontShutDoor();
-                        shutDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        shutDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "shutDoorLeft":
                         blockToDraw = BlockFactory.Instance.CreateLeftShutDoor();
-                        shutDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        shutDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "shutDoorRight":
                         blockToDraw = BlockFactory.Instance.CreateRightShutDoor();
-                        shutDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        shutDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "shutDoorBack":
                         blockToDraw = BlockFactory.Instance.CreateBackShutDoor();
-                        shutDoors.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        shutDoors.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "sandFloor":
                         blockToDraw = BlockFactory.Instance.CreateSandFloor();
-                        blockToDraw.DrawBlock(spriteBatch, location);
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
                         break;
                     case "stair":
                         blockToDraw = BlockFactory.Instance.CreateStair();
-                        stairs.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        stairs.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wallFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontWall();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wallLeft":
                         blockToDraw = BlockFactory.Instance.CreateLeftWall();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wallRight":
                         blockToDraw = BlockFactory.Instance.CreateRightWall();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wallBack":
                         blockToDraw = BlockFactory.Instance.CreateBackWall();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wallBW":
                         blockToDraw = BlockFactory.Instance.CreateBWWall();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wallGrey":
                         blockToDraw = BlockFactory.Instance.CreateGreyWall();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "water":
                         blockToDraw = BlockFactory.Instance.CreateWater();
-                        blocks.Add(blockToDraw.DrawBlock(spriteBatch, location));
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wall_1":
-                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 112 * LoadAll.Instance.scale, 32 * LoadAll.Instance.scale));
+                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 112 * LoadAll.Instance.Scale, 32 * LoadAll.Instance.Scale));
                         break;
                     case "wall_2":
-                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 32 * LoadAll.Instance.scale, 40 * LoadAll.Instance.scale));
+                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 32 * LoadAll.Instance.Scale, 40 * LoadAll.Instance.Scale));
                         break;
 
                 }
@@ -290,12 +314,18 @@ namespace Game1.Code.LoadFile
             artifacts.Add("lockedDoors", lockedDoors);
             artifacts.Add("stairs", stairs);
 
-            return artifacts;
+        }
 
+        public Dictionary<string, List<Rectangle>> GetArtifacts()
+        {
+            return artifacts;
         }
 
 
-
+        public List<Tuple<IBlock, Vector2>> GetBlocksToDraw()
+        {
+            return blocksListToDraw;
+        }
 
 
     }
