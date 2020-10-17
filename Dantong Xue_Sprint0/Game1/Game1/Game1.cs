@@ -47,7 +47,6 @@ namespace Game1
 
         private BlockCollision collisionDetector; 
 
-        private PlayerAquamentusCollisionHandler playerAquamentusCollisionHandler;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -73,7 +72,6 @@ namespace Game1
 
             collisionDetector = new BlockCollision();
 
-            playerAquamentusCollisionHandler = new PlayerAquamentusCollisionHandler();
         }
 
         protected override void LoadContent()

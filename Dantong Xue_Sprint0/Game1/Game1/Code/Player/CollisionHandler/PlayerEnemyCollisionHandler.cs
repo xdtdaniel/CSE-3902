@@ -14,11 +14,11 @@ namespace Game1.Code.Player
         {
             collidedSide = "";
         }
-        public void HandleCollision(Link link, List<IEnemy> enemyList, BlockCollision blockCollision)
+        public void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList, BlockCollision blockCollision)
         {
-            foreach (IEnemy enemy in enemyList)
+            foreach (Tuple<IEnemy, string> tuple in enemyList)
             {
-                collidedSide = blockCollision.isCollided(link.GetRectangle(), enemy.GetRectangle());
+                collidedSide = blockCollision.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
                 if (collidedSide != "" && link.damageTimeCounter == 0)
                 {
                     link.TakeDamage();

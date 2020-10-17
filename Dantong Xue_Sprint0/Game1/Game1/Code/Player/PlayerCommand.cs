@@ -23,7 +23,7 @@ namespace Game1
         string collidedSide;
         private BlockCollision blockCollision;
         private Dictionary<string, List<Rectangle>> blockList;
-        private List<IEnemy> enemyList;
+        private List<Tuple<IEnemy, string>> enemyList;
 
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;

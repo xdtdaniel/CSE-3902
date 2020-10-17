@@ -3,8 +3,15 @@
     "",
     "\\Dantong Xue_Sprint0",
     "\\Dantong Xue_Sprint0\\Game1",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1"
+    "\\Dantong Xue_Sprint0\\Game1\\Game1",
+    "\\Dantong Xue_Sprint0\\Game1\\Game1\\bin",
+    "\\Dantong Xue_Sprint0\\Game1\\Game1\\bin\\Debug",
+    "\\Dantong Xue_Sprint0\\Game1\\Game1\\bin\\Debug\\netcoreapp3.1",
+    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code",
+    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\Player",
+    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\Player\\CollisionHandler",
+    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Content"
   ],
-  "SelectedNode": "\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.cs",
+  "SelectedNode": "\\Dantong Xue_Sprint0\\Game1\\Game1\\Content\\Content.mgcb",
   "PreviewInSolutionExplorer": false
 }
