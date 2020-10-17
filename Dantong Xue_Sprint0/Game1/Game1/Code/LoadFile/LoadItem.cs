@@ -39,9 +39,9 @@ namespace Game1.Code.LoadFile
 
         private LoadItem()
         {
-            multiplier = LoadAll.Instance.Multiplier;
-            scale = LoadAll.Instance.Scale;
-            startPos = LoadAll.Instance.StartPos;           
+            multiplier = LoadAll.Instance.multiplier;
+            scale = LoadAll.Instance.scale;
+            startPos = LoadAll.Instance.startPos;           
         }
         
 

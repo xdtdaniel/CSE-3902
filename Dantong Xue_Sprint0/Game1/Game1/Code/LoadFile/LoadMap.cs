@@ -41,9 +41,9 @@ namespace Game1.Code.LoadFile
 
         private LoadMap()
         {
-            multiplier = LoadAll.Instance.Multiplier;
-            scale = LoadAll.Instance.Scale;
-            startPos = LoadAll.Instance.StartPos;
+            multiplier = LoadAll.Instance.multiplier;
+            scale = LoadAll.Instance.scale;
+            startPos = LoadAll.Instance.startPos;
         }
 
 
@@ -297,10 +297,10 @@ namespace Game1.Code.LoadFile
                         blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wall_1":
-                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 112 * LoadAll.Instance.Scale, 32 * LoadAll.Instance.Scale));
+                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 112 * LoadAll.Instance.scale, 32 * LoadAll.Instance.scale));
                         break;
                     case "wall_2":
-                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 32 * LoadAll.Instance.Scale, 40 * LoadAll.Instance.Scale));
+                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 32 * LoadAll.Instance.scale, 40 * LoadAll.Instance.scale));
                         break;
 
                 }

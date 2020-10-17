@@ -30,9 +30,9 @@ namespace Game1.Code.LoadFile
         private List<string> mapList;
         private int currMapID = 1;
 
-        public int Multiplier { get; set; }
-        public int Scale { get; set; }
-        public Vector2 StartPos { get; set; }
+        public int multiplier { get; set; }
+        public int scale { get; set; }
+        public Vector2 startPos { get; set; }
 
         public void LoadRoom()
         {
