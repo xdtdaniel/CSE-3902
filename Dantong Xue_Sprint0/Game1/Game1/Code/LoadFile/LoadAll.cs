@@ -21,9 +21,9 @@ namespace Game1.Code.LoadFile
 
         private LoadAll()
         {
-            Multiplier = 8;
-            Scale = 2;
-            StartPos = new Vector2(0, 0);
+            multiplier = 8;
+            scale = 3;
+            startPos = new Vector2(0, 0);
             currMapID = 2;
         }
 

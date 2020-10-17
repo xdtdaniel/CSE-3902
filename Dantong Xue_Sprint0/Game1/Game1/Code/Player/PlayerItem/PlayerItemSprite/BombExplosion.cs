@@ -23,15 +23,15 @@ namespace Game1.Player
 
             Rectangle sourceRectangle = new Rectangle(currentFrame * width, 0, width, height);
             Rectangle[] destinationRectangles = new Rectangle[9];
-            destinationRectangles[0] = new Rectangle(x - 20, y, 100, 100);              
-            destinationRectangles[1] = new Rectangle(x - 20 - 100, y, 100, 100);
-            destinationRectangles[2] = new Rectangle(x - 20 + 100, y, 100, 100);
-            destinationRectangles[3] = new Rectangle(x - 20, y - 100, 100, 100);
-            destinationRectangles[4] = new Rectangle(x - 20 - 100, y - 100, 100, 100);
-            destinationRectangles[5] = new Rectangle(x - 20 + 100, y - 100, 100, 100);
-            destinationRectangles[6] = new Rectangle(x - 20, y + 100, 100, 100);
-            destinationRectangles[7] = new Rectangle(x - 20 - 100, y + 100, 100, 100);
-            destinationRectangles[8] = new Rectangle(x - 20 + 100, y + 100, 100, 100);
+            destinationRectangles[0] = new Rectangle(x - 7, y, 48, 48);              
+            destinationRectangles[1] = new Rectangle(x - 7 - 48, y, 48, 48);
+            destinationRectangles[2] = new Rectangle(x - 7 + 48, y, 48, 48);
+            destinationRectangles[3] = new Rectangle(x - 7, y - 48, 48, 48);
+            destinationRectangles[4] = new Rectangle(x - 7 - 48, y - 48, 48, 48);
+            destinationRectangles[5] = new Rectangle(x - 7 + 48, y - 48, 48, 48);
+            destinationRectangles[6] = new Rectangle(x - 7, y + 48, 48, 48);
+            destinationRectangles[7] = new Rectangle(x - 7 - 48, y + 48, 48, 48);
+            destinationRectangles[8] = new Rectangle(x - 7 + 48, y + 48, 48, 48);
 
             for (int i = 0; i < 9; i++)
             {

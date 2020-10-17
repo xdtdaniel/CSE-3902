@@ -27,7 +27,7 @@ namespace Game1.Player
 
 
             Rectangle sourceRectangle = new Rectangle(currentFrame * width, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+            Rectangle destinationRectangle = new Rectangle(x, y, 48, 48);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 

@@ -22,7 +22,7 @@ namespace Game1.Player
             int height = Texture.Height;
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width / 5, height / 5);
+            Rectangle destinationRectangle = new Rectangle(x, y, width / 10, height / 10);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 

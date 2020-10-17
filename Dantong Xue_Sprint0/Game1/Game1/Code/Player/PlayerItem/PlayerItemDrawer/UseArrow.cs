@@ -49,23 +49,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update() 
         {
-            switch (direction)
-            {
-                case 0: /* front */
-                    y += 10;
-                    break;
-                case 1: /* right */
-                    x += 10;
-                    break;
-                case 2: /* back */
-                    y -= 10;
-                    break;
-                case 3: /* left */
-                    x -= 10;
-                    break;
-                default:
-                    break;
-            }
+            
             currentFrame++;
             if (currentFrame == 120)
             {
@@ -79,16 +63,16 @@ namespace Game1.Player.PlayerCharacter
                 switch (direction)
                 {
                     case 0: /* front */
-                        rectangle = frontArrow.Draw(spriteBatch, x += 40, y += 75, currentFrame, direction);
+                        rectangle = frontArrow.Draw(spriteBatch, x += 24, y += 48, currentFrame, direction);
                         break;
                     case 1: /* right */
-                        rectangle = rightArrow.Draw(spriteBatch, x += 100, y += 40, currentFrame, direction);
+                        rectangle = rightArrow.Draw(spriteBatch, x += 48, y += 24, currentFrame, direction);
                         break;
                     case 2: /* back */
-                        rectangle = backArrow.Draw(spriteBatch, x += 40, y -= 100, currentFrame, direction);
+                        rectangle = backArrow.Draw(spriteBatch, x += 24, y -= 48, currentFrame, direction);
                         break;
                     case 3: /* left */
-                        rectangle = leftArrow.Draw(spriteBatch, x -= 50, y += 40, currentFrame, direction);
+                        rectangle = leftArrow.Draw(spriteBatch, x -= 48, y += 24, currentFrame, direction);
                         break;
                     default:
                         break;
