@@ -11,31 +11,25 @@ namespace Game1
 {
     public class PlayerKeyboardController : IPlayerController
     {
-        private string direction;
+        private int direction;
         private bool isMoving;
         private bool attackN;
         private bool attackZ;
         private int itemNum;
         private bool isDamaged;
         private int pickUp;
-
-        public string side;
         public PlayerKeyboardController()
         {
-            direction = "down";
+            direction = 0;
             isMoving = false;
             attackN = false;
             attackZ = false;
             itemNum = -1;
             isDamaged = false;
             pickUp = -1;
-            
-            side = "";   // test collision
         }
         public void Update()
         {
-            side = "";   // test collision
-
             isMoving = false;
             attackN = false;
             attackZ = false;
@@ -98,50 +92,31 @@ namespace Game1
             }
             else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
             {
-                direction = "down";
+                direction = 0;
                 isMoving = true;
             }
             else if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
             {
-                direction = "right";
+                direction = 1;
                 isMoving = true;
             }
             else if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
             {
-                direction = "up";
+                direction = 2;
                 isMoving = true;
             }
             else if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
             {
-                direction = "left";
+                direction = 3;
                 isMoving = true;
             }
-            // collision test
-            else if (state.IsKeyDown(Keys.X))
-            {
-                side = "down";
-            }
-            else if (state.IsKeyDown(Keys.C))
-            {
-                side = "right";
-            }
-            else if (state.IsKeyDown(Keys.V))
-            {
-                side = "up";
-            }
-            else if (state.IsKeyDown(Keys.B))
-            {
-                side = "left";
-            }
-
-
             else
             {
                 isMoving = false;
             }
         }
 
-        public string Direction()
+        public int Direction()
         {
             return direction;
         }

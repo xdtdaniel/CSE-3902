@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,6 @@ namespace Game1.Player.Interface
     {
         void UseItem(int itemNum);
         void Update();
-        Rectangle GetRectangle();
         void Draw(SpriteBatch spriteBatch);
     }
 }

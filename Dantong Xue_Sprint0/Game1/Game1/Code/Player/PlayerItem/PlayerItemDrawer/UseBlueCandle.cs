@@ -21,7 +21,6 @@ namespace Game1.Player.PlayerCharacter
 
         IPlayerSprite blueCandle;
 
-        Rectangle rectangle;
         public UseBlueCandle(PlayerItem item)
         {
             used = false;
@@ -33,8 +32,6 @@ namespace Game1.Player.PlayerCharacter
             blueCandle = PlayerItemFactory.Instance.CreateBlueCandle();
 
             this.item = item;
-
-            rectangle = new Rectangle();
         }
         public void UseItem(int itemNum) 
         {
@@ -71,13 +68,8 @@ namespace Game1.Player.PlayerCharacter
                         break;
                 }
             }
-            rectangle = blueCandle.Draw(spriteBatch, x, y, currentFrame, direction);
+            blueCandle.Draw(spriteBatch, x, y, currentFrame, direction);
             used = true;
-        }
-
-        public Rectangle GetRectangle()
-        {
-            return rectangle;
         }
     }
 }

@@ -51,10 +51,6 @@ namespace Game1.Player.PlayerCharacter
         public void Draw(SpriteBatch spriteBatch)
         {
         }
-        public Rectangle GetRectangle()
-        {
-            return new Rectangle();
-        }
     }
 }
 

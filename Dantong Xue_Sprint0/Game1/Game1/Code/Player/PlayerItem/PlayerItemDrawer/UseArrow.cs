@@ -24,8 +24,6 @@ namespace Game1.Player.PlayerCharacter
         IPlayerSprite backArrow;
         IPlayerSprite leftArrow;
 
-        Rectangle rectangle;
-
         public UseArrow(PlayerItem item)
         {
             used = false;
@@ -41,8 +39,6 @@ namespace Game1.Player.PlayerCharacter
             leftArrow = PlayerItemFactory.Instance.CreateLeftArrow();
 
             this.item = item;
-
-            rectangle = new Rectangle();
         }
         public void UseItem(int itemNum) 
         {
@@ -79,16 +75,16 @@ namespace Game1.Player.PlayerCharacter
                 switch (direction)
                 {
                     case 0: /* front */
-                        rectangle = frontArrow.Draw(spriteBatch, x += 40, y += 75, currentFrame, direction);
+                        frontArrow.Draw(spriteBatch, x += 40, y += 75, currentFrame, direction);
                         break;
                     case 1: /* right */
-                        rectangle = rightArrow.Draw(spriteBatch, x += 100, y += 40, currentFrame, direction);
+                        rightArrow.Draw(spriteBatch, x += 100, y += 40, currentFrame, direction);
                         break;
                     case 2: /* back */
-                        rectangle = backArrow.Draw(spriteBatch, x += 40, y -= 100, currentFrame, direction);
+                        backArrow.Draw(spriteBatch, x += 40, y -= 100, currentFrame, direction);
                         break;
                     case 3: /* left */
-                        rectangle = leftArrow.Draw(spriteBatch, x -= 50, y += 40, currentFrame, direction);
+                        leftArrow.Draw(spriteBatch, x -= 50, y += 40, currentFrame, direction);
                         break;
                     default:
                         break;
@@ -97,25 +93,21 @@ namespace Game1.Player.PlayerCharacter
             switch (direction)
             {
                 case 0: /* front */
-                    rectangle = frontArrow.Draw(spriteBatch, x, y, currentFrame, direction);
+                    frontArrow.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 1: /* right */
-                    rectangle = rightArrow.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rightArrow.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 2: /* back */
-                    rectangle = backArrow.Draw(spriteBatch, x, y, currentFrame, direction);
+                    backArrow.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 3: /* left */
-                    rectangle = leftArrow.Draw(spriteBatch, x, y, currentFrame, direction);
+                    leftArrow.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 default:
                     break;
             }
             used = true;
-        }
-        public Rectangle GetRectangle()
-        {
-            return rectangle;
         }
     }
 }

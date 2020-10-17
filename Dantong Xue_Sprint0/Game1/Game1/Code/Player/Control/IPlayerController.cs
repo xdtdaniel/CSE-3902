@@ -11,7 +11,7 @@ namespace Game1
     {
         void Update();
 
-        string Direction();
+        int Direction();
 
         bool IsMoving();
         bool PressedAttackN();

@@ -21,7 +21,6 @@ namespace Game1.Player.PlayerCharacter
 
         IPlayerSprite blueRing;
 
-        Rectangle rectangle;
         public UseBlueRing(PlayerItem item)
         {
             used = false;
@@ -33,8 +32,6 @@ namespace Game1.Player.PlayerCharacter
             blueRing = PlayerItemFactory.Instance.CreateBlueRing();
 
             this.item = item;
-
-            rectangle = new Rectangle();
         }
         public void UseItem(int itemNum) 
         {
@@ -73,13 +70,8 @@ namespace Game1.Player.PlayerCharacter
                         break;
                 }
             }
-            rectangle = blueRing.Draw(spriteBatch, x, y, currentFrame, direction);
+            blueRing.Draw(spriteBatch, x, y, currentFrame, direction);
             used = true;
-        }
-
-        public Rectangle GetRectangle()
-        {
-            return rectangle;
         }
     }
 }

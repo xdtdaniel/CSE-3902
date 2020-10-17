@@ -54,19 +54,10 @@ namespace Game1.Player.PlayerCharacter
         {
             link.damageTimeCounter = 0;
             link.isDamaged = true;
-            // test collision
-            link.hp -= 10;
-        }
-        public void KnockedBack(string direction, string collisionSide)
-        {
-            link.state = new KnockedBackLink(link, direction, collisionSide);
         }
         public void Update(ref int x, ref int y, int direction, bool isMoving)
         {
-            if (link.isDamaged)
-            {
-                link.damageTimeCounter++;
-            }
+            link.damageTimeCounter++;
             if (link.damageTimeCounter == 90)
             {
                 link.damageTimeCounter = 0;
@@ -107,7 +98,7 @@ namespace Game1.Player.PlayerCharacter
 
             }
         }
-        public Rectangle GetRectangle()
+        public Rectangle ToRectangle()
         {
             return rectangle;
         }
