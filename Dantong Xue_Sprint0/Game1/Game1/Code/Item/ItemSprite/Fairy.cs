@@ -28,20 +28,23 @@ namespace Game1.Code.Item.ItemSprite
         private int displacement = 15;
         private int max_displacement = 100;
         private Rectangle CollisionRectangle;
+        private Game game;
 
-        public Fairy(Texture2D texture)
+        public Fairy(Texture2D texture, Game g)
         {
+            game = g;
             Texture = texture;
             TotalFrames = 2;
             Rows = 1;
             Columns = 2;
             CurrentFrame = 0;
 
+
         }
         /// <summary>
         /// Fairy move randomly inside the edges
         /// </summary>
-        public void Update(Game game)
+        public void Update()
         {
             count++;
             if (count==maxcount) {

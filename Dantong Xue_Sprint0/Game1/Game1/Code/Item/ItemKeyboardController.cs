@@ -33,7 +33,7 @@ namespace Game1.Code.Item
                 itemlist.MoveNext();
             }
 
-            itemlist.Update(game);
+            itemlist.Update();
 
             this.oldState = this.newState;
         }

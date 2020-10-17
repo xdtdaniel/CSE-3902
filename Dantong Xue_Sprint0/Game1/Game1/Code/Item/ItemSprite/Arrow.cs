@@ -16,8 +16,10 @@ namespace Game1.Code.Item.ItemSprite
         int height;
         int width;
         private Rectangle CollisionRectangle;
-        public  Arrow(Texture2D texture)
+        private Game game;
+        public  Arrow(Texture2D texture, Game g)
         {
+            game = g;
             Texture = texture;
         }
         public void Draw(SpriteBatch spriteBatch, int x, int y)
@@ -33,7 +35,7 @@ namespace Game1.Code.Item.ItemSprite
  
         }     
 
-        public void Update(Game game)
+        public void Update()
         {
 
         }

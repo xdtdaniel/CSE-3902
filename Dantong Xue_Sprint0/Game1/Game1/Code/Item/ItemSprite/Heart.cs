@@ -22,8 +22,10 @@ namespace Game1.Code.Item.ItemSprite
         private int count = 0;
         private int maxcount = 6;
         private Rectangle CollisionRectangle;
-        public Heart(Texture2D texture)
+        private Game game;
+        public Heart(Texture2D texture, Game g)
         {
+            game = g;
             Texture = texture;
             TotalFrames = 4;
             Rows = 1;
@@ -43,7 +45,7 @@ namespace Game1.Code.Item.ItemSprite
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
         }
-        public void Update(Game game)
+        public void Update()
         {
             count++;
             if (count == maxcount)

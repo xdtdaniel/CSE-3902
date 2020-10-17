@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Game1.Player;
+using Microsoft.Xna.Framework;
 
 namespace Game1.Code.Item.ItemFactory
 {
@@ -24,8 +25,10 @@ namespace Game1.Code.Item.ItemFactory
 		private Texture2D map;
 		private Texture2D ruby;
 		private Texture2D triforce;
+		private Game game;
 
-		public Game1 Game { get; set; }
+		//public Game1 game { get; set; }
+
 
 		private static ItemSpriteFactory instance = new ItemSpriteFactory();
 
@@ -39,6 +42,10 @@ namespace Game1.Code.Item.ItemFactory
 
 		private ItemSpriteFactory()
 		{
+			
+		}
+		public void LoadGame(Game g) {
+			game = g;
 		}
 
 		public void LoadAllTextures(ContentManager content)
@@ -57,59 +64,61 @@ namespace Game1.Code.Item.ItemFactory
 			ruby = content.Load<Texture2D>("Sprite/items/rubee_sprite (8x16 for each)");
 			triforce = content.Load<Texture2D>("Sprite/items/triforce_sprite (10x10 for each)");
 		}
+	
 
 		public IItemSprite CreateArrow()
 		{
-			return new ItemSprite.Arrow(arrow);
+			
+			return new ItemSprite.Arrow(arrow, game);
 		}
 
 		public IItemSprite CreateBomb()
 		{
-			return new ItemSprite.Bomb(bomb);
+			return new ItemSprite.Bomb(bomb, game);
 		}
 		public IItemSprite CreateBoomerang()
 		{
-			return new ItemSprite.Boomerang(boomerang);
+			return new ItemSprite.Boomerang(boomerang, game);
 		}
 		public IItemSprite CreateBow()
 		{
-			return new ItemSprite.Bow(bow);
+			return new ItemSprite.Bow(bow, game);
 		}
 		public IItemSprite CreateClock()
 		{
-			return new ItemSprite.Clock(clock);
+			return new ItemSprite.Clock(clock, game);
 		}
 		public IItemSprite CreateCompass()
 		{
-			return new ItemSprite.Compass(compass);
+			return new ItemSprite.Compass(compass, game);
 		}
 		public IItemSprite CreateFairy()
 		{
-			return new ItemSprite.Fairy(fairy);
+			return new ItemSprite.Fairy(fairy, game);
 		}
 		public IItemSprite CreateHeartContainer()
 		{
-			return new ItemSprite.HeartContainer(heart_container);
+			return new ItemSprite.HeartContainer(heart_container, game);
 		}
 		public IItemSprite CreateHeart()
 		{
-			return new ItemSprite.Heart(heart);
+			return new ItemSprite.Heart(heart, game);
 		}
 		public IItemSprite CreateKey()
 		{
-			return new ItemSprite.Key(key);
+			return new ItemSprite.Key(key, game);
 		}
 		public IItemSprite CreateMap()
 		{
-			return new ItemSprite.Map(map);
+			return new ItemSprite.Map(map, game);
 		}
 		public IItemSprite CreateRuby()
 		{
-			return new ItemSprite.Ruby(ruby);
+			return new ItemSprite.Ruby(ruby, game);
 		}
 		public IItemSprite CreateTriforce()
 		{
-			return new ItemSprite.Triforce(triforce);
+			return new ItemSprite.Triforce(triforce, game);
 		}
 
 

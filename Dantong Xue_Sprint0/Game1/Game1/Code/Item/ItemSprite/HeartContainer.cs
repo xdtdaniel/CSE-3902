@@ -16,9 +16,11 @@ namespace Game1.Code.Item.ItemSprite
         int height;
         int width;
         private Rectangle CollisionRectangle;
+        private Game game;
 
-        public HeartContainer(Texture2D texture)
+        public HeartContainer(Texture2D texture, Game g)
         {
+            game = g;
             Texture = texture;
 
         }
@@ -34,7 +36,7 @@ namespace Game1.Code.Item.ItemSprite
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
         }
-        public void Update(Game game)
+        public void Update()
         {
            
         }
