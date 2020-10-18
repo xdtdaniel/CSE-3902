@@ -38,9 +38,7 @@ namespace Game1
 
         public Rectangle GetRectangle(Vector2 location)
         {
-#           // those minor changes to the position and size is to avoid circumstances that the collision detection might be too strict that the player
-            // cannot go through an empty place
-            return new Rectangle((int)(location.X + 1), (int)(location.Y + 1), (int)(currTexture.Width * LoadAll.Instance.scale * 0.9), (int)(currTexture.Height * LoadAll.Instance.scale*0.9));
+            return new Rectangle((int)location.X, (int)location.Y, (int)(currTexture.Width * LoadAll.Instance.scale), (int)(currTexture.Height * LoadAll.Instance.scale));
         }
     }
 }
