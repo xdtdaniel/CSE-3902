@@ -23,7 +23,7 @@ namespace Game1
         {
             //multiply by picture's width and height, but the number might not big enough, can change to constant later
 
-            spriteBatch.Draw(Texture, new Rectangle((int)location.X, (int)location.Y, Texture.Width * LoadAll.Instance.scale, Texture.Height * LoadAll.Instance.scale), Color.White);
+            spriteBatch.Draw(Texture, new Rectangle((int)location.X, (int)location.Y, (int)(Texture.Width * LoadAll.Instance.scale), (int)(Texture.Height * LoadAll.Instance.scale)), Color.White);
         }
 
         public void Update()

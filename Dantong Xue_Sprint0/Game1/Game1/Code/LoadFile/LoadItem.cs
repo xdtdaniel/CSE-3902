@@ -20,7 +20,7 @@ namespace Game1.Code.LoadFile
     {
         private int MAX_COLUMNS = 32;
         private int multiplier = 8;
-        public int scale = 2;
+        private double scale = 2;
         private SpriteBatch spriteBatch;
         private Vector2 startPos;
         private List<IItemSprite> roomItems;
@@ -81,8 +81,8 @@ namespace Game1.Code.LoadFile
             for (int index = 0; index < RoomItemList.Count; index++)
             {
 
-                int X = RoomItemList[index].Item1 * multiplier * scale;
-                int Y = RoomItemList[index].Item2 * multiplier * scale;
+                int X = (int)(RoomItemList[index].Item1 * multiplier * scale);
+                int Y = (int)(RoomItemList[index].Item2 * multiplier * scale);
                 location = new Vector2(X, Y);
 
                 IItemSprite item;

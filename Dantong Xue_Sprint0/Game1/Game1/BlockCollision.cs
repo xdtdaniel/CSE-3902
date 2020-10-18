@@ -26,7 +26,10 @@ namespace Game1
 
             intersectionRectangle = Rectangle.Intersect(rec1,rec2);
 
-            if (!intersectionRectangle.IsEmpty)
+
+            // those minor changes to the position and size is to avoid circumstances that the collision detection might be too strict that the player
+            // cannot go through an empty place, 12 is chosen by testing
+            if (!intersectionRectangle.IsEmpty && intersectionRectangle.Width * intersectionRectangle.Height > 12)
              {
                 // check the collison direction
                 if ((intersectionRectangle.Width >= intersectionRectangle.Height)) // above and below

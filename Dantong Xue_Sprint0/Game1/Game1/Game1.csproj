@@ -12,6 +12,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Code\Block\BlockFactory.cs" />
+    <Compile Remove="Code\Block\BlockKeyboardController.cs" />
     <Compile Remove="Code\Block\MovingAnimatedBlock.cs" />
     <Compile Remove="Code\Block\MovingNonAnimatedBlock.cs" />
     <Compile Remove="Code\Block\NonMovingAnimatedBlock.cs" />

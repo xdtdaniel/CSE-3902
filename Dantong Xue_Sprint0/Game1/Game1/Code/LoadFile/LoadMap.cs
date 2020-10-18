@@ -21,7 +21,7 @@ namespace Game1.Code.LoadFile
             In this case, we shall expect to have 22 rows and 32 columns.
         */
         private int multiplier;
-        private int scale;
+        private double scale;
         private Vector2 startPos;
 
         private List<Tuple<IBlock, Vector2>> blocksListToDraw;
@@ -118,8 +118,8 @@ namespace Game1.Code.LoadFile
             for (int index = 0;index < mapElementList.Count; index++)
             {
                 
-                float X = mapElementList[index].Item1 * multiplier * scale + startPos.X;
-                float Y = mapElementList[index].Item2 * multiplier * scale + startPos.Y;
+                float X = (float)(mapElementList[index].Item1 * multiplier * scale + startPos.X);
+                float Y = (float)(mapElementList[index].Item2 * multiplier * scale + startPos.Y);
                 location = new Vector2(X, Y);
 
                 IBlock blockToDraw;
@@ -289,7 +289,6 @@ namespace Game1.Code.LoadFile
                     case "wallGrey":
                         blockToDraw = BlockFactory.Instance.CreateGreyWall();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "water":
                         blockToDraw = BlockFactory.Instance.CreateWater();
@@ -297,10 +296,10 @@ namespace Game1.Code.LoadFile
                         blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "wall_1":
-                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 112 * LoadAll.Instance.scale, 32 * LoadAll.Instance.scale));
+                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, (int)(112 * LoadAll.Instance.scale), (int)(32 * LoadAll.Instance.scale)));
                         break;
                     case "wall_2":
-                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, 32 * LoadAll.Instance.scale, 40 * LoadAll.Instance.scale));
+                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, (int)(32 * LoadAll.Instance.scale), (int)(40 * LoadAll.Instance.scale)));
                         break;
 
                 }

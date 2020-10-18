@@ -24,14 +24,14 @@ namespace Game1.Code.LoadFile
             multiplier = 8;
             scale = 3;
             startPos = new Vector2(0, 0);
-            currMapID = 1;
+            currMapID = 18;
         }
-
-        private List<string> mapList;
         private int currMapID = 1;
 
+        private const int MAP_COUNT = 18;
+
         public int multiplier { get; set; }
-        public int scale { get; set; }
+        public double scale { get; set; }
         public Vector2 startPos { get; set; }
 
         public void LoadRoom()
@@ -42,9 +42,22 @@ namespace Game1.Code.LoadFile
             LoadEnemy.Instance.LoadAllEnemy(enemyMapName);
         }
 
-        public void ChangeMap(int mapID)
+        public void PrevMap()
         {
-            currMapID = mapID;
+            currMapID -= 1;
+            if (currMapID < 1)
+            {
+                currMapID = MAP_COUNT;
+            }
+        }
+
+        public void NextMap()
+        {
+            currMapID += 1;
+            if (currMapID > MAP_COUNT)
+            {
+                currMapID = 1;
+            }
         }
 
         public Dictionary<string, List<Rectangle>> GetMapArtifacts()

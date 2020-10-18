@@ -39,7 +39,7 @@ namespace Game1
 
         private List<Tuple<IEnemy, string>> EnemyList;
 
-        private IController blockKeyboardController;
+        private IController mapMouseController;
         private ItemKeyboardController itemKeyboardController;
         public PlayerKeyboardController playerKeyboardController;
 
@@ -62,6 +62,8 @@ namespace Game1
 
             itemKeyboardController = new ItemKeyboardController();
             playerKeyboardController = new PlayerKeyboardController();
+
+            mapMouseController = new MouseMapController();
 
 
             link = new Link();
@@ -91,10 +93,7 @@ namespace Game1
 
         protected override void Update(GameTime gameTime)
         {
-            foreach(IController controller in controllerList)
-            {
-                controller.Update(this.GraphicsDevice, this._spriteBatch, this);
-            }
+            mapMouseController.Update(this);
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
             itemKeyboardController.Update(this);
@@ -116,8 +115,8 @@ namespace Game1
             _spriteBatch.Begin();
             
             LoadItem.Instance.LoadRoomItem(_spriteBatch);
-            
 
+            LoadAll.Instance.LoadRoom();
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
 
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
