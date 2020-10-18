@@ -13,7 +13,7 @@ namespace Game1.Enemy
         private int Rows = 1;
         private int TotalFrames;
         private int CurrentFrame;
-        private Vector2 Location;
+        private Vector2 Location { get; set; }
         private int FrameRateModifier = 0;
 
         // Test code for sprint 3 rectangle
@@ -21,13 +21,13 @@ namespace Game1.Enemy
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
 
-        public Fire()
+        public Fire(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetFireSpriteSheet();
             TotalFrames = 2;
             Columns = TotalFrames;
             CurrentFrame = 0;
-            Location = new Vector2(600, 200);
+            Location = location;
 
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int) Location.X, (int) Location.Y, 16 * scale, 16 * scale);

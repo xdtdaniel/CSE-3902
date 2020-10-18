@@ -38,6 +38,8 @@ namespace Game1.Code.LoadFile
         {
             string mapName = currMapID.ToString() + ".csv";
             LoadMap.Instance.LoadOneMap(mapName);
+            string enemyMapName = currMapID.ToString() + "_enemy.csv";
+            LoadEnemy.Instance.LoadAllEnemy(enemyMapName);
         }
 
         public void ChangeMap(int mapID)

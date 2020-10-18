@@ -13,19 +13,19 @@ namespace Game1.Enemy
         private int Rows = 1;
         private int TotalFrames;
         private int CurrentFrame;
-        private Vector2 Location;
+        private Vector2 Location { get; set; }
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
 
-        public OldMan() {
+        public OldMan(Vector2 location) {
             Texture = EnemyTextureStorage.GetOldManSpriteSheet();
             TotalFrames = 1;
             Columns = TotalFrames;
             CurrentFrame = 0;
-            Location = new Vector2(600, 200);
+            Location = location;
 
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);

@@ -84,7 +84,6 @@ namespace Game1
 
             _spriteFont = Content.Load<SpriteFont>("font");
 
-            LoadEnemy.Instance.LoadAllEnemy();
             EnemyList = LoadEnemy.Instance.GetEnemyList();
 
             LoadAll.Instance.LoadRoom();
