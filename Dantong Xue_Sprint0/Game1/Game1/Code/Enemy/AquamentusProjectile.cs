@@ -70,9 +70,9 @@ namespace Game1.Enemy
             return IsOnScreen;
         }
 
-        public void SetIsOnScreen()
+        public void SetIsOnScreen(bool boolean)
         {
-            IsOnScreen = true;
+            IsOnScreen = boolean;
         }
 
         public void SetDirection(int direction)
@@ -124,6 +124,11 @@ namespace Game1.Enemy
         Rectangle IProjectile.GetRectangle()
         {
             return CollisionRectangle;
+        }
+
+        void IProjectile.BounceBack()
+        {
+            // Do nothing for now.
         }
     }
 }
