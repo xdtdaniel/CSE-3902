@@ -24,7 +24,7 @@ namespace Game1.Code.LoadFile
             multiplier = 8;
             scale = 3;
             startPos = new Vector2(0, 0);
-            currMapID = 2;
+            currMapID = 1;
         }
 
         private List<string> mapList;
