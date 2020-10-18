@@ -28,8 +28,8 @@ namespace Game1.Enemy
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
-
         private int scale = 3;
+        private List<IProjectile> ProjectileList;
 
         public Goriya(Vector2 location)
         {
@@ -46,6 +46,7 @@ namespace Game1.Enemy
 
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * 5, 16 * 5);
+            ProjectileList = new List<IProjectile>();
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -74,6 +75,9 @@ namespace Game1.Enemy
             Projectile.SetDirection(Direction);
             FireTimer = 0;
             CanFire = false;
+
+            ProjectileList.Clear();
+            ProjectileList.Add(Projectile);
         }
 
         public void UpdateEnemy()
@@ -85,6 +89,9 @@ namespace Game1.Enemy
                     FireProjectile();
                 }
                 Projectile.UpdateProjectile();
+
+                ProjectileList.Clear();
+                ProjectileList.Add(Projectile);
             }
             else
             {
@@ -271,6 +278,11 @@ namespace Game1.Enemy
         Rectangle IEnemy.GetRectangle()
         {
             return CollisionRectangle;
+        }
+
+        List<IProjectile> IEnemy.GetProjectile()
+        {
+            return ProjectileList;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Game1.Enemy;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -12,5 +13,6 @@ namespace Game1
         public void DrawEnemy(SpriteBatch spriteBatch);
         public void FireProjectile();
         public Rectangle GetRectangle();
+        public List<IProjectile> GetProjectile();
     }
 }

@@ -18,8 +18,8 @@ namespace Game1.Enemy
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
-
         private int scale = 3;
+        private List<IProjectile> ProjectileList = new List<IProjectile>();
 
         public Fire()
         {
@@ -67,6 +67,11 @@ namespace Game1.Enemy
             {
                 CurrentFrame = 0;
             }
+        }
+
+        List<IProjectile> IEnemy.GetProjectile()
+        {
+            return ProjectileList;
         }
 
         Rectangle IEnemy.GetRectangle()

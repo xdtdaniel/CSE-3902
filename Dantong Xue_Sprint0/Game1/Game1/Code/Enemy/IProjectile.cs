@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Game1.Enemy
 {
-    interface IProjectile
+    public interface IProjectile
     {
         public void UpdateProjectile();
         public void DrawProjectile(SpriteBatch spriteBatch);

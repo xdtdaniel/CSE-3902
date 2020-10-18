@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/items/boomerang_sprite.png</SourceFile>
-  <SourceTime>2020-10-17T05:58:00.8889961-04:00</SourceTime>
-  <DestFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Sprite/items/boomerang_sprite.xnb</DestFile>
-  <DestTime>2020-10-17T05:58:12.7399212-04:00</DestTime>
+  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/items/boomerang_sprite.png</SourceFile>
+  <SourceTime>2020-09-20T00:13:08.9971312-04:00</SourceTime>
+  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Sprite/items/boomerang_sprite.xnb</DestFile>
+  <DestTime>2020-10-18T03:50:16.3667837-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

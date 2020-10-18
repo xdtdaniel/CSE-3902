@@ -26,10 +26,11 @@ namespace Game1.Enemy
         private IProjectile Projectile0;
         private IProjectile Projectile1;
         private IProjectile Projectile2;
-        private double scale = 3;
-
+        
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
+        private double scale = 3;
+        private List<IProjectile> ProjectileList;
 
         public Aquamentus(Vector2 location) 
         {
@@ -51,6 +52,7 @@ namespace Game1.Enemy
 
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)(Location.X * scale), (int)(Location.Y * scale), 24, 32 );
+            ProjectileList = new List<IProjectile>();
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -88,6 +90,12 @@ namespace Game1.Enemy
                 Projectile0.SetLocation(new Vector2(Location.X, (float)(Location.Y - 12 * scale)));
                 Projectile1.SetLocation(Location);
                 Projectile2.SetLocation(new Vector2(Location.X, (float)(Location.Y + 12 * scale)));
+
+                ProjectileList.Clear();
+                ProjectileList.Add(Projectile0);
+                ProjectileList.Add(Projectile1);
+                ProjectileList.Add(Projectile2);
+
                 CanFire = false;
             }
         }
@@ -144,7 +152,13 @@ namespace Game1.Enemy
             {
                 Projectile2.UpdateProjectile();
             }
-                                
+
+            ProjectileList.Clear();
+            ProjectileList.Add(Projectile0);
+            ProjectileList.Add(Projectile1);
+            ProjectileList.Add(Projectile2);
+
+
             if (Firing)
             {
                 if (CurrentFrame > 1)
@@ -216,6 +230,11 @@ namespace Game1.Enemy
         Rectangle IEnemy.GetRectangle()
         {
             return CollisionRectangle;
+        }
+
+        public List<IProjectile> GetProjectile() 
+        {
+            return ProjectileList;
         }
     }
 }

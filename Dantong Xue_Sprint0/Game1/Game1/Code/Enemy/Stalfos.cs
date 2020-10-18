@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Enemy;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,8 @@ namespace Game1
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
-
         private int scale = 3;
+        private List<IProjectile> ProjectileList = new List<IProjectile>();
 
         public Stalfos(Vector2 location)
         {
@@ -211,6 +212,11 @@ namespace Game1
         Rectangle IEnemy.GetRectangle()
         {
             return CollisionRectangle;
+        }
+
+        List<IProjectile> IEnemy.GetProjectile()
+        {
+            return ProjectileList;
         }
     }
 }
