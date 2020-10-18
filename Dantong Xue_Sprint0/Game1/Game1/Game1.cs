@@ -45,7 +45,6 @@ namespace Game1
 
         private QuitResetController quitResetController;
 
-        private BlockCollision collisionDetector; 
 
         public Game1()
         {
@@ -70,7 +69,6 @@ namespace Game1
 
             quitResetController = new QuitResetController();
 
-            collisionDetector = new BlockCollision();
 
         }
 
