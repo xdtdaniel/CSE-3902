@@ -35,8 +35,8 @@ namespace Game1.Enemy
             TotalFrames = 8;
             Columns = TotalFrames;
             CurrentFrame = Rnd.Next(8);
-            Velocity = 5.0;
-            NegativeVelocity = -5.0;
+            Velocity = 4.5;
+            NegativeVelocity = -4.5;
 
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * scale, 8 * scale, 8 * scale);
@@ -50,7 +50,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X + 20, (int)Location.Y, width * 5, height * 5);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X + 4 * scale, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -74,7 +74,7 @@ namespace Game1.Enemy
 
             UpdateLocation();
 
-            if (ChangeDirectionTimer >= 70)
+            if (ChangeDirectionTimer >= 60)
             {
                 if (Velocity > NegativeVelocity)
                 {
@@ -94,7 +94,7 @@ namespace Game1.Enemy
             if (Location == OriginLocation)
             {
                 IsOnScreen = false;
-                Velocity = 5.0;
+                Velocity = 4.5;
             }
 
         }
@@ -125,13 +125,13 @@ namespace Game1.Enemy
             Location = new Vector2(x, y);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * 5, 8 * 5, 8 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * scale, 8 * 5, 8 * scale);
         }
 
         private bool HitEdge()
         {
             Boolean outside = false;
-            if (Location.X <= 32 * scale || Location.Y <= 32 * scale || Location.Y >= 144 * scale * 1.5 || Location.X <= 192 * scale * 1.5)
+            if (Location.X < 32 * scale || Location.Y < 32 * scale || Location.Y > 128 * scale || Location.X > 208 * scale)
             {
                 outside = true;
             }
@@ -143,9 +143,9 @@ namespace Game1.Enemy
             return IsOnScreen;
         }
 
-        public void SetIsOnScreen()
+        public void SetIsOnScreen(bool boolean)
         {
-            IsOnScreen = true;
+            IsOnScreen = boolean;
             ChangeDirectionTimer = 0;
         }
 
@@ -162,6 +162,12 @@ namespace Game1.Enemy
         Rectangle IProjectile.GetRectangle()
         {
             return CollisionRectangle;
+        }
+
+        void IProjectile.BounceBack()
+        {
+            Velocity = NegativeVelocity;
+            ChangeDirectionTimer = 0;
         }
     }
 }

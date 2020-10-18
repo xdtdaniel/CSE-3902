@@ -188,9 +188,9 @@ namespace Game1.Enemy
                     Firing = false;
                     CanFire = true;
                     FiringStateTimer = 0;
-                    Projectile0.SetIsOnScreen();
-                    Projectile1.SetIsOnScreen();
-                    Projectile2.SetIsOnScreen();
+                    Projectile0.SetIsOnScreen(true);
+                    Projectile1.SetIsOnScreen(true);
+                    Projectile2.SetIsOnScreen(true);
                 }
 
                 FireTimer = 0;

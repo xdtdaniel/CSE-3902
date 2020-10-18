@@ -144,7 +144,7 @@ namespace Game1
 
         private int DownBlocked()
         {
-            if (Location.Y >= 128 * scale)
+            if (Location.Y >= 144 * scale)
             {
                 return 0;
             }
