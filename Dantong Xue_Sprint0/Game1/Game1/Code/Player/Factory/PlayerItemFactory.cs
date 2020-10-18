@@ -71,70 +71,70 @@ namespace Game1
         }
 
         /* sword */
-        public IPlayerSprite CreateWoordenSword()
+        public IPlayerItemSprite CreateWoordenSword()
         {
             return new WoodenSword(woodenSword);
         }
-        public IPlayerSprite CreateSwordBeam()
+        public IPlayerItemSprite CreateSwordBeam()
         {
             return new SwordBeam(swordBeam);
         }
 
         /* arrow */
-        public IPlayerSprite CreateFrontArrow()
+        public IPlayerItemSprite CreateFrontArrow()
         {
             return new Arrow(frontArrow);
         }
-        public IPlayerSprite CreateRightArrow()
+        public IPlayerItemSprite CreateRightArrow()
         {
             return new Arrow(rightArrow);
         }
-        public IPlayerSprite CreateBackArrow()
+        public IPlayerItemSprite CreateBackArrow()
         {
             return new Arrow(backArrow);
         }
-        public IPlayerSprite CreateLeftArrow()
+        public IPlayerItemSprite CreateLeftArrow()
         {
             return new Arrow(leftArrow);
         }
 
         /* boomerang */
-        public IPlayerSprite CreateFrontBoomerang()
+        public IPlayerItemSprite CreateFrontBoomerang()
         {
             return new Boomerang(frontBoomerang);
         }
-        public IPlayerSprite CreateRightBoomerang()
+        public IPlayerItemSprite CreateRightBoomerang()
         {
             return new Boomerang(rightBoomerang);
         }
-        public IPlayerSprite CreateBackBoomerang()
+        public IPlayerItemSprite CreateBackBoomerang()
         {
             return new Boomerang(backBoomerang);
         }
-        public IPlayerSprite CreateLeftBoomerang()
+        public IPlayerItemSprite CreateLeftBoomerang()
         {
             return new Boomerang(leftBoomerang);
         }
 
         /* bomb */
-        public IPlayerSprite CreateBomb()
+        public IPlayerItemSprite CreateBomb()
         {
             return new Bomb(bomb);
         }
-        public IPlayerSprite CreateBombExplosion()
+        public IPlayerItemSprite CreateBombExplosion()
         {
             return new BombExplosion(bombExplosion);
         }
 
-        public IPlayerSprite CreateBlueCandle()
+        public IPlayerItemSprite CreateBlueCandle()
         {
             return new BlueCandle(blueCandle);
         }
-        public IPlayerSprite CreateBluePotion()
+        public IPlayerItemSprite CreateBluePotion()
         {
             return new BluePotion(bluePotion);
         }
-        public IPlayerSprite CreateBlueRing()
+        public IPlayerItemSprite CreateBlueRing()
         {
             return new BlueRing(blueRing);
         }

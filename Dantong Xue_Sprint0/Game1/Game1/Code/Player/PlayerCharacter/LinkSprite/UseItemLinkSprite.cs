@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Game1.Player
 {
-    class UseItemLinkSprite : IPlayerSprite
+    class UseItemLinkSprite : IPlayerLinkSprite
     {
         Texture2D Texture;
         public UseItemLinkSprite(Texture2D texture)
@@ -18,7 +18,7 @@ namespace Game1.Player
             Texture = texture;
         }
 
-        public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
+        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
         {
             int width = Texture.Width;
             int height = 96;
@@ -28,7 +28,6 @@ namespace Game1.Player
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
-            return destinationRectangle;
         }
     }
 }

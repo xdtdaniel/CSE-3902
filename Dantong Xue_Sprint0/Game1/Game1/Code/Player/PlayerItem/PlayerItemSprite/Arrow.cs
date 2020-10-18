@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
-    class Arrow : IPlayerSprite
+    class Arrow : IPlayerItemSprite
     {
         Texture2D Texture;
         public Arrow(Texture2D texture)

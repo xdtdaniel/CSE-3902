@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
-    class BlueRing : IPlayerSprite
+    class BlueRing : IPlayerItemSprite
     {
         Texture2D Texture;
         public BlueRing(Texture2D texture)

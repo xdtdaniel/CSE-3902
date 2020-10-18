@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Game1.Player
 {
-    class NormalLinkSprite : IPlayerSprite
+    class NormalLinkSprite : IPlayerLinkSprite
     {
         int Columns;
         Texture2D Texture;
@@ -20,7 +20,7 @@ namespace Game1.Player
             Columns = 2;
         }
 
-        public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
+        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
         {
             int width = Texture.Width / Columns;
             int height = 96;
@@ -31,7 +31,6 @@ namespace Game1.Player
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
-            return destinationRectangle;
         }
     }
 }

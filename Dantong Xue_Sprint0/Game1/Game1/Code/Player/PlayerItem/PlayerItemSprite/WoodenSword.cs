@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
-    class WoodenSword: IPlayerSprite
+    class WoodenSword: IPlayerItemSprite
     {
         Texture2D Texture;
         public WoodenSword(Texture2D texture)

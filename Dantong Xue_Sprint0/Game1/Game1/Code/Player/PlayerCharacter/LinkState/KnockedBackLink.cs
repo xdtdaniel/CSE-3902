@@ -16,7 +16,7 @@ namespace Game1.Player.PlayerCharacter
         int thirdFrame;
         string collisionSide;
 
-        IPlayerSprite[] damagedLinkSprite;
+        IPlayerLinkSprite[] damagedLinkSprite;
 
         Link link;
 
@@ -45,7 +45,7 @@ namespace Game1.Player.PlayerCharacter
                 default:
                     break;
             }
-            damagedLinkSprite = new IPlayerSprite[4];
+            damagedLinkSprite = new IPlayerLinkSprite[4];
             damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedLink(index);
              
 
@@ -128,12 +128,8 @@ namespace Game1.Player.PlayerCharacter
         public void Draw(SpriteBatch spriteBatch, int x, int y, int direction)
         {
             
-            rectangle = damagedLinkSprite[thirdFrame].Draw(spriteBatch, x, y, 1, direction);
+            damagedLinkSprite[thirdFrame].Draw(spriteBatch, x, y, 1, direction);
             
-        }
-        public Rectangle GetRectangle()
-        {
-            return rectangle;
         }
     }
 }

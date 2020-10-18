@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
-    class Boomerang : IPlayerSprite
+    class Boomerang : IPlayerItemSprite
     {
         Texture2D Texture;
         public Boomerang(Texture2D texture)

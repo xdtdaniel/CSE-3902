@@ -11,13 +11,11 @@ namespace Game1.Code.Player
     class PlayerEnemyCollisionHandler 
     {
         string collidedSide;
-        IProjectile aquamentusProjectile;
-        IProjectile goriyaProjectile;
+        List<IProjectile> projectileList;
         public PlayerEnemyCollisionHandler()
         {
             collidedSide = "";
-            aquamentusProjectile = new AquamentusProjectile();
-            goriyaProjectile = new GoriyaProjectile();
+            projectileList = new List<IProjectile>();
         }
         public void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList, BlockCollision blockCollision)
         {
@@ -29,23 +27,21 @@ namespace Game1.Code.Player
                     link.TakeDamage();
                     link.KnockedBack(collidedSide);
                 }
-            }
-            if (aquamentusProjectile.GetIsOnScreen())
-            {
-                collidedSide = blockCollision.isCollided(link.GetRectangle(), aquamentusProjectile.GetRectangle()); 
-                if (collidedSide != "" && link.damageTimeCounter == 0)
-                {
-                    link.TakeDamage();
-                    link.KnockedBack(collidedSide);
-                }
-            }
-            if (goriyaProjectile.GetIsOnScreen())
-            {
-                collidedSide = blockCollision.isCollided(link.GetRectangle(), goriyaProjectile.GetRectangle()); 
-                if (collidedSide != "" && link.damageTimeCounter == 0)
-                {
-                    link.TakeDamage();
-                    link.KnockedBack(collidedSide);
+
+                projectileList = tuple.Item1.GetProjectile();
+                if (projectileList.Count > 0) { 
+                    foreach (IProjectile projectile in tuple.Item1.GetProjectile())
+                    {
+                        if (projectile.GetIsOnScreen())
+                        {
+                            collidedSide = blockCollision.isCollided(link.GetRectangle(), projectile.GetRectangle());
+                            if (collidedSide != "" && link.damageTimeCounter == 0)
+                            {
+                                link.TakeDamage();
+                                link.KnockedBack(collidedSide);
+                            }
+                        }
+                    }
                 }
             }
         }

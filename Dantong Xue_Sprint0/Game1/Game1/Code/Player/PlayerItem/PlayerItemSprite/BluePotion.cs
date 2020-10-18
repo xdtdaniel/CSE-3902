@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
-    class BluePotion : IPlayerSprite
+    class BluePotion : IPlayerItemSprite
     {
         Texture2D Texture;
         public BluePotion(Texture2D texture)

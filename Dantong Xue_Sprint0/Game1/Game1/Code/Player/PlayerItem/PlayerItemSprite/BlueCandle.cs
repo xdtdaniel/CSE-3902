@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
-    class BlueCandle : IPlayerSprite
+    class BlueCandle : IPlayerItemSprite
     {
         Texture2D Texture;
         public BlueCandle(Texture2D texture)

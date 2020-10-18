@@ -15,8 +15,8 @@ namespace Game1.Player.PlayerCharacter
         int currentFrame;
         int thirdFrame;
 
-        IPlayerSprite[] linkSprite;
-        IPlayerSprite[][] damagedLinkSprite;
+        IPlayerLinkSprite[] linkSprite;
+        IPlayerLinkSprite[][] damagedLinkSprite;
 
         Link link;
 
@@ -26,13 +26,13 @@ namespace Game1.Player.PlayerCharacter
             currentFrame = 0;
             thirdFrame = 0;
 
-            linkSprite = new IPlayerSprite[4];
+            linkSprite = new IPlayerLinkSprite[4];
             for (int i = 0; i < 4; i++)
             {
                 linkSprite[i] = PlayerCharacterFactory.Instance.CreateUseItemLink(i);
             }
 
-            damagedLinkSprite = new IPlayerSprite[4][];
+            damagedLinkSprite = new IPlayerLinkSprite[4][];
             for (int i = 0; i < 4; i++)
             {
                 damagedLinkSprite[i] = PlayerCharacterFactory.Instance.CreateDamagedUseItemLink(i);
@@ -89,17 +89,13 @@ namespace Game1.Player.PlayerCharacter
         {
             if (!link.isDamaged)
             {
-                rectangle = linkSprite[direction].Draw(spriteBatch, x, y, currentFrame, direction);
+                linkSprite[direction].Draw(spriteBatch, x, y, currentFrame, direction);
             }
             else
             {
-                rectangle = damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
+                damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
 
             }
-        }
-        public Rectangle GetRectangle()
-        {
-            return rectangle;
         }
     }
 }

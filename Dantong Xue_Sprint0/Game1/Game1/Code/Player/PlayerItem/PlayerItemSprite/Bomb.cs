@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
-    class Bomb : IPlayerSprite
+    class Bomb : IPlayerItemSprite
     {
         Texture2D Texture;
         public Bomb(Texture2D texture)

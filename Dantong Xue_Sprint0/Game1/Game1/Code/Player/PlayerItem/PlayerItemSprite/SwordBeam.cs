@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
-    class SwordBeam : IPlayerSprite
+    class SwordBeam : IPlayerItemSprite
     {
         Texture2D Texture;
         public SwordBeam(Texture2D texture)

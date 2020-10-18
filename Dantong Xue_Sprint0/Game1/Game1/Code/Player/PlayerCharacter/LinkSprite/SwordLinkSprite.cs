@@ -10,23 +10,28 @@ using System.Threading.Tasks;
 
 namespace Game1.Player
 {
-    class SwordLinkSprite : IPlayerSprite
+    class SwordLinkSprite : IPlayerLinkSprite
     {
         int Columns;
         Texture2D Texture;
+        int scaler;
         public SwordLinkSprite(Texture2D texture)
         {
             Texture = texture;
             Columns = 4;
+            scaler = 2;
         }
 
-        public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
+        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height;
             int currentColumn = 3 - currentFrame;
             int sourceX = currentColumn * width;
-            if (direction == 1)
+            int drawX = x;
+            int drawY = y;
+
+            if (direction == 1) // facing right
             {
                 switch (currentFrame)
                 {
@@ -50,28 +55,28 @@ namespace Game1.Player
                         break;
                 }
             }
-            else if (direction == 2)
+            else if (direction == 2) // facing back
             {
-                y -= 36;
+                drawY -= 36;
             }
-            else if (direction == 3)
+            else if (direction == 3) // facing left
             {
                 switch (currentFrame)
                 {
                     case 0:
                         sourceX = 0;
                         width = 120;
-                        x -= 12;
+                        drawX -= 12;
                         break;
                     case 1:
                         sourceX = 120;
                         width = 144;
-                        x -= 27;
+                        drawX -= 27;
                         break;
                     case 2:
                         sourceX = 264;
                         width = 166;
-                        x -= 34;
+                        drawX -= 34;
                         break;
                     case 3:
                         sourceX = 430;
@@ -83,11 +88,10 @@ namespace Game1.Player
             }
 
             Rectangle sourceRectangle = new Rectangle(sourceX, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width / 2, height / 2);
+            Rectangle destinationRectangle = new Rectangle(drawX, drawY, width / 2, height / 2);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
-            return destinationRectangle;
         }
     }
 }

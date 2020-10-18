@@ -19,8 +19,8 @@ namespace Game1
     {
         private SpriteBatch spriteBatch;
         private Game1 game;
+
         // test
-        string collidedSide;
         private BlockCollision blockCollision;
         private Dictionary<string, List<Rectangle>> blockList;
         private List<Tuple<IEnemy, string>> enemyList;
@@ -32,8 +32,8 @@ namespace Game1
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
+
             //
-            collidedSide = "";
             blockCollision = new BlockCollision();
             blockList = LoadAll.Instance.GetMapArtifacts();
             enemyList = LoadEnemy.Instance.GetEnemyList();

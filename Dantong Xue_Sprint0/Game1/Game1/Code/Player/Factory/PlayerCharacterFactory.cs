@@ -194,39 +194,39 @@ namespace Game1
         }
 
         // normal Link 
-        public IPlayerSprite CreateNormalLink(int index)
+        public IPlayerLinkSprite CreateNormalLink(int index)
         {
             return new NormalLinkSprite(normalLink[index]);
         }
 
         // Link with SwordBeam 
-        public IPlayerSprite CreateSwordBeamLink(int index)
+        public IPlayerLinkSprite CreateSwordBeamLink(int index)
         {
             return new SwordLinkSprite(swordBeamLink[index]);
         }
 
         // Link with WoodenSword 
-        public IPlayerSprite CreateWoodenSwordLink(int index)
+        public IPlayerLinkSprite CreateWoodenSwordLink(int index)
         {
             return new SwordLinkSprite(woodenSwordLink[index]);
         }
 
         // Link UseItem 
-        public IPlayerSprite CreateUseItemLink(int index)
+        public IPlayerLinkSprite CreateUseItemLink(int index)
         {
             return new UseItemLinkSprite(useItemLink[index]);
         }
 
         // Link PickUp
-        public IPlayerSprite CreatePickUpLink()
+        public IPlayerLinkSprite CreatePickUpLink()
         {
             return new PickUpLinkSprite(pickUpLink);
         }
 
         // damaged link 
-        public IPlayerSprite[] CreateDamagedLink(int index)
+        public IPlayerLinkSprite[] CreateDamagedLink(int index)
         {
-            IPlayerSprite[] spriteArray = new IPlayerSprite[4];
+            IPlayerLinkSprite[] spriteArray = new IPlayerLinkSprite[4];
             for (int i = 0; i < 4; i++)
             {
                 spriteArray[i] = new NormalLinkSprite(damagedLink[index][i]);
@@ -235,9 +235,9 @@ namespace Game1
             return spriteArray;
         }
 
-        public IPlayerSprite[] CreateDamagedSwordBeamLink(int index)
+        public IPlayerLinkSprite[] CreateDamagedSwordBeamLink(int index)
         {
-            IPlayerSprite[] spriteArray = new IPlayerSprite[4];
+            IPlayerLinkSprite[] spriteArray = new IPlayerLinkSprite[4];
             for (int i = 0; i < 4; i++)
             {
                 spriteArray[i] = new SwordLinkSprite(damagedSwordBeamLink[index][i]);
@@ -246,9 +246,9 @@ namespace Game1
             return spriteArray;
         }
 
-        public IPlayerSprite[] CreateDamagedWoodenSwordLink(int index)
+        public IPlayerLinkSprite[] CreateDamagedWoodenSwordLink(int index)
         {
-            IPlayerSprite[] spriteArray = new IPlayerSprite[4];
+            IPlayerLinkSprite[] spriteArray = new IPlayerLinkSprite[4];
             for (int i = 0; i < 4; i++)
             {
                 spriteArray[i] = new SwordLinkSprite(damagedWoodenSwordLink[index][i]);
@@ -256,9 +256,9 @@ namespace Game1
 
             return spriteArray;
         }
-        public IPlayerSprite[] CreateDamagedUseItemLink(int index)
+        public IPlayerLinkSprite[] CreateDamagedUseItemLink(int index)
         {
-            IPlayerSprite[] spriteArray = new IPlayerSprite[4];
+            IPlayerLinkSprite[] spriteArray = new IPlayerLinkSprite[4];
             for (int i = 0; i < 4; i++)
             {
                 spriteArray[i] = new UseItemLinkSprite(damagedUseItemLink[index][i]);
@@ -266,9 +266,9 @@ namespace Game1
 
             return spriteArray;
         }
-        public IPlayerSprite[] CreateDamagedPickUpLink()
+        public IPlayerLinkSprite[] CreateDamagedPickUpLink()
         {
-            IPlayerSprite[] spriteArray = new IPlayerSprite[4];
+            IPlayerLinkSprite[] spriteArray = new IPlayerLinkSprite[4];
             for (int i = 0; i < 4; i++)
             {
                 spriteArray[i] = new PickUpLinkSprite(damagedPickUpLink[i]);

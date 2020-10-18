@@ -11,7 +11,7 @@ namespace Game1.Player.PlayerCharacter
 {
     public class PlayerItem
     {
-        public IPlayerItemDrawer state;
+        public IPlayerItemState state;
 
         public int x;
         public int y;

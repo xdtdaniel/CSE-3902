@@ -24,7 +24,9 @@ namespace Game1.Player.PlayerCharacter
 
         public string direction;
 
-        PlayerItem item; 
+        PlayerItem item;
+
+        private int scaler;
 
         public IPlayerLinkState state;
         public Link()
@@ -44,6 +46,8 @@ namespace Game1.Player.PlayerCharacter
 
             item = new PlayerItem();
             item.state = new NoItem(item);
+
+            scaler = 1; // default size is 48 * 48
 
         }
 
@@ -70,7 +74,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public Rectangle GetRectangle()
         {
-            return state.GetRectangle();
+            return new Rectangle(x, y, 48 * scaler, 48 * scaler);
         }
         public void KnockedBack(string collisionSide)
         {
