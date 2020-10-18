@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Game1.Code.Enemy
+namespace Game1
 {
     class Trap : IEnemy
     {

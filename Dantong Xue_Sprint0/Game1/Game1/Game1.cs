@@ -89,6 +89,7 @@ namespace Game1
             EnemyList = LoadEnemy.Instance.GetEnemyList();
 
             LoadAll.Instance.LoadRoom();
+            LoadAll.Instance.LoadRoomEnemy();
         }
 
         protected override void Update(GameTime gameTime)
