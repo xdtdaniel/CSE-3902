@@ -7,7 +7,7 @@ namespace Game1
 {
     public interface IController
     {
-        void Update(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch, Game1 g);
+        void Update(Game1 g);
 
     }
 }

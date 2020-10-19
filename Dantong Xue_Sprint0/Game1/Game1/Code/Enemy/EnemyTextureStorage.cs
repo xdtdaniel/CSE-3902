@@ -16,10 +16,10 @@ namespace Game1
         private static Texture2D wallmasterSpriteSheet;
         private static Texture2D aquamentusSpriteSheet;
         private static Texture2D aquamentusProjectileSpriteSheet;
-
         private static Texture2D oldManSpriteSheet;
         private static Texture2D merchantSpriteSheet;
         private static Texture2D fireSpriteSheet;
+        private static Texture2D trapSpriteSheet;
 
         public static void LoadTextures(ContentManager content) {
             gelSpriteSheet = content.Load<Texture2D>("Sprite/enemies/gel_sprite");
@@ -30,10 +30,10 @@ namespace Game1
             wallmasterSpriteSheet = content.Load<Texture2D>("Sprite/enemies/wallmaster_sprite");
             aquamentusSpriteSheet = content.Load<Texture2D>("Sprite/enemies/aquamentus_sprite");
             aquamentusProjectileSpriteSheet = content.Load<Texture2D>("Sprite/enemies/aquamentus_projectile_sprite");
-
             oldManSpriteSheet = content.Load<Texture2D>("Sprite/npcs/oldman_sprite");
             merchantSpriteSheet = content.Load<Texture2D>("Sprite/npcs/merchant_sprite");
-            fireSpriteSheet = content.Load<Texture2D>("Sprite/npcs/fire_sprite"); ;
+            fireSpriteSheet = content.Load<Texture2D>("Sprite/npcs/fire_sprite"); 
+            trapSpriteSheet = content.Load<Texture2D>("Sprite/enemies/trap_sprite");
         }
 
         public static Texture2D GetGelSpriteSheet() {
@@ -87,6 +87,11 @@ namespace Game1
         public static Texture2D GetFireSpriteSheet()
         {
             return fireSpriteSheet;
+        }
+
+        public static Texture2D GetTrapSpriteSheet()
+        {
+            return trapSpriteSheet;
         }
     }
 }

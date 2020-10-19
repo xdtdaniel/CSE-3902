@@ -38,7 +38,7 @@ namespace Game1
 
         public Rectangle GetRectangle(Vector2 location)
         {
-            return new Rectangle((int)location.X, (int)location.Y, currTexture.Width * LoadAll.Instance.scale, currTexture.Height * LoadAll.Instance.scale);
+            return new Rectangle((int)location.X, (int)location.Y, (int)(currTexture.Width * LoadAll.Instance.scale), (int)(currTexture.Height * LoadAll.Instance.scale));
         }
     }
 }

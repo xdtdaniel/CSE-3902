@@ -18,7 +18,7 @@ namespace Game1.Enemy
         private int CanTurnTimer = 0;
         private int FrameRateModifier = 0;
         private Random Rnd;
-        private int Velocity = 3;
+        private int Velocity = 1;
         private bool CanTurn = true;
         private int FrameBound;
 
@@ -45,7 +45,7 @@ namespace Game1.Enemy
             FireTimer = 0;
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * 5, 16 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X + 1 * scale, (int)Location.Y, 14 * scale, 16 * scale);
             ProjectileList = new List<IProjectile>();
         }
 
@@ -57,7 +57,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * 5, height * 5);
+            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
@@ -70,7 +70,7 @@ namespace Game1.Enemy
         public void FireProjectile()
         {
             Velocity = 0;
-            Projectile.SetIsOnScreen();
+            Projectile.SetIsOnScreen(true);
             Projectile.SetLocation(Location);
             Projectile.SetDirection(Direction);
             FireTimer = 0;
@@ -82,7 +82,7 @@ namespace Game1.Enemy
 
         public void UpdateEnemy()
         {
-            if (FireTimer > Rnd.Next(150, 200) || Projectile.GetIsOnScreen())
+            if (FireTimer > Rnd.Next(180, 200) || Projectile.GetIsOnScreen())
             {
                 if (CanFire)
                 {
@@ -95,7 +95,7 @@ namespace Game1.Enemy
             }
             else
             {
-                Velocity = 3;
+                Velocity = 1;
 
                 UpdateCanTurn();
 
@@ -163,19 +163,6 @@ namespace Game1.Enemy
             {
                 CanTurn = true;
             }
-
-            if (CanTurnTimer < 32)
-            {
-                CanTurnTimer++;
-            }
-            else
-            {
-                CanTurnTimer = 0;
-                if (Rnd.Next(5) == 0)
-                {
-                    CanTurn = true;
-                }
-            }
         }
 
         private void UpdateDirection()
@@ -213,7 +200,7 @@ namespace Game1.Enemy
 
         private int RightBlocked()
         {
-            if (Location.X >= 192 * scale)
+            if (Location.X >= 208 * scale)
             {
                 return 0;
             }
@@ -225,7 +212,7 @@ namespace Game1.Enemy
 
         private int DownBlocked()
         {
-            if (Location.Y >= 144 * scale)
+            if (Location.Y >= 128 * scale)
             {
                 return 0;
             }
@@ -252,27 +239,41 @@ namespace Game1.Enemy
             float x = Location.X;
             float y = Location.Y;
 
-            if (Direction == 0)
+            if (CanTurnTimer < 48)
             {
-                y -= Velocity;
+                if (Direction == 0)
+                {
+                    y -= Velocity;
+                }
+                else if (Direction == 1)
+                {
+                    x += Velocity;
+                }
+                else if (Direction == 2)
+                {
+                    y += Velocity;
+                }
+                else if (Direction == 3)
+                {
+                    x -= Velocity;
+                }
+
+                CanTurnTimer++;
             }
-            else if (Direction == 1)
+            else
             {
-                x += Velocity;
-            }
-            else if (Direction == 2)
-            {
-                y += Velocity;
-            }
-            else if (Direction == 3)
-            {
-                x -= Velocity;
+                CanTurnTimer = 0;
+
+                if (Rnd.Next(5) == 0)
+                {
+                    CanTurn = true;
+                }
             }
 
             Location = new Vector2(x, y);
 
             // Test code for sprint 3 rectangle
-            CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * 5, 16 * 5);
+            CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * scale, 16 * scale);
         }
 
         Rectangle IEnemy.GetRectangle()

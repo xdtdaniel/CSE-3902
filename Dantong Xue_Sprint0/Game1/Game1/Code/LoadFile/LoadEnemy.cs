@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemFactory;
 using Game1.Enemy;
+using System.Reflection;
 
 namespace Game1.Code.LoadFile
 {
@@ -37,11 +38,15 @@ namespace Game1.Code.LoadFile
 
         private List<Tuple<IEnemy, string>> Enemies = new List<Tuple<IEnemy, string>>();
 
-        public void LoadAllEnemy()
+        public void LoadAllEnemy(string mapName)
         {
             EnemyList = new List<Tuple<int, int, string>>();
-            string filePath = System.IO.Path.GetFullPath("test_loadenemy.csv");
-            StreamReader streamReader = new StreamReader(filePath);
+
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pathNew = filePath.Substring(0, filePath.IndexOf("bin"));
+            pathNew = pathNew + "Maps\\Room\\" + mapName;
+
+            StreamReader streamReader = new StreamReader(pathNew);
             string line;
             string[] strList = new string[MAX_COLUMNS];
             int cell_x;
@@ -63,6 +68,8 @@ namespace Game1.Code.LoadFile
                 }
                 cell_y++;
             }
+
+            Enemies.Clear();
 
             Vector2 location;
 
@@ -96,6 +103,26 @@ namespace Game1.Code.LoadFile
                     case "goriya":
                         Enemy = new Goriya(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "goriya"));
+                        break;
+                    case "trap":
+                        Enemy = new Trap(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
+                        break;
+                    case "wallmaster":
+                        Enemy = new Wallmaster(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
+                        break;
+                    case "merchant":
+                        Enemy = new Merchant(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "merchant"));
+                        break;
+                    case "oldman":
+                        Enemy = new OldMan(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "oldman"));
+                        break;
+                    case "fire":
+                        Enemy = new Fire(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "fire"));
                         break;
                 }
 

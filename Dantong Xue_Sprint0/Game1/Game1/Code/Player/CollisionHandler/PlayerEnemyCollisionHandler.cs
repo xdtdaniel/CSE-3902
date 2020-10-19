@@ -29,7 +29,9 @@ namespace Game1.Code.Player
                 }
 
                 projectileList = tuple.Item1.GetProjectile();
-                if (projectileList.Count > 0) { 
+
+                if (tuple.Item2 == "aquamentus")
+                {
                     foreach (IProjectile projectile in tuple.Item1.GetProjectile())
                     {
                         if (projectile.GetIsOnScreen())
@@ -39,6 +41,24 @@ namespace Game1.Code.Player
                             {
                                 link.TakeDamage();
                                 link.KnockedBack(collidedSide);
+                                projectile.SetIsOnScreen(false);
+                            }
+                        }
+                    }
+                }
+
+                if (tuple.Item2 == "goriya")
+                {
+                    foreach (IProjectile projectile in tuple.Item1.GetProjectile())
+                    {
+                        if (projectile.GetIsOnScreen())
+                        {
+                            collidedSide = blockCollision.isCollided(link.GetRectangle(), projectile.GetRectangle());
+                            if (collidedSide != "" && link.damageTimeCounter == 0)
+                            {
+                                link.TakeDamage();
+                                link.KnockedBack(collidedSide);
+                                projectile.BounceBack();
                             }
                         }
                     }
