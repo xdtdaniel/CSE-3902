@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game1.Code.LoadFile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,17 +13,23 @@ namespace Game1.Player
     class Bomb : IPlayerItemSprite
     {
         Texture2D Texture;
+        int sourceWidth;
+        int sourceHeight;
+        int destinationWidth;
+        int destinationHeight;
         public Bomb(Texture2D texture)
         {
-            Texture = texture;
+            Texture = texture; 
+            sourceWidth = texture.Width;
+            sourceHeight = texture.Height;
+            destinationWidth = (int)(LoadAll.Instance.scale * 8);
+            destinationHeight = (int)(LoadAll.Instance.scale * 15);
         }
         public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
         {
-            int width = Texture.Width;
-            int height = Texture.Height;
 
-            Rectangle sourceRectangle = new Rectangle(currentFrame * width, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, 25, 45);
+            Rectangle sourceRectangle = new Rectangle(currentFrame * sourceWidth, 0, sourceWidth, sourceHeight);
+            Rectangle destinationRectangle = new Rectangle(x, y, destinationWidth, destinationHeight);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 

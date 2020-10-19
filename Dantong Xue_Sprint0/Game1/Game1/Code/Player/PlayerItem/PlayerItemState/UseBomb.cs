@@ -25,6 +25,7 @@ namespace Game1.Player.PlayerCharacter
         IPlayerItemSprite bombExplosion;
 
         Rectangle rectangle;
+
         public UseBomb(PlayerItem item)
         {
             used = false;
@@ -44,10 +45,32 @@ namespace Game1.Player.PlayerCharacter
         public void UseItem(int itemNum) 
         {
         }
+        public string GetItemName()
+        {
+            if (currentFrame == 0)
+            {
+                return "Bomb";
+            }
+            else
+            {
+                return "BombExplosion";
+            }
+        }
+        public void CollisionResponse()
+        {
+            if (currentFrame == 0)
+            {
+                // block
+            }
+            else
+            {
+                // player and enemy take damage
+            }
+        }
         public void Update() 
         { 
             secondFrame++;
-            /* explode after 60 frames */
+            /* explode after 80 frames */
             if (secondFrame == 80)
             {
                 currentFrame++;
@@ -84,11 +107,11 @@ namespace Game1.Player.PlayerCharacter
             }
             if (currentFrame == 0)
             {
-                bomb.Draw(spriteBatch, x, y, currentFrame, direction);
+                rectangle = bomb.Draw(spriteBatch, x, y, currentFrame, direction);
             }
             else 
             {
-                bombExplosion.Draw(spriteBatch, x, y, currentFrame, direction);
+                rectangle = bombExplosion.Draw(spriteBatch, x, y, currentFrame, direction);
             }
             used = true;
         }

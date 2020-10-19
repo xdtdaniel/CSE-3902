@@ -47,6 +47,14 @@ namespace Game1.Player.PlayerCharacter
         public void UseItem(int itemNum) 
         {
         }
+        public string GetItemName()
+        {
+            return "Arrow";
+        }
+        public void CollisionResponse()
+        {
+            currentFrame = 120;
+        }
         public void Update() 
         {
             
@@ -81,19 +89,19 @@ namespace Game1.Player.PlayerCharacter
             switch (direction)
             {
                 case 0: /* front */
-                    frontArrow.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = frontArrow.Draw(spriteBatch, x, y, currentFrame, direction);
                     y += 5;
                     break;
                 case 1: /* right */
-                    rightArrow.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = rightArrow.Draw(spriteBatch, x, y, currentFrame, direction);
                     x += 5;
                     break;
                 case 2: /* back */
-                    backArrow.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = backArrow.Draw(spriteBatch, x, y, currentFrame, direction);
                     y -= 5;
                     break;
                 case 3: /* left */
-                    leftArrow.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = leftArrow.Draw(spriteBatch, x, y, currentFrame, direction);
                     x -= 5;
                     break;
                 default:

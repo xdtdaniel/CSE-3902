@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using Microsoft.Xna.Framework;
 using Game1.Code.Player;
 using Game1.Enemy;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -24,9 +25,8 @@ namespace Game1.Player.PlayerCharacter
 
         public string direction;
 
-        PlayerItem item;
+        public PlayerItem item;
 
-        private int scaler;
 
         public IPlayerLinkState state;
         public Link()
@@ -47,7 +47,6 @@ namespace Game1.Player.PlayerCharacter
             item = new PlayerItem();
             item.state = new NoItem(item);
 
-            scaler = 1; // default size is 48 * 48
 
         }
 
@@ -74,7 +73,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public Rectangle GetRectangle()
         {
-            return new Rectangle(x, y, 48 * scaler, 48 * scaler);
+            return new Rectangle(x, y, 13 * (int)LoadAll.Instance.scale, 13 * (int)LoadAll.Instance.scale);
         }
         public void KnockedBack(string collisionSide)
         {

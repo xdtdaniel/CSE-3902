@@ -45,6 +45,14 @@ namespace Game1.Player.PlayerCharacter
                     break;
             }
         }
+        public string GetItemName()
+        {
+            return "";
+        }
+        public void CollisionResponse()
+        {
+
+        }
         public void Update()
         {
         }

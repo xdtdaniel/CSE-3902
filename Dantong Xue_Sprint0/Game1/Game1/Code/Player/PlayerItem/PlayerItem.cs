@@ -28,16 +28,24 @@ namespace Game1.Player.PlayerCharacter
         {
             state.UseItem(itemNum);
         }
+        public Rectangle GetRectangle()
+        {
+            return state.GetRectangle();
+        }
+        public string GetItemName()
+        {
+            return state.GetItemName();
+        }
+        public void CollisionResponse()
+        {
+            state.CollisionResponse();
+        }
         public void Update(int x, int y, int direction)
         {
             state.Update();
             this.x = x;
             this.y = y;
             this.direction = direction;
-        }
-        public Rectangle GetRectangle()
-        {
-            return state.GetRectangle();
         }
         public void Draw(SpriteBatch spriteBatch)
         {

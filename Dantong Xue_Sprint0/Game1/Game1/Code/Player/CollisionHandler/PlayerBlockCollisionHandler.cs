@@ -13,13 +13,13 @@ namespace Game1.Code.Player
         {
             collidedSide = "";
         }
-        public void HandleCollision(Link link, Dictionary<string, List<Rectangle>> blockList, BlockCollision blockCollision)
+        public void HandleCollision(Link link, Dictionary<string, List<Rectangle>> blockList)
         {
             foreach (KeyValuePair<string, List<Rectangle>> kvp in blockList)
             {
                 foreach (Rectangle rect in kvp.Value)
                 {
-                    collidedSide = blockCollision.isCollided(link.GetRectangle(), rect);
+                    collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), rect);
                     if (collidedSide != "")
                     {
                         switch (kvp.Key) {

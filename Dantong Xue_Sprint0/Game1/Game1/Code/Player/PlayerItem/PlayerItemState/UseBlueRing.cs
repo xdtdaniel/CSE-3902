@@ -39,6 +39,14 @@ namespace Game1.Player.PlayerCharacter
         public void UseItem(int itemNum) 
         {
         }
+        public string GetItemName()
+        {
+            return "BlueRing";
+        }
+        public void CollisionResponse()
+        {
+
+        }
         public void Update() 
         {
             currentFrame++;
@@ -73,7 +81,7 @@ namespace Game1.Player.PlayerCharacter
                         break;
                 }
             }
-            blueRing.Draw(spriteBatch, x, y, currentFrame, direction);
+            rectangle = blueRing.Draw(spriteBatch, x, y, currentFrame, direction);
             used = true;
         }
 

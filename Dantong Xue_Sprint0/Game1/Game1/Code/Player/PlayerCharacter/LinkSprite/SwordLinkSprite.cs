@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player
 {
@@ -88,7 +89,7 @@ namespace Game1.Player
             }
 
             Rectangle sourceRectangle = new Rectangle(sourceX, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(drawX, drawY, width / 2, height / 2);
+            Rectangle destinationRectangle = new Rectangle(drawX, drawY, (int)(LoadAll.Instance.scale * width / 8), (int)(LoadAll.Instance.scale * height / 8));
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 

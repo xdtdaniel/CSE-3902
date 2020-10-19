@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -19,7 +20,7 @@ namespace Game1.Player.PlayerCharacter
         int boomerangSpeed;
         int currentFrame;
         int totalFrame;
-        int secondFrame;
+        public int secondFrame;
 
         IPlayerItemSprite frontBoomerang;
         IPlayerItemSprite rightBoomerang;
@@ -51,11 +52,19 @@ namespace Game1.Player.PlayerCharacter
         public void UseItem(int itemNum) 
         {
         }
+        public string GetItemName()
+        {
+            return "Boomerang";
+        }
+        public void CollisionResponse()
+        {
+            secondFrame = 120;
+        }
         public void Update() 
         {
-            if (secondFrame > 120)
+            if (secondFrame >= 120)
             {
-                if (boomerangSpeed < 20)
+                if (boomerangSpeed <= 10)
                 {
                     boomerangSpeed++;
                 }
@@ -83,8 +92,8 @@ namespace Game1.Player.PlayerCharacter
                 }
                 
                 
-                Point point = new Point(x + 30, y + 50);
-                Rectangle rec = new Rectangle(item.x, item.y, 100, 100);
+                Point point = new Point(x + (int)(7 * LoadAll.Instance.scale), y + (int)(7 * LoadAll.Instance.scale));
+                Rectangle rec = new Rectangle(item.x, item.y, 50, 50);
                 if (rec.Contains(point))
                 {
                     item.state = new NoItem(item);
@@ -95,16 +104,16 @@ namespace Game1.Player.PlayerCharacter
                 switch (direction)
                 {
                     case 0: /* front */
-                        y += 10;
+                        y += boomerangSpeed;
                         break;
                     case 1: /* right */
-                        x += 10;
+                        x += boomerangSpeed;
                         break;
                     case 2: /* back */
-                        y -= 10;
+                        y -= boomerangSpeed;
                         break;
                     case 3: /* left */
-                        x -= 10;
+                        x -= boomerangSpeed;
                         break;
                     default:
                         break;
@@ -127,16 +136,16 @@ namespace Game1.Player.PlayerCharacter
             switch (currentFrame)
             {
                 case 0:
-                    frontBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = frontBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 1:
-                    rightBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = rightBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 2:
-                    backBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = backBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 3:
-                    leftBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = leftBoomerang.Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 default:
                     break;

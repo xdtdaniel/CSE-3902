@@ -21,12 +21,12 @@ namespace Game1
         private Game1 game;
 
         // test
-        private BlockCollision blockCollision;
         private Dictionary<string, List<Rectangle>> blockList;
         private List<Tuple<IEnemy, string>> enemyList;
 
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
+        private ItemBlockCollisionHandler itemBlockCollisionHandler;
 
         public PlayerCommand(SpriteBatch spriteBatch, Game1 game)
         {
@@ -34,12 +34,12 @@ namespace Game1
             this.game = game;
 
             //
-            blockCollision = new BlockCollision();
-            blockList = LoadAll.Instance.GetMapArtifacts();
-            enemyList = LoadEnemy.Instance.GetEnemyList();
+            blockList = new Dictionary<string, List<Rectangle>>();
+            enemyList = new List<Tuple<IEnemy, string>>();
 
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
+            itemBlockCollisionHandler = new ItemBlockCollisionHandler();
 
         }
 
@@ -48,8 +48,12 @@ namespace Game1
             game.link.direction = game.playerKeyboardController.Direction();
             game.link.Update(game.playerKeyboardController.IsMoving());
 
-            playerBlockCollisionHandler.HandleCollision(game.link, blockList, blockCollision);
-            playerEnemyCollisionHandler.HandleCollision(game.link, enemyList, blockCollision);
+
+            blockList = LoadAll.Instance.GetMapArtifacts();
+            enemyList = LoadEnemy.Instance.GetEnemyList();
+            playerBlockCollisionHandler.HandleCollision(game.link, blockList);
+            playerEnemyCollisionHandler.HandleCollision(game.link, enemyList);
+            itemBlockCollisionHandler.HandleCollision(game.link.item, blockList);
         }
         public void PlayerDraw()
         {

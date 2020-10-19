@@ -17,11 +17,11 @@ namespace Game1.Code.Player
             collidedSide = "";
             projectileList = new List<IProjectile>();
         }
-        public void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList, BlockCollision blockCollision)
+        public void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
         {
             foreach (Tuple<IEnemy, string> tuple in enemyList)
             {
-                collidedSide = blockCollision.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
+                collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
                 if (collidedSide != "" && link.damageTimeCounter == 0)
                 {
                     link.TakeDamage();
@@ -36,7 +36,7 @@ namespace Game1.Code.Player
                     {
                         if (projectile.GetIsOnScreen())
                         {
-                            collidedSide = blockCollision.isCollided(link.GetRectangle(), projectile.GetRectangle());
+                            collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
                                 link.TakeDamage();
@@ -53,7 +53,7 @@ namespace Game1.Code.Player
                     {
                         if (projectile.GetIsOnScreen())
                         {
-                            collidedSide = blockCollision.isCollided(link.GetRectangle(), projectile.GetRectangle());
+                            collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
                                 link.TakeDamage();

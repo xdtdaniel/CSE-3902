@@ -11,12 +11,15 @@ namespace Game1
 {
     class BlockCollision
     {
+        private static BlockCollision instance = new BlockCollision();
 
-        public BlockCollision()
+        public static BlockCollision Instance
         {
-            
+            get
+            {
+                return instance;
+            }
         }
-
         public string isCollided(Rectangle rectangle1, Rectangle rectangle2)
         {
             String direction="";

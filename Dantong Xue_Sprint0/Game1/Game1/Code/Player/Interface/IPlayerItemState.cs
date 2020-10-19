@@ -11,8 +11,10 @@ namespace Game1.Player.Interface
     public interface IPlayerItemState
     {
         void UseItem(int itemNum);
+        string GetItemName();
         void Update();
-        Rectangle GetRectangle();
+        void CollisionResponse();
         void Draw(SpriteBatch spriteBatch);
+        Rectangle GetRectangle();
     }
 }
