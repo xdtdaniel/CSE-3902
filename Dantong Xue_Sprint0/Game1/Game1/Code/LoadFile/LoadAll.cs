@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Code.Item.ItemInterface;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace Game1.Code.LoadFile
             scale = 3;
             startPos = new Vector2(0, 0);
             currMapID = 18;
+
         }
         private int currMapID = 1;
 
@@ -44,6 +46,11 @@ namespace Game1.Code.LoadFile
         {
             string enemyMapName = currMapID.ToString() + "_enemy.csv";
             LoadEnemy.Instance.LoadAllEnemy(enemyMapName);
+        }
+        public void LoadRoomItem() 
+        {
+            string itemMapName  = currMapID.ToString()+"_item.csv";
+            LoadItem.Instance.LoadRoomItem(itemMapName);
         }
 
         public void PrevMap()
@@ -73,6 +80,7 @@ namespace Game1.Code.LoadFile
         {
             return LoadMap.Instance.GetBlocksToDraw();
         }
+
 
 
     }
