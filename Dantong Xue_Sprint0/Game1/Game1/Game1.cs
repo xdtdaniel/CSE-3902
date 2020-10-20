@@ -42,7 +42,7 @@ namespace Game1
         private List<Tuple<IItemSprite, string>> outRoomList;
 
         private IController mapMouseController;
-        private ItemKeyboardController itemKeyboardController;
+        //private ItemKeyboardController itemKeyboardController;
         public PlayerKeyboardController playerKeyboardController;
 
         private QuitResetController quitResetController;
