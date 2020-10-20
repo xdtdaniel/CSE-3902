@@ -20,11 +20,14 @@ namespace Game1.Code.LoadFile
     {
         private int MAX_COLUMNS = 32;
         private int multiplier = 8;
-        private double scale = 2;
+        public int scale = 2;
         private SpriteBatch spriteBatch;
         private Vector2 startPos;
-        private List<IItemSprite> roomItems;
-
+        private List<IItemSprite> roomItems = new List<IItemSprite>();
+        int X;
+        int Y;
+        Vector2 location;
+        IItemSprite item;
         List<Tuple<int, int, string>> RoomItemList;
 
         private static LoadItem instance = new LoadItem();
@@ -41,10 +44,9 @@ namespace Game1.Code.LoadFile
         {
             multiplier = LoadAll.Instance.multiplier;
             scale = LoadAll.Instance.scale;
-            startPos = LoadAll.Instance.startPos;           
+            startPos = LoadAll.Instance.startPos;
         }
-        
-
+      
 
         public void LoadRoomItem(SpriteBatch currSpriteBatch)
         {
@@ -76,43 +78,44 @@ namespace Game1.Code.LoadFile
             }
 
             
-            Vector2 location;
+          
             roomItems = new List<IItemSprite>();
+
             for (int index = 0; index < RoomItemList.Count; index++)
             {
-
-                int X = (int)(RoomItemList[index].Item1 * multiplier * scale);
-                int Y = (int)(RoomItemList[index].Item2 * multiplier * scale);
+               
+                 X = RoomItemList[index].Item1 * multiplier * scale;
+                 Y = RoomItemList[index].Item2 * multiplier * scale;
                 location = new Vector2(X, Y);
 
-                IItemSprite item;
+              
 
                 switch (RoomItemList[index].Item3)
                 {
                     case "arrow":
                         item = ItemSpriteFactory.Instance.CreateArrow();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        
+                     //   item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
+                       
                         break;
                     case "bomb":
                         item = ItemSpriteFactory.Instance.CreateBomb();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                      //  item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "boomerang":
                         item = ItemSpriteFactory.Instance.CreateBoomerang();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                      //  item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "bow":
                         item = ItemSpriteFactory.Instance.CreateBow();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                      //  item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "clock":
                         item = ItemSpriteFactory.Instance.CreateClock();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                      //  item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "compass":
@@ -122,37 +125,37 @@ namespace Game1.Code.LoadFile
                         break;
                     case "fairy":
                         item = ItemSpriteFactory.Instance.CreateFairy();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                      //  item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "heart":
                         item = ItemSpriteFactory.Instance.CreateHeart();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                       // item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "heartcontainer":
                         item = ItemSpriteFactory.Instance.CreateHeartContainer();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                       // item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "key":
                         item = ItemSpriteFactory.Instance.CreateKey();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                        //item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "map":
                         item = ItemSpriteFactory.Instance.CreateKey();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                      //  item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "ruby":
                         item = ItemSpriteFactory.Instance.CreateRuby();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                       // item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                     case "triforce":
                         item = ItemSpriteFactory.Instance.CreateTriforce();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
+                       // item.Draw(spriteBatch, (int)location.X, (int)location.Y);
                         roomItems.Add(item);
                         break;
                 }
@@ -161,12 +164,25 @@ namespace Game1.Code.LoadFile
 
 
 
+         
         }
-        public void UpdateAllItem()
+        public void DrawItem(SpriteBatch spriteBatch)
+        {
+
+          
+                for (int i = 0; i < roomItems.Count; i++) { 
+                    roomItems[i].Draw(spriteBatch, (int)location.X+1*multiplier*scale, (int)location.Y+1*multiplier*scale);
+                }
+                        
+
+           
+        }
+
+          public void UpdateAllItem()
         {
             for (int i = 0; i < roomItems.Count; i++)
             {
-                roomItems[i].Update();
+               roomItems[i].Update();
             }
         }
 
