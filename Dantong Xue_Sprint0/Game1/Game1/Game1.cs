@@ -97,7 +97,7 @@ namespace Game1
             mapMouseController.Update(this);
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
-            itemKeyboardController.Update(this);
+            //itemKeyboardController.Update(this);
             playerKeyboardController.Update();
             quitResetController.Update(this);
             playerCommand.PlayerUpdate();
@@ -115,7 +115,7 @@ namespace Game1
 
             _spriteBatch.Begin();
             
-            LoadItem.Instance.LoadRoomItem(_spriteBatch);
+            //LoadItem.Instance.LoadRoomItem(_spriteBatch);
 
             LoadAll.Instance.LoadRoom();
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
