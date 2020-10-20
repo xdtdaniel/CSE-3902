@@ -22,17 +22,21 @@ namespace Game1.Code.Item.ItemSprite
         private int count = 0;
         private int maxcount = 6;
         private Rectangle CollisionRectangle;
-        private Game game;
-        public  Triforce(Texture2D texture, Game g)
+        //private Game game;
+        private int x;
+        private int y;
+        public  Triforce(int position_x, int position_y)
         {
-            game = g;
-            Texture = texture;
+            //game = g;
+            Texture = ItemFactory.ItemSpriteFactory.CreateTriforce();
             TotalFrames = 2;
             Rows = 1;
             Columns = 2;
             CurrentFrame = 0;
+            x = position_x;
+            y = position_y;
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        public void Draw(SpriteBatch spriteBatch)
         {
             width = Texture.Width / Columns;
             height = Texture.Height / Rows;

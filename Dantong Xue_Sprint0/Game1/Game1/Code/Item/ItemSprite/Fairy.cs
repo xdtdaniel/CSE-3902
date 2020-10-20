@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace Game1.Code.Item.ItemSprite
 {
@@ -21,24 +22,25 @@ namespace Game1.Code.Item.ItemSprite
         private int Rows;
         private int TotalFrames;
         private int CurrentFrame;
-        public int x = 400 ;
-        public int y = 260;
+        public int x;
+        public int y;
         private int count = 0;
         private int maxcount = 10;
         private int displacement = 15;
         private int max_displacement = 100;
         private Rectangle CollisionRectangle;
-        private Game game;
 
-        public Fairy(Texture2D texture, Game g)
+
+        public Fairy(int position_x, int position_y)
         {
-            game = g;
-            Texture = texture;
+            //game = g;
+            Texture = ItemFactory.ItemSpriteFactory.CreateFairy();
             TotalFrames = 2;
             Rows = 1;
             Columns = 2;
             CurrentFrame = 0;
-
+            x = position_x;
+            y = position_y;
 
         }
         /// <summary>
@@ -48,8 +50,10 @@ namespace Game1.Code.Item.ItemSprite
         {
             count++;
             if (count==maxcount) {
-                height = game.GraphicsDevice.Viewport.Height;
-                width = game.GraphicsDevice.Viewport.Width;
+                //height = game.GraphicsDevice.Viewport.Height;
+                height = Screen.PrimaryScreen.Bounds.Height;
+                //width = game.GraphicsDevice.Viewport.Width;
+                width = Screen.PrimaryScreen.Bounds.Width;
                 CurrentFrame++;
 
                 if (CurrentFrame == TotalFrames)
@@ -83,7 +87,7 @@ namespace Game1.Code.Item.ItemSprite
             }
 
         }
-        public void Draw(SpriteBatch spriteBatch, int positionx, int positiony)
+        public void Draw(SpriteBatch spriteBatch)
         {
             width = Texture.Width / Columns;
             height = Texture.Height / Rows;
