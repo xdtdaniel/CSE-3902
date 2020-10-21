@@ -25,8 +25,13 @@ namespace Game1
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
+        private List<Rectangle> BlockList;
+        private bool UpCollide = false;
+        private bool DownCollide = false;
+        private bool LeftCollide = false;
+        private bool RightCollide = false;
 
-        public Gel(Vector2 location)
+        public Gel(Vector2 location, List<Rectangle> blockList)
         {
             Texture = EnemyTextureStorage.GetGelSpriteSheet();
             TotalFrames = 2;
@@ -36,6 +41,7 @@ namespace Game1
 
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)(Location.X + 1 * scale), (int)(Location.Y + 1 * scale), 8 * scale, 8 * scale);
+            BlockList = blockList;
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -70,6 +76,8 @@ namespace Game1
 
             UpdateMovingState(rnd);
 
+            HandleBlockCollision();
+
             if (MovingState == 1)
             {
                 if (MoveTimer == 0)
@@ -77,6 +85,11 @@ namespace Game1
                     Direction = rnd.Next(4);
                 }
                 Move(Direction);
+
+                UpCollide = false;
+                DownCollide = false;
+                LeftCollide = false;
+                RightCollide = false;
             }
 
             if (CurrentFrame == TotalFrames)
@@ -88,7 +101,7 @@ namespace Game1
 
         private void UpdateMovingState(Random random)
         {
-            if (StateTimer < 6 )
+            if (StateTimer < 32 )
             {
                 StateTimer++;
             }
@@ -103,42 +116,47 @@ namespace Game1
         {
             float x = Location.X;
             float y = Location.Y;
-            if (MoveTimer < 4)
+
+            if (MoveTimer < 16)
             {
                 if (direction == 0)
                 {
-                    y -= 4 * scale;
-                    if (Location.Y <= 32 * scale)
+                    y -= 1 * scale;
+                    if (Location.Y < 28 * scale || UpCollide)
                     {
-                        y = 32 * scale;
+                        y += (6) * scale;
                         MovingState = 0;
+                        MoveTimer = 16;
                     }
                 }
                 else if (direction == 1)
                 {
-                    x += 4 * scale;
-                    if (Location.X >= 208 * scale)
+                    x += 1 * scale;
+                    if (Location.X > 204 * scale || RightCollide)
                     {
-                        x = 208 * scale;
+                        x -= (6) * scale;
                         MovingState = 0;
+                        MoveTimer = 16;
                     }
                 }
                 else if (direction == 2)
                 {
-                    y += 4 * scale;
-                    if (Location.Y >= 128 * scale)
+                    y += 1 * scale;
+                    if (Location.Y > 124 * scale || DownCollide)
                     {
-                        y = 128 * scale;
+                        y -= (6) * scale;
                         MovingState = 0;
+                        MoveTimer = 16;
                     }
                 }
                 else if (direction == 3)
                 {
-                    x -= 4 * scale;
-                    if (Location.X <= 32 * scale)
+                    x -= 1 * scale;
+                    if (Location.X < 28 * scale || LeftCollide)
                     {
-                        x = 32 * scale;
+                        x += (6) * scale;
                         MovingState = 0;
+                        MoveTimer = 16;
                     }
                 }
 
@@ -154,6 +172,30 @@ namespace Game1
                 MoveTimer = 0;
                 StateTimer = 0;
                 MovingState = 0;
+            }
+        }
+
+        private void HandleBlockCollision()
+        {
+            foreach (Rectangle rect in BlockList)
+            {
+                string collidedSide = BlockCollision.Instance.isCollided(CollisionRectangle, rect);
+                if (collidedSide == "up")
+                {
+                    UpCollide = true;
+                }
+                else if (collidedSide == "right")
+                {
+                    RightCollide = true;
+                }
+                else if (collidedSide == "down")
+                {
+                    DownCollide = true;
+                }
+                else if (collidedSide == "left")
+                {
+                    LeftCollide = true;
+                }
             }
         }
 

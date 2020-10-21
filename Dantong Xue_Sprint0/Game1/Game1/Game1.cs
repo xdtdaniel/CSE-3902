@@ -106,8 +106,8 @@ namespace Game1
             mapMouseController.Update(this);
 
             enemyController.Update(EnemyLoader);
-
             EnemyList = EnemyLoader.GetEnemyList();
+            
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
             //itemKeyboardController.Update(this);

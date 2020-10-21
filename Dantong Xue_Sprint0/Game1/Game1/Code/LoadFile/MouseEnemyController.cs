@@ -23,7 +23,7 @@ namespace Game1.Code.LoadFile
 
             if (newState.LeftButton == ButtonState.Pressed && oldState.LeftButton != ButtonState.Pressed)
             {
-                enemyLoader.Next();
+                enemyLoader.Next();               
             }
             else if (newState.RightButton == ButtonState.Pressed && oldState.RightButton != ButtonState.Pressed)
             {

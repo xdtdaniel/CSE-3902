@@ -40,14 +40,15 @@ namespace Game1.Code.LoadFile
         public void LoadAllEnemy() {
 
             int i;
-            for (i = 0; i < MAP_COUNT; i++) {
-                LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv");
+            for (i = 0; i < MAP_COUNT; i++) {             
+                LoadMap.Instance.LoadOneMap((i + 1).ToString() + ".csv");
+                LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", LoadMap.Instance.GetBlocks());
                 AllEnemyList[i] = Enemies;
                 Enemies = new List<Tuple<IEnemy, string>>();
             }
         }
 
-        private void LoadOneRoomEnemy(string mapName)
+        private void LoadOneRoomEnemy(string mapName, List<Microsoft.Xna.Framework.Rectangle> blockList)
         {
             EnemyList = new List<Tuple<int, int, string>>();
 
@@ -83,8 +84,6 @@ namespace Game1.Code.LoadFile
 
             Vector2 location;
 
-            Dictionary<string, List<Microsoft.Xna.Framework.Rectangle>> blockList = LoadAll.Instance.GetMapArtifacts();
-
             for (int index = 0; index < EnemyList.Count; index++)
             {
 
@@ -101,7 +100,7 @@ namespace Game1.Code.LoadFile
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "aquamentus"));
                         break;
                     case "gel":
-                        Enemy = new Gel(location);
+                        Enemy = new Gel(location, blockList);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "gel"));
                         break;
                     case "keese":
@@ -109,11 +108,11 @@ namespace Game1.Code.LoadFile
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "keese"));
                         break;
                     case "stalfos":
-                        Enemy = new Stalfos(location);
+                        Enemy = new Stalfos(location, blockList);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "stalfos"));
                         break;
                     case "goriya":
-                        Enemy = new Goriya(location);
+                        Enemy = new Goriya(location, blockList);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "goriya"));
                         break;
                     case "trap":

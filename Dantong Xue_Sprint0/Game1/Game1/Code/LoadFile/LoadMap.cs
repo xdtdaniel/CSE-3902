@@ -360,6 +360,9 @@ namespace Game1.Code.LoadFile
             return artifacts;
         }
 
+        public List<Rectangle> GetBlocks() {
+            return blocks;
+        }
 
         public List<Tuple<IBlock, Vector2>> GetBlocksToDraw()
         {

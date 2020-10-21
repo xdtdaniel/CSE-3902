@@ -200,7 +200,7 @@ namespace Game1.Enemy
         private bool OutsideMovingRange()
         {
             Boolean outside = false;
-            if (Location.X <= 96 * scale * 1.5 || Location.X >= 184 * scale)
+            if (Location.X <= 96 * scale * 1.5 || Location.X >= 168 * scale)
             {
                 outside = true;
             }

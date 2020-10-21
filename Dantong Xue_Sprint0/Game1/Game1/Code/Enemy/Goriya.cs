@@ -30,8 +30,12 @@ namespace Game1.Enemy
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList;
-
-        public Goriya(Vector2 location)
+        private List<Rectangle> BlockList;
+        private bool UpCollide = false;
+        private bool DownCollide = false;
+        private bool LeftCollide = false;
+        private bool RightCollide = false;
+        public Goriya(Vector2 location, List<Rectangle> blockList)
         {
             Texture = EnemyTextureStorage.GetGoriyaSpriteSheet();
             Rnd = new Random();
@@ -47,6 +51,7 @@ namespace Game1.Enemy
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X + 1 * scale, (int)Location.Y, 14 * scale, 16 * scale);
             ProjectileList = new List<IProjectile>();
+            BlockList = blockList;
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -97,6 +102,7 @@ namespace Game1.Enemy
             {
                 Velocity = 1;
 
+                HandleBlockCollision();
                 UpdateCanTurn();
 
                 if (CanTurn)
@@ -183,12 +189,18 @@ namespace Game1.Enemy
             Direction = turnableDirections[Rnd.Next(size)];
 
             CanTurn = false;
+
+            UpCollide = false;
+            DownCollide = false;
+            LeftCollide = false;
+            RightCollide = false;
+
             CanTurnTimer = 0;
         }
 
         private int UpBlocked()
         {
-            if (Location.Y <= 32 * scale)
+            if (Location.Y <= 32 * scale || UpCollide)
             {
                 return 0;
             }
@@ -200,7 +212,7 @@ namespace Game1.Enemy
 
         private int RightBlocked()
         {
-            if (Location.X >= 208 * scale)
+            if (Location.X >= 208 * scale || RightCollide)
             {
                 return 0;
             }
@@ -212,7 +224,7 @@ namespace Game1.Enemy
 
         private int DownBlocked()
         {
-            if (Location.Y >= 128 * scale)
+            if (Location.Y >= 128 * scale || DownCollide)
             {
                 return 0;
             }
@@ -224,7 +236,7 @@ namespace Game1.Enemy
 
         private int LeftBlocked()
         {
-            if (Location.X <= 32 * scale)
+            if (Location.X <= 32 * scale || LeftCollide)
             {
                 return 0;
             }
@@ -234,6 +246,29 @@ namespace Game1.Enemy
             }
         }
 
+        private void HandleBlockCollision()
+        {
+            foreach (Rectangle rect in BlockList)
+            {
+                string collidedSide = BlockCollision.Instance.isCollided(CollisionRectangle, rect);
+                if (collidedSide == "up")
+                {
+                    UpCollide = true;
+                }
+                else if (collidedSide == "right")
+                {
+                    RightCollide = true;
+                }
+                else if (collidedSide == "down")
+                {
+                    DownCollide = true;
+                }
+                else if (collidedSide == "left")
+                {
+                    LeftCollide = true;
+                }
+            }
+        }
         private void UpdateLocation()
         {
             float x = Location.X;
