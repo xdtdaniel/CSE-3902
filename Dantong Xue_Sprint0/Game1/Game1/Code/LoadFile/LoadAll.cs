@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Game1.Code.LoadFile
@@ -20,17 +21,21 @@ namespace Game1.Code.LoadFile
             }
         }
 
+        private List<bool> isSwitched;
+
         private LoadAll()
         {
             multiplier = 8;
             scale = 3;
             startPos = new Vector2(0, 0);
             currMapID = 1;
-
+            isSwitched = new List<bool>(new bool[MAP_COUNT + 1]);
         }
         private int currMapID = 1;
 
         private const int MAP_COUNT = 18;
+
+        
 
         public int multiplier { get; set; }
         public double scale { get; set; }
@@ -38,7 +43,16 @@ namespace Game1.Code.LoadFile
 
         public void LoadRoom()
         {
-            string mapName = currMapID.ToString() + ".csv";
+            string mapName;
+            if (isSwitched[currMapID])
+            {
+                mapName = currMapID.ToString() + "_after.csv";
+            }
+            else
+            {
+                mapName = currMapID.ToString() + ".csv";
+            }
+            
             LoadMap.Instance.LoadOneMap(mapName);
         }
 
@@ -69,6 +83,11 @@ namespace Game1.Code.LoadFile
             {
                 currMapID = 1;
             }
+        }
+
+        public void SwitchToHole()
+        {
+            isSwitched[currMapID] = true;
         }
 
         public Dictionary<string, List<Rectangle>> GetMapArtifacts()

@@ -55,6 +55,7 @@ namespace Game1.Code.LoadFile
         private List<Rectangle> shutDoors;
         private List<Rectangle> lockedDoors;
         private List<Rectangle> stairs;
+        private List<Rectangle> bombWalls;
         private List<IBlock> movableBlocksList;
 
         private Dictionary<string, List<Rectangle>> artifacts;
@@ -71,6 +72,8 @@ namespace Game1.Code.LoadFile
             openDoors = new List<Rectangle>();
             shutDoors = new List<Rectangle>();
             lockedDoors = new List<Rectangle>();
+            bombWalls = new List<Rectangle>();
+
             stairs = new List<Rectangle>();
 
             artifacts = new Dictionary<string, List<Rectangle>>();
@@ -319,6 +322,26 @@ namespace Game1.Code.LoadFile
                     case "invisible":
                         blocks.Add(new Rectangle((int)location.X, (int)location.Y, (int)(16 * LoadAll.Instance.scale), (int)(16 * LoadAll.Instance.scale)));
                         break;
+                    case "bombWallFront":
+                        blockToDraw = BlockFactory.Instance.CreateFrontWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        bombWalls.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "bombWallLeft":
+                        blockToDraw = BlockFactory.Instance.CreateLeftWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        bombWalls.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "bombWallRight":
+                        blockToDraw = BlockFactory.Instance.CreateRightWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        bombWalls.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "bombWallBack":
+                        blockToDraw = BlockFactory.Instance.CreateBackWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        bombWalls.Add(blockToDraw.GetRectangle(location));
+                        break;
                 }
 
             }
@@ -329,6 +352,7 @@ namespace Game1.Code.LoadFile
             artifacts.Add("shutDoors", shutDoors);
             artifacts.Add("lockedDoors", lockedDoors);
             artifacts.Add("stairs", stairs);
+            artifacts.Add("bombWalls", bombWalls);
         }
 
         public Dictionary<string, List<Rectangle>> GetArtifacts()
