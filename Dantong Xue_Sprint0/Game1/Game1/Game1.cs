@@ -38,13 +38,14 @@ namespace Game1
         private List<object> controllerList;
 
         private List<Tuple<IEnemy, string>> EnemyList;
+        private List<Tuple<IItemSprite, string>> inRoomList;
+        private List<Tuple<IItemSprite, string>> outRoomList;
 
         private IController mapMouseController;
-        private ItemKeyboardController itemKeyboardController;
+        //private ItemKeyboardController itemKeyboardController;
         public PlayerKeyboardController playerKeyboardController;
 
         private QuitResetController quitResetController;
-
 
         public Game1()
         {
@@ -60,7 +61,7 @@ namespace Game1
 
             controllerList = new List<object>();
 
-            itemKeyboardController = new ItemKeyboardController();
+            //itemKeyboardController = new ItemKeyboardController();
             playerKeyboardController = new PlayerKeyboardController();
 
             mapMouseController = new MouseMapController();
@@ -82,14 +83,15 @@ namespace Game1
             PlayerItemFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
             EnemyTextureStorage.LoadTextures(Content);
-            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            ItemSpriteFactory.LoadAllTextures(Content);
 
             _spriteFont = Content.Load<SpriteFont>("font");
 
             EnemyList = LoadEnemy.Instance.GetEnemyList();
-
+            inRoomList = LoadItem.Instance.GetItemList();
             LoadAll.Instance.LoadRoom();
             LoadAll.Instance.LoadRoomEnemy();
+            LoadAll.Instance.LoadRoomItem();
         }
 
         protected override void Update(GameTime gameTime)
@@ -97,11 +99,11 @@ namespace Game1
             mapMouseController.Update(this);
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
-            itemKeyboardController.Update(this);
+            //itemKeyboardController.Update(this);
             playerKeyboardController.Update();
             quitResetController.Update(this);
             playerCommand.PlayerUpdate();
-
+            UpdateAllItem.Instance.UpdateAll(inRoomList);
             base.Update(gameTime);
 
             // for collision test
@@ -115,12 +117,10 @@ namespace Game1
 
             _spriteBatch.Begin();
             
-            LoadItem.Instance.LoadRoomItem(_spriteBatch);
-
-            LoadAll.Instance.LoadRoom();
+            LoadAll.Instance.LoadRoom();       
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
-
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
+            DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
             // enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();
 

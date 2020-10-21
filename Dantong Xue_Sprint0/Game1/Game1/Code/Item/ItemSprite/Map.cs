@@ -16,13 +16,17 @@ namespace Game1.Code.Item.ItemSprite
         int height;
         int width;
         private Rectangle CollisionRectangle;
-        private Game game;
-        public Map(Texture2D texture, Game g)
+       // private Game game;
+        private int x;
+        private int y;
+        public Map( int position_x, int position_y)
         {
-            game = g;
-            Texture = texture;
+            //game = g;
+            Texture = ItemFactory.ItemSpriteFactory.CreateMap();
+            x = position_x;
+            y = position_y;
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        public void Draw(SpriteBatch spriteBatch)
         {
             height = Texture.Height;
             width = Texture.Width;

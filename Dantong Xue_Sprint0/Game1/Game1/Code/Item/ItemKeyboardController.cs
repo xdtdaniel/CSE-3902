@@ -14,10 +14,10 @@ namespace Game1.Code.Item
     {
         private KeyboardState oldState;
         private KeyboardState newState;
-        private ItemList itemlist;
+       // private ItemList itemlist;
 
         public ItemKeyboardController() {
-            itemlist = new ItemList();
+           // itemlist = new ItemList();
         }
         public void Update(Game1 game)
         {
@@ -26,20 +26,20 @@ namespace Game1.Code.Item
 
             if (this.newState.IsKeyDown(Keys.U) && !this.oldState.IsKeyDown(Keys.U))
             {
-                itemlist.MovePrev();
+               // itemlist.MovePrev();
             }
             if (this.newState.IsKeyDown(Keys.I) && !this.oldState.IsKeyDown(Keys.I))
             {
-                itemlist.MoveNext();
+                //itemlist.MoveNext();
             }
 
-            itemlist.Update();
+           // itemlist.Update();
 
             this.oldState = this.newState;
         }
 
         public void Draw(SpriteBatch spriteBatch, int x, int y) {
-            itemlist.Draw(spriteBatch, x, y);
+          //  itemlist.Draw(spriteBatch, x, y);
         }
     }
 }

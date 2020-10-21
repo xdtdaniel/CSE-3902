@@ -22,17 +22,21 @@ namespace Game1.Code.Item.ItemSprite
         private int count = 0;
         private int maxcount = 6;
         private Rectangle CollisionRectangle;
-        private Game game;
-        public Heart(Texture2D texture, Game g)
+        //private Game game;
+        private int x;
+        private int y;
+        public Heart(int position_x, int position_y)
         {
-            game = g;
-            Texture = texture;
+            //game = g;
+            Texture = ItemFactory.ItemSpriteFactory.CreateHeart();
             TotalFrames = 4;
             Rows = 1;
             Columns = 4;
             CurrentFrame = 0;
+            x =  position_x;
+            y = position_y;
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        public void Draw(SpriteBatch spriteBatch)
         {
             width = Texture.Width / Columns;
             height = Texture.Height / Rows;

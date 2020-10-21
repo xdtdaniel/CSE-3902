@@ -10,45 +10,27 @@ using Microsoft.Xna.Framework;
 
 namespace Game1.Code.Item.ItemFactory
 {
-	public class ItemSpriteFactory
+	//factory is only used to generate the sprite, it return texture2D used by each item sprite class.
+	public static class ItemSpriteFactory
 	{
-		private Texture2D arrow;
-		private Texture2D bomb;
-		private Texture2D boomerang;
-		private Texture2D bow;
-		private Texture2D clock;
-		private Texture2D compass;
-		private Texture2D fairy;
-		private Texture2D heart_container;
-		private Texture2D heart;
-		private Texture2D key;
-		private Texture2D map;
-		private Texture2D ruby;
-		private Texture2D triforce;
-		private Game game;
-
-		//public Game1 game { get; set; }
+		private static Texture2D arrow;
+		private static Texture2D bomb;
+		private static Texture2D boomerang;
+		private static Texture2D bow;
+		private static Texture2D clock;
+		private static Texture2D compass;
+		private static Texture2D fairy;
+		private static Texture2D heart_container;
+		private static Texture2D heart;
+		private static Texture2D key;
+		private static Texture2D map;
+		private static Texture2D ruby;
+		private static Texture2D triforce;
 
 
-		private static ItemSpriteFactory instance = new ItemSpriteFactory();
 
-		public static ItemSpriteFactory Instance
-		{
-			get
-			{
-				return instance;
-			}
-		}
 
-		private ItemSpriteFactory()
-		{
-			
-		}
-		public void LoadGame(Game g) {
-			game = g;
-		}
-
-		public void LoadAllTextures(ContentManager content)
+		public static void LoadAllTextures(ContentManager content)
 		{
 			arrow = content.Load<Texture2D>("Sprite/items/arrow_sprite");
 			bomb = content.Load<Texture2D>("Sprite/items/bomb_sprite");
@@ -66,59 +48,59 @@ namespace Game1.Code.Item.ItemFactory
 		}
 	
 
-		public IItemSprite CreateArrow()
+		public static Texture2D CreateArrow()
 		{
-			
-			return new ItemSprite.Arrow(arrow, game);
+
+			return arrow;
 		}
 
-		public IItemSprite CreateBomb()
+		public static Texture2D CreateBomb()
 		{
-			return new ItemSprite.Bomb(bomb, game);
+			return bomb;
 		}
-		public IItemSprite CreateBoomerang()
+		public static  Texture2D CreateBoomerang()
 		{
-			return new ItemSprite.Boomerang(boomerang, game);
+			return boomerang;
 		}
-		public IItemSprite CreateBow()
+		public static Texture2D CreateBow()
 		{
-			return new ItemSprite.Bow(bow, game);
+			return bow;
 		}
-		public IItemSprite CreateClock()
+		public static Texture2D CreateClock()
 		{
-			return new ItemSprite.Clock(clock, game);
+			return clock;
 		}
-		public IItemSprite CreateCompass()
+		public static Texture2D CreateCompass()
 		{
-			return new ItemSprite.Compass(compass, game);
+			return compass;
 		}
-		public IItemSprite CreateFairy()
+		public static Texture2D CreateFairy()
 		{
-			return new ItemSprite.Fairy(fairy, game);
+			return fairy;
 		}
-		public IItemSprite CreateHeartContainer()
+		public static  Texture2D CreateHeartContainer()
 		{
-			return new ItemSprite.HeartContainer(heart_container, game);
+			return heart_container;
 		}
-		public IItemSprite CreateHeart()
+		public static Texture2D CreateHeart()
 		{
-			return new ItemSprite.Heart(heart, game);
+			return heart;
 		}
-		public IItemSprite CreateKey()
+		public static Texture2D CreateKey()
 		{
-			return new ItemSprite.Key(key, game);
+			return key;
 		}
-		public IItemSprite CreateMap()
+		public static Texture2D CreateMap()
 		{
-			return new ItemSprite.Map(map, game);
+			return map;
 		}
-		public IItemSprite CreateRuby()
+		public static Texture2D CreateRuby()
 		{
-			return new ItemSprite.Ruby(ruby, game);
+			return ruby;
 		}
-		public IItemSprite CreateTriforce()
+		public static Texture2D CreateTriforce()
 		{
-			return new ItemSprite.Triforce(triforce, game);
+			return triforce;
 		}
 
 

@@ -24,11 +24,13 @@ namespace Game1.Code.LoadFile
             {
                 LoadAll.Instance.NextMap();
                 LoadAll.Instance.LoadRoomEnemy();
+                LoadAll.Instance.LoadRoomItem();
             }
             else if (newState.RightButton == ButtonState.Pressed && oldState.RightButton != ButtonState.Pressed)
             {
                 LoadAll.Instance.PrevMap();
                 LoadAll.Instance.LoadRoomEnemy();
+                LoadAll.Instance.LoadRoomItem();
             }
 
             oldState = newState;

@@ -10,22 +10,24 @@ using Microsoft.Xna.Framework.Graphics;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemSprite;
+using Microsoft.Xna.Framework.Content;
+using System.Reflection;
 
 namespace Game1.Code.LoadFile
 {
     /*
-     * this is load item class which load item to the room
+     * this is load item class used to initialize all items in the room
      */
     class LoadItem
     {
         private int MAX_COLUMNS = 32;
         private int multiplier = 8;
         private double scale = 2;
-        private SpriteBatch spriteBatch;
         private Vector2 startPos;
-        private List<IItemSprite> roomItems;
-
+        private int X;
+        private int Y;          
         List<Tuple<int, int, string>> RoomItemList;
+        private List<Tuple<IItemSprite, string>> inRoom = new List<Tuple<IItemSprite, string>>();
 
         private static LoadItem instance = new LoadItem();
 
@@ -41,30 +43,35 @@ namespace Game1.Code.LoadFile
         {
             multiplier = LoadAll.Instance.multiplier;
             scale = LoadAll.Instance.scale;
-            startPos = LoadAll.Instance.startPos;           
+            startPos = LoadAll.Instance.startPos;
         }
-        
+      
 
-
-        public void LoadRoomItem(SpriteBatch currSpriteBatch)
+        public void LoadRoomItem(string mapName)
         {
-            spriteBatch = currSpriteBatch;
+     
             RoomItemList = new List<Tuple<int, int, string>>();
-            string filePath = System.IO.Path.GetFullPath("room1Item.csv");
-            StreamReader streamReader = new StreamReader(filePath);
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pathNew = filePath.Substring(0, filePath.IndexOf("bin"));
+            pathNew = pathNew + "Maps\\Room\\" + mapName;
+            StreamReader streamReader = new StreamReader(pathNew);
             string line;
             string[] strList = new string[MAX_COLUMNS];
             int cell_x = 0;
             int cell_y = 0;
+            //each loop add 1 line to list
             while (!streamReader.EndOfStream)
             {
-                line = streamReader.ReadLine();             
+                line = streamReader.ReadLine();
+                //seperate a line by comma. this string array should have all strings seperately.              
                 strList = line.Split(',');
+
                 cell_x = 0;
+
                 //cell_x, and cell_y represent the postion in csv
-                for (int i = 0; i < MAX_COLUMNS; i++)
+                for (int i = 0; i < strList.Length; i++)
                 {
-                    if (strList[i] != "_")
+                    if (strList[i] != "")
                     {
                         RoomItemList.Add(new Tuple<int, int, string>(cell_x, cell_y, strList[i]));
                     }
@@ -75,102 +82,82 @@ namespace Game1.Code.LoadFile
 
             }
 
-            
             Vector2 location;
-            roomItems = new List<IItemSprite>();
+            inRoom.Clear();//?
             for (int index = 0; index < RoomItemList.Count; index++)
             {
 
-                int X = (int)(RoomItemList[index].Item1 * multiplier * scale);
-                int Y = (int)(RoomItemList[index].Item2 * multiplier * scale);
-                location = new Vector2(X, Y);
+                 X = (int)(RoomItemList[index].Item1 * multiplier * scale);
+                 Y = (int)(RoomItemList[index].Item2 * multiplier * scale);
 
+                location = new Vector2(X, Y);
                 IItemSprite item;
 
                 switch (RoomItemList[index].Item3)
                 {
                     case "arrow":
-                        item = ItemSpriteFactory.Instance.CreateArrow();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        
-                        roomItems.Add(item);
+                        item = new Arrow(X, Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "arrow"));
+                       
                         break;
                     case "bomb":
-                        item = ItemSpriteFactory.Instance.CreateBomb();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Bomb( X, Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "bomb"));
                         break;
                     case "boomerang":
-                        item = ItemSpriteFactory.Instance.CreateBoomerang();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Boomerang( X, Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "boomerang"));
                         break;
                     case "bow":
-                        item = ItemSpriteFactory.Instance.CreateBow();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Bow(X,Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "bow"));
                         break;
                     case "clock":
-                        item = ItemSpriteFactory.Instance.CreateClock();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Clock(X, Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "clock"));
                         break;
                     case "compass":
-                        item = ItemSpriteFactory.Instance.CreateCompass();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Compass(X, Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "compass"));
                         break;
                     case "fairy":
-                        item = ItemSpriteFactory.Instance.CreateFairy();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Fairy(X,Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "fairy"));
                         break;
                     case "heart":
-                        item = ItemSpriteFactory.Instance.CreateHeart();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Heart(X,Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "heart"));
                         break;
                     case "heartcontainer":
-                        item = ItemSpriteFactory.Instance.CreateHeartContainer();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new HeartContainer(X, Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "heart_container"));//from item factory
                         break;
                     case "key":
-                        item = ItemSpriteFactory.Instance.CreateKey();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Key(X,Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "key"));
                         break;
                     case "map":
-                        item = ItemSpriteFactory.Instance.CreateKey();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Map(X,Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "map"));
                         break;
                     case "ruby":
-                        item = ItemSpriteFactory.Instance.CreateRuby();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Ruby( X,Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "ruby"));
                         break;
                     case "triforce":
-                        item = ItemSpriteFactory.Instance.CreateTriforce();
-                        item.Draw(spriteBatch, (int)location.X, (int)location.Y);
-                        roomItems.Add(item);
+                        item = new Triforce( X,Y);
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "triforce"));
                         break;
                 }
 
             }
 
-
-
+         
         }
-        public void UpdateAllItem()
+
+        public List<Tuple<IItemSprite, string>> GetItemList()
         {
-            for (int i = 0; i < roomItems.Count; i++)
-            {
-                roomItems[i].Update();
-            }
+            return inRoom;
         }
-
-
-
     }
 }
