@@ -31,7 +31,7 @@ namespace Game1
             // nothing to do for static sprites
         }
 
-        public void SetPath(Vector2 from, Vector2 to)
+        public void SetDestination(string side)
         {
             //nonmoving
         }

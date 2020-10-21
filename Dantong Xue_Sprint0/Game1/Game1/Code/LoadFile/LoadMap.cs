@@ -8,6 +8,8 @@ using Game1.Code.Block.BlockFactory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Reflection;
+using Game1.Code.Block;
+using System.Diagnostics;
 
 namespace Game1.Code.LoadFile
 {
@@ -53,6 +55,7 @@ namespace Game1.Code.LoadFile
         private List<Rectangle> shutDoors;
         private List<Rectangle> lockedDoors;
         private List<Rectangle> stairs;
+        private List<IBlock> movableBlocksList;
 
         private Dictionary<string, List<Rectangle>> artifacts;
 
@@ -73,6 +76,8 @@ namespace Game1.Code.LoadFile
             artifacts = new Dictionary<string, List<Rectangle>>();
 
             mapElementList = new List<Tuple<int, int, string>>();
+
+            movableBlocksList = new List<IBlock>();
 
             string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pathNew = filePath.Substring(0, filePath.IndexOf("bin"));
@@ -123,6 +128,7 @@ namespace Game1.Code.LoadFile
                 location = new Vector2(X, Y);
 
                 IBlock blockToDraw;
+                IBlock movable;
 
                 Console.WriteLine(mapElementList[index].Item3);
 
@@ -131,7 +137,7 @@ namespace Game1.Code.LoadFile
                     case "black":
                         blockToDraw = BlockFactory.Instance.CreateBlackBlock();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        blocks.Add(blockToDraw.GetRectangle(location));
+                        // blocks.Add(blockToDraw.GetRectangle(location));
                         break;
                     case "block":
                         blockToDraw = BlockFactory.Instance.CreateFlatBlock();
@@ -295,6 +301,15 @@ namespace Game1.Code.LoadFile
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
                         blocks.Add(blockToDraw.GetRectangle(location));
                         break;
+                    case "movableBlock":
+                        // draw a flat block first
+                        blockToDraw = BlockFactory.Instance.CreateFlatBlock();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+
+                        // get a movable block then
+                        movable = new MovableBlock(BlockFactory.Instance.GetMovableBlockTexture(), location);
+                        movableBlocksList.Add(movable);
+                        break;
                     case "wall_1":
                         blocks.Add(new Rectangle((int)location.X, (int)location.Y, (int)(112 * LoadAll.Instance.scale), (int)(32 * LoadAll.Instance.scale)));
                         break;
@@ -312,7 +327,6 @@ namespace Game1.Code.LoadFile
             artifacts.Add("shutDoors", shutDoors);
             artifacts.Add("lockedDoors", lockedDoors);
             artifacts.Add("stairs", stairs);
-
         }
 
         public Dictionary<string, List<Rectangle>> GetArtifacts()
@@ -324,6 +338,11 @@ namespace Game1.Code.LoadFile
         public List<Tuple<IBlock, Vector2>> GetBlocksToDraw()
         {
             return blocksListToDraw;
+        }
+
+        public List<IBlock> GetMovableBlocks()
+        {
+            return movableBlocksList;
         }
 
 

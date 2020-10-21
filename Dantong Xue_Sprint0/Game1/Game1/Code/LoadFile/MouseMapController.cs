@@ -23,12 +23,15 @@ namespace Game1.Code.LoadFile
             if(newState.LeftButton == ButtonState.Pressed && oldState.LeftButton != ButtonState.Pressed)
             {
                 LoadAll.Instance.NextMap();
+                LoadAll.Instance.LoadRoom();
                 LoadAll.Instance.LoadRoomEnemy();
                 LoadAll.Instance.LoadRoomItem();
+                
             }
             else if (newState.RightButton == ButtonState.Pressed && oldState.RightButton != ButtonState.Pressed)
             {
                 LoadAll.Instance.PrevMap();
+                LoadAll.Instance.LoadRoom();
                 LoadAll.Instance.LoadRoomEnemy();
                 LoadAll.Instance.LoadRoomItem();
             }

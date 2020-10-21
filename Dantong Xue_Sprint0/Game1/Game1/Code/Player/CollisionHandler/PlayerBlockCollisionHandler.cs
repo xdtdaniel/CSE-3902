@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Game1.Code.Player
@@ -151,6 +152,39 @@ namespace Game1.Code.Player
 
 
 
+        }
+
+        public void HandleMovableCollision(Link link, List<IBlock> movables)
+        {
+            foreach (IBlock movable in movables)
+            {
+                collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), movable.GetRectangle(new Vector2(0, 0)));
+
+                
+                if (collidedSide != "")
+                {
+                    movable.SetDestination(collidedSide);
+                    Debug.WriteLine(collidedSide);
+                    if (collidedSide == "down")
+                    {
+                        link.y -= link.downSpeed;
+                    }
+                    if (collidedSide == "right")
+                    {
+                        link.x -= link.rightSpeed;
+                    }
+                    if (collidedSide == "up")
+                    {
+                        link.y += link.upSpeed;
+                    }
+                    if (collidedSide == "left")
+                    {
+                        link.x += link.leftSpeed;
+                    }
+                }
+                
+
+            }
         }
 
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -271,6 +272,16 @@ namespace Game1.Code.Block.BlockFactory
         public IBlock CreateWater()
         {
             return new NonMovingNonAnimatedBlock(water);
+        }
+
+        public IBlock CreateMovableBlock(Vector2 originalPos)
+        {
+            return new MovableBlock(floatBlock, originalPos);
+        }
+
+        public Texture2D GetMovableBlockTexture()
+        {
+            return floatBlock;
         }
     }
 }

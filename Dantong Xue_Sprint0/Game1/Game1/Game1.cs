@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Game1
 {
@@ -35,7 +36,7 @@ namespace Game1
         public Link link;
         public PlayerCommand playerCommand;
 
-        private List<object> controllerList;
+        private List<IBlock> movableBlocks;
 
         private List<Tuple<IEnemy, string>> EnemyList;
         private List<Tuple<IItemSprite, string>> inRoomList;
@@ -59,7 +60,6 @@ namespace Game1
 
             base.Initialize();
 
-            controllerList = new List<object>();
 
             //itemKeyboardController = new ItemKeyboardController();
             playerKeyboardController = new PlayerKeyboardController();
@@ -89,9 +89,12 @@ namespace Game1
 
             EnemyList = LoadEnemy.Instance.GetEnemyList();
             inRoomList = LoadItem.Instance.GetItemList();
+            
+
             LoadAll.Instance.LoadRoom();
             LoadAll.Instance.LoadRoomEnemy();
             LoadAll.Instance.LoadRoomItem();
+            movableBlocks = LoadMap.Instance.GetMovableBlocks();
         }
 
         protected override void Update(GameTime gameTime)
@@ -103,6 +106,9 @@ namespace Game1
             playerKeyboardController.Update();
             quitResetController.Update(this);
             playerCommand.PlayerUpdate();
+
+            movableBlocks = LoadMap.Instance.GetMovableBlocks();
+
             UpdateAllItem.Instance.UpdateAll(inRoomList);
             base.Update(gameTime);
 
@@ -117,8 +123,9 @@ namespace Game1
 
             _spriteBatch.Begin();
             
-            LoadAll.Instance.LoadRoom();       
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
+            DrawMap.Instance.DrawMovableBlocks(_spriteBatch, movableBlocks);
+
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
             // enemyKeyboradController.Draw(_spriteBatch);

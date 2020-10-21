@@ -10,7 +10,7 @@ namespace Game1
     {
         public void UpdateBlock();
         public void DrawBlock(SpriteBatch spriteBatch, Vector2 location);
-        public void SetPath(Vector2 from, Vector2 to);
+        public void SetDestination(string side);
         public Rectangle GetRectangle(Vector2 location);
     }
 }

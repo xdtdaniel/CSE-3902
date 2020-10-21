@@ -34,5 +34,15 @@ namespace Game1.Code.Block
                 currBlock.DrawBlock(currSpriteBatch, currPos);
             }
         }
+
+        public void DrawMovableBlocks(SpriteBatch currSpriteBatch, List<IBlock> movableBlocks)
+        {
+            for (int i = 0; i < movableBlocks.Count; i++)
+            {
+                IBlock currBlock = movableBlocks[i];
+                currBlock.DrawBlock(currSpriteBatch, new Vector2(0, 0));
+                currBlock.UpdateBlock();
+            }
+        }
     }
 }

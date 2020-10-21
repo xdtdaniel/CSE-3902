@@ -23,6 +23,7 @@ namespace Game1
         // test
         private Dictionary<string, List<Rectangle>> blockList;
         private List<Tuple<IEnemy, string>> enemyList;
+        private List<IBlock> movables;
 
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
@@ -50,8 +51,10 @@ namespace Game1
 
 
             blockList = LoadAll.Instance.GetMapArtifacts();
+            movables = LoadAll.Instance.GetMovableBlocks();
             enemyList = LoadEnemy.Instance.GetEnemyList();
             playerBlockCollisionHandler.HandleCollision(game.link, blockList);
+            playerBlockCollisionHandler.HandleMovableCollision(game.link, movables);
             playerEnemyCollisionHandler.HandleCollision(game.link, enemyList);
             itemBlockCollisionHandler.HandleCollision(game.link.item, blockList);
         }

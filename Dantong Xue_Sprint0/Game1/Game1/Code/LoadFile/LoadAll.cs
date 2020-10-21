@@ -25,7 +25,7 @@ namespace Game1.Code.LoadFile
             multiplier = 8;
             scale = 3;
             startPos = new Vector2(0, 0);
-            currMapID = 18;
+            currMapID = 1;
 
         }
         private int currMapID = 1;
@@ -79,6 +79,11 @@ namespace Game1.Code.LoadFile
         public List<Tuple<IBlock, Vector2>> GetMapBlocksToDraw()
         {
             return LoadMap.Instance.GetBlocksToDraw();
+        }
+
+        public List<IBlock> GetMovableBlocks()
+        {
+            return LoadMap.Instance.GetMovableBlocks();
         }
 
 
