@@ -16,42 +16,27 @@ namespace Game1.Player.PlayerCharacter
         int thirdFrame;
         string collisionSide;
 
+        int knockedBackSpeed;
+        int knockedBackSpeedDecay;
+
         IPlayerLinkSprite[] damagedLinkSprite;
 
         Link link;
 
-        Rectangle rectangle;
         public KnockedBackLink(Link link, string collisionSide)
         {
             currentFrame = 0;
             thirdFrame = 0;
             this.collisionSide = collisionSide;
 
-            int index = 0;
-            switch (link.direction)
-            {
-                case "down":
-                    index = 0;
-                    break;
-                case "right":
-                    index = 1;
-                    break;
-                case "up":
-                    index = 2;
-                    break;
-                case "left":
-                    index = 3;
-                    break;
-                default:
-                    break;
-            }
+            knockedBackSpeed = 15;
+            knockedBackSpeedDecay = 1;
+
             damagedLinkSprite = new IPlayerLinkSprite[4];
-            damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedLink(index);
+            damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedLink(link.directionIndex);
              
 
             this.link = link;
-
-            rectangle = new Rectangle();
         }
         public void AttackN() { }
         public void AttackZ() { }
@@ -64,7 +49,7 @@ namespace Game1.Player.PlayerCharacter
         public void KnockedBack(string collisionSide)
         {
         }
-        public void Update(ref int x, ref int y, int direction, bool isMoving)
+        public void Update()
         {
             if (link.damageTimeCounter % 8 == 0)
             {
@@ -78,48 +63,32 @@ namespace Game1.Player.PlayerCharacter
             switch (collisionSide)
             {
                 case "down":
-                    y -= 5;
+                    link.y -= knockedBackSpeed;
                     break;
                 case "right":
-                    x -= 5;
-                    if (currentFrame < 10)
-                    {
-                        y -= 5;
-                    }
-                    else
-                    {
-                        y += 5;
-                    }
+                    link.x -= knockedBackSpeed;
                     break;
                 case "up":
-                    y += 5;
+                    link.y += knockedBackSpeed;
                     break;
                 case "left":
-                    x += 5;
-                    if (currentFrame < 10)
-                    {
-                        y -= 5;
-                    }
-                    else
-                    {
-                        y += 5;
-                    }
+                    link.x += knockedBackSpeed;
                     break;
                 default:
                     break;
             }
-
+            knockedBackSpeed -= knockedBackSpeedDecay;
             currentFrame++;
-            if (currentFrame == 20)
+            if (currentFrame > knockedBackSpeed / knockedBackSpeedDecay)
             {
                 currentFrame = 0;
                 link.state = new NormalLink(link);
             }
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int direction)
+        public void Draw(SpriteBatch spriteBatch)
         {
             
-            damagedLinkSprite[thirdFrame].Draw(spriteBatch, x, y, 1, direction);
+            damagedLinkSprite[thirdFrame].Draw(spriteBatch, link.x, link.y, 1, link.direction);
             
         }
         public string GetStateName()

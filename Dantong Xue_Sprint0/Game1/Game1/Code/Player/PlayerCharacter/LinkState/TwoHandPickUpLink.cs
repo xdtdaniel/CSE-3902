@@ -20,7 +20,6 @@ namespace Game1.Player.PlayerCharacter
 
         Link link;
 
-        Rectangle rectangle;
         public TwoHandPickUpLink(Link link)
         {
             currentFrame = 0;
@@ -35,7 +34,6 @@ namespace Game1.Player.PlayerCharacter
 
             this.link = link;
 
-            rectangle = new Rectangle();
         }
         public void AttackN() { }
         public void AttackZ() { }
@@ -52,7 +50,7 @@ namespace Game1.Player.PlayerCharacter
         {
             link.state = new KnockedBackLink(link, collisionSide);
         }
-        public void Update(ref int x, ref int y, int direction, bool isMoving)
+        public void Update()
         {
             if (link.damageTimeCounter % 8 == 0)
             {
@@ -70,15 +68,15 @@ namespace Game1.Player.PlayerCharacter
                 link.state = new NormalLink(link);
             }
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int direction)
+        public void Draw(SpriteBatch spriteBatch)
         {
             if (!link.isDamaged)
             {
-                linkSprite.Draw(spriteBatch, x, y, 1, direction);
+                linkSprite.Draw(spriteBatch, link.x, link.y, 1, link.direction);
             }
             else
             {
-                damagedLinkSprite[thirdFrame].Draw(spriteBatch, x, y, 1, direction);
+                damagedLinkSprite[thirdFrame].Draw(spriteBatch, link.x, link.y, 1, link.direction);
 
             }
         }

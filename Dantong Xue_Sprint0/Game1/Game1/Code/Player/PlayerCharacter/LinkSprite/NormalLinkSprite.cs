@@ -21,7 +21,7 @@ namespace Game1.Player
             Columns = 2;
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
+        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, string direction) 
         {
             int width = Texture.Width / Columns;
             int height = 96;
