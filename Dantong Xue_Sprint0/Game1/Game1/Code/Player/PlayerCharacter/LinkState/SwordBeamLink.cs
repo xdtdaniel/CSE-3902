@@ -21,7 +21,6 @@ namespace Game1.Player.PlayerCharacter
 
         Link link;
 
-        Rectangle rectangle;
         public SwordBeamLink(Link link)
         {
             currentFrame = 0;
@@ -43,7 +42,6 @@ namespace Game1.Player.PlayerCharacter
 
             this.link = link;
 
-            rectangle = new Rectangle();
         }
         public void AttackN() { }
         public void AttackZ() { }
@@ -63,15 +61,6 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update(ref int x, ref int y, int direction, bool isMoving)
         {
-            if (link.isDamaged)
-            {
-                link.damageTimeCounter++;
-            }
-            if (link.damageTimeCounter == 90)
-            {
-                link.damageTimeCounter = 0;
-                link.isDamaged = false;
-            }
             if (link.damageTimeCounter % 8 == 0)
             {
                 thirdFrame++;
@@ -82,7 +71,7 @@ namespace Game1.Player.PlayerCharacter
             }
 
             secondFrame++;
-            if (secondFrame == 10)
+            if (secondFrame == 5)
             {
                 currentFrame++;
                 secondFrame = 0;
@@ -93,6 +82,7 @@ namespace Game1.Player.PlayerCharacter
                 link.state = new NormalLink(link);
             }
             
+
         }
 
         public void Draw(SpriteBatch spriteBatch, int x, int y, int direction)
@@ -106,6 +96,10 @@ namespace Game1.Player.PlayerCharacter
                 damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
 
             }
+        }
+        public string GetStateName()
+        {
+            return "SwordBeamLink";
         }
     }
 }

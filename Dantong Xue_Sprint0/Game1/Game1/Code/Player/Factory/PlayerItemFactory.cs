@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Player;
+using Game1.Code.Player.PlayerItem.PlayerItemSprite;
 
 namespace Game1
 {

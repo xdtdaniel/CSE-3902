@@ -52,15 +52,6 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update(ref int x, ref int y, int direction, bool isMoving)
         {
-            if (link.isDamaged)
-            {
-                link.damageTimeCounter++;
-            }
-            if (link.damageTimeCounter == 90)
-            {
-                link.damageTimeCounter = 0;
-                link.isDamaged = false;
-            }
             if (link.damageTimeCounter % 8 == 0)
             {
                 thirdFrame++;
@@ -87,6 +78,10 @@ namespace Game1.Player.PlayerCharacter
             {
                 damagedLinkSprite[thirdFrame].Draw(spriteBatch, x, y, 0, direction);
             }
+        }
+        public string GetStateName()
+        {
+            return "OneHandPickUpLink";
         }
     }
 }

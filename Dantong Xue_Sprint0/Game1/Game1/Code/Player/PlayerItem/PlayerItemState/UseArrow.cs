@@ -12,12 +12,12 @@ namespace Game1.Player.PlayerCharacter
 {
     class UseArrow : IPlayerItemState
     {
-        PlayerItem item;
+        LinkItem item;
         bool used; 
         int direction;
         int x;
         int y;
-        int currentFrame;
+        int currentFrame; 
 
         IPlayerItemSprite frontArrow;
         IPlayerItemSprite rightArrow;
@@ -26,7 +26,7 @@ namespace Game1.Player.PlayerCharacter
 
         Rectangle rectangle;
 
-        public UseArrow(PlayerItem item)
+        public UseArrow(LinkItem item)
         {
             used = false;
             direction = item.direction;
@@ -59,7 +59,7 @@ namespace Game1.Player.PlayerCharacter
         {
             
             currentFrame++;
-            if (currentFrame == 120)
+            if (currentFrame >= 120)
             {
                 item.state = new NoItem(item);
             }
@@ -112,6 +112,10 @@ namespace Game1.Player.PlayerCharacter
         public Rectangle GetRectangle()
         {
             return rectangle;
+        }
+        public bool IsDone()
+        {
+            return false;
         }
     }
 }

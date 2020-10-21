@@ -12,7 +12,7 @@ namespace Game1.Player.PlayerCharacter
 {
     class UseBomb : IPlayerItemState
     {
-        PlayerItem item;
+        LinkItem item;
         bool used; /* indicate if an item is used */
         int x;
         int y;
@@ -26,7 +26,7 @@ namespace Game1.Player.PlayerCharacter
 
         Rectangle rectangle;
 
-        public UseBomb(PlayerItem item)
+        public UseBomb(LinkItem item)
         {
             used = false;
             this.x = item.x;
@@ -119,6 +119,10 @@ namespace Game1.Player.PlayerCharacter
         public Rectangle GetRectangle()
         {
             return rectangle;
+        }
+        public bool IsDone()
+        {
+            return false;
         }
     }
 }

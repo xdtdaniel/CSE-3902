@@ -19,7 +19,6 @@ namespace Game1
         private bool isDamaged;
         private int pickUp;
 
-        public string side;
         public PlayerKeyboardController()
         {
             direction = "down";
@@ -30,11 +29,9 @@ namespace Game1
             isDamaged = false;
             pickUp = -1;
             
-            side = "";   // test collision
         }
         public void Update()
         {
-            side = "";   // test collision
 
             isMoving = false;
             attackN = false;
@@ -115,23 +112,6 @@ namespace Game1
             {
                 direction = "left";
                 isMoving = true;
-            }
-            // collision test
-            else if (state.IsKeyDown(Keys.X))
-            {
-                side = "down";
-            }
-            else if (state.IsKeyDown(Keys.C))
-            {
-                side = "right";
-            }
-            else if (state.IsKeyDown(Keys.V))
-            {
-                side = "up";
-            }
-            else if (state.IsKeyDown(Keys.B))
-            {
-                side = "left";
             }
 
 

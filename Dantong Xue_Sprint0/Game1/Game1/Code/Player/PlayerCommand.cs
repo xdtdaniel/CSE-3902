@@ -12,6 +12,7 @@ using Game1.Code.Player;
 using Game1.Player.Interface;
 using Game1.Enemy;
 using Game1.Code.LoadFile;
+using Game1.Code.Player.PlayerItem.PlayerItemSprite;
 
 namespace Game1
 {
@@ -20,6 +21,8 @@ namespace Game1
         private SpriteBatch spriteBatch;
         private Game1 game;
 
+        private bool attackN;
+        private bool attackZ;
         // test
         private Dictionary<string, List<Rectangle>> blockList;
         private List<Tuple<IEnemy, string>> enemyList;
@@ -28,12 +31,14 @@ namespace Game1
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
         private ItemBlockCollisionHandler itemBlockCollisionHandler;
-
+        //
         public PlayerCommand(SpriteBatch spriteBatch, Game1 game)
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
 
+            attackN = false;
+            attackZ = false;
             //
             blockList = new Dictionary<string, List<Rectangle>>();
             enemyList = new List<Tuple<IEnemy, string>>();
@@ -41,7 +46,7 @@ namespace Game1
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
             itemBlockCollisionHandler = new ItemBlockCollisionHandler();
-
+            //
         }
 
         public void PlayerUpdate()
@@ -49,6 +54,8 @@ namespace Game1
             game.link.direction = game.playerKeyboardController.Direction();
             game.link.Update(game.playerKeyboardController.IsMoving());
 
+            attackN = game.playerKeyboardController.PressedAttackN();
+            attackZ = game.playerKeyboardController.PressedAttackZ();
 
             blockList = LoadAll.Instance.GetMapArtifacts();
             movables = LoadAll.Instance.GetMovableBlocks();
@@ -57,19 +64,14 @@ namespace Game1
             playerBlockCollisionHandler.HandleMovableCollision(game.link, movables);
             playerEnemyCollisionHandler.HandleCollision(game.link, enemyList);
             itemBlockCollisionHandler.HandleCollision(game.link.item, blockList);
+            //
         }
         public void PlayerDraw()
         {
+            //
+            //
+            game.link.Attack(attackN, attackZ);
 
-
-            if (game.playerKeyboardController.PressedAttackN())
-            {
-                game.link.AttackN();
-            }
-            else if (game.playerKeyboardController.PressedAttackZ())
-            {
-                game.link.AttackZ();
-            }
             if (game.playerKeyboardController.ItemNum() != -1)
             {
                 game.link.UseItem(game.playerKeyboardController.ItemNum());
@@ -83,6 +85,7 @@ namespace Game1
                 game.link.PickUp(game.playerKeyboardController.PickUp());
             }
             game.link.Draw(spriteBatch);
+
 
             // for collision test
             string x = "x: " + game.link.x.ToString();
