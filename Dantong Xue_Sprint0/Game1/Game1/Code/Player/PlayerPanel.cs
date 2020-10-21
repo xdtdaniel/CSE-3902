@@ -51,7 +51,7 @@ namespace Game1
             //
         }
 
-        public void PlayerUpdate(List<Tuple<IEnemy, string>> enemyList)
+        public void PlayerUpdate(List<Tuple<IEnemy, string>> enemyList, List<Tuple<IItemSprite,string>> inRoomItemList)
         {
             game.link.Update();
             keyBoardController.Update();
@@ -59,6 +59,7 @@ namespace Game1
 
             roomBlockList = LoadAll.Instance.GetMapArtifacts();
             roomEnemyList = enemyList;
+            roomItemList = inRoomItemList;
             playerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             playerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             playerItemAndBlockCollisionHandler.HandleCollision(game.link.item, roomBlockList);
