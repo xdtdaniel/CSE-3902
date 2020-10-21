@@ -19,7 +19,7 @@ namespace Game1.Player
             Texture = texture;
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
+        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, string direction) 
         {
             int width = Texture.Width;
             int height = 96;

@@ -11,6 +11,6 @@ namespace Game1
     interface IPlayerLinkSprite
     {
 
-        void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction);
+        void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, string direction);
     }
 }

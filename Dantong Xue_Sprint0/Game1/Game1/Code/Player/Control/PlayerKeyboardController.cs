@@ -1,153 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Game1.Code.Player.Interface;
+using Game1.Code.Player.PlayerControlCommand;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Game1
 {
-    public class PlayerKeyboardController : IPlayerController
+    public class PlayerKeyboardController 
     {
-        private string direction;
-        private bool isMoving;
-        private bool attackN;
-        private bool attackZ;
-        private int itemNum;
-        private bool isDamaged;
-        private int pickUp;
+        private Dictionary<Keys, IPlayerCommand> controllerMappings;
+        private Game1 game;
 
-        public PlayerKeyboardController()
+        public PlayerKeyboardController(Game1 game)
         {
-            direction = "down";
-            isMoving = false;
-            attackN = false;
-            attackZ = false;
-            itemNum = -1;
-            isDamaged = false;
-            pickUp = -1;
-            
+            controllerMappings = new Dictionary<Keys, IPlayerCommand>();
+            this.game = game;
+
+            RegisterCommand(Keys.S, new MoveDown(game));
+            RegisterCommand(Keys.D, new MoveRight(game));
+            RegisterCommand(Keys.W, new MoveUp(game));
+            RegisterCommand(Keys.A, new MoveLeft(game));
+            RegisterCommand(Keys.Down, new MoveDown(game));
+            RegisterCommand(Keys.Right, new MoveRight(game));
+            RegisterCommand(Keys.Up, new MoveUp(game));
+            RegisterCommand(Keys.Left, new MoveLeft(game));
+            RegisterCommand(Keys.N, new Attack(game, 0));
+            RegisterCommand(Keys.Z, new Attack(game, 1));
+            RegisterCommand(Keys.D1, new UseItem(game, 1));
+            RegisterCommand(Keys.D2, new UseItem(game, 2));
+            RegisterCommand(Keys.D3, new UseItem(game, 3));
+            RegisterCommand(Keys.D4, new UseItem(game, 4));
+            RegisterCommand(Keys.D5, new UseItem(game, 5));
+            RegisterCommand(Keys.D6, new UseItem(game, 6));
+
         }
+        public void RegisterCommand(Keys key, IPlayerCommand command)
+        {
+            controllerMappings.Add(key, command);
+        }
+
         public void Update()
         {
-
-            isMoving = false;
-            attackN = false;
-            attackZ = false;
-            itemNum = -1;
-            isDamaged = false;
-            pickUp = -1;
-            KeyboardState state = Keyboard.GetState();
-
-            if (state.IsKeyDown(Keys.N))
+            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            game.link.isMoving = false;
+            
+            foreach (Keys key in pressedKeys)
             {
-                attackN = true;
+                if (controllerMappings.ContainsKey(key))
+                {
+                    controllerMappings[key].Execute();
+                }
             }
-            else if (state.IsKeyDown(Keys.Z))
-            {
-                attackZ = true;
-            }
-            else if (state.IsKeyDown(Keys.D1))
-            {
-                itemNum = 1;
-            }
-            else if (state.IsKeyDown(Keys.D2))
-            {
-                itemNum = 2;
-            }
-            else if (state.IsKeyDown(Keys.D3))
-            {
-                itemNum = 3;
-            }
-            else if (state.IsKeyDown(Keys.D4))
-            {
-                itemNum = 4;
-            }
-            else if (state.IsKeyDown(Keys.D5))
-            {
-                itemNum = 5;
-            }
-            else if (state.IsKeyDown(Keys.D6))
-            {
-                itemNum = 6;
-            }
-            else if (state.IsKeyDown(Keys.D7))
-            {
-                itemNum = 7;
-            }
-            else if (state.IsKeyDown(Keys.D8))
-            {
-                itemNum = 8;
-            }
-            else if (state.IsKeyDown(Keys.E))
-            {
-                isDamaged = true;
-            }
-            else if (state.IsKeyDown(Keys.F))
-            {
-                pickUp = 0;
-            }
-            else if (state.IsKeyDown(Keys.G))
-            {
-                pickUp = 1;
-            }
-            else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
-            {
-                direction = "down";
-                isMoving = true;
-            }
-            else if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
-            {
-                direction = "right";
-                isMoving = true;
-            }
-            else if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
-            {
-                direction = "up";
-                isMoving = true;
-            }
-            else if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
-            {
-                direction = "left";
-                isMoving = true;
-            }
-
-
-            else
-            {
-                isMoving = false;
-            }
-        }
-
-        public string Direction()
-        {
-            return direction;
-        }
-        public bool IsMoving()
-        {
-            return isMoving;
-        }
-        public bool PressedAttackN()
-        {
-            return attackN;
-        }
-        public bool PressedAttackZ()
-        {
-            return attackZ;
-        }
-        public int ItemNum()
-        {
-            return itemNum;
-        }
-        public bool IsDamaged()
-        {
-            return isDamaged;
-        }
-        public int PickUp()
-        {
-            return pickUp;
         }
     }
 }

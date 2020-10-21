@@ -19,19 +19,22 @@ namespace Game1.Player.PlayerCharacter
         public int y;
         public int damageTimeCounter;
         public bool isDamaged;
+        public bool isMoving;
+        public bool movable;
         public int hp;
         public int defaultSpeed;
-        public int downSpeed, upSpeed, rightSpeed, leftSpeed;
+        public int xSpeed, ySpeed;
 
         public string direction;
+        public int directionIndex;
 
         public LinkItem item;
 
-        private int timeBetweenAttack;
-        private int timeSinceAttack;
-        private int timeBetweenItem;
-        private int timeSinceItem;
-        private bool useItemDone;
+        public int timeBetweenAttack;
+        public int timeSinceAttack;
+        public int timeBetweenItem;
+        public int timeSinceItem;
+        public bool useItemDone;
 
 
         public IPlayerLinkState state;
@@ -41,11 +44,13 @@ namespace Game1.Player.PlayerCharacter
             y = 300;
             damageTimeCounter = 0;
             isDamaged = false;
+            isMoving = false;
+            movable = true;
             hp = 100;
-            defaultSpeed = downSpeed = upSpeed = rightSpeed = leftSpeed = 5;
+            defaultSpeed = xSpeed = ySpeed = 5;
 
             direction = "down";
-
+            directionIndex = 0;
 
             state = new NormalLink(this);
 
@@ -58,32 +63,6 @@ namespace Game1.Player.PlayerCharacter
             timeSinceItem = 0;
             useItemDone = true;
 
-        }
-        public void Attack(bool attackN, bool attackZ)
-        {
-            if (timeSinceAttack >= timeBetweenAttack)
-            {
-                if (attackN)
-                {
-                    state.AttackN();
-                    timeSinceAttack = 0;
-                }
-                else if (attackZ)
-                {
-                    state.AttackZ();
-                    timeSinceAttack = 0;
-                }
-            }
-        }
-        public void UseItem(int itemNum)
-        {
-            if (useItemDone && timeSinceItem >= timeBetweenItem)
-            {
-                state.UseItem();
-                item.UseItem(itemNum);
-                timeSinceItem = 0;
-            }
-            useItemDone = item.IsDone();
         }
         public void TakeDamage()
         {
@@ -99,11 +78,30 @@ namespace Game1.Player.PlayerCharacter
         }
         public void KnockedBack(string collisionSide)
         {
+            movable = false;
             state.KnockedBack(collisionSide);
         }
-        public void Update(bool isMoving)
+        public void StopMoving(string side, Rectangle interRect)
         {
-            int directionIndex = 0;
+            if (side == "down")
+            {
+                y -= interRect.Height;
+            }
+            if (side == "right")
+            {
+                x -= interRect.Width;
+            }
+            if (side == "up")
+            {
+                y += interRect.Height;
+            }
+            if (side == "left")
+            {
+                x += interRect.Width;
+            }
+        }
+        public void Update()
+        {
             switch (direction)
             {
                 case "down":
@@ -121,7 +119,7 @@ namespace Game1.Player.PlayerCharacter
                 default:
                     break;
             }
-            state.Update(ref x, ref y, directionIndex, isMoving);
+            state.Update();
             item.Update(x, y, directionIndex);
 
             if (timeSinceAttack < timeBetweenAttack)
@@ -145,25 +143,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            int directionIndex = 0;
-            switch (direction)
-            {
-                case "down":
-                    directionIndex = 0;
-                    break;
-                case "right":
-                    directionIndex = 1;
-                    break;
-                case "up":
-                    directionIndex = 2;
-                    break;
-                case "left":
-                    directionIndex = 3;
-                    break;
-                default:
-                    break;
-            }
-            state.Draw(spriteBatch, x, y, directionIndex);
+            state.Draw(spriteBatch);
             item.Draw(spriteBatch);
         }
         public string GetStateName()

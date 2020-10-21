@@ -42,19 +42,22 @@ namespace Game1.Player.PlayerCharacter
                 damagedLinkSprite[i] = PlayerCharacterFactory.Instance.CreateDamagedLink(i);
             }
             this.link = link;
-
+            link.movable = true;
         }
 
         public void AttackN()
         {
+            link.movable = false;
             link.state = new WoodenSwordLink(link);
         }
         public void AttackZ()
         {
+            link.movable = false;
             link.state = new SwordBeamLink(link);
         }
         public void UseItem()
         {
+            link.movable = false;
             link.state = new UseItemLink(link);
         }
         public void TakeDamage()
@@ -66,6 +69,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public void PickUp(int pickUp)
         {
+            link.movable = false;
             if (pickUp == 0)
             {
                 link.state = new OneHandPickUpLink(link);
@@ -77,12 +81,12 @@ namespace Game1.Player.PlayerCharacter
         }
         public void KnockedBack(string collisionSide)
         {
+            link.movable = false;
             link.state = new KnockedBackLink(link, collisionSide);
         }
-        public void Update(ref int x, ref int y, int direction, bool isMoving)
+        public void Update()
         {
             
-
             if (link.damageTimeCounter % 8 == 0) {
                 thirdFrame++;
                 if (thirdFrame == 4)
@@ -90,7 +94,8 @@ namespace Game1.Player.PlayerCharacter
                     thirdFrame = 0;
                 }
             }
-            if (isMoving)
+
+            if (link.isMoving)
             {
                 secondFrame++;
                 if (secondFrame == 15)
@@ -103,48 +108,17 @@ namespace Game1.Player.PlayerCharacter
                 {
                     currentFrame = 0;
                 }
-
-
-                switch (direction)
-                {
-                    case 0: /* front */
-                        if (y < 2560)
-                        {
-                            y += link.downSpeed;
-                        }
-                        break;
-                    case 1: /* right */
-                        if (x < 1440)
-                        {
-                            x += link.rightSpeed;
-                        }
-                        break;
-                    case 2: /* back */
-                        if (y > 0)
-                        {
-                            y -= link.upSpeed;
-                        }
-                        break;
-                    case 3: /* left */
-                        if (x > 0)
-                        {
-                            x -= link.leftSpeed;
-                        }
-                        break;
-                    default:
-                        break;
-                }
             }
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int direction)
+        public void Draw(SpriteBatch spriteBatch)
         {
             if (!link.isDamaged)
             {
-                linkSprite[direction].Draw(spriteBatch, x, y, currentFrame, direction);
+                linkSprite[link.directionIndex].Draw(spriteBatch, link.x, link.y, currentFrame, link.direction);
             }
             else
             {
-                damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
+                damagedLinkSprite[link.directionIndex][thirdFrame].Draw(spriteBatch, link.x, link.y, currentFrame, link.direction);
             }
         }
         public string GetStateName()

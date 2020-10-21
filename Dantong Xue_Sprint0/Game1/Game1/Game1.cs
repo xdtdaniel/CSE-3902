@@ -34,7 +34,7 @@ namespace Game1
         public IItemSprite item; 
 
         public Link link;
-        public PlayerCommand playerCommand;
+        public PlayerPanel playerCommand;
 
         private List<IBlock> movableBlocks;
 
@@ -45,7 +45,6 @@ namespace Game1
 
         private IController mapMouseController;
         //private ItemKeyboardController itemKeyboardController;
-        public PlayerKeyboardController playerKeyboardController;
 
         //Testing controller for sprint 3
         private MouseEnemyController enemyController;
@@ -66,14 +65,13 @@ namespace Game1
 
 
             //itemKeyboardController = new ItemKeyboardController();
-            playerKeyboardController = new PlayerKeyboardController();
 
             mapMouseController = new MouseMapController();
 
             enemyController = new MouseEnemyController();
 
             link = new Link();
-            playerCommand = new PlayerCommand(_spriteBatch, this);
+            playerCommand = new PlayerPanel(_spriteBatch, this);
 
             quitResetController = new QuitResetController();
 
@@ -113,7 +111,6 @@ namespace Game1
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
             //itemKeyboardController.Update(this);
-            playerKeyboardController.Update();
             quitResetController.Update(this);
             playerCommand.PlayerUpdate(EnemyList);
 

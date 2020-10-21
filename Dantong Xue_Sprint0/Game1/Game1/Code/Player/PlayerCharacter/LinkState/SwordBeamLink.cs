@@ -41,7 +41,6 @@ namespace Game1.Player.PlayerCharacter
             }
 
             this.link = link;
-
         }
         public void AttackN() { }
         public void AttackZ() { }
@@ -59,7 +58,7 @@ namespace Game1.Player.PlayerCharacter
         {
             link.state = new KnockedBackLink(link, collisionSide);
         }
-        public void Update(ref int x, ref int y, int direction, bool isMoving)
+        public void Update()
         {
             if (link.damageTimeCounter % 8 == 0)
             {
@@ -85,15 +84,15 @@ namespace Game1.Player.PlayerCharacter
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int direction)
+        public void Draw(SpriteBatch spriteBatch)
         {
             if (!link.isDamaged)
             {
-                linkSprite[direction].Draw(spriteBatch, x, y, currentFrame, direction);
+                linkSprite[link.directionIndex].Draw(spriteBatch, link.x, link.y, currentFrame, link.direction);
             }
             else
             {
-                damagedLinkSprite[direction][thirdFrame].Draw(spriteBatch, x, y, currentFrame, direction);
+                damagedLinkSprite[link.directionIndex][thirdFrame].Draw(spriteBatch, link.x, link.y, currentFrame, link.direction);
 
             }
         }

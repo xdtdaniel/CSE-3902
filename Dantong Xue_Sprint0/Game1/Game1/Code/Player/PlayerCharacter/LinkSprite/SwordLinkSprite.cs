@@ -21,7 +21,7 @@ namespace Game1.Player
             Columns = 4;
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
+        public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, string direction) 
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height;
@@ -30,7 +30,7 @@ namespace Game1.Player
             int drawX = x;
             int drawY = y;
 
-            if (direction == 1) // facing right
+            if (direction == "right") // facing right
             {
                 switch (currentFrame)
                 {
@@ -54,11 +54,11 @@ namespace Game1.Player
                         break;
                 }
             }
-            else if (direction == 2) // facing back
+            else if (direction == "up") // facing back
             {
                 drawY -= (int)(10 * LoadAll.Instance.scale);
             }
-            else if (direction == 3) // facing left
+            else if (direction == "left") // facing left
             {
                 switch (currentFrame)
                 {
