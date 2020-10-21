@@ -137,9 +137,7 @@ namespace Game1
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
             // enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();
-
-            _spriteBatch.DrawString(_spriteFont, EnemyLoader.GetCurrentMapID().ToString(), new Vector2(400, 200), Color.Black);
-
+        
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //itemKeyboardController.Draw(_spriteBatch, 400, 200);

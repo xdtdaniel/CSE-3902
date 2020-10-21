@@ -72,7 +72,7 @@ namespace Game1.Code.Player
                     {
                         if (projectile.GetIsOnScreen())
                         {
-                            collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
+                            collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), projectile.GetRectangle());
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
                                 link.TakeDamage();
@@ -89,7 +89,7 @@ namespace Game1.Code.Player
                     {
                         if (projectile.GetIsOnScreen())
                         {
-                            collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
+                            collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), projectile.GetRectangle());
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
                                 link.TakeDamage();

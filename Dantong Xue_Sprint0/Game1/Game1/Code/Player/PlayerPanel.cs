@@ -51,14 +51,14 @@ namespace Game1
             //
         }
 
-        public void PlayerUpdate()
+        public void PlayerUpdate(List<Tuple<IEnemy, string>> enemyList)
         {
             game.link.Update();
             keyBoardController.Update();
 
 
             roomBlockList = LoadAll.Instance.GetMapArtifacts();
-            roomEnemyList = LoadEnemy.Instance.GetEnemyList();
+            roomEnemyList = enemyList;
             playerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             playerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             playerItemAndBlockCollisionHandler.HandleCollision(game.link.item, roomBlockList);
