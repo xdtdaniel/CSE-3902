@@ -41,10 +41,8 @@ namespace Game1
         private LoadEnemy EnemyLoader;
         private List<Tuple<IEnemy, string>> EnemyList;
         private List<Tuple<IItemSprite, string>> inRoomList;
-        private List<Tuple<IItemSprite, string>> outRoomList;
 
         private IController mapMouseController;
-        //private ItemKeyboardController itemKeyboardController;
 
         //Testing controller for sprint 3
         private MouseEnemyController enemyController;
@@ -62,9 +60,6 @@ namespace Game1
         {
 
             base.Initialize();
-
-
-            //itemKeyboardController = new ItemKeyboardController();
 
             mapMouseController = new MouseMapController();
 
@@ -89,9 +84,7 @@ namespace Game1
             ItemSpriteFactory.LoadAllTextures(Content);
 
             _spriteFont = Content.Load<SpriteFont>("font");
-
-            inRoomList = LoadItem.Instance.GetItemList();
-            
+          
             LoadAll.Instance.LoadRoom();
             LoadAll.Instance.LoadRoomItem();
             movableBlocks = LoadMap.Instance.GetMovableBlocks();
@@ -99,6 +92,7 @@ namespace Game1
             EnemyLoader = new LoadEnemy(LoadAll.Instance.GetCurrentMapID());
             EnemyLoader.LoadAllEnemy();
             EnemyList = EnemyLoader.GetEnemyList();
+            inRoomList = LoadItem.Instance.GetItemList();
         }
 
         protected override void Update(GameTime gameTime)
@@ -110,9 +104,8 @@ namespace Game1
             
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
-            //itemKeyboardController.Update(this);
             quitResetController.Update(this);
-            playerCommand.PlayerUpdate(EnemyList);
+            playerCommand.PlayerUpdate(EnemyList,inRoomList);
 
             movableBlocks = LoadMap.Instance.GetMovableBlocks();
 
@@ -140,7 +133,6 @@ namespace Game1
         
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //itemKeyboardController.Draw(_spriteBatch, 400, 200);
             _spriteBatch.End();
         }
     }
