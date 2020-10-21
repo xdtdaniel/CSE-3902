@@ -85,7 +85,7 @@ namespace Game1.Enemy
             {
                 if (HitEdge())
                 {
-                    Velocity = 0.0 - Velocity;
+                    Velocity = NegativeVelocity;
                     ChangeDirectionTimer = 0;
                 }
                 ChangeDirectionTimer++;
