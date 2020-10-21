@@ -13,14 +13,14 @@ namespace Game1.Player.PlayerCharacter
 {
     class UseBoomerang : IPlayerItemState
     {
-        PlayerItem item;
+        LinkItem item;
         int direction;
         int x;
         int y;
         int boomerangSpeed;
         int currentFrame;
         int totalFrame;
-        public int secondFrame;
+        int secondFrame;
 
         IPlayerItemSprite frontBoomerang;
         IPlayerItemSprite rightBoomerang;
@@ -29,7 +29,7 @@ namespace Game1.Player.PlayerCharacter
 
         Rectangle rectangle;
 
-        public UseBoomerang(PlayerItem item)
+        public UseBoomerang(LinkItem item)
         {
             direction = item.direction;
             x = item.x;
@@ -154,6 +154,10 @@ namespace Game1.Player.PlayerCharacter
         public Rectangle GetRectangle()
         {
             return rectangle;
+        }
+        public bool IsDone()
+        {
+            return false;
         }
     }
 }

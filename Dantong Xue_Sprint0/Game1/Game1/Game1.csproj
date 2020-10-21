@@ -16,6 +16,7 @@
     <Compile Remove="Code\Block\MovingAnimatedBlock.cs" />
     <Compile Remove="Code\Block\MovingNonAnimatedBlock.cs" />
     <Compile Remove="Code\Block\NonMovingAnimatedBlock.cs" />
+    <Compile Remove="Code\Player\Control\pkc.cs" />
     <Compile Remove="KeyboardController.cs" />
     <Compile Remove="MouseController.cs" />
   </ItemGroup>

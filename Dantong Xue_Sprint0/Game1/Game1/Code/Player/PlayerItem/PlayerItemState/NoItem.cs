@@ -13,9 +13,9 @@ namespace Game1.Player.PlayerCharacter
     class NoItem : IPlayerItemState
     {
 
-        PlayerItem item;
+        LinkItem item;
 
-        public NoItem(PlayerItem item)
+        public NoItem(LinkItem item)
         {
             this.item = item;
         }
@@ -62,6 +62,10 @@ namespace Game1.Player.PlayerCharacter
         public Rectangle GetRectangle()
         {
             return new Rectangle();
+        }
+        public bool IsDone()
+        {
+            return true;
         }
     }
 }

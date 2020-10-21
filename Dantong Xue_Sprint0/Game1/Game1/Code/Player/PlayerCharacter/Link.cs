@@ -25,7 +25,13 @@ namespace Game1.Player.PlayerCharacter
 
         public string direction;
 
-        public PlayerItem item;
+        public LinkItem item;
+
+        private int timeBetweenAttack;
+        private int timeSinceAttack;
+        private int timeBetweenItem;
+        private int timeSinceItem;
+        private bool useItemDone;
 
 
         public IPlayerLinkState state;
@@ -40,28 +46,44 @@ namespace Game1.Player.PlayerCharacter
 
             direction = "down";
 
-            
 
             state = new NormalLink(this);
 
-            item = new PlayerItem();
+            item = new LinkItem();
             item.state = new NoItem(item);
 
+            timeBetweenAttack = 45;
+            timeSinceAttack = 0; 
+            timeBetweenItem = 45;
+            timeSinceItem = 0;
+            useItemDone = true;
 
         }
-
-        public void AttackN()
+        public void Attack(bool attackN, bool attackZ)
         {
-            state.AttackN();
-        }
-        public void AttackZ()
-        {
-            state.AttackZ();
+            if (timeSinceAttack >= timeBetweenAttack)
+            {
+                if (attackN)
+                {
+                    state.AttackN();
+                    timeSinceAttack = 0;
+                }
+                else if (attackZ)
+                {
+                    state.AttackZ();
+                    timeSinceAttack = 0;
+                }
+            }
         }
         public void UseItem(int itemNum)
         {
-            state.UseItem();
-            item.UseItem(itemNum);
+            if (useItemDone && timeSinceItem >= timeBetweenItem)
+            {
+                state.UseItem();
+                item.UseItem(itemNum);
+                timeSinceItem = 0;
+            }
+            useItemDone = item.IsDone();
         }
         public void TakeDamage()
         {
@@ -73,7 +95,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public Rectangle GetRectangle()
         {
-            return new Rectangle(x, y, 13 * (int)LoadAll.Instance.scale, 13 * (int)LoadAll.Instance.scale);
+            return new Rectangle(x, y, (int)(13 * LoadAll.Instance.scale), (int)(13 * LoadAll.Instance.scale));
         }
         public void KnockedBack(string collisionSide)
         {
@@ -101,8 +123,25 @@ namespace Game1.Player.PlayerCharacter
             }
             state.Update(ref x, ref y, directionIndex, isMoving);
             item.Update(x, y, directionIndex);
-            
-           
+
+            if (timeSinceAttack < timeBetweenAttack)
+            {
+                timeSinceAttack++;
+            }
+            if (timeSinceItem < timeBetweenItem)
+            {
+                timeSinceItem++;
+            }
+
+            if (isDamaged)
+            {
+                damageTimeCounter++;
+            }
+            if (damageTimeCounter == 90)
+            {
+                damageTimeCounter = 0;
+                isDamaged = false;
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -126,6 +165,10 @@ namespace Game1.Player.PlayerCharacter
             }
             state.Draw(spriteBatch, x, y, directionIndex);
             item.Draw(spriteBatch);
+        }
+        public string GetStateName()
+        {
+            return state.GetStateName();
         }
     }
 }

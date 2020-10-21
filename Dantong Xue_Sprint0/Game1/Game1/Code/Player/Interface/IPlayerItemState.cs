@@ -16,5 +16,6 @@ namespace Game1.Player.Interface
         void CollisionResponse();
         void Draw(SpriteBatch spriteBatch);
         Rectangle GetRectangle();
+        bool IsDone();
     }
 }

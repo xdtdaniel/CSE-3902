@@ -9,14 +9,14 @@ using Microsoft.Xna.Framework;
 
 namespace Game1.Player.PlayerCharacter
 {
-    public class PlayerItem
+    public class LinkItem
     {
         public IPlayerItemState state;
 
         public int x;
         public int y;
         public int direction;
-        public PlayerItem()
+        public LinkItem()
         {
             this.state = new NoItem(this);
             x = 0;
@@ -50,6 +50,10 @@ namespace Game1.Player.PlayerCharacter
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+        }
+        public bool IsDone()
+        {
+            return state.IsDone();
         }
     }
 }

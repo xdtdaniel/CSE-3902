@@ -15,12 +15,10 @@ namespace Game1.Player
     {
         int Columns;
         Texture2D Texture;
-        int scaler;
         public SwordLinkSprite(Texture2D texture)
         {
             Texture = texture;
             Columns = 4;
-            scaler = 2;
         }
 
         public void Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction) 
@@ -58,7 +56,7 @@ namespace Game1.Player
             }
             else if (direction == 2) // facing back
             {
-                drawY -= 36;
+                drawY -= (int)(10 * LoadAll.Instance.scale);
             }
             else if (direction == 3) // facing left
             {
@@ -67,17 +65,17 @@ namespace Game1.Player
                     case 0:
                         sourceX = 0;
                         width = 120;
-                        drawX -= 12;
+                        drawX -= (int)(1 * LoadAll.Instance.scale);
                         break;
                     case 1:
                         sourceX = 120;
                         width = 144;
-                        drawX -= 27;
+                        drawX -= (int)(5 * LoadAll.Instance.scale);
                         break;
                     case 2:
                         sourceX = 264;
                         width = 166;
-                        drawX -= 34;
+                        drawX -= (int)(8 * LoadAll.Instance.scale);
                         break;
                     case 3:
                         sourceX = 430;

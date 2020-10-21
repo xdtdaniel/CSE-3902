@@ -13,7 +13,7 @@ namespace Game1.Code.Player
         {
             collidedSide = "";
         }
-        public void HandleCollision(PlayerItem item, Dictionary<string, List<Rectangle>> blockList)
+        public void HandleCollision(LinkItem item, Dictionary<string, List<Rectangle>> blockList)
         {
             foreach (KeyValuePair<string, List<Rectangle>> kvp in blockList)
             {
@@ -24,6 +24,7 @@ namespace Game1.Code.Player
                     {
                         switch (item.GetItemName()) {
                             case "Arrow":
+                                item.CollisionResponse();
                                 break;
 
                             case "BlueCandle":

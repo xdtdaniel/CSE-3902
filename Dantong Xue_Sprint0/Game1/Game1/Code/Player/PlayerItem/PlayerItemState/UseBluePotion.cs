@@ -12,7 +12,7 @@ namespace Game1.Player.PlayerCharacter
 {
     class UseBluePotion : IPlayerItemState
     {
-        PlayerItem item;
+        LinkItem item;
         bool used;
         int direction;
         int x;
@@ -23,7 +23,7 @@ namespace Game1.Player.PlayerCharacter
 
         Rectangle rectangle;
 
-        public UseBluePotion(PlayerItem item)
+        public UseBluePotion(LinkItem item)
         {
             used = false;
             direction = item.direction;
@@ -87,6 +87,10 @@ namespace Game1.Player.PlayerCharacter
         public Rectangle GetRectangle()
         {
             return rectangle;
+        }
+        public bool IsDone()
+        {
+            return false;
         }
     }
 }
