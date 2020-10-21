@@ -316,7 +316,9 @@ namespace Game1.Code.LoadFile
                     case "wall_2":
                         blocks.Add(new Rectangle((int)location.X, (int)location.Y, (int)(32 * LoadAll.Instance.scale), (int)(40 * LoadAll.Instance.scale)));
                         break;
-
+                    case "invisible":
+                        blocks.Add(new Rectangle((int)location.X, (int)location.Y, (int)(16 * LoadAll.Instance.scale), (int)(16 * LoadAll.Instance.scale)));
+                        break;
                 }
 
             }
