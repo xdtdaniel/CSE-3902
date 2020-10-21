@@ -38,6 +38,7 @@ namespace Game1
 
         private List<IBlock> movableBlocks;
 
+        private LoadEnemy EnemyLoader;
         private List<Tuple<IEnemy, string>> EnemyList;
         private List<Tuple<IItemSprite, string>> inRoomList;
         private List<Tuple<IItemSprite, string>> outRoomList;
@@ -45,6 +46,9 @@ namespace Game1
         private IController mapMouseController;
         //private ItemKeyboardController itemKeyboardController;
         public PlayerKeyboardController playerKeyboardController;
+
+        //Testing controller for sprint 3
+        private MouseEnemyController enemyController;
 
         private QuitResetController quitResetController;
 
@@ -66,6 +70,7 @@ namespace Game1
 
             mapMouseController = new MouseMapController();
 
+            enemyController = new MouseEnemyController();
 
             link = new Link();
             playerCommand = new PlayerCommand(_spriteBatch, this);
@@ -87,25 +92,30 @@ namespace Game1
 
             _spriteFont = Content.Load<SpriteFont>("font");
 
-            EnemyList = LoadEnemy.Instance.GetEnemyList();
             inRoomList = LoadItem.Instance.GetItemList();
             
-
             LoadAll.Instance.LoadRoom();
-            LoadAll.Instance.LoadRoomEnemy();
             LoadAll.Instance.LoadRoomItem();
             movableBlocks = LoadMap.Instance.GetMovableBlocks();
+
+            EnemyLoader = new LoadEnemy(LoadAll.Instance.GetCurrentMapID());
+            EnemyLoader.LoadAllEnemy();
+            EnemyList = EnemyLoader.GetEnemyList();
         }
 
         protected override void Update(GameTime gameTime)
-        {
+        {    
             mapMouseController.Update(this);
+
+            enemyController.Update(EnemyLoader);
+
+            EnemyList = EnemyLoader.GetEnemyList();
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
             //itemKeyboardController.Update(this);
             playerKeyboardController.Update();
             quitResetController.Update(this);
-            playerCommand.PlayerUpdate();
+            playerCommand.PlayerUpdate(EnemyList);
 
             movableBlocks = LoadMap.Instance.GetMovableBlocks();
 
@@ -130,6 +140,8 @@ namespace Game1
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
             // enemyKeyboradController.Draw(_spriteBatch);
             playerCommand.PlayerDraw();
+
+            _spriteBatch.DrawString(_spriteFont, EnemyLoader.GetCurrentMapID().ToString(), new Vector2(400, 200), Color.Black);
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 

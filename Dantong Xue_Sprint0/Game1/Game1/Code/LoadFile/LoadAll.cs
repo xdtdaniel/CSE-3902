@@ -35,8 +35,6 @@ namespace Game1.Code.LoadFile
 
         private const int MAP_COUNT = 18;
 
-        
-
         public int multiplier { get; set; }
         public double scale { get; set; }
         public Vector2 startPos { get; set; }
@@ -56,11 +54,6 @@ namespace Game1.Code.LoadFile
             LoadMap.Instance.LoadOneMap(mapName);
         }
 
-        public void LoadRoomEnemy()
-        {
-            string enemyMapName = currMapID.ToString() + "_enemy.csv";
-            LoadEnemy.Instance.LoadAllEnemy(enemyMapName);
-        }
         public void LoadRoomItem() 
         {
             string itemMapName  = currMapID.ToString()+"_item.csv";
@@ -105,7 +98,9 @@ namespace Game1.Code.LoadFile
             return LoadMap.Instance.GetMovableBlocks();
         }
 
-
+        public int GetCurrentMapID() {
+            return currMapID;
+        }
 
     }
 

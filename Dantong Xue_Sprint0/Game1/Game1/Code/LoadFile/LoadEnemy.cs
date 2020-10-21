@@ -25,21 +25,29 @@ namespace Game1.Code.LoadFile
         private int multiplier = 8;
         public int scale = 3;
 
+        private const int MAP_COUNT = 18;
+        private int CurrentMapID;
+
         List<Tuple<int, int, string>> EnemyList;
 
-        private static LoadEnemy instance = new LoadEnemy();
+        public LoadEnemy(int currentMapID) {
+            CurrentMapID = currentMapID;
+        }
 
-        public static LoadEnemy Instance
-        {
-            get
-            {
-                return instance;
+        private List<Tuple<IEnemy, string>>[] AllEnemyList = new List<Tuple<IEnemy, string>>[MAP_COUNT];
+        private List<Tuple<IEnemy, string>> Enemies = new List<Tuple<IEnemy, string>>();
+
+        public void LoadAllEnemy() {
+
+            int i;
+            for (i = 0; i < MAP_COUNT; i++) {
+                LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv");
+                AllEnemyList[i] = Enemies;
+                Enemies = new List<Tuple<IEnemy, string>>();
             }
         }
 
-        private List<Tuple<IEnemy, string>> Enemies = new List<Tuple<IEnemy, string>>();
-
-        public void LoadAllEnemy(string mapName)
+        private void LoadOneRoomEnemy(string mapName)
         {
             EnemyList = new List<Tuple<int, int, string>>();
 
@@ -52,6 +60,9 @@ namespace Game1.Code.LoadFile
             string[] strList = new string[MAX_COLUMNS];
             int cell_x;
             int cell_y = 0;
+
+            
+
             while (!streamReader.EndOfStream)
             {
                 line = streamReader.ReadLine();
@@ -70,9 +81,9 @@ namespace Game1.Code.LoadFile
                 cell_y++;
             }
 
-            Enemies.Clear();
-
             Vector2 location;
+
+            Dictionary<string, List<Microsoft.Xna.Framework.Rectangle>> blockList = LoadAll.Instance.GetMapArtifacts();
 
             for (int index = 0; index < EnemyList.Count; index++)
             {
@@ -131,10 +142,32 @@ namespace Game1.Code.LoadFile
 
         }
 
-
         public List<Tuple<IEnemy, string>> GetEnemyList() 
         {
-            return Enemies;
+            return AllEnemyList[CurrentMapID - 1];
+        }
+
+        public void Previous()
+        {
+            CurrentMapID--;
+            if (CurrentMapID <1) 
+            {
+                CurrentMapID = MAP_COUNT;
+            }
+        }
+
+        public void Next()
+        {
+            CurrentMapID++;
+            if (CurrentMapID > 18)
+            {
+                CurrentMapID = 1;
+            }
+        }
+
+        public int GetCurrentMapID()
+        {
+            return CurrentMapID;
         }
     }
 }

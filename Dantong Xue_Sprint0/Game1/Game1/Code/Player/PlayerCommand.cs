@@ -49,7 +49,7 @@ namespace Game1
             //
         }
 
-        public void PlayerUpdate()
+        public void PlayerUpdate(List<Tuple<IEnemy, string>> EnemyList)
         {
             game.link.direction = game.playerKeyboardController.Direction();
             game.link.Update(game.playerKeyboardController.IsMoving());
@@ -59,7 +59,7 @@ namespace Game1
 
             blockList = LoadAll.Instance.GetMapArtifacts();
             movables = LoadAll.Instance.GetMovableBlocks();
-            enemyList = LoadEnemy.Instance.GetEnemyList();
+            enemyList = EnemyList;
             playerBlockCollisionHandler.HandleCollision(game.link, blockList);
             playerBlockCollisionHandler.HandleMovableCollision(game.link, movables);
             playerEnemyCollisionHandler.HandleCollision(game.link, enemyList);
