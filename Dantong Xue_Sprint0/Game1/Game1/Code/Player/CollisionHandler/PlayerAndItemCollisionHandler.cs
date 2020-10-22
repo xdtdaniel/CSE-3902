@@ -33,7 +33,8 @@ namespace Game1.Code.Player
                 collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), roomItemList[index].Item1.GetRectangle());
                 if (collidedSide != "")
                 {
-                    link.PickUp(1);//  might pick up item, might change hud.  
+                    //link.PickUp(1);  only certain item have a pick up state
+                    //  might pick up item, might change hud.  
                     IItemSprite item;
                     int X = 0;
                     int Y = 0;
