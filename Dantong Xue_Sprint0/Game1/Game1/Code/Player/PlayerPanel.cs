@@ -21,7 +21,7 @@ namespace Game1
     {
         private SpriteBatch spriteBatch;
         private Game1 game;
-        private PlayerKeyboardController keyBoardController;
+        private LinkKeyboardController linkKeyboardController;
 
         // test
         private Dictionary<string, List<Rectangle>> roomBlockList;
@@ -37,7 +37,7 @@ namespace Game1
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
-            keyBoardController = new PlayerKeyboardController(game);
+            linkKeyboardController = new LinkKeyboardController(game);
 
             //
             roomBlockList = new Dictionary<string, List<Rectangle>>();
@@ -51,15 +51,15 @@ namespace Game1
             //
         }
 
-        public void PlayerUpdate(List<Tuple<IEnemy, string>> enemyList, List<Tuple<IItemSprite,string>> inRoomItemList)
+        public void PlayerUpdate()
         {
             game.link.Update();
-            keyBoardController.Update();
+            linkKeyboardController.Update();
 
 
             roomBlockList = LoadAll.Instance.GetMapArtifacts();
-            roomEnemyList = enemyList;
-            roomItemList = inRoomItemList;
+            roomEnemyList = game.EnemyList;
+            roomItemList = game.inRoomList;
             playerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             playerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             playerItemAndBlockCollisionHandler.HandleCollision(game.link.item, roomBlockList);

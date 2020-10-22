@@ -34,13 +34,13 @@ namespace Game1
         public IItemSprite item; 
 
         public Link link;
-        public PlayerPanel playerCommand;
+        public PlayerPanel playerPanel;
 
         private List<IBlock> movableBlocks;
 
         private LoadEnemy EnemyLoader;
-        private List<Tuple<IEnemy, string>> EnemyList;
-        private List<Tuple<IItemSprite, string>> inRoomList;
+        public List<Tuple<IEnemy, string>> EnemyList;
+        public List<Tuple<IItemSprite, string>> inRoomList;
 
         private IController mapMouseController;
 
@@ -66,7 +66,7 @@ namespace Game1
             enemyController = new MouseEnemyController();
 
             link = new Link();
-            playerCommand = new PlayerPanel(_spriteBatch, this);
+            playerPanel = new PlayerPanel(_spriteBatch, this);
 
             quitResetController = new QuitResetController();
 
@@ -105,15 +105,13 @@ namespace Game1
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
             quitResetController.Update(this);
-            playerCommand.PlayerUpdate(EnemyList,inRoomList);
+            playerPanel.PlayerUpdate();
 
             movableBlocks = LoadMap.Instance.GetMovableBlocks();
 
             UpdateAllItem.Instance.UpdateAll(inRoomList);
             base.Update(gameTime);
 
-            // for collision test
-            // playerAquamentusCollisionHandler.HandleCollision(link, enemyKeyboradController.EnemyCollection.EnemyList[0], playerKeyboardController.Direction(), playerKeyboardController.side);
         }
 
 
@@ -129,7 +127,7 @@ namespace Game1
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
             // enemyKeyboradController.Draw(_spriteBatch);
-            playerCommand.PlayerDraw();
+            playerPanel.PlayerDraw();
         
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
