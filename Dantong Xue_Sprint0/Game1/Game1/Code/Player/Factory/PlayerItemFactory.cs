@@ -34,6 +34,10 @@ namespace Game1
         private Texture2D bluePotion;
         private Texture2D blueRing;
 
+        private Texture2D woodenSwordAttack;
+        private Texture2D swordBeamAttack;
+
+
         private static PlayerItemFactory instance = new PlayerItemFactory();
 
         public static PlayerItemFactory Instance
@@ -69,6 +73,10 @@ namespace Game1
             blueCandle = content.Load<Texture2D>("PlayerItemSprite/BlueCandle");
             bluePotion = content.Load<Texture2D>("PlayerItemSprite/BluePotion");
             blueRing = content.Load<Texture2D>("PlayerItemSprite/BlueRing");
+
+            // not used
+            woodenSwordAttack = content.Load<Texture2D>("PlayerItemSprite/WoodenSwordAttack");
+            swordBeamAttack = content.Load<Texture2D>("PlayerItemSprite/SwordBeamAttack");
         }
 
         /* sword */

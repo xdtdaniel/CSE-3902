@@ -24,6 +24,8 @@ namespace Game1.Player.PlayerCharacter
         public int hp;
         public int defaultSpeed;
         public int xSpeed, ySpeed;
+        private int linkWidth;
+        private int linkHeight;
 
         public string direction;
         public int directionIndex;
@@ -48,6 +50,8 @@ namespace Game1.Player.PlayerCharacter
             movable = true;
             hp = 100;
             defaultSpeed = xSpeed = ySpeed = 5;
+            linkWidth = (int)(13 * LoadAll.Instance.scale);
+            linkHeight = (int)(13 * LoadAll.Instance.scale);
 
             direction = "down";
             directionIndex = 0;
@@ -74,7 +78,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public Rectangle GetRectangle()
         {
-            return new Rectangle(x, y, (int)(13 * LoadAll.Instance.scale), (int)(13 * LoadAll.Instance.scale));
+            return new Rectangle(x, y, linkWidth, linkHeight);
         }
         public void KnockedBack(string collisionSide)
         {
@@ -86,18 +90,62 @@ namespace Game1.Player.PlayerCharacter
             if (side == "down")
             {
                 y -= interRect.Height;
+                if (Math.Abs(interRect.Width - linkWidth) > linkWidth / 2)
+                {
+                    if (interRect.X == x)
+                    {
+                        x++;
+                    }
+                    else if (interRect.X != x)
+                    {
+                        x--;
+                    }
+                }
             }
             if (side == "right")
             {
                 x -= interRect.Width;
+                if (Math.Abs(interRect.Height - linkHeight) > linkHeight / 2)
+                {
+                    if (interRect.Y == y)
+                    {
+                        y++;
+                    }
+                    else if (interRect.Y != y)
+                    {
+                        y--;
+                    }
+                }
             }
             if (side == "up")
             {
                 y += interRect.Height;
+                if (Math.Abs(interRect.Width - linkWidth) > linkWidth / 2)
+                {
+                    if (interRect.X == x)
+                    {
+                        x++;
+                    }
+                    else if (interRect.X != x)
+                    {
+                        x--;
+                    }
+                }
             }
             if (side == "left")
             {
                 x += interRect.Width;
+                if (Math.Abs(interRect.Height - linkHeight) > linkHeight / 2)
+                {
+                    if (interRect.Y == y)
+                    {
+                        y++;
+                    }
+                    else if (interRect.Y != y)
+                    {
+                        y--;
+                    }
+                }
             }
         }
         public void Update()

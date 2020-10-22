@@ -105,7 +105,9 @@
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/RightArrow.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/RightBoomerang.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/SwordBeam.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/swordBeamAttack.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/WoodenSword.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/woodenSwordAttack.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/1.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/Blocks/black.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/Blocks/block.png</File>
@@ -303,7 +305,9 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File>PlayerItemSprite/SwordBeamAttack.png</File>
     <File xsi:nil="true" />
+    <File>PlayerItemSprite/WoodenSwordAttack.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

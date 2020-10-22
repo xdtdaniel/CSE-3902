@@ -1220,6 +1220,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerItemSprite/SwordBeam.png
 
+#begin PlayerItemSprite/swordBeamAttack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerItemSprite/swordBeamAttack.png;PlayerItemSprite/SwordBeamAttack.png
+
 #begin PlayerItemSprite/WoodenSword.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1231,6 +1243,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerItemSprite/WoodenSword.png
+
+#begin PlayerItemSprite/woodenSwordAttack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerItemSprite/woodenSwordAttack.png;PlayerItemSprite/WoodenSwordAttack.png
 
 #begin Sprite/1.png
 /importer:TextureImporter
