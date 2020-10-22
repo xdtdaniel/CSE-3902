@@ -148,6 +148,12 @@ namespace Game1.Player.PlayerCharacter
                 }
             }
         }
+        public void ResetPos()
+        {
+            // temp
+            x = 98;
+            y = 242;
+        }
         public void Update()
         {
             switch (direction)
