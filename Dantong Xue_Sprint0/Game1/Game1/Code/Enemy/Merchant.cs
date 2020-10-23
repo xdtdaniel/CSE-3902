@@ -19,7 +19,7 @@ namespace Game1.Enemy
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
-
+        private int hp = 100;
         public Merchant(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetMerchantSpriteSheet();
@@ -53,6 +53,11 @@ namespace Game1.Enemy
         public void UpdateEnemy()
         {
             // Do nothing.
+        }
+
+        public void TakeDamage(int damageAmount)
+        {
+            //Do nothing.
         }
 
         List<IProjectile> IEnemy.GetProjectile()

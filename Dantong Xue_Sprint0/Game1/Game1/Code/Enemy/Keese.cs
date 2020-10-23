@@ -25,6 +25,8 @@ namespace Game1
         private double Velocity = 0;
         private double MaxVelocity = 3;
         private Random Rnd;
+        private int hp = 100;
+        private int DamageTimer = 0;
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
@@ -277,6 +279,18 @@ namespace Game1
         {
             return CollisionRectangle;
         }
+
+        public void TakeDamage(int damageAmount)
+        {
+            if (DamageTimer <= 0)
+            {
+                hp -= damageAmount;
+                DamageTimer = 90;
+            }
+
+            System.Diagnostics.Debug.WriteLine("hit" + hp);
+        }
+
 
         List<IProjectile> IEnemy.GetProjectile()
         {

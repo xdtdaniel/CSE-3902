@@ -14,5 +14,6 @@ namespace Game1
         public void FireProjectile();
         public Rectangle GetRectangle();
         public List<IProjectile> GetProjectile();
+        public void TakeDamage(int damageAmount);
     }
 }

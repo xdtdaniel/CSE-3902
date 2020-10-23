@@ -21,6 +21,8 @@ namespace Game1
         private Random Rnd;
         private int Velocity = 1;
         private bool CanTurn = false;
+        private int hp = 100;
+        private int DamageTimer = 0;
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
@@ -88,6 +90,7 @@ namespace Game1
             }
 
             UpdateLocation();
+            DamageTimer--;
 
             if (CurrentFrame == TotalFrames)
             {
@@ -244,6 +247,19 @@ namespace Game1
                     }
                 }
             }
+
+        public void TakeDamage(int damageAmount)
+        {   
+            if(DamageTimer <= 0)
+            {
+                hp -= damageAmount;
+                DamageTimer = 90;
+            }
+
+            System.Diagnostics.Debug.WriteLine("hit" + hp);
+        }
+
+
 
         Rectangle IEnemy.GetRectangle()
         {

@@ -26,7 +26,9 @@ namespace Game1.Enemy
         private IProjectile Projectile0;
         private IProjectile Projectile1;
         private IProjectile Projectile2;
-        
+        private int hp = 100;
+        private int DamageTimer = 0;
+
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private double scale = 3;
@@ -225,6 +227,17 @@ namespace Game1.Enemy
 
             // Test code for sprint 3 rectangle 
             CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, (int)(24 * scale), (int)(32 * scale));
+        }
+
+        public void TakeDamage(int damageAmount)
+        {
+            if (DamageTimer <= 0)
+            {
+                hp -= damageAmount;
+                DamageTimer = 90;
+            }
+
+            System.Diagnostics.Debug.WriteLine("hit" + hp);
         }
 
         Rectangle IEnemy.GetRectangle()

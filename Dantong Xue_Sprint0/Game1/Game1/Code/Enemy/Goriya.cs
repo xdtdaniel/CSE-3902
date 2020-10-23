@@ -21,6 +21,8 @@ namespace Game1.Enemy
         private int Velocity = 1;
         private bool CanTurn = true;
         private int FrameBound;
+        public int hp = 100;
+        private int DamageTimer = 0;
 
         private int FireTimer;
         private bool CanFire;
@@ -309,6 +311,17 @@ namespace Game1.Enemy
 
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * scale, 16 * scale);
+        }
+
+        public void TakeDamage(int damageAmount)
+        {
+            if (DamageTimer <= 0)
+            {
+                hp -= damageAmount;
+                DamageTimer = 90;
+            }
+
+            System.Diagnostics.Debug.WriteLine("hit" + hp);
         }
 
         Rectangle IEnemy.GetRectangle()

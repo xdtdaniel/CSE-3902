@@ -14,7 +14,7 @@ namespace Game1.Enemy
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
-
+        private int hp = 100;
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
@@ -54,6 +54,10 @@ namespace Game1.Enemy
             // Do nothing.
         }
 
+        public void TakeDamage(int damageAmount)
+        {
+            //Do nothing.
+        }
         List<IProjectile> IEnemy.GetProjectile()
         {
             return ProjectileList;

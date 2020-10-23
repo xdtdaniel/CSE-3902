@@ -1,4 +1,5 @@
 ﻿using Game1.Enemy;
+using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -20,6 +21,8 @@ namespace Game1
         private int StateTimer = 0;
         private int MoveTimer = 0;
         private int FrameRateModifier = 0;
+        public int hp = 100;
+        private int DamageTimer = 0;
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
@@ -197,6 +200,17 @@ namespace Game1
                     LeftCollide = true;
                 }
             }
+        }
+
+        public void TakeDamage(int damageAmount)
+        {
+            if (DamageTimer <= 0)
+            {
+                hp -= damageAmount;
+                DamageTimer = 90;
+            }
+
+            System.Diagnostics.Debug.WriteLine("hit" + hp);
         }
 
         Rectangle IEnemy.GetRectangle()
