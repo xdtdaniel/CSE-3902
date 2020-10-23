@@ -50,7 +50,7 @@ namespace Game1.Code.Player
                 collidedSide = BlockCollision.Instance.isCollided(swordHitBox, tuple.Item1.GetRectangle());
                 if (collidedSide != "")
                 {
-                    // tuple.Item1.TakeDamage();
+                    tuple.Item1.TakeDamage(10);                    
                 }
 
                 collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
