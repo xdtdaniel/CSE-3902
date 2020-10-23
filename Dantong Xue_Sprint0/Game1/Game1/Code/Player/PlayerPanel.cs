@@ -32,6 +32,7 @@ namespace Game1
         private PlayerAndEnemyCollisionHandler playerAndEnemyCollisionHandler;
         private PlayerItemaAndBlockCollisionHandler playerItemAndBlockCollisionHandler;
         private PlayerAndItemCollisionHandler playerAndItemCollisionHandler;
+        private PlayerItemaAndEnemyCollisionHandler playerItemaAndEnemyCollisionHandler;
         //
         public PlayerPanel(SpriteBatch spriteBatch, Game1 game)
         {
@@ -48,6 +49,7 @@ namespace Game1
             playerAndEnemyCollisionHandler = new PlayerAndEnemyCollisionHandler();
             playerItemAndBlockCollisionHandler = new PlayerItemaAndBlockCollisionHandler();
             playerAndItemCollisionHandler = new PlayerAndItemCollisionHandler();
+            playerItemaAndEnemyCollisionHandler = new PlayerItemaAndEnemyCollisionHandler();
             //
         }
 
@@ -64,6 +66,7 @@ namespace Game1
             playerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             playerItemAndBlockCollisionHandler.HandleCollision(game.link.item, roomBlockList);
             playerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
+            playerItemaAndEnemyCollisionHandler.HandleCollision(game.link.item, roomEnemyList);
             //
         }
         public void PlayerDraw()

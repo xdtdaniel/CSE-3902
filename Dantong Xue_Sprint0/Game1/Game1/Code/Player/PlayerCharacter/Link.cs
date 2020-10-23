@@ -24,6 +24,7 @@ namespace Game1.Player.PlayerCharacter
         public int hp;
         public int defaultSpeed;
         public int xSpeed, ySpeed;
+        public int attackDamage;
         private int linkWidth;
         private int linkHeight;
 
@@ -50,6 +51,8 @@ namespace Game1.Player.PlayerCharacter
             movable = true;
             hp = 100;
             defaultSpeed = xSpeed = ySpeed = 5;
+            attackDamage = 10;
+
             linkWidth = (int)(13 * LoadAll.Instance.scale);
             linkHeight = (int)(13 * LoadAll.Instance.scale);
 
