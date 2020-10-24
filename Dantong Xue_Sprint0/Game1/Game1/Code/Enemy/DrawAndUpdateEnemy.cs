@@ -30,6 +30,9 @@ namespace Game1.Code.Enemy
             for (int i = 0; i < Enemies.Count; i++)
             {
                 Enemies[i].Item1.UpdateEnemy();
+                if (Enemies[i].Item1.GetHP() <= 0) {
+                    Enemies.RemoveAt(i);
+                }
             }
         }
     }
