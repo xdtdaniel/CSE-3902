@@ -15,12 +15,14 @@ namespace Game1.Code.Player
         Rectangle swordHitBox;
         int swordHitBoxWidth;   // represent width when facing left and right, represent height when facing up and down
         int swordHitBoxHeight;  // represent height when facing left and right, represent width when facing up and down
+        bool ifHit;
         public PlayerAndEnemyCollisionHandler()
         {
             collidedSide = "";
             swordHitBox = new Rectangle();
             swordHitBoxWidth = (int)(13 * LoadAll.Instance.scale);
             swordHitBoxHeight = (int)(5 * LoadAll.Instance.scale);
+            ifHit = false;
         }
         public void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
         {
@@ -44,14 +46,24 @@ namespace Game1.Code.Player
                         break;
                 }
             }
+            else if (link.GetStateName() == "NormalLink")
+            {
+                swordHitBox = new Rectangle();
+                ifHit = false;
+            }
 
             foreach (Tuple<IEnemy, string> tuple in enemyList)
             {
+
+                // sword hit enemy
                 collidedSide = BlockCollision.Instance.isCollided(swordHitBox, tuple.Item1.GetRectangle());
-                if (collidedSide != "")
+                if (!ifHit && collidedSide != "")
                 {
-                    tuple.Item1.TakeDamage(10);                    
+                    tuple.Item1.TakeDamage(link.attackDamage);
+                    ifHit = true;
                 }
+
+                // link touch enemy
 
                 collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
                 if (collidedSide != "" && link.damageTimeCounter == 0 && tuple.Item2 != "oldman")
@@ -59,14 +71,10 @@ namespace Game1.Code.Player
                     link.TakeDamage();
                     link.KnockedBack(collidedSide);
                 }
-                else {
-                    Rectangle interRect = Rectangle.Intersect(link.GetRectangle(), tuple.Item1.GetRectangle());
-                    link.StopMoving(collidedSide, interRect);
-                    
-                }
 
-
-                if (tuple.Item2 == "aquamentus")
+                // projectiles
+                // of aquamentus
+                if (link.damageTimeCounter == 0 && tuple.Item2 == "aquamentus")
                 {
                     foreach (IProjectile projectile in tuple.Item1.GetProjectile())
                     {
@@ -83,7 +91,8 @@ namespace Game1.Code.Player
                     }
                 }
 
-                if (tuple.Item2 == "goriya")
+                // of goriya
+                if (link.damageTimeCounter == 0 && tuple.Item2 == "goriya")
                 {
                     foreach (IProjectile projectile in tuple.Item1.GetProjectile())
                     {

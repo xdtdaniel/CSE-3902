@@ -153,7 +153,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public void ResetPos()
         {
-            // temp
+            // temp for sprint 3
             x = 98;
             y = 242;
         }

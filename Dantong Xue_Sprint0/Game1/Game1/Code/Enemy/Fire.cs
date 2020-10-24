@@ -15,7 +15,6 @@ namespace Game1.Enemy
         private int CurrentFrame;
         private Vector2 Location { get; set; }
         private int FrameRateModifier = 0;
-        private int hp = 100;
 
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;

@@ -17,7 +17,7 @@ namespace Game1.Enemy
         private int CurrentFrame;
         private Vector2 Location { get; set; }
         private int FrameRateModifier = 0;
-        private int hp = 100;
+        private int hp = 20;
         private int DamageTimer = 0;
 
         // Test code for sprint 3 rectangle
@@ -75,13 +75,9 @@ namespace Game1.Enemy
 
         public void TakeDamage(int damageAmount)
         {
-            if (DamageTimer <= 0)
-            {
-                hp -= damageAmount;
-                DamageTimer = 90;
-            }
-
-            System.Diagnostics.Debug.WriteLine("hit" + hp);
+            hp -= damageAmount;
+            // test
+            System.Diagnostics.Debug.WriteLine("hp: " + hp);
         }
 
 

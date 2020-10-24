@@ -61,6 +61,7 @@ namespace Game1.Player.PlayerCharacter
                 }
             }
 
+            // delete currentFrame later
             currentFrame++;
             if (currentFrame == 15)
             {

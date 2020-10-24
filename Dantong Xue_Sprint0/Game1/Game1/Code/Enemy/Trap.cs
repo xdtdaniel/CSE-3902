@@ -21,7 +21,6 @@ namespace Game1
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
-        private int hp = 10;
 
         public Trap(Vector2 location)
         {

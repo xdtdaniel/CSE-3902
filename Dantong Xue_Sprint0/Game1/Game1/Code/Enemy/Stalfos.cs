@@ -21,7 +21,7 @@ namespace Game1
         private Random Rnd;
         private int Velocity = 1;
         private bool CanTurn = false;
-        private int hp = 100;
+        private int hp = 20;
         private int DamageTimer = 0;
 
         // Test code for sprint 3 rectangle
@@ -61,7 +61,12 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            // test collision
+            if (hp > 0)
+            {
+                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            }
+
         }
 
         public void FireProjectile()
@@ -250,13 +255,9 @@ namespace Game1
 
         public void TakeDamage(int damageAmount)
         {   
-            if(DamageTimer <= 0)
-            {
-                hp -= damageAmount;
-                DamageTimer = 90;
-            }
-
-            System.Diagnostics.Debug.WriteLine("hit" + hp);
+            hp -= damageAmount;
+            // test
+            System.Diagnostics.Debug.WriteLine("hp: " + hp);
         }
 
 

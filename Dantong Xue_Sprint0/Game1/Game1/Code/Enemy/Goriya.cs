@@ -21,7 +21,7 @@ namespace Game1.Enemy
         private int Velocity = 1;
         private bool CanTurn = true;
         private int FrameBound;
-        public int hp = 100;
+        public int hp = 30;
         private int DamageTimer = 0;
 
         private int FireTimer;
@@ -315,13 +315,9 @@ namespace Game1.Enemy
 
         public void TakeDamage(int damageAmount)
         {
-            if (DamageTimer <= 0)
-            {
-                hp -= damageAmount;
-                DamageTimer = 90;
-            }
-
-            System.Diagnostics.Debug.WriteLine("hit" + hp);
+            hp -= damageAmount;
+            // test
+            System.Diagnostics.Debug.WriteLine("hp: " + hp);
         }
 
         Rectangle IEnemy.GetRectangle()
