@@ -233,7 +233,7 @@ namespace Game1
         private void HandleBlockCollision() {
                 foreach (Rectangle rect in BlockList)
                 {
-                    string collidedSide = BlockCollision.Instance.isCollided(CollisionRectangle, rect);
+                    string collidedSide = CollisionDetection.Instance.isCollided(CollisionRectangle, rect);
                     if (collidedSide == "up") 
                     {
                         UpCollide = true;
