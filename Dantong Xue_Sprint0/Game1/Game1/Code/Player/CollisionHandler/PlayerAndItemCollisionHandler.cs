@@ -26,6 +26,7 @@ namespace Game1.Code.Player
         {
             collidedSide = "";
         }
+        IItemSprite item;
         public void HandleCollision(Link link, List<Tuple<IItemSprite, string>> roomItemList)
         {
             for (int  index= 0;index < roomItemList.Count;index++)
@@ -33,9 +34,7 @@ namespace Game1.Code.Player
                 collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), roomItemList[index].Item1.GetRectangle());
                 if (collidedSide != "")
                 {
-                    //link.PickUp(1);  only certain item have a pick up state
                     //  might pick up item, might change hud.  
-                    IItemSprite item;
                     int X = 0;
                     int Y = 0;
                     //Add all player collide items to a list,  no need to record item ccurrent location
@@ -58,7 +57,7 @@ namespace Game1.Code.Player
                             roomItemList.RemoveAt(index);
                             break;
                         case "bow":
-                            item = new Bow(X, Y);
+                            link.PickUp(3);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "bow"));
                             roomItemList.RemoveAt(index);
                             break;
@@ -103,7 +102,7 @@ namespace Game1.Code.Player
                             roomItemList.RemoveAt(index);
                             break;
                         case "triforce":
-                            item = new Triforce(X, Y);
+                            link.PickUp(2);                          
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "triforce"));
                             roomItemList.RemoveAt(index);
                             break;
