@@ -1,6 +1,8 @@
-This is the README file for Sprint 3, it contain the description of the control of the program, and the code analysis for sprint 3.
-The sprint 3 is about implement collision detection and handling, and Level loading.
+This is the README file for Sprint 3, it contain the description of the features of the program, and the code analysis for sprint 3.
 
+ [Description of Sprint 3 features]
+ 
+The sprint 3 is about implement collision detection and handling, and Level loading.
 Sprint 3 include all the parts we have down for sprint 2(with some changes and addition on sprint 2 classes).
 
 The new classes add for sprint 3 is:
@@ -24,3 +26,8 @@ The new classes add for sprint 3 is:
       7. DrawAllItem.cs   ---> call IItemSprite Draw() method on the roomItemList return from LoadItem.cs
       8. UpdateAllItem.cs ---> call IItemSprite Update() method on the roomItemList return from LoadItem.cs
       9. PlayerPanel.cs  ---> a class to call other classes and display current Link's status and position.
+      
+      
+      
+ [Code Analysis]
+      
