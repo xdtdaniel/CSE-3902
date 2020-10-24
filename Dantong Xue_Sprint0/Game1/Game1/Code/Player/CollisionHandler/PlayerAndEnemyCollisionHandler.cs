@@ -56,7 +56,7 @@ namespace Game1.Code.Player
             {
 
                 // sword hit enemy
-                collidedSide = BlockCollision.Instance.isCollided(swordHitBox, tuple.Item1.GetRectangle());
+                collidedSide = CollisionDetection.Instance.isCollided(swordHitBox, tuple.Item1.GetRectangle());
                 if (!ifHit && collidedSide != "")
                 {
                     tuple.Item1.TakeDamage(link.attackDamage);
@@ -65,7 +65,7 @@ namespace Game1.Code.Player
 
                 // link touch enemy
 
-                collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
+                collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
                 if (collidedSide != "" && link.damageTimeCounter == 0 && tuple.Item2 != "oldman")
                 {
                     link.TakeDamage();
@@ -80,7 +80,7 @@ namespace Game1.Code.Player
                     {
                         if (projectile.GetIsOnScreen())
                         {
-                            collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), projectile.GetRectangle());
+                            collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), projectile.GetRectangle());
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
                                 link.TakeDamage();
@@ -98,7 +98,7 @@ namespace Game1.Code.Player
                     {
                         if (projectile.GetIsOnScreen())
                         {
-                            collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), projectile.GetRectangle());
+                            collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), projectile.GetRectangle());
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
                                 link.TakeDamage();

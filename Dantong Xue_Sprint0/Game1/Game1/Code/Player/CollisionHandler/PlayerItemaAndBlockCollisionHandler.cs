@@ -20,7 +20,7 @@ namespace Game1.Code.Player
             {
                 foreach (Rectangle rect in kvp.Value)
                 {
-                    collidedSide = BlockCollision.Instance.isCollided(item.GetRectangle(), rect);
+                    collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), rect);
                     if (collidedSide != "")
                     {
                         switch (item.GetItemName()) {
