@@ -168,5 +168,16 @@ namespace Game1.Code.LoadFile
         {
             return CurrentMapID;
         }
+
+        public bool NoEnemy() {
+            if (AllEnemyList[CurrentMapID - 1].Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

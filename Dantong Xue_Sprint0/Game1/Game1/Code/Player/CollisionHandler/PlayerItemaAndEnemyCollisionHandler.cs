@@ -25,7 +25,7 @@ namespace Game1.Code.Player
 
             foreach (Tuple<IEnemy, string> tuple in enemyList)
             {
-                collidedSide = BlockCollision.Instance.isCollided(item.GetRectangle(), tuple.Item1.GetRectangle());
+                collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), tuple.Item1.GetRectangle());
                 if (collidedSide != "")
                 {
                     switch (item.GetItemName())

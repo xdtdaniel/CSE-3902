@@ -182,7 +182,7 @@ namespace Game1
         {
             foreach (Rectangle rect in BlockList)
             {
-                string collidedSide = BlockCollision.Instance.isCollided(CollisionRectangle, rect);
+                string collidedSide = CollisionDetection.Instance.isCollided(CollisionRectangle, rect);
                 if (collidedSide == "up")
                 {
                     UpCollide = true;
@@ -217,6 +217,11 @@ namespace Game1
         List<IProjectile> IEnemy.GetProjectile()
         {
             return ProjectileList;
+        }
+
+        int IEnemy.GetHP()
+        {
+            return hp;
         }
     }
 }

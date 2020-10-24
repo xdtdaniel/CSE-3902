@@ -9,11 +9,11 @@ using Game1.Player;
 
 namespace Game1
 {
-    class BlockCollision
+    class CollisionDetection
     {
-        private static BlockCollision instance = new BlockCollision();
+        private static CollisionDetection instance = new CollisionDetection();
 
-        public static BlockCollision Instance
+        public static CollisionDetection Instance
         {
             get
             {

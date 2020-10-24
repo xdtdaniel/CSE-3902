@@ -245,5 +245,10 @@ namespace Game1.Enemy
         {
             return ProjectileList;
         }
+
+        int IEnemy.GetHP()
+        {
+            return hp;
+        }
     }
 }

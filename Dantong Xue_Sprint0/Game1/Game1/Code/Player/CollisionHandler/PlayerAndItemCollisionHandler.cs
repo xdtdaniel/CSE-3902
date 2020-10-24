@@ -31,7 +31,7 @@ namespace Game1.Code.Player
         {
             for (int  index= 0;index < roomItemList.Count;index++)
             {
-                collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), roomItemList[index].Item1.GetRectangle());
+                collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), roomItemList[index].Item1.GetRectangle());
                 if (collidedSide != "")
                 {
                     //  might pick up item, might change hud.  

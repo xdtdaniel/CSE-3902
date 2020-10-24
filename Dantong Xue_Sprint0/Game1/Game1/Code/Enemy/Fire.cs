@@ -20,6 +20,7 @@ namespace Game1.Enemy
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
+        private int hp = 100;
 
         public Fire(Vector2 location)
         {
@@ -71,7 +72,7 @@ namespace Game1.Enemy
 
         public void TakeDamage(int damageAmount)
         {
-            //do nothing?
+            //do nothing
         }
 
         List<IProjectile> IEnemy.GetProjectile()
@@ -82,6 +83,11 @@ namespace Game1.Enemy
         Rectangle IEnemy.GetRectangle()
         {
             return CollisionRectangle;
+        }
+
+        int IEnemy.GetHP()
+        {
+            return hp;
         }
     }
 }

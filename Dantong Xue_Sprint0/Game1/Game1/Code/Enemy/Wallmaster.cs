@@ -90,5 +90,10 @@ namespace Game1.Enemy
         {
             return CollisionRectangle;
         }
+
+        int IEnemy.GetHP()
+        {
+            return hp;
+        }
     }
 }

@@ -128,7 +128,7 @@ namespace Game1
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
             // enemyKeyboradController.Draw(_spriteBatch);
             playerPanel.PlayerDraw();
-        
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.End();

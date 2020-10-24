@@ -22,7 +22,7 @@ namespace Game1.Code.Player
             {
                 foreach (Rectangle rect in kvp.Value)
                 {
-                    collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), rect);
+                    collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), rect);
                     if (collidedSide != "")
                     {
                         Rectangle interRect = Rectangle.Intersect(link.GetRectangle(), rect);
@@ -71,7 +71,7 @@ namespace Game1.Code.Player
         {
             foreach (IBlock movable in movables)
             {
-                collidedSide = BlockCollision.Instance.isCollided(link.GetRectangle(), movable.GetRectangle(new Vector2(0, 0)));
+                collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), movable.GetRectangle(new Vector2(0, 0)));
 
                 
                 if (collidedSide != "")
