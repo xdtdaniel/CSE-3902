@@ -19,7 +19,6 @@ namespace Game1
 {
     public class PlayerPanel
     {
-        private SpriteBatch spriteBatch;
         private Game1 game;
         private LinkKeyboardController linkKeyboardController;
 
@@ -34,9 +33,8 @@ namespace Game1
         private PlayerAndItemCollisionHandler playerAndItemCollisionHandler;
         private PlayerItemaAndEnemyCollisionHandler playerItemaAndEnemyCollisionHandler;
         //
-        public PlayerPanel(SpriteBatch spriteBatch, Game1 game)
+        public PlayerPanel(Game1 game)
         {
-            this.spriteBatch = spriteBatch;
             this.game = game;
             linkKeyboardController = new LinkKeyboardController(game);
 
@@ -71,8 +69,8 @@ namespace Game1
         }
         public void PlayerDraw()
         {
-            game.link.Draw(spriteBatch);
-
+            game.link.Draw(game._spriteBatch);
+            //
 
             // for collision test
             string x = "x: " + game.link.x.ToString();
@@ -81,10 +79,10 @@ namespace Game1
             string hp = "hp: " + game.link.hp.ToString();
 
 
-            spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 125), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, y, new Vector2(game.link.x, game.link.y - 100), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, damagedTimeRemain, new Vector2(game.link.x, game.link.y - 75), Color.Black);
-            spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 50), Color.Black);
+            game._spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 125), Color.Black);
+            game._spriteBatch.DrawString(game._spriteFont, y, new Vector2(game.link.x, game.link.y - 100), Color.Black);
+            game._spriteBatch.DrawString(game._spriteFont, damagedTimeRemain, new Vector2(game.link.x, game.link.y - 75), Color.Black);
+            game._spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 50), Color.Black);
         }
     }
 }

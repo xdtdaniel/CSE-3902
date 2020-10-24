@@ -147,6 +147,10 @@ namespace Game1
         {
             return new BlueRing(blueRing);
         }
+        public Texture2D GetSwordBeamTexture()
+        {
+            return swordBeam;
+        }
 
     }
 }

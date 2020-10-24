@@ -26,7 +26,7 @@ namespace Game1
 #pragma warning restore CA2213 // Disposable fields should be disposed
 
 #pragma warning disable CA2213 // Disposable fields should be disposed
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch;
         public SpriteFont _spriteFont;
 #pragma warning restore CA2213 // Disposable fields should be disposed
 
@@ -66,7 +66,7 @@ namespace Game1
             enemyController = new MouseEnemyController();
 
             link = new Link();
-            playerPanel = new PlayerPanel(_spriteBatch, this);
+            playerPanel = new PlayerPanel(this);
 
             quitResetController = new QuitResetController();
 

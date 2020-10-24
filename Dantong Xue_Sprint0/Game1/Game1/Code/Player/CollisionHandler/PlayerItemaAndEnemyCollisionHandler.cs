@@ -10,12 +10,18 @@ namespace Game1.Code.Player
     class PlayerItemaAndEnemyCollisionHandler
     {
         string collidedSide;
+        bool ifHit;
         public PlayerItemaAndEnemyCollisionHandler()
         {
             collidedSide = "";
+            ifHit = false;
         }
         public void HandleCollision(LinkItem item, List<Tuple<IEnemy, string>> enemyList)
         {
+            if (item.IsDone())
+            {
+                ifHit = false;
+            }
 
             foreach (Tuple<IEnemy, string> tuple in enemyList)
             {
@@ -25,7 +31,12 @@ namespace Game1.Code.Player
                     switch (item.GetItemName())
                     {
                         case "Arrow":
-                            tuple.Item1.TakeDamage(5);
+                            if (!ifHit)
+                            {
+                                tuple.Item1.TakeDamage(5);
+                                ifHit = true;
+                            }
+                            item.CollisionResponse();
                             break;
 
                         case "BlueCandle":
@@ -41,18 +52,26 @@ namespace Game1.Code.Player
                             break;
 
                         case "BombExplosion":
-                            tuple.Item1.TakeDamage(50);
+                            if (!ifHit)
+                            {
+                                tuple.Item1.TakeDamage(50);
+                                ifHit = true;
+                            }
                             break;
 
                         case "Boomerang":
-                            tuple.Item1.TakeDamage(10);
+                            if (!ifHit)
+                            {
+                                tuple.Item1.TakeDamage(10);
+                                ifHit = true;
+                            }
+                            item.CollisionResponse();
                             break;
 
-                        case "SwordBeam":
-                            tuple.Item1.TakeDamage(10);
+                        case "SwordBeam": // not used
                             break;
 
-                        case "WoodenSword":
+                        case "WoodenSword": // not used
                             break;
 
                         default:
