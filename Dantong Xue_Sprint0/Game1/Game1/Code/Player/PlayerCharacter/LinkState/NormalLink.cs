@@ -78,6 +78,13 @@ namespace Game1.Player.PlayerCharacter
             {
                 link.state = new TwoHandPickUpLink(link);
             }
+            else if (pickUp == 2)
+            {
+                link.state = new TwoHandHoldTriforceLink(link);
+            }
+            else if (pickUp == 3) {
+                link.state = new OneHandHoldBow(link);
+            }
         }
         public void KnockedBack(string collisionSide)
         {
