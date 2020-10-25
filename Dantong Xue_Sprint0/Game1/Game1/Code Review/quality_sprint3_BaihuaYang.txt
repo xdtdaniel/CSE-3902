@@ -7,7 +7,7 @@ File Author: Zhihan Li
 15 mins
 
 Low coupling since only fields of LoadAll.cs are used. 
-High cohesion since every field has its own functionality in implementations, except some fields are not used in current class and 2 unnecessary assignments of value.
+High cohesion since every field has its own functionality in implementations, except 2 unnecessary assignments of value.
 
 Suggestions: 
-Review the code and remove those not used variables and unnecessary value assignments.
+Review the code and remove the unnecessary value assignments.
