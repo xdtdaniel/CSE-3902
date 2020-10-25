@@ -23,7 +23,6 @@ namespace Game1.Code.LoadFile
         private int MAX_COLUMNS = 32;
         private int multiplier = 8;
         private double scale = 2;
-        private Vector2 startPos;
         private int X;
         private int Y;          
         List<Tuple<int, int, string>> RoomItemList;
@@ -43,7 +42,6 @@ namespace Game1.Code.LoadFile
         {
             multiplier = LoadAll.Instance.multiplier;
             scale = LoadAll.Instance.scale;
-            startPos = LoadAll.Instance.startPos;
         }
       
 
