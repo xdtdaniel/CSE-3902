@@ -65,7 +65,7 @@ namespace Game1
             // Do nothing. 
         }
 
-        public void UpdateEnemy()
+        public void UpdateEnemy(Game1 game)
         {
             Random rnd = new Random();
 

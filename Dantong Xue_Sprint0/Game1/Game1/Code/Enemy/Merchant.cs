@@ -51,7 +51,7 @@ namespace Game1.Enemy
             // Do nothing.
         }
 
-        public void UpdateEnemy()
+        public void UpdateEnemy(Game1 game)
         {
             // Do nothing.
         }

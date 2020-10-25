@@ -41,7 +41,8 @@ namespace Game1.Code.LoadFile
 
             int i;
             for (i = 0; i < MAP_COUNT; i++) 
-            {             
+            {
+                LoadMap.Instance.LoadOneMap((i + 1).ToString() + ".csv");
                 LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", LoadMap.Instance.GetBlocks());
                 AllEnemyList[i] = Enemies;
                 Enemies = new List<Tuple<IEnemy, string>>();

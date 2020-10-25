@@ -74,7 +74,7 @@ namespace Game1
             // Do Nothing.
         }
 
-        public void UpdateEnemy()
+        public void UpdateEnemy(Game1 game)
         {
             if (FrameRateModifier < 20)
             {

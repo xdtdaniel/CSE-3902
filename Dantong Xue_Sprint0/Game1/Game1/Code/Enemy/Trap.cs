@@ -17,6 +17,8 @@ namespace Game1
         private int CurrentFrame;
         private Vector2 Location { get; set; }
 
+        private int MovingState;
+
         // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
@@ -30,6 +32,7 @@ namespace Game1
             Columns = TotalFrames;
             CurrentFrame = 0;
             Location = location;
+            MovingState = 0;
 
             // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
@@ -47,7 +50,7 @@ namespace Game1
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
-        public void UpdateEnemy()
+        public void UpdateEnemy(Game1 game)
         {
             // To do.
         }

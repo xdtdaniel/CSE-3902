@@ -87,7 +87,7 @@ namespace Game1.Enemy
             ProjectileList.Add(Projectile);
         }
 
-        public void UpdateEnemy()
+        public void UpdateEnemy(Game1 game)
         {
             if (FireTimer > Rnd.Next(180, 200) || Projectile.GetIsOnScreen())
             {

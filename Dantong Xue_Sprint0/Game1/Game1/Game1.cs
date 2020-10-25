@@ -99,7 +99,7 @@ namespace Game1
             
             
 
-            DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
+            DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);
             quitResetController.Update(this);
             playerPanel.PlayerUpdate();
 

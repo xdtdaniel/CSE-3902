@@ -102,7 +102,7 @@ namespace Game1.Enemy
             }
         }
 
-        public void UpdateEnemy()
+        public void UpdateEnemy(Game1 game)
         {
             if (FireTimer < (Rnd.Next(7, 10) * 24))
             {
