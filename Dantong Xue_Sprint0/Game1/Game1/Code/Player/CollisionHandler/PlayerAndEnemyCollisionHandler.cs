@@ -20,8 +20,8 @@ namespace Game1.Code.Player
         {
             collidedSide = "";
             swordHitBox = new Rectangle();
-            swordHitBoxWidth = (int)(13 * LoadAll.Instance.scale);
-            swordHitBoxHeight = (int)(5 * LoadAll.Instance.scale);
+            swordHitBoxWidth = (int)(14 * LoadAll.Instance.scale);
+            swordHitBoxHeight = (int)(7 * LoadAll.Instance.scale);
             ifHit = false;
         }
         public void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
