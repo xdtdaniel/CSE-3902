@@ -20,7 +20,6 @@ namespace Game1.Enemy
         private int hp = 20;
         private int DamageTimer = 0;
 
-        // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
@@ -76,8 +75,6 @@ namespace Game1.Enemy
         public void TakeDamage(int damageAmount)
         {
             hp -= damageAmount;
-            // test
-            System.Diagnostics.Debug.WriteLine("hp: " + hp);
         }
 
 

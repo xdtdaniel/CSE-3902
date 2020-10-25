@@ -28,7 +28,6 @@ namespace Game1
         private int hp = 10;
         private int DamageTimer = 0;
 
-        // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
@@ -42,8 +41,6 @@ namespace Game1
             Location = location;
             Rnd = new Random();
             Direction = Rnd.Next(7);
-
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
         }
 
@@ -270,11 +267,9 @@ namespace Game1
 
             Location = new Vector2(x, y);
 
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
         }
 
-        // Test code for sprint 3 rectangle
         public Rectangle GetRectangle() 
         {
             return CollisionRectangle;
@@ -283,8 +278,6 @@ namespace Game1
         public void TakeDamage(int damageAmount)
         {
             hp -= damageAmount;
-            // test
-            System.Diagnostics.Debug.WriteLine("hp: " + hp);
         }
 
 

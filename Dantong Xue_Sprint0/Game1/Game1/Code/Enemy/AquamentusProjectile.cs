@@ -21,7 +21,6 @@ namespace Game1.Enemy
         private readonly double Cos15 = 0.96592582628;
         private int scale = 3;
 
-        // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
         public AquamentusProjectile() 
@@ -31,8 +30,6 @@ namespace Game1.Enemy
             Columns = TotalFrames;
             CurrentFrame = 0;
             Velocity = 3.0;
-
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X + 4 * scale, (int)Location.Y + 3 * scale, 8 * scale, 10 * scale);
         }
 
@@ -107,7 +104,6 @@ namespace Game1.Enemy
 
             Location = new Vector2(x, y);
 
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X + 4 * scale, (int)Location.Y + 3 * scale, 8 * scale, 10 * scale);
         }
 

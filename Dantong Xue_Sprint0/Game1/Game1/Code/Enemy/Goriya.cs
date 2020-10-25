@@ -28,7 +28,6 @@ namespace Game1.Enemy
         private bool CanFire;
         private IProjectile Projectile;
 
-        // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList;
@@ -50,7 +49,6 @@ namespace Game1.Enemy
             CanFire = true;
             FireTimer = 0;
 
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X + 1 * scale, (int)Location.Y, 14 * scale, 16 * scale);
             ProjectileList = new List<IProjectile>();
             BlockList = blockList;
@@ -309,15 +307,12 @@ namespace Game1.Enemy
 
             Location = new Vector2(x, y);
 
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * scale, 16 * scale);
         }
 
         public void TakeDamage(int damageAmount)
         {
             hp -= damageAmount;
-            // test
-            System.Diagnostics.Debug.WriteLine("hp: " + hp);
         }
 
         Rectangle IEnemy.GetRectangle()

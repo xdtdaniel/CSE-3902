@@ -10,6 +10,8 @@ namespace Game1
 {
     class Trap : IEnemy
     {
+        // This class needs further modifications.
+
         private Texture2D Texture;
         private int Columns;
         private int Rows = 1;
@@ -19,7 +21,6 @@ namespace Game1
 
         private int MovingState;
 
-        // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
@@ -33,8 +34,6 @@ namespace Game1
             CurrentFrame = 0;
             Location = location;
             MovingState = 0;
-
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
         }
 
@@ -62,7 +61,7 @@ namespace Game1
 
         public void TakeDamage(int damageAmount)
         {
-            //Do nothing.
+            // Do nothing.
         }
         public List<IProjectile> GetProjectile()
         {

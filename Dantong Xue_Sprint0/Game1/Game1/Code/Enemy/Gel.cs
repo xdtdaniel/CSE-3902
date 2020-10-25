@@ -24,7 +24,6 @@ namespace Game1
         public int hp = 10;
         private int DamageTimer = 0;
 
-        // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
@@ -42,7 +41,6 @@ namespace Game1
             CurrentFrame = 0;
             Location = location;
 
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)(Location.X + 1 * scale), (int)(Location.Y + 1 * scale), 8 * scale, 8 * scale);
             BlockList = blockList;
         }
@@ -165,7 +163,6 @@ namespace Game1
 
                 Location = new Vector2(x, y);
 
-                // Test code for sprint 3 rectangle
                 CollisionRectangle = new Rectangle((int)(Location.X + 4 * scale), (int)(Location.Y + 4 * scale), 8 * scale, 8 * scale);
 
                 MoveTimer++;

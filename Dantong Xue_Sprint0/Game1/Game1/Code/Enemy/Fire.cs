@@ -16,7 +16,6 @@ namespace Game1.Enemy
         private Vector2 Location { get; set; }
         private int FrameRateModifier = 0;
 
-        // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
@@ -29,8 +28,6 @@ namespace Game1.Enemy
             Columns = TotalFrames;
             CurrentFrame = 0;
             Location = location;
-
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int) Location.X, (int) Location.Y, 16 * scale, 16 * scale);
 
         }
@@ -72,7 +69,7 @@ namespace Game1.Enemy
 
         public void TakeDamage(int damageAmount)
         {
-            //do nothing
+            //Do nothing.
         }
 
         List<IProjectile> IEnemy.GetProjectile()

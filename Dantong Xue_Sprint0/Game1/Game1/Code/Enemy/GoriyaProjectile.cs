@@ -23,7 +23,6 @@ namespace Game1.Enemy
         private int ChangeDirectionTimer = 0;
         private int FrameRateModifier = 0;
 
-        // Test code for sprint 3 rectangle
         private Rectangle CollisionRectangle;
 
         private int scale = 3;
@@ -38,7 +37,6 @@ namespace Game1.Enemy
             Velocity = 4.5;
             NegativeVelocity = -4.5;
 
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * scale, 8 * scale, 8 * scale);
         }
 
@@ -124,7 +122,6 @@ namespace Game1.Enemy
 
             Location = new Vector2(x, y);
 
-            // Test code for sprint 3 rectangle
             CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y - 4 * scale, 8 * 5, 8 * scale);
         }
 

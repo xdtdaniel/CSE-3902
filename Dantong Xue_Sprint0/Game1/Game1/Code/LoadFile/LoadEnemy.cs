@@ -16,9 +16,6 @@ using System.Diagnostics;
 
 namespace Game1.Code.LoadFile
 {
-    /*
-     * this is load item class which load item to the room
-     */
     class LoadEnemy
     {
         private int MAX_COLUMNS = 32;
