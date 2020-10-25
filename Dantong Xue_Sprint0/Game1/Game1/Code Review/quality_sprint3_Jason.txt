@@ -1,0 +1,18 @@
+﻿Description: This is the qualiy Code Review file for LoadMap.cs
+
+Author: Jason Lian
+Date: 10/25/2020
+Sprint number: 3
+Name of the .cs file: LoadMap.cs
+Author of the .cs file: Dantong Xue
+
+Specific comments on code quality:
+
+This class does not contain lot of fields and all the fields are private. There are not much of dependency from the outside
+and the overall coupling should be loose. The main method of the class is lengthy and performs more than one functions, but
+there are not many methods in the class and other methods are very simple to read. So I think the cohesion of the class is high.
+
+A hypothetical change and how to implement it:
+
+It is possible for us to add a new type of block to the game. Using the implementation in LoadMap, we can just add a new checking
+name for the new block in the switch cases and add new sprite of the new block.

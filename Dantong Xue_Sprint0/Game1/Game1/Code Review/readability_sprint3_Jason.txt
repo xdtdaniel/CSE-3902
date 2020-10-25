@@ -1,0 +1,16 @@
+﻿Description: This is the readability Code Review file for the LoadMap  class.
+
+Author: Jason Lian
+Review date: 10/25/020
+Sprint number: 3
+Name of the .cs file being reviewed: Link.cs
+Author of the .cs file being reviewed: Dantong Xue
+Number of minutes taken to complete the code review: 3-4 minutes
+
+Specific comments on what is readable and what is not: 
+This class is overall readable alathough it is lengthy.
+A large part of the code is taken by the switch cases for
+reading csv files. However, reading this file may require knowledge
+about the csv file layout since some variable name is only going to
+make sense if the reader knows about the basic strcture of the
+read-in file.
