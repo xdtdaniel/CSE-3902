@@ -4,17 +4,12 @@ using Game1.Code.Enemy;
 using Game1.Code.Item;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
-using Game1.Code.Item.ItemSprite;
 using Game1.Code.LoadFile;
-using Game1.Code.Player;
-using Game1.Enemy;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Game1
 {
@@ -36,7 +31,7 @@ namespace Game1
         public Link link;
         public PlayerPanel playerPanel;
 
-        private List<IBlock> movableBlocks;
+        public List<IBlock> movableBlocks;
 
         private LoadEnemy EnemyLoader;
         public List<Tuple<IEnemy, string>> EnemyList;
@@ -87,7 +82,7 @@ namespace Game1
           
             LoadAll.Instance.LoadRoom();
             LoadAll.Instance.LoadRoomItem();
-            movableBlocks = LoadMap.Instance.GetMovableBlocks();
+            movableBlocks = LoadAll.Instance.GetMovableBlocks();
 
             EnemyLoader = new LoadEnemy(LoadAll.Instance.GetCurrentMapID());
             EnemyLoader.LoadAllEnemy();
@@ -102,12 +97,14 @@ namespace Game1
             enemyController.Update(EnemyLoader);
             EnemyList = EnemyLoader.GetEnemyList();
             
+            
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch);
             quitResetController.Update(this);
             playerPanel.PlayerUpdate();
 
-            movableBlocks = LoadMap.Instance.GetMovableBlocks();
+            movableBlocks = LoadAll.Instance.GetMovableBlocks();
+            LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
 
             UpdateAllItem.Instance.UpdateAll(inRoomList);
             base.Update(gameTime);

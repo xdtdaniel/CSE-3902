@@ -26,6 +26,7 @@ namespace Game1
         private Dictionary<string, List<Rectangle>> roomBlockList;
         private List<Tuple<IEnemy, string>> roomEnemyList;
         private List<Tuple<IItemSprite, string>> roomItemList;
+        private List<IBlock> movableList;
 
         private PlayerAndBlockCollisionHandler playerAndBlockCollisionHandler;
         private PlayerAndEnemyCollisionHandler playerAndEnemyCollisionHandler;
@@ -42,12 +43,14 @@ namespace Game1
             roomBlockList = new Dictionary<string, List<Rectangle>>();
             roomEnemyList = new List<Tuple<IEnemy, string>>();
             roomItemList = new List<Tuple<IItemSprite, string>>();
+            movableList = new List<IBlock>();
 
             playerAndBlockCollisionHandler = new PlayerAndBlockCollisionHandler();
             playerAndEnemyCollisionHandler = new PlayerAndEnemyCollisionHandler();
             playerItemAndBlockCollisionHandler = new PlayerItemaAndBlockCollisionHandler();
             playerAndItemCollisionHandler = new PlayerAndItemCollisionHandler();
             playerItemaAndEnemyCollisionHandler = new PlayerItemaAndEnemyCollisionHandler();
+            
             //
         }
 
@@ -60,11 +63,13 @@ namespace Game1
             roomBlockList = LoadAll.Instance.GetMapArtifacts();
             roomEnemyList = game.EnemyList;
             roomItemList = game.inRoomList;
+            movableList = game.movableBlocks;
             playerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             playerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             playerItemAndBlockCollisionHandler.HandleCollision(game.link.item, roomBlockList);
             playerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
             playerItemaAndEnemyCollisionHandler.HandleCollision(game.link.item, roomEnemyList);
+            playerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
             //
         }
         public void PlayerDraw()

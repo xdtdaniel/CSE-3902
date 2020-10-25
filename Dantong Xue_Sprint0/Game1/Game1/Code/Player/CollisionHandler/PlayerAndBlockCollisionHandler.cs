@@ -72,13 +72,14 @@ namespace Game1.Code.Player
             foreach (IBlock movable in movables)
             {
                 collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), movable.GetRectangle(new Vector2(0, 0)));
+                Rectangle interRect = Rectangle.Intersect(link.GetRectangle(), movable.GetRectangle(new Vector2(0, 0)));
 
-                
                 if (collidedSide != "")
                 {
+                    link.StopMoving(collidedSide, interRect);
                     movable.SetDestination(collidedSide);
                     Debug.WriteLine(collidedSide);
-                    //link.StopMoving(collidedSide, )
+                    
                 }
                 
 

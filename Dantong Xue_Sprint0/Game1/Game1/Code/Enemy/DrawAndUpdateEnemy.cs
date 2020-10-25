@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Game1.Code.LoadFile;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -34,6 +35,8 @@ namespace Game1.Code.Enemy
                     Enemies.RemoveAt(i);
                 }
             }
+
+            
         }
     }
 }

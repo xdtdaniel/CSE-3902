@@ -22,16 +22,24 @@ namespace Game1.Code.LoadFile
         }
 
         private List<bool> isSwitched;
+        private List<int> hasAlternative;
 
         private LoadAll()
         {
             multiplier = 8;
             scale = 3;
             startPos = new Vector2(0, 0);
-            currMapID = 1;
+            currMapID = 17;
             isSwitched = new List<bool>(new bool[MAP_COUNT + 1]);
+
+            // those values are hard-coded and corresponding to the maps we have
+            hasAlternative = new List<int>() { 8, 9, 10, 13, 14};
+
+            
         }
         private int currMapID = 1;
+        public bool noEnemy = false;
+        private List<IBlock> movables;
 
         private const int MAP_COUNT = 18;
 
@@ -78,9 +86,14 @@ namespace Game1.Code.LoadFile
             }
         }
 
-        public void SwitchToHole()
+        public bool SwitchToAlternative()
         {
-            isSwitched[currMapID] = true;
+            if (hasAlternative.Contains(currMapID))
+            { 
+                isSwitched[currMapID] = true;
+                return true;
+            }
+            return false;
         }
 
         public Dictionary<string, List<Rectangle>> GetMapArtifacts()
@@ -95,11 +108,25 @@ namespace Game1.Code.LoadFile
 
         public List<IBlock> GetMovableBlocks()
         {
-            return LoadMap.Instance.GetMovableBlocks();
+            movables = LoadMap.Instance.GetMovableBlocks();
+            return movables;
         }
 
-        public int GetCurrentMapID() {
+        public int GetCurrentMapID() 
+        {
             return currMapID;
+        }
+
+        public void SetEnemyStatus(bool enemyStatus)
+        {
+            noEnemy = enemyStatus;
+            Debug.WriteLine(noEnemy);
+
+            if (noEnemy && movables.Count == 0)
+            {
+                SwitchToAlternative();
+                LoadRoom();
+            }
         }
 
     }

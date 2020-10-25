@@ -43,7 +43,7 @@ namespace Game1.Code.Player
                             case "BombExplosion":
                                 if (kvp.Key == "bombWalls")
                                 {
-                                    LoadAll.Instance.SwitchToHole();
+                                    LoadAll.Instance.SwitchToAlternative();
                                     LoadAll.Instance.LoadRoom();
                                 }
                                 break;

@@ -56,7 +56,7 @@ namespace Game1.Code.Block
 
         public void SetDestination(string side)
         {
-            if (movable) 
+            if (LoadAll.Instance.noEnemy && movable) 
             { 
                 movable = false;
 
@@ -79,6 +79,13 @@ namespace Game1.Code.Block
                         destPos.Y = initPos.Y + (float)(LoadAll.Instance.multiplier * LoadAll.Instance.scale * 2);
                         break;
                 }
+
+                
+                if (LoadAll.Instance.SwitchToAlternative())
+                {
+                    LoadAll.Instance.LoadRoom();
+                }
+                
             }
         }
 
