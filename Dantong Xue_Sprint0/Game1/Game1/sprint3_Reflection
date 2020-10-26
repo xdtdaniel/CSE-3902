@@ -10,3 +10,10 @@ This is the sprint 3 reflection file.
     of that on next sprint, try to keep each class only focus on one specific thing and keep each short. Overall, everyone in our team down their work correctly. 
     Hope every teammate can participate more in next Sprint.
     
+[Reflection of Jason Lian]
+    Sprint3 is more complex in the functionality compares to the previous one and it certainly requires more work. Through the process of editing codes I wrote for 
+    Sprint2 and trying to add new functionalities, I realized that the complexity of classes can really influence the difficulties of reworking. Many new methods were
+    added to the interface used for Sprint2 and adding them to every classes that implement the interfaces requires lot of time. I think it will be more efficient if 
+    I could design the interfaces to have functions that are obviously going to be used in future projects in the first place. More works still need to be done to the
+    enemy types which have the behaviors related to the player's location, that can also lead to more modification of the interfaces. I feel like although interface is 
+    good for being generic, it clearly adds more complexity to the modification of codes. 
