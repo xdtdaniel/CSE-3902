@@ -17,6 +17,7 @@
     <Compile Remove="Code\Block\MovingNonAnimatedBlock.cs" />
     <Compile Remove="Code\Block\NonMovingAnimatedBlock.cs" />
     <Compile Remove="Code\LoadFile\MapStorage.cs" />
+    <Compile Remove="Code\LoadFile\MouseEnemyController.cs" />
     <Compile Remove="Code\Sprite\MovingAnimatedSprite.cs" />
     <Compile Remove="Code\Sprite\NonMovingAnimatedSprite.cs" />
     <Compile Remove="Code\Player\Control\pkc.cs" />

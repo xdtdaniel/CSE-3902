@@ -62,8 +62,6 @@ namespace Game1
 
             mapMouseController = new MouseMapController();
 
-            // enemyController = new MouseEnemyController();
-
             link = new Link();
             playerPanel = new PlayerPanel(this);
 
@@ -97,12 +95,7 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {    
             mapMouseController.Update(this);
-
-            // this has been included in mapMouseController
-            // enemyController.Update(EnemyLoader);
             EnemyList = EnemyLoader.GetEnemyList();
-            
-            
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);
             quitResetController.Update(this);
@@ -129,7 +122,6 @@ namespace Game1
 
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
-            // enemyKeyboradController.Draw(_spriteBatch);
             playerPanel.PlayerDraw();
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
