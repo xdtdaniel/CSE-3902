@@ -1,0 +1,14 @@
+Author of the code review:  Fan Shen
+Date of the code review: 10/26/2020
+Sprint number: 3
+Name of the .cs file being reviewed: CollisionDetection.cs
+Author of the .cs file being reviewed: Patrick Cheng
+Number of minutes taken to complete the code review: 5 mins
+
+Specific comments on code quality: 
+This class handles the detection and direction determining of rectangle collision in game. It utilized the detection of overlapping between 2 different rectangles and is essential 
+to all other collision handling classes. The simple logic and straightforward implementation thus make it easy to maintain and change if needed in the future. 
+The high cohesion ofthis class is due to its nature of only handlling collision detection and nothing else. The coupling is low as it only knows Player class.
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+It could use a simpler if nest to make it more easy to understand
