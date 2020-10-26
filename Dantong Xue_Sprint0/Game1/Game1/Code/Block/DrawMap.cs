@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Code.LoadFile;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,16 @@ namespace Game1.Code.Block
                 IBlock currBlock = movableBlocks[i];
                 currBlock.DrawBlock(currSpriteBatch, new Vector2(0, 0));
                 currBlock.UpdateBlock();
+            }
+        }
+
+        public void DrawText(SpriteBatch currSpriteBatch, string text, SpriteFont font)
+        {
+            // Draw text for the room with old man
+            if (LoadAll.Instance.GetCurrentMapID() == 7)
+            {
+                Vector2 textPosition = new Vector2(LoadAll.Instance.startPos.X + 250, LoadAll.Instance.startPos.Y + 100);
+                currSpriteBatch.DrawString(font, text, textPosition, Color.White);
             }
         }
     }

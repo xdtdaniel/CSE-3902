@@ -120,6 +120,7 @@ namespace Game1
             
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
             DrawMap.Instance.DrawMovableBlocks(_spriteBatch, movableBlocks);
+            DrawMap.Instance.DrawText(_spriteBatch, "EASTMOST PENNINSULA\n          IS THE SECRET", _spriteFont);
 
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);

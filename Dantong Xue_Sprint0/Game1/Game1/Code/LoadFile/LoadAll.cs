@@ -24,6 +24,20 @@ namespace Game1.Code.LoadFile
         private List<bool> isSwitched;
         private List<int> hasAlternative;
 
+        /* 
+         * This corresponds to the door status for the room.
+         * if the door has a lock/unlock feature, this 
+         * will be useful.
+         * 
+         * Specifically, binary (0000) represents doors in default status
+         * Each digit corresponds to up, left, down, right four doors
+         * 
+         * If up door is unlocked, the binary will become 1000, or 8 in dec
+         * 
+         */
+
+        private List<int> isUnlocked;
+
         private LoadAll()
         {
             multiplier = 8;
@@ -31,11 +45,10 @@ namespace Game1.Code.LoadFile
             startPos = new Vector2(0, 0);
             currMapID = 17;
             isSwitched = new List<bool>(new bool[MAP_COUNT + 1]);
+            isUnlocked = new List<int>(new int[MAP_COUNT + 1]);
 
             // those values are hard-coded and corresponding to the maps we have
-            hasAlternative = new List<int>() { 8, 9, 10, 13, 14};
-
-            
+            hasAlternative = new List<int>() { 5, 8, 9, 10, 13, 14};
         }
         private int currMapID = 1;
         public bool noEnemy = false;
@@ -47,19 +60,24 @@ namespace Game1.Code.LoadFile
         public double scale { get; set; }
         public Vector2 startPos { get; set; }
 
-        public void LoadRoom()
+        private string GetRoomFileName()
         {
             string mapName;
             if (isSwitched[currMapID])
             {
-                mapName = currMapID.ToString() + "_after.csv";
+                mapName = currMapID.ToString() + "_" + Convert.ToString(isUnlocked[currMapID], 2).PadLeft(4, '0') + "_after.csv";
             }
             else
             {
-                mapName = currMapID.ToString() + ".csv";
+                mapName = currMapID.ToString() + "_" + Convert.ToString(isUnlocked[currMapID], 2).PadLeft(4, '0') + ".csv";
             }
-            
-            LoadMap.Instance.LoadOneMap(mapName);
+
+            return mapName;
+        }
+
+        public void LoadRoom()
+        {
+            LoadMap.Instance.LoadOneMap(GetRoomFileName());
         }
 
         public void LoadRoomItem() 
@@ -125,6 +143,30 @@ namespace Game1.Code.LoadFile
             if (noEnemy && movables.Count == 0)
             {
                 SwitchToAlternative();
+                LoadRoom();
+            }
+        }
+
+        public void UnlockDoor(string door)
+        {
+            if (door != "") 
+            { 
+                switch (door)
+                {
+                    case "up":
+                        isUnlocked[currMapID] += 8;
+                        break;
+                    case "left":
+                        isUnlocked[currMapID] += 4;
+                        break;
+                    case "down":
+                        isUnlocked[currMapID] += 2;
+                        break;
+                    case "right":
+                        isUnlocked[currMapID] += 1;
+                        break;
+                }
+
                 LoadRoom();
             }
         }

@@ -1,4 +1,5 @@
-﻿using Game1.Code.Player.Interface;
+﻿using Game1.Code.LoadFile;
+using Game1.Code.Player.Interface;
 using Game1.Code.Player.PlayerControlCommand;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
@@ -47,7 +48,7 @@ namespace Game1.Code.Player
                                 break;
                             case "lockedDoors":
                                 // to do
-                                // temp code
+                                LoadAll.Instance.UnlockDoor(collidedSide);
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "stairs":
