@@ -17,3 +17,6 @@ This is the sprint 3 reflection file.
     I could design the interfaces to have functions that are obviously going to be used in future projects in the first place. More works still need to be done to the
     enemy types which have the behaviors related to the player's location, that can also lead to more modification of the interfaces. I feel like although interface is 
     good for being generic, it clearly adds more complexity to the modification of codes. 
+    
+[Reflection of Patrick Cheng]
+Sprint 3 added more functionality compared to Sprint 2. Things like loading files from csv file and interaction between object collision were implemented. There was a decent amount workload being done. Our team held meetings, discussed on how to implement certain parts of this Sprint and distributed the workload. Each level is layed out and there is a room that we can test all weapons and objects. A lot of new classes were implemented, some are more complicated than others. A lot still need to be done for the next sprint, this sprint is built as a good fountdation for the next one.
