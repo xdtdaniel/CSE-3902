@@ -1,5 +1,20 @@
 This is the README file for Sprint 3, it contain the description of the features of the program, and the code analysis for sprint 3.
 
+[Clarification for Sprint 2 Feedback]
+
+- We include a screenshot of task board this time. We will consider switching to GitLab for the next sprint as it provided agile management tools.
+- We did not end up merging all our factories together for the fact that the code for that single class will be too long. Also, as it might violate the idea of "doing one thing", it may not have a high cohesion.
+- We considered using IDrawable/IUpdate for this Sprint, but ended up not using that as the parameters for different components of this game differed a lot.
+
+[Controls]
+
+Player (link):
+	WASD/Arrow Up, Left, Down, Right to move the player
+	N, Z to attack (two types)
+	Num 1-6 Use different items.
+Maps:
+	Mouse left to the next map, right to the previous map.
+
  [Description of Sprint 3 features]
  
 Sprint 3 is about implementing collision detection and handling, and level loading.
@@ -18,8 +33,7 @@ The new classes add for sprint 3 is:
             2) LoadEnemy.cs
             3) LoadItem.cs
             4  LoadMap.cs
-            5) MouseEnemyController.cs  ---> a controller class that gets user's mouse inputs to change enemies to certain room.
-            6) MouseMapController.cs  --->  a controller class that gets user's mouse inputs to change room.
+            5) MouseMapController.cs  --->  a controller class that gets user's mouse inputs to change room.
                                             left click to switch to previous room, right click to switch to next room in order.
       4. Map file  ---> a collection of .csv file for level1 room layout(rooms, enemies, items).       
       5. OneHandHoldBow.cs ---> display a special Link state when Link picks up a Bow.
