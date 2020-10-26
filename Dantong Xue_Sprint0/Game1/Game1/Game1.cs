@@ -49,6 +49,10 @@ namespace Game1
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            //temporary screen size suitable for Sprint 3
+            _graphics.PreferredBackBufferWidth = (int)(256 * LoadAll.Instance.scale);
+            _graphics.PreferredBackBufferHeight = (int)(176 * LoadAll.Instance.scale);
         }
 
         protected override void Initialize()
