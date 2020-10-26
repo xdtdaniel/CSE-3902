@@ -20,6 +20,7 @@ The new classes add for sprint 3 is:
             4  LoadMap.cs
             5) MouseEnemyController.cs  ---> a controller class that gets user's mouse inputs to change enemies to certain room.
             6) MouseMapController.cs  --->  a controller class that gets user's mouse inputs to change room.
+                                            left click to switch to previous room, right click to switch to next room in order.
       4. Map file  ---> a collection of .csv file for level1 room layout(rooms, enemies, items).       
       5. OneHandHoldBow.cs ---> display a special Link state when Link picks up a Bow.
       6. TwoHandHoldTriforceLink.cs --->  display a special Link state when Link picks up a Triforce.
