@@ -22,7 +22,9 @@ namespace Game1
         private int MoveTimer = 0;
         private int FrameRateModifier = 0;
         public int hp = 10;
-        private int DamageTimer = 0;
+
+        // will be used later
+        //private int DamageTimer = 0;
 
         private Rectangle CollisionRectangle;
         private int scale = 3;

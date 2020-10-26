@@ -33,14 +33,14 @@ namespace Game1
 
         public List<IBlock> movableBlocks;
 
-        private LoadEnemy EnemyLoader;
+        public LoadEnemy EnemyLoader;
         public List<Tuple<IEnemy, string>> EnemyList;
         public List<Tuple<IItemSprite, string>> inRoomList;
 
         private IController mapMouseController;
 
         //Testing controller for sprint 3
-        private MouseEnemyController enemyController;
+        // private MouseEnemyController enemyController;
 
         private QuitResetController quitResetController;
 
@@ -58,7 +58,7 @@ namespace Game1
 
             mapMouseController = new MouseMapController();
 
-            enemyController = new MouseEnemyController();
+            // enemyController = new MouseEnemyController();
 
             link = new Link();
             playerPanel = new PlayerPanel(this);
@@ -94,7 +94,8 @@ namespace Game1
         {    
             mapMouseController.Update(this);
 
-            enemyController.Update(EnemyLoader);
+            // this has been included in mapMouseController
+            // enemyController.Update(EnemyLoader);
             EnemyList = EnemyLoader.GetEnemyList();
             
             

@@ -1,0 +1,10 @@
+Author of the code review:  Dantong Xue
+
+Date of the code review: 10/26/2020
+Sprint number: 3
+
+Name of the .cs file being reviewed: PlayerAndBlockCollisionHandler.cs
+Author of the .cs file being reviewed: Baihua Yang
+Number of minutes taken to complete the code review: 3 minutes
+Specific comments on code quality: 
+Very readable with clear variable names. It used two foreach loops, one if and one switch. However, those are very understandable as it gives clear information about why two foreach loop is necessary. It also utilized the structure well so that people can read through it easily.

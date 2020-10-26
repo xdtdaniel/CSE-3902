@@ -1,0 +1,13 @@
+﻿Author of the code review:  Zhihan Li
+
+Date of the code review: 10/25/2020
+Sprint number: 3
+
+Name of the .cs file being reviewed: LoadEnemy.cs
+Author of the .cs file being reviewed: Jason Lian
+Number of minutes taken to complete the code review: 5 minutes
+Specific comments on code quality: 	
+		Overall, every parameter named clearly and easy to understand.
+        This class used to loadenemy in each room, it read string from .csv file and create an enemy based on the string.
+		It has a GetEnemyList() which return a enemy list, which can be used to draw and update enemies for current room. 
+		It also  has a Previous() and Next() to change to previous/next room.

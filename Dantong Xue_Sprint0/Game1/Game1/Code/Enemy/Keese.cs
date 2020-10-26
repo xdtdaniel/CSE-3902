@@ -26,7 +26,9 @@ namespace Game1
         private double MaxVelocity = 3;
         private Random Rnd;
         private int hp = 10;
-        private int DamageTimer = 0;
+
+        // will be used later
+        //private int DamageTimer = 0;
 
         private Rectangle CollisionRectangle;
         private int scale = 3;
@@ -64,7 +66,9 @@ namespace Game1
 
         public void UpdateEnemy(Game1 game)
         {
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
             Random rnd = new Random();
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
 
             UpdateDirection();
 
@@ -234,8 +238,8 @@ namespace Game1
             }
             else if (Direction == 1)
             {
-                x = x + sin45;
-                y = y - sin45;
+                x += sin45;
+                y -= sin45;
             }
             else if (Direction == 2)
             {
@@ -243,8 +247,8 @@ namespace Game1
             }
             else if (Direction == 3)
             {
-                x = x + sin45;
-                y = y + sin45;
+                x += sin45;
+                y += sin45;
             }
             else if (Direction == 4)
             {
@@ -252,8 +256,8 @@ namespace Game1
             }
             else if (Direction == 5)
             {
-                x = x - sin45;
-                y = y + sin45;
+                x -= sin45;
+                y += sin45;
             }
             else if (Direction == 6)
             {
@@ -261,8 +265,8 @@ namespace Game1
             }
             else if (Direction == 7)
             {
-                x = x - sin45;
-                y = y - sin45;
+                x -= sin45;
+                y -= sin45;
             }
 
             Location = new Vector2(x, y);

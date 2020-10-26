@@ -1,0 +1,11 @@
+Author: Baihua Yang
+Date: Oct 25, 2020
+Sprint 3
+
+File: LoadItem.cs
+File Author: Zhihan Li
+15 mins
+
+Generally everything is readable. 
+Naming of fields and methods are comprehensible. 
+No complicated algorithms.

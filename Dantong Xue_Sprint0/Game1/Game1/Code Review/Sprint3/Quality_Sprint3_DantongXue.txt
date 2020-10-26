@@ -1,0 +1,16 @@
+Author of the code review:  Dantong Xue
+
+Date of the code review: 10/26/2020
+Sprint number: 3
+
+Name of the .cs file being reviewed: PlayerAndBlockCollisionHandler.cs
+Author of the .cs file being reviewed: Baihua Yang
+Number of minutes taken to complete the code review: 5 mins
+
+Specific comments on code quality: 
+This class handles player-block collisions. The overall logic is easy as it only go through the artifacts given by the map loader and finished collision handling on that. This class is maintainable as adding new cases is very simple.
+The cohesion is high since it only handles one type of collision.
+The coupling is low since it only knows about Link and blockList, which are two essential parts for this handler.
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+Adding new types of blocks to handle here is very simple and doable as this class is very organized and calls functions of Link object to perform the actual actions.

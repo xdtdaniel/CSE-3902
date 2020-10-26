@@ -18,7 +18,9 @@ namespace Game1.Enemy
         private Vector2 Location { get; set; }
         private int FrameRateModifier = 0;
         private int hp = 20;
-        private int DamageTimer = 0;
+        
+        // will be used later
+        // private int DamageTimer = 0;
 
         private Rectangle CollisionRectangle;
         private int scale = 3;

@@ -16,7 +16,7 @@ using System.Diagnostics;
 
 namespace Game1.Code.LoadFile
 {
-    class LoadEnemy
+    public class LoadEnemy
     {
         private int MAX_COLUMNS = 32;
         private int multiplier = 8;
@@ -56,7 +56,7 @@ namespace Game1.Code.LoadFile
 
             StreamReader streamReader = new StreamReader(pathNew);
             string line;
-            string[] strList = new string[MAX_COLUMNS];
+            string[] strList;
             int cell_x;
             int cell_y = 0;
 

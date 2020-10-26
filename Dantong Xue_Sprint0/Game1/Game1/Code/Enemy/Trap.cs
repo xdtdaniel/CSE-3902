@@ -19,6 +19,7 @@ namespace Game1
         private int CurrentFrame;
         private Vector2 Location { get; set; }
 
+        // will be used later
         private int MovingState;
 
         private Rectangle CollisionRectangle;

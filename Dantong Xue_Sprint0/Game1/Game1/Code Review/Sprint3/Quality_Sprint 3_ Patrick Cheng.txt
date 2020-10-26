@@ -1,0 +1,14 @@
+Description: This is the qualiy Code Review file for the damage taking part of Aquamentus.cs
+
+Author: Patrick Cheng
+Date: 10/25/2020
+Sprint number: 3
+Name of the .cs file: Aquametus.cs
+Author of the .cs file: Fan Shen
+
+Specific comments on code quality:
+
+This is the class implementation for the Aquamentus enemy. A new method called TakeDamage was implemented to this class. The TakeDamage class is really simple and straight forward. The method deals with the health of the ememy after the enemy has taken damage. Basically decreaing the hp value after Aquamentus has taken damage. The class is very easy to maintain.The class has low coupling and high cohesion.
+ 
+Hyporhetical change:
+The implementation of the class is very simple. If new content is needed in the future we only need to change the scalar value of how many times the damage is taken by Aquamentus. With the current implementation it's really easy to work with and make changes in the future.

@@ -30,4 +30,14 @@ The new classes add for sprint 3 is:
       
       
  [Code Analysis]
+
+No Warnings or Errors in the code. Below are the descriptions for Messages.
       
+IDE0044 Make field readonly appeared several times. In all circumstances, it is intended so it is not an issue.
+
+IDE0052	Private member 'Game1._graphics' can be removed as the value assigned to it is never read. This variable stays there for possible future usage.
+
+IDE0052	Private member 'Trap.MovingState' can be removed as the value assigned to it is never read. This variable stays there for possible future usage.
+
+
+

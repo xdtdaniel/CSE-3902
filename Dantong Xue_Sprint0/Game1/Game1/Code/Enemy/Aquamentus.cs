@@ -28,7 +28,9 @@ namespace Game1.Enemy
         private IProjectile Projectile2;
 
         private int hp = 100;
-        private int DamageTimer = 0;
+
+        // will be used later
+        // private int DamageTimer = 0;
 
         private Rectangle CollisionRectangle;
         private double scale = 3;
