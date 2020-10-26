@@ -1,0 +1,10 @@
+This is the sprint 3 reflection file.
+
+[BurnDown Chart]
+
+[Reflection of Zhihan Li]
+    This sprint is mainly about load file and handle the collision of each two objects. Both parts require a lot of interaction between each
+    object part(player-block, player-enemy, player-item, enemy-block). Each teammate exchanged opinions with other teammates alot. Everyone are 
+    pay attention on create meaningful variable and class name which is easy for other to understand(even there are still some variable name is not 
+    clearly enough as instructor mentioned on code review lecture). Although the workload is still not that balanced based on this sprint's requirement,
+    Everyone in our team down their work correctly. 
