@@ -1,4 +1,14 @@
-﻿Item include 5 parts.
+[Author] Zhihan Li
+[Sprint 3 Addition of README]
+Two classes are add in Item file, DrawAllItem.cs and UpdateAllItem.cs, it is read the list generate by LoadItem.cs and iterate the list and call Draw and Update method on each item sptire class.
+
+ItemFactory class is changed from sprint 2, now it is only a class to generate Texture2D type picture which it used by each item sprite class.
+This change benefit the loadItem.cs which it is easy to pass location to create new item by just create a new IItemSprite type variable. It is easy to maintain
+than previous version.
+
+
+[README from Sprint 2]
+Item include 5 parts.
 
 ItemFacotory, IItemInterface, ItemSprite, ItemKeyboardController,  ItemLists.
 ItemFactory contain all the required items in item part and it use "instance" to call all the createItem() methods in ItemSprite folder. 
