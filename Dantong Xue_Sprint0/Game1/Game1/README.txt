@@ -42,7 +42,9 @@ The new classes add for sprint 3 is:
       8. UpdateAllItem.cs ---> call IItemSprite Update() method on the roomItemList return from LoadItem.cs
       9. PlayerPanel.cs  ---> a class to call other classes and display current Link's status and position.
       10. KnockedBackLink.cs ---> a new state class of link that causes link to be knocked back when hit. 
-      
+
+About doors
+Doors are implemented such that if you approach a locked door, the door will open as we assume player has infinite many keys in Sprint 3. Shut doors such as the one behind the dragon will open after you kill all the enemies. Specific walls can be blown up using bomb and you will see a hole as you expected.
       
  [Code Analysis]
 
