@@ -104,7 +104,7 @@ namespace Game1
 
         private void UpdateMovingState(Random random)
         {
-            if (StateTimer < 32 )
+            if (StateTimer < 24 )
             {
                 StateTimer++;
             }
@@ -135,7 +135,7 @@ namespace Game1
                 else if (direction == 1)
                 {
                     x += 1 * scale;
-                    if (Location.X > 204 * scale || RightCollide)
+                    if (Location.X > 212 * scale || RightCollide)
                     {
                         x -= (6) * scale;
                         MovingState = 0;
@@ -145,7 +145,7 @@ namespace Game1
                 else if (direction == 2)
                 {
                     y += 1 * scale;
-                    if (Location.Y > 124 * scale || DownCollide)
+                    if (Location.Y > 132 * scale || DownCollide)
                     {
                         y -= (6) * scale;
                         MovingState = 0;

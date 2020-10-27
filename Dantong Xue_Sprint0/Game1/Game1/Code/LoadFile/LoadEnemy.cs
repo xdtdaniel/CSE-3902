@@ -113,8 +113,20 @@ namespace Game1.Code.LoadFile
                         Enemy = new Goriya(location, blockList);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "goriya"));
                         break;
-                    case "trap":
-                        Enemy = new Trap(location);
+                    case "trap0":
+                        Enemy = new Trap0(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
+                        break;
+                    case "trap1":
+                        Enemy = new Trap1(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
+                        break;
+                    case "trap2":
+                        Enemy = new Trap2(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
+                        break;
+                    case "trap3":
+                        Enemy = new Trap3(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
                         break;
                     case "wallmaster":
