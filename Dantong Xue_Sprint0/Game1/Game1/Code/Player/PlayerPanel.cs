@@ -89,5 +89,10 @@ namespace Game1
             game._spriteBatch.DrawString(game._spriteFont, damagedTimeRemain, new Vector2(game.link.x, game.link.y - 75), Color.Black);
             game._spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 50), Color.Black);
         }
+
+        public List<Tuple<IItemSprite, string>> GetNotInRoomItemList()
+        {
+            return playerAndItemCollisionHandler.GetOutRoomItemList();
+        }
     }
 }
