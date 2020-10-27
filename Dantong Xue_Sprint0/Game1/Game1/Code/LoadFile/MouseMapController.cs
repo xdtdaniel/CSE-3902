@@ -24,8 +24,9 @@ namespace Game1.Code.LoadFile
             {
                 LoadAll.Instance.NextMap();
                 LoadAll.Instance.LoadRoom();
-                LoadAll.Instance.LoadRoomItem();
+                
                 g.EnemyLoader.Next();
+                g.ItemLoader.Next();
                 g.link.ResetPos();
                 
             }
@@ -33,8 +34,9 @@ namespace Game1.Code.LoadFile
             {
                 LoadAll.Instance.PrevMap();
                 LoadAll.Instance.LoadRoom();
-                LoadAll.Instance.LoadRoomItem();
+
                 g.EnemyLoader.Previous();
+                g.ItemLoader.Previous();
                 g.link.ResetPos();
             }
 

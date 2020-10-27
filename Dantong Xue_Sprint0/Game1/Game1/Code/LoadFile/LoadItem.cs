@@ -18,32 +18,37 @@ namespace Game1.Code.LoadFile
     /*
      * this is load item class used to initialize all items in the room
      */
-    class LoadItem
+    public class LoadItem
     {
         private int MAX_COLUMNS = 32;
         private int multiplier = 8;
+        private const int MAP_COUNT = 18;
+        private int CurrentMapID;
         private double scale = 2;
         private int X;
-        private int Y;          
+        private int Y;
         List<Tuple<int, int, string>> RoomItemList;
+        private List<Tuple<IItemSprite, string>>[] AllItemInRoom = new List<Tuple<IItemSprite, string>>[MAP_COUNT];
         private List<Tuple<IItemSprite, string>> inRoom = new List<Tuple<IItemSprite, string>>();
 
-        private static LoadItem instance = new LoadItem();
-
-        public static LoadItem Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private LoadItem()
+        public LoadItem(int currentMapID)
         {
             multiplier = LoadAll.Instance.multiplier;
             scale = LoadAll.Instance.scale;
+            CurrentMapID = currentMapID;
+
         }
-      
+
+        public void LoadAllItem()
+        {
+            for (int i = 0; i < MAP_COUNT; i++)
+            {
+                LoadRoomItem((i + 1).ToString() + "_item.csv");             
+                AllItemInRoom[i] = inRoom;
+                inRoom = new List<Tuple<IItemSprite, string>>();
+
+            }
+        }
 
         public void LoadRoomItem(string mapName)
         {
@@ -81,7 +86,7 @@ namespace Game1.Code.LoadFile
             }
 
             Vector2 location;
-            inRoom.Clear();//?
+            inRoom.Clear();
             for (int index = 0; index < RoomItemList.Count; index++)
             {
 
@@ -149,13 +154,33 @@ namespace Game1.Code.LoadFile
                 }
 
             }
-
-         
         }
+
 
         public List<Tuple<IItemSprite, string>> GetItemList()
         {
-            return inRoom;
+           return AllItemInRoom[CurrentMapID - 1];
         }
+
+        public void Previous()
+        {
+            CurrentMapID--;
+            if (CurrentMapID < 1)
+            {
+                CurrentMapID = MAP_COUNT;
+            }
+        }
+
+        public void Next()
+        {
+            CurrentMapID++;
+            if (CurrentMapID > 18)
+            {
+                CurrentMapID = 1;
+            }
+        }
+
+
+
     }
 }

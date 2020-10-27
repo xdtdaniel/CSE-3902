@@ -80,12 +80,6 @@ namespace Game1.Code.LoadFile
             LoadMap.Instance.LoadOneMap(GetRoomFileName());
         }
 
-        public void LoadRoomItem() 
-        {
-            string itemMapName  = currMapID.ToString()+"_item.csv";
-            LoadItem.Instance.LoadRoomItem(itemMapName);
-        }
-
         public void PrevMap()
         {
             currMapID -= 1;
