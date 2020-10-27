@@ -35,7 +35,11 @@ namespace Game1
 
         public LoadEnemy EnemyLoader;
         public List<Tuple<IEnemy, string>> EnemyList;
+
+        public LoadItem ItemLoader;
         public List<Tuple<IItemSprite, string>> inRoomList;
+        public List<Tuple<IItemSprite, string>> notInRoomList;
+
 
         private IController mapMouseController;
 
@@ -83,28 +87,38 @@ namespace Game1
             _spriteFont = Content.Load<SpriteFont>("font");
           
             LoadAll.Instance.LoadRoom();
-            LoadAll.Instance.LoadRoomItem();
             movableBlocks = LoadAll.Instance.GetMovableBlocks();
 
             EnemyLoader = new LoadEnemy(LoadAll.Instance.GetCurrentMapID());
+            ItemLoader = new LoadItem(LoadAll.Instance.GetCurrentMapID());
+
             EnemyLoader.LoadAllEnemy();
+            ItemLoader.LoadAllItem();
+
             EnemyList = EnemyLoader.GetEnemyList();
-            inRoomList = LoadItem.Instance.GetItemList();
+
+            inRoomList = ItemLoader.GetItemList();
+            
+
         }
 
         protected override void Update(GameTime gameTime)
         {    
             mapMouseController.Update(this);
+         
             EnemyList = EnemyLoader.GetEnemyList();
+            inRoomList = ItemLoader.GetItemList();              
 
             DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);
+            UpdateAllItem.Instance.UpdateAll(inRoomList);       
+
             quitResetController.Update(this);
+            playerPanel = new PlayerPanel(this);
             playerPanel.PlayerUpdate();
 
             movableBlocks = LoadAll.Instance.GetMovableBlocks();
             LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
 
-            UpdateAllItem.Instance.UpdateAll(inRoomList);
             base.Update(gameTime);
 
         }
@@ -115,13 +129,14 @@ namespace Game1
             base.Draw(gameTime);
 
             _spriteBatch.Begin();
-            
+
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
             DrawMap.Instance.DrawMovableBlocks(_spriteBatch, movableBlocks);
             DrawMap.Instance.DrawText(_spriteBatch, "EASTMOST PENNINSULA\n          IS THE SECRET", _spriteFont);
 
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
-            DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
+
+            DrawAllItem.Instance.DrawAll(inRoomList,_spriteBatch); 
             playerPanel.PlayerDraw();
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
