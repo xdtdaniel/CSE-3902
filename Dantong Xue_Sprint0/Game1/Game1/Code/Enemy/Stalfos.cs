@@ -21,8 +21,10 @@ namespace Game1
         private Random Rnd;
         private int Velocity = 1;
         private bool CanTurn = false;
+
         private int hp = 20;
         private int DamageTimer = 0;
+        private int FlashRateModifier = 0;
 
         private Rectangle CollisionRectangle;
         private int scale = 3;
@@ -58,7 +60,22 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            if (DamageTimer > 0)
+            {
+                if (FlashRateModifier >= 3)
+                {
+                    spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+                    FlashRateModifier = 0;
+                }
+                else
+                {
+                    FlashRateModifier++;
+                }
+            }
+            else
+            {
+                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
 
         public void FireProjectile()
@@ -79,6 +96,7 @@ namespace Game1
             }
 
             HandleBlockCollision();
+
             UpdateCanTurn();
 
             if (CanTurn)
@@ -87,7 +105,11 @@ namespace Game1
             }
 
             UpdateLocation();
-            DamageTimer--;
+
+            if (DamageTimer > 0)
+            {
+                DamageTimer--;
+            }
 
             if (CurrentFrame == TotalFrames)
             {
@@ -245,10 +267,12 @@ namespace Game1
             }
 
         public void TakeDamage(int damageAmount)
-        {   
-            hp -= damageAmount;
-            // test
-            System.Diagnostics.Debug.WriteLine("hp: " + hp);
+        {
+            if (DamageTimer == 0)
+            {
+                hp -= damageAmount;
+                DamageTimer = 50;
+            }
         }
 
 

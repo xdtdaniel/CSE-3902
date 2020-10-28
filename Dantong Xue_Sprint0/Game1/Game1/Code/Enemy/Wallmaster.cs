@@ -17,10 +17,10 @@ namespace Game1.Enemy
         private int CurrentFrame;
         private Vector2 Location { get; set; }
         private int FrameRateModifier = 0;
-        private int hp = 20;
-        
-        // will be used later
-        // private int DamageTimer = 0;
+
+        private int hp = 20;     
+        private int DamageTimer = 0;
+        private int FlashRateModifier = 0;
 
         private Rectangle CollisionRectangle;
         private int scale = 3;
@@ -48,7 +48,22 @@ namespace Game1.Enemy
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            if (DamageTimer > 0)
+            {
+                if (FlashRateModifier >= 3)
+                {
+                    spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+                    FlashRateModifier = 0;
+                }
+                else
+                {
+                    FlashRateModifier++;
+                }
+            }
+            else
+            {
+                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
 
         public void FireProjectile()
@@ -68,6 +83,11 @@ namespace Game1.Enemy
                 FrameRateModifier = 0;
             }
 
+            if (DamageTimer > 0)
+            {
+                DamageTimer--;
+            }
+
             if (CurrentFrame == TotalFrames)
             {
                 CurrentFrame = 0;
@@ -76,9 +96,12 @@ namespace Game1.Enemy
 
         public void TakeDamage(int damageAmount)
         {
-            hp -= damageAmount;
+            if (DamageTimer == 0)
+            {
+                hp -= damageAmount;
+                DamageTimer = 50;
+            }
         }
-
 
         List<IProjectile> IEnemy.GetProjectile()
         {
