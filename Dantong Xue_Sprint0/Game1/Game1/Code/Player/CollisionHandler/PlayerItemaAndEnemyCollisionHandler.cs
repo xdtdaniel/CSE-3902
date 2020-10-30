@@ -68,10 +68,16 @@ namespace Game1.Code.Player
                             item.CollisionResponse();
                             break;
 
-                        case "SwordBeam": // not used
+                        case "RangedSwordBeam": 
                             break;
 
-                        case "WoodenSword": // not used
+                        case "RangedWoodenSword":
+                            if (!ifHit)
+                            {
+                                tuple.Item1.TakeDamage(10);
+                                ifHit = true;
+                            }
+                            item.CollisionResponse();
                             break;
 
                         default:

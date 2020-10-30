@@ -20,7 +20,6 @@
     <Compile Remove="Code\LoadFile\MouseEnemyController.cs" />
     <Compile Remove="Code\Sprite\MovingAnimatedSprite.cs" />
     <Compile Remove="Code\Sprite\NonMovingAnimatedSprite.cs" />
-    <Compile Remove="Code\Player\Control\pkc.cs" />
     <Compile Remove="Code\Sprite\TextSprite.cs" />
     <Compile Remove="KeyboardController.cs" />
     <Compile Remove="MouseController.cs" />

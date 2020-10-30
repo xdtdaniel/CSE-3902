@@ -65,7 +65,7 @@ namespace Game1.Player.PlayerCharacter
             link.damageTimeCounter = 0;
             link.isDamaged = true;
             // test collision
-            link.hp -= 10;
+            link.health -= 10;
         }
         public void PickUp(int pickUp)
         {

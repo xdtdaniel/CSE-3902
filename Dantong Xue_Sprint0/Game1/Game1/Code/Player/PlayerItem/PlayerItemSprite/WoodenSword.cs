@@ -22,16 +22,20 @@ namespace Game1.Player
             Texture = texture;
             sourceWidth = texture.Width;
             sourceHeight = texture.Height;
-            destinationWidth = (int)(LoadAll.Instance.scale * Texture.Width / 60);
-            destinationHeight = (int)(LoadAll.Instance.scale * Texture.Height / 60);
+            destinationWidth = (int)(LoadAll.Instance.scale * Texture.Width / 50);
+            destinationHeight = (int)(LoadAll.Instance.scale * Texture.Height / 50);
         }
         public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
         {
 
             Rectangle sourceRectangle = new Rectangle(0, 0, sourceWidth, sourceHeight);
             Rectangle destinationRectangle = new Rectangle(x, y, destinationWidth, destinationHeight);
-
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            Color spriteColor = Color.White;
+            //if (currentFrame % 10 == 0)
+            //{
+            //    spriteColor = Color.Blue;
+            //}
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, spriteColor);
 
             return destinationRectangle;
         }

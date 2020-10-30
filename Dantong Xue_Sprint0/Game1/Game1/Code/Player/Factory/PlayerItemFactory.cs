@@ -14,8 +14,8 @@ namespace Game1
 {
     class PlayerItemFactory
     {
-        private Texture2D woodenSword;
-        private Texture2D swordBeam;
+        private Texture2D[] woodenSword;
+        private Texture2D[] swordBeam;
 
         private Texture2D frontArrow;
         private Texture2D rightArrow;
@@ -34,8 +34,8 @@ namespace Game1
         private Texture2D bluePotion;
         private Texture2D blueRing;
 
-        private Texture2D woodenSwordAttack;
-        private Texture2D swordBeamAttack;
+        private Texture2D[] woodenEdge;
+        private Texture2D[] beamEdge;
 
 
         private static PlayerItemFactory instance = new PlayerItemFactory();
@@ -54,8 +54,17 @@ namespace Game1
 
         public void LoadAllTextures(ContentManager content)
         {
-            woodenSword = content.Load<Texture2D>("PlayerItemSprite/WoodenSword");
-            swordBeam = content.Load<Texture2D>("PlayerItemSprite/SwordBeam");
+            woodenSword = new Texture2D[4];
+            woodenSword[0] = content.Load<Texture2D>("PlayerItemSprite/WoodenSword0");
+            woodenSword[1] = content.Load<Texture2D>("PlayerItemSprite/WoodenSword1");
+            woodenSword[2] = content.Load<Texture2D>("PlayerItemSprite/WoodenSword2");
+            woodenSword[3] = content.Load<Texture2D>("PlayerItemSprite/WoodenSword3");
+
+            swordBeam = new Texture2D[4];
+            swordBeam[0] = content.Load<Texture2D>("PlayerItemSprite/SwordBeam0");
+            swordBeam[1] = content.Load<Texture2D>("PlayerItemSprite/SwordBeam1");
+            swordBeam[2] = content.Load<Texture2D>("PlayerItemSprite/SwordBeam2");
+            swordBeam[3] = content.Load<Texture2D>("PlayerItemSprite/SwordBeam3");
 
             frontArrow = content.Load<Texture2D>("PlayerItemSprite/FrontArrow");
             rightArrow = content.Load<Texture2D>("PlayerItemSprite/RightArrow");
@@ -74,19 +83,27 @@ namespace Game1
             bluePotion = content.Load<Texture2D>("PlayerItemSprite/BluePotion");
             blueRing = content.Load<Texture2D>("PlayerItemSprite/BlueRing");
 
-            // not used
-            woodenSwordAttack = content.Load<Texture2D>("PlayerItemSprite/WoodenSwordAttack");
-            swordBeamAttack = content.Load<Texture2D>("PlayerItemSprite/SwordBeamAttack");
+            woodenEdge = new Texture2D[4];
+            woodenEdge[0] = content.Load<Texture2D>("PlayerItemSprite/WoodenEdge0");
+            woodenEdge[1] = content.Load<Texture2D>("PlayerItemSprite/WoodenEdge1");
+            woodenEdge[2] = content.Load<Texture2D>("PlayerItemSprite/WoodenEdge2");
+            woodenEdge[3] = content.Load<Texture2D>("PlayerItemSprite/WoodenEdge3");
+
+            beamEdge = new Texture2D[4];
+            beamEdge[0] = content.Load<Texture2D>("PlayerItemSprite/beamEdge0");
+            beamEdge[1] = content.Load<Texture2D>("PlayerItemSprite/beamEdge1");
+            beamEdge[2] = content.Load<Texture2D>("PlayerItemSprite/beamEdge2");
+            beamEdge[3] = content.Load<Texture2D>("PlayerItemSprite/beamEdge3");
         }
 
         /* sword */
-        public IPlayerItemSprite CreateWoordenSword()
+        public IPlayerItemSprite CreateWoodenSword(int index)
         {
-            return new WoodenSword(woodenSword);
+            return new WoodenSword(woodenSword[index]);
         }
-        public IPlayerItemSprite CreateSwordBeam()
+        public IPlayerItemSprite CreateSwordBeam(int index)
         {
-            return new SwordBeam(swordBeam);
+            return new SwordBeam(swordBeam[index]);
         }
 
         /* arrow */
@@ -147,10 +164,14 @@ namespace Game1
         {
             return new BlueRing(blueRing);
         }
-        public Texture2D GetSwordBeamTexture()
-        {
-            return swordBeam;
-        }
 
+        public IPlayerItemSprite CreateWoodenEdge(int index)
+        {
+            return new WoodenEdge(woodenEdge[index]);
+        }
+        public IPlayerItemSprite CreateBeamEdge(int index)
+        {
+            return new BeamEdge(beamEdge[index]);
+        }
     }
 }

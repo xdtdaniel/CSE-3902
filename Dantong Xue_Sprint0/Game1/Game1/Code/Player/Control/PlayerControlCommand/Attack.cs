@@ -22,6 +22,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                 if (attackIndex == 0)
                 {
                     game.link.state.AttackN();
+                    game.link.rangedAttack.UseItem(-1);
                     game.link.timeSinceAttack = 0;
                 }
                 else if (attackIndex == 1)

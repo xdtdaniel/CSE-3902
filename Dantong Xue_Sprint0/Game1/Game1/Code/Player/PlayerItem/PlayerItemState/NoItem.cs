@@ -41,6 +41,12 @@ namespace Game1.Player.PlayerCharacter
                 case 6:
                     item.state = new UseBlueRing(item);
                     break;
+                case -1:
+                    item.state = new RangedWoodenSword(item);
+                    break;
+                case -2:
+                    // ranged sword beam
+                    break;
                 default:
                     break;
             }

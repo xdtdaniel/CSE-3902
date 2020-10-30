@@ -67,10 +67,20 @@ namespace Game1
             playerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             playerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             playerItemAndBlockCollisionHandler.HandleCollision(game.link.item, roomBlockList);
+            playerItemAndBlockCollisionHandler.HandleCollision(game.link.rangedAttack, roomBlockList);
             playerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
             playerItemaAndEnemyCollisionHandler.HandleCollision(game.link.item, roomEnemyList);
+            playerItemaAndEnemyCollisionHandler.HandleCollision(game.link.rangedAttack, roomEnemyList);
             playerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
             //
+            if (game.link.health <= 0 && !game.link.isDead)
+            {
+                game.link.movable = false;
+                if (game.link.damageTimeCounter == 0)
+                {
+                    game.link.Die();
+                }
+            }
         }
         public void PlayerDraw()
         {
@@ -81,7 +91,7 @@ namespace Game1
             string x = "x: " + game.link.x.ToString();
             string y = "y: " + game.link.y.ToString();
             string damagedTimeRemain = "time: " + game.link.damageTimeCounter.ToString();
-            string hp = "hp: " + game.link.hp.ToString();
+            string hp = "hp: " + game.link.health.ToString();
 
 
             game._spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 125), Color.Black);

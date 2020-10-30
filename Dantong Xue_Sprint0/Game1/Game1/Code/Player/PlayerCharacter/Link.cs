@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Game1.Code.Player;
 using Game1.Enemy;
 using Game1.Code.LoadFile;
+using System.Linq.Expressions;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -21,7 +22,9 @@ namespace Game1.Player.PlayerCharacter
         public bool isDamaged;
         public bool isMoving;
         public bool movable;
-        public int hp;
+        public int maxHealth;
+        public int health;
+        public bool isDead;
         public int defaultSpeed;
         public int xSpeed, ySpeed;
         public int attackDamage;
@@ -32,6 +35,7 @@ namespace Game1.Player.PlayerCharacter
         public int directionIndex;
 
         public LinkItem item;
+        public LinkItem rangedAttack;
 
         public int timeBetweenAttack;
         public int timeSinceAttack;
@@ -49,7 +53,9 @@ namespace Game1.Player.PlayerCharacter
             isDamaged = false;
             isMoving = false;
             movable = true;
-            hp = 100;
+            maxHealth = 60;
+            health = maxHealth;
+            isDead = false;
             defaultSpeed = xSpeed = ySpeed = 5;
             attackDamage = 10;
 
@@ -63,6 +69,9 @@ namespace Game1.Player.PlayerCharacter
 
             item = new LinkItem();
             item.state = new NoItem(item);
+
+            rangedAttack = new LinkItem();
+            rangedAttack.state = new NoItem(rangedAttack);
 
             timeBetweenAttack = 45;
             timeSinceAttack = 0; 
@@ -157,6 +166,11 @@ namespace Game1.Player.PlayerCharacter
             x = 98;
             y = 242;
         }
+        public void Die()
+        {
+            isDead = true;
+            state = new DeadLink(this);
+        }
         public void Update()
         {
             switch (direction)
@@ -178,6 +192,7 @@ namespace Game1.Player.PlayerCharacter
             }
             state.Update();
             item.Update(x, y, directionIndex);
+            rangedAttack.Update(x, y, directionIndex);
 
             if (timeSinceAttack < timeBetweenAttack)
             {
@@ -202,6 +217,7 @@ namespace Game1.Player.PlayerCharacter
         {
             state.Draw(spriteBatch);
             item.Draw(spriteBatch);
+            rangedAttack.Draw(spriteBatch);
         }
         public string GetStateName()
         {

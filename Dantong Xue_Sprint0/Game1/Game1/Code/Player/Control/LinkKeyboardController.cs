@@ -38,6 +38,7 @@ namespace Game1
             RegisterCommand(Keys.D4, new UseItem(game, 4));
             RegisterCommand(Keys.D5, new UseItem(game, 5));
             RegisterCommand(Keys.D6, new UseItem(game, 6));
+            RegisterCommand(Keys.D7, new UseItem(game, 7));
 
         }
         public void RegisterCommand(Keys key, IPlayerCommand command)

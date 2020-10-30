@@ -52,10 +52,12 @@ namespace Game1.Code.Player
                                 item.CollisionResponse();
                                 break;
 
-                            case "SwordBeam":
+                            case "RangedSwordBeam":
+                                item.CollisionResponse();
                                 break;
 
-                            case "WoodenSword":
+                            case "RangedWoodenSword":
+                                item.CollisionResponse();
                                 break;
 
                             default:
