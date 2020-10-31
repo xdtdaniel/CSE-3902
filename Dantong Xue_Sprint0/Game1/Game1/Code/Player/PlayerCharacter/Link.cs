@@ -83,6 +83,7 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("map", 0);
             itemList.Add("ruby", 0);
             itemList.Add("triforce", 0);
+            itemList.Add("fairy", 0);
 
             state = new NormalLink(this);
 
