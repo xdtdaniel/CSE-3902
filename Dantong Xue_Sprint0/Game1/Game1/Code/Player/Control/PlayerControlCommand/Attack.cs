@@ -24,7 +24,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.AttackN();
                     if (game.link.health == game.link.maxHealth)
                     {
-                        game.link.rangedAttack.UseItem(-1);
+                        game.link.item[game.link.itemIndex].UseItem(-1);
                     }
                     game.link.timeSinceAttack = 0;
                 }
@@ -33,7 +33,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.AttackZ();
                     if (game.link.health == game.link.maxHealth)
                     {
-                        game.link.rangedAttack.UseItem(-2);
+                        game.link.item[game.link.itemIndex].UseItem(-2);
                     }
                     game.link.timeSinceAttack = 0;
                 }

@@ -13,7 +13,6 @@ namespace Game1.Player.PlayerCharacter
     class UseBomb : IPlayerItemState
     {
         LinkItem item;
-        bool used; /* indicate if an item is used */
         int x;
         int y;
         int direction;
@@ -28,7 +27,6 @@ namespace Game1.Player.PlayerCharacter
 
         public UseBomb(LinkItem item)
         {
-            used = false;
             this.x = item.x;
             this.y = item.y;
             this.direction = item.direction;
@@ -83,28 +81,6 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (!used)
-            {
-                switch (direction)
-                {
-                    case 0: /* front */
-                        x += 20;
-                        y += 100;
-                        break;
-                    case 1: /* right */
-                        x += 135;
-                        break;
-                    case 2: /* back */
-                        x += 20;
-                        y -= 100;
-                        break;
-                    case 3: /* left */
-                        x -= 100;
-                        break;
-                    default:
-                        break;
-                }
-            }
             if (currentFrame == 0)
             {
                 rectangle = bomb.Draw(spriteBatch, x, y, currentFrame, direction);
@@ -113,7 +89,6 @@ namespace Game1.Player.PlayerCharacter
             {
                 rectangle = bombExplosion.Draw(spriteBatch, x, y, currentFrame, direction);
             }
-            used = true;
         }
 
         public Rectangle GetRectangle()

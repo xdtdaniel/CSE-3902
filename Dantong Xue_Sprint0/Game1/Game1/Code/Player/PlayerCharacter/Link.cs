@@ -11,6 +11,7 @@ using Game1.Code.Player;
 using Game1.Enemy;
 using Game1.Code.LoadFile;
 using System.Linq.Expressions;
+using System.Drawing.Text;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -34,8 +35,9 @@ namespace Game1.Player.PlayerCharacter
         public string direction;
         public int directionIndex;
 
-        public LinkItem item;
-        public LinkItem rangedAttack;
+        public Dictionary<string, int> itemList;
+
+        public LinkItem[] item;
 
         public int timeBetweenAttack;
         public int timeSinceAttack;
@@ -43,7 +45,8 @@ namespace Game1.Player.PlayerCharacter
         public int timeSinceItem;
         public bool useItemDone;
 
-
+        public int itemIndex;
+        private const int MAX_ITEM_SPRITE_NUM = 1000;
         public IPlayerLinkState state;
         public Link()
         {
@@ -62,20 +65,37 @@ namespace Game1.Player.PlayerCharacter
             linkWidth = (int)(13 * LoadAll.Instance.scale);
             linkHeight = (int)(13 * LoadAll.Instance.scale);
 
+            itemIndex = 0;
+
             direction = "down";
             directionIndex = 0;
 
+            itemList = new Dictionary<string, int>();
+            itemList.Add("arrow", 0);
+            itemList.Add("bomb", 0);
+            itemList.Add("boomerang", 0);
+            itemList.Add("bow", 0);
+            itemList.Add("clock", 0);
+            itemList.Add("compass", 0);
+            itemList.Add("heart", 0);
+            itemList.Add("heart_container", 0);
+            itemList.Add("key", 0);
+            itemList.Add("map", 0);
+            itemList.Add("ruby", 0);
+            itemList.Add("triforce", 0);
+
             state = new NormalLink(this);
 
-            item = new LinkItem();
-            item.state = new NoItem(item);
+            item = new LinkItem[MAX_ITEM_SPRITE_NUM];
+            for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
+            {
+                item[i] = new LinkItem();
+                item[i].state = new NoItem(item[i]);
+            }
 
-            rangedAttack = new LinkItem();
-            rangedAttack.state = new NoItem(rangedAttack);
-
-            timeBetweenAttack = 45;
+            timeBetweenAttack = 30;
             timeSinceAttack = 0; 
-            timeBetweenItem = 45;
+            timeBetweenItem = 30;
             timeSinceItem = 0;
             useItemDone = true;
 
@@ -173,6 +193,15 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update()
         {
+            if (!item[itemIndex].IsDone())
+            {
+                itemIndex++;
+            }
+            else if (itemIndex > 0 && item[itemIndex - 1].IsDone())
+            {
+                itemIndex--;
+            }
+
             switch (direction)
             {
                 case "down":
@@ -191,8 +220,10 @@ namespace Game1.Player.PlayerCharacter
                     break;
             }
             state.Update();
-            item.Update(x, y, directionIndex);
-            rangedAttack.Update(x, y, directionIndex);
+            for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
+            {
+                item[i].Update(x, y, directionIndex);
+            }
 
             if (timeSinceAttack < timeBetweenAttack)
             {
@@ -216,8 +247,10 @@ namespace Game1.Player.PlayerCharacter
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
-            item.Draw(spriteBatch);
-            rangedAttack.Draw(spriteBatch);
+            for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
+            {
+                item[i].Draw(spriteBatch);
+            }
         }
         public string GetStateName()
         {

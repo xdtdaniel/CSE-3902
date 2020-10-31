@@ -66,11 +66,12 @@ namespace Game1
             movableList = game.movableBlocks;
             playerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             playerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
-            playerItemAndBlockCollisionHandler.HandleCollision(game.link.item, roomBlockList);
-            playerItemAndBlockCollisionHandler.HandleCollision(game.link.rangedAttack, roomBlockList);
+            for (int i = 0; i < 1000; i++)
+            {
+                playerItemAndBlockCollisionHandler.HandleCollision(game.link.item[i], roomBlockList);
+                playerItemaAndEnemyCollisionHandler.HandleCollision(game.link.item[i], roomEnemyList);
+            }
             playerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
-            playerItemaAndEnemyCollisionHandler.HandleCollision(game.link.item, roomEnemyList);
-            playerItemaAndEnemyCollisionHandler.HandleCollision(game.link.rangedAttack, roomEnemyList);
             playerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
             //
             if (game.link.health <= 0 && !game.link.isDead)

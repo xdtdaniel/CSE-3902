@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -17,7 +18,11 @@ namespace Game1.Player.PlayerCharacter
         int direction;
         int x;
         int y;
-        int currentFrame; 
+        int currentFrame;
+
+        int speed;
+        int offsetX;
+        int offsetY;
 
         IPlayerItemSprite frontArrow;
         IPlayerItemSprite rightArrow;
@@ -34,6 +39,10 @@ namespace Game1.Player.PlayerCharacter
             y = item.y;
 
             currentFrame = 0;
+
+            speed = 15;
+            offsetX = 9;
+            offsetY = 7;
 
             frontArrow = PlayerItemFactory.Instance.CreateFrontArrow();
             rightArrow = PlayerItemFactory.Instance.CreateRightArrow();
@@ -71,16 +80,16 @@ namespace Game1.Player.PlayerCharacter
                 switch (direction)
                 {
                     case 0: /* front */
-                        frontArrow.Draw(spriteBatch, x += 24, y += 48, currentFrame, direction);
+                        frontArrow.Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y += (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
                         break;
                     case 1: /* right */
-                        rightArrow.Draw(spriteBatch, x += 48, y += 24, currentFrame, direction);
+                        rightArrow.Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
                         break;
                     case 2: /* back */
-                        backArrow.Draw(spriteBatch, x += 24, y -= 48, currentFrame, direction);
+                        backArrow.Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y -= (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
                         break;
                     case 3: /* left */
-                        leftArrow.Draw(spriteBatch, x -= 48, y += 24, currentFrame, direction);
+                        leftArrow.Draw(spriteBatch, x -= (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
                         break;
                     default:
                         break;
@@ -89,20 +98,20 @@ namespace Game1.Player.PlayerCharacter
             switch (direction)
             {
                 case 0: /* front */
+                    y += speed;
                     rectangle = frontArrow.Draw(spriteBatch, x, y, currentFrame, direction);
-                    y += 5;
                     break;
                 case 1: /* right */
+                    x += speed;
                     rectangle = rightArrow.Draw(spriteBatch, x, y, currentFrame, direction);
-                    x += 5;
                     break;
                 case 2: /* back */
+                    y -= speed;
                     rectangle = backArrow.Draw(spriteBatch, x, y, currentFrame, direction);
-                    y -= 5;
                     break;
                 case 3: /* left */
+                    x -= speed;
                     rectangle = leftArrow.Draw(spriteBatch, x, y, currentFrame, direction);
-                    x -= 5;
                     break;
                 default:
                     break;

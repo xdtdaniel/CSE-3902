@@ -15,6 +15,8 @@ namespace Game1.Player.PlayerCharacter
 
         public int x;
         public int y;
+        public int linkX;
+        public int linkY;
         public int direction;
         public LinkItem()
         {
@@ -49,6 +51,8 @@ namespace Game1.Player.PlayerCharacter
                 this.y = y;
                 this.direction = direction;
             }
+            linkX = x;
+            linkY = y;
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -68,32 +68,32 @@ namespace Game1.Player.PlayerCharacter
                 {
                     boomerangSpeed++;
                 }
-                double xDistance = Math.Abs(item.x - x);
-                double yDistance = Math.Abs(item.y - y);
+                double xDistance = Math.Abs(item.linkX - x);
+                double yDistance = Math.Abs(item.linkY - y);
                 double angle = Math.Atan(xDistance / yDistance);
                 int xSpeed = Convert.ToInt32(boomerangSpeed * Math.Sin(angle));
                 int ySpeed = Convert.ToInt32(boomerangSpeed * Math.Cos(angle));
 
-                if (item.x < x)
+                if (item.linkX < x)
                 {
                     x -= xSpeed;
                 }
-                else if (item.x > x)
+                else if (item.linkX > x)
                 {
                     x += xSpeed;
                 }
-                if (item.y < y)
+                if (item.linkY < y)
                 {
                     y -= ySpeed;
                 }
-                else if (item.y > y)
+                else if (item.linkY > y)
                 {
                     y += ySpeed;
                 }
                 
                 
                 Point point = new Point(x + (int)(7 * LoadAll.Instance.scale), y + (int)(7 * LoadAll.Instance.scale));
-                Rectangle rec = new Rectangle(item.x, item.y, 50, 50);
+                Rectangle rec = new Rectangle(item.linkX, item.linkY, 50, 50);
                 if (rec.Contains(point))
                 {
                     item.state = new NoItem(item);
