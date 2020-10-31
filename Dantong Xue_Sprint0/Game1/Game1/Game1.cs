@@ -17,7 +17,7 @@ namespace Game1
     {
 
 #pragma warning disable CA2213 // Disposable fields should be disposed
-        private GraphicsDeviceManager _graphics;
+        public GraphicsDeviceManager _graphics;
 #pragma warning restore CA2213 // Disposable fields should be disposed
 
 #pragma warning disable CA2213 // Disposable fields should be disposed

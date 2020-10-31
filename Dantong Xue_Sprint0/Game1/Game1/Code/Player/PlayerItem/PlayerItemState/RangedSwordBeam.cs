@@ -11,7 +11,7 @@ using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
-    class RangedWoodenSword : IPlayerItemState
+    class RangedSwordBeam : IPlayerItemState
     {
         LinkItem item;
         int direction;
@@ -23,15 +23,14 @@ namespace Game1.Player.PlayerCharacter
         int speed;
         int offsetX;
         int offsetY;
-
         bool used;
 
-        IPlayerItemSprite[] woodenSword;
+        IPlayerItemSprite[] swordBeam;
 
         Rectangle rectangle;
 
 
-        public RangedWoodenSword(LinkItem item)
+        public RangedSwordBeam(LinkItem item)
         {
             direction = item.direction;
             x = item.x;
@@ -43,13 +42,12 @@ namespace Game1.Player.PlayerCharacter
             speed = 15;
             offsetX = 9;
             offsetY = 7;
-
             used = false;
 
-            woodenSword = new IPlayerItemSprite[4];
+            swordBeam = new IPlayerItemSprite[4];
             for (int i = 0; i < 4; i++)
             {
-                woodenSword[i] = PlayerItemFactory.Instance.CreateWoodenSword(i);
+                swordBeam[i] = PlayerItemFactory.Instance.CreateSwordBeam(i);
             }
 
             this.item = item;
@@ -61,7 +59,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public string GetItemName()
         {
-            return "RangedWoodenSword";
+            return "RangedSwordBeam";
         }
         public void CollisionResponse()
         {
@@ -75,7 +73,7 @@ namespace Game1.Player.PlayerCharacter
                 currentFrame = 0;
                 item.x = x;
                 item.y = y;
-                item.state = new RangedWoodenEdge(item);
+                item.state = new RangedBeamEdge(item);
             }
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -86,16 +84,16 @@ namespace Game1.Player.PlayerCharacter
                 switch (direction)
                 {
                     case 0: /* front */
-                        woodenSword[2].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y += (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
+                        swordBeam[2].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y += (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
                         break;
                     case 1: /* right */
-                        woodenSword[1].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
+                        swordBeam[1].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
                         break;
                     case 2: /* back */
-                        woodenSword[0].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y -= (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
+                        swordBeam[0].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y -= (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
                         break;
                     case 3: /* left */
-                        woodenSword[3].Draw(spriteBatch, x -= (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
+                        swordBeam[3].Draw(spriteBatch, x -= (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
                         break;
                     default:
                         break;
@@ -105,19 +103,19 @@ namespace Game1.Player.PlayerCharacter
             {
                 case 0: /* front */
                     y += speed;
-                    rectangle = woodenSword[2].Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = swordBeam[2].Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 1: /* right */
                     x += speed;
-                    rectangle = woodenSword[1].Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = swordBeam[1].Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 2: /* back */
                     y -= speed;
-                    rectangle = woodenSword[0].Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = swordBeam[0].Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 case 3: /* left */
                     x -= speed;
-                    rectangle = woodenSword[3].Draw(spriteBatch, x, y, currentFrame, direction);
+                    rectangle = swordBeam[3].Draw(spriteBatch, x, y, currentFrame, direction);
                     break;
                 default:
                     break;

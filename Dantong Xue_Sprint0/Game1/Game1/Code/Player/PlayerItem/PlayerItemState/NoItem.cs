@@ -45,7 +45,7 @@ namespace Game1.Player.PlayerCharacter
                     item.state = new RangedWoodenSword(item);
                     break;
                 case -2:
-                    // ranged sword beam
+                    item.state = new RangedSwordBeam(item);
                     break;
                 default:
                     break;
@@ -53,7 +53,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public string GetItemName()
         {
-            return "";
+            return "NoItem";
         }
         public void CollisionResponse()
         {

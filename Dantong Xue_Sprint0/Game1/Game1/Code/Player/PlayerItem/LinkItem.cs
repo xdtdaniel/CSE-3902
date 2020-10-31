@@ -43,9 +43,12 @@ namespace Game1.Player.PlayerCharacter
         public void Update(int x, int y, int direction)
         {
             state.Update();
-            this.x = x;
-            this.y = y;
-            this.direction = direction;
+            if (state.GetItemName() == "NoItem")
+            {
+                this.x = x;
+                this.y = y;
+                this.direction = direction;
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {

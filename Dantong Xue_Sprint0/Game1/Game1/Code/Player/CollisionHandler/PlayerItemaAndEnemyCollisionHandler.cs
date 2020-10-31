@@ -68,7 +68,13 @@ namespace Game1.Code.Player
                             item.CollisionResponse();
                             break;
 
-                        case "RangedSwordBeam": 
+                        case "RangedSwordBeam":
+                            if (!ifHit)
+                            {
+                                tuple.Item1.TakeDamage(10);
+                                ifHit = true;
+                            }
+                            item.CollisionResponse();
                             break;
 
                         case "RangedWoodenSword":
@@ -80,6 +86,22 @@ namespace Game1.Code.Player
                             item.CollisionResponse();
                             break;
 
+                        case "RangedWoodenEdge":
+                            if (!ifHit)
+                            {
+                                tuple.Item1.TakeDamage(10);
+                                ifHit = true;
+                            }
+                            item.CollisionResponse();
+                            break;
+                        case "RangedBeamEdge":
+                            if (!ifHit)
+                            {
+                                tuple.Item1.TakeDamage(10);
+                                ifHit = true;
+                            }
+                            item.CollisionResponse();
+                            break;
                         default:
                             break;
                     }

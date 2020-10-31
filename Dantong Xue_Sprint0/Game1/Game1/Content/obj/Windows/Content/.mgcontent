@@ -108,7 +108,6 @@
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/LeftBoomerang.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/RightArrow.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/RightBoomerang.png</File>
-    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/SwordBeam.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/SwordBeam0.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/SwordBeam1.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/SwordBeam2.png</File>
@@ -220,7 +219,6 @@
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/walk_2.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

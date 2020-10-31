@@ -22,8 +22,8 @@ namespace Game1.Player
             Texture = texture;
             sourceWidth = texture.Width;
             sourceHeight = texture.Height;
-            destinationWidth = (int)(LoadAll.Instance.scale * Texture.Width / 30);
-            destinationHeight = (int)(LoadAll.Instance.scale * Texture.Height / 30);
+            destinationWidth = (int)(LoadAll.Instance.scale * Texture.Width / 15);
+            destinationHeight = (int)(LoadAll.Instance.scale * Texture.Height / 15);
         }
         public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
         {
