@@ -45,7 +45,6 @@ namespace Game1.Code.Player
                             item = new Arrow(X,Y);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "arrow"));
                             roomItemList.RemoveAt(index);
-                            roomItemList[index].Item1.Update();
                             break;
                         case "bomb":
                             link.itemList["bomb"]++;
@@ -90,9 +89,10 @@ namespace Game1.Code.Player
                             roomItemList.RemoveAt(index);
                             break;
                         case "heartcontainer":
-                            link.itemList["heart_container"]++;
+                            link.itemList["heartcontainer"]++;
+                            link.PickUp(4);
                             item = new HeartContainer(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "heart_container"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "heartcontainer"));
                             roomItemList.RemoveAt(index);
                             break;
                         case "key":
