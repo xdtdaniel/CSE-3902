@@ -7,7 +7,6 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
 
