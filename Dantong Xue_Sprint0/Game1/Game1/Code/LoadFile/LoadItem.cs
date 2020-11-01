@@ -8,7 +8,6 @@ using Game1.Code.Block.BlockFactory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Code.Item.ItemInterface;
-using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemSprite;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection;
