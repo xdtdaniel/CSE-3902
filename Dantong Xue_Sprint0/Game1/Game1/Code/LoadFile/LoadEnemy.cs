@@ -39,7 +39,14 @@ namespace Game1.Code.LoadFile
             int i;
             for (i = 0; i < MAP_COUNT; i++) 
             {
-                LoadMap.Instance.LoadOneMap((i + 1).ToString() + "_0000.csv");
+                if (i == 7)
+                {
+                    LoadMap.Instance.LoadOneMap((i + 1).ToString() + "_enemyblock.csv");
+                }
+                else 
+                {
+                    LoadMap.Instance.LoadOneMap((i + 1).ToString() + "_0000.csv");
+                }
                 LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", LoadMap.Instance.GetBlocks());
                 AllEnemyList[i] = Enemies;
                 Enemies = new List<Tuple<IEnemy, string>>();
@@ -59,9 +66,7 @@ namespace Game1.Code.LoadFile
             string[] strList;
             int cell_x;
             int cell_y = 0;
-
-            
-
+           
             while (!streamReader.EndOfStream)
             {
                 line = streamReader.ReadLine();
@@ -151,6 +156,7 @@ namespace Game1.Code.LoadFile
 
         }
 
+
         public List<Tuple<IEnemy, string>> GetEnemyList() 
         {
             return AllEnemyList[CurrentMapID - 1];
@@ -189,6 +195,89 @@ namespace Game1.Code.LoadFile
             {
                 return false;
             }
+        }
+
+        public List<Tuple<IBlock, Vector2>> LoadRoom11Walls()
+
+        {
+            List<Tuple<IBlock, Vector2>> blocksListToDraw = new List<Tuple<IBlock, Vector2>>();
+            List<Tuple<int, int, string>> mapElementList = new List<Tuple<int, int, string>>();
+            Vector2 startPos = LoadAll.Instance.startPos;
+
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pathNew = filePath.Substring(0, filePath.IndexOf("bin"));
+            pathNew = pathNew + "Maps\\Room\\" + "11_wallmaster.csv";
+
+            StreamReader streamReader = new StreamReader(pathNew);
+            string line;
+            string[] strList = new string[MAX_COLUMNS];
+            int cell_x = 0;
+            int cell_y = 0;
+            //each loop add 1 line to list
+            while (!streamReader.EndOfStream)
+            {
+                line = streamReader.ReadLine();
+                //seperate a line by comma. this string array should have all strings seperately.              
+                strList = line.Split(',');
+
+                cell_x = 0;
+
+                //cell_x, and cell_y represent the postion in csv
+                for (int i = 0; i < strList.Length; i++)
+                {
+                    if (strList[i] != "")
+                    {
+                        mapElementList.Add(new Tuple<int, int, string>(cell_x, cell_y, strList[i]));
+                    }
+
+                    cell_x++;
+                }
+                cell_y++;
+
+            }
+
+            /*
+            IBlock room;
+            room = BlockFactory.Instance.CreateRoom();
+            blocksListToDraw.Add(new Tuple<IBlock, Vector2>(room, startPos));
+            */
+
+            Vector2 location;
+
+            //switch case for each string
+            for (int index = 0; index < mapElementList.Count; index++)
+            {
+
+                float X = (float)(mapElementList[index].Item1 * multiplier * scale + startPos.X);
+                float Y = (float)(mapElementList[index].Item2 * multiplier * scale + startPos.Y);
+                location = new Vector2(X, Y);
+
+                IBlock blockToDraw;
+
+                Console.WriteLine(mapElementList[index].Item3);
+
+                switch (mapElementList[index].Item3)
+                {
+                    case "wall_1":
+                        blockToDraw = BlockFactory.Instance.CreateFrontWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        break;
+                    case "wall_2":
+                        blockToDraw = BlockFactory.Instance.CreateLeftWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        break;
+                    case "wall_3":
+                        blockToDraw = BlockFactory.Instance.CreateRightWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        break;
+                    case "wall_4":
+                        blockToDraw = BlockFactory.Instance.CreateBackWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        break;
+                }
+            }
+
+            return blocksListToDraw;
         }
     }
 }

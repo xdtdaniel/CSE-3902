@@ -135,6 +135,10 @@ namespace Game1
             DrawMap.Instance.DrawText(_spriteBatch, "EASTMOST PENNINSULA\n          IS THE SECRET", _spriteFont);
 
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
+            if (EnemyLoader.GetCurrentMapID() == 11) {
+                _spriteBatch.DrawString(_spriteFont, "Test", new Vector2(400,200), Color.Red);
+                DrawMap.Instance.DrawCurrMap(_spriteBatch, EnemyLoader.LoadRoom11Walls());
+            }
 
             DrawAllItem.Instance.DrawAll(inRoomList,_spriteBatch); 
             playerPanel.PlayerDraw();
