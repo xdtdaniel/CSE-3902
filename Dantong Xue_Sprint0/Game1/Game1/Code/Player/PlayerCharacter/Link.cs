@@ -78,7 +78,7 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("clock", 0);
             itemList.Add("compass", 0);
             itemList.Add("heart", 0);
-            itemList.Add("heart_container", 0);
+            itemList.Add("heartcontainer", 0);
             itemList.Add("key", 0);
             itemList.Add("map", 0);
             itemList.Add("ruby", 0);

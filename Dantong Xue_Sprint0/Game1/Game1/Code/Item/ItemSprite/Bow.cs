@@ -21,7 +21,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public Bow( int position_x, int position_y)
         {
-            Texture = ItemFactory.ItemSpriteFactory.CreateBow();
+            Texture = Factory.CreateBow();
             x = position_x;
             y = position_y;
         }

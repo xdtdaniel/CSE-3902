@@ -1,8 +1,9 @@
-﻿using Game1.Code.Block;
+﻿using Game1.Code;
+using Game1.Code.Block;
 using Game1.Code.Block.BlockFactory;
 using Game1.Code.Enemy;
+using Game1.Code.HUD.hudSprite;
 using Game1.Code.Item;
-using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
@@ -46,6 +47,9 @@ namespace Game1
         //Testing controller for sprint 3
         // private MouseEnemyController enemyController;
 
+        //test for  sprint 4 hud display
+        public IHudSprite hud;
+
         private QuitResetController quitResetController;
 
         public Game1()
@@ -81,8 +85,11 @@ namespace Game1
             PlayerCharacterFactory.Instance.LoadAllTextures(Content);
             PlayerItemFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
+
+    //ITEM,HUD are moved to Factory, Enemy are moved to Factory but not used yet
             EnemyTextureStorage.LoadTextures(Content);
-            ItemSpriteFactory.LoadAllTextures(Content);
+            //ItemSpriteFactory.LoadAllTextures(Content);            
+            Factory.LoadAllTextures(Content);
 
             _spriteFont = Content.Load<SpriteFont>("font");
           
@@ -98,8 +105,10 @@ namespace Game1
             EnemyList = EnemyLoader.GetEnemyList();
 
             inRoomList = ItemLoader.GetItemList();
-            
 
+            //TEST FOR HUD
+            hud = new hudFrame(0, 0);
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -118,6 +127,9 @@ namespace Game1
 
             movableBlocks = LoadAll.Instance.GetMovableBlocks();
             LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
+
+            //TEST FOR HUD
+            hud.UpdateHUD();
 
             base.Update(gameTime);
 
@@ -142,6 +154,8 @@ namespace Game1
 
             DrawAllItem.Instance.DrawAll(inRoomList,_spriteBatch); 
             playerPanel.PlayerDraw();
+            //
+            hud.DrawHUD(_spriteBatch);
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 

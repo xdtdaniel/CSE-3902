@@ -12,14 +12,14 @@ using Game1.Code.Item.ItemSprite;
 
 namespace Game1.Player.PlayerCharacter
 {
-    class TwoHandHoldTriforceLink : IPlayerLinkState
+    class TwoHandHoldTriforce : IPlayerLinkState
     {
-       int currentFrame;
+        int currentFrame;
         IPlayerLinkSprite linkSprite;
         Triforce triforce;
         Link link;
 
-        public TwoHandHoldTriforceLink(Link link)
+        public TwoHandHoldTriforce(Link link)
         {
             currentFrame = 0;
 
@@ -32,7 +32,7 @@ namespace Game1.Player.PlayerCharacter
         public void Update()
         {
             currentFrame++;
-            if (currentFrame == 90) // decide how long the hold state will take
+            if (currentFrame == 60) // decide how long the hold state will take
             {
                 currentFrame = 0;
                 link.state = new NormalLink(link);
@@ -49,7 +49,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public string GetStateName()
         {
-            return "TwoHandHoldTriforceLink";
+            return "TwoHandHoldTriforce";
         }
 
         public void AttackN()

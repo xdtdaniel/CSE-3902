@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1.Code.Item.ItemFactory
 {
-	//factory is only used to generate the sprite, it return texture2D used by each item sprite class.
+	//This is the Factpry for all sprites in all the parts of Legend of zelda
 	public static class ItemSpriteFactory
 	{
 		private static Texture2D arrow;

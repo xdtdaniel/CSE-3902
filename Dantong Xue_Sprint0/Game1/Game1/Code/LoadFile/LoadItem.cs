@@ -8,7 +8,6 @@ using Game1.Code.Block.BlockFactory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Code.Item.ItemInterface;
-using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemSprite;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection;
@@ -133,7 +132,7 @@ namespace Game1.Code.LoadFile
                         break;
                     case "heartcontainer":
                         item = new HeartContainer(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "heart_container"));//from item factory
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "heartcontainer"));
                         break;
                     case "key":
                         item = new Key(X,Y);

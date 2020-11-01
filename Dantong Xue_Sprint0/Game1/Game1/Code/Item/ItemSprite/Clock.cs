@@ -16,13 +16,11 @@ namespace Game1.Code.Item.ItemSprite
         int height;
         int width;
         private Rectangle CollisionRectangle;
-        //private Game game;
         private int x;
         private int y;
         public Clock( int position_x, int position_y)
         {
-           //game = g;
-            Texture = ItemFactory.ItemSpriteFactory.CreateClock();
+            Texture = Factory.CreateClock();
             x = position_x;
             y = position_y;
 

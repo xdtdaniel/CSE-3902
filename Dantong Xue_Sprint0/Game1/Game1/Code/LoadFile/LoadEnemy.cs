@@ -9,7 +9,7 @@ using System.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Code.Item.ItemInterface;
-using Game1.Code.Item.ItemFactory;
+
 using Game1.Enemy;
 using System.Reflection;
 using System.Diagnostics;

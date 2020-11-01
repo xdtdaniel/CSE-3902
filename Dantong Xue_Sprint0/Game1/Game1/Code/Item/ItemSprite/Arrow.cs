@@ -16,13 +16,11 @@ namespace Game1.Code.Item.ItemSprite
         int height;
         int width;
         private Rectangle CollisionRectangle;
-        //private Game game;
         private int x;
         private int y;
         public  Arrow(int position_x, int position_y)
         {
-            //game = g;
-            Texture = ItemFactory.ItemSpriteFactory.CreateArrow();
+            Texture = Factory.CreateArrow();
             x = position_x;
             y = position_y;
         }

@@ -22,13 +22,11 @@ namespace Game1.Code.Item.ItemSprite
         private int count = 0;
         private int maxcount = 6;
         private Rectangle CollisionRectangle;
-       // private Game game;
         private int x;
         private int y;
         public Ruby(int position_x, int position_y)
         {
-            //game = g;
-            Texture = ItemFactory.ItemSpriteFactory.CreateRuby();
+            Texture = Factory.CreateRuby();
             TotalFrames =2;
             Rows = 1;
             Columns = 2;
