@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using Game1.Player;
 using Microsoft.Xna.Framework;
+using Game1.Code.ItemSelection.ItemSelectionSprite;
 
 namespace Game1.Code
 {
@@ -28,8 +29,12 @@ namespace Game1.Code
 		private static Texture2D ruby;
 		private static Texture2D triforce;
 
-		//HUD factory
+		//HUD 
 		private static Texture2D hudFrame;
+
+		//ItemSelection 
+		private static Texture2D ItemSelectionFrame_Top;
+		private static Texture2D ItemSelectionFrame_Bottom;
 
 		//Enemies
 		private static Texture2D gelSpriteSheet;
@@ -69,6 +74,10 @@ namespace Game1.Code
 
 			//HUD
 			hudFrame = content.Load<Texture2D>("HUD/HUD_frame");
+
+			//ItemSelection
+			ItemSelectionFrame_Top = content.Load<Texture2D>("ItemSelection/Item_Selection_Top");
+			ItemSelectionFrame_Bottom = content.Load<Texture2D>("ItemSelection/Item_Selection_Bottom");
 
 			//Enemies
 			gelSpriteSheet = content.Load<Texture2D>("Sprite/enemies/gel_sprite");
@@ -149,6 +158,14 @@ namespace Game1.Code
 		{
 
 			return hudFrame;
+		}
+
+		//ItemSelection
+		public static Texture2D LoadItemSelectionFrame_Top() {
+			return ItemSelectionFrame_Top;
+		}
+		public static Texture2D LoadItemSelectionFrame_Bottom(){
+			return ItemSelectionFrame_Bottom;
 		}
 
 		//Enemies
