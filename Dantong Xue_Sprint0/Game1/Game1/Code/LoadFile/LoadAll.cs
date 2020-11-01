@@ -24,6 +24,8 @@ namespace Game1.Code.LoadFile
         private List<bool> isSwitched;
         private List<int> hasAlternative;
 
+        private Color mapColor = Color.White;
+
         /* 
          * This corresponds to the door status for the room.
          * if the door has a lock/unlock feature, this 
@@ -59,6 +61,8 @@ namespace Game1.Code.LoadFile
         public int multiplier { get; set; }
         public double scale { get; set; }
         public Vector2 startPos { get; set; }
+
+        
 
         private string GetRoomFileName()
         {
@@ -163,6 +167,16 @@ namespace Game1.Code.LoadFile
 
                 LoadRoom();
             }
+        }
+
+        public void ChangeMapColor(Color color)
+        {
+            mapColor = color;
+        }
+
+        public Color GetMapColor()
+        {
+            return mapColor;
         }
 
     }
