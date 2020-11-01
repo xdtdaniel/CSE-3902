@@ -133,7 +133,7 @@ namespace Game1.Code.LoadFile
                         break;
                     case "heartcontainer":
                         item = new HeartContainer(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "heart_container"));//from item factory
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "heartcontainer"));
                         break;
                     case "key":
                         item = new Key(X,Y);
