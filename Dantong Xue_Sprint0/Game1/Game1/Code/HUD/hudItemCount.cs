@@ -35,7 +35,7 @@ namespace Game1.Code.HUD
                 }
                 else if (hudItemList.ContainsKey("key"))
                 {
-                    ruby_count = hudItemList["key"];
+                    key_count = hudItemList["key"];
                 }
                 else if (hudItemList.ContainsKey("bomb"))
                 {
