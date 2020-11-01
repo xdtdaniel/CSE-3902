@@ -17,7 +17,6 @@ namespace Game1.Code.Item.ItemSprite
         Texture2D Texture;
         int height;
         int width;
-
         private int Columns;
         private int Rows;
         private int TotalFrames;
@@ -33,8 +32,7 @@ namespace Game1.Code.Item.ItemSprite
 
         public Fairy(int position_x, int position_y)
         {
-            //game = g;
-            Texture = ItemFactory.ItemSpriteFactory.CreateFairy();
+            Texture = Factory.CreateFairy();
             TotalFrames = 2;
             Rows = 1;
             Columns = 2;

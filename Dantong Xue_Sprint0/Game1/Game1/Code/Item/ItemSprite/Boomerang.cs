@@ -16,13 +16,11 @@ namespace Game1.Code.Item.ItemSprite
         int height;
         int width;
         private Rectangle CollisionRectangle;
-       // private Game game;
         private int x;
         private int y;
         public Boomerang(int position_x, int position_y)
         {
-            //game = g;
-            Texture = ItemFactory.ItemSpriteFactory.CreateBoomerang();
+            Texture = Factory.CreateBoomerang();
             x = position_x;
             y = position_y;
         }

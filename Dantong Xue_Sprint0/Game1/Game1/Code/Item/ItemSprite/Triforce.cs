@@ -22,13 +22,11 @@ namespace Game1.Code.Item.ItemSprite
         private int count = 0;
         private int maxcount = 6;
         private Rectangle CollisionRectangle;
-        //private Game game;
         private int x;
         private int y;
         public  Triforce(int position_x, int position_y)
         {
-            //game = g;
-            Texture = ItemFactory.ItemSpriteFactory.CreateTriforce();
+            Texture = Factory.CreateTriforce();
             TotalFrames = 2;
             Rows = 1;
             Columns = 2;
