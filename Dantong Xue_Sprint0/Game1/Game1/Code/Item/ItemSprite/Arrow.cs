@@ -20,7 +20,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public  Arrow(int position_x, int position_y)
         {
-            Texture = Factory.CreateArrow();
+            Texture = ItemFactory.ItemSpriteFactory.CreateArrow();
             x = position_x;
             y = position_y;
         }

@@ -21,7 +21,7 @@ namespace Game1.Code.Item.ItemSprite
 
         public HeartContainer( int position_x, int position_y)
         {
-            Texture = Factory.CreateHeartContainer();
+            Texture = ItemFactory.ItemSpriteFactory.CreateHeartContainer();
             x = position_x;
             y = position_y;
 

@@ -20,7 +20,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public Compass( int position_x, int position_y)
         {
-            Texture = Factory.CreateCompass();
+            Texture = ItemFactory.ItemSpriteFactory.CreateCompass();
             x = position_x;
             y = position_y;
         }

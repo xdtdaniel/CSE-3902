@@ -26,7 +26,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public Ruby(int position_x, int position_y)
         {
-            Texture = Factory.CreateRuby();
+            Texture = ItemFactory.ItemSpriteFactory.CreateRuby();
             TotalFrames =2;
             Rows = 1;
             Columns = 2;

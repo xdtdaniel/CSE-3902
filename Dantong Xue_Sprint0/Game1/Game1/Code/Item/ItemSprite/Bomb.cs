@@ -20,7 +20,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public Bomb(int position_x, int position_y)
         {
-            Texture = Factory.CreateBomb();
+            Texture = ItemFactory.ItemSpriteFactory.CreateBomb();
             x = position_x;
             y = position_y;
         }

@@ -17,7 +17,7 @@ namespace Game1.Code.ItemSelection.ItemSelectionSprite
 
         public ItemSelectionFrame_Top(int position_x, int position_y)
         {
-            Texture = Factory.LoadItemSelectionFrame_Top();
+            Texture = ItemSelectionFactory.ItemSelectionFactory.LoadItemSelectionFrame_Top();
             x = position_x;
             y = position_y;
             scale = 3;

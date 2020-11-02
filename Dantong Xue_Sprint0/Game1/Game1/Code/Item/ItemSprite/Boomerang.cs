@@ -20,7 +20,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public Boomerang(int position_x, int position_y)
         {
-            Texture = Factory.CreateBoomerang();
+            Texture = ItemFactory.ItemSpriteFactory.CreateBoomerang();
             x = position_x;
             y = position_y;
         }
