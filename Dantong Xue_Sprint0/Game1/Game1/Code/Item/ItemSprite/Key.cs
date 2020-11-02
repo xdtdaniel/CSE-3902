@@ -20,7 +20,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public Key( int position_x, int position_y)
         {
-            Texture = Factory.CreateKey();
+            Texture = ItemFactory.ItemSpriteFactory.CreateKey();
             x = position_x;
             y = position_y;
         }

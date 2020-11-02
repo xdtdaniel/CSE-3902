@@ -26,7 +26,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public  Triforce(int position_x, int position_y)
         {
-            Texture = Factory.CreateTriforce();
+            Texture = ItemFactory.ItemSpriteFactory.CreateTriforce();
             TotalFrames = 2;
             Rows = 1;
             Columns = 2;

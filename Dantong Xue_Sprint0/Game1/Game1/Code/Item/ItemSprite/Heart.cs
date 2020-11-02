@@ -26,7 +26,7 @@ namespace Game1.Code.Item.ItemSprite
         private int y;
         public Heart(int position_x, int position_y)
         {
-            Texture = Factory.CreateHeart();
+            Texture = ItemFactory.ItemSpriteFactory.CreateHeart();
             TotalFrames = 4;
             Rows = 1;
             Columns = 4;

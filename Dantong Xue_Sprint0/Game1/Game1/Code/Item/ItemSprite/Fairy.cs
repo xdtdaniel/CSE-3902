@@ -29,10 +29,9 @@ namespace Game1.Code.Item.ItemSprite
         private int max_displacement = 100;
         private Rectangle CollisionRectangle;
 
-
         public Fairy(int position_x, int position_y)
         {
-            Texture = Factory.CreateFairy();
+            Texture = ItemFactory.ItemSpriteFactory.CreateFairy();
             TotalFrames = 2;
             Rows = 1;
             Columns = 2;
