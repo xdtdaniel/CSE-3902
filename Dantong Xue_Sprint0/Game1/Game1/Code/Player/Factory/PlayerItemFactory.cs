@@ -37,6 +37,21 @@ namespace Game1
         private Texture2D[] woodenEdge;
         private Texture2D[] beamEdge;
 
+        // not used yet
+        //private Texture2D rod;
+        //private Texture2D silverArrow;
+        //private Texture2D magicalBoomerang;
+        //private Texture2D redCandle;
+        //private Texture2D redPotion;
+        //private Texture2D redRing;
+        //private Texture2D bookOfMagic;
+        //private Texture2D bracelet;
+        //private Texture2D letter;
+        //private Texture2D food;
+        //private Texture2D magicalKey;
+        //private Texture2D raft;
+        //private Texture2D recorder;
+        //private Texture2D stepladder;
 
         private static PlayerItemFactory instance = new PlayerItemFactory();
 
@@ -55,45 +70,47 @@ namespace Game1
         public void LoadAllTextures(ContentManager content)
         {
             woodenSword = new Texture2D[4];
-            woodenSword[0] = content.Load<Texture2D>("PlayerItemSprite/WoodenSword0");
-            woodenSword[1] = content.Load<Texture2D>("PlayerItemSprite/WoodenSword1");
-            woodenSword[2] = content.Load<Texture2D>("PlayerItemSprite/WoodenSword2");
-            woodenSword[3] = content.Load<Texture2D>("PlayerItemSprite/WoodenSword3");
+            woodenSword[0] = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword0");
+            woodenSword[1] = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword1");
+            woodenSword[2] = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword2");
+            woodenSword[3] = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword3");
 
             swordBeam = new Texture2D[4];
-            swordBeam[0] = content.Load<Texture2D>("PlayerItemSprite/SwordBeam0");
-            swordBeam[1] = content.Load<Texture2D>("PlayerItemSprite/SwordBeam1");
-            swordBeam[2] = content.Load<Texture2D>("PlayerItemSprite/SwordBeam2");
-            swordBeam[3] = content.Load<Texture2D>("PlayerItemSprite/SwordBeam3");
+            swordBeam[0] = content.Load<Texture2D>("PlayerItemSprite/Weapon/SwordBeam0");
+            swordBeam[1] = content.Load<Texture2D>("PlayerItemSprite/Weapon/SwordBeam1");
+            swordBeam[2] = content.Load<Texture2D>("PlayerItemSprite/Weapon/SwordBeam2");
+            swordBeam[3] = content.Load<Texture2D>("PlayerItemSprite/Weapon/SwordBeam3");
 
-            frontArrow = content.Load<Texture2D>("PlayerItemSprite/FrontArrow");
-            rightArrow = content.Load<Texture2D>("PlayerItemSprite/RightArrow");
-            backArrow = content.Load<Texture2D>("PlayerItemSprite/BackArrow");
-            leftArrow = content.Load<Texture2D>("PlayerItemSprite/LeftArrow");
+            frontArrow = content.Load<Texture2D>("PlayerItemSprite/Arrow/FrontArrow");
+            rightArrow = content.Load<Texture2D>("PlayerItemSprite/Arrow/RightArrow");
+            backArrow = content.Load<Texture2D>("PlayerItemSprite/Arrow/BackArrow");
+            leftArrow = content.Load<Texture2D>("PlayerItemSprite/Arrow/LeftArrow");
 
-            frontBoomerang = content.Load<Texture2D>("PlayerItemSprite/FrontBoomerang");
-            rightBoomerang = content.Load<Texture2D>("PlayerItemSprite/RightBoomerang");
-            backBoomerang = content.Load<Texture2D>("PlayerItemSprite/BackBoomerang");
-            leftBoomerang = content.Load<Texture2D>("PlayerItemSprite/LeftBoomerang");
+            frontBoomerang = content.Load<Texture2D>("PlayerItemSprite/Boomerang/FrontBoomerang");
+            rightBoomerang = content.Load<Texture2D>("PlayerItemSprite/Boomerang/RightBoomerang");
+            backBoomerang = content.Load<Texture2D>("PlayerItemSprite/Boomerang/BackBoomerang");
+            leftBoomerang = content.Load<Texture2D>("PlayerItemSprite/Boomerang/LeftBoomerang");
 
-            bomb = content.Load<Texture2D>("PlayerItemSprite/Bomb");
-            bombExplosion = content.Load<Texture2D>("PlayerItemSprite/BombExplosion");
+            bomb = content.Load<Texture2D>("PlayerItemSprite/Bomb/Bomb");
+            bombExplosion = content.Load<Texture2D>("PlayerItemSprite/Bomb/BombExplosion");
 
-            blueCandle = content.Load<Texture2D>("PlayerItemSprite/BlueCandle");
-            bluePotion = content.Load<Texture2D>("PlayerItemSprite/BluePotion");
-            blueRing = content.Load<Texture2D>("PlayerItemSprite/BlueRing");
+            blueCandle = content.Load<Texture2D>("PlayerItemSprite/Candle/BlueCandle");
+
+            bluePotion = content.Load<Texture2D>("PlayerItemSprite/Potion/BluePotion");
+
+            blueRing = content.Load<Texture2D>("PlayerItemSprite/Ring/BlueRing");
 
             woodenEdge = new Texture2D[4];
-            woodenEdge[0] = content.Load<Texture2D>("PlayerItemSprite/WoodenEdge0");
-            woodenEdge[1] = content.Load<Texture2D>("PlayerItemSprite/WoodenEdge1");
-            woodenEdge[2] = content.Load<Texture2D>("PlayerItemSprite/WoodenEdge2");
-            woodenEdge[3] = content.Load<Texture2D>("PlayerItemSprite/WoodenEdge3");
+            woodenEdge[0] = content.Load<Texture2D>("PlayerItemSprite/Edge/WoodenEdge0");
+            woodenEdge[1] = content.Load<Texture2D>("PlayerItemSprite/Edge/WoodenEdge1");
+            woodenEdge[2] = content.Load<Texture2D>("PlayerItemSprite/Edge/WoodenEdge2");
+            woodenEdge[3] = content.Load<Texture2D>("PlayerItemSprite/Edge/WoodenEdge3");
 
             beamEdge = new Texture2D[4];
-            beamEdge[0] = content.Load<Texture2D>("PlayerItemSprite/beamEdge0");
-            beamEdge[1] = content.Load<Texture2D>("PlayerItemSprite/beamEdge1");
-            beamEdge[2] = content.Load<Texture2D>("PlayerItemSprite/beamEdge2");
-            beamEdge[3] = content.Load<Texture2D>("PlayerItemSprite/beamEdge3");
+            beamEdge[0] = content.Load<Texture2D>("PlayerItemSprite/Edge/beamEdge0");
+            beamEdge[1] = content.Load<Texture2D>("PlayerItemSprite/Edge/beamEdge1");
+            beamEdge[2] = content.Load<Texture2D>("PlayerItemSprite/Edge/beamEdge2");
+            beamEdge[3] = content.Load<Texture2D>("PlayerItemSprite/Edge/beamEdge3");
         }
 
         /* sword */

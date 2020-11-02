@@ -80,6 +80,7 @@ namespace Game1
                 if (game.link.damageTimeCounter == 0)
                 {
                     game.link.Die();
+                    LoadAll.Instance.ChangeMapColor(Color.Red);
                 }
             }
         }
