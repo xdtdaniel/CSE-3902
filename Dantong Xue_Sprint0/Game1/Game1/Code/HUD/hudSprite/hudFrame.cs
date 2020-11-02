@@ -15,7 +15,7 @@ namespace Game1.Code.HUD.hudSprite
         private int y;
         private static int scale;
         public hudFrame(int position_x, int position_y) {
-            Texture = Factory.LoadHUDFrame();
+            Texture = hudFactory.HUDFactory.LoadHUDFrame();
             x = position_x;
             y = position_y;
             scale = 3;
