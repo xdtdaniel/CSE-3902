@@ -2,9 +2,12 @@
 using Game1.Code.Block;
 using Game1.Code.Block.BlockFactory;
 using Game1.Code.Enemy;
+using Game1.Code.HUD.hudFactory;
 using Game1.Code.HUD.hudSprite;
 using Game1.Code.Item;
+using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
+using Game1.Code.ItemSelection.ItemSelectionFactory;
 using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
@@ -85,11 +88,10 @@ namespace Game1
             PlayerCharacterFactory.Instance.LoadAllTextures(Content);
             PlayerItemFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
-
-    //ITEM,HUD are moved to Factory, Enemy are moved to Factory but not used yet
             EnemyTextureStorage.LoadTextures(Content);
-            //ItemSpriteFactory.LoadAllTextures(Content);            
-            Factory.LoadAllTextures(Content);
+            ItemSpriteFactory.LoadAllTextures(Content);
+            HUDFactory.LoadAllHUDTextures(Content);
+            ItemSelectionFactory.LoadAllTextures(Content);
 
             _spriteFont = Content.Load<SpriteFont>("font");
           
@@ -108,6 +110,7 @@ namespace Game1
 
             //TEST FOR HUD
             hud = new hudFrame(0, 0);
+            //item selection  
             
         }
 
@@ -130,6 +133,7 @@ namespace Game1
 
             //TEST FOR HUD
             hud.UpdateHUD();
+            //item selection
 
             base.Update(gameTime);
 
@@ -154,8 +158,9 @@ namespace Game1
 
             DrawAllItem.Instance.DrawAll(inRoomList,_spriteBatch); 
             playerPanel.PlayerDraw();
-            //
+            //HUD test
             hud.DrawHUD(_spriteBatch);
+            //item  selection
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
