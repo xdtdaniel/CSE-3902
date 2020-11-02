@@ -34,15 +34,7 @@ namespace Game1
 
         private Texture2D[] damagedPickUpLink;
 
-        private static PlayerCharacterFactory instance = new PlayerCharacterFactory();
-
-        public static PlayerCharacterFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static PlayerCharacterFactory Instance { get; } = new PlayerCharacterFactory();
 
         private PlayerCharacterFactory()
         {

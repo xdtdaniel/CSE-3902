@@ -2,16 +2,19 @@
 using Game1.Code.Block;
 using Game1.Code.Block.BlockFactory;
 using Game1.Code.Enemy;
-using Game1.Code.HUD.hudFactory;
-using Game1.Code.HUD.hudSprite;
+using Game1.Code.HUD;
+using Game1.Code.HUD.Factory;
+using Game1.Code.HUD.Sprite;
 using Game1.Code.Item;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
+using Game1.Code.Item.ItemSprite;
 using Game1.Code.ItemSelection.ItemSelectionFactory;
 using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
@@ -51,7 +54,7 @@ namespace Game1
         // private MouseEnemyController enemyController;
 
         //test for  sprint 4 hud display
-        public IHudSprite hud;
+        HUDPanel hudPanel;
 
         private QuitResetController quitResetController;
 
@@ -63,7 +66,7 @@ namespace Game1
 
             //temporary screen size suitable for Sprint 3
             _graphics.PreferredBackBufferWidth = (int)(256 * LoadAll.Instance.scale);
-            _graphics.PreferredBackBufferHeight = (int)(176 * LoadAll.Instance.scale);
+            _graphics.PreferredBackBufferHeight = (int)(232 * LoadAll.Instance.scale);
         }
 
         protected override void Initialize()
@@ -75,9 +78,9 @@ namespace Game1
 
             link = new Link();
             playerPanel = new PlayerPanel(this);
+            hudPanel = new HUDPanel(this);
 
             quitResetController = new QuitResetController();
-
 
         }
 
@@ -109,7 +112,7 @@ namespace Game1
             inRoomList = ItemLoader.GetItemList();
 
             //TEST FOR HUD
-            hud = new hudFrame(0, 0);
+
             //item selection  
             
         }
@@ -132,7 +135,7 @@ namespace Game1
             LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
 
             //TEST FOR HUD
-            hud.UpdateHUD();
+            hudPanel.HUDUpdate();
             //item selection
 
             base.Update(gameTime);
@@ -151,16 +154,20 @@ namespace Game1
             DrawMap.Instance.DrawText(_spriteBatch, "EASTMOST PENNINSULA\n          IS THE SECRET", _spriteFont);
 
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
-            if (EnemyLoader.GetCurrentMapID() == 11) {
-                _spriteBatch.DrawString(_spriteFont, "Test", new Vector2(400,200), Color.Red);
+            if (EnemyLoader.GetCurrentMapID() == 11)
+            {
+                _spriteBatch.DrawString(_spriteFont, "Test", new Vector2(400, 200), Color.Red);
                 DrawMap.Instance.DrawCurrMap(_spriteBatch, EnemyLoader.LoadRoom11Walls());
             }
 
-            DrawAllItem.Instance.DrawAll(inRoomList,_spriteBatch); 
+            DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
             playerPanel.PlayerDraw();
-            //HUD test
-            hud.DrawHUD(_spriteBatch);
-            //item  selection
+            // item  selection
+            // todo
+
+            // HUD
+            // must be the last to draw
+            hudPanel.HUDDraw();
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 

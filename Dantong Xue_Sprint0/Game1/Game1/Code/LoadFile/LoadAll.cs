@@ -44,7 +44,7 @@ namespace Game1.Code.LoadFile
         {
             multiplier = 8;
             scale = 3;
-            startPos = new Vector2(0, 0);
+            startPos = new Vector2(0, 56 * (int)scale);
             currMapID = 17;
             isSwitched = new List<bool>(new bool[MAP_COUNT + 1]);
             isUnlocked = new List<int>(new int[MAP_COUNT + 1]);

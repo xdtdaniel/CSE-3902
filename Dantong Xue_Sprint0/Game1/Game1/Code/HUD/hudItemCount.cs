@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Game1.Code.HUD
 {
-    public class hudItemCount
+    public class HUDItemCount
     {
         private int ruby_count;
         private int key_count;
@@ -14,7 +14,7 @@ namespace Game1.Code.HUD
 
         private Dictionary<string, int> hudItemList;       
 
-        public hudItemCount(Dictionary<string, int> itemList) {
+        public HUDItemCount(Dictionary<string, int> itemList) {
             hudItemList = itemList;
             //initial values
             ruby_count = 0;

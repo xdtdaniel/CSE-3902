@@ -37,31 +37,7 @@ namespace Game1
         private Texture2D[] woodenEdge;
         private Texture2D[] beamEdge;
 
-        // not used yet
-        //private Texture2D rod;
-        //private Texture2D silverArrow;
-        //private Texture2D magicalBoomerang;
-        //private Texture2D redCandle;
-        //private Texture2D redPotion;
-        //private Texture2D redRing;
-        //private Texture2D bookOfMagic;
-        //private Texture2D bracelet;
-        //private Texture2D letter;
-        //private Texture2D food;
-        //private Texture2D magicalKey;
-        //private Texture2D raft;
-        //private Texture2D recorder;
-        //private Texture2D stepladder;
-
-        private static PlayerItemFactory instance = new PlayerItemFactory();
-
-        public static PlayerItemFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static PlayerItemFactory Instance { get; } = new PlayerItemFactory();
 
         private PlayerItemFactory()
         {
