@@ -248,6 +248,7 @@ namespace Game1.Code.HUD.Factory
 			}
 			return numberTexture;
 		}
+		//heart should be 1 object
 		public static Texture2D LoadEmptyHeart()
 		{
 			return emptyHeart;

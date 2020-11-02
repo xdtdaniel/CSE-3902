@@ -46,7 +46,6 @@ namespace Game1.Code.HUD.Sprite
             spriteBatch.Draw(HUDFrameTexture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        //the HUD frame never updates, but the text does
         public void Update(bool enabled, int speed)
         {
             if (enabled)
