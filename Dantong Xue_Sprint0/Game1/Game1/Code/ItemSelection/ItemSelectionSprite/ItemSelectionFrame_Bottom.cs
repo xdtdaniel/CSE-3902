@@ -16,7 +16,7 @@ namespace Game1.Code.ItemSelection.ItemSelectionSprite
         private static int scale;
         public ItemSelectionFrame_Bottom(int position_x, int position_y)
         {
-            Texture = Factory.LoadItemSelectionFrame_Bottom();
+            Texture = ItemSelectionFactory.ItemSelectionFactory.LoadItemSelectionFrame_Bottom();
             x = position_x;
             y = position_y;
             scale = 3;
