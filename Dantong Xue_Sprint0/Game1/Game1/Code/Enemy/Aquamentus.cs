@@ -27,7 +27,7 @@ namespace Game1.Enemy
         private IProjectile Projectile1;
         private IProjectile Projectile2;
 
-        private int hp = 100;
+        private int hp = 10;
         private int DamageTimer = 0;
         private int FlashRateModifier = 0;
 

@@ -25,7 +25,7 @@ namespace Game1
         private double Velocity = 0;
         private double MaxVelocity = 3;
         private Random Rnd;
-        private int hp = 10;
+        private int hp = 1;
 
         // will be used later
         //private int DamageTimer = 0;

@@ -21,7 +21,7 @@ namespace Game1
         private int StateTimer = 0;
         private int MoveTimer = 0;
         private int FrameRateModifier = 0;
-        public int hp = 10;
+        public int hp = 1;
 
         // will be used later
         //private int DamageTimer = 0;

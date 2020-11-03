@@ -22,7 +22,7 @@ namespace Game1.Enemy
         private bool CanTurn = true;
         private int FrameBound;
 
-        public int hp = 30;
+        public int hp = 3;
         private int DamageTimer = 0;
         private int FlashRateModifier = 0;
 
