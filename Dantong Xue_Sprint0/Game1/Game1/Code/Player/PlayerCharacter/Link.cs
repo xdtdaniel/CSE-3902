@@ -94,7 +94,7 @@ namespace Game1.Player.PlayerCharacter
             item = new LinkItem[MAX_ITEM_SPRITE_NUM];
             for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
             {
-                item[i] = new LinkItem();
+                item[i] = new LinkItem(this);
                 item[i].state = new NoItem(item[i]);
             }
 

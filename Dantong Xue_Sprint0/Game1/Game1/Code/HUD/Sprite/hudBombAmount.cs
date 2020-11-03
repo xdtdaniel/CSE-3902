@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Game1.Code.HUD.Sprite
 {
-    public class hudBombAmount
+    public class HUDBombAmount
     {
         private int bomb_count;
         private Texture2D symbol_X;
@@ -25,7 +25,7 @@ namespace Game1.Code.HUD.Sprite
 
         private Dictionary<string, int> hudItemList;
 
-        public hudBombAmount(Dictionary<string, int> itemList)
+        public HUDBombAmount(Dictionary<string, int> itemList)
         {
             hudItemList = itemList;
             //initial values

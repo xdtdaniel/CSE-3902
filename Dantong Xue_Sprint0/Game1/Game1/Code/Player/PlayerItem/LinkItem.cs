@@ -18,12 +18,15 @@ namespace Game1.Player.PlayerCharacter
         public int linkX;
         public int linkY;
         public int direction;
-        public LinkItem()
+        public Link link;
+        public LinkItem(Link link)
         {
             this.state = new NoItem(this);
             x = 0;
             y = 0;
             direction = -1;
+
+            this.link = link;
         }
 
         public void UseItem(int itemNum)

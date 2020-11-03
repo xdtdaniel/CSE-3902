@@ -33,7 +33,7 @@ namespace Game1.Code.Player
                         case "Arrow":
                             if (!ifHit)
                             {
-                                tuple.Item1.TakeDamage(5);
+                                tuple.Item1.TakeDamage(item.link.attackDamage);
                                 ifHit = true;
                             }
                             item.CollisionResponse();
@@ -54,7 +54,7 @@ namespace Game1.Code.Player
                         case "BombExplosion":
                             if (!ifHit)
                             {
-                                tuple.Item1.TakeDamage(50);
+                                tuple.Item1.TakeDamage(item.link.attackDamage * 5);
                                 ifHit = true;
                             }
                             break;
@@ -62,7 +62,7 @@ namespace Game1.Code.Player
                         case "Boomerang":
                             if (!ifHit)
                             {
-                                tuple.Item1.TakeDamage(10);
+                                tuple.Item1.TakeDamage(item.link.attackDamage);
                                 ifHit = true;
                             }
                             item.CollisionResponse();
@@ -71,7 +71,7 @@ namespace Game1.Code.Player
                         case "RangedSwordBeam":
                             if (!ifHit)
                             {
-                                tuple.Item1.TakeDamage(10);
+                                tuple.Item1.TakeDamage(item.link.attackDamage);
                                 ifHit = true;
                             }
                             item.CollisionResponse();
@@ -80,7 +80,7 @@ namespace Game1.Code.Player
                         case "RangedWoodenSword":
                             if (!ifHit)
                             {
-                                tuple.Item1.TakeDamage(10);
+                                tuple.Item1.TakeDamage(item.link.attackDamage);
                                 ifHit = true;
                             }
                             item.CollisionResponse();
@@ -89,7 +89,7 @@ namespace Game1.Code.Player
                         case "RangedWoodenEdge":
                             if (!ifHit)
                             {
-                                tuple.Item1.TakeDamage(10);
+                                tuple.Item1.TakeDamage(item.link.attackDamage);
                                 ifHit = true;
                             }
                             item.CollisionResponse();
@@ -97,7 +97,7 @@ namespace Game1.Code.Player
                         case "RangedBeamEdge":
                             if (!ifHit)
                             {
-                                tuple.Item1.TakeDamage(10);
+                                tuple.Item1.TakeDamage(item.link.attackDamage);
                                 ifHit = true;
                             }
                             item.CollisionResponse();
