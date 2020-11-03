@@ -24,7 +24,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.AttackN();
                     if (game.link.itemList["heart"] == game.link.itemList["heartcontainer"])
                     {
-                        game.link.item[game.link.itemIndex].UseItem(-1);
+                        game.link.item[game.link.itemIndex].UseItem("rangedwoodensword");
                     }
                     game.link.timeSinceAttack = 0;
                 }
@@ -33,7 +33,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.AttackZ();
                     if (game.link.itemList["heart"] == game.link.itemList["heartcontainer"])
                     {
-                        game.link.item[game.link.itemIndex].UseItem(-2);
+                        game.link.item[game.link.itemIndex].UseItem("rangedswordbeam");
                     }
                     game.link.timeSinceAttack = 0;
                 }

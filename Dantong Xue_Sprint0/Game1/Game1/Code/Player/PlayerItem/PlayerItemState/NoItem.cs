@@ -19,32 +19,32 @@ namespace Game1.Player.PlayerCharacter
         {
             this.item = item;
         }
-        public void UseItem(int itemNum)
+        public void UseItem(string itemName)
         {
-            switch (itemNum)
+            switch (itemName)
             {
-                case 1:
+                case "Arrow":
                     item.state = new UseArrow(item);
                     break;
-                case 2:
+                case "Boomerang":
                     item.state = new UseBoomerang(item);
                     break;
-                case 3:
+                case "Bomb":
                     item.state = new UseBomb(item);
                     break;
-                case 4:
+                case "BlueCandle":
                     item.state = new UseBlueCandle(item);
                     break;
-                case 5:
+                case "BluePotion":
                     item.state = new UseBluePotion(item);
                     break;
-                case 6:
+                case "BlueRing":
                     item.state = new UseBlueRing(item);
                     break;
-                case -1:
+                case "RangedWoodenSword":
                     item.state = new RangedWoodenSword(item);
                     break;
-                case -2:
+                case "RangedSwordBeam":
                     item.state = new RangedSwordBeam(item);
                     break;
                 default:

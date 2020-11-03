@@ -74,7 +74,7 @@ namespace Game1
             playerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
             playerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
             //
-            if (game.link.itemList["heart"] <= 0 && !game.link.isDead)
+            if (game.link.itemList["Heart"] <= 0 && !game.link.isDead)
             {
                 game.link.movable = false;
                 if (game.link.damageTimeCounter == 0)
@@ -93,7 +93,7 @@ namespace Game1
             string x = "x: " + game.link.x.ToString();
             string y = "y: " + game.link.y.ToString();
             string damagedTimeRemain = "time: " + game.link.damageTimeCounter.ToString();
-            string hp = "hp: " + game.link.itemList["heart"].ToString();
+            string hp = "hp: " + game.link.itemList["Heart"].ToString();
 
 
             game._spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 125), Color.Black);

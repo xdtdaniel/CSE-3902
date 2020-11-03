@@ -67,27 +67,26 @@ namespace Game1.Player.PlayerCharacter
             directionIndex = 0;
 
             itemList = new Dictionary<string, int>();
-            itemList.Add("arrow", 0);
-            itemList.Add("bomb", 0);
-            itemList.Add("boomerang", 0);
-            itemList.Add("bow", 0);
-            itemList.Add("clock", 0);
-            itemList.Add("compass", 0);
-            itemList.Add("heart", 0);
-            itemList.Add("heartcontainer", 0);
-            itemList.Add("key", 0);
-            itemList.Add("map", 0);
-            itemList.Add("ruby", 0);
-            itemList.Add("triforce", 0);
-            itemList.Add("fairy", 0);
+            itemList.Add("Arrow", 0);
+            itemList.Add("Bomb", 0);
+            itemList.Add("Boomerang", 0);
+            itemList.Add("Bow", 0);
+            itemList.Add("Clock", 0);
+            itemList.Add("Compass", 0);
+            itemList.Add("Heart", 6);                      // default current health = 6
+            itemList.Add("HeartContainer", 6);             // default max health = 6
+            itemList.Add("Key", 0);
+            itemList.Add("Map", 0);
+            itemList.Add("Ruby", 0);
+            itemList.Add("Triforce", 0);
+            itemList.Add("Fairy", 0);
 
-            // set max health = 6. One container = 2 health
             // test
-            itemList["heartcontainer"] = 32;
-
-            // set current health = 6
-            // test
-            itemList["heart"] = 17;
+            itemList["HeartContainer"] = 30;
+            itemList["Heart"] = 17;
+            itemList["Bomb"] = 2;
+            itemList["Key"] = 66;
+            itemList["Ruby"] = 92;
 
             state = new NormalLink(this);
 

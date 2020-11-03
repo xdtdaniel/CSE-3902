@@ -176,42 +176,9 @@ namespace Game1.Code.HUD.Factory
 				firstNumber = secondNumber = 0;
 			}
 			Texture2D[] numberTexture = new Texture2D[2];
+
+			// 0 for first, 1 for second
 			switch (firstNumber)
-			{
-				case 0:
-					numberTexture[1] = zero;
-					break;
-				case 1:
-					numberTexture[1] = one;
-					break;
-				case 2:
-					numberTexture[1] = two;
-					break;
-				case 3:
-					numberTexture[1] = three;
-					break;
-				case 4:
-					numberTexture[1] = four;
-					break;
-				case 5:
-					numberTexture[1] = five;
-					break;
-				case 6:
-					numberTexture[1] = six;
-					break;
-				case 7:
-					numberTexture[1] = seven;
-					break;
-				case 8:
-					numberTexture[1] = eight;
-					break;
-				case 9:
-					numberTexture[1] = nine;
-					break;
-				default:
-					break;
-			}
-			switch (secondNumber)
 			{
 				case 0:
 					numberTexture[0] = zero;
@@ -242,6 +209,41 @@ namespace Game1.Code.HUD.Factory
 					break;
 				case 9:
 					numberTexture[0] = nine;
+					break;
+				default:
+					break;
+			}
+			switch (secondNumber)
+			{
+				case 0:
+					numberTexture[1] = zero;
+					break;
+				case 1:
+					numberTexture[1] = one;
+					break;
+				case 2:
+					numberTexture[1] = two;
+					break;
+				case 3:
+					numberTexture[1] = three;
+					break;
+				case 4:
+					numberTexture[1] = four;
+					break;
+				case 5:
+					numberTexture[1] = five;
+					break;
+				case 6:
+					numberTexture[1] = six;
+					break;
+				case 7:
+					numberTexture[1] = seven;
+					break;
+				case 8:
+					numberTexture[1] = eight;
+					break;
+				case 9:
+					numberTexture[1] = nine;
 					break;
 				default:
 					break;

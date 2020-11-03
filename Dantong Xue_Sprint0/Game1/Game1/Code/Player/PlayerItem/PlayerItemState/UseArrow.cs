@@ -53,7 +53,7 @@ namespace Game1.Player.PlayerCharacter
 
             rectangle = new Rectangle();
         }
-        public void UseItem(int itemNum) 
+        public void UseItem(string itemName) 
         {
         }
         public string GetItemName()

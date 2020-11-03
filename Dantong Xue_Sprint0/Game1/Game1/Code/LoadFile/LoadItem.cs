@@ -99,56 +99,56 @@ namespace Game1.Code.LoadFile
                 {
                     case "arrow":
                         item = new Arrow(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "arrow"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Arrow"));
                        
                         break;
                     case "bomb":
                         item = new Bomb( X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "bomb"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Bomb"));
                         break;
                     case "boomerang":
                         item = new Boomerang( X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "boomerang"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Boomerang"));
                         break;
                     case "bow":
                         item = new Bow(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "bow"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Bow"));
                         break;
                     case "clock":
                         item = new Clock(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "clock"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Clock"));
                         break;
                     case "compass":
                         item = new Compass(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "compass"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Compass"));
                         break;
                     case "fairy":
                         item = new Fairy(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "fairy"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Fairy"));
                         break;
                     case "heart":
                         item = new Heart(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "heart"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Heart"));
                         break;
                     case "heartcontainer":
                         item = new HeartContainer(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "heartcontainer"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));
                         break;
                     case "key":
                         item = new Key(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "key"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Key"));
                         break;
                     case "map":
                         item = new Map(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "map"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Map"));
                         break;
                     case "ruby":
                         item = new Ruby( X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "ruby"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Ruby"));
                         break;
                     case "triforce":
                         item = new Triforce( X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "triforce"));
+                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                         break;
                 }
 

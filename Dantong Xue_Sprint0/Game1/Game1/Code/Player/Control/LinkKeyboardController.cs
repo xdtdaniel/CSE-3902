@@ -32,13 +32,12 @@ namespace Game1
             RegisterCommand(Keys.Left, new MoveLeft(game));
             RegisterCommand(Keys.N, new Attack(game, 0));
             RegisterCommand(Keys.Z, new Attack(game, 1));
-            RegisterCommand(Keys.D1, new UseItem(game, 1));
-            RegisterCommand(Keys.D2, new UseItem(game, 2));
-            RegisterCommand(Keys.D3, new UseItem(game, 3));
-            RegisterCommand(Keys.D4, new UseItem(game, 4));
-            RegisterCommand(Keys.D5, new UseItem(game, 5));
-            RegisterCommand(Keys.D6, new UseItem(game, 6));
-            RegisterCommand(Keys.D7, new UseItem(game, 7));
+            RegisterCommand(Keys.D1, new UseItem(game, "Arrow"));
+            RegisterCommand(Keys.D2, new UseItem(game, "Boomerang"));
+            RegisterCommand(Keys.D3, new UseItem(game, "Bomb"));
+            RegisterCommand(Keys.D4, new UseItem(game, "BlueCandle"));
+            RegisterCommand(Keys.D5, new UseItem(game, "BluePotion"));
+            RegisterCommand(Keys.D6, new UseItem(game, "BlueRing"));
 
         }
         public void RegisterCommand(Keys key, IPlayerCommand command)

@@ -40,83 +40,83 @@ namespace Game1.Code.Player
                     //Add all player collide items to a list,  no need to record item ccurrent location
                     switch (roomItemList[index].Item2)
                     {
-                        case "arrow":
-                            link.itemList["arrow"]++;
+                        case "Arrow":
+                            link.itemList["Arrow"]++;
                             item = new Arrow(X,Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "arrow"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Arrow"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "bomb":
-                            link.itemList["bomb"]++;
+                        case "Bomb":
+                            link.itemList["Bomb"]++;
                             item = new Bomb(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "bomb"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Bomb"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "boomerang":
-                            link.itemList["boomerang"]++;
+                        case "Boomerang":
+                            link.itemList["Boomerang"]++;
                             item = new Boomerang(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "boomerang"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Boomerang"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "bow":
-                            link.itemList["bow"]++;
+                        case "Bow":
+                            link.itemList["Bow"]++;
                             link.PickUp(3);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "bow"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Bow"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "clock":
-                            link.itemList["clock"]++;
+                        case "Clock":
+                            link.itemList["Clock"]++;
                             item = new Clock(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "clock"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Clock"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "compass":
-                            link.itemList["compass"]++;
+                        case "Compass":
+                            link.itemList["Compass"]++;
                             item = new Compass(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "compass"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Compass"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "fairy":
-                            link.itemList["fairy"]++;
+                        case "Fairy":
+                            link.itemList["Fairy"]++;
                             item = new Fairy(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "fairy"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Fairy"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "heart":
-                            link.itemList["heart"]++;
+                        case "Heart":
+                            link.itemList["Heart"]++;
                             item = new Heart(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "heart"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Heart"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "heartcontainer":
-                            link.itemList["heartcontainer"]++;
+                        case "HeartContainer":
+                            link.itemList["HeartContainer"]++;
                             link.PickUp(4);
                             item = new HeartContainer(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "heartcontainer"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "key":
-                            link.itemList["key"]++;
+                        case "Key":
+                            link.itemList["Key"]++;
                             item = new Key(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "key"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Key"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "map":
-                            link.itemList["map"]++;
+                        case "Map":
+                            link.itemList["Map"]++;
                             item = new Map(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "map"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Map"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "ruby":
-                            link.itemList["ruby"]++;
+                        case "Ruby":
+                            link.itemList["Ruby"]++;
                             item = new Ruby(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "ruby"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Ruby"));
                             roomItemList.RemoveAt(index);
                             break;
-                        case "triforce":
-                            link.itemList["triforce"]++;
+                        case "Triforce":
+                            link.itemList["Triforce"]++;
                             link.PickUp(2);                          
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "triforce"));
+                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                             roomItemList.RemoveAt(index);
                             break;
                     }

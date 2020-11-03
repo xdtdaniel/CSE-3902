@@ -10,7 +10,7 @@ namespace Game1.Player.Interface
 {
     public interface IPlayerItemState
     {
-        void UseItem(int itemNum);
+        void UseItem(string itemName);
         string GetItemName();
         void Update();
         void CollisionResponse();

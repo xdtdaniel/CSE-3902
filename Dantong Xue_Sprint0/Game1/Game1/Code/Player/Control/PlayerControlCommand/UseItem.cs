@@ -8,22 +8,26 @@ namespace Game1.Code.Player.PlayerControlCommand
     class UseItem : IPlayerCommand
     {
         Game1 game;
-        int inputItemIndex;
-        public UseItem(Game1 game, int inputItemIndex)
+        string itemName;
+        public UseItem(Game1 game, string itemName)
         {
             this.game = game;
-            this.inputItemIndex = inputItemIndex;
+            this.itemName = itemName;
         }
 
         public void Execute()
         {
             if (game.link.timeSinceItem >= game.link.timeBetweenItem)
             {
-                game.link.state.UseItem();
-                game.link.item[game.link.itemIndex].UseItem(inputItemIndex);
-                game.link.timeSinceItem = 0;
+                if (game.link.itemList[itemName] > 0)
+                {
+                    game.link.state.UseItem();
+                    game.link.item[game.link.itemIndex].UseItem(itemName);
+                    game.link.timeSinceItem = 0;
+                    game.link.itemList[itemName]--;
+                }
             }
-            game.link.useItemDone = game.link.item[inputItemIndex].IsDone();
+            game.link.useItemDone = game.link.item[game.link.itemIndex].IsDone();
         }
     }
 }

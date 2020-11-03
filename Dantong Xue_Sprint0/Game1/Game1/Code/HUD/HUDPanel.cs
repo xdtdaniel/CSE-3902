@@ -21,7 +21,10 @@ namespace Game1.Code.HUD
         private IHUDSprite dungeonPauseScreenFrame;
         private IHUDSprite dungeonMiniMapFrame;
         private IHUDSprite hudSymbol;
-        private HUDHeartAmount hudHeart;
+        private IHUDSprite hudNumberOfHeart;
+        private IHUDSprite hudNumberOfBomb;
+        private IHUDSprite hudNumberOfKey;
+        private IHUDSprite hudNumberOfRuby;
 
         // for test
         bool pause;
@@ -38,10 +41,13 @@ namespace Game1.Code.HUD
             dungeonPauseScreenFrame = new DungeonPauseScreenFrame();
             dungeonMiniMapFrame = new DungeonMiniMapFrame(level);
             hudSymbol = new HUDSymbol();
-            hudHeart = new HUDHeartAmount(game.link.itemList);
+            hudNumberOfHeart = new HUDNumberOfHeart(game.link.itemList);
+            hudNumberOfBomb = new HUDNumberOfBomb(game.link.itemList);
+            hudNumberOfKey = new HUDNumberOfKey(game.link.itemList);
+            hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
 
-        // for test
-        pause = false;
+            // for test
+            pause = false;
         }
 
         public void HUDUpdate()
@@ -55,7 +61,10 @@ namespace Game1.Code.HUD
             dungeonPauseScreenFrame.Update(pause, rollingSpeed);
             dungeonMiniMapFrame.Update(pause, rollingSpeed);
             hudSymbol.Update(pause, rollingSpeed);
-
+            hudNumberOfHeart.Update(pause, rollingSpeed);
+            hudNumberOfBomb.Update(pause, rollingSpeed);
+            hudNumberOfKey.Update(pause, rollingSpeed);
+            hudNumberOfRuby.Update(pause, rollingSpeed);
         }
 
         public void HUDDraw()
@@ -65,7 +74,10 @@ namespace Game1.Code.HUD
             dungeonPauseScreenFrame.Draw(game._spriteBatch);
             dungeonMiniMapFrame.Draw(game._spriteBatch);
             hudSymbol.Draw(game._spriteBatch);
-            hudHeart.DrawCount(game._spriteBatch);
+            hudNumberOfHeart.Draw(game._spriteBatch);
+            hudNumberOfBomb.Draw(game._spriteBatch);
+            hudNumberOfKey.Draw(game._spriteBatch);
+            hudNumberOfRuby.Draw(game._spriteBatch);
         }
 
     }

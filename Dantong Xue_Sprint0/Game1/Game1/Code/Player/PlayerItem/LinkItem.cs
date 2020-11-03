@@ -29,9 +29,9 @@ namespace Game1.Player.PlayerCharacter
             this.link = link;
         }
 
-        public void UseItem(int itemNum)
+        public void UseItem(string itemName)
         {
-            state.UseItem(itemNum);
+            state.UseItem(itemName);
         }
         public Rectangle GetRectangle()
         {

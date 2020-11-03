@@ -40,7 +40,7 @@ namespace Game1.Player.PlayerCharacter
 
             this.item = item;
         }
-        public void UseItem(int itemNum) 
+        public void UseItem(string itemName) 
         {
         }
         public string GetItemName()
