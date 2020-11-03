@@ -219,7 +219,7 @@ namespace Game1
         private Boolean IsOutsideBound()
         {
             Boolean outside = false;
-            if (Location.X <= 32 * scale || Location.Y <= (32 - 4) * scale || Location.Y >= 128 * scale || Location.X >= 208 * scale)
+            if (Location.X <= 32 * scale || Location.Y <= (32 - 4) * scale + 56 * scale || Location.Y >= 128 * scale + 56 * scale || Location.X >= 208 * scale)
             {
                 outside = true;
             }

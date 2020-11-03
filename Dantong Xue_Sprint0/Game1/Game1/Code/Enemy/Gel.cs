@@ -125,7 +125,7 @@ namespace Game1
                 if (direction == 0)
                 {
                     y -= 1 * scale;
-                    if (Location.Y < 28 * scale || UpCollide)
+                    if (Location.Y < 28 * scale + 56 * scale || UpCollide)
                     {
                         y += (6) * scale;
                         MovingState = 0;
@@ -145,7 +145,7 @@ namespace Game1
                 else if (direction == 2)
                 {
                     y += 1 * scale;
-                    if (Location.Y > 132 * scale || DownCollide)
+                    if (Location.Y > 132 * scale + 56 * scale || DownCollide)
                     {
                         y -= (6) * scale;
                         MovingState = 0;

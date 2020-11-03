@@ -91,7 +91,7 @@ namespace Game1.Code.LoadFile
             {
 
                 int X = EnemyList[index].Item1 * multiplier * scale;
-                int Y = EnemyList[index].Item2 * multiplier * scale;
+                int Y = EnemyList[index].Item2 * multiplier * scale + 56 * scale;
                 location = new Vector2(X, Y);
 
                 IEnemy Enemy;

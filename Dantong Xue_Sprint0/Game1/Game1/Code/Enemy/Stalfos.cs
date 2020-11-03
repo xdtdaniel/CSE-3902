@@ -155,7 +155,7 @@ namespace Game1
 
         private int UpBlocked()
         {
-            if (Location.Y <= 32 * scale || UpCollide)
+            if (Location.Y <= 32 * scale + 56 * scale || UpCollide)
             {
                 return 0;
             }
@@ -179,7 +179,7 @@ namespace Game1
 
         private int DownBlocked()
         {
-            if (Location.Y >= 128 * scale || DownCollide)
+            if (Location.Y >= 128 * scale + 56 * scale || DownCollide)
             {
                 return 0;
             }
