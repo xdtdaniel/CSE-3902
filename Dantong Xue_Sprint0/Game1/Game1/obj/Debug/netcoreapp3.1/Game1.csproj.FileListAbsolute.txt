@@ -421,13 +421,6 @@ C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debu
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.pdb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.genruntimeconfig.cache
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.csprojAssemblyReference.cache
-C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerItemSprite\BluePotion.xnb
-C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerItemSprite\BlueRing.xnb
-C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerItemSprite\WoodenSword1.xnb
-C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\items\bomb_sprite.xnb
-C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\walk\final_2.xnb
-C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Game1.deps.json
-C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\runtimes\opensuse-x64\native\libuv.so
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\HUD_frame.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\ItemSelection\Item_Selection_Bottom.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\ItemSelection\Item_Selection_Top.xnb
@@ -677,3 +670,4 @@ C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debu
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerItemSprite\Weapon\WoodenSword1.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerItemSprite\Weapon\WoodenSword2.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerItemSprite\Weapon\WoodenSword3.xnb
+C:\git_repo\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\runtimes\osx\native\libuv.dylib

@@ -23,8 +23,17 @@ namespace Game1.Code.LoadFile
 
         private List<bool> isSwitched;
         private List<int> hasAlternative;
-
         private Color mapColor = Color.White;
+        private List<int> isUnlocked;
+        private int currMapID = 1;
+        public bool noEnemy = false;
+        private List<IBlock> movables;
+        private const int MAP_COUNT = 18;
+        private RoomAdjacencyList roomAdjacencyList;
+
+        public int multiplier { get; set; }
+        public double scale { get; set; }
+        public Vector2 startPos { get; set; }
 
         /* 
          * This corresponds to the door status for the room.
@@ -38,7 +47,7 @@ namespace Game1.Code.LoadFile
          * 
          */
 
-        private List<int> isUnlocked;
+
 
         private LoadAll()
         {
@@ -51,18 +60,10 @@ namespace Game1.Code.LoadFile
 
             // those values are hard-coded and corresponding to the maps we have
             hasAlternative = new List<int>() { 5, 8, 9, 10, 13, 14};
+
+            roomAdjacencyList = new RoomAdjacencyList();
         }
-        private int currMapID = 1;
-        public bool noEnemy = false;
-        private List<IBlock> movables;
 
-        private const int MAP_COUNT = 18;
-
-        public int multiplier { get; set; }
-        public double scale { get; set; }
-        public Vector2 startPos { get; set; }
-
-        
 
         private string GetRoomFileName()
         {
@@ -84,6 +85,16 @@ namespace Game1.Code.LoadFile
             LoadMap.Instance.LoadOneMap(GetRoomFileName());
         }
 
+        public void ChangeRoom(string door)
+        {
+            int nextRoomID = roomAdjacencyList.GetAdjacency(currMapID, door);
+            if (nextRoomID != 0)
+            {
+                currMapID = nextRoomID;
+                LoadRoom();
+            }
+        }
+
         public void PrevMap()
         {
             currMapID -= 1;
@@ -91,6 +102,8 @@ namespace Game1.Code.LoadFile
             {
                 currMapID = MAP_COUNT;
             }
+
+            LoadRoom();
         }
 
         public void NextMap()
@@ -100,6 +113,8 @@ namespace Game1.Code.LoadFile
             {
                 currMapID = 1;
             }
+
+            LoadRoom();
         }
 
         public bool SwitchToAlternative()
