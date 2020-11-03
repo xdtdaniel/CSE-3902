@@ -89,7 +89,7 @@ namespace Game1
                 }               
                 return true;
             } 
-            else if (game.link.GetRectangle().Y >= 112 * scale) 
+            else if (game.link.GetRectangle().Y >= 112 * scale + 56 * scale) 
             {
                 if (CanChangeDirection)
                 {
@@ -106,7 +106,7 @@ namespace Game1
         private bool HitEdge()
         {
             Boolean outside = false;
-            if (Location.Y < 88 * scale || Location.X > 112 * scale)
+            if (Location.Y < 88 * scale + 56 * scale || Location.X > 112 * scale)
             {
                 outside = true;
             }

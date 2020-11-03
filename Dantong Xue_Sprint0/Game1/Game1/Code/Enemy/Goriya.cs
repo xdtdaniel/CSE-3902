@@ -22,7 +22,7 @@ namespace Game1.Enemy
         private bool CanTurn = true;
         private int FrameBound;
 
-        public int hp = 30;
+        public int hp = 3;
         private int DamageTimer = 0;
         private int FlashRateModifier = 0;
 
@@ -222,7 +222,7 @@ namespace Game1.Enemy
 
         private int UpBlocked()
         {
-            if (Location.Y <= 32 * scale || UpCollide)
+            if (Location.Y <= 32 * scale + 56 * scale || UpCollide)
             {
                 return 0;
             }
@@ -246,7 +246,7 @@ namespace Game1.Enemy
 
         private int DownBlocked()
         {
-            if (Location.Y >= 128 * scale || DownCollide)
+            if (Location.Y >= 128 * scale + 56 * scale || DownCollide)
             {
                 return 0;
             }

@@ -25,7 +25,7 @@ namespace Game1
         private double Velocity = 0;
         private double MaxVelocity = 3;
         private Random Rnd;
-        private int hp = 10;
+        private int hp = 1;
 
         // will be used later
         //private int DamageTimer = 0;
@@ -219,7 +219,7 @@ namespace Game1
         private Boolean IsOutsideBound()
         {
             Boolean outside = false;
-            if (Location.X <= 32 * scale || Location.Y <= (32 - 4) * scale || Location.Y >= 128 * scale || Location.X >= 208 * scale)
+            if (Location.X <= 32 * scale || Location.Y <= (32 - 4) * scale + 56 * scale || Location.Y >= 128 * scale + 56 * scale || Location.X >= 208 * scale)
             {
                 outside = true;
             }
