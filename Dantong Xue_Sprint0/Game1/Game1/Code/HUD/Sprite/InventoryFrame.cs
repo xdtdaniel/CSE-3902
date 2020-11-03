@@ -11,10 +11,9 @@ namespace Game1.Code.HUD.Sprite
         private int height;
         private int width;
         private int x;
-        private int minY;
         private int y;
-        private int maxY;
-        private int factor;
+        private int yOrigin;
+        private int yDistance;
 
         private Texture2D Texture;
         public InventoryFrame() {
@@ -22,10 +21,9 @@ namespace Game1.Code.HUD.Sprite
             height = 88 * scale;
             width = 256 * scale;
             x = 0;
-            minY = -176 * scale;
-            y = minY;
-            maxY = 0;
-            factor = 1;
+            y = -176 * scale;
+            yOrigin = y;
+            yDistance = 176 * scale;
 
             Texture = HUDFactory.LoadInventoryFrame();
         }
@@ -41,14 +39,14 @@ namespace Game1.Code.HUD.Sprite
         {
             if (enabled)
             {
-                if (y < maxY)
+                if (y < yOrigin + yDistance)
                 {
                     y += speed;
                 }
             }
             else
             {
-                if (y > minY)
+                if (y > yOrigin)
                 {
                     y -= speed;
                 }

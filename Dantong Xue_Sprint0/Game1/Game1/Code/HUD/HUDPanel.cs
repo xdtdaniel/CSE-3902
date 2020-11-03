@@ -20,6 +20,8 @@ namespace Game1.Code.HUD
         private IHUDSprite inventoryFrame;
         private IHUDSprite dungeonPauseScreenFrame;
         private IHUDSprite dungeonMiniMapFrame;
+        private IHUDSprite hudSymbol;
+        private HUDHeartAmount hudHeart;
 
         // for test
         bool pause;
@@ -29,15 +31,17 @@ namespace Game1.Code.HUD
 
             scale = (int)LoadAll.Instance.scale;
             level = 1;
-            rollingSpeed = 8;
+            rollingSpeed = 3 * scale;
 
             HUDFrame = new HUDFrame();
             inventoryFrame = new InventoryFrame();
             dungeonPauseScreenFrame = new DungeonPauseScreenFrame();
             dungeonMiniMapFrame = new DungeonMiniMapFrame(level);
+            hudSymbol = new HUDSymbol();
+            hudHeart = new HUDHeartAmount(game.link.itemList);
 
-            // for test
-            pause = false;
+        // for test
+        pause = false;
         }
 
         public void HUDUpdate()
@@ -50,6 +54,7 @@ namespace Game1.Code.HUD
             inventoryFrame.Update(pause, rollingSpeed);
             dungeonPauseScreenFrame.Update(pause, rollingSpeed);
             dungeonMiniMapFrame.Update(pause, rollingSpeed);
+            hudSymbol.Update(pause, rollingSpeed);
 
         }
 
@@ -59,6 +64,8 @@ namespace Game1.Code.HUD
             inventoryFrame.Draw(game._spriteBatch);
             dungeonPauseScreenFrame.Draw(game._spriteBatch);
             dungeonMiniMapFrame.Draw(game._spriteBatch);
+            hudSymbol.Draw(game._spriteBatch);
+            hudHeart.DrawCount(game._spriteBatch);
         }
 
     }

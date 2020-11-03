@@ -44,7 +44,7 @@ namespace Game1.Player.PlayerCharacter
             link.damageTimeCounter = 0;
             link.isDamaged = true;
             // test collision
-            link.health -= 10;
+            link.itemList["heart"] -= 1;
         }
         public void KnockedBack(string collisionSide)
         {

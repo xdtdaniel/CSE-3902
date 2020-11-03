@@ -13,11 +13,11 @@ namespace Game1.Code.HUD.Sprite
         private int width;
         private int levelNumberSideLength;
         private int mapX;
-        private int minMapY;
         private int mapY;
         private int levelX;
         private int levelY;
-        private int maxMapY;
+        private int yOrigin;
+        private int yDistance;
 
         private Texture2D Texture;
         private Texture2D[] levelTexture;
@@ -27,11 +27,11 @@ namespace Game1.Code.HUD.Sprite
             width = 64 * scale;
             levelNumberSideLength = 8 * scale;
             mapX = 16 * scale;
-            minMapY = 8 * scale;
-            mapY = minMapY;
+            mapY = 8 * scale;
             levelX = 64 * scale;
             levelY = mapY;
-            maxMapY = 184 * scale;
+            yOrigin = mapY;
+            yDistance = 176 * scale;
 
             Texture = HUDFactory.LoadDungeonMiniMapFrame();
             levelTexture = new Texture2D[2];
@@ -56,7 +56,7 @@ namespace Game1.Code.HUD.Sprite
         {
             if (enabled)
             {
-                if (mapY < maxMapY)
+                if (mapY < yOrigin + yDistance)
                 {
                     mapY += speed;
                     levelY += speed;
@@ -64,7 +64,7 @@ namespace Game1.Code.HUD.Sprite
             }
             else
             {
-                if (mapY > minMapY)
+                if (mapY > yOrigin)
                 {
                     mapY -= speed;
                     levelY -= speed;

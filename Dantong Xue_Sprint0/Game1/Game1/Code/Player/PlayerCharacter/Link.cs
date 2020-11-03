@@ -23,8 +23,6 @@ namespace Game1.Player.PlayerCharacter
         public bool isDamaged;
         public bool isMoving;
         public bool movable;
-        public int maxHealth;
-        public int health;
         public bool isDead;
         public int defaultSpeed;
         public int xSpeed, ySpeed;
@@ -56,11 +54,9 @@ namespace Game1.Player.PlayerCharacter
             isDamaged = false;
             isMoving = false;
             movable = true;
-            maxHealth = 60;
-            health = maxHealth;
             isDead = false;
             defaultSpeed = xSpeed = ySpeed = 5;
-            attackDamage = 10;
+            attackDamage = 1;
 
             linkWidth = (int)(13 * LoadAll.Instance.scale);
             linkHeight = (int)(13 * LoadAll.Instance.scale);
@@ -84,6 +80,14 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("ruby", 0);
             itemList.Add("triforce", 0);
             itemList.Add("fairy", 0);
+
+            // set max health = 6. One container = 2 health
+            // test
+            itemList["heartcontainer"] = 32;
+
+            // set current health = 6
+            // test
+            itemList["heart"] = 17;
 
             state = new NormalLink(this);
 

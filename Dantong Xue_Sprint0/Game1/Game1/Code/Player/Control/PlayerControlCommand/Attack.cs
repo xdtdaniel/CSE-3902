@@ -22,7 +22,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                 if (attackIndex == 0)
                 {
                     game.link.state.AttackN();
-                    if (game.link.health == game.link.maxHealth)
+                    if (game.link.itemList["heart"] == game.link.itemList["heartcontainer"])
                     {
                         game.link.item[game.link.itemIndex].UseItem(-1);
                     }
@@ -31,7 +31,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                 else if (attackIndex == 1)
                 {
                     game.link.state.AttackZ();
-                    if (game.link.health == game.link.maxHealth)
+                    if (game.link.itemList["heart"] == game.link.itemList["heartcontainer"])
                     {
                         game.link.item[game.link.itemIndex].UseItem(-2);
                     }

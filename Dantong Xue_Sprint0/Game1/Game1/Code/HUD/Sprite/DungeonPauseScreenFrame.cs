@@ -12,10 +12,9 @@ namespace Game1.Code.HUD.Sprite
         private int height;
         private int width;
         private int x;
-        private int minY;
         private int y;
-        private int maxY;
-        private int factor;
+        private int yOrigin;
+        private int yDistance;
 
         private Texture2D Texture;
         public DungeonPauseScreenFrame() {
@@ -23,10 +22,9 @@ namespace Game1.Code.HUD.Sprite
             height = 88 * scale;
             width = 256 * scale;
             x = 0;
-            minY = -88 * scale;
-            y = minY;
-            maxY = 88 * scale;
-            factor = 1;
+            y = -88 * scale;
+            yOrigin = y;
+            yDistance = 176 * scale;
 
             Texture = HUDFactory.LoadDungeonPauseScreenFrame();
         }
@@ -42,14 +40,14 @@ namespace Game1.Code.HUD.Sprite
         {
             if (enabled)
             {
-                if (y < maxY)
+                if (y < yOrigin + yDistance)
                 {
                     y += speed;
                 }
             }
             else
             {
-                if (y > minY)
+                if (y > yOrigin)
                 {
                     y -= speed;
                 }
