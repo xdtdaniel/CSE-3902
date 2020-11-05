@@ -30,10 +30,12 @@ namespace Game1.Code.LoadFile
         private List<IBlock> movables;
         private const int MAP_COUNT = 18;
         private RoomAdjacencyList roomAdjacencyList;
+        private List<Tuple<IBlock, Vector2>> nextRoomMapBlocksToDraw;
+        private Game1 game1;
 
         public int multiplier { get; set; }
         public double scale { get; set; }
-        public Vector2 startPos { get; set; }
+        public Vector2 startPos;
 
         /* 
          * This corresponds to the door status for the room.
@@ -62,19 +64,45 @@ namespace Game1.Code.LoadFile
             hasAlternative = new List<int>() { 5, 8, 9, 10, 13, 14};
 
             roomAdjacencyList = new RoomAdjacencyList();
+            nextRoomMapBlocksToDraw = new List<Tuple<IBlock, Vector2>>();
+        }
+
+        public void GetGameObject(Game1 g)
+        {
+            game1 = g;
+        }
+
+        private void ScrollRoom(string scrollingDirection)
+        {
+            // change starting position for scrolling transition
+            switch (scrollingDirection)
+            {
+                case "left":
+                    startPos.X -= (float)(256 * scale);
+                    break;
+                case "right":
+                    startPos.X += (float)(256 * scale);
+                    break;
+                case "up":
+                    startPos.Y -= (float)(176 * scale);
+                    break;
+                case "down":
+                    startPos.Y += (float)(176 * scale);
+                    break;
+            }
         }
 
 
-        private string GetRoomFileName()
+        private string GetRoomFileName(int mapID)
         {
             string mapName;
-            if (isSwitched[currMapID])
+            if (isSwitched[mapID])
             {
-                mapName = currMapID.ToString() + "_" + Convert.ToString(isUnlocked[currMapID], 2).PadLeft(4, '0') + "_after.csv";
+                mapName = mapID.ToString() + "_" + Convert.ToString(isUnlocked[mapID], 2).PadLeft(4, '0') + "_after.csv";
             }
             else
             {
-                mapName = currMapID.ToString() + "_" + Convert.ToString(isUnlocked[currMapID], 2).PadLeft(4, '0') + ".csv";
+                mapName = mapID.ToString() + "_" + Convert.ToString(isUnlocked[mapID], 2).PadLeft(4, '0') + ".csv";
             }
 
             return mapName;
@@ -82,18 +110,23 @@ namespace Game1.Code.LoadFile
 
         public void LoadRoom()
         {
-            LoadMap.Instance.LoadOneMap(GetRoomFileName());
+            LoadMap.Instance.LoadOneMap(GetRoomFileName(currMapID));
         }
 
         public void ChangeRoom(string door)
         {
             int nextRoomID = roomAdjacencyList.GetAdjacency(currMapID, door);
+            
             if (nextRoomID != 0)
             {
+                ScrollRoom(door);
+                game1.camera.UpdateMovingState(door);
                 currMapID = nextRoomID;
+                nextRoomMapBlocksToDraw.Clear();
                 LoadRoom();
             }
         }
+
 
         public void PrevMap()
         {
@@ -134,6 +167,7 @@ namespace Game1.Code.LoadFile
 
         public List<Tuple<IBlock, Vector2>> GetMapBlocksToDraw()
         {
+            
             return LoadMap.Instance.GetBlocksToDraw();
         }
 

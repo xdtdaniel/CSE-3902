@@ -72,7 +72,7 @@ namespace Game1.Code
             Bounds = bounds.Bounds;
             UpdateMatrix();
 
-            UpdateMovingState();          
+            UpdateMovingState("");          
 
             if (moving) {
                 if (direction == 1 || direction == 3) {
@@ -103,26 +103,26 @@ namespace Game1.Code
 
         }
 
-        private void UpdateMovingState() {
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && !moving)
+        public void UpdateMovingState(string movingDirection) {
+            if ((Keyboard.GetState().IsKeyDown(Keys.Up) && !moving) || movingDirection == "up")
             {
                 moving = true;
                 direction = 0;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Down) && !moving)
+            if ((Keyboard.GetState().IsKeyDown(Keys.Down) && !moving) || movingDirection == "down")
             {
                 moving = true;
                 direction = 2;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && !moving)
+            if ((Keyboard.GetState().IsKeyDown(Keys.Left) && !moving) || movingDirection == "left")
             {
                 moving = true;
                 direction = 3;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right) && !moving)
+            if ((Keyboard.GetState().IsKeyDown(Keys.Right) && !moving) || movingDirection == "right")
             {
                 moving = true;
                 direction = 1;

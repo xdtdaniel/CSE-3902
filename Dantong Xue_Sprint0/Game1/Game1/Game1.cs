@@ -80,6 +80,7 @@ namespace Game1
             link = new Link();
             playerPanel = new PlayerPanel(this);
             hudPanel = new HUDPanel(this);
+            LoadAll.Instance.GetGameObject(this);
 
             quitResetController = new QuitResetController();
 
