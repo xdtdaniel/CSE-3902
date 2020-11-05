@@ -30,7 +30,7 @@ namespace Game1.Code.LoadFile
         private List<IBlock> movables;
         private const int MAP_COUNT = 18;
         private RoomAdjacencyList roomAdjacencyList;
-        private List<Tuple<IBlock, Vector2>> nextRoomMapBlocksToDraw;
+        private List<Tuple<IBlock, Vector2>> oldRoomMapBlocksToDraw;
         private Game1 game1;
 
         public int multiplier { get; set; }
@@ -64,7 +64,7 @@ namespace Game1.Code.LoadFile
             hasAlternative = new List<int>() { 5, 8, 9, 10, 13, 14};
 
             roomAdjacencyList = new RoomAdjacencyList();
-            nextRoomMapBlocksToDraw = new List<Tuple<IBlock, Vector2>>();
+            oldRoomMapBlocksToDraw = new List<Tuple<IBlock, Vector2>>();
         }
 
         public void GetGameObject(Game1 g)
@@ -119,12 +119,17 @@ namespace Game1.Code.LoadFile
             
             if (nextRoomID != 0)
             {
+                oldRoomMapBlocksToDraw = LoadMap.Instance.GetBlocksToDraw();
                 ScrollRoom(door);
                 game1.camera.UpdateMovingState(door);
                 currMapID = nextRoomID;
-                nextRoomMapBlocksToDraw.Clear();
                 LoadRoom();
             }
+        }
+
+        public void ClearOldRoom()
+        {
+            oldRoomMapBlocksToDraw.Clear();
         }
 
 
@@ -165,10 +170,12 @@ namespace Game1.Code.LoadFile
             return LoadMap.Instance.GetArtifacts();
         }
 
-        public List<Tuple<IBlock, Vector2>> GetMapBlocksToDraw()
+        public List<List<Tuple<IBlock, Vector2>>> GetMapBlocksToDraw()
         {
-            
-            return LoadMap.Instance.GetBlocksToDraw();
+            List<List<Tuple<IBlock, Vector2>>> toDraw = new List<List<Tuple<IBlock, Vector2>>>();
+            toDraw.Add(oldRoomMapBlocksToDraw);
+            toDraw.Add(LoadMap.Instance.GetBlocksToDraw());
+            return toDraw;
         }
 
         public List<IBlock> GetMovableBlocks()
