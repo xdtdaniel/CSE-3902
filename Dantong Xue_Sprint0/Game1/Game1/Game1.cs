@@ -47,7 +47,6 @@ namespace Game1
         public List<Tuple<IItemSprite, string>> inRoomList;
         public List<Tuple<IItemSprite, string>> notInRoomList;
 
-
         private IController mapMouseController;
 
         //Testing controller for sprint 3
@@ -57,6 +56,8 @@ namespace Game1
         HUDPanel hudPanel;
 
         private QuitResetController quitResetController;
+
+        public Camera camera;
 
         public Game1()
         {
@@ -81,6 +82,8 @@ namespace Game1
             hudPanel = new HUDPanel(this);
 
             quitResetController = new QuitResetController();
+
+            camera = new Camera(GraphicsDevice.Viewport);
 
         }
 
@@ -138,6 +141,8 @@ namespace Game1
             hudPanel.HUDUpdate();
             //item selection
 
+            camera.UpdateCamera(GraphicsDevice.Viewport);
+            
             base.Update(gameTime);
 
         }
@@ -147,7 +152,7 @@ namespace Game1
         {
             base.Draw(gameTime);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(transformMatrix: camera.Transform);
 
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
             DrawMap.Instance.DrawMovableBlocks(_spriteBatch, movableBlocks);
