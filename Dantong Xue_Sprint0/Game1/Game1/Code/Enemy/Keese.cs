@@ -18,7 +18,6 @@ namespace Game1
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
-        private Vector2 LocationOffset{ get; set; }
         private int MovingState = 0;
         private int Direction;
         private int StateTimer = 0;
@@ -34,20 +33,19 @@ namespace Game1
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
 
-        public Keese(Vector2 location, Vector2 offset)
+        public Keese(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetKeeseSpriteSheet();
             TotalFrames = 2;
             Columns = TotalFrames;
             CurrentFrame = 1;
             Location = location;
-            LocationOffset = offset;
             Rnd = new Random();
             Direction = Rnd.Next(7);
-            CollisionRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y + 4 * scale), 16 * scale, 10 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
         }
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -55,7 +53,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)(LocationOffset.X + Location.X - scale), (int)(LocationOffset.Y + Location.Y - scale), width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X - scale), (int)(offset.Y + Location.Y - scale - 56 * scale), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -274,7 +272,7 @@ namespace Game1
 
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)(Location.X + LocationOffset.X), (int)(LocationOffset.Y + Location.Y + 4 * scale), 16 * scale, 10 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
         }
 
         public Rectangle GetRectangle() 

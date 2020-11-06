@@ -42,18 +42,21 @@ namespace Game1.Code.LoadFile
             {
                 if (i == 7)
                 {
-                    LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", PreloadMap((i + 1).ToString() + "_enemyblock.csv", RoomLocationOffset(i + 1)), i + 1);
+                    LoadMap.Instance.LoadOneMap(((i + 1).ToString() + "_0000.csv"));
+                    //LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", PreloadMap((i + 1).ToString() + "_enemyblock.csv", RoomLocationOffset(i + 1)), i + 1);
                 }
                 else 
                 {
-                    LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", PreloadMap((i + 1).ToString() + "_0000.csv", RoomLocationOffset(i + 1)), i + 1);
+                    LoadMap.Instance.LoadOneMap((i + 1).ToString() + "_0000.csv");
+                    //LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", PreloadMap((i + 1).ToString() + "_0000.csv", RoomLocationOffset(i + 1)), i + 1);
                 }
+                LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", LoadMap.Instance.GetBlocks());
                 AllEnemyList[i] = Enemies;
                 Enemies = new List<Tuple<IEnemy, string>>();
             }
         }
 
-        private void LoadOneRoomEnemy(string mapName, List<Microsoft.Xna.Framework.Rectangle> blockList, int roomNumber)
+        private void LoadOneRoomEnemy(string mapName, List<Microsoft.Xna.Framework.Rectangle> blockList)
         {
             EnemyList = new List<Tuple<int, int, string>>();
 
@@ -94,62 +97,62 @@ namespace Game1.Code.LoadFile
                 int X = EnemyList[index].Item1 * multiplier * scale;
                 int Y = EnemyList[index].Item2 * multiplier * scale + 56 * scale;
                 location = new Vector2(X, Y);
-                offset = RoomLocationOffset(roomNumber);
+                offset = new Vector2(0, 0);
 
                 IEnemy Enemy;
 
                 switch (EnemyList[index].Item3)
                 {
                     case "aquamentus":
-                        Enemy = new Aquamentus(location, offset);
+                        Enemy = new Aquamentus(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "aquamentus"));
                         break;
                     case "gel":
-                        Enemy = new Gel(location, blockList, offset);
+                        Enemy = new Gel(location, blockList);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "gel"));
                         break;
                     case "keese":
-                        Enemy = new Keese(location, offset);
+                        Enemy = new Keese(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "keese"));
                         break;
                     case "stalfos":
-                        Enemy = new Stalfos(location, blockList, offset);
+                        Enemy = new Stalfos(location, blockList);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "stalfos"));
                         break;
                     case "goriya":
-                        Enemy = new Goriya(location, blockList, offset);
+                        Enemy = new Goriya(location, blockList);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "goriya"));
                         break;
                     case "trap0":
-                        Enemy = new Trap0(location, offset);
+                        Enemy = new Trap0(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
                         break;
                     case "trap1":
-                        Enemy = new Trap1(location, offset);
+                        Enemy = new Trap1(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
                         break;
                     case "trap2":
-                        Enemy = new Trap2(location, offset);
+                        Enemy = new Trap2(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
                         break;
                     case "trap3":
-                        Enemy = new Trap3(location, offset);
+                        Enemy = new Trap3(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
                         break;
                     case "wallmaster":
-                        Enemy = new Wallmaster(location, offset);
+                        Enemy = new Wallmaster(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
                         break;
                     case "merchant":
-                        Enemy = new Merchant(location, offset);
+                        Enemy = new Merchant(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "merchant"));
                         break;
                     case "oldman":
-                        Enemy = new OldMan(location, offset);
+                        Enemy = new OldMan(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "oldman"));
                         break;
                     case "fire":
-                        Enemy = new Fire(location, offset);
+                        Enemy = new Fire(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "fire"));
                         break;
                 }
@@ -247,125 +250,6 @@ namespace Game1.Code.LoadFile
                 return false;
             }
         }
-
-        private List<Rectangle> PreloadMap(string mapName, Vector2 offset)
-
-        {
-            Vector2 startPos = new Vector2(offset.X, offset.Y + 56 * scale);
-
-            List<Rectangle> blocks = new List<Rectangle>();
-
-            List<Tuple<int, int, string>> mapElementList = new List<Tuple<int, int, string>>();
-
-            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pathNew = filePath.Substring(0, filePath.IndexOf("bin"));
-            pathNew = pathNew + "Maps\\Room\\" + mapName;
-
-
-            StreamReader streamReader = new StreamReader(pathNew);
-            string line;
-            string[] strList = new string[MAX_COLUMNS];
-            int cell_x = 0;
-            int cell_y = 0;
-            //each loop add 1 line to list
-            while (!streamReader.EndOfStream)
-            {
-                line = streamReader.ReadLine();
-                //seperate a line by comma. this string array should have all strings seperately.              
-                strList = line.Split(',');
-
-                cell_x = 0;
-
-                //cell_x, and cell_y represent the postion in csv
-                for (int i = 0; i < strList.Length; i++)
-                {
-                    if (strList[i] != "")
-                    {
-                        mapElementList.Add(new Tuple<int, int, string>(cell_x, cell_y, strList[i]));
-                    }
-
-                    cell_x++;
-                }
-                cell_y++;
-
-            }
-
-            Vector2 location;
-
-            //switch case for each string
-            for (int index = 0; index < mapElementList.Count; index++)
-            {
-
-                float X = (float)(mapElementList[index].Item1 * multiplier * scale + startPos.X);
-                float Y = (float)(mapElementList[index].Item2 * multiplier * scale + startPos.Y);
-                location = new Vector2(X, Y);
-
-                IBlock blockToDraw;
-
-                Console.WriteLine(mapElementList[index].Item3);
-
-                switch (mapElementList[index].Item3)
-                {
-                    case "dragon":
-                        blockToDraw = BlockFactory.Instance.CreateDragon();                        
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "dragonBlue":
-                        blockToDraw = BlockFactory.Instance.CreateBlueDragon();                       
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "fire":
-                        blockToDraw = BlockFactory.Instance.CreateFire();                      
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "fish":
-                        blockToDraw = BlockFactory.Instance.CreateFish();                        
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "fishBlue":
-                        blockToDraw = BlockFactory.Instance.CreateBlueFish();                       
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "floatBlock":
-                        blockToDraw = BlockFactory.Instance.CreateFloatBlock();                      
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "grey":
-                        blockToDraw = BlockFactory.Instance.CreateGreyBlock();                      
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;                                                              
-                    case "wallFront":
-                        blockToDraw = BlockFactory.Instance.CreateFrontWall();                      
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "wallLeft":
-                        blockToDraw = BlockFactory.Instance.CreateLeftWall();
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "wallRight":
-                        blockToDraw = BlockFactory.Instance.CreateRightWall();
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "wallBack":
-                        blockToDraw = BlockFactory.Instance.CreateBackWall();
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "wallBW":
-                        blockToDraw = BlockFactory.Instance.CreateBWWall();
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                    case "wallGrey":
-                        blockToDraw = BlockFactory.Instance.CreateGreyWall();
-                        break;
-                    case "water":
-                        blockToDraw = BlockFactory.Instance.CreateWater();
-                        blocks.Add(blockToDraw.GetRectangle(location));
-                        break;
-                }
-            }
-            return blocks;
-        }
-
         public List<Tuple<IBlock, Vector2>> LoadRoom11Walls()
 
         {

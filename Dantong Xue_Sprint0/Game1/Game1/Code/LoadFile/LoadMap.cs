@@ -370,5 +370,10 @@ namespace Game1.Code.LoadFile
         {
             return movableBlocksList;
         }
+
+        public List<Rectangle> GetBlocks()
+        {
+            return blocks;
+        }
     }
 }

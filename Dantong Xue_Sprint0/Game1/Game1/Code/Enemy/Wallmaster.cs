@@ -16,7 +16,6 @@ namespace Game1.Enemy
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
-        private Vector2 LocationOffset { get; set; }
         private int FrameRateModifier = 0;
 
         private int hp = 4;     
@@ -27,7 +26,7 @@ namespace Game1.Enemy
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
 
-        public Wallmaster(Vector2 location, Vector2 offset)
+        public Wallmaster(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetWallmasterSpriteSheet();
             TotalFrames = 8;
@@ -35,11 +34,10 @@ namespace Game1.Enemy
             Rows = 4;
             CurrentFrame = 0;
             Location = location;
-            LocationOffset = offset;
-            CollisionRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y), 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
         }
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -47,7 +45,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y), width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             if (DamageTimer > 0)
             {

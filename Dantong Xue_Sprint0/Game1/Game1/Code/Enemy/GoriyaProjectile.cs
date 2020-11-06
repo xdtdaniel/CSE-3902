@@ -22,13 +22,12 @@ namespace Game1.Enemy
         private bool IsOnScreen;
         private int ChangeDirectionTimer = 0;
         private int FrameRateModifier = 0;
-        private Vector2 LocationOffset { get; set; }
 
         private Rectangle CollisionRectangle;
 
         private int scale = 3;
 
-        public GoriyaProjectile(Vector2 offset)
+        public GoriyaProjectile()
         {
             Random Rnd = new Random();
             Texture = EnemyTextureStorage.GetGoriyaProjectileSpriteSheet();
@@ -37,12 +36,11 @@ namespace Game1.Enemy
             CurrentFrame = Rnd.Next(8);
             Velocity = 4.5;
             NegativeVelocity = -4.5;
-            LocationOffset = offset;
 
-            CollisionRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y - 4 * scale), 8 * scale, 8 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y - 4 * scale), 8 * scale, 8 * scale);
         }
 
-        public void DrawProjectile(SpriteBatch spriteBatch)
+        public void DrawProjectile(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -50,7 +48,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)(LocationOffset.X + Location.X + 4 * scale), (int)(LocationOffset.Y + Location.Y), width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X + 4 * scale), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -124,7 +122,7 @@ namespace Game1.Enemy
 
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y - 4 * scale), 8 * 5, 8 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y - 4 * scale), 8 * 5, 8 * scale);
         }
 
         private bool HitEdge()

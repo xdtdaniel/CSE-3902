@@ -16,7 +16,6 @@ namespace Game1
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
-        private Vector2 LocationOffset { get; set; }
         private int MovingState = 0;
         private int Direction = 0;
         private int StateTimer = 0;
@@ -35,20 +34,19 @@ namespace Game1
         private bool LeftCollide = false;
         private bool RightCollide = false;
 
-        public Gel(Vector2 location, List<Rectangle> blockList, Vector2 offset)
+        public Gel(Vector2 location, List<Rectangle> blockList)
         {
             Texture = EnemyTextureStorage.GetGelSpriteSheet();
             TotalFrames = 2;
             Columns = TotalFrames;
             CurrentFrame = 0;
             Location = location;
-            LocationOffset = offset;
 
-            CollisionRectangle = new Rectangle((int)(LocationOffset.X + Location.X + 1 * scale), (int)(LocationOffset.Y + Location.Y + 1 * scale), 8 * scale, 8 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X + 1 * scale), (int)(Location.Y + 1 * scale), 8 * scale, 8 * scale);
             BlockList = blockList;
         }
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -56,7 +54,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y), width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -166,7 +164,7 @@ namespace Game1
 
                 Location = new Vector2(x, y);
 
-                CollisionRectangle = new Rectangle((int)(LocationOffset.X + Location.X + 4 * scale), (int)(LocationOffset.Y + Location.Y + 4 * scale), 8 * scale, 8 * scale);
+                CollisionRectangle = new Rectangle((int)(Location.X + 4 * scale), (int)(Location.Y + 4 * scale), 8 * scale, 8 * scale);
 
                 MoveTimer++;
             }

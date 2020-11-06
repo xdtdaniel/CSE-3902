@@ -9,7 +9,7 @@ namespace Game1.Enemy
     public interface IProjectile
     {
         public void UpdateProjectile();
-        public void DrawProjectile(SpriteBatch spriteBatch);
+        public void DrawProjectile(SpriteBatch spriteBatch, Vector2 startPosition);
         public bool GetIsOnScreen();
         public void SetIsOnScreen(bool boolean);
         public void SetLocation(Vector2 location);
