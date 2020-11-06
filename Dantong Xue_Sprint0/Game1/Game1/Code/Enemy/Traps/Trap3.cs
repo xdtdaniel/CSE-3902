@@ -18,8 +18,7 @@ namespace Game1
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
-
-        // will be used later
+        private Vector2 LocationOffset { get; set; }
         private int MovingState;
         private int Direction;
         private double Velocity;
@@ -31,17 +30,18 @@ namespace Game1
         private int hp = 100;
         private bool CanChangeDirection;
 
-        public Trap3(Vector2 location)
+        public Trap3(Vector2 location, Vector2 offset)
         {
             Texture = EnemyTextureStorage.GetTrapSpriteSheet();
             TotalFrames = 1;
             Columns = TotalFrames;
             CurrentFrame = 0;
             Location = location;
+            LocationOffset = offset;
             OriginalLocation = location;
             MovingState = 0;
             CanChangeDirection = true;
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.X + Location.Y), 16 * scale, 16 * scale);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -52,7 +52,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -129,7 +129,7 @@ namespace Game1
 
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y , 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y), 16 * scale, 16 * scale);
         }
 
         public void FireProjectile()

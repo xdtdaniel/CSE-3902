@@ -32,7 +32,7 @@ namespace Game1.Code
             //Position = Vector2.Zero;
             Position = new Vector2(384,348);
             HorizontalMoveTime = 256.0 / speed * scale;
-            VerticalMoveTime = 232.0 / speed * scale;
+            VerticalMoveTime = 176.0 / speed * scale;
         }
 
         

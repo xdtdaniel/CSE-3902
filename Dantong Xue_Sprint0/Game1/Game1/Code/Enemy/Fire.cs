@@ -14,6 +14,7 @@ namespace Game1.Enemy
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
+        private Vector2 LocationOffset { get; set; }
         private int FrameRateModifier = 0;
 
         private Rectangle CollisionRectangle;
@@ -21,14 +22,15 @@ namespace Game1.Enemy
         private List<IProjectile> ProjectileList = new List<IProjectile>();
         private int hp = 100;
 
-        public Fire(Vector2 location)
+        public Fire(Vector2 location, Vector2 offset)
         {
             Texture = EnemyTextureStorage.GetFireSpriteSheet();
             TotalFrames = 2;
             Columns = TotalFrames;
             CurrentFrame = 0;
             Location = location;
-            CollisionRectangle = new Rectangle((int) Location.X, (int) Location.Y, 16 * scale, 16 * scale);
+            LocationOffset = offset;
+            CollisionRectangle = new Rectangle((int) (LocationOffset.X + Location.X), (int) (LocationOffset.Y + Location.Y), 16 * scale, 16 * scale);
 
         }
         public void DrawEnemy(SpriteBatch spriteBatch)
@@ -39,7 +41,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(LocationOffset.X + Location.X), (int)(LocationOffset.Y + Location.Y), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }

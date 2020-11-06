@@ -109,6 +109,7 @@ namespace Game1
             ItemLoader = new LoadItem(LoadAll.Instance.GetCurrentMapID());
 
             EnemyLoader.LoadAllEnemy();
+
             ItemLoader.LoadAllItem();
 
             EnemyList = EnemyLoader.GetEnemyList();
@@ -124,7 +125,8 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {    
             mapMouseController.Update(this);
-         
+
+            EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
             EnemyList = EnemyLoader.GetEnemyList();
             inRoomList = ItemLoader.GetItemList();              
 

@@ -234,8 +234,5 @@ namespace Game1.Code.LoadFile
         {
             return mapColor;
         }
-
     }
-
-
 }
