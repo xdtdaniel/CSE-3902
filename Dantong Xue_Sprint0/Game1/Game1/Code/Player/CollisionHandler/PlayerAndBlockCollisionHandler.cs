@@ -30,8 +30,10 @@ namespace Game1.Code.Player
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "holes":
-                                link.StopMoving(collidedSide, interRect);
                                 LoadAll.Instance.ChangeRoom(collidedSide);
+                                doorSide = collidedSide;
+                                roomSwitched = true;
+                                link.movable = false;
                                 break;
                             case "openDoors":
                                 LoadAll.Instance.ChangeRoom(collidedSide);
