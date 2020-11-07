@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Game1.Code.LoadFile;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +10,6 @@ namespace Game1.Code.Enemy
     class DrawAndUpdateEnemy
     {
         private static DrawAndUpdateEnemy instance = new DrawAndUpdateEnemy();
-
         public static DrawAndUpdateEnemy Instance
         {
             get
@@ -21,7 +22,7 @@ namespace Game1.Code.Enemy
         {
             for (int i = 0; i < Enemies.Count; i++)
             {
-                Enemies[i].Item1.DrawEnemy(spriteBatch);
+                Enemies[i].Item1.DrawEnemy(spriteBatch, LoadAll.Instance.startPos);
             }
         }
 

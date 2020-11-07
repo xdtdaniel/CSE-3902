@@ -27,7 +27,6 @@ namespace Game1
         private Random Rnd;
         private int hp = 1;
 
-        // will be used later
         //private int DamageTimer = 0;
 
         private Rectangle CollisionRectangle;
@@ -43,10 +42,10 @@ namespace Game1
             Location = location;
             Rnd = new Random();
             Direction = Rnd.Next(7);
-            CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
         }
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -54,7 +53,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X - scale, (int)Location.Y - scale, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X - scale), (int)(offset.Y + Location.Y - scale - 56 * scale), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -219,10 +218,12 @@ namespace Game1
         private Boolean IsOutsideBound()
         {
             Boolean outside = false;
-            if (Location.X <= 32 * scale || Location.Y <= (32 - 4) * scale + 56 * scale || Location.Y >= 128 * scale + 56 * scale || Location.X >= 208 * scale)
+
+            if (Location.X <= (32 * scale) || Location.Y <= ((32 - 4) * scale + 56 * scale) || Location.Y >= (128 * scale + 56 * scale) || Location.X >= (208 * scale))
             {
                 outside = true;
             }
+
             return outside;
         }
 
@@ -271,7 +272,7 @@ namespace Game1
 
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)Location.X, (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y + 4 * scale), 16 * scale, 10 * scale);
         }
 
         public Rectangle GetRectangle() 

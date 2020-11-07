@@ -18,8 +18,6 @@ namespace Game1
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
-
-        // will be used later
         private int MovingState;
         private int Direction;
         private double Velocity;
@@ -41,10 +39,10 @@ namespace Game1
             OriginalLocation = location;
             MovingState = 0;
             CanChangeDirection = true;
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
         }
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -52,7 +50,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -129,7 +127,7 @@ namespace Game1
 
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y , 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y) , 16 * scale, 16 * scale);
         }
 
         public void FireProjectile()

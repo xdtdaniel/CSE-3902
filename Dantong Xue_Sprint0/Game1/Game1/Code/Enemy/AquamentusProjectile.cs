@@ -30,10 +30,10 @@ namespace Game1.Enemy
             Columns = TotalFrames;
             CurrentFrame = 0;
             Velocity = 3.0;
-            CollisionRectangle = new Rectangle((int)Location.X + 4 * scale, (int)Location.Y + 3 * scale, 8 * scale, 10 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X + 4 * scale), (int)(Location.Y + 3 * scale), 8 * scale, 10 * scale);
         }
 
-        public void DrawProjectile(SpriteBatch spriteBatch)
+        public void DrawProjectile(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -41,7 +41,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X - 4 * scale, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X - 4 * scale), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -104,7 +104,7 @@ namespace Game1.Enemy
 
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)Location.X + 4 * scale, (int)Location.Y + 3 * scale, 8 * scale, 10 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X + 4 * scale), (int)(Location.Y + 3 * scale), 8 * scale, 10 * scale);
         }
 
         private bool HitEdge()

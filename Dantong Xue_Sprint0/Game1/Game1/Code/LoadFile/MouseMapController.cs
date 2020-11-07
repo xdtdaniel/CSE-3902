@@ -23,7 +23,6 @@ namespace Game1.Code.LoadFile
             if(newState.LeftButton == ButtonState.Pressed && oldState.LeftButton != ButtonState.Pressed)
             {
                 LoadAll.Instance.NextMap();
-                LoadAll.Instance.LoadRoom();
                 
                 g.EnemyLoader.Next();
                 g.ItemLoader.Next();
@@ -33,7 +32,6 @@ namespace Game1.Code.LoadFile
             else if (newState.RightButton == ButtonState.Pressed && oldState.RightButton != ButtonState.Pressed)
             {
                 LoadAll.Instance.PrevMap();
-                LoadAll.Instance.LoadRoom();
 
                 g.EnemyLoader.Previous();
                 g.ItemLoader.Previous();

@@ -10,7 +10,7 @@ namespace Game1
     public interface IEnemy
     {
         public void UpdateEnemy(Game1 game);
-        public void DrawEnemy(SpriteBatch spriteBatch);
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 startPosition);
         public void FireProjectile();
         public Rectangle GetRectangle();
         public List<IProjectile> GetProjectile();

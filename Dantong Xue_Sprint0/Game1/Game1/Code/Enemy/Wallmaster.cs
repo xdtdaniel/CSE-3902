@@ -34,11 +34,10 @@ namespace Game1.Enemy
             Rows = 4;
             CurrentFrame = 0;
             Location = location;
-
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
         }
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -46,7 +45,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             if (DamageTimer > 0)
             {

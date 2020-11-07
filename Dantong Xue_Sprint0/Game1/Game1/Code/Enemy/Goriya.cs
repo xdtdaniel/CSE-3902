@@ -51,12 +51,12 @@ namespace Game1.Enemy
             CanFire = true;
             FireTimer = 0;
 
-            CollisionRectangle = new Rectangle((int)Location.X + 1 * scale, (int)Location.Y, 14 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X + 1 * scale), (int)(Location.Y), 14 * scale, 16 * scale);
             ProjectileList = new List<IProjectile>();
             BlockList = blockList;
         }
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -64,7 +64,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             if (DamageTimer > 0)
             {
@@ -85,7 +85,7 @@ namespace Game1.Enemy
 
             if (Projectile.GetIsOnScreen())
             {
-                Projectile.DrawProjectile(spriteBatch);
+                Projectile.DrawProjectile(spriteBatch, offset);
             }
         }
 
@@ -329,7 +329,7 @@ namespace Game1.Enemy
 
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)Location.X + 1 * 5, (int)Location.Y, 14 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X + 1 * 5), (int)(Location.Y), 14 * scale, 16 * scale);
         }
 
         public void TakeDamage(int damageAmount)

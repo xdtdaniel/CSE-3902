@@ -63,6 +63,7 @@ namespace Game1.Code.LoadFile
         public void LoadOneMap(string mapName) 
         
         {
+            startPos = LoadAll.Instance.startPos;
             blocksListToDraw = new List<Tuple<IBlock, Vector2>>();
 
             // initialization of lists and artifacts dictionary
@@ -360,10 +361,6 @@ namespace Game1.Code.LoadFile
             return artifacts;
         }
 
-        public List<Rectangle> GetBlocks() {
-            return blocks;
-        }
-
         public List<Tuple<IBlock, Vector2>> GetBlocksToDraw()
         {
             return blocksListToDraw;
@@ -374,6 +371,9 @@ namespace Game1.Code.LoadFile
             return movableBlocksList;
         }
 
-
+        public List<Rectangle> GetBlocks()
+        {
+            return blocks;
+        }
     }
 }

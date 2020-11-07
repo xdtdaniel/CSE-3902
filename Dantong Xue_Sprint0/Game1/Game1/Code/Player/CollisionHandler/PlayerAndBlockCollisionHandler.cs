@@ -32,14 +32,12 @@ namespace Game1.Code.Player
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "holes":
-                                // to do
-                                // temp code
                                 link.StopMoving(collidedSide, interRect);
+                                LoadAll.Instance.ChangeRoom(collidedSide);
                                 break;
                             case "openDoors":
-                                // to do
-                                // temp code
                                 link.StopMoving(collidedSide, interRect);
+                                LoadAll.Instance.ChangeRoom(collidedSide); 
                                 break;
                             case "shutDoors":
                                 // to do

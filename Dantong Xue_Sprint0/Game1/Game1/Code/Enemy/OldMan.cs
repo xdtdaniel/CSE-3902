@@ -14,21 +14,22 @@ namespace Game1.Enemy
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
-
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
         private int hp = 100;
+
         public OldMan(Vector2 location) {
             Texture = EnemyTextureStorage.GetOldManSpriteSheet();
             TotalFrames = 1;
             Columns = TotalFrames;
             CurrentFrame = 0;
             Location = location;
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
+
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
         }
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -36,7 +37,7 @@ namespace Game1.Enemy
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -69,6 +70,5 @@ namespace Game1.Enemy
         {
             return hp;
         }
-
     }
 }

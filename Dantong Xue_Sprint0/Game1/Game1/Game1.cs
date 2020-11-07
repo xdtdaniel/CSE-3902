@@ -47,7 +47,6 @@ namespace Game1
         public List<Tuple<IItemSprite, string>> inRoomList;
         public List<Tuple<IItemSprite, string>> notInRoomList;
 
-
         private IController mapMouseController;
 
         //Testing controller for sprint 3
@@ -57,6 +56,8 @@ namespace Game1
         HUDPanel hudPanel;
 
         private QuitResetController quitResetController;
+
+        public Camera camera;
 
         public Game1()
         {
@@ -79,8 +80,11 @@ namespace Game1
             link = new Link();
             playerPanel = new PlayerPanel(this);
             hudPanel = new HUDPanel(this);
+            LoadAll.Instance.GetGameObject(this);
 
             quitResetController = new QuitResetController();
+
+            camera = new Camera(GraphicsDevice.Viewport);
 
         }
 
@@ -105,6 +109,7 @@ namespace Game1
             ItemLoader = new LoadItem(LoadAll.Instance.GetCurrentMapID());
 
             EnemyLoader.LoadAllEnemy();
+
             ItemLoader.LoadAllItem();
 
             EnemyList = EnemyLoader.GetEnemyList();
@@ -120,7 +125,8 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {    
             mapMouseController.Update(this);
-         
+
+            EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
             EnemyList = EnemyLoader.GetEnemyList();
             inRoomList = ItemLoader.GetItemList();              
 
@@ -138,6 +144,8 @@ namespace Game1
             hudPanel.HUDUpdate();
             //item selection
 
+            camera.UpdateCamera(GraphicsDevice.Viewport);
+            
             base.Update(gameTime);
 
         }
@@ -147,9 +155,10 @@ namespace Game1
         {
             base.Draw(gameTime);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(transformMatrix: camera.Transform);
 
-            DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw());
+            DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[0]);
+            DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[1]);
             DrawMap.Instance.DrawMovableBlocks(_spriteBatch, movableBlocks);
             DrawMap.Instance.DrawText(_spriteBatch, "EASTMOST PENNINSULA\n          IS THE SECRET", _spriteFont);
 

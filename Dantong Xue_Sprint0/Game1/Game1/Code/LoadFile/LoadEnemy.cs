@@ -13,6 +13,7 @@ using Game1.Code.Item.ItemInterface;
 using Game1.Enemy;
 using System.Reflection;
 using System.Diagnostics;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace Game1.Code.LoadFile
 {
@@ -34,18 +35,20 @@ namespace Game1.Code.LoadFile
         private List<Tuple<IEnemy, string>>[] AllEnemyList = new List<Tuple<IEnemy, string>>[MAP_COUNT];
         private List<Tuple<IEnemy, string>> Enemies = new List<Tuple<IEnemy, string>>();
 
-        public void LoadAllEnemy() {
-
+        public void LoadAllEnemy() 
+        {
             int i;
             for (i = 0; i < MAP_COUNT; i++) 
             {
                 if (i == 7)
                 {
-                    LoadMap.Instance.LoadOneMap((i + 1).ToString() + "_enemyblock.csv");
+                    LoadMap.Instance.LoadOneMap(((i + 1).ToString() + "_0000.csv"));
+                    //LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", PreloadMap((i + 1).ToString() + "_enemyblock.csv", RoomLocationOffset(i + 1)), i + 1);
                 }
                 else 
                 {
                     LoadMap.Instance.LoadOneMap((i + 1).ToString() + "_0000.csv");
+                    //LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", PreloadMap((i + 1).ToString() + "_0000.csv", RoomLocationOffset(i + 1)), i + 1);
                 }
                 LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", LoadMap.Instance.GetBlocks());
                 AllEnemyList[i] = Enemies;
@@ -86,6 +89,7 @@ namespace Game1.Code.LoadFile
             }
 
             Vector2 location;
+            Vector2 offset;
 
             for (int index = 0; index < EnemyList.Count; index++)
             {
@@ -93,6 +97,7 @@ namespace Game1.Code.LoadFile
                 int X = EnemyList[index].Item1 * multiplier * scale;
                 int Y = EnemyList[index].Item2 * multiplier * scale + 56 * scale;
                 location = new Vector2(X, Y);
+                offset = new Vector2(0, 0);
 
                 IEnemy Enemy;
 
@@ -156,12 +161,54 @@ namespace Game1.Code.LoadFile
 
         }
 
+        private Vector2 RoomLocationOffset(int roomNumber) {
+            switch (roomNumber) 
+            {
+                case 1:
+                    return new Vector2(-256 * scale, 5 * -176 * scale);
+                case 2:
+                    return new Vector2(0, 5 * -176 * scale);
+                case 3:
+                    // may need further modification
+                    return new Vector2(0, 0);
+                case 4:
+                    return new Vector2(0, 4 * -176 * scale);
+                case 5:
+                    return new Vector2(2 * 256 * scale, 4 * -176 * scale);
+                case 6:
+                    return new Vector2(3 * 256 * scale, 4 * -176 * scale);
+                case 7:
+                    return new Vector2(2 * -256 * scale, 3 * -176 * scale);
+                case 8:
+                    return new Vector2(-256 * scale, 3 * -176 * scale);
+                case 9:
+                    return new Vector2(0, 3 * -176 * scale);
+                case 10:
+                    return new Vector2(256 * scale, 3 * -176 * scale);
+                case 11:
+                    return new Vector2(2 * 256 * scale, 3 * -176 * scale);
+                case 12:
+                    return new Vector2(-256 * scale, 2 * -176 * scale);
+                case 13:
+                    return new Vector2(0, 2 * -176 * scale);
+                case 14:
+                    return new Vector2(256 * scale, 2 * -176 * scale);
+                case 15:
+                    return new Vector2(0, 176 * scale);
+                case 16:
+                    return new Vector2(-256 * scale, 0 * scale);
+                case 18:
+                    return new Vector2(256 * scale, 0 * scale);
+            }
+            return new Vector2(0, 0);
+        }
 
         public List<Tuple<IEnemy, string>> GetEnemyList() 
         {
             return AllEnemyList[CurrentMapID - 1];
         }
 
+        // Controller methods from Sprint 3, delete at some point
         public void Previous()
         {
             CurrentMapID--;
@@ -171,6 +218,7 @@ namespace Game1.Code.LoadFile
             }
         }
 
+        // Controller methods from Sprint 3, delete at some point
         public void Next()
         {
             CurrentMapID++;
@@ -185,6 +233,12 @@ namespace Game1.Code.LoadFile
             return CurrentMapID;
         }
 
+        public void SetCurrentMapID(int id)
+        {
+            CurrentMapID = id;
+        }
+
+
         public bool NoEnemy() {
             // for the case level 1
             if (AllEnemyList[CurrentMapID - 1].Count == 0 || CurrentMapID == 1)
@@ -196,13 +250,12 @@ namespace Game1.Code.LoadFile
                 return false;
             }
         }
-
         public List<Tuple<IBlock, Vector2>> LoadRoom11Walls()
 
         {
             List<Tuple<IBlock, Vector2>> blocksListToDraw = new List<Tuple<IBlock, Vector2>>();
             List<Tuple<int, int, string>> mapElementList = new List<Tuple<int, int, string>>();
-            Vector2 startPos = LoadAll.Instance.startPos;
+            Vector2 startPos = new Vector2(RoomLocationOffset(11).X, RoomLocationOffset(11).Y + 56 * scale);
 
             string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pathNew = filePath.Substring(0, filePath.IndexOf("bin"));
@@ -235,12 +288,6 @@ namespace Game1.Code.LoadFile
                 cell_y++;
 
             }
-
-            /*
-            IBlock room;
-            room = BlockFactory.Instance.CreateRoom();
-            blocksListToDraw.Add(new Tuple<IBlock, Vector2>(room, startPos));
-            */
 
             Vector2 location;
 

@@ -1,6 +1,7 @@
 ﻿using Game1.Enemy;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,13 +45,13 @@ namespace Game1
             CurrentFrame = 0;
             Location = location;
             Direction = Rnd.Next(3);
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
             BlockList = blockList;
         }
 
 
 
-        public void DrawEnemy(SpriteBatch spriteBatch)
+        public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -58,7 +59,7 @@ namespace Game1
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Location.X, (int)Location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X), (int)(offset.Y + Location.Y - 56 * scale), width * scale, height * scale);
 
             if (DamageTimer > 0)
             {
@@ -240,7 +241,7 @@ namespace Game1
           
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)Location.X, (int)Location.Y, 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
         }
 
         private void HandleBlockCollision() {

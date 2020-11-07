@@ -23,8 +23,19 @@ namespace Game1.Code.LoadFile
 
         private List<bool> isSwitched;
         private List<int> hasAlternative;
-
         private Color mapColor = Color.White;
+        private List<int> isUnlocked;
+        private int currMapID = 1;
+        public bool noEnemy = false;
+        private List<IBlock> movables;
+        private const int MAP_COUNT = 18;
+        private RoomAdjacencyList roomAdjacencyList;
+        private List<Tuple<IBlock, Vector2>> oldRoomMapBlocksToDraw;
+        private Game1 game1;
+
+        public int multiplier { get; set; }
+        public double scale { get; set; }
+        public Vector2 startPos;
 
         /* 
          * This corresponds to the door status for the room.
@@ -38,7 +49,7 @@ namespace Game1.Code.LoadFile
          * 
          */
 
-        private List<int> isUnlocked;
+
 
         private LoadAll()
         {
@@ -51,29 +62,47 @@ namespace Game1.Code.LoadFile
 
             // those values are hard-coded and corresponding to the maps we have
             hasAlternative = new List<int>() { 5, 8, 9, 10, 13, 14};
+
+            roomAdjacencyList = new RoomAdjacencyList();
+            oldRoomMapBlocksToDraw = new List<Tuple<IBlock, Vector2>>();
         }
-        private int currMapID = 1;
-        public bool noEnemy = false;
-        private List<IBlock> movables;
 
-        private const int MAP_COUNT = 18;
+        public void GetGameObject(Game1 g)
+        {
+            game1 = g;
+        }
 
-        public int multiplier { get; set; }
-        public double scale { get; set; }
-        public Vector2 startPos { get; set; }
+        private void ScrollRoom(string scrollingDirection)
+        {
+            // change starting position for scrolling transition
+            switch (scrollingDirection)
+            {
+                case "left":
+                    startPos.X -= (float)(256 * scale);
+                    break;
+                case "right":
+                    startPos.X += (float)(256 * scale);
+                    break;
+                case "up":
+                    startPos.Y -= (float)(176 * scale);
+                    break;
+                case "down":
+                    startPos.Y += (float)(176 * scale);
+                    break;
+            }
+        }
 
-        
 
-        private string GetRoomFileName()
+        private string GetRoomFileName(int mapID)
         {
             string mapName;
-            if (isSwitched[currMapID])
+            if (isSwitched[mapID])
             {
-                mapName = currMapID.ToString() + "_" + Convert.ToString(isUnlocked[currMapID], 2).PadLeft(4, '0') + "_after.csv";
+                mapName = mapID.ToString() + "_" + Convert.ToString(isUnlocked[mapID], 2).PadLeft(4, '0') + "_after.csv";
             }
             else
             {
-                mapName = currMapID.ToString() + "_" + Convert.ToString(isUnlocked[currMapID], 2).PadLeft(4, '0') + ".csv";
+                mapName = mapID.ToString() + "_" + Convert.ToString(isUnlocked[mapID], 2).PadLeft(4, '0') + ".csv";
             }
 
             return mapName;
@@ -81,8 +110,28 @@ namespace Game1.Code.LoadFile
 
         public void LoadRoom()
         {
-            LoadMap.Instance.LoadOneMap(GetRoomFileName());
+            LoadMap.Instance.LoadOneMap(GetRoomFileName(currMapID));
         }
+
+        public void ChangeRoom(string door)
+        {
+            int nextRoomID = roomAdjacencyList.GetAdjacency(currMapID, door);
+            
+            if (nextRoomID != 0)
+            {
+                oldRoomMapBlocksToDraw = LoadMap.Instance.GetBlocksToDraw();
+                ScrollRoom(door);
+                game1.camera.UpdateMovingState(door);
+                currMapID = nextRoomID;
+                LoadRoom();
+            }
+        }
+
+        public void ClearOldRoom()
+        {
+            oldRoomMapBlocksToDraw.Clear();
+        }
+
 
         public void PrevMap()
         {
@@ -91,6 +140,8 @@ namespace Game1.Code.LoadFile
             {
                 currMapID = MAP_COUNT;
             }
+
+            LoadRoom();
         }
 
         public void NextMap()
@@ -100,6 +151,8 @@ namespace Game1.Code.LoadFile
             {
                 currMapID = 1;
             }
+
+            LoadRoom();
         }
 
         public bool SwitchToAlternative()
@@ -117,9 +170,12 @@ namespace Game1.Code.LoadFile
             return LoadMap.Instance.GetArtifacts();
         }
 
-        public List<Tuple<IBlock, Vector2>> GetMapBlocksToDraw()
+        public List<List<Tuple<IBlock, Vector2>>> GetMapBlocksToDraw()
         {
-            return LoadMap.Instance.GetBlocksToDraw();
+            List<List<Tuple<IBlock, Vector2>>> toDraw = new List<List<Tuple<IBlock, Vector2>>>();
+            toDraw.Add(oldRoomMapBlocksToDraw);
+            toDraw.Add(LoadMap.Instance.GetBlocksToDraw());
+            return toDraw;
         }
 
         public List<IBlock> GetMovableBlocks()
@@ -178,8 +234,5 @@ namespace Game1.Code.LoadFile
         {
             return mapColor;
         }
-
     }
-
-
 }
