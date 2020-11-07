@@ -16,8 +16,6 @@ namespace Game1.Code.HUD.Sprite
         private int mapY;
         private int levelX;
         private int levelY;
-        private int yOrigin;
-        private int yDistance;
 
         private Texture2D Texture;
         private Texture2D[] levelTexture;
@@ -26,12 +24,10 @@ namespace Game1.Code.HUD.Sprite
             height = 40 * scale;
             width = 64 * scale;
             levelNumberSideLength = 8 * scale;
-            mapX = 16 * scale;
-            mapY = 8 * scale;
-            levelX = 64 * scale;
-            levelY = mapY;
-            yOrigin = mapY;
-            yDistance = 176 * scale;
+            mapX = 16 * scale + (int)LoadAll.Instance.startPos.X;
+            mapY = 8 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+            levelX = 64 * scale + (int)LoadAll.Instance.startPos.X;
+            levelY = mapY + (int)LoadAll.Instance.startPos.Y - 56 * scale;
 
             Texture = HUDFactory.LoadDungeonMiniMapFrame();
             levelTexture = new Texture2D[2];
@@ -52,24 +48,12 @@ namespace Game1.Code.HUD.Sprite
             spriteBatch.Draw(levelTexture[0], destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Update(bool enabled, int speed)
+        public void Update(float newStartX, float newStartY)
         {
-            if (enabled)
-            {
-                if (mapY < yOrigin + yDistance)
-                {
-                    mapY += speed;
-                    levelY += speed;
-                }
-            }
-            else
-            {
-                if (mapY > yOrigin)
-                {
-                    mapY -= speed;
-                    levelY -= speed;
-                }
-            }
+            mapX = (int)newStartX + 16 * scale;
+            mapY = (int)newStartY - 56 * scale + 8 * scale;
+            levelX = (int)newStartX + 64 * scale;
+            levelY = (int)newStartY - 56 * scale + 8 * scale;
             // todo
         }
     }

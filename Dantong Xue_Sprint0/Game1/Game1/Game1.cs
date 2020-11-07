@@ -178,6 +178,17 @@ namespace Game1
             // must be the last to draw
             hudPanel.HUDDraw();
 
+            string x = "hud x: " + hudPanel.x.ToString();
+
+
+            string y = "hud y: " + hudPanel.y.ToString();
+
+
+            // for hud debugging
+            _spriteBatch.DrawString(_spriteFont, x, new Vector2(link.x - 150, link.y - 25), Color.Black);
+            _spriteBatch.DrawString(_spriteFont, y, new Vector2(link.x - 150, link.y), Color.Black);
+            //
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.End();

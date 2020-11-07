@@ -17,8 +17,6 @@ namespace Game1.Code.HUD.Sprite
         private int width;
         private int x;
         private int y;
-        private int yOrigin;
-        private int yDistance;
 
         private Dictionary<string, int> hudItemList;
 
@@ -32,10 +30,8 @@ namespace Game1.Code.HUD.Sprite
             scale = (int)LoadAll.Instance.scale;
             height = 8 * scale;
             width = 8 * scale;
-            x = 104 * scale;
-            y = 16 * scale;
-            yOrigin = y;
-            yDistance = 176 * scale;
+            x = 104 * scale + (int)LoadAll.Instance.startPos.X;
+            y = 16 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -48,25 +44,10 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(numberOfRuby[i], destinationRectangle, sourceRectangle, Color.White);
             }
         }
-        public void Update(bool enabled, int speed)
+        public void Update(float newStartX, float newStartY)
         {
-            // update number sprite
-            numberOfRuby = HUDFactory.LoadNumber(hudItemList["Ruby"]);
-
-            if (enabled)
-            {
-                if (y < yOrigin + yDistance)
-                {
-                    y += speed;
-                }
-            }
-            else
-            {
-                if (y > yOrigin)
-                {
-                    y -= speed;
-                }
-            }
+            x = (int)newStartX + 104 * scale;
+            y = (int)newStartY - 56 * scale + 16 * scale;
         }
 
     }

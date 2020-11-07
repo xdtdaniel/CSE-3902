@@ -28,11 +28,6 @@ namespace Game1
         private List<Tuple<IItemSprite, string>> roomItemList;
         private List<IBlock> movableList;
 
-        private PlayerAndBlockCollisionHandler playerAndBlockCollisionHandler;
-        private PlayerAndEnemyCollisionHandler playerAndEnemyCollisionHandler;
-        private PlayerItemaAndBlockCollisionHandler playerItemAndBlockCollisionHandler;
-        private PlayerAndItemCollisionHandler playerAndItemCollisionHandler;
-        private PlayerItemaAndEnemyCollisionHandler playerItemaAndEnemyCollisionHandler;
         //
         public PlayerPanel(Game1 game)
         {
@@ -45,11 +40,6 @@ namespace Game1
             roomItemList = new List<Tuple<IItemSprite, string>>();
             movableList = new List<IBlock>();
 
-            playerAndBlockCollisionHandler = new PlayerAndBlockCollisionHandler();
-            playerAndEnemyCollisionHandler = new PlayerAndEnemyCollisionHandler();
-            playerItemAndBlockCollisionHandler = new PlayerItemaAndBlockCollisionHandler();
-            playerAndItemCollisionHandler = new PlayerAndItemCollisionHandler();
-            playerItemaAndEnemyCollisionHandler = new PlayerItemaAndEnemyCollisionHandler();
             
             //
         }
@@ -64,15 +54,15 @@ namespace Game1
             roomEnemyList = game.EnemyList;
             roomItemList = game.inRoomList;
             movableList = game.movableBlocks;
-            playerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
-            playerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
+            PlayerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
+            PlayerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             for (int i = 0; i < 1000; i++)
             {
-                playerItemAndBlockCollisionHandler.HandleCollision(game.link.item[i], roomBlockList);
-                playerItemaAndEnemyCollisionHandler.HandleCollision(game.link.item[i], roomEnemyList);
+                PlayerItemAndBlockCollisionHandler.HandleCollision(game.link.item[i], roomBlockList);
+                PlayerItemAndEnemyCollisionHandler.HandleCollision(game.link.item[i], roomEnemyList);
             }
-            playerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
-            playerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
+            PlayerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
+            PlayerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
             //
             if (game.link.itemList["Heart"] <= 0 && !game.link.isDead)
             {
@@ -102,9 +92,5 @@ namespace Game1
             game._spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 50), Color.Black);
         }
 
-        public List<Tuple<IItemSprite, string>> GetNotInRoomItemList()
-        {
-            return playerAndItemCollisionHandler.GetOutRoomItemList();
-        }
     }
 }

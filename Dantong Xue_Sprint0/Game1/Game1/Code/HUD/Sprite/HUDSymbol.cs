@@ -13,8 +13,6 @@ namespace Game1.Code.HUD.Sprite
         private int width;
         private int x;
         private int[] y;
-        private int yOrigin;
-        private int yDistance;
 
         private Texture2D symbolX;
         public HUDSymbol()
@@ -22,13 +20,11 @@ namespace Game1.Code.HUD.Sprite
             scale = (int)LoadAll.Instance.scale;
             height = 8 * scale;
             width = 8 * scale;
-            x = 96 * scale;
+            x = 96 * scale + (int)LoadAll.Instance.startPos.X;
             y = new int[3];
-            y[0] = 16 * scale;
-            y[1] = 32 * scale;
-            y[2] = 40 * scale;
-            yOrigin = y[0];
-            yDistance = 176 * scale;
+            y[0] = 16 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+            y[1] = 32 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+            y[2] = 40 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
 
 
             symbolX = HUDFactory.LoadX();
@@ -44,28 +40,12 @@ namespace Game1.Code.HUD.Sprite
             }
         }
 
-        public void Update(bool enabled, int speed)
+        public void Update(float newStartX, float newStartY)
         {
-            if (enabled)
-            {
-                if (y[0] < yOrigin + yDistance)
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        y[i] += speed;
-                    }
-                }
-            }
-            else
-            {
-                if (y[0] > yOrigin )
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        y[i] -= speed;
-                    }
-                }
-            }
+            x = (int)newStartX + 96 * scale;
+            y[0] = (int)newStartY - 56 * scale + 16 * scale;
+            y[1] = (int)newStartY - 56 * scale + 32 * scale;
+            y[2] = (int)newStartY - 56 * scale + 40 * scale;
             // todo
         }
     }

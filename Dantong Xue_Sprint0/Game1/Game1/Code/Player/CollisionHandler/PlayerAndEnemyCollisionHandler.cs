@@ -9,22 +9,14 @@ using System.Text;
 
 namespace Game1.Code.Player
 {
-    class PlayerAndEnemyCollisionHandler 
+    public static class PlayerAndEnemyCollisionHandler 
     {
-        string collidedSide;
-        Rectangle swordHitBox;
-        int swordHitBoxWidth;   // represent width when facing left and right, represent height when facing up and down
-        int swordHitBoxHeight;  // represent height when facing left and right, represent width when facing up and down
-        bool ifHit;
-        public PlayerAndEnemyCollisionHandler()
-        {
-            collidedSide = "";
-            swordHitBox = new Rectangle();
-            swordHitBoxWidth = (int)(14 * LoadAll.Instance.scale);
-            swordHitBoxHeight = (int)(7 * LoadAll.Instance.scale);
-            ifHit = false;
-        }
-        public void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
+        static string collidedSide = "";
+        static Rectangle swordHitBox = new Rectangle();
+        static int swordHitBoxWidth = (int)(14 * LoadAll.Instance.scale);   // represent width when facing left and right, represent height when facing up and down
+        static int swordHitBoxHeight = (int)(7 * LoadAll.Instance.scale);  // represent height when facing left and right, represent width when facing up and down
+        static bool ifHit = false;
+        public static void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
         {
             if (link.GetStateName() == "SwordBeamLink" || link.GetStateName() == "WoodenSwordLink")
             {

@@ -10,14 +10,12 @@ using System.Text;
 
 namespace Game1.Code.Player
 {
-    class PlayerAndBlockCollisionHandler
+    public static class PlayerAndBlockCollisionHandler
     {
-        string collidedSide;
-        public PlayerAndBlockCollisionHandler()
-        {
-            collidedSide = "";
-        }
-        public void HandleCollision(Link link, Dictionary<string, List<Rectangle>> blockList)
+        static string collidedSide = "";
+        public static string doorSide = "";
+        public static bool roomSwitched = false;
+        public static void HandleCollision(Link link, Dictionary<string, List<Rectangle>> blockList)
         {
             foreach (KeyValuePair<string, List<Rectangle>> kvp in blockList)
             {
@@ -36,8 +34,11 @@ namespace Game1.Code.Player
                                 LoadAll.Instance.ChangeRoom(collidedSide);
                                 break;
                             case "openDoors":
-                                link.StopMoving(collidedSide, interRect);
-                                LoadAll.Instance.ChangeRoom(collidedSide); 
+                                LoadAll.Instance.ChangeRoom(collidedSide);
+                                doorSide = collidedSide;
+                                roomSwitched = true;
+                                link.movable = false;
+                                
                                 break;
                             case "shutDoors":
                                 // to do
@@ -57,16 +58,20 @@ namespace Game1.Code.Player
                             default:
                                 break;
                         }
-                        
                     }
                 }
             }
 
-
+            if (doorSide != "" && !roomSwitched)
+            {
+                link.ResetPos();
+                doorSide = "";
+                link.movable = true;
+            }
 
         }
 
-        public void HandleMovableCollision(Link link, List<IBlock> movables)
+        public static void HandleMovableCollision(Link link, List<IBlock> movables)
         {
             foreach (IBlock movable in movables)
             {
@@ -80,11 +85,8 @@ namespace Game1.Code.Player
                     Debug.WriteLine(collidedSide);
                     
                 }
-                
-
             }
         }
-
 
     }
 }

@@ -1,8 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Code.LoadFile;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Game1.Code
@@ -17,14 +19,15 @@ namespace Game1.Code
         private bool moving = false;
         private int direction;
 
-        private int speed = 10;
+        private float speed = (float)16/3 * (int)LoadAll.Instance.scale;
 
-        private int scale = 3;
+        private int scale = (int)LoadAll.Instance.scale;
 
         int moveTimer = 0;
 
         double HorizontalMoveTime;
         double VerticalMoveTime;
+
 
         public Camera(Viewport viewport)
         {

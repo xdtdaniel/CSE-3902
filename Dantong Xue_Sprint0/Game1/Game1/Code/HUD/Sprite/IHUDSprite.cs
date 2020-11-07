@@ -11,6 +11,6 @@ namespace Game1.Code.HUD.Sprite
     public interface IHUDSprite
     {
         void Draw(SpriteBatch spriteBatch);
-        void Update(bool enabled, int speed);
+        void Update(float newStartX, float newStartY);
     }
 }

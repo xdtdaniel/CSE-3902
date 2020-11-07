@@ -12,6 +12,7 @@ using Game1.Enemy;
 using Game1.Code.LoadFile;
 using System.Linq.Expressions;
 using System.Drawing.Text;
+using SharpDX.Direct2D1.Effects;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -29,6 +30,7 @@ namespace Game1.Player.PlayerCharacter
         public int attackDamage;
         private int linkWidth;
         private int linkHeight;
+        private int scale;
 
         public string direction;
         public int directionIndex;
@@ -42,6 +44,9 @@ namespace Game1.Player.PlayerCharacter
         public int timeBetweenItem;
         public int timeSinceItem;
         public bool useItemDone;
+
+        private int blockSideLength;
+        private int numberOfBlocksBetweenRoom;
 
         public int itemIndex;
         private const int MAX_ITEM_SPRITE_NUM = 1000;
@@ -57,9 +62,13 @@ namespace Game1.Player.PlayerCharacter
             isDead = false;
             defaultSpeed = xSpeed = ySpeed = 5;
             attackDamage = 1;
+            scale = (int)LoadAll.Instance.scale;
 
-            linkWidth = (int)(13 * LoadAll.Instance.scale);
-            linkHeight = (int)(13 * LoadAll.Instance.scale);
+            linkWidth = 13 * scale;
+            linkHeight = 13 * scale;
+
+            blockSideLength = 16 * scale;
+            numberOfBlocksBetweenRoom = 5;
 
             itemIndex = 0;
 
@@ -80,6 +89,9 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("Ruby", 0);
             itemList.Add("Triforce", 0);
             itemList.Add("Fairy", 0);
+            itemList.Add("BlueCandle", 0);
+            itemList.Add("BluePotion", 0);
+            itemList.Add("BlueRing", 0);
 
             // test
             itemList["HeartContainer"] = 30;
@@ -186,9 +198,25 @@ namespace Game1.Player.PlayerCharacter
         }
         public void ResetPos()
         {
-            // temp for sprint 3
-            x = 98;
-            y = 242;
+            string doorSide = PlayerAndBlockCollisionHandler.doorSide;
+
+            switch (doorSide)
+            {
+                case "up":
+                    y -= numberOfBlocksBetweenRoom * blockSideLength;
+                    break;
+                case "down":
+                    y += numberOfBlocksBetweenRoom * blockSideLength;
+                    break;
+                case "left":
+                    x -= numberOfBlocksBetweenRoom * blockSideLength;
+                    break;
+                case "right":
+                    x += numberOfBlocksBetweenRoom * blockSideLength;
+                    break;
+                default:
+                    break;
+            }
         }
         public void Die()
         {

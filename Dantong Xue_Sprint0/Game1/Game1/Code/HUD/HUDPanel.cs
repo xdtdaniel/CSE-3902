@@ -1,9 +1,11 @@
 ﻿using Game1.Code.HUD.Sprite;
 using Game1.Code.LoadFile;
+using Game1.Code.Player;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using System.Diagnostics;
 using System.Text;
 
 namespace Game1.Code.HUD
@@ -14,7 +16,12 @@ namespace Game1.Code.HUD
 
         private int scale;
         private int level;
-        private int rollingSpeed;
+        private int rollingSpeed;     // speed for hud to be drawn down when menu is called
+        private float shiftingSpeed;    // speed for shifting hud while changing room
+        public float x;
+        public float y;
+        private int yOrigin;
+        private int yDistance;
 
         private IHUDSprite HUDFrame;
         private IHUDSprite inventoryFrame;
@@ -35,6 +42,11 @@ namespace Game1.Code.HUD
             scale = (int)LoadAll.Instance.scale;
             level = 1;
             rollingSpeed = 3 * scale;
+            shiftingSpeed = (float)16/3 * scale;
+            x = (int)LoadAll.Instance.startPos.X;
+            y = (int)LoadAll.Instance.startPos.Y;
+            yOrigin = (int)LoadAll.Instance.startPos.Y;
+            yDistance = 176 * scale;
 
             HUDFrame = new HUDFrame();
             inventoryFrame = new InventoryFrame();
@@ -52,19 +64,90 @@ namespace Game1.Code.HUD
 
         public void HUDUpdate()
         {
-            // for test
             pause = Keyboard.GetState().IsKeyDown(Keys.L);
-            //
 
-            HUDFrame.Update(pause, rollingSpeed);
-            inventoryFrame.Update(pause, rollingSpeed);
-            dungeonPauseScreenFrame.Update(pause, rollingSpeed);
-            dungeonMiniMapFrame.Update(pause, rollingSpeed);
-            hudSymbol.Update(pause, rollingSpeed);
-            hudNumberOfHeart.Update(pause, rollingSpeed);
-            hudNumberOfBomb.Update(pause, rollingSpeed);
-            hudNumberOfKey.Update(pause, rollingSpeed);
-            hudNumberOfRuby.Update(pause, rollingSpeed);
+            string side = PlayerAndBlockCollisionHandler.doorSide;
+            bool switched = PlayerAndBlockCollisionHandler.roomSwitched;
+            int targetX = (int)LoadAll.Instance.startPos.X;
+            int targetY = (int)LoadAll.Instance.startPos.Y;
+
+            HUDFrame.Update(x, y);
+            inventoryFrame.Update(x, y);
+            dungeonPauseScreenFrame.Update(x, y);
+            dungeonMiniMapFrame.Update(x, y);
+            hudSymbol.Update(x, y);
+            hudNumberOfHeart.Update(x, y);
+            hudNumberOfBomb.Update(x, y);
+            hudNumberOfKey.Update(x, y);
+            hudNumberOfRuby.Update(x, y);
+
+            if (switched)
+            {
+                switch (side)
+                {
+                    case "up":
+                        if (y > targetY)
+                        {
+                            y -= shiftingSpeed;
+                        }
+                        else
+                        {
+                            y = targetY;
+                            PlayerAndBlockCollisionHandler.roomSwitched = false;
+                        }
+                        break;
+                    case "down":
+                        if (y < targetY)
+                        {
+                            y += shiftingSpeed;
+                        }
+                        else
+                        {
+                            y = targetY;
+
+                            PlayerAndBlockCollisionHandler.roomSwitched = false;
+                        }
+                        break;
+                    case "left":
+                        if (x > targetX)
+                        {
+                            x -= shiftingSpeed;
+                        }
+                        else
+                        {
+                            x = targetX;
+                            PlayerAndBlockCollisionHandler.roomSwitched = false;
+                        }
+                        break;
+                    case "right":
+                        if (x < targetX)
+                        {
+                            x += shiftingSpeed;
+                        }
+                        else
+                        {
+                            x = targetX;
+                            PlayerAndBlockCollisionHandler.roomSwitched = false;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (pause)
+            {
+                if (y < yOrigin + yDistance)
+                {
+                    y += rollingSpeed;
+                }
+            }
+            else
+            {
+                if (y > yOrigin)
+                {
+                    y -= rollingSpeed;
+                }
+            }
         }
 
         public void HUDDraw()

@@ -9,25 +9,13 @@ using System.Text;
 
 namespace Game1.Code.Player
 {
-    class PlayerAndItemCollisionHandler
+    public static class PlayerAndItemCollisionHandler
     {
-        string collidedSide;
+        static string collidedSide = "";
         //used to store the removed items, it might used to count number of each item player had.
-        private List<Tuple<IItemSprite, string>> outRoomList = new List<Tuple<IItemSprite, string>>();
-        private static PlayerAndItemCollisionHandler instance = new PlayerAndItemCollisionHandler();
-        public static PlayerAndItemCollisionHandler Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-        public PlayerAndItemCollisionHandler()
-        {
-            collidedSide = "";
-        }
-        IItemSprite item;
-        public void HandleCollision(Link link, List<Tuple<IItemSprite, string>> roomItemList)
+        static private List<Tuple<IItemSprite, string>> outRoomList = new List<Tuple<IItemSprite, string>>();
+        static IItemSprite item;
+        static public void HandleCollision(Link link, List<Tuple<IItemSprite, string>> roomItemList)
         {
             for (int  index= 0;index < roomItemList.Count;index++)
             {
@@ -131,7 +119,7 @@ namespace Game1.Code.Player
         }
 
         //might use it later
-        public List<Tuple<IItemSprite, string>> GetOutRoomItemList()
+        static public List<Tuple<IItemSprite, string>> GetOutRoomItemList()
         {
             return outRoomList;
         }

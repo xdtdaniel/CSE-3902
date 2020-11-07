@@ -22,18 +22,18 @@ namespace Game1.Code.Player.PlayerControlCommand
                 if (attackIndex == 0)
                 {
                     game.link.state.AttackN();
-                    if (game.link.itemList["heart"] == game.link.itemList["heartcontainer"])
+                    if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
-                        game.link.item[game.link.itemIndex].UseItem("rangedwoodensword");
+                        game.link.item[game.link.itemIndex].UseItem("RangedWoodenSword");
                     }
                     game.link.timeSinceAttack = 0;
                 }
                 else if (attackIndex == 1)
                 {
                     game.link.state.AttackZ();
-                    if (game.link.itemList["heart"] == game.link.itemList["heartcontainer"])
+                    if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
-                        game.link.item[game.link.itemIndex].UseItem("rangedswordbeam");
+                        game.link.item[game.link.itemIndex].UseItem("RangedSwordBeam");
                     }
                     game.link.timeSinceAttack = 0;
                 }

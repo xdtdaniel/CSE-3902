@@ -1,7 +1,9 @@
 ﻿using Game1.Code.HUD.Factory;
 using Game1.Code.LoadFile;
+using Game1.Code.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections;
 
 namespace Game1.Code.HUD.Sprite
 {
@@ -12,18 +14,14 @@ namespace Game1.Code.HUD.Sprite
         private int width;
         private int x;
         private int y;
-        private int yOrigin;
-        private int yDistance;
 
         private Texture2D Texture;
         public InventoryFrame() {
             scale = (int)LoadAll.Instance.scale;
             height = 88 * scale;
             width = 256 * scale;
-            x = 0;
-            y = -176 * scale;
-            yOrigin = y;
-            yDistance = 176 * scale;
+            x = (int)LoadAll.Instance.startPos.X;
+            y = -176 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
 
             Texture = HUDFactory.LoadInventoryFrame();
         }
@@ -35,22 +33,10 @@ namespace Game1.Code.HUD.Sprite
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Update(bool enabled, int speed)
+        public void Update(float newStartX, float newStartY)
         {
-            if (enabled)
-            {
-                if (y < yOrigin + yDistance)
-                {
-                    y += speed;
-                }
-            }
-            else
-            {
-                if (y > yOrigin)
-                {
-                    y -= speed;
-                }
-            }
+            x = (int)newStartX;
+            y = (int)newStartY - 56 * scale - 176 * scale;
             // todo
         }
     }

@@ -19,8 +19,6 @@ namespace Game1.Code.HUD.Sprite
         private int width;
         private int x;
         private int y;
-        private int yOrigin;
-        private int yDistance;
         private int heartPerRow;
         private int currentHeartIndex;
 
@@ -39,10 +37,8 @@ namespace Game1.Code.HUD.Sprite
             scale = (int)LoadAll.Instance.scale;
             height = 8 * scale;
             width = 8 * scale;
-            x = 176 * scale;
-            y = 40 * scale;
-            yOrigin = y;
-            yDistance = 176 * scale;
+            x = 176 * scale + (int)LoadAll.Instance.startPos.X;
+            y = 40 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
             heartPerRow = 8;
             currentHeartIndex = 0;
             sourceRectangle = new Rectangle();
@@ -105,22 +101,10 @@ namespace Game1.Code.HUD.Sprite
             }
 
         }
-        public void Update(bool enabled, int speed)
+        public void Update(float newStartX, float newStartY)
         {
-            if (enabled)
-            {
-                if (y < yOrigin + yDistance)
-                {
-                    y += speed;
-                }
-            }
-            else
-            {
-                if (y > yOrigin)
-                {
-                    y -= speed;
-                }
-            }
+            x = (int)newStartX + 176 * scale;
+            y = (int)newStartY - 56 * scale + 40 * scale;
         }
 
     }
