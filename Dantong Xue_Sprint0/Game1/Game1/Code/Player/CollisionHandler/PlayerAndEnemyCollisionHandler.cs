@@ -46,9 +46,10 @@ namespace Game1.Code.Player
 
             foreach (Tuple<IEnemy, string> tuple in enemyList)
             {
+                Rectangle enemyRectangle = tuple.Item1.GetRectangle();
 
                 // sword hit enemy
-                collidedSide = CollisionDetection.Instance.isCollided(swordHitBox, tuple.Item1.GetRectangle());
+                collidedSide = CollisionDetection.Instance.isCollided(swordHitBox, new Rectangle((int)(enemyRectangle.X + LoadAll.Instance.startPos.X), (int)(enemyRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), enemyRectangle.Width, enemyRectangle.Height));
                 if (!ifHit && collidedSide != "")
                 {
                     tuple.Item1.TakeDamage(link.attackDamage);
@@ -57,7 +58,7 @@ namespace Game1.Code.Player
 
                 // link touch enemy
 
-                collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), tuple.Item1.GetRectangle());
+                collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), new Rectangle((int)(enemyRectangle.X + LoadAll.Instance.startPos.X), (int)(enemyRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), enemyRectangle.Width, enemyRectangle.Height));
                 if (collidedSide != "" && link.damageTimeCounter == 0 && tuple.Item2 != "oldman")
                 {
                     link.TakeDamage();
@@ -70,9 +71,11 @@ namespace Game1.Code.Player
                 {
                     foreach (IProjectile projectile in tuple.Item1.GetProjectile())
                     {
+                        Rectangle projectileRectangle = projectile.GetRectangle();
+
                         if (projectile.GetIsOnScreen())
                         {
-                            collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), projectile.GetRectangle());
+                            collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), new Rectangle((int)(projectileRectangle.X + LoadAll.Instance.startPos.X), (int)(projectileRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), projectileRectangle.Width, projectileRectangle.Height));
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
                                 link.TakeDamage();
@@ -88,9 +91,17 @@ namespace Game1.Code.Player
                 {
                     foreach (IProjectile projectile in tuple.Item1.GetProjectile())
                     {
+                        Rectangle projectileRectangle = projectile.GetRectangle();
+
                         if (projectile.GetIsOnScreen())
                         {
-                            collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), projectile.GetRectangle());
+                            collidedSide = CollisionDetection.Instance.isCollided(swordHitBox, new Rectangle((int)(projectileRectangle.X + LoadAll.Instance.startPos.X), (int)(projectileRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), projectileRectangle.Width, projectileRectangle.Height));
+                            if (collidedSide != "" && link.damageTimeCounter == 0)
+                            {
+                                projectile.BounceBack();
+                            }
+
+                            collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), new Rectangle((int)(projectileRectangle.X + LoadAll.Instance.startPos.X), (int)(projectileRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), projectileRectangle.Width, projectileRectangle.Height));
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
                                 link.TakeDamage();

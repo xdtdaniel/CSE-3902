@@ -20,7 +20,9 @@ namespace Game1.Code.Player
 
             foreach (Tuple<IEnemy, string> tuple in enemyList)
             {
-                collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), tuple.Item1.GetRectangle());
+                Rectangle enemyRectangle = tuple.Item1.GetRectangle();
+
+                collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), new Rectangle((int)(enemyRectangle.X + LoadAll.Instance.startPos.X), (int)(enemyRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), enemyRectangle.Width, enemyRectangle.Height));
                 if (collidedSide != "")
                 {
                     switch (item.GetItemName())
