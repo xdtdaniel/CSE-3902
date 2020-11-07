@@ -48,6 +48,7 @@ namespace Game1.Code.HUD.Sprite
         {
             x = (int)newStartX + 104 * scale;
             y = (int)newStartY - 56 * scale + 40 * scale;
+            numberOfBomb = HUDFactory.LoadNumber(hudItemList["Bomb"]);
         }
 
     }
