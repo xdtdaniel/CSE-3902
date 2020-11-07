@@ -301,7 +301,7 @@ namespace Game1.Code.LoadFile
 
                 IBlock blockToDraw;
 
-              Console.WriteLine(mapElementList[index].Item3);
+                Console.WriteLine(mapElementList[index].Item3);
 
                 switch (mapElementList[index].Item3)
                 {

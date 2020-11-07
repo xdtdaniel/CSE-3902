@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Diagnostics;
 
 namespace Game1.Code.HUD.Factory
 {
@@ -167,20 +165,19 @@ namespace Game1.Code.HUD.Factory
 		// symbols
 		public static Texture2D[] LoadNumber(int number)
 		{
-			int firstNumber = number/10 ;
-			int secondNumber = number %10;
-			
+			int firstNumber = number / 10;
+			int secondNumber = number % 10;
 			if (number > 99)
-            {
-                firstNumber = secondNumber = 9;
-            }
-            else if (number < 0)
-            {
-                firstNumber = secondNumber = 0;
-            }
-
+			{
+				firstNumber = secondNumber = 9;
+			}
+			else if (number < 0)
+			{
+				firstNumber = secondNumber = 0;
+			}
 			Texture2D[] numberTexture = new Texture2D[2];
 
+			// 0 for first, 1 for second
 			switch (firstNumber)
 			{
 				case 0:

@@ -192,7 +192,7 @@ namespace Game1.Code.LoadFile
         public void SetEnemyStatus(bool enemyStatus)
         {
             noEnemy = enemyStatus;
-            //Debug.WriteLine(noEnemy);
+            Debug.WriteLine(noEnemy);
 
             if (noEnemy && movables.Count == 0)
             {
