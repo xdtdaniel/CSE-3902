@@ -48,9 +48,6 @@ namespace Game1.Code.HUD.Sprite
         {
             x = (int)newStartX + 104 * scale;
             y = (int)newStartY - 56 * scale + 16 * scale;
-
-            numberOfRuby = HUDFactory.LoadNumber(hudItemList["Ruby"]);
-
         }
 
     }
