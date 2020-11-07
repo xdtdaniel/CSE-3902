@@ -26,6 +26,7 @@ namespace Game1.Code.LoadFile
         private double scale = 2;
         private int X;
         private int Y;
+        private Vector2 startPos;
         List<Tuple<int, int, string>> RoomItemList;
         private List<Tuple<IItemSprite, string>>[] AllItemInRoom = new List<Tuple<IItemSprite, string>>[MAP_COUNT];
         private List<Tuple<IItemSprite, string>> inRoom = new List<Tuple<IItemSprite, string>>();
@@ -34,6 +35,7 @@ namespace Game1.Code.LoadFile
         {
             multiplier = LoadAll.Instance.multiplier;
             scale = LoadAll.Instance.scale;
+            startPos = new Vector2(0, 56 * (int)scale);
             CurrentMapID = currentMapID;
 
         }
@@ -85,12 +87,11 @@ namespace Game1.Code.LoadFile
             }
 
             Vector2 location;
-            inRoom.Clear();
             for (int index = 0; index < RoomItemList.Count; index++)
             {
 
-                 X = (int)(RoomItemList[index].Item1 * multiplier * scale);
-                 Y = (int)(RoomItemList[index].Item2 * multiplier * scale);
+                 X = (int)(RoomItemList[index].Item1 * multiplier * scale + startPos.X);
+                 Y = (int)(RoomItemList[index].Item2 * multiplier * scale + startPos.Y);
 
                 location = new Vector2(X, Y);
                 IItemSprite item;
