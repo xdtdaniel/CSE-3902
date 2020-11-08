@@ -16,6 +16,7 @@ namespace Game1.Code.Player
         static int swordHitBoxWidth = (int)(14 * LoadAll.Instance.scale);   // represent width when facing left and right, represent height when facing up and down
         static int swordHitBoxHeight = (int)(7 * LoadAll.Instance.scale);  // represent height when facing left and right, represent width when facing up and down
         static bool ifHit = false;
+        static bool hitAtLeastOne = false;
         public static void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
         {
             if (link.GetStateName() == "SwordBeamLink" || link.GetStateName() == "WoodenSwordLink")
@@ -42,6 +43,7 @@ namespace Game1.Code.Player
             {
                 swordHitBox = new Rectangle();
                 ifHit = false;
+                hitAtLeastOne = false;
             }
 
             foreach (Tuple<IEnemy, string> tuple in enemyList)
@@ -50,7 +52,7 @@ namespace Game1.Code.Player
 
                 // sword hit enemy
                 collidedSide = CollisionDetection.Instance.isCollided(swordHitBox, new Rectangle((int)(enemyRectangle.X + LoadAll.Instance.startPos.X), (int)(enemyRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), enemyRectangle.Width, enemyRectangle.Height));
-                if (!ifHit && collidedSide != "")
+                if (!hitAtLeastOne && collidedSide != "")
                 {
                     tuple.Item1.TakeDamage(link.attackDamage);
                     ifHit = true;
@@ -111,6 +113,10 @@ namespace Game1.Code.Player
                         }
                     }
                 }
+            }
+            if (ifHit)
+            {
+                hitAtLeastOne = true;
             }
         }
     }

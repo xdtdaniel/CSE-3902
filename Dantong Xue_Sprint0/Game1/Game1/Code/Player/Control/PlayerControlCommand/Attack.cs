@@ -19,7 +19,7 @@ namespace Game1.Code.Player.PlayerControlCommand
         {
             if (game.link.timeSinceAttack >= game.link.timeBetweenAttack)
             {
-                if (attackIndex == 0)
+                if (attackIndex == 0 && game.link.itemList["WoodenSword"] > 0)
                 {
                     game.link.state.AttackN();
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
@@ -28,7 +28,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     }
                     game.link.timeSinceAttack = 0;
                 }
-                else if (attackIndex == 1)
+                else if (attackIndex == 1 && game.link.itemList["SwordBeam"] > 0)
                 {
                     game.link.state.AttackZ();
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])

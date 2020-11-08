@@ -13,6 +13,7 @@ namespace Game1.Code.HUD.Factory
 		private static Texture2D dungeonMiniMapCell_Level1;
 		private static Texture2D dungeonMiniMapFrame;
 		private static Texture2D dungeonPauseScreenFrame;
+		private static Texture2D dungeonPauseScreenMapCell_Level1;
 
 		// color spots
 		private static Texture2D blackSpot;
@@ -57,6 +58,7 @@ namespace Game1.Code.HUD.Factory
 			dungeonMiniMapCell_Level1 = content.Load<Texture2D>("HUD/DungeonMiniMapCell_Level1");
 			dungeonMiniMapFrame = content.Load<Texture2D>("HUD/DungeonMiniMapFrame");
 			dungeonPauseScreenFrame = content.Load<Texture2D>("HUD/DungeonPauseScreenFrame");
+			dungeonPauseScreenMapCell_Level1 = content.Load<Texture2D>("HUD/DungeonPauseScreenMapCell_Level1");
 
 			// color spots
 			blackSpot = content.Load<Texture2D>("HUD/ColorSpot/BlackSpot");
@@ -115,6 +117,10 @@ namespace Game1.Code.HUD.Factory
 		public static Texture2D LoadDungeonPauseScreenFrame()
 		{
 			return dungeonPauseScreenFrame;
+		}
+		public static Texture2D LoadDungeonPauseScreenMapCell_Level1()
+		{
+			return dungeonPauseScreenMapCell_Level1;
 		}
 
 		// color spots

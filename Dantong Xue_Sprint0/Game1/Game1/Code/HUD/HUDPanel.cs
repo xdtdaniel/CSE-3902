@@ -33,8 +33,9 @@ namespace Game1.Code.HUD
         private IHUDSprite hudNumberOfKey;
         private IHUDSprite hudNumberOfRuby;
         private IHUDSprite dungeonMiniMap;
-
         private IHUDSprite inventoryObject;
+        private IHUDSprite dungeonPauseScreen;
+
         // for test
         bool pause;
         public HUDPanel(Game1 game)
@@ -60,8 +61,9 @@ namespace Game1.Code.HUD
             hudNumberOfKey = new HUDNumberOfKey(game.link.itemList);
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
             dungeonMiniMap = new DungeonMiniMap(level);
-
             inventoryObject = new InventoryObject(game.link.itemList);
+            dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
+
             // for test
             pause = false;
         }
@@ -87,8 +89,8 @@ namespace Game1.Code.HUD
             hudNumberOfKey.Update(x, y);
             hudNumberOfRuby.Update(x, y);
             dungeonMiniMap.Update(x, y);
-
             inventoryObject.Update(x, y);
+            dungeonPauseScreen.Update(x, y);
 
             if (switched)
             {
@@ -144,22 +146,20 @@ namespace Game1.Code.HUD
                         break;
                 }
             }
+            else if (pause)
+            {
+                if (y < yOrigin + yDistance)
+                {
+                    y += rollingSpeed;
+                }
+            }
             else
             {
-                if (pause)
+                if (y > yOrigin)
                 {
-                    if (y < yOrigin + yDistance)
-                    {
-                        y += rollingSpeed;
-                    }
+                    y -= rollingSpeed;
                 }
-                else
-                {
-                    if (y > yOrigin)
-                    {
-                        y -= rollingSpeed;
-                    }
-                }
+
             }
         }
 
@@ -175,8 +175,8 @@ namespace Game1.Code.HUD
             hudNumberOfKey.Draw(game._spriteBatch);
             hudNumberOfRuby.Draw(game._spriteBatch);
             dungeonMiniMap.Draw(game._spriteBatch);
-
             inventoryObject.Draw(game._spriteBatch);
+            dungeonPauseScreen.Draw(game._spriteBatch);
         }
 
     }

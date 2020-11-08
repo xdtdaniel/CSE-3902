@@ -107,6 +107,8 @@ namespace Game1.Player.PlayerCharacter
             itemList["Bow"] = 99;
             itemList["Boomerang"] = 99;
             itemList["Clock"] = 99;
+            itemList["Map"] = 99;
+            itemList["Compass"] = 99;
 
             state = new NormalLink(this);
 
