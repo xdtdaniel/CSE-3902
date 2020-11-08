@@ -34,6 +34,7 @@ namespace Game1.Code.HUD
         private IHUDSprite hudNumberOfRuby;
         private IHUDSprite dungeonMiniMap;
 
+        private IHUDSprite inventoryObject;
         // for test
         bool pause;
         public HUDPanel(Game1 game)
@@ -60,6 +61,7 @@ namespace Game1.Code.HUD
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
             dungeonMiniMap = new DungeonMiniMap(level);
 
+            inventoryObject = new InventoryObject(game.link.itemList);
             // for test
             pause = false;
         }
@@ -83,6 +85,8 @@ namespace Game1.Code.HUD
             hudNumberOfKey.Update(x, y);
             hudNumberOfRuby.Update(x, y);
             dungeonMiniMap.Update(x, y);
+
+            inventoryObject.Update(x, y);
 
             if (switched)
             {
@@ -165,6 +169,8 @@ namespace Game1.Code.HUD
             hudNumberOfKey.Draw(game._spriteBatch);
             hudNumberOfRuby.Draw(game._spriteBatch);
             dungeonMiniMap.Draw(game._spriteBatch);
+
+            inventoryObject.Draw(game._spriteBatch);
         }
 
     }

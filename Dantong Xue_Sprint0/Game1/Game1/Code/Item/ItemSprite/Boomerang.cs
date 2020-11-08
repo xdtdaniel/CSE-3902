@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Game1.Code.LoadFile;
 
 namespace Game1.Code.Item.ItemSprite
 {
@@ -26,11 +27,11 @@ namespace Game1.Code.Item.ItemSprite
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            height = Texture.Height;
-            width = Texture.Width;
+            height = (int)(LoadAll.Instance.scale * Texture.Height / 42);
+            width = (int)(LoadAll.Instance.scale * Texture.Width / 42);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width * 4, height * 4);
+            Rectangle sourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
+            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
             CollisionRectangle = destinationRectangle;
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);

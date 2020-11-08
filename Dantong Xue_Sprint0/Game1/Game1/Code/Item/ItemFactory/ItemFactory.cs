@@ -26,6 +26,11 @@ namespace Game1.Code.Item.ItemFactory
 		private static Texture2D map;
 		private static Texture2D ruby;
 		private static Texture2D triforce;
+		private static Texture2D woodenSword;
+		private static Texture2D swordBeam;
+		private static Texture2D blueCandle;
+		private static Texture2D bluePotion;
+		private static Texture2D blueRing;
 
 		public static void LoadAllTextures(ContentManager content)
 		{
@@ -42,6 +47,11 @@ namespace Game1.Code.Item.ItemFactory
 			map = content.Load<Texture2D>("Sprite/items/map_sprite");
 			ruby = content.Load<Texture2D>("Sprite/items/rubee_sprite (8x16 for each)");
 			triforce = content.Load<Texture2D>("Sprite/items/triforce_sprite (10x10 for each)");
+			woodenSword = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword0");
+			swordBeam = content.Load<Texture2D>("PlayerItemSprite/Weapon/SwordBeam0");
+			blueCandle = content.Load<Texture2D>("PlayerItemSprite/Candle/BlueCandle");
+			bluePotion = content.Load<Texture2D>("PlayerItemSprite/Potion/BluePotion");
+			blueRing = content.Load<Texture2D>("PlayerItemSprite/Ring/BlueRing");
 		}
 	
 
@@ -100,6 +110,26 @@ namespace Game1.Code.Item.ItemFactory
 			return triforce;
 		}
 
+		public static Texture2D CreateWoodenSword()
+		{
+			return woodenSword;
+		}
+		public static Texture2D CreateSwordBeam()
+		{
+			return swordBeam;
+		}
+		public static Texture2D CreateBlueCandle()
+		{
+			return blueCandle;
+		}
+		public static Texture2D CreateBluePotion()
+		{
+			return bluePotion;
+		}
+		public static Texture2D CreateBlueRing()
+		{
+			return blueRing;
+		}
 
 	}
 }
