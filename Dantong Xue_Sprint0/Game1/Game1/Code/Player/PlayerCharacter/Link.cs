@@ -201,19 +201,22 @@ namespace Game1.Player.PlayerCharacter
         {
             string doorSide = PlayerAndBlockCollisionHandler.doorSide;
 
+            // hard-coded
+            int doorPositionOffset = 12;
+
             switch (doorSide)
             {
                 case "up":
-                    y -= numberOfBlocksBetweenRoom * blockSideLength;
+                    y -= (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
                     break;
                 case "down":
-                    y += numberOfBlocksBetweenRoom * blockSideLength;
+                    y += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
                     break;
                 case "left":
-                    x -= numberOfBlocksBetweenRoom * blockSideLength;
+                    x -= (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
                     break;
                 case "right":
-                    x += numberOfBlocksBetweenRoom * blockSideLength;
+                    x += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
                     break;
                 default:
                     break;

@@ -197,6 +197,11 @@ namespace Game1.Code.LoadFile
             return currMapID;
         }
 
+        public void UnderWorldTransition()
+        {
+
+        }
+
         public void SetEnemyStatus(bool enemyStatus)
         {
             noEnemy = enemyStatus;

@@ -93,6 +93,8 @@ namespace Game1.Code.LoadFile
             string[] strList = new string[MAX_COLUMNS];
             int cell_x = 0;
             int cell_y = 0;
+
+            int doorPositionOffset = 12;
             //each loop add 1 line to list
             while (!streamReader.EndOfStream)
             {
@@ -222,25 +224,27 @@ namespace Game1.Code.LoadFile
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
                         lockedDoors.Add(blockToDraw.GetRectangle(location));
                         break;
+
+                    // the collision object for open doors should be a little smaller than normal, more natural this way
                     case "openDoorFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontOpenDoor();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        openDoors.Add(blockToDraw.GetRectangle(location));
+                        openDoors.Add(blockToDraw.GetRectangle(new Vector2(location.X, (float)(location.Y - doorPositionOffset * scale))));
                         break;
                     case "openDoorLeft":
                         blockToDraw = BlockFactory.Instance.CreateLeftOpenDoor();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        openDoors.Add(blockToDraw.GetRectangle(location));
+                        openDoors.Add(blockToDraw.GetRectangle(new Vector2((float)(location.X - doorPositionOffset * scale), location.Y)));
                         break;
                     case "openDoorRight":
                         blockToDraw = BlockFactory.Instance.CreateRightOpenDoor();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        openDoors.Add(blockToDraw.GetRectangle(location));
+                        openDoors.Add(blockToDraw.GetRectangle(new Vector2((float)(location.X + doorPositionOffset * scale), location.Y)));
                         break;
                     case "openDoorBack":
                         blockToDraw = BlockFactory.Instance.CreateBackOpenDoor();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        openDoors.Add(blockToDraw.GetRectangle(location));
+                        openDoors.Add(blockToDraw.GetRectangle(new Vector2(location.X, (float)(location.Y + doorPositionOffset * scale))));
                         break;
                     case "shutDoorFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontShutDoor();
