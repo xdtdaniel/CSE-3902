@@ -61,7 +61,7 @@ namespace Game1.Code.LoadFile
             isUnlocked = new List<int>(new int[MAP_COUNT + 1]);
 
             // those values are hard-coded and corresponding to the maps we have
-            hasAlternative = new List<int>() { 5, 8, 9, 10, 13, 14};
+            hasAlternative = new List<int>() { 5, 8, 9, 10, 12, 13, 14};
 
             roomAdjacencyList = new RoomAdjacencyList();
             oldRoomMapBlocksToDraw = new List<Tuple<IBlock, Vector2>>();
@@ -155,15 +155,23 @@ namespace Game1.Code.LoadFile
             LoadRoom();
         }
 
-        public bool SwitchToAlternative()
+        public bool SwitchToAlternative(string holeDirection)
         {
             if (hasAlternative.Contains(currMapID))
             { 
                 isSwitched[currMapID] = true;
+
+                // unlock adjacent holes
+                if (holeDirection != "")
+                {
+                    isSwitched[roomAdjacencyList.GetAdjacency(currMapID, holeDirection)] = true;
+                }
                 return true;
             }
             return false;
         }
+
+
 
         public Dictionary<string, List<Rectangle>> GetMapArtifacts()
         {
@@ -193,10 +201,11 @@ namespace Game1.Code.LoadFile
         {
             noEnemy = enemyStatus;
             Debug.WriteLine(noEnemy);
+            Debug.WriteLine(movables.Count);
 
             if (noEnemy && movables.Count == 0)
             {
-                SwitchToAlternative();
+                SwitchToAlternative("");
                 LoadRoom();
             }
         }
@@ -221,7 +230,36 @@ namespace Game1.Code.LoadFile
                         break;
                 }
 
+                UnlockAdjacentDoor(door);
+
                 LoadRoom();
+            }
+        }
+
+        private void UnlockAdjacentDoor(string door)
+        {
+            if (door != "")
+            {
+                int nextRoomID = roomAdjacencyList.GetAdjacency(currMapID, door);
+                if (nextRoomID != 0)
+                {
+                    switch (door)
+                    {
+                        case "up":
+                            isUnlocked[nextRoomID] += 2;
+                            break;
+                        case "left":
+                            isUnlocked[nextRoomID] += 1;
+                            break;
+                        case "down":
+                            isUnlocked[nextRoomID] += 8;
+                            break;
+                        case "right":
+                            isUnlocked[nextRoomID] += 4;
+                            break;
+                    }
+                }
+                
             }
         }
 

@@ -40,7 +40,6 @@ namespace Game1.Code.Player
                                 doorSide = collidedSide;
                                 roomSwitched = true;
                                 link.movable = false;
-                                
                                 break;
                             case "shutDoors":
                                 // to do
@@ -55,6 +54,9 @@ namespace Game1.Code.Player
                             case "stairs":
                                 // to do
                                 // temp code
+                                link.StopMoving(collidedSide, interRect);
+                                break;
+                            case "bombWalls":
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             default:

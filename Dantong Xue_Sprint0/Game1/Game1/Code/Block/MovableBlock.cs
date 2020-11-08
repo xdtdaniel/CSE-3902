@@ -81,7 +81,7 @@ namespace Game1.Code.Block
                 }
 
                 
-                if (LoadAll.Instance.SwitchToAlternative())
+                if (LoadAll.Instance.SwitchToAlternative(""))
                 {
                     LoadAll.Instance.LoadRoom();
                 }
