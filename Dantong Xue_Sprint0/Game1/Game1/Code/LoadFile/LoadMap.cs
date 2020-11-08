@@ -187,22 +187,26 @@ namespace Game1.Code.LoadFile
                     case "holeFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontHole();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        holes.Add(blockToDraw.GetRectangle(location));
+                        holes.Add(blockToDraw.GetRectangle(new Vector2(location.X, (float)(location.Y - doorPositionOffset * scale / 2))));
+                        blocks.Add(blockToDraw.GetRectangle(new Vector2(location.X, (float)(location.Y - doorPositionOffset * scale / 2))));
                         break;
                     case "holeLeft":
                         blockToDraw = BlockFactory.Instance.CreateLeftHole();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        holes.Add(blockToDraw.GetRectangle(location));
+                        holes.Add(blockToDraw.GetRectangle(new Vector2((float)(location.X - doorPositionOffset * scale / 2), location.Y)));
+                        blocks.Add(blockToDraw.GetRectangle(new Vector2((float)(location.X - doorPositionOffset * scale / 2), location.Y)));
                         break;
                     case "holeRight":
                         blockToDraw = BlockFactory.Instance.CreateRightHole();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        holes.Add(blockToDraw.GetRectangle(location));
+                        holes.Add(blockToDraw.GetRectangle(new Vector2((float)(location.X + doorPositionOffset * scale / 2), location.Y)));
+                        blocks.Add(blockToDraw.GetRectangle(new Vector2((float)(location.X + doorPositionOffset * scale / 2), location.Y)));
                         break;
                     case "holeBack":
                         blockToDraw = BlockFactory.Instance.CreateBackHole();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        holes.Add(blockToDraw.GetRectangle(location));
+                        holes.Add(blockToDraw.GetRectangle(new Vector2(location.X, (float)(location.Y + doorPositionOffset * scale / 2))));
+                        blocks.Add(blockToDraw.GetRectangle(new Vector2(location.X, (float)(location.Y + doorPositionOffset * scale / 2))));
                         break;
                     case "lockedDoorFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontLockedDoor();

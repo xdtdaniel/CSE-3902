@@ -155,20 +155,41 @@ namespace Game1.Code.LoadFile
             LoadRoom();
         }
 
-        public bool SwitchToAlternative(string holeDirection)
+        public bool SwitchToAlternative(string collideSide)
         {
             if (hasAlternative.Contains(currMapID))
             { 
                 isSwitched[currMapID] = true;
 
                 // unlock adjacent holes
-                if (holeDirection != "")
+                if (collideSide != "")
                 {
-                    isSwitched[roomAdjacencyList.GetAdjacency(currMapID, holeDirection)] = true;
+                    UnlockAdjacentHole(collideSide);
                 }
                 return true;
             }
             return false;
+        }
+
+        private void UnlockAdjacentHole(string collideSide)
+        {
+            string holeDirection = "";
+            switch (collideSide)
+            {
+                case "up":
+                    holeDirection = "down";
+                    break;
+                case "down":
+                    holeDirection = "up";
+                    break;
+                case "left":
+                    holeDirection = "right";
+                    break;
+                case "right":
+                    holeDirection = "left";
+                    break;
+            }
+            isSwitched[roomAdjacencyList.GetAdjacency(currMapID, holeDirection)] = true;
         }
 
 
@@ -215,8 +236,6 @@ namespace Game1.Code.LoadFile
         public void SetEnemyStatus(bool enemyStatus)
         {
             noEnemy = enemyStatus;
-            Debug.WriteLine(noEnemy);
-            Debug.WriteLine(movables.Count);
 
             if (noEnemy && movables.Count == 0)
             {
