@@ -34,6 +34,9 @@ namespace Game1.Code.HUD
         private IHUDSprite hudNumberOfRuby;
 
         private IHUDSprite inventoryObject;
+        private IHUDSprite hudinventoryAB;
+
+        private string[] BA;
 
         // for test
         bool pause;
@@ -61,6 +64,7 @@ namespace Game1.Code.HUD
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
 
             inventoryObject = new InventoryObject(game.link.itemList);
+            hudinventoryAB = new HUDInventoryAB(game.link.itemList,BA);
 
             // for test
             pause = false;
@@ -86,6 +90,7 @@ namespace Game1.Code.HUD
             hudNumberOfRuby.Update(x, y);
 
             inventoryObject.Update(x,y);
+            hudinventoryAB.Update(x,y);
 
             if (switched)
             {
@@ -169,6 +174,7 @@ namespace Game1.Code.HUD
             hudNumberOfRuby.Draw(game._spriteBatch);
 
             inventoryObject.Draw(game._spriteBatch);
+            hudinventoryAB.Draw(game._spriteBatch);
         }
 
     }
