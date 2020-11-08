@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace Game1.Code.HUD.Sprite
 {
@@ -17,19 +20,24 @@ namespace Game1.Code.HUD.Sprite
         private int spacing;
         private int x;
         private int y;
+        private static int index;
+        private int x_selection;
+        private int y_selection;
+        private string[] ba;
+
         private Texture2D[] objects;
         private Dictionary<string, int> hudItemList;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private List<string> inventoryItemList;
-
+        private Texture2D firstSelection;
         public InventoryObject(Dictionary<string, int> itemList)
         {
             hudItemList = itemList;
             //load all texture needed in inventory
             objects = new Texture2D[9];
-            objects[0] = ItemSpriteFactory.CreateBoomerang();
-            objects[1] = ItemSpriteFactory.CreateBomb();
+            objects[0] = ItemSpriteFactory.CreateBomb();
+            objects[1] = ItemSpriteFactory.CreateBoomerang();
             objects[2] = ItemSpriteFactory.CreateWoodenSword();
             objects[3] = ItemSpriteFactory.CreateSwordBeam();
             objects[4] = ItemSpriteFactory.CreateBow();
@@ -38,21 +46,39 @@ namespace Game1.Code.HUD.Sprite
             objects[7] = ItemSpriteFactory.CreateBluePotion();
             objects[8] = ItemSpriteFactory.CreateBlueRing();
 
+            //load selections
+            firstSelection = HUDFactory.LoadFirstEquipment();
+
+            //initial item ->sword
+            ba = new string[2];
+            ba[0] = "Sword";
+
             scale = (int)LoadAll.Instance.scale;
             height = 14 * scale;
             width = 7 * scale;
             spacing = 8 * scale;
 
+            index = 0;
+
             inventoryItemList = new List<string>();
             //first item position in itenSelection screen
             x = 132 * scale + (int)LoadAll.Instance.startPos.X;
             y = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+         
         }
 
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (hudItemList["Boomerang"] > 0)
+            //initial first selection position
+            x_selection = x;
+            y_selection = y;
+
+            sourceRectangle = new Rectangle(0, 0, firstSelection.Width, firstSelection.Height);
+            destinationRectangle = new Rectangle(x_selection, y_selection, width, height);
+            spriteBatch.Draw(firstSelection, destinationRectangle, sourceRectangle, Color.White);
+
+            if (hudItemList["Bomb"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[0].Width, objects[0].Height);
                 destinationRectangle = new Rectangle(x, y, width, height);
@@ -61,7 +87,7 @@ namespace Game1.Code.HUD.Sprite
             }
 
             x += 16 * scale + width;
-            if (hudItemList["Bomb"] > 0)
+            if (hudItemList["Boomerang"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[1].Width, objects[1].Height);
                 destinationRectangle = new Rectangle(x, y, width, height);
@@ -134,10 +160,61 @@ namespace Game1.Code.HUD.Sprite
             x = 132 * scale + (int)newStartX;
             y = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
 
-            //if (hudItemList["Arrow"] == 0) {
-            //    hudItemList.Remove("Arrow");
-            //}
+            x_selection = x;
+            y_selection = y;
 
+
+        }
+
+        public string[] getBA()
+        {
+            ba[0] = "sword";
+
+            return ba;
+        
+        }
+
+        public void MoveNext()
+        {
+            index++;
+            if (index == objects.Length)
+            {
+                index = 0;
+                x_selection = x;
+                y_selection = y;
+            }
+            else if (index == objects.Length / 2)
+            {
+                x_selection = x;
+                y_selection += spacing;
+
+            }
+            else
+            {
+                x_selection += spacing;
+            }
+
+        }
+
+        public void MovePrev()
+        {
+            index--;
+            if (index < 0)
+            {
+                index = objects.Length - 1;
+                x_selection = x;
+                y_selection = y;
+            }
+            else if (index == objects.Length / 2)
+            {
+                x_selection += 4*spacing;
+                y_selection -= spacing ;
+
+            }
+            else
+            {
+                x_selection-= spacing;
+            }
         }
     }
        
