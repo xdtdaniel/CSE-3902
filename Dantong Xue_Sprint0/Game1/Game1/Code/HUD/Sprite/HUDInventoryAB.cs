@@ -31,7 +31,7 @@ namespace Game1.Code.HUD.Sprite
           //  A = ba[1];
             InventoryAB = new Texture2D[2];
             //CHANGE TO SWITCH CASE
-            InventoryAB[0] = HUDFactory.LoadSword();
+            InventoryAB[0] = ItemSpriteFactory.CreateWoodenSword();
             InventoryAB[1] = ItemSpriteFactory.CreateBomb();
 
             scale = (int)LoadAll.Instance.scale;
