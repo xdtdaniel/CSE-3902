@@ -199,7 +199,17 @@ namespace Game1.Code.LoadFile
 
         public void UnderWorldTransition()
         {
+            // switch back and forth from the undr
+            if (currMapID == 1)
+            {
+                currMapID = 3;
+            }
+            else if (currMapID == 3)
+            {
+                currMapID = 1;
+            }
 
+            LoadRoom();
         }
 
         public void SetEnemyStatus(bool enemyStatus)

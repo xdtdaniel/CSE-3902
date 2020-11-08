@@ -52,8 +52,7 @@ namespace Game1.Code.Player
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "stairs":
-                                // to do
-                                // temp code
+                                LoadAll.Instance.UnderWorldTransition();
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "bombWalls":

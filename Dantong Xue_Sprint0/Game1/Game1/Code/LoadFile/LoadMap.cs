@@ -275,6 +275,11 @@ namespace Game1.Code.LoadFile
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
                         stairs.Add(blockToDraw.GetRectangle(location));
                         break;
+                    case "stairBack":
+                        blockToDraw = BlockFactory.Instance.CreateGreyWall();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        stairs.Add(blockToDraw.GetRectangle(new Vector2(location.X, (float)(location.Y - multiplier * scale))));
+                        break;
                     case "wallFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontWall();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
