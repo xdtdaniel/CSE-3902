@@ -67,6 +67,8 @@ namespace Game1.Code.Player
                                     LoadAll.Instance.UnderWorldTransition();
                                     link.StopMoving(collidedSide, interRect);
                                     doorTimeCounter = timeBetweenDoor;
+                                    doorSide = "stairs";
+                                    link.ResetPos();
                                 }
                                 break;
                             case "bombWalls":

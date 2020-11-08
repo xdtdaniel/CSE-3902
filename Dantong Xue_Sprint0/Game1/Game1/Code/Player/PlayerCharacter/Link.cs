@@ -31,6 +31,7 @@ namespace Game1.Player.PlayerCharacter
         private int linkWidth;
         private int linkHeight;
         private int scale;
+        private int doorPositionOffset;
 
         public string direction;
         public int directionIndex;
@@ -63,6 +64,7 @@ namespace Game1.Player.PlayerCharacter
             defaultSpeed = xSpeed = ySpeed = 5;
             attackDamage = 1;
             scale = (int)LoadAll.Instance.scale;
+            doorPositionOffset = 12;
 
             linkWidth = 13 * scale;
             linkHeight = 13 * scale;
@@ -210,9 +212,6 @@ namespace Game1.Player.PlayerCharacter
         {
             string doorSide = PlayerAndBlockCollisionHandler.doorSide;
 
-            // hard-coded
-            int doorPositionOffset = 12;
-
             switch (doorSide)
             {
                 case "up":
@@ -226,6 +225,18 @@ namespace Game1.Player.PlayerCharacter
                     break;
                 case "right":
                     x += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
+                    break;
+                case "stairs":
+                    if (LoadAll.Instance.GetCurrentMapID() == 3)
+                    {
+                        x -= 2 * blockSideLength;
+                        y -= blockSideLength;
+                    }
+                    else if (LoadAll.Instance.GetCurrentMapID() == 1)
+                    {
+                        x += blockSideLength;
+                        y += 2 * blockSideLength;
+                    }
                     break;
                 default:
                     break;
