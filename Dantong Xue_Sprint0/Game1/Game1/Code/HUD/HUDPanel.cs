@@ -33,6 +33,8 @@ namespace Game1.Code.HUD
         private IHUDSprite hudNumberOfKey;
         private IHUDSprite hudNumberOfRuby;
 
+        private IHUDSprite inventoryObject;
+
         // for test
         bool pause;
         public HUDPanel(Game1 game)
@@ -58,6 +60,8 @@ namespace Game1.Code.HUD
             hudNumberOfKey = new HUDNumberOfKey(game.link.itemList);
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
 
+            inventoryObject = new InventoryObject(game.link.itemList);
+
             // for test
             pause = false;
         }
@@ -80,6 +84,8 @@ namespace Game1.Code.HUD
             hudNumberOfBomb.Update(x, y);
             hudNumberOfKey.Update(x, y);
             hudNumberOfRuby.Update(x, y);
+
+            inventoryObject.Update(x,y);
 
             if (switched)
             {
@@ -161,6 +167,8 @@ namespace Game1.Code.HUD
             hudNumberOfBomb.Draw(game._spriteBatch);
             hudNumberOfKey.Draw(game._spriteBatch);
             hudNumberOfRuby.Draw(game._spriteBatch);
+
+            inventoryObject.Draw(game._spriteBatch);
         }
 
     }
