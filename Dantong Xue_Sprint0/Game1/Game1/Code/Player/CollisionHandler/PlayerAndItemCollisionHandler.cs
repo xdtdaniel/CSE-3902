@@ -71,13 +71,14 @@ namespace Game1.Code.Player
                             roomItemList.RemoveAt(index);
                             break;
                         case "Heart":
-                            link.itemList["Heart"]++;
+                            link.itemList["Heart"] += 2;
                             item = new Heart(X, Y);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "Heart"));
                             roomItemList.RemoveAt(index);
                             break;
                         case "HeartContainer":
-                            link.itemList["HeartContainer"]++;
+                            link.itemList["HeartContainer"] += 2;
+                            link.itemList["Heart"] += 2;
                             link.PickUp(4);
                             item = new HeartContainer(X, Y);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));

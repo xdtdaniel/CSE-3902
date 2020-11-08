@@ -90,6 +90,7 @@ namespace Game1.Code.HUD.Factory
 			firstEquipment = content.Load<Texture2D>("HUD/Misc/FirstEquipment");
 			secondEquipment = content.Load<Texture2D>("HUD/Misc/SecondEquipment");
 
+
 		}
 
 		// HUD

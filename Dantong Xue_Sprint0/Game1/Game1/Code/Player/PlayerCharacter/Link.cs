@@ -92,13 +92,21 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("BlueCandle", 0);
             itemList.Add("BluePotion", 0);
             itemList.Add("BlueRing", 0);
+            itemList.Add("WoodenSword", 1);
+            itemList.Add("SwordBeam", 1);
 
-            // test
+            // for test
             itemList["HeartContainer"] = 30;
             itemList["Heart"] = 17;
-            itemList["Bomb"] = 2;
+            itemList["Bomb"] = 77;
             itemList["Key"] = 66;
-            itemList["Ruby"] = 92;
+            itemList["Ruby"] = 99;
+            itemList["BlueCandle"] = 99;
+            itemList["BluePotion"] = 99;
+            itemList["BlueRing"] = 99;
+            itemList["Bow"] = 99;
+            itemList["Boomerang"] = 99;
+            itemList["Clock"] = 99;
 
             state = new NormalLink(this);
 
@@ -200,19 +208,22 @@ namespace Game1.Player.PlayerCharacter
         {
             string doorSide = PlayerAndBlockCollisionHandler.doorSide;
 
+            // hard-coded
+            int doorPositionOffset = 12;
+
             switch (doorSide)
             {
                 case "up":
-                    y -= numberOfBlocksBetweenRoom * blockSideLength;
+                    y -= (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
                     break;
                 case "down":
-                    y += numberOfBlocksBetweenRoom * blockSideLength;
+                    y += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
                     break;
                 case "left":
-                    x -= numberOfBlocksBetweenRoom * blockSideLength;
+                    x -= (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
                     break;
                 case "right":
-                    x += numberOfBlocksBetweenRoom * blockSideLength;
+                    x += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
                     break;
                 default:
                     break;

@@ -17,20 +17,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Game1
 {
     public class Game1 : Game
     {
 
-#pragma warning disable CA2213 // Disposable fields should be disposed
         public GraphicsDeviceManager _graphics;
-#pragma warning restore CA2213 // Disposable fields should be disposed
-
-#pragma warning disable CA2213 // Disposable fields should be disposed
         public SpriteBatch _spriteBatch;
         public SpriteFont _spriteFont;
-#pragma warning restore CA2213 // Disposable fields should be disposed
 
 
         public IItemSprite item; 
@@ -134,7 +130,6 @@ namespace Game1
             UpdateAllItem.Instance.UpdateAll(inRoomList);       
 
             quitResetController.Update(this);
-            playerPanel = new PlayerPanel(this);
             playerPanel.PlayerUpdate();
 
             movableBlocks = LoadAll.Instance.GetMovableBlocks();

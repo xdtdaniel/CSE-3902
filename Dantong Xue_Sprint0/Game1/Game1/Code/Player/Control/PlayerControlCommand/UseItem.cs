@@ -24,7 +24,10 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.UseItem();
                     game.link.item[game.link.itemIndex].UseItem(itemName);
                     game.link.timeSinceItem = 0;
-                    game.link.itemList[itemName]--;
+                    if (itemName != "Boomerang")
+                    {
+                        game.link.itemList[itemName]--;
+                    }
                 }
             }
             game.link.useItemDone = game.link.item[game.link.itemIndex].IsDone();
