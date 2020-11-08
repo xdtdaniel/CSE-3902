@@ -95,9 +95,9 @@ namespace Game1.Enemy
 
         public void TakeDamage(int damageAmount)
         {
+            hp -= damageAmount;
             if (DamageTimer == 0)
             {
-                hp -= damageAmount;
                 DamageTimer = 50;
             }
         }

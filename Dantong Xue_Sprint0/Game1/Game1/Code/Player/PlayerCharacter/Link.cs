@@ -31,6 +31,7 @@ namespace Game1.Player.PlayerCharacter
         private int linkWidth;
         private int linkHeight;
         private int scale;
+        private int doorPositionOffset;
 
         public string direction;
         public int directionIndex;
@@ -63,6 +64,7 @@ namespace Game1.Player.PlayerCharacter
             defaultSpeed = xSpeed = ySpeed = 5;
             attackDamage = 1;
             scale = (int)LoadAll.Instance.scale;
+            doorPositionOffset = 12;
 
             linkWidth = 13 * scale;
             linkHeight = 13 * scale;
@@ -92,14 +94,23 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("BlueCandle", 0);
             itemList.Add("BluePotion", 0);
             itemList.Add("BlueRing", 0);
-            itemList.Add("Sword", 1);
+            itemList.Add("WoodenSword", 1);
+            itemList.Add("SwordBeam", 1);
 
-            // test
+            // for test
             itemList["HeartContainer"] = 30;
             itemList["Heart"] = 17;
-            itemList["Bomb"] = 0;
-            itemList["Key"] = 0;
-            itemList["Ruby"] = 0;
+            itemList["Bomb"] = 77;
+            itemList["Key"] = 66;
+            itemList["Ruby"] = 99;
+            itemList["BlueCandle"] = 99;
+            itemList["BluePotion"] = 99;
+            itemList["BlueRing"] = 99;
+            itemList["Bow"] = 99;
+            itemList["Boomerang"] = 99;
+            itemList["Clock"] = 99;
+            itemList["Map"] = 99;
+            itemList["Compass"] = 99;
 
             state = new NormalLink(this);
 
@@ -201,9 +212,6 @@ namespace Game1.Player.PlayerCharacter
         {
             string doorSide = PlayerAndBlockCollisionHandler.doorSide;
 
-            // hard-coded
-            int doorPositionOffset = 12;
-
             switch (doorSide)
             {
                 case "up":
@@ -217,6 +225,18 @@ namespace Game1.Player.PlayerCharacter
                     break;
                 case "right":
                     x += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
+                    break;
+                case "stairs":
+                    if (LoadAll.Instance.GetCurrentMapID() == 3)
+                    {
+                        x -= 2 * blockSideLength;
+                        y -= blockSideLength;
+                    }
+                    else if (LoadAll.Instance.GetCurrentMapID() == 1)
+                    {
+                        x += blockSideLength;
+                        y += 2 * blockSideLength;
+                    }
                     break;
                 default:
                     break;

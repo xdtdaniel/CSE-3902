@@ -12,7 +12,9 @@ namespace Game1.Code.Player
 {
     public static class PlayerAndBlockCollisionHandler
     {
-        static string collidedSide = "";
+        private static string collidedSide = "";
+        private static int doorTimeCounter = 0;
+        private static int timeBetweenDoor = 120;
         public static string doorSide = "";
         public static bool roomSwitched = false;
         public static void HandleCollision(Link link, Dictionary<string, List<Rectangle>> blockList)
@@ -30,16 +32,24 @@ namespace Game1.Code.Player
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "holes":
-                                LoadAll.Instance.ChangeRoom(collidedSide);
-                                doorSide = collidedSide;
-                                roomSwitched = true;
-                                link.movable = false;
+                                if (doorTimeCounter == 0)
+                                {
+                                    LoadAll.Instance.ChangeRoom(collidedSide);
+                                    doorSide = collidedSide;
+                                    roomSwitched = true;
+                                    link.movable = false;
+                                    doorTimeCounter = timeBetweenDoor;
+                                }
                                 break;
                             case "openDoors":
-                                LoadAll.Instance.ChangeRoom(collidedSide);
-                                doorSide = collidedSide;
-                                roomSwitched = true;
-                                link.movable = false;
+                                if (doorTimeCounter == 0)
+                                {
+                                    LoadAll.Instance.ChangeRoom(collidedSide);
+                                    doorSide = collidedSide;
+                                    roomSwitched = true;
+                                    link.movable = false;
+                                    doorTimeCounter = timeBetweenDoor;
+                                }
                                 break;
                             case "shutDoors":
                                 // to do
@@ -52,8 +62,14 @@ namespace Game1.Code.Player
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "stairs":
-                                LoadAll.Instance.UnderWorldTransition();
-                                link.StopMoving(collidedSide, interRect);
+                                if (doorTimeCounter == 0)
+                                {
+                                    LoadAll.Instance.UnderWorldTransition();
+                                    link.StopMoving(collidedSide, interRect);
+                                    doorTimeCounter = timeBetweenDoor;
+                                    doorSide = "stairs";
+                                    link.ResetPos();
+                                }
                                 break;
                             case "bombWalls":
                                 link.StopMoving(collidedSide, interRect);
@@ -70,6 +86,11 @@ namespace Game1.Code.Player
                 link.ResetPos();
                 doorSide = "";
                 link.movable = true;
+            }
+
+            if (doorTimeCounter > 0)
+            {
+                doorTimeCounter--;
             }
 
         }

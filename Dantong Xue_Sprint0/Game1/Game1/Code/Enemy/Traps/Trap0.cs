@@ -1,4 +1,5 @@
-﻿using Game1.Enemy;
+﻿using Game1.Code.LoadFile;
+using Game1.Enemy;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -79,7 +80,9 @@ namespace Game1
 
         private bool PlayerInAttackingRange(Game1 game)
         {
-            if (game.link.GetRectangle().X <= 48 * scale) 
+            Rectangle playerRectangle = new Rectangle((int)(game.link.GetRectangle().X - LoadAll.Instance.startPos.X), (int)(game.link.GetRectangle().Y - LoadAll.Instance.startPos.Y + 56 * scale), game.link.GetRectangle().Width, game.link.GetRectangle().Height);
+
+            if (playerRectangle.X <= 48 * scale) 
             {
                 if (CanChangeDirection) 
                 {
@@ -87,7 +90,7 @@ namespace Game1
                 }               
                 return true;
             } 
-            else if (game.link.GetRectangle().Y <= 48 * scale + 56 * scale) 
+            else if (playerRectangle.Y <= 48 * scale + 56 * scale) 
             {
                 if (CanChangeDirection)
                 {

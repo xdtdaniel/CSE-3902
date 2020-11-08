@@ -269,9 +269,9 @@ namespace Game1
 
         public void TakeDamage(int damageAmount)
         {
+            hp -= damageAmount;
             if (DamageTimer == 0)
-            {
-                hp -= damageAmount;
+            {           
                 DamageTimer = 50;
             }
         }

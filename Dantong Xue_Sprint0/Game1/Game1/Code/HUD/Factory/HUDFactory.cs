@@ -13,6 +13,7 @@ namespace Game1.Code.HUD.Factory
 		private static Texture2D dungeonMiniMapCell_Level1;
 		private static Texture2D dungeonMiniMapFrame;
 		private static Texture2D dungeonPauseScreenFrame;
+		private static Texture2D dungeonPauseScreenMapCell_Level1;
 
 		// color spots
 		private static Texture2D blackSpot;
@@ -45,7 +46,6 @@ namespace Game1.Code.HUD.Factory
 		private static Texture2D fullHeart;
 		private static Texture2D firstEquipment;
 		private static Texture2D secondEquipment;
-		private static Texture2D sword;
 
 
 		public static void LoadAllHUDTextures(ContentManager content)
@@ -58,6 +58,7 @@ namespace Game1.Code.HUD.Factory
 			dungeonMiniMapCell_Level1 = content.Load<Texture2D>("HUD/DungeonMiniMapCell_Level1");
 			dungeonMiniMapFrame = content.Load<Texture2D>("HUD/DungeonMiniMapFrame");
 			dungeonPauseScreenFrame = content.Load<Texture2D>("HUD/DungeonPauseScreenFrame");
+			dungeonPauseScreenMapCell_Level1 = content.Load<Texture2D>("HUD/DungeonPauseScreenMapCell_Level1");
 
 			// color spots
 			blackSpot = content.Load<Texture2D>("HUD/ColorSpot/BlackSpot");
@@ -90,7 +91,7 @@ namespace Game1.Code.HUD.Factory
 			fullHeart = content.Load<Texture2D>("HUD/Misc/FullHeart");
 			firstEquipment = content.Load<Texture2D>("HUD/Misc/FirstEquipment");
 			secondEquipment = content.Load<Texture2D>("HUD/Misc/SecondEquipment");
-			sword = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword0");
+
 
 		}
 
@@ -116,6 +117,10 @@ namespace Game1.Code.HUD.Factory
 		public static Texture2D LoadDungeonPauseScreenFrame()
 		{
 			return dungeonPauseScreenFrame;
+		}
+		public static Texture2D LoadDungeonPauseScreenMapCell_Level1()
+		{
+			return dungeonPauseScreenMapCell_Level1;
 		}
 
 		// color spots
@@ -280,9 +285,6 @@ namespace Game1.Code.HUD.Factory
 		public static Texture2D LoadSecondEquipment()
 		{
 			return secondEquipment;
-		}
-		public static Texture2D LoadSword() {
-			return sword;
 		}
 
 	}

@@ -32,8 +32,9 @@ namespace Game1.Code.HUD
         private IHUDSprite hudNumberOfBomb;
         private IHUDSprite hudNumberOfKey;
         private IHUDSprite hudNumberOfRuby;
-
+        private IHUDSprite dungeonMiniMap;
         private IHUDSprite inventoryObject;
+        private IHUDSprite dungeonPauseScreen;
 
         // for test
         bool pause;
@@ -59,8 +60,9 @@ namespace Game1.Code.HUD
             hudNumberOfBomb = new HUDNumberOfBomb(game.link.itemList);
             hudNumberOfKey = new HUDNumberOfKey(game.link.itemList);
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
-
+            dungeonMiniMap = new DungeonMiniMap(level);
             inventoryObject = new InventoryObject(game.link.itemList);
+            dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
 
             // for test
             pause = false;
@@ -68,12 +70,14 @@ namespace Game1.Code.HUD
 
         public void HUDUpdate()
         {
+
             pause = Keyboard.GetState().IsKeyDown(Keys.L);
 
             string side = PlayerAndBlockCollisionHandler.doorSide;
             bool switched = PlayerAndBlockCollisionHandler.roomSwitched;
             int targetX = (int)LoadAll.Instance.startPos.X;
             int targetY = (int)LoadAll.Instance.startPos.Y;
+
 
             HUDFrame.Update(x, y);
             inventoryFrame.Update(x, y);
@@ -84,8 +88,9 @@ namespace Game1.Code.HUD
             hudNumberOfBomb.Update(x, y);
             hudNumberOfKey.Update(x, y);
             hudNumberOfRuby.Update(x, y);
-
-            inventoryObject.Update(x,y);
+            dungeonMiniMap.Update(x, y);
+            inventoryObject.Update(x, y);
+            dungeonPauseScreen.Update(x, y);
 
             if (switched)
             {
@@ -100,6 +105,7 @@ namespace Game1.Code.HUD
                         {
                             y = targetY;
                             PlayerAndBlockCollisionHandler.roomSwitched = false;
+                            yOrigin = (int)LoadAll.Instance.startPos.Y;
                         }
                         break;
                     case "down":
@@ -110,8 +116,8 @@ namespace Game1.Code.HUD
                         else
                         {
                             y = targetY;
-
                             PlayerAndBlockCollisionHandler.roomSwitched = false;
+                            yOrigin = (int)LoadAll.Instance.startPos.Y;
                         }
                         break;
                     case "left":
@@ -140,7 +146,7 @@ namespace Game1.Code.HUD
                         break;
                 }
             }
-            if (pause)
+            else if (pause)
             {
                 if (y < yOrigin + yDistance)
                 {
@@ -153,6 +159,7 @@ namespace Game1.Code.HUD
                 {
                     y -= rollingSpeed;
                 }
+
             }
         }
 
@@ -167,8 +174,9 @@ namespace Game1.Code.HUD
             hudNumberOfBomb.Draw(game._spriteBatch);
             hudNumberOfKey.Draw(game._spriteBatch);
             hudNumberOfRuby.Draw(game._spriteBatch);
-
+            dungeonMiniMap.Draw(game._spriteBatch);
             inventoryObject.Draw(game._spriteBatch);
+            dungeonPauseScreen.Draw(game._spriteBatch);
         }
 
     }
