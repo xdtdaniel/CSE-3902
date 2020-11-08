@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Game1.Code.LoadFile;
 
 namespace Game1
 {
@@ -79,7 +80,9 @@ namespace Game1
 
         private bool PlayerInAttackingRange(Game1 game)
         {
-            if (game.link.GetRectangle().X >= 192 * scale && game.link.GetRectangle().X <= 208 * scale) 
+            Rectangle playerRectangle = new Rectangle((int)(game.link.GetRectangle().X - LoadAll.Instance.startPos.X), (int)(game.link.GetRectangle().Y - LoadAll.Instance.startPos.Y + 56 * scale), game.link.GetRectangle().Width, game.link.GetRectangle().Height);
+
+            if (playerRectangle.X >= 200 * scale && game.link.GetRectangle().X <= 202 * scale) 
             {
                 if (CanChangeDirection) 
                 {
@@ -87,7 +90,7 @@ namespace Game1
                 }               
                 return true;
             } 
-            else if (game.link.GetRectangle().Y >= 112 * scale + 56 * scale) 
+            else if (playerRectangle.Y >= 116 * scale + 56 * scale) 
             {
                 if (CanChangeDirection)
                 {
