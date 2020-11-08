@@ -92,6 +92,7 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("BlueCandle", 0);
             itemList.Add("BluePotion", 0);
             itemList.Add("BlueRing", 0);
+            itemList.Add("Sword", 1);
 
             // test
             itemList["HeartContainer"] = 30;
