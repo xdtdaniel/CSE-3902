@@ -96,9 +96,9 @@ namespace Game1.Player.PlayerCharacter
             // test
             itemList["HeartContainer"] = 30;
             itemList["Heart"] = 17;
-            itemList["Bomb"] = 0;
-            itemList["Key"] = 0;
-            itemList["Ruby"] = 0;
+            itemList["Bomb"] = 77;
+            itemList["Key"] = 66;
+            itemList["Ruby"] = 99;
 
             state = new NormalLink(this);
 

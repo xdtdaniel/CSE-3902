@@ -32,6 +32,7 @@ namespace Game1.Code.HUD
         private IHUDSprite hudNumberOfBomb;
         private IHUDSprite hudNumberOfKey;
         private IHUDSprite hudNumberOfRuby;
+        private IHUDSprite dungeonMiniMap;
 
         // for test
         bool pause;
@@ -57,6 +58,7 @@ namespace Game1.Code.HUD
             hudNumberOfBomb = new HUDNumberOfBomb(game.link.itemList);
             hudNumberOfKey = new HUDNumberOfKey(game.link.itemList);
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
+            dungeonMiniMap = new DungeonMiniMap(level);
 
             // for test
             pause = false;
@@ -80,6 +82,7 @@ namespace Game1.Code.HUD
             hudNumberOfBomb.Update(x, y);
             hudNumberOfKey.Update(x, y);
             hudNumberOfRuby.Update(x, y);
+            dungeonMiniMap.Update(x, y);
 
             if (switched)
             {
@@ -161,6 +164,7 @@ namespace Game1.Code.HUD
             hudNumberOfBomb.Draw(game._spriteBatch);
             hudNumberOfKey.Draw(game._spriteBatch);
             hudNumberOfRuby.Draw(game._spriteBatch);
+            dungeonMiniMap.Draw(game._spriteBatch);
         }
 
     }
