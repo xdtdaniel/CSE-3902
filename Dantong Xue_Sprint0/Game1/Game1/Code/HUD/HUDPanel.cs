@@ -68,12 +68,14 @@ namespace Game1.Code.HUD
 
         public void HUDUpdate()
         {
+
             pause = Keyboard.GetState().IsKeyDown(Keys.L);
 
             string side = PlayerAndBlockCollisionHandler.doorSide;
             bool switched = PlayerAndBlockCollisionHandler.roomSwitched;
             int targetX = (int)LoadAll.Instance.startPos.X;
             int targetY = (int)LoadAll.Instance.startPos.Y;
+
 
             HUDFrame.Update(x, y);
             inventoryFrame.Update(x, y);
@@ -101,6 +103,7 @@ namespace Game1.Code.HUD
                         {
                             y = targetY;
                             PlayerAndBlockCollisionHandler.roomSwitched = false;
+                            yOrigin = (int)LoadAll.Instance.startPos.Y;
                         }
                         break;
                     case "down":
@@ -111,8 +114,8 @@ namespace Game1.Code.HUD
                         else
                         {
                             y = targetY;
-
                             PlayerAndBlockCollisionHandler.roomSwitched = false;
+                            yOrigin = (int)LoadAll.Instance.startPos.Y;
                         }
                         break;
                     case "left":
@@ -141,18 +144,21 @@ namespace Game1.Code.HUD
                         break;
                 }
             }
-            if (pause)
-            {
-                if (y < yOrigin + yDistance)
-                {
-                    y += rollingSpeed;
-                }
-            }
             else
             {
-                if (y > yOrigin)
+                if (pause)
                 {
-                    y -= rollingSpeed;
+                    if (y < yOrigin + yDistance)
+                    {
+                        y += rollingSpeed;
+                    }
+                }
+                else
+                {
+                    if (y > yOrigin)
+                    {
+                        y -= rollingSpeed;
+                    }
                 }
             }
         }
