@@ -225,6 +225,11 @@ namespace Game1.Code.LoadFile
                         lockedDoors.Add(blockToDraw.GetRectangle(location));
                         break;
 
+                    case "entrance":
+                        blockToDraw = BlockFactory.Instance.CreateBackOpenDoor();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        blocks.Add(blockToDraw.GetRectangle(location));
+                        break;
                     // the collision object for open doors should be a little smaller than normal, more natural this way
                     case "openDoorFront":
                         blockToDraw = BlockFactory.Instance.CreateFrontOpenDoor();
