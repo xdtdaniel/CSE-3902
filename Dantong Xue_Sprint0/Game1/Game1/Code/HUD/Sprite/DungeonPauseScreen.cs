@@ -28,7 +28,7 @@ namespace Game1.Code.HUD.Sprite
         private int compassX;
         private int compassY;
         private List<Tuple<int, int>> spotPosList;
-        private List<Tuple<int, Vector2>> bridgePosList;
+        private List<Tuple<bool, Vector2>> bridgePosList;
         private int currSpotIndex;
         private int prevMapID;
         private int spotOffsetX;
@@ -54,7 +54,7 @@ namespace Game1.Code.HUD.Sprite
             compassWidth = 15 * scale;
             spotHeight = spotWidth = 6 * scale;
             cellSideLenth = 8 * scale;
-            bridgeSideLength = (2 * scale, 1 * scale); 
+            bridgeSideLength = (2 * scale, 2 * scale); 
 
             // positions
             mapX = 48 * scale + (int)LoadAll.Instance.startPos.X;
@@ -63,9 +63,9 @@ namespace Game1.Code.HUD.Sprite
             compassY = 44 * scale - 176 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
             spotPosList = new List<Tuple<int, int>>();
             spotPosList.Add(new Tuple<int, int>(128 * scale + 3 * cellSideLenth + (int)LoadAll.Instance.startPos.X, 96 * scale + 7 * cellSideLenth - 176 * scale - 56 * scale));
-            bridgePosList = new List<Tuple<int, Vector2>>();
-            // 0: fully connected, 1: half left or right connected, 2: half up or down connected
-            bridgePosList.Add(new Tuple<int, Vector2>(2, new Vector2(spotPosList[0].Item1 + 2 * scale, spotPosList[0].Item2 + 6 * scale)));
+            bridgePosList = new List<Tuple<bool, Vector2>>();
+            // the bool variable: true if the bridge is horizontal, false if vertical
+            bridgePosList.Add(new Tuple<bool, Vector2>(false, new Vector2(spotPosList[0].Item1 + 2 * scale, spotPosList[0].Item2 + 6 * scale)));
             currSpotIndex = 0;
             prevMapID = LoadAll.Instance.GetCurrentMapID();
 
@@ -100,23 +100,17 @@ namespace Game1.Code.HUD.Sprite
                 // draw bridges
                 for (int i = 0; i < bridgePosList.Count; i++)
                 {
-                    int width = 0;
-                    int height = 0;
-                    switch (bridgePosList[i].Item1)
+                    int width;
+                    int height;
+                    if (bridgePosList[i].Item1) // horizontal
                     {
-                        case 0:
-                            width = height = bridgeSideLength.Item1;
-                            break;
-                        case 1:
-                            width = bridgeSideLength.Item2;
-                            height = bridgeSideLength.Item1;
-                            break;
-                        case 2:
-                            width = bridgeSideLength.Item1;
-                            height = bridgeSideLength.Item2;
-                            break;
-                        default:
-                            break;
+                        width = bridgeSideLength.Item2;
+                        height = bridgeSideLength.Item1;
+                    }
+                    else  // vertical
+                    {
+                        width = bridgeSideLength.Item1;
+                        height = bridgeSideLength.Item2;
                     }
                     sourceRectangle = new Rectangle(0, 0, spot.Width, spot.Height);
                     destinationRectangle = new Rectangle((int)bridgePosList[i].Item2.X + spotOffsetX, (int)bridgePosList[i].Item2.Y + spotOffsetY, width, height);
@@ -154,34 +148,34 @@ namespace Game1.Code.HUD.Sprite
                 int newSpotX = spotPosList[currSpotIndex].Item1;
                 int newSpotY = spotPosList[currSpotIndex].Item2;
                 // new bridge position
-                int type = 0;
+                bool horizontal = true;
                 int newBridgeX = newSpotX;
                 int newBridgeY = newSpotY;
                 switch (doorSide)
                 {
                     case "up":
                         newSpotY -= cellSideLenth;
-                        type = 0;
-                        newBridgeX += bridgeSideLength.Item1;
-                        newBridgeY -= bridgeSideLength.Item1;
+                        horizontal = false;
+                        newBridgeX += bridgeSideLength.Item2;
+                        newBridgeY -= bridgeSideLength.Item2;
                         break;
                     case "down":
                         newSpotY += cellSideLenth;
-                        type = 0;
-                        newBridgeX += bridgeSideLength.Item1;
+                        horizontal = false;
+                        newBridgeX += bridgeSideLength.Item2;
                         newBridgeY += spotHeight;
                         break;
                     case "left":
                         newSpotX -= cellSideLenth;
-                        type = 0;
-                        newBridgeX -= bridgeSideLength.Item1;
-                        newBridgeY += bridgeSideLength.Item1;
+                        horizontal = true;
+                        newBridgeX -= bridgeSideLength.Item2;
+                        newBridgeY += bridgeSideLength.Item2;
                         break;
                     case "right":
                         newSpotX += cellSideLenth;
-                        type = 0;
+                        horizontal = true;
                         newBridgeX += spotWidth;
-                        newBridgeY += bridgeSideLength.Item1;
+                        newBridgeY += bridgeSideLength.Item2;
                         break;
                     default:
                         break;
@@ -214,7 +208,7 @@ namespace Game1.Code.HUD.Sprite
                 }
                 if (!bridgeFound)
                 {
-                    bridgePosList.Add(new Tuple<int, Vector2>(type, new Vector2(newBridgeX, newBridgeY)));
+                    bridgePosList.Add(new Tuple<bool, Vector2>(horizontal, new Vector2(newBridgeX, newBridgeY)));
 
                 }
 
