@@ -19,7 +19,7 @@ using System.Windows.Forms.VisualStyles;
 namespace Game1.Code.HUD
 {
     /*U for previous item, I for next item*/
-    class ItemSelectionController
+    public class ItemSelectionController
     {
          
         private KeyboardState oldState;
