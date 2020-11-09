@@ -1,6 +1,5 @@
 ﻿using Game1.Code.HUD.Factory;
 using Game1.Code.Item.ItemFactory;
-using Game1.Code.ItemSelection.ItemSelectionFactory;
 using Game1.Code.LoadFile;
 using Game1.Code.Player;
 using Microsoft.Xna.Framework;

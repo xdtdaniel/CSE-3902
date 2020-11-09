@@ -13,7 +13,7 @@ namespace Game1.Player.Interface
         void AttackN();
         void AttackZ();
         void UseItem();
-        void TakeDamage();
+        void TakeDamage(int dmgAmount);
         void KnockedBack(string collisionSide);
         void PickUp(int pickUp);
         void Update();

@@ -17,6 +17,7 @@ namespace Game1.Code.Player
         static int swordHitBoxHeight = (int)(7 * LoadAll.Instance.scale);  // represent height when facing left and right, represent width when facing up and down
         static bool ifHit = false;
         static bool hitAtLeastOne = false;
+        static int dmgAmount = 1;
         public static void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
         {
             if (link.GetStateName() == "SwordBeamLink" || link.GetStateName() == "WoodenSwordLink")
@@ -49,9 +50,10 @@ namespace Game1.Code.Player
             foreach (Tuple<IEnemy, string> tuple in enemyList)
             {
                 Rectangle enemyRectangle = tuple.Item1.GetRectangle();
-
+                int enemyRectX = (int)(enemyRectangle.X + LoadAll.Instance.startPos.X);
+                int enemyRectY = (int)(enemyRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale);
                 // sword hit enemy
-                collidedSide = CollisionDetection.Instance.isCollided(swordHitBox, new Rectangle((int)(enemyRectangle.X + LoadAll.Instance.startPos.X), (int)(enemyRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), enemyRectangle.Width, enemyRectangle.Height));
+                collidedSide = CollisionDetection.Instance.isCollided(swordHitBox, new Rectangle(enemyRectX, enemyRectY, enemyRectangle.Width, enemyRectangle.Height));
                 if (!hitAtLeastOne && collidedSide != "")
                 {
                     tuple.Item1.TakeDamage(link.attackDamage);
@@ -60,10 +62,10 @@ namespace Game1.Code.Player
 
                 // link touch enemy
 
-                collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), new Rectangle((int)(enemyRectangle.X + LoadAll.Instance.startPos.X), (int)(enemyRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), enemyRectangle.Width, enemyRectangle.Height));
+                collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), new Rectangle(enemyRectX, enemyRectY, enemyRectangle.Width, enemyRectangle.Height));
                 if (collidedSide != "" && link.damageTimeCounter == 0 && tuple.Item2 != "oldman")
                 {
-                    link.TakeDamage();
+                    link.TakeDamage(dmgAmount);
                     link.KnockedBack(collidedSide);
                 }
 
@@ -80,7 +82,7 @@ namespace Game1.Code.Player
                             collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), new Rectangle((int)(projectileRectangle.X + LoadAll.Instance.startPos.X), (int)(projectileRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), projectileRectangle.Width, projectileRectangle.Height));
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
-                                link.TakeDamage();
+                                link.TakeDamage(dmgAmount);
                                 link.KnockedBack(collidedSide);
                                 projectile.SetIsOnScreen(false);
                             }
@@ -106,7 +108,7 @@ namespace Game1.Code.Player
                             collidedSide = CollisionDetection.Instance.isCollided(link.GetRectangle(), new Rectangle((int)(projectileRectangle.X + LoadAll.Instance.startPos.X), (int)(projectileRectangle.Y + LoadAll.Instance.startPos.Y - 56 * LoadAll.Instance.scale), projectileRectangle.Width, projectileRectangle.Height));
                             if (collidedSide != "" && link.damageTimeCounter == 0)
                             {
-                                link.TakeDamage();
+                                link.TakeDamage(dmgAmount);
                                 link.KnockedBack(collidedSide);
                                 projectile.BounceBack();
                             }

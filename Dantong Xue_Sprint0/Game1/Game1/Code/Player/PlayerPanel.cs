@@ -82,13 +82,13 @@ namespace Game1
             // for collision test
             string x = "x: " + game.link.x.ToString();
             string y = "y: " + game.link.y.ToString();
-            string damagedTimeRemain = "time: " + game.link.damageTimeCounter.ToString();
+            string container = "container: " + game.link.itemList["HeartContainer"].ToString();
             string hp = "hp: " + game.link.itemList["Heart"].ToString();
 
 
             game._spriteBatch.DrawString(game._spriteFont, x, new Vector2(game.link.x, game.link.y - 125), Color.Black);
             game._spriteBatch.DrawString(game._spriteFont, y, new Vector2(game.link.x, game.link.y - 100), Color.Black);
-            game._spriteBatch.DrawString(game._spriteFont, damagedTimeRemain, new Vector2(game.link.x, game.link.y - 75), Color.Black);
+            game._spriteBatch.DrawString(game._spriteFont, container, new Vector2(game.link.x, game.link.y - 75), Color.Black);
             game._spriteBatch.DrawString(game._spriteFont, hp, new Vector2(game.link.x, game.link.y - 50), Color.Black);
         }
 

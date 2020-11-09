@@ -181,8 +181,6 @@ namespace Game1
             // red selection frame
             itemSelectionController.Draw();
             string x = "hud x: " + hudPanel.x.ToString();
-
-
             string y = "hud y: " + hudPanel.y.ToString();
 
 

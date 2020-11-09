@@ -66,7 +66,7 @@ namespace Game1.Code.HUD.Sprite
             }
 
             // draw half heart
-            if (hudItemList["HeartContainer"] - hudItemList["Heart"] % 2 != 0)
+            if (hudItemList["Heart"] % 2 != 0)
             {
                 sourceRectangle = new Rectangle(0, 0, halfHeart.Width, halfHeart.Height);
                 if (currentHeartIndex < heartPerRow)

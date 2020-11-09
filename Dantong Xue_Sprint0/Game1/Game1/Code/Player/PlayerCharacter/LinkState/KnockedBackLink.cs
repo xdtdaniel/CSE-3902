@@ -43,7 +43,7 @@ namespace Game1.Player.PlayerCharacter
         public void UseItem() { }
         public void PickUp(int pickUp) { }
 
-        public void TakeDamage()
+        public void TakeDamage(int dmgAmount)
         {
         }
         public void KnockedBack(string collisionSide)

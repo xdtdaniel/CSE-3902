@@ -47,12 +47,11 @@ namespace Game1.Player.PlayerCharacter
         public void UseItem() { }
         public void PickUp(int pickUp) { }
 
-        public void TakeDamage()
+        public void TakeDamage(int dmgAmount)
         {
             link.damageTimeCounter = 0;
             link.isDamaged = true;
-            // test collision
-            link.itemList["Heart"] -= 1;
+            link.itemList["Heart"] -= dmgAmount;
         }
         public void KnockedBack(string collisionSide)
         {

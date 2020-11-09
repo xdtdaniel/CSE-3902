@@ -128,9 +128,9 @@ namespace Game1.Player.PlayerCharacter
             useItemDone = true;
 
         }
-        public void TakeDamage()
+        public void TakeDamage(int dmgAmount)
         {
-            state.TakeDamage();
+            state.TakeDamage(dmgAmount);
         }
         public void PickUp(int pickUp)
         {

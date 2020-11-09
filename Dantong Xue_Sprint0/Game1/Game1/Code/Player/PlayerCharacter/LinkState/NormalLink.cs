@@ -60,12 +60,11 @@ namespace Game1.Player.PlayerCharacter
             link.movable = false;
             link.state = new UseItemLink(link);
         }
-        public void TakeDamage()
+        public void TakeDamage(int dmgAmount)
         {
             link.damageTimeCounter = 0;
             link.isDamaged = true;
-            // test collision
-            link.itemList["Heart"] -= 1;
+            link.itemList["Heart"] -= dmgAmount;
         }
         public void PickUp(int pickUp)
         {
