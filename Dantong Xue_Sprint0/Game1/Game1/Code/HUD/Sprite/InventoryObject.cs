@@ -49,9 +49,7 @@ namespace Game1.Code.HUD.Sprite
             //load selections
             firstSelection = HUDFactory.LoadFirstEquipment();
 
-            //initial item ->sword
-            ba = new string[2];
-            ba[0] = "Sword";
+
 
             scale = (int)LoadAll.Instance.scale;
             height = 14 * scale;
@@ -66,17 +64,21 @@ namespace Game1.Code.HUD.Sprite
             y = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
          
         }
+        public void DrawSelection(SpriteBatch spriteBatch) {
 
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
             //initial first selection position
-            x_selection = x;
-            y_selection = y;
+            x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+            y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
 
             sourceRectangle = new Rectangle(0, 0, firstSelection.Width, firstSelection.Height);
             destinationRectangle = new Rectangle(x_selection, y_selection, width, height);
             spriteBatch.Draw(firstSelection, destinationRectangle, sourceRectangle, Color.White);
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+          
 
             if (hudItemList["Bomb"] > 0)
             {
@@ -154,25 +156,25 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(objects[8], destinationRectangle, sourceRectangle, Color.White);
             }
         }
-    
+
+        public void UpdateSelection(float newStartX, float newStartY)
+        {
+            x_selection = 132 * scale + (int)newStartX;
+            y_selection = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
+
+
+        }
         public void Update(float newStartX, float newStartY)
         {
             x = 132 * scale + (int)newStartX;
             y = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
 
-            x_selection = x;
-            y_selection = y;
+           // x_selection = x;
+           // y_selection = y;
 
 
         }
 
-        public string[] getBA()
-        {
-            ba[0] = "sword";
-
-            return ba;
-        
-        }
 
         public void MoveNext()
         {
@@ -180,18 +182,25 @@ namespace Game1.Code.HUD.Sprite
             if (index == objects.Length)
             {
                 index = 0;
-                x_selection = x;
-                y_selection = y;
+                x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
             }
-            else if (index == objects.Length / 2)
+            else if (index == 2)
             {
-                x_selection = x;
-                y_selection += spacing;
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 1 * spacing;
+                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                index++;
+
+            }
+            else if (index == 5)
+            {
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                y_selection += (spacing + height);
 
             }
             else
             {
-                x_selection += spacing;
+                x_selection += width+spacing;
             }
 
         }
@@ -202,18 +211,31 @@ namespace Game1.Code.HUD.Sprite
             if (index < 0)
             {
                 index = objects.Length - 1;
-                x_selection = x;
-                y_selection = y;
+                x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 3 * width + 2 * spacing;
+                y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale + height + spacing;
             }
-            else if (index == objects.Length / 2)
+            else if (index == 3)
             {
-                x_selection += 4*spacing;
-                y_selection -= spacing ;
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 1 * spacing;
+                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                index--;
+
+            }
+            else if (index == 4)
+            {
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 3 * width + 2 * spacing;
+                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+
+            }
+            else if (index == 5)
+            {
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale + height + spacing;
 
             }
             else
             {
-                x_selection-= spacing;
+                x_selection-= (width+spacing);
             }
         }
     }

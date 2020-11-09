@@ -18,24 +18,19 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Game1.Code.HUD
 {
+    /*U for previous item, I for next item*/
     class ItemSelectionController
     {
          
         private KeyboardState oldState;
         private KeyboardState newState;
         private InventoryObject inventoryObj;
-        private string[] BA;
-        private float x;
-        private float y;
 
         public ItemSelectionController(Dictionary<string, int> itemList)
         {
             inventoryObj = new InventoryObject(itemList);
-            //get 2 selectino from inventory obj?
-            BA = inventoryObj.getBA();
 
-            x = (int)LoadAll.Instance.startPos.X;
-            y = (int)LoadAll.Instance.startPos.Y;
+ 
 
         }
         public void Update(Game1 game)
@@ -51,15 +46,15 @@ namespace Game1.Code.HUD
             {
                 inventoryObj.MoveNext();
             }
-
-            inventoryObj.Update(x,y);
+            // pass start position to update method.
+            inventoryObj.Update(0,  56 * 3);
 
             this.oldState = this.newState;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            inventoryObj.Draw(spriteBatch);
+            inventoryObj.DrawSelection(spriteBatch);
         }
     }
 
