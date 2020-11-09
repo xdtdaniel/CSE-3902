@@ -21,40 +21,41 @@ namespace Game1.Code.HUD
     /*U for previous item, I for next item*/
     public class ItemSelectionController
     {
-         
+        Game1 game;
         private KeyboardState oldState;
         private KeyboardState newState;
         private InventoryObject inventoryObj;
 
-        public ItemSelectionController(Dictionary<string, int> itemList)
+        public ItemSelectionController(Game1 game)
         {
-            inventoryObj = new InventoryObject(itemList);
+            this.game = game;
+            inventoryObj = new InventoryObject(game.link.itemList);
 
  
 
         }
-        public void Update(Game1 game)
+        public void Update(float newStartX, float newStartY)
         {
             this.newState = Keyboard.GetState();
 
 
             if (this.newState.IsKeyDown(Keys.U) && !this.oldState.IsKeyDown(Keys.U))
             {
-                inventoryObj.MovePrev();
+                inventoryObj.MovePrev(newStartX, newStartY);
             }
             if (this.newState.IsKeyDown(Keys.I) && !this.oldState.IsKeyDown(Keys.I))
             {
-                inventoryObj.MoveNext();
+                inventoryObj.MoveNext(newStartX, newStartY);
             }
-            // pass start position to update method.
-            inventoryObj.Update(0,  56 * 3);
 
             this.oldState = this.newState;
+
+            //inventoryObj.UpdateSelection(newStartX, newStartY);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            inventoryObj.DrawSelection(spriteBatch);
+            inventoryObj.DrawSelection(game._spriteBatch);
         }
     }
 

@@ -20,7 +20,7 @@ namespace Game1.Code.HUD.Sprite
         private int spacing;
         private int x;
         private int y;
-        private static int index;
+        private int index;
         private int x_selection;
         private int y_selection;
         private string[] ba;
@@ -62,13 +62,13 @@ namespace Game1.Code.HUD.Sprite
             //first item position in itenSelection screen
             x = 132 * scale + (int)LoadAll.Instance.startPos.X;
             y = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-         
+            x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+            y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+
         }
         public void DrawSelection(SpriteBatch spriteBatch) {
 
             //initial first selection position
-            x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
-            y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
 
             sourceRectangle = new Rectangle(0, 0, firstSelection.Width, firstSelection.Height);
             destinationRectangle = new Rectangle(x_selection, y_selection, width, height);
@@ -176,66 +176,66 @@ namespace Game1.Code.HUD.Sprite
         }
 
 
-        public void MoveNext()
+        public void MoveNext(float newStartX, float newStartY)
         {
             index++;
             if (index == objects.Length)
             {
                 index = 0;
-                x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
-                y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                x_selection = 132 * scale + (int)newStartX;
+                y_selection = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
             }
             else if (index == 2)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 1 * spacing;
-                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                x_selection = 132 * scale + (int)newStartX + 2 * width + 1 * spacing;
+                y_selection = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
                 index++;
 
             }
             else if (index == 5)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                x_selection = 132 * scale + (int)newStartX;
                 y_selection += (spacing + height);
 
             }
             else
             {
-                x_selection += width+spacing;
+                x_selection += width + spacing;
             }
 
         }
 
-        public void MovePrev()
+        public void MovePrev(float newStartX, float newStartY)
         {
             index--;
             if (index < 0)
             {
                 index = objects.Length - 1;
-                x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 3 * width + 2 * spacing;
-                y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale + height + spacing;
+                x_selection = 132 * scale + (int)newStartX + 3 * width + 2 * spacing;
+                y_selection = -176 * scale + 48 * scale + (int)newStartY - 56 * scale + height + spacing;
             }
             else if (index == 3)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 1 * spacing;
-                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                x_selection  = 132 * scale + (int)newStartX + 2 * width + 1 * spacing;
+                y_selection  = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
                 index--;
 
             }
             else if (index == 4)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 3 * width + 2 * spacing;
-                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                x_selection  = 132 * scale + (int)newStartX + 3 * width + 2 * spacing;
+                y_selection  = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
 
             }
             else if (index == 5)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
-                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale + height + spacing;
+                x_selection  = 132 * scale + (int)newStartX;
+                y_selection  = -176 * scale + 48 * scale + (int)newStartY - 56 * scale + height + spacing;
 
             }
             else
             {
-                x_selection-= (width+spacing);
+                x_selection-= width + spacing;
             }
         }
     }
