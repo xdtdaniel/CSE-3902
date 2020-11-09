@@ -36,8 +36,6 @@ namespace Game1.Code.HUD
         private IHUDSprite inventoryObject;
         private IHUDSprite dungeonPauseScreen;
 
-        private ItemSelectionController itc;
-
         // for test
         bool pause;
         public HUDPanel(Game1 game)
@@ -66,7 +64,6 @@ namespace Game1.Code.HUD
             inventoryObject = new InventoryObject(game.link.itemList);
             dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
 
-            itc = new ItemSelectionController(game);
 
             // for test
             pause = false;
@@ -96,7 +93,6 @@ namespace Game1.Code.HUD
             inventoryObject.Update(x, y);
             dungeonPauseScreen.Update(x, y);
 
-            itc.Update(x, y);
 
             if (switched)
             {
@@ -183,8 +179,6 @@ namespace Game1.Code.HUD
             dungeonMiniMap.Draw(game._spriteBatch);
             inventoryObject.Draw(game._spriteBatch);
             dungeonPauseScreen.Draw(game._spriteBatch);
-
-            itc.Draw();
 
         }
 

@@ -34,18 +34,18 @@ namespace Game1.Code.HUD
  
 
         }
-        public void Update(float newStartX, float newStartY)
+        public void Update()
         {
             this.newState = Keyboard.GetState();
 
 
             if (this.newState.IsKeyDown(Keys.U) && !this.oldState.IsKeyDown(Keys.U))
             {
-                inventoryObj.MovePrev(newStartX, newStartY);
+                inventoryObj.MovePrev();
             }
             if (this.newState.IsKeyDown(Keys.I) && !this.oldState.IsKeyDown(Keys.I))
             {
-                inventoryObj.MoveNext(newStartX, newStartY);
+                inventoryObj.MoveNext();
             }
 
             this.oldState = this.newState;
