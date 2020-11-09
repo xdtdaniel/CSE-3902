@@ -53,7 +53,8 @@ namespace Game1
         private QuitResetController quitResetController;
 
         //red selection frame
-        private ItemSelectionController itemSelectionController;
+        //private ItemSelectionController itemSelectionController;
+
 
         public Camera camera;
 
@@ -83,7 +84,10 @@ namespace Game1
             quitResetController = new QuitResetController();
 
             //red selection frame
-            itemSelectionController = new ItemSelectionController(this);
+
+           //itemSelectionController = new ItemSelectionController(this);
+
+
             camera = new Camera(GraphicsDevice.Viewport);
 
         }
@@ -143,7 +147,7 @@ namespace Game1
             hudPanel.HUDUpdate();
 
             //red selection frame
-            itemSelectionController.Update();
+           // itemSelectionController.Update(x,y);
             camera.UpdateCamera(GraphicsDevice.Viewport);
             
             base.Update(gameTime);
@@ -179,7 +183,7 @@ namespace Game1
             hudPanel.HUDDraw();
 
             // red selection frame
-            itemSelectionController.Draw();
+           // itemSelectionController.Draw();
             string x = "hud x: " + hudPanel.x.ToString();
             string y = "hud y: " + hudPanel.y.ToString();
 

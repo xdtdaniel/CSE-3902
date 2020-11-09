@@ -90,25 +90,25 @@ namespace Game1.Code.HUD.Sprite
         }
      
 
-        public void MoveNext()
+        public void MoveNext(float newStartX, float newStartY)
         {
             index++;
             if (index == 9)
             {
                 index = 0;
-                x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
-                y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                x_selection = 132 * scale + (int)newStartX;
+                y_selection = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
             }
             else if (index == 2)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 4 * spacing;
-                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                x_selection = 132 * scale + (int)newStartX + 2 * width + 4 * spacing;
+                y_selection = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
                 ++index;
 
             }
             else if (index == 5)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                x_selection = 132 * scale + (int)newStartX;
                 y_selection += (2 * spacing);
 
             }
@@ -119,31 +119,31 @@ namespace Game1.Code.HUD.Sprite
 
         }
 
-        public void MovePrev()
+        public void MovePrev(float newStartX, float newStartY)
         {
             index--;
             if (index < 0)
             {
                 index = 8;
-                x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 7 * spacing;
+                x_selection = 132 * scale + (int)newStartX + 2 * width + 7 * spacing;
                 y_selection += 2 * spacing;
             }
             else if (index == 3)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 4 * spacing;
-                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                x_selection = 132 * scale + (int)newStartX  + 2 * width + 4 * spacing;
+                y_selection = - 176 * scale + 48 * scale + (int)newStartY - 56 * scale;
                 --index;
 
             }
             else if (index == 4)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 7 * spacing;
+                x_selection = 132 * scale + (int)newStartX + 2 * width + 7 * spacing;
                 y_selection -= 2 * spacing;
 
             }
             else if (index == 5)
             {
-                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                x_selection = 132 * scale + (int)newStartX;
             }
             else
             {
