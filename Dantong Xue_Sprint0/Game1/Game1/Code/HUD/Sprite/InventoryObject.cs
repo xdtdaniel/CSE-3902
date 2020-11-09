@@ -46,9 +46,6 @@ namespace Game1.Code.HUD.Sprite
             objects[7] = ItemSpriteFactory.CreateBluePotion();
             objects[8] = ItemSpriteFactory.CreateBlueRing();
 
-            //load selections
-            firstSelection = HUDFactory.LoadFirstEquipment();
-
 
 
             scale = (int)LoadAll.Instance.scale;
