@@ -46,7 +46,7 @@ namespace Game1.Code.HUD
             {
                 selection.MoveNext();
             }
-
+            selection.UpdateSelection();
             this.oldState = this.newState;
 
         }
