@@ -9,7 +9,6 @@ using Game1.Code.Item;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
-using Game1.Code.ItemSelection.ItemSelectionFactory;
 using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
@@ -54,7 +53,7 @@ namespace Game1
         private QuitResetController quitResetController;
 
         //red selection frame
-        
+        private ItemSelectionController itemSelectionController;
 
         public Camera camera;
 
@@ -84,7 +83,7 @@ namespace Game1
             quitResetController = new QuitResetController();
 
             //red selection frame
-
+            itemSelectionController = new ItemSelectionController(this);
             camera = new Camera(GraphicsDevice.Viewport);
 
         }
@@ -99,7 +98,6 @@ namespace Game1
             EnemyTextureStorage.LoadTextures(Content);
             ItemSpriteFactory.LoadAllTextures(Content);
             HUDFactory.LoadAllHUDTextures(Content);
-            ItemSelectionFactory.LoadAllTextures(Content);
 
             _spriteFont = Content.Load<SpriteFont>("font");
           
@@ -145,7 +143,7 @@ namespace Game1
             hudPanel.HUDUpdate();
 
             //red selection frame
-
+            itemSelectionController.Update();
             camera.UpdateCamera(GraphicsDevice.Viewport);
             
             base.Update(gameTime);
@@ -181,7 +179,7 @@ namespace Game1
             hudPanel.HUDDraw();
 
             // red selection frame
-
+            itemSelectionController.Draw();
             string x = "hud x: " + hudPanel.x.ToString();
 
 
