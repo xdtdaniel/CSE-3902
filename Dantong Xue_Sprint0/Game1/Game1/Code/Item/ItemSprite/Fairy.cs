@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using Game1.Code.LoadFile;
 
 namespace Game1.Code.Item.ItemSprite
 {
@@ -86,13 +87,15 @@ namespace Game1.Code.Item.ItemSprite
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            width = Texture.Width / Columns;
-            height = Texture.Height / Rows;
+            width = 8 * (int)LoadAll.Instance.scale;
+            height = 16 * (int)LoadAll.Instance.scale;
+            int sourceWidth = Texture.Width / Columns;
+            int sourceHeight = Texture.Height / Rows;
             int row = (int)((float)CurrentFrame / (float)Columns);
             int column = CurrentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width * 3, height * 3);
+            Rectangle sourceRectangle = new Rectangle(sourceWidth * column, sourceHeight * row, sourceWidth, sourceHeight);
+            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
             CollisionRectangle = destinationRectangle;
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 

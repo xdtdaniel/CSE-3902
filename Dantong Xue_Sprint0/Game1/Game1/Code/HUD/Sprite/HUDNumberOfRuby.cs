@@ -26,7 +26,6 @@ namespace Game1.Code.HUD.Sprite
             //initial values
             numberOfRuby = new Texture2D[2];
             numberOfRuby = HUDFactory.LoadNumber(hudItemList["Ruby"]);
-            //need to change later, value is incorrect
             scale = (int)LoadAll.Instance.scale;
             height = 8 * scale;
             width = 8 * scale;

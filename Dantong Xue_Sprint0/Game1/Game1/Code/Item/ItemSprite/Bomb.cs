@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game1.Code.Item.ItemInterface;
+using Game1.Code.LoadFile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,16 +22,13 @@ namespace Game1.Code.Item.ItemSprite
         public Bomb(int position_x, int position_y)
         {
             Texture = ItemFactory.ItemSpriteFactory.CreateBomb();
-            x = position_x;
-            y = position_y;
+            height = 16 * (int)LoadAll.Instance.scale;
+            width = 8 * (int)LoadAll.Instance.scale;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            height = Texture.Height;
-            width = Texture.Width;
-
-            Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width * 3, height * 3);
+            Rectangle sourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
+            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
             CollisionRectangle = destinationRectangle;
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);

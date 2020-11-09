@@ -18,6 +18,7 @@ namespace Game1.Player.PlayerCharacter
 {
     public class Link
     {
+        // link's properties
         public int x;
         public int y;
         public int damageTimeCounter;
@@ -32,26 +33,27 @@ namespace Game1.Player.PlayerCharacter
         private int linkHeight;
         private int scale;
         private int doorPositionOffset;
-
         public string direction;
         public int directionIndex;
+        public IPlayerLinkState state;
 
+        // link's items
         public Dictionary<string, int> itemList;
-
         public LinkItem[] item;
+        public bool useItemDone;
+        public int itemIndex;
+        private const int MAX_ITEM_SPRITE_NUM = 1000;
 
+        // time intervals
         public int timeBetweenAttack;
         public int timeSinceAttack;
         public int timeBetweenItem;
         public int timeSinceItem;
-        public bool useItemDone;
 
+        // environmental informations
         private int blockSideLength;
         private int numberOfBlocksBetweenRoom;
 
-        public int itemIndex;
-        private const int MAX_ITEM_SPRITE_NUM = 1000;
-        public IPlayerLinkState state;
         public Link()
         {
             x = 300;
@@ -103,14 +105,7 @@ namespace Game1.Player.PlayerCharacter
             itemList["Bomb"] = 77;
             itemList["Key"] = 66;
             itemList["Ruby"] = 99;
-            itemList["BlueCandle"] = 99;
-            itemList["BluePotion"] = 99;
-            itemList["BlueRing"] = 99;
-            itemList["Bow"] = 99;
-            itemList["Boomerang"] = 99;
-            itemList["Clock"] = 99;
-            itemList["Map"] = 99;
-            itemList["Compass"] = 99;
+            itemList["Arrow"] = 99;
 
             state = new NormalLink(this);
 

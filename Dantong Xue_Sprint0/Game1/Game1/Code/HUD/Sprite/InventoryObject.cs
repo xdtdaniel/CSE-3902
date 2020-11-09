@@ -17,12 +17,20 @@ namespace Game1.Code.HUD.Sprite
         private int scale;
         private int height;
         private int width;
+        private int arrowHeight;
+        private int arrowWidth;
         private int x;
         private int y;
+        private int arrowX;
+        private int arrowY;
+        private int arrowNumberX;
+        private int arrowNumberY;
         private int[] itemPosOffset;
         private int spacing;
 
         private Texture2D[] objects;
+        private Texture2D arrow;
+        private Texture2D[] arrowNumber;
         private Dictionary<string, int> hudItemList;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
@@ -40,10 +48,15 @@ namespace Game1.Code.HUD.Sprite
             objects[6] = ItemSpriteFactory.CreateBlueCandle();
             objects[7] = ItemSpriteFactory.CreateBluePotion();
             objects[8] = ItemSpriteFactory.CreateBlueRing();
+            arrow = ItemSpriteFactory.CreateArrow();
+            arrowNumber = new Texture2D[2];
+            arrowNumber = HUDFactory.LoadNumber(0);
 
             scale = (int)LoadAll.Instance.scale;
-            height = 14 * scale;
-            width = 7 * scale;
+            height = 16 * scale;
+            width = 8 * scale;
+            arrowHeight = 16 * scale;
+            arrowWidth = 6 * scale;
 
             itemPosOffset = new int[9];
             itemPosOffset[0] = 16 * scale + width;
@@ -57,16 +70,24 @@ namespace Game1.Code.HUD.Sprite
 
             spacing = 16 * scale;
 
-            //first item position in itenSelection screen
-            x = 132 * scale + (int)LoadAll.Instance.startPos.X;
-            y = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-          
+            // draw arrow symbol
+            sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
+            destinationRectangle = new Rectangle(arrowX, arrowY, arrowWidth, arrowHeight);
+            spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White);
 
+            // draw arrow number
+            for (int i = 0; i < 2; i++)
+            {
+                sourceRectangle = new Rectangle(0, 0, arrowNumber[i].Width, arrowNumber[i].Height);
+                destinationRectangle = new Rectangle(arrowNumberX + i * width, arrowNumberY, width, width);
+                spriteBatch.Draw(arrowNumber[i], destinationRectangle, sourceRectangle, Color.White);
+            }
+
+            // draw inventory items
             if (hudItemList["Bomb"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[0].Width, objects[0].Height);
@@ -148,7 +169,11 @@ namespace Game1.Code.HUD.Sprite
         {
             x = 132 * scale + (int)newStartX;
             y = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
-
+            arrowX = 128 * scale + (int)newStartX;
+            arrowY = -176 * scale + 24 * scale + (int)newStartY - 56 * scale;
+            arrowNumberX = arrowX + 16 * scale;
+            arrowNumberY = arrowY + 8 * scale;
+            arrowNumber = HUDFactory.LoadNumber(hudItemList["Arrow"]);
         }
 
 

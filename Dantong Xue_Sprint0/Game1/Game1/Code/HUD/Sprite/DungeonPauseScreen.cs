@@ -23,8 +23,6 @@ namespace Game1.Code.HUD.Sprite
 
         private int spotX;
         private int spotY;
-        private int spotOffsetX;
-        private int spotOffsetY;
 
 
         private int mapX;
@@ -76,8 +74,6 @@ namespace Game1.Code.HUD.Sprite
             prevMapID = LoadAll.Instance.GetCurrentMapID();
             spotX = cellPosList[0].Item1 + (cellSideLength - spotSideLength) / 2;
             spotY = cellPosList[0].Item2 + (cellSideLength - spotSideLength) / 2;
-            spotOffsetX = 0;
-            spotOffsetY = 0;
 
             // textures
             map = ItemSpriteFactory.CreateMap();
@@ -232,27 +228,6 @@ namespace Game1.Code.HUD.Sprite
             }
 
 
-            if (prevMapID != LoadAll.Instance.GetCurrentMapID())
-            {
-                prevMapID = LoadAll.Instance.GetCurrentMapID();
-                switch (doorSide)
-                {
-                    case "up":
-                        spotOffsetY -= 4 * scale;
-                        break;
-                    case "down":
-                        spotOffsetY += 4 * scale;
-                        break;
-                    case "left":
-                        spotOffsetX -= 8 * scale;
-                        break;
-                    case "right":
-                        spotOffsetX += 8 * scale;
-                        break;
-                    default:
-                        break;
-                }
-            }
 
             spotX = cellPosList[currCellIndex].Item1 + (cellSideLength - spotSideLength) / 2;
             spotY = cellPosList[currCellIndex].Item2 + (cellSideLength - spotSideLength) / 2;

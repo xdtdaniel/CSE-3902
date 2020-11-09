@@ -11,20 +11,19 @@ namespace Game1.Code.HUD.Sprite
         private int scale;
         private int height;
         private int width;
-        private int x;
+        private int[] x;
         private int[] y;
+        private int numberOfSymbol;
 
         private Texture2D symbolX;
         public HUDSymbol()
         {
             scale = (int)LoadAll.Instance.scale;
+            numberOfSymbol = 4;
             height = 8 * scale;
             width = 8 * scale;
-            x = 96 * scale + (int)LoadAll.Instance.startPos.X;
-            y = new int[3];
-            y[0] = 16 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            y[1] = 32 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            y[2] = 40 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+            x = new int[numberOfSymbol];
+            y = new int[numberOfSymbol];
 
 
             symbolX = HUDFactory.LoadX();
@@ -32,9 +31,9 @@ namespace Game1.Code.HUD.Sprite
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, symbolX.Width, symbolX.Height);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < numberOfSymbol; i++)
             {
-                Rectangle destinationRectangle = new Rectangle(x, y[i], width, height);
+                Rectangle destinationRectangle = new Rectangle(x[i], y[i], width, height);
 
                 spriteBatch.Draw(symbolX, destinationRectangle, sourceRectangle, Color.White);
             }
@@ -42,10 +41,14 @@ namespace Game1.Code.HUD.Sprite
 
         public void Update(float newStartX, float newStartY)
         {
-            x = (int)newStartX + 96 * scale;
+            x[0] = 96 * scale + (int)newStartX;
+            x[1] = 96 * scale + (int)newStartX;
+            x[2] = 96 * scale + (int)newStartX;
+            x[3] = 136 * scale + (int)newStartX;
             y[0] = (int)newStartY - 56 * scale + 16 * scale;
             y[1] = (int)newStartY - 56 * scale + 32 * scale;
             y[2] = (int)newStartY - 56 * scale + 40 * scale;
+            y[3] = -176 * scale + 32 * scale + (int)newStartY - 56 * scale;
             // todo
         }
     }

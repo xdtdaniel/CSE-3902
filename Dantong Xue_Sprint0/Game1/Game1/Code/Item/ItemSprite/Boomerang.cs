@@ -27,8 +27,8 @@ namespace Game1.Code.Item.ItemSprite
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            height = (int)(LoadAll.Instance.scale * Texture.Height / 42);
-            width = (int)(LoadAll.Instance.scale * Texture.Width / 42);
+            height = 16 * (int)LoadAll.Instance.scale;
+            width = 8 * (int)LoadAll.Instance.scale;
 
             Rectangle sourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
             Rectangle destinationRectangle = new Rectangle(x, y, width, height);
