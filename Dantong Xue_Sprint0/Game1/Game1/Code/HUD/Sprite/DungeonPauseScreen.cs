@@ -35,8 +35,8 @@ namespace Game1.Code.HUD.Sprite
         private List<Tuple<bool, Vector2>> bridgePosList;
         private int currCellIndex;
         private int prevMapID;
-        private int cellOffsetX;
-        private int cellOffsetY;
+        private int pauseScreenStartPosX;
+        private int pauseScreenStartPosY;
 
 
         private Dictionary<string, int> itemList;
@@ -103,7 +103,7 @@ namespace Game1.Code.HUD.Sprite
                 for (int i = 0; i < cellPosList.Count; i++)
                 {
                     sourceRectangle = new Rectangle(0, 0, cell.Width, cell.Height);
-                    destinationRectangle = new Rectangle(cellPosList[i].Item1 + cellOffsetX, cellPosList[i].Item2 + cellOffsetY, cellSideLength, cellSideLength);
+                    destinationRectangle = new Rectangle(cellPosList[i].Item1 + pauseScreenStartPosX, cellPosList[i].Item2 + pauseScreenStartPosY, cellSideLength, cellSideLength);
 
                     spriteBatch.Draw(cell, destinationRectangle, sourceRectangle, Color.White);
                 }
@@ -124,7 +124,7 @@ namespace Game1.Code.HUD.Sprite
                         height = bridgeSideLength.Item2;
                     }
                     sourceRectangle = new Rectangle(0, 0, cell.Width, cell.Height);
-                    destinationRectangle = new Rectangle((int)bridgePosList[i].Item2.X + cellOffsetX, (int)bridgePosList[i].Item2.Y + cellOffsetY, width, height);
+                    destinationRectangle = new Rectangle((int)bridgePosList[i].Item2.X + pauseScreenStartPosX, (int)bridgePosList[i].Item2.Y + pauseScreenStartPosY, width, height);
 
                     spriteBatch.Draw(cell, destinationRectangle, sourceRectangle, Color.White);
                 }
@@ -141,7 +141,7 @@ namespace Game1.Code.HUD.Sprite
 
             // draw spot
             sourceRectangle = new Rectangle(0, 0, spot.Width, spot.Height);
-            destinationRectangle = new Rectangle(spotX, spotY, spotSideLength, spotSideLength);
+            destinationRectangle = new Rectangle(spotX + pauseScreenStartPosX, spotY + pauseScreenStartPosY, spotSideLength, spotSideLength);
 
             spriteBatch.Draw(spot, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -152,8 +152,8 @@ namespace Game1.Code.HUD.Sprite
             mapY = 112 * scale - 176 * scale + (int)newStartY - 56 * scale;
             compassX = 44 * scale + (int)newStartX;
             compassY = 152 * scale - 176 * scale + (int)newStartY - 56 * scale;
-            cellOffsetX = (int)newStartX;
-            cellOffsetY = (int)newStartY;
+            pauseScreenStartPosX = (int)newStartX;
+            pauseScreenStartPosY = (int)newStartY;
 
             string doorSide = PlayerAndBlockCollisionHandler.doorSide;
             // get new room position if room changes
