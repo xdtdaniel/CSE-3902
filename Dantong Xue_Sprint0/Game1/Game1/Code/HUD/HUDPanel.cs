@@ -177,6 +177,7 @@ namespace Game1.Code.HUD
             dungeonMiniMap.Draw(game._spriteBatch);
             inventoryObject.Draw(game._spriteBatch);
             dungeonPauseScreen.Draw(game._spriteBatch);
+
         }
 
     }

@@ -14,7 +14,7 @@ namespace Game1.Code.Player
     {
         private static string collidedSide = "";
         private static int doorTimeCounter = 0;
-        private static int timeBetweenDoor = 120;
+        private static int timeBetweenDoor = 60;
         public static string doorSide = "";
         public static bool roomSwitched = false;
         public static void HandleCollision(Link link, Dictionary<string, List<Rectangle>> blockList)
@@ -32,6 +32,7 @@ namespace Game1.Code.Player
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "holes":
+                                link.StopMoving(collidedSide, interRect);
                                 if (doorTimeCounter == 0)
                                 {
                                     LoadAll.Instance.ChangeRoom(collidedSide);
@@ -42,6 +43,7 @@ namespace Game1.Code.Player
                                 }
                                 break;
                             case "openDoors":
+                                link.StopMoving(collidedSide, interRect);
                                 if (doorTimeCounter == 0)
                                 {
                                     LoadAll.Instance.ChangeRoom(collidedSide);
@@ -52,20 +54,19 @@ namespace Game1.Code.Player
                                 }
                                 break;
                             case "shutDoors":
-                                // to do
-                                // temp code
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "lockedDoors":
                                 // to do
-                                LoadAll.Instance.UnlockDoor(collidedSide);
                                 link.StopMoving(collidedSide, interRect);
+                                LoadAll.Instance.UnlockDoor(collidedSide);
                                 break;
                             case "stairs":
+                                link.StopMoving(collidedSide, interRect);
                                 if (doorTimeCounter == 0)
                                 {
-                                    LoadAll.Instance.UnderWorldTransition();
                                     link.StopMoving(collidedSide, interRect);
+                                    LoadAll.Instance.UnderWorldTransition();
                                     doorTimeCounter = timeBetweenDoor;
                                     doorSide = "stairs";
                                     link.ResetPos();

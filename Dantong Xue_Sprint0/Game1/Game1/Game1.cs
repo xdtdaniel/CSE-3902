@@ -53,6 +53,10 @@ namespace Game1
 
         private QuitResetController quitResetController;
 
+        //red selection frame
+        public ItemSelectionController itemSelectionController;
+        
+
         public Camera camera;
 
         public Game1()
@@ -79,6 +83,9 @@ namespace Game1
             LoadAll.Instance.GetGameObject(this);
 
             quitResetController = new QuitResetController();
+
+            //red selection frame
+           itemSelectionController = new ItemSelectionController(this.link.itemList);
 
             camera = new Camera(GraphicsDevice.Viewport);
 
@@ -115,7 +122,7 @@ namespace Game1
             //TEST FOR HUD
 
             //item selection  
-            
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -130,6 +137,7 @@ namespace Game1
             UpdateAllItem.Instance.UpdateAll(inRoomList);       
 
             quitResetController.Update(this);
+
             playerPanel.PlayerUpdate();
 
             movableBlocks = LoadAll.Instance.GetMovableBlocks();
@@ -137,7 +145,9 @@ namespace Game1
 
             //TEST FOR HUD
             hudPanel.HUDUpdate();
-            //item selection
+
+            //red selection frame
+            itemSelectionController.Update(this);
 
             camera.UpdateCamera(GraphicsDevice.Viewport);
             
@@ -173,6 +183,9 @@ namespace Game1
             // must be the last to draw
             hudPanel.HUDDraw();
 
+            // red selection frame
+            itemSelectionController.Draw(_spriteBatch);
+
             string x = "hud x: " + hudPanel.x.ToString();
 
 
@@ -182,7 +195,7 @@ namespace Game1
             // for hud debugging
             _spriteBatch.DrawString(_spriteFont, x, new Vector2(link.x - 150, link.y - 25), Color.Black);
             _spriteBatch.DrawString(_spriteFont, y, new Vector2(link.x - 150, link.y), Color.Black);
-            //
+            
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 

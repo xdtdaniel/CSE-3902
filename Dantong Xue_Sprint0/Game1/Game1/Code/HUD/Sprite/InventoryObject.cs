@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace Game1.Code.HUD.Sprite
 {
@@ -17,19 +20,24 @@ namespace Game1.Code.HUD.Sprite
         private int spacing;
         private int x;
         private int y;
+        private static int index;
+        private int x_selection;
+        private int y_selection;
+        private string[] ba;
+
         private Texture2D[] objects;
         private Dictionary<string, int> hudItemList;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
         private List<string> inventoryItemList;
-
+        private Texture2D firstSelection;
         public InventoryObject(Dictionary<string, int> itemList)
         {
             hudItemList = itemList;
             //load all texture needed in inventory
             objects = new Texture2D[9];
-            objects[0] = ItemSpriteFactory.CreateBoomerang();
-            objects[1] = ItemSpriteFactory.CreateBomb();
+            objects[0] = ItemSpriteFactory.CreateBomb();
+            objects[1] = ItemSpriteFactory.CreateBoomerang();
             objects[2] = ItemSpriteFactory.CreateWoodenSword();
             objects[3] = ItemSpriteFactory.CreateSwordBeam();
             objects[4] = ItemSpriteFactory.CreateBow();
@@ -38,21 +46,41 @@ namespace Game1.Code.HUD.Sprite
             objects[7] = ItemSpriteFactory.CreateBluePotion();
             objects[8] = ItemSpriteFactory.CreateBlueRing();
 
+            //load selections
+            firstSelection = HUDFactory.LoadFirstEquipment();
+
+
+
             scale = (int)LoadAll.Instance.scale;
             height = 14 * scale;
             width = 7 * scale;
             spacing = 8 * scale;
 
+            index = 0;
+
             inventoryItemList = new List<string>();
             //first item position in itenSelection screen
             x = 132 * scale + (int)LoadAll.Instance.startPos.X;
             y = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+         
         }
+        public void DrawSelection(SpriteBatch spriteBatch) {
 
+            //initial first selection position
+            x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+            y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+
+            sourceRectangle = new Rectangle(0, 0, firstSelection.Width, firstSelection.Height);
+            destinationRectangle = new Rectangle(x_selection, y_selection, width, height);
+            spriteBatch.Draw(firstSelection, destinationRectangle, sourceRectangle, Color.White);
+
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (hudItemList["Boomerang"] > 0)
+          
+
+            if (hudItemList["Bomb"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[0].Width, objects[0].Height);
                 destinationRectangle = new Rectangle(x, y, width, height);
@@ -61,7 +89,7 @@ namespace Game1.Code.HUD.Sprite
             }
 
             x += 16 * scale + width;
-            if (hudItemList["Bomb"] > 0)
+            if (hudItemList["Boomerang"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[1].Width, objects[1].Height);
                 destinationRectangle = new Rectangle(x, y, width, height);
@@ -128,16 +156,87 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(objects[8], destinationRectangle, sourceRectangle, Color.White);
             }
         }
-    
+
+        public void UpdateSelection(float newStartX, float newStartY)
+        {
+            x_selection = 132 * scale + (int)newStartX;
+            y_selection = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
+
+
+        }
         public void Update(float newStartX, float newStartY)
         {
             x = 132 * scale + (int)newStartX;
             y = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
 
-            //if (hudItemList["Arrow"] == 0) {
-            //    hudItemList.Remove("Arrow");
-            //}
+           // x_selection = x;
+           // y_selection = y;
 
+
+        }
+
+
+        public void MoveNext()
+        {
+            index++;
+            if (index == objects.Length)
+            {
+                index = 0;
+                x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+            }
+            else if (index == 2)
+            {
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 1 * spacing;
+                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                index++;
+
+            }
+            else if (index == 5)
+            {
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                y_selection += (spacing + height);
+
+            }
+            else
+            {
+                x_selection += width+spacing;
+            }
+
+        }
+
+        public void MovePrev()
+        {
+            index--;
+            if (index < 0)
+            {
+                index = objects.Length - 1;
+                x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 3 * width + 2 * spacing;
+                y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale + height + spacing;
+            }
+            else if (index == 3)
+            {
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 2 * width + 1 * spacing;
+                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+                index--;
+
+            }
+            else if (index == 4)
+            {
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X + 3 * width + 2 * spacing;
+                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
+
+            }
+            else if (index == 5)
+            {
+                x_selection = x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
+                y_selection = y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale + height + spacing;
+
+            }
+            else
+            {
+                x_selection-= (width+spacing);
+            }
         }
     }
        
