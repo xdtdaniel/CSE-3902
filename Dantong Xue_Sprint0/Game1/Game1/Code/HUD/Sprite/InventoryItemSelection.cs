@@ -23,7 +23,17 @@ namespace Game1.Code.HUD.Sprite
         private int y_selection;
         private string[] ba;
 
-        private Texture2D[] objects;
+        private int texture_height;
+        private int texture_width;
+
+        private int Columns;
+        private int Rows;
+        private int TotalFrames;
+        private int CurrentFrame;
+        private int count = 0;
+        //timer
+        private int maxcount = 50;
+
         private Dictionary<string, int> hudItemList;
         private List<string> inventoryItemList;
         private Texture2D Selection;
@@ -31,9 +41,12 @@ namespace Game1.Code.HUD.Sprite
         {
             hudItemList = itemList;
             //load selections
-            Selection = HUDFactory.LoadFirstEquipment();
+            Selection = HUDFactory.LoadInventorySelection();
 
-
+            TotalFrames = 2;
+            Rows = 1;
+            Columns = 2;
+            CurrentFrame = 0;
 
             scale = (int)LoadAll.Instance.scale;
             height = 14 * scale;
@@ -50,13 +63,31 @@ namespace Game1.Code.HUD.Sprite
         public void DrawSelection(SpriteBatch spriteBatch)
         {
 
-            //initial first selection position
+            texture_width = Selection.Width / Columns;
+            texture_height = Selection.Height/ Rows;
+            int row = (int)((float)CurrentFrame / (float)Columns);
+            int column = CurrentFrame % Columns;
 
-           Rectangle sourceRectangle = new Rectangle(0, 0, Selection.Width, Selection.Height);
-           Rectangle destinationRectangle = new Rectangle(x_selection, y_selection, width, height);
+            Rectangle sourceRectangle = new Rectangle(texture_width * column, texture_height * row, texture_width, texture_height);
+            Rectangle destinationRectangle = new Rectangle(x_selection, y_selection, texture_width/9, texture_height/5);
             spriteBatch.Draw(Selection, destinationRectangle, sourceRectangle, Color.White);
 
-        }     
+        }
+
+        public void UpdateSelection() 
+        {
+            count++;
+            if (count == maxcount)
+            {
+                CurrentFrame++;
+                if (CurrentFrame == TotalFrames)
+                {
+                    CurrentFrame = 0;
+                }
+                count = 0;
+            }
+
+        }
      
 
         public void MoveNext()
