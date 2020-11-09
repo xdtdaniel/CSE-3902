@@ -24,12 +24,12 @@ namespace Game1.Code.HUD
         Game1 game;
         private KeyboardState oldState;
         private KeyboardState newState;
-        private InventoryObject inventoryObj;
+        private InventoryItenSelection selection;
 
         public ItemSelectionController(Game1 game)
         {
             this.game = game;
-            inventoryObj = new InventoryObject(game.link.itemList);
+            selection = new InventoryItenSelection(game.link.itemList);
 
  
 
@@ -38,24 +38,22 @@ namespace Game1.Code.HUD
         {
             this.newState = Keyboard.GetState();
 
-
             if (this.newState.IsKeyDown(Keys.U) && !this.oldState.IsKeyDown(Keys.U))
             {
-                inventoryObj.MovePrev();
+                selection.MovePrev();
             }
             if (this.newState.IsKeyDown(Keys.I) && !this.oldState.IsKeyDown(Keys.I))
             {
-                inventoryObj.MoveNext();
+                selection.MoveNext();
             }
 
             this.oldState = this.newState;
 
-            //inventoryObj.UpdateSelection(newStartX, newStartY);
         }
 
         public void Draw()
         {
-            inventoryObj.DrawSelection(game._spriteBatch);
+            selection.DrawSelection(game._spriteBatch);
         }
     }
 
