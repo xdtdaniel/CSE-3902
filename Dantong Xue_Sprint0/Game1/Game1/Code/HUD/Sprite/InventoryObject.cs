@@ -17,20 +17,15 @@ namespace Game1.Code.HUD.Sprite
         private int scale;
         private int height;
         private int width;
-        private int spacing;
         private int x;
         private int y;
-        private int index;
-        private int x_selection;
-        private int y_selection;
-        private string[] ba;
+        private int[] itemPosOffset;
+        private int spacing;
 
         private Texture2D[] objects;
         private Dictionary<string, int> hudItemList;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
-        private List<string> inventoryItemList;
-        private Texture2D firstSelection;
         public InventoryObject(Dictionary<string, int> itemList)
         {
             hudItemList = itemList;
@@ -46,27 +41,27 @@ namespace Game1.Code.HUD.Sprite
             objects[7] = ItemSpriteFactory.CreateBluePotion();
             objects[8] = ItemSpriteFactory.CreateBlueRing();
 
-            //load selections
-            firstSelection = HUDFactory.LoadFirstEquipment();
-
-
-
             scale = (int)LoadAll.Instance.scale;
             height = 14 * scale;
             width = 7 * scale;
-            spacing = 8 * scale;
 
-            index = 0;
+            itemPosOffset = new int[9];
+            itemPosOffset[0] = 16 * scale + width;
+            itemPosOffset[1] = 12 * scale + width;
+            itemPosOffset[2] = width;
+            itemPosOffset[3] = 12 * scale + width;
+            itemPosOffset[4] = -40 * scale - 4 * width;
+            itemPosOffset[5] = 16 * scale + width;
+            itemPosOffset[6] = 16 * scale + width;
+            itemPosOffset[7] = 16 * scale + width;
 
-            inventoryItemList = new List<string>();
+            spacing = 16 * scale;
+
             //first item position in itenSelection screen
             x = 132 * scale + (int)LoadAll.Instance.startPos.X;
             y = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            x_selection = 132 * scale + (int)LoadAll.Instance.startPos.X;
-            y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
 
         }
-
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -80,7 +75,7 @@ namespace Game1.Code.HUD.Sprite
 
             }
 
-            x += 16 * scale + width;
+            x += itemPosOffset[0];
             if (hudItemList["Boomerang"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[1].Width, objects[1].Height);
@@ -89,7 +84,7 @@ namespace Game1.Code.HUD.Sprite
 
             }
 
-            x += 12 * scale + width;
+            x += itemPosOffset[1];
             if (hudItemList["WoodenSword"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[2].Width, objects[2].Height);
@@ -98,7 +93,7 @@ namespace Game1.Code.HUD.Sprite
 
             }
 
-            x += width;
+            x += itemPosOffset[2];
             if (hudItemList["SwordBeam"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[3].Width, objects[3].Height);
@@ -107,7 +102,7 @@ namespace Game1.Code.HUD.Sprite
 
             }
 
-            x += 12 * scale + width;
+            x += itemPosOffset[3];
             if (hudItemList["Bow"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[4].Width, objects[4].Height);
@@ -115,8 +110,8 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(objects[4], destinationRectangle, sourceRectangle, Color.White);
             }
 
-            x = 132 * scale;
-            y += 16 * scale;
+            x += itemPosOffset[4];
+            y += spacing;
             if (hudItemList["Clock"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[5].Width, objects[5].Height);
@@ -124,7 +119,7 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(objects[5], destinationRectangle, sourceRectangle, Color.White);
             }
 
-            x += 16 * scale + width;
+            x += itemPosOffset[5];
             if (hudItemList["BlueCandle"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[6].Width, objects[6].Height);
@@ -132,7 +127,7 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(objects[6], destinationRectangle, sourceRectangle, Color.White);
             }
 
-            x += 16 * scale + width;
+            x += itemPosOffset[6];
             if (hudItemList["BluePotion"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[7].Width, objects[7].Height);
@@ -140,7 +135,7 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(objects[7], destinationRectangle, sourceRectangle, Color.White);
             }
 
-            x += 16 * scale + width;
+            x += itemPosOffset[7];
             if (hudItemList["BlueRing"] > 0)
             {
                 sourceRectangle = new Rectangle(0, 0, objects[8].Width, objects[8].Height);

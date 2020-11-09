@@ -14,12 +14,14 @@ namespace Game1.Code.HUD.Sprite
         private int miniMapWidth;
         private int spotHeight;
         private int spotWidth;
+
         private int mapX;
         private int mapY;
         private int spotX;
         private int spotY;
-        private int spotXOffset;
-        private int spotYOffset;
+        private int spotOffsetX;
+        private int spotOffsetY;
+
         private int prevMapID;
 
         private Texture2D miniMap;
@@ -34,8 +36,8 @@ namespace Game1.Code.HUD.Sprite
             mapY = 20 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
             spotX = 16 * scale + 26 * scale + (int)LoadAll.Instance.startPos.X;
             spotY = 20 * scale + 24 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            spotXOffset = 0;
-            spotYOffset = 0;
+            spotOffsetX = 0;
+            spotOffsetY = 0;
             prevMapID = LoadAll.Instance.GetCurrentMapID();
 
             miniMap = HUDFactory.LoadDungeonMiniMapCell_Level1();
@@ -65,16 +67,16 @@ namespace Game1.Code.HUD.Sprite
                 switch (doorSide)
                 {
                     case "up":
-                        spotYOffset -= 4 * scale;
+                        spotOffsetY -= 4 * scale;
                         break;
                     case "down":
-                        spotYOffset += 4 * scale;
+                        spotOffsetY += 4 * scale;
                         break;
                     case "left":
-                        spotXOffset -= 8 * scale;
+                        spotOffsetX -= 8 * scale;
                         break;
                     case "right":
-                        spotXOffset += 8 * scale;
+                        spotOffsetX += 8 * scale;
                         break;
                     default:
                         break;
@@ -82,9 +84,9 @@ namespace Game1.Code.HUD.Sprite
             }
             mapX = (int)newStartX + 16 * scale;
             mapY = (int)newStartY - 56 * scale + 20 * scale;
-            spotX = spotXOffset + 16 * scale + 26 * scale + (int)newStartX;
-            spotY = spotYOffset + 20 * scale + 24 * scale + (int)newStartY - 56 * scale;
-            // todo
+            spotX = spotOffsetX + 16 * scale + 26 * scale + (int)newStartX;
+            spotY = spotOffsetY + 20 * scale + 24 * scale + (int)newStartY - 56 * scale;
+           
         }
     }
 }

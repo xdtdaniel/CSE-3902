@@ -16,28 +16,34 @@ namespace Game1.Code.HUD.Sprite
         private int mapWidth;
         private int compassHeight;
         private int compassWidth;
-        private int spotHeight;
-        private int spotWidth;
-        private int cellSideLenth;
+        private int cellSideLength;
+        private int gridSideLenth;
         private (int, int) bridgeSideLength;
+        private int spotSideLength;
+
+        private int spotX;
+        private int spotY;
+        private int spotOffsetX;
+        private int spotOffsetY;
 
 
         private int mapX;
         private int mapY;
         private int compassX;
         private int compassY;
-        private List<Tuple<int, int>> spotPosList;
+        private List<Tuple<int, int>> cellPosList;
         private List<Tuple<bool, Vector2>> bridgePosList;
-        private int currSpotIndex;
+        private int currCellIndex;
         private int prevMapID;
-        private int spotOffsetX;
-        private int spotOffsetY;
+        private int cellOffsetX;
+        private int cellOffsetY;
 
 
         private Dictionary<string, int> itemList;
 
         private Texture2D map;
         private Texture2D compass;
+        private Texture2D cell;
         private Texture2D spot;
 
         private Rectangle sourceRectangle;
@@ -51,27 +57,33 @@ namespace Game1.Code.HUD.Sprite
             mapWidth = 8 * scale;
             compassHeight = 16 * scale;
             compassWidth = 15 * scale;
-            spotHeight = spotWidth = 6 * scale;
-            cellSideLenth = 8 * scale;
-            bridgeSideLength = (2 * scale, 2 * scale); 
+            cellSideLength = 6 * scale;
+            gridSideLenth = 8 * scale;
+            bridgeSideLength = (2 * scale, 2 * scale);
+            spotSideLength = 4 * scale;
 
             // positions
             mapX = 48 * scale + (int)LoadAll.Instance.startPos.X;
             mapY = 112 * scale - 176 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
             compassX = 44 * scale + (int)LoadAll.Instance.startPos.X;
             compassY = 44 * scale - 176 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            spotPosList = new List<Tuple<int, int>>();
-            spotPosList.Add(new Tuple<int, int>(128 * scale + 3 * cellSideLenth + (int)LoadAll.Instance.startPos.X, 96 * scale + 7 * cellSideLenth - 176 * scale - 56 * scale));
+            cellPosList = new List<Tuple<int, int>>();
+            cellPosList.Add(new Tuple<int, int>(128 * scale + 3 * gridSideLenth + (int)LoadAll.Instance.startPos.X, 96 * scale + 7 * gridSideLenth - 176 * scale - 56 * scale));
             bridgePosList = new List<Tuple<bool, Vector2>>();
             // the bool variable: true if the bridge is horizontal, false if vertical
-            bridgePosList.Add(new Tuple<bool, Vector2>(false, new Vector2(spotPosList[0].Item1 + 2 * scale, spotPosList[0].Item2 + 6 * scale)));
-            currSpotIndex = 0;
+            bridgePosList.Add(new Tuple<bool, Vector2>(false, new Vector2(cellPosList[0].Item1 + 2 * scale, cellPosList[0].Item2 + 6 * scale)));
+            currCellIndex = 0;
             prevMapID = LoadAll.Instance.GetCurrentMapID();
+            spotX = cellPosList[0].Item1 + (cellSideLength - spotSideLength) / 2;
+            spotY = cellPosList[0].Item2 + (cellSideLength - spotSideLength) / 2;
+            spotOffsetX = 0;
+            spotOffsetY = 0;
 
             // textures
             map = ItemSpriteFactory.CreateMap();
             compass = ItemSpriteFactory.CreateCompass();
-            spot = HUDFactory.LoadBlackSpot();
+            cell = HUDFactory.LoadBlackSpot();
+            spot = HUDFactory.LoadGreenSpot();
 
             // rectangles for drawing
             sourceRectangle = new Rectangle();
@@ -88,12 +100,12 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(map, destinationRectangle, sourceRectangle, Color.White);
 
                 // draw map cells
-                for (int i = 0; i < spotPosList.Count; i++)
+                for (int i = 0; i < cellPosList.Count; i++)
                 {
-                    sourceRectangle = new Rectangle(0, 0, spot.Width, spot.Height);
-                    destinationRectangle = new Rectangle(spotPosList[i].Item1 + spotOffsetX, spotPosList[i].Item2 + spotOffsetY, spotWidth, spotHeight);
+                    sourceRectangle = new Rectangle(0, 0, cell.Width, cell.Height);
+                    destinationRectangle = new Rectangle(cellPosList[i].Item1 + cellOffsetX, cellPosList[i].Item2 + cellOffsetY, cellSideLength, cellSideLength);
 
-                    spriteBatch.Draw(spot, destinationRectangle, sourceRectangle, Color.White);
+                    spriteBatch.Draw(cell, destinationRectangle, sourceRectangle, Color.White);
                 }
 
                 // draw bridges
@@ -111,10 +123,10 @@ namespace Game1.Code.HUD.Sprite
                         width = bridgeSideLength.Item1;
                         height = bridgeSideLength.Item2;
                     }
-                    sourceRectangle = new Rectangle(0, 0, spot.Width, spot.Height);
-                    destinationRectangle = new Rectangle((int)bridgePosList[i].Item2.X + spotOffsetX, (int)bridgePosList[i].Item2.Y + spotOffsetY, width, height);
+                    sourceRectangle = new Rectangle(0, 0, cell.Width, cell.Height);
+                    destinationRectangle = new Rectangle((int)bridgePosList[i].Item2.X + cellOffsetX, (int)bridgePosList[i].Item2.Y + cellOffsetY, width, height);
 
-                    spriteBatch.Draw(spot, destinationRectangle, sourceRectangle, Color.White);
+                    spriteBatch.Draw(cell, destinationRectangle, sourceRectangle, Color.White);
                 }
             }
 
@@ -126,6 +138,12 @@ namespace Game1.Code.HUD.Sprite
 
                 spriteBatch.Draw(compass, destinationRectangle, sourceRectangle, Color.White);
             }
+
+            // draw spot
+            sourceRectangle = new Rectangle(0, 0, spot.Width, spot.Height);
+            destinationRectangle = new Rectangle(spotX, spotY, spotSideLength, spotSideLength);
+
+            spriteBatch.Draw(spot, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Update(float newStartX, float newStartY)
@@ -134,18 +152,18 @@ namespace Game1.Code.HUD.Sprite
             mapY = 112 * scale - 176 * scale + (int)newStartY - 56 * scale;
             compassX = 44 * scale + (int)newStartX;
             compassY = 152 * scale - 176 * scale + (int)newStartY - 56 * scale;
-            spotOffsetX = (int)newStartX;
-            spotOffsetY = (int)newStartY;
+            cellOffsetX = (int)newStartX;
+            cellOffsetY = (int)newStartY;
 
+            string doorSide = PlayerAndBlockCollisionHandler.doorSide;
             // get new room position if room changes
             if (prevMapID != LoadAll.Instance.GetCurrentMapID())
             {
                 prevMapID = LoadAll.Instance.GetCurrentMapID();
 
                 // new room position
-                string doorSide = PlayerAndBlockCollisionHandler.doorSide;
-                int newSpotX = spotPosList[currSpotIndex].Item1;
-                int newSpotY = spotPosList[currSpotIndex].Item2;
+                int newSpotX = cellPosList[currCellIndex].Item1;
+                int newSpotY = cellPosList[currCellIndex].Item2;
                 // new bridge position
                 bool horizontal = true;
                 int newBridgeX = newSpotX;
@@ -153,27 +171,27 @@ namespace Game1.Code.HUD.Sprite
                 switch (doorSide)
                 {
                     case "up":
-                        newSpotY -= cellSideLenth;
+                        newSpotY -= gridSideLenth;
                         horizontal = false;
                         newBridgeX += bridgeSideLength.Item2;
                         newBridgeY -= bridgeSideLength.Item2;
                         break;
                     case "down":
-                        newSpotY += cellSideLenth;
+                        newSpotY += gridSideLenth;
                         horizontal = false;
                         newBridgeX += bridgeSideLength.Item2;
-                        newBridgeY += spotHeight;
+                        newBridgeY += cellSideLength;
                         break;
                     case "left":
-                        newSpotX -= cellSideLenth;
+                        newSpotX -= gridSideLenth;
                         horizontal = true;
                         newBridgeX -= bridgeSideLength.Item2;
                         newBridgeY += bridgeSideLength.Item2;
                         break;
                     case "right":
-                        newSpotX += cellSideLenth;
+                        newSpotX += gridSideLenth;
                         horizontal = true;
-                        newBridgeX += spotWidth;
+                        newBridgeX += cellSideLength;
                         newBridgeY += bridgeSideLength.Item2;
                         break;
                     default:
@@ -183,12 +201,12 @@ namespace Game1.Code.HUD.Sprite
                 // traverse to see if the room is explored
                 bool spotFound = false;
                 bool bridgeFound = false;
-                for (int i = 0; i < spotPosList.Count; i++)
+                for (int i = 0; i < cellPosList.Count; i++)
                 {
                     // change current position to the room if it is explored
-                    if (!spotFound && spotPosList[i].Item1 == newSpotX && spotPosList[i].Item2 == newSpotY)
+                    if (!spotFound && cellPosList[i].Item1 == newSpotX && cellPosList[i].Item2 == newSpotY)
                     {
-                        currSpotIndex = i;
+                        currCellIndex = i;
                         spotFound = true;
                     }
                 }
@@ -202,8 +220,8 @@ namespace Game1.Code.HUD.Sprite
                 // add to list if not explored
                 if (!spotFound)
                 {
-                    spotPosList.Add(new Tuple<int, int>(newSpotX, newSpotY));
-                    currSpotIndex = spotPosList.Count - 1;
+                    cellPosList.Add(new Tuple<int, int>(newSpotX, newSpotY));
+                    currCellIndex = cellPosList.Count - 1;
                 }
                 if (!bridgeFound)
                 {
@@ -212,6 +230,32 @@ namespace Game1.Code.HUD.Sprite
                 }
 
             }
+
+
+            if (prevMapID != LoadAll.Instance.GetCurrentMapID())
+            {
+                prevMapID = LoadAll.Instance.GetCurrentMapID();
+                switch (doorSide)
+                {
+                    case "up":
+                        spotOffsetY -= 4 * scale;
+                        break;
+                    case "down":
+                        spotOffsetY += 4 * scale;
+                        break;
+                    case "left":
+                        spotOffsetX -= 8 * scale;
+                        break;
+                    case "right":
+                        spotOffsetX += 8 * scale;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            spotX = cellPosList[currCellIndex].Item1 + (cellSideLength - spotSideLength) / 2;
+            spotY = cellPosList[currCellIndex].Item2 + (cellSideLength - spotSideLength) / 2;
         }
     }
 }
