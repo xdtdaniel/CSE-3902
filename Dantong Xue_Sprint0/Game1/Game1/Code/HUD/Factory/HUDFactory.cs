@@ -46,6 +46,7 @@ namespace Game1.Code.HUD.Factory
 		private static Texture2D fullHeart;
 		private static Texture2D firstEquipment;
 		private static Texture2D secondEquipment;
+		private static Texture2D inventorySelection;
 
 
 		public static void LoadAllHUDTextures(ContentManager content)
@@ -91,6 +92,7 @@ namespace Game1.Code.HUD.Factory
 			fullHeart = content.Load<Texture2D>("HUD/Misc/FullHeart");
 			firstEquipment = content.Load<Texture2D>("HUD/Misc/FirstEquipment");
 			secondEquipment = content.Load<Texture2D>("HUD/Misc/SecondEquipment");
+			inventorySelection = content.Load<Texture2D>("HUD/Misc/InventorySelection");
 
 
 		}
@@ -285,6 +287,10 @@ namespace Game1.Code.HUD.Factory
 		public static Texture2D LoadSecondEquipment()
 		{
 			return secondEquipment;
+		}
+
+		public static Texture2D LoadInventorySelection() {
+			return inventorySelection;
 		}
 
 	}
