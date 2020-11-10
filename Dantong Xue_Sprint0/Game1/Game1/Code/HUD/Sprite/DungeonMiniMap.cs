@@ -4,6 +4,7 @@ using Game1.Code.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.Direct2D1.Effects;
+using System.Collections.Generic;
 
 namespace Game1.Code.HUD.Sprite
 {
@@ -15,18 +16,21 @@ namespace Game1.Code.HUD.Sprite
         private int spotHeight;
         private int spotWidth;
 
+
         private int mapX;
         private int mapY;
         private int spotX;
         private int spotY;
         private int spotOffsetX;
         private int spotOffsetY;
+        private Dictionary<string, int> itemList;
 
         private int prevMapID;
 
         private Texture2D miniMap;
         private Texture2D spot;
-        public DungeonMiniMap(int level) {
+        public DungeonMiniMap(Dictionary<string, int> itemList) {
+            this.itemList = itemList;
             scale = (int)LoadAll.Instance.scale;
             miniMapHeight = 32 * scale;
             miniMapWidth = 64 * scale;
@@ -45,12 +49,20 @@ namespace Game1.Code.HUD.Sprite
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle sourceRectangle = new Rectangle(0, 0, miniMap.Width, miniMap.Height);
-            Rectangle destinationRectangle = new Rectangle(mapX, mapY, miniMapWidth, miniMapHeight);  
+            Rectangle sourceRectangle;
+            Rectangle destinationRectangle;
 
-            spriteBatch.Draw(miniMap, destinationRectangle, sourceRectangle, Color.White);
+            // draw mini map if link has a Map
+            if (itemList["Map"] > 0)
+            {
+                sourceRectangle = new Rectangle(0, 0, miniMap.Width, miniMap.Height);
+                destinationRectangle = new Rectangle(mapX, mapY, miniMapWidth, miniMapHeight);
+
+                spriteBatch.Draw(miniMap, destinationRectangle, sourceRectangle, Color.White);
+            }
 
 
+            // draw link spot
             sourceRectangle = new Rectangle(0, 0, spot.Width, spot.Height);
             destinationRectangle = new Rectangle(spotX, spotY, spotWidth, spotHeight);
 

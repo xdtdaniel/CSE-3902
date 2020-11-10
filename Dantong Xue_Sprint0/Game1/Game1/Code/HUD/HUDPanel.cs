@@ -63,7 +63,7 @@ namespace Game1.Code.HUD
             hudNumberOfBomb = new HUDNumberOfBomb(game.link.itemList);
             hudNumberOfKey = new HUDNumberOfKey(game.link.itemList);
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
-            dungeonMiniMap = new DungeonMiniMap(level);
+            dungeonMiniMap = new DungeonMiniMap(game.link.itemList);
             dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
            // hudInventoryAB = new HUDInventoryAB(game.link.itemList);
 

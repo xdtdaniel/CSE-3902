@@ -18,7 +18,7 @@ namespace Game1.Code.HUD.Sprite
         private int levelY;
 
         private Texture2D Texture;
-        private Texture2D[] levelTexture;
+        private Texture2D levelTexture;
         public DungeonMiniMapFrame(int level) {
             scale = (int)LoadAll.Instance.scale;
             height = 40 * scale;
@@ -30,8 +30,7 @@ namespace Game1.Code.HUD.Sprite
             levelY = mapY + (int)LoadAll.Instance.startPos.Y - 56 * scale;
 
             Texture = HUDFactory.LoadDungeonMiniMapFrame();
-            levelTexture = new Texture2D[2];
-            levelTexture = HUDFactory.LoadNumber(level);
+            levelTexture = HUDFactory.LoadNumber(level)[1];
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -42,10 +41,10 @@ namespace Game1.Code.HUD.Sprite
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
             // draw level number
-            sourceRectangle = new Rectangle(0, 0, levelTexture[0].Width, levelTexture[0].Height);
+            sourceRectangle = new Rectangle(0, 0, levelTexture.Width, levelTexture.Height);
             destinationRectangle = new Rectangle(levelX, levelY, levelNumberSideLength, levelNumberSideLength);
 
-            spriteBatch.Draw(levelTexture[0], destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(levelTexture, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Update(float newStartX, float newStartY)
