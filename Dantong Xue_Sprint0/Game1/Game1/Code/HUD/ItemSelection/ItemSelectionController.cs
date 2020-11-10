@@ -10,12 +10,12 @@ namespace Game1.Code.HUD
         Game1 game;
         private KeyboardState oldState;
         private KeyboardState newState;
-        private InventoryItenSelection selection;
+        private InventoryItemSelection selection;
 
         public ItemSelectionController(Game1 game)
         {
             this.game = game;
-            selection = new InventoryItenSelection(game.link.itemList);
+            selection = new InventoryItemSelection(game.link.itemList);
         }
         public void Update(float newStartX, float newStartY)
         {
@@ -29,6 +29,12 @@ namespace Game1.Code.HUD
             {
                 selection.MoveNext();
             }
+            if (this.newState.IsKeyDown(Keys.B) && !this.oldState.IsKeyDown(Keys.B))
+            {
+                //add to a list used in hudBA
+                //display on inventory 
+            }
+
 
             this.oldState = this.newState;
             selection.Update(newStartX, newStartY);
