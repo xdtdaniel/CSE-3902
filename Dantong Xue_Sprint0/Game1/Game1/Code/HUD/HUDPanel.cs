@@ -22,6 +22,7 @@ namespace Game1.Code.HUD
         public float y;
         private int yOrigin;
         private int yDistance;
+        private List<Tuple<string, int>> inventoryItemList;
 
         private IHUDSprite HUDFrame;
         private IHUDSprite inventoryFrame;
@@ -33,9 +34,7 @@ namespace Game1.Code.HUD
         private IHUDSprite hudNumberOfKey;
         private IHUDSprite hudNumberOfRuby;
         private IHUDSprite dungeonMiniMap;
-        private IHUDSprite inventoryObject;
         private IHUDSprite dungeonPauseScreen;
-        private IHUDSprite hudInventoryAB;
 
         private ItemSelectionController itemSelectionController;
 
@@ -53,6 +52,7 @@ namespace Game1.Code.HUD
             y = (int)LoadAll.Instance.startPos.Y;
             yOrigin = (int)LoadAll.Instance.startPos.Y;
             yDistance = 176 * scale;
+            inventoryItemList = new List<Tuple<string, int>>();
 
             HUDFrame = new HUDFrame();
             inventoryFrame = new InventoryFrame();
@@ -64,11 +64,10 @@ namespace Game1.Code.HUD
             hudNumberOfKey = new HUDNumberOfKey(game.link.itemList);
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
             dungeonMiniMap = new DungeonMiniMap(level);
-            inventoryObject = new InventoryObject(game.link.itemList);
             dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
            // hudInventoryAB = new HUDInventoryAB(game.link.itemList);
 
-            itemSelectionController = new ItemSelectionController(game);
+            itemSelectionController = new ItemSelectionController(game, inventoryItemList);
 
 
             // for test
@@ -85,7 +84,6 @@ namespace Game1.Code.HUD
             int targetX = (int)LoadAll.Instance.startPos.X;
             int targetY = (int)LoadAll.Instance.startPos.Y;
 
-
             HUDFrame.Update(x, y);
             inventoryFrame.Update(x, y);
             dungeonPauseScreenFrame.Update(x, y);
@@ -96,10 +94,10 @@ namespace Game1.Code.HUD
             hudNumberOfKey.Update(x, y);
             hudNumberOfRuby.Update(x, y);
             dungeonMiniMap.Update(x, y);
-            inventoryObject.Update(x, y);
             dungeonPauseScreen.Update(x, y);
            // hudInventoryAB.Update(x,y);
             itemSelectionController.Update(x,y);
+
 
 
             if (switched)
@@ -185,11 +183,11 @@ namespace Game1.Code.HUD
             hudNumberOfKey.Draw(game._spriteBatch);
             hudNumberOfRuby.Draw(game._spriteBatch);
             dungeonMiniMap.Draw(game._spriteBatch);
-            inventoryObject.Draw(game._spriteBatch);
             dungeonPauseScreen.Draw(game._spriteBatch);
            // hudInventoryAB.Draw(game._spriteBatch);
 
             itemSelectionController.Draw();
+
         }
 
     }

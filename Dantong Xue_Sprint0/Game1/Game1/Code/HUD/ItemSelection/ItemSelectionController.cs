@@ -1,24 +1,28 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Game1.Code.HUD.Sprite;
+using System.Collections.Generic;
+using System;
+using Microsoft.Xna.Framework;
 
 namespace Game1.Code.HUD
 {
     /*U for previous item, I for next item*/
     public class ItemSelectionController
     {
-        Game1 game;
         private KeyboardState oldState;
         private KeyboardState newState;
         private InventoryItemSelection selection;
-        private HUDInventoryAB hudAB;
-        private int index;
+        private InventoryObject inventoryObject;
+        private int previewedItemIndex;
+        private int selectedItemIndex;
+        private Game1 game;
 
-        public ItemSelectionController(Game1 game)
+        public ItemSelectionController(Game1 game, List<Tuple<string, int>> inventoryItemList)
         {
             this.game = game;
-            selection = new InventoryItemSelection(game.link.itemList);
-            hudAB = new HUDInventoryAB(game.link.itemList,index);
+            selection = new InventoryItemSelection(inventoryItemList);
+            inventoryObject = new InventoryObject(game.link.itemList, inventoryItemList);
         }
         public void Update(float newStartX, float newStartY)
         {
@@ -35,21 +39,23 @@ namespace Game1.Code.HUD
             if (this.newState.IsKeyDown(Keys.B) && !this.oldState.IsKeyDown(Keys.B))
             {
                 //get the current index and pass it to hudBA
-                index = selection.getIndex();               
-               
+                selectedItemIndex = selection.getIndex();
             }
+            previewedItemIndex = selection.getIndex();
 
             this.oldState = this.newState;
             selection.Update(newStartX, newStartY);
-            hudAB.Update(newStartX, newStartY,index);
+            inventoryObject.Update(newStartX, newStartY, selectedItemIndex, previewedItemIndex);
 
         }
 
         public void Draw()
         {
             selection.Draw(game._spriteBatch);
-            hudAB.Draw(game._spriteBatch,index);
+            inventoryObject.Draw(game._spriteBatch);
+
         }
+
     }
 
 }
