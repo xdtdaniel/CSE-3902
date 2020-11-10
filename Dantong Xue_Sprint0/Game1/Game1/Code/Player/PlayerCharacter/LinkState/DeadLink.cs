@@ -45,10 +45,10 @@ namespace Game1.Player.PlayerCharacter
             link.movable = false;
         }
 
-        public void AttackN()
+        public void WoodenSwordAttack()
         {
         }
-        public void AttackZ()
+        public void SwordBeamAttack()
         {
         }
         public void UseItem()

@@ -33,8 +33,8 @@ namespace Game1.Player.PlayerCharacter
             this.link = link;
 
         }
-        public void AttackN() { }
-        public void AttackZ() { }
+        public void WoodenSwordAttack() { }
+        public void SwordBeamAttack() { }
         public void UseItem() { }
         public void PickUp(int pickUp) { }
         public void TakeDamage(int dmgAmount)

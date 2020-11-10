@@ -37,8 +37,8 @@ namespace Game1.Player.PlayerCharacter
             bow = new Bow(link.x, link.y-40);
 
         }
-        public void AttackN() { }
-        public void AttackZ() { }
+        public void WoodenSwordAttack() { }
+        public void SwordBeamAttack() { }
         public void UseItem() { }
         public void PickUp(int pickUp) { }
         public void TakeDamage(int dmgAmount)

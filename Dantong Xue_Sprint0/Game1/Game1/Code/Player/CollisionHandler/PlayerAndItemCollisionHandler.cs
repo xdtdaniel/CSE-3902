@@ -72,6 +72,10 @@ namespace Game1.Code.Player
                             break;
                         case "Heart":
                             link.itemList["Heart"] += 2;
+                            if (link.itemList["Heart"] > link.itemList["HeartContainer"])
+                            {
+                                link.itemList["Heart"] = link.itemList["HeartContainer"];
+                            }
                             item = new Heart(X, Y);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "Heart"));
                             roomItemList.RemoveAt(index);

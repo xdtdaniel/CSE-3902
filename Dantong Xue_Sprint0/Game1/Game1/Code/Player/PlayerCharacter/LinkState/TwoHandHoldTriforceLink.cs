@@ -52,12 +52,12 @@ namespace Game1.Player.PlayerCharacter
             return "TwoHandHoldTriforceLink";
         }
 
-        public void AttackN()
+        public void WoodenSwordAttack()
         {
 
         }
 
-        public void AttackZ()
+        public void SwordBeamAttack()
         {
 
         }

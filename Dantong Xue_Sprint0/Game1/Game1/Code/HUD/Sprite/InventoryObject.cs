@@ -25,10 +25,10 @@ namespace Game1.Code.HUD.Sprite
         private int arrowY;
         private int arrowNumberX;
         private int arrowNumberY;
-        private int[] itemPosOffset;
         private int spacing;
-
-        private Texture2D[] objects;
+        private List<Tuple<string, int>> inventoryItemList;
+        private Dictionary<string, Texture2D> inventoryItemDict;
+        
         private Texture2D arrow;
         private Texture2D[] arrowNumber;
         private Dictionary<string, int> hudItemList;
@@ -38,16 +38,18 @@ namespace Game1.Code.HUD.Sprite
         {
             hudItemList = itemList;
             //load all texture needed in inventory
-            objects = new Texture2D[9];
-            objects[0] = ItemSpriteFactory.CreateBomb();
-            objects[1] = ItemSpriteFactory.CreateBoomerang();
-            objects[2] = ItemSpriteFactory.CreateWoodenSword();
-            objects[3] = ItemSpriteFactory.CreateSwordBeam();
-            objects[4] = ItemSpriteFactory.CreateBow();
-            objects[5] = ItemSpriteFactory.CreateClock();
-            objects[6] = ItemSpriteFactory.CreateBlueCandle();
-            objects[7] = ItemSpriteFactory.CreateBluePotion();
-            objects[8] = ItemSpriteFactory.CreateBlueRing();
+            inventoryItemList = new List<Tuple<string, int>>();
+            inventoryItemList.Add(new Tuple<string, int>("WoodenSword", hudItemList["WoodenSword"]));
+            inventoryItemDict = new Dictionary<string, Texture2D>();
+            inventoryItemDict.Add("WoodenSword", ItemSpriteFactory.CreateWoodenSword());
+            inventoryItemDict.Add("SwordBeam", ItemSpriteFactory.CreateSwordBeam());
+            inventoryItemDict.Add("Bomb", ItemSpriteFactory.CreateBomb());
+            inventoryItemDict.Add("Boomerang", ItemSpriteFactory.CreateBoomerang());
+            inventoryItemDict.Add("Bow", ItemSpriteFactory.CreateBow());
+            inventoryItemDict.Add("Clock", ItemSpriteFactory.CreateClock());
+            inventoryItemDict.Add("BlueCandle", ItemSpriteFactory.CreateBlueCandle());
+            inventoryItemDict.Add("BluePotion", ItemSpriteFactory.CreateBluePotion());
+            inventoryItemDict.Add("BlueRing", ItemSpriteFactory.CreateBlueRing());
             arrow = ItemSpriteFactory.CreateArrow();
             arrowNumber = new Texture2D[2];
             arrowNumber = HUDFactory.LoadNumber(0);           
@@ -58,17 +60,7 @@ namespace Game1.Code.HUD.Sprite
             arrowHeight = 16 * scale;
             arrowWidth = 6 * scale;
 
-            itemPosOffset = new int[9];
-            itemPosOffset[0] = 16 * scale + width;
-            itemPosOffset[1] = 12 * scale + width;
-            itemPosOffset[2] = width;
-            itemPosOffset[3] = 12 * scale + width;
-            itemPosOffset[4] = -40 * scale - 4 * width;
-            itemPosOffset[5] = 16 * scale + width;
-            itemPosOffset[6] = 16 * scale + width;
-            itemPosOffset[7] = 16 * scale + width;
-
-            spacing = 16 * scale;
+            spacing = 24 * scale;
 
         }
 
@@ -87,78 +79,18 @@ namespace Game1.Code.HUD.Sprite
                 spriteBatch.Draw(arrowNumber[i], destinationRectangle, sourceRectangle, Color.White);
             }
 
-            // draw inventory items
-            if (hudItemList["Bomb"] > 0)
+            // draw inventory items 
+            for (int i = 0; i < inventoryItemList.Count; i++)
             {
-                sourceRectangle = new Rectangle(0, 0, objects[0].Width, objects[0].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[0], destinationRectangle, sourceRectangle, Color.White);
-
-            }
-
-            x += itemPosOffset[0];
-            if (hudItemList["Boomerang"] > 0)
-            {
-                sourceRectangle = new Rectangle(0, 0, objects[1].Width, objects[1].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[1], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            x += itemPosOffset[1];
-            if (hudItemList["WoodenSword"] > 0)
-            {
-                sourceRectangle = new Rectangle(0, 0, objects[2].Width, objects[2].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[2], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            x += itemPosOffset[2];
-            if (hudItemList["SwordBeam"] > 0)
-            {
-                sourceRectangle = new Rectangle(0, 0, objects[3].Width, objects[3].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[3], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            x += itemPosOffset[3];
-            if (hudItemList["Bow"] > 0)
-            {
-                sourceRectangle = new Rectangle(0, 0, objects[4].Width, objects[4].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[4], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            x += itemPosOffset[4];
-            y += spacing;
-            if (hudItemList["Clock"] > 0)
-            {
-                sourceRectangle = new Rectangle(0, 0, objects[5].Width, objects[5].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[5], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            x += itemPosOffset[5];
-            if (hudItemList["BlueCandle"] > 0)
-            {
-                sourceRectangle = new Rectangle(0, 0, objects[6].Width, objects[6].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[6], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            x += itemPosOffset[6];
-            if (hudItemList["BluePotion"] > 0)
-            {
-                sourceRectangle = new Rectangle(0, 0, objects[7].Width, objects[7].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[7], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            x += itemPosOffset[7];
-            if (hudItemList["BlueRing"] > 0)
-            {
-                sourceRectangle = new Rectangle(0, 0, objects[8].Width, objects[8].Height);
-                destinationRectangle = new Rectangle(x, y, width, height);
-                spriteBatch.Draw(objects[8], destinationRectangle, sourceRectangle, Color.White);
+                if (i > 3)
+                {
+                    x -= spacing * 4;
+                    y += height;
+                }
+                Texture2D texture = inventoryItemDict[inventoryItemList[i].Item1];
+                sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+                destinationRectangle = new Rectangle(x + i * spacing, y, width, height);
+                spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
             }
         }
 
@@ -171,7 +103,34 @@ namespace Game1.Code.HUD.Sprite
             arrowNumberX = arrowX + 16 * scale;
             arrowNumberY = arrowY + 8 * scale;
             arrowNumber = HUDFactory.LoadNumber(hudItemList["Arrow"]);
-           
+
+            foreach (KeyValuePair<string, Texture2D> kvp in inventoryItemDict)
+            {
+                Tuple<string, int> tuple = new Tuple<string, int>(kvp.Key, hudItemList[kvp.Key]);
+                string itemName = kvp.Key;
+                bool found = false;
+                int index = 0;
+                for (int i = 0; i < inventoryItemList.Count; i++)
+                {
+                    // check if already exists
+                    if (inventoryItemList[i].Item1 == itemName && !found)
+                    {
+                        found = true;
+                        index = i;
+                    }
+                }
+                if (hudItemList[itemName] > 0 && !found)
+                {
+                    inventoryItemList.Add(tuple);
+                }
+
+                else if (hudItemList[itemName] <= 0 && found)
+                {
+                    inventoryItemList.RemoveAt(index);
+                }
+                
+            }
+
         }
 
 

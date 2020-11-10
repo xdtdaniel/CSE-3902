@@ -30,8 +30,12 @@ namespace Game1
             //RegisterCommand(Keys.Right, new MoveRight(game));
             //RegisterCommand(Keys.Up, new MoveUp(game));
             //RegisterCommand(Keys.Left, new MoveLeft(game));
-            RegisterCommand(Keys.N, new Attack(game, 0));
-            RegisterCommand(Keys.Z, new Attack(game, 1));
+            RegisterCommand(Keys.N, new Attack(game));
+
+            // change key Z to use current item later
+            RegisterCommand(Keys.Z, new Attack(game));
+
+
             RegisterCommand(Keys.D1, new UseItem(game, "Arrow"));
             RegisterCommand(Keys.D2, new UseItem(game, "Boomerang"));
             RegisterCommand(Keys.D3, new UseItem(game, "Bomb"));

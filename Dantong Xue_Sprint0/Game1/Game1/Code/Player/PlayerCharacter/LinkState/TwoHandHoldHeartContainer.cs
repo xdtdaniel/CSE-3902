@@ -51,12 +51,12 @@ namespace Game1.Player.PlayerCharacter
             return "TwoHandHoldHeartContainer";
         }
 
-        public void AttackN()
+        public void WoodenSwordAttack()
         {
 
         }
 
-        public void AttackZ()
+        public void SwordBeamAttack()
         {
 
         }

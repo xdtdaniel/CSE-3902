@@ -100,9 +100,7 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("SwordBeam", 1);
 
             // for test
-            itemList["HeartContainer"] = 30;
-            itemList["Heart"] = 17;
-            itemList["Bomb"] = 77;
+            itemList["Bomb"] = 2;
             itemList["Key"] = 66;
             itemList["Ruby"] = 99;
             itemList["Arrow"] = 99;
@@ -244,6 +242,12 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update()
         {
+            // SwordBeam is the upgraded version of WoodenSword
+            if (itemList["SwordBeam"] > 0)
+            {
+                itemList["WoodenSword"] = 0;
+            }
+
             if (!item[itemIndex].IsDone())
             {
                 itemIndex++;
