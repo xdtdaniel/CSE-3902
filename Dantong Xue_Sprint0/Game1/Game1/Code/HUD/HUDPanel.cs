@@ -35,6 +35,7 @@ namespace Game1.Code.HUD
         private IHUDSprite dungeonMiniMap;
         private IHUDSprite inventoryObject;
         private IHUDSprite dungeonPauseScreen;
+        private IHUDSprite hudInventoryAB;
 
         private ItemSelectionController itemSelectionController;
 
@@ -65,6 +66,7 @@ namespace Game1.Code.HUD
             dungeonMiniMap = new DungeonMiniMap(level);
             inventoryObject = new InventoryObject(game.link.itemList);
             dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
+           // hudInventoryAB = new HUDInventoryAB(game.link.itemList);
 
             itemSelectionController = new ItemSelectionController(game);
 
@@ -96,7 +98,7 @@ namespace Game1.Code.HUD
             dungeonMiniMap.Update(x, y);
             inventoryObject.Update(x, y);
             dungeonPauseScreen.Update(x, y);
-
+           // hudInventoryAB.Update(x,y);
             itemSelectionController.Update(x,y);
 
 
@@ -185,6 +187,7 @@ namespace Game1.Code.HUD
             dungeonMiniMap.Draw(game._spriteBatch);
             inventoryObject.Draw(game._spriteBatch);
             dungeonPauseScreen.Draw(game._spriteBatch);
+           // hudInventoryAB.Draw(game._spriteBatch);
 
             itemSelectionController.Draw();
         }

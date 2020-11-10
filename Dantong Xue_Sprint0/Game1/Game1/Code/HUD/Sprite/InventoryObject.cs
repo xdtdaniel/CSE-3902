@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Drawing.Text;
 
 namespace Game1.Code.HUD.Sprite
 {
@@ -50,7 +50,7 @@ namespace Game1.Code.HUD.Sprite
             objects[8] = ItemSpriteFactory.CreateBlueRing();
             arrow = ItemSpriteFactory.CreateArrow();
             arrowNumber = new Texture2D[2];
-            arrowNumber = HUDFactory.LoadNumber(0);
+            arrowNumber = HUDFactory.LoadNumber(0);           
 
             scale = (int)LoadAll.Instance.scale;
             height = 16 * scale;
@@ -102,7 +102,6 @@ namespace Game1.Code.HUD.Sprite
                 sourceRectangle = new Rectangle(0, 0, objects[1].Width, objects[1].Height);
                 destinationRectangle = new Rectangle(x, y, width, height);
                 spriteBatch.Draw(objects[1], destinationRectangle, sourceRectangle, Color.White);
-
             }
 
             x += itemPosOffset[1];
@@ -111,7 +110,6 @@ namespace Game1.Code.HUD.Sprite
                 sourceRectangle = new Rectangle(0, 0, objects[2].Width, objects[2].Height);
                 destinationRectangle = new Rectangle(x, y, width, height);
                 spriteBatch.Draw(objects[2], destinationRectangle, sourceRectangle, Color.White);
-
             }
 
             x += itemPosOffset[2];
@@ -120,7 +118,6 @@ namespace Game1.Code.HUD.Sprite
                 sourceRectangle = new Rectangle(0, 0, objects[3].Width, objects[3].Height);
                 destinationRectangle = new Rectangle(x, y, width, height);
                 spriteBatch.Draw(objects[3], destinationRectangle, sourceRectangle, Color.White);
-
             }
 
             x += itemPosOffset[3];
@@ -174,6 +171,7 @@ namespace Game1.Code.HUD.Sprite
             arrowNumberX = arrowX + 16 * scale;
             arrowNumberY = arrowY + 8 * scale;
             arrowNumber = HUDFactory.LoadNumber(hudItemList["Arrow"]);
+           
         }
 
 
