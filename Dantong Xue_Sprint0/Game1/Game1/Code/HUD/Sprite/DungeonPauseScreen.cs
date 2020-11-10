@@ -90,41 +90,41 @@ namespace Game1.Code.HUD.Sprite
             // draw map item
             if (itemList["Map"] > 0)
             {
-                sourceRectangle = new Rectangle(0, 0, map.Width, map.Height); 
-                destinationRectangle = new Rectangle(mapX, mapY, mapWidth, mapHeight); 
+                sourceRectangle = new Rectangle(0, 0, map.Width, map.Height);
+                destinationRectangle = new Rectangle(mapX, mapY, mapWidth, mapHeight);
 
                 spriteBatch.Draw(map, destinationRectangle, sourceRectangle, Color.White);
-
-                // draw map cells
-                for (int i = 0; i < cellPosList.Count; i++)
-                {
-                    sourceRectangle = new Rectangle(0, 0, cell.Width, cell.Height);
-                    destinationRectangle = new Rectangle(cellPosList[i].Item1 + pauseScreenStartPosX, cellPosList[i].Item2 + pauseScreenStartPosY, cellSideLength, cellSideLength);
-
-                    spriteBatch.Draw(cell, destinationRectangle, sourceRectangle, Color.White);
-                }
-
-                // draw bridges
-                for (int i = 0; i < bridgePosList.Count; i++)
-                {
-                    int width;
-                    int height;
-                    if (bridgePosList[i].Item1) // horizontal
-                    {
-                        width = bridgeSideLength.Item2;
-                        height = bridgeSideLength.Item1;
-                    }
-                    else  // vertical
-                    {
-                        width = bridgeSideLength.Item1;
-                        height = bridgeSideLength.Item2;
-                    }
-                    sourceRectangle = new Rectangle(0, 0, cell.Width, cell.Height);
-                    destinationRectangle = new Rectangle((int)bridgePosList[i].Item2.X + pauseScreenStartPosX, (int)bridgePosList[i].Item2.Y + pauseScreenStartPosY, width, height);
-
-                    spriteBatch.Draw(cell, destinationRectangle, sourceRectangle, Color.White);
-                }
             }
+            // draw map cells
+            for (int i = 0; i < cellPosList.Count; i++)
+            {
+                sourceRectangle = new Rectangle(0, 0, cell.Width, cell.Height);
+                destinationRectangle = new Rectangle(cellPosList[i].Item1 + pauseScreenStartPosX, cellPosList[i].Item2 + pauseScreenStartPosY, cellSideLength, cellSideLength);
+
+                spriteBatch.Draw(cell, destinationRectangle, sourceRectangle, Color.White);
+            }
+
+            // draw bridges
+            for (int i = 0; i < bridgePosList.Count; i++)
+            {
+                int width;
+                int height;
+                if (bridgePosList[i].Item1) // horizontal
+                {
+                    width = bridgeSideLength.Item2;
+                    height = bridgeSideLength.Item1;
+                }
+                else  // vertical
+                {
+                    width = bridgeSideLength.Item1;
+                    height = bridgeSideLength.Item2;
+                }
+                sourceRectangle = new Rectangle(0, 0, cell.Width, cell.Height);
+                destinationRectangle = new Rectangle((int)bridgePosList[i].Item2.X + pauseScreenStartPosX, (int)bridgePosList[i].Item2.Y + pauseScreenStartPosY, width, height);
+
+                spriteBatch.Draw(cell, destinationRectangle, sourceRectangle, Color.White);
+            }
+        
 
             // draw compass item
             if (itemList["Compass"] > 0)
