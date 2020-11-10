@@ -48,7 +48,7 @@ namespace Game1.Code.HUD
         public void Draw()
         {
             selection.Draw(game._spriteBatch);
-            hudAB.Draw(game._spriteBatch);
+            hudAB.Draw(game._spriteBatch,index);
         }
     }
 

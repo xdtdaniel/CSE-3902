@@ -57,7 +57,6 @@ namespace Game1.Code.HUD.Sprite
             objects[7] = ItemSpriteFactory.CreateBluePotion();
             objects[8] = ItemSpriteFactory.CreateBlueRing();
 
-
             TotalFrames = 2;
             Rows = 1;
             Columns = 2;
@@ -87,15 +86,89 @@ namespace Game1.Code.HUD.Sprite
             Rectangle destinationRectangle = new Rectangle(x_selection, y_selection, sideLength, sideLength);
             spriteBatch.Draw(Selection, destinationRectangle, sourceRectangle, Color.White);
 
-            foreach (int i in hudItemList.Values)
+            foreach (KeyValuePair<string, int> KeyValue in hudItemList)
             {
-                if (i > 0)
-                {
-                    sourceRectangle = new Rectangle(0, 0, objects[index].Width, objects[index].Height);
-                    destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
-                    spriteBatch.Draw(objects[index], destinationRectangle, sourceRectangle, Color.White);
-                }
+               
+                    switch (index)
+                    {
+                        case 0:
+                        if (hudItemList["Bomb"]> 0) {
+                            sourceRectangle = new Rectangle(0, 0, objects[0].Width, objects[0].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[0], destinationRectangle, sourceRectangle, Color.White);
+                        }
+                            break;
+                        case 1:
+                        if (hudItemList["Boomerang"] > 0)
+                        {
+                            sourceRectangle = new Rectangle(0, 0, objects[1].Width, objects[1].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[1], destinationRectangle, sourceRectangle, Color.White);
+                        }
+
+                        break;
+                        case 2:                       
+                        if (hudItemList["WoodenSword"] > 0)
+                        {
+                            sourceRectangle = new Rectangle(0, 0, objects[2].Width, objects[2].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[2], destinationRectangle, sourceRectangle, Color.White);
+                        }
+                        break;
+                        case 3:
+                        if (hudItemList["SwordBeam"] > 0)
+                        {
+                            sourceRectangle = new Rectangle(0, 0, objects[3].Width, objects[3].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[3], destinationRectangle, sourceRectangle, Color.White);
+                        }
+                        break;
+                        case 4:
+                        if (hudItemList["Bow"] > 0)
+                        {
+                            sourceRectangle = new Rectangle(0, 0, objects[4].Width, objects[4].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[4], destinationRectangle, sourceRectangle, Color.White);
+                        }
+                        break;
+                        case 5:
+                        if (hudItemList["Clock"] > 0)
+                        {
+                            sourceRectangle = new Rectangle(0, 0, objects[5].Width, objects[5].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[5], destinationRectangle, sourceRectangle, Color.White);
+                        }
+                        break;
+                        case 6:
+                        if (hudItemList["BlueCandle"] > 0)
+                        {
+                            sourceRectangle = new Rectangle(0, 0, objects[6].Width, objects[6].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[6], destinationRectangle, sourceRectangle, Color.White);
+                        }
+                        break;
+                        case 7:
+                        if (hudItemList["BluePotion"] > 0)
+                        {
+                            sourceRectangle = new Rectangle(0, 0, objects[7].Width, objects[7].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[7], destinationRectangle, sourceRectangle, Color.White);
+                        }
+                        break;
+                        case 8:
+                        if (hudItemList["BlueRing"] > 0)
+                        {
+                            sourceRectangle = new Rectangle(0, 0, objects[8].Width, objects[8].Height);
+                            destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                            spriteBatch.Draw(objects[8], destinationRectangle, sourceRectangle, Color.White);
+                        }
+                        break;
+                    }
+                
             }
+
+          
+           
             
 
         }
