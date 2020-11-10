@@ -11,11 +11,14 @@ namespace Game1.Code.HUD
         private KeyboardState oldState;
         private KeyboardState newState;
         private InventoryItemSelection selection;
+        private HUDInventoryAB hudAB;
+        private int index;
 
         public ItemSelectionController(Game1 game)
         {
             this.game = game;
             selection = new InventoryItemSelection(game.link.itemList);
+            hudAB = new HUDInventoryAB(game.link.itemList,index);
         }
         public void Update(float newStartX, float newStartY)
         {
@@ -31,19 +34,21 @@ namespace Game1.Code.HUD
             }
             if (this.newState.IsKeyDown(Keys.B) && !this.oldState.IsKeyDown(Keys.B))
             {
-                //add to a list used in hudBA
-                //display on inventory 
+                //get the current index and pass it to hudBA
+                index = selection.getIndex();               
+               
             }
-
 
             this.oldState = this.newState;
             selection.Update(newStartX, newStartY);
+            hudAB.Update(newStartX, newStartY,index);
 
         }
 
         public void Draw()
         {
             selection.Draw(game._spriteBatch);
+            hudAB.Draw(game._spriteBatch);
         }
     }
 
