@@ -37,13 +37,13 @@ namespace Game1.Code.HUD.Sprite
         private int maxcount = 20;
 
         private Dictionary<string, int> hudItemList;
-        private List<Tuple<string, int>> inventoryItemList;
         private Texture2D Selection;
         private Texture2D[] objects;
 
         public InventoryItemSelection(Dictionary<string, int> itemList)
         {
             hudItemList = itemList;
+
             //load selections
             Selection = HUDFactory.LoadInventorySelection();
             objects = new Texture2D[9];
@@ -57,7 +57,6 @@ namespace Game1.Code.HUD.Sprite
             objects[7] = ItemSpriteFactory.CreateBluePotion();
             objects[8] = ItemSpriteFactory.CreateBlueRing();
 
-            inventoryItemList = new List<Tuple<string, int>>();
 
             TotalFrames = 2;
             Rows = 1;
@@ -71,9 +70,6 @@ namespace Game1.Code.HUD.Sprite
             index = 0;
             id = 0;
 
-            //position to display the seleccted item
-            //x_display = 68 * scale + (int)LoadAll.Instance.startPos.X;
-           // y_display = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
             x_selection = 128 * scale + (int)LoadAll.Instance.startPos.X;
             y_selection = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;   
             xOffset = 0;
@@ -90,62 +86,17 @@ namespace Game1.Code.HUD.Sprite
             Rectangle sourceRectangle = new Rectangle(texture_width * column, texture_height * row, texture_width, texture_height);
             Rectangle destinationRectangle = new Rectangle(x_selection, y_selection, sideLength, sideLength);
             spriteBatch.Draw(Selection, destinationRectangle, sourceRectangle, Color.White);
-     
-                //get item list in order
-                if (hudItemList["Bomb"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("Bomb", id));
-                    id++;
-                }
 
-                if (hudItemList["Boomerang"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("Boomerang", id));
-                    id++;
-                }
-                if (hudItemList["WoodenSword"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("WoodenSword", id));
-                    id++;
-                }
-                if (hudItemList["SwordBeam"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("SwordBeam", id));
-                    id++;
-                 }
-                if (hudItemList["Bow"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("Bow", id));
-                    id++;
-                }
-                if (hudItemList["Clock"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("Clock", id));
-                    id++;
-                }
-                if (hudItemList["BlueCandle"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("BlueCandle", id));
-                    id++;
-                }
-                if (hudItemList["BluePotion"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("BluePotion", id));
-                    id++;
-                }
-                if (hudItemList["BlueRing"] > 0)
-                {
-                    inventoryItemList.Add(new Tuple<string, int>("BlueRing", id));
-                    id++;
-                }
-            for (int i = 0; i < inventoryItemList.Count; i++)
+            foreach (int i in hudItemList.Values)
             {
-                if (inventoryItemList[i].Item2 == index) { 
-                sourceRectangle = new Rectangle(0, 0, objects[i].Width, objects[i].Height);
-                destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
-                spriteBatch.Draw(objects[i], destinationRectangle, sourceRectangle, Color.White);
+                if (i > 0)
+                {
+                    sourceRectangle = new Rectangle(0, 0, objects[index].Width, objects[index].Height);
+                    destinationRectangle = new Rectangle(x_display, y_display, width, sideLength);
+                    spriteBatch.Draw(objects[index], destinationRectangle, sourceRectangle, Color.White);
                 }
             }
+            
 
         }
 
