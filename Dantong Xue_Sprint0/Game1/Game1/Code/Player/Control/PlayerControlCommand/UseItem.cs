@@ -21,9 +21,12 @@ namespace Game1.Code.Player.PlayerControlCommand
             {
                 if (game.link.itemList[itemName] > 0)
                 {
-                    game.link.state.UseItem();
-                    game.link.item[game.link.itemIndex].UseItem(itemName);
-                    game.link.timeSinceItem = 0;
+                    if (itemName != "Arrow" || game.link.itemList["Bow"] > 0)
+                    {
+                        game.link.state.UseItem();
+                        game.link.item[game.link.itemIndex].UseItem(itemName);
+                        game.link.timeSinceItem = 0;
+                    }
                     if (itemName != "Boomerang")
                     {
                         game.link.itemList[itemName]--;
