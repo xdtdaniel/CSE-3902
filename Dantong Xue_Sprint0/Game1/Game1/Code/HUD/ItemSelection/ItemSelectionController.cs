@@ -30,7 +30,7 @@ namespace Game1.Code.HUD
         public void Update(float newStartX, float newStartY)
         {
             
-            inventoryItemSelection.Update(newStartX, newStartY, inventoryItemIndex);
+            inventoryItemSelection.Update(newStartX, newStartY, inventoryItemIndex, inventoryItemList.Count);
             inventoryObject.Update(newStartX, newStartY, selectedItemIndex, previewedItemIndex);
 
             newState = Keyboard.GetState();

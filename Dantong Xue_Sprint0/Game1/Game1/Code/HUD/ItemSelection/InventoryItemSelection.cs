@@ -29,6 +29,7 @@ namespace Game1.Code.HUD.Sprite
         private int count = 0;
         //timer
         private int maxcount = 20;
+        private int listLength;
 
         private Texture2D Selection;
 
@@ -65,20 +66,24 @@ namespace Game1.Code.HUD.Sprite
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            texture_width = Selection.Width / Columns;
-            texture_height = Selection.Height/ Rows;
-            int row = (int)((float)CurrentFrame / (float)Columns);
-            int column = CurrentFrame % Columns;
+            if (listLength > 0)
+            {
+                texture_width = Selection.Width / Columns;
+                texture_height = Selection.Height / Rows;
+                int row = (int)((float)CurrentFrame / (float)Columns);
+                int column = CurrentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(texture_width * column, texture_height * row, texture_width, texture_height);
-            Rectangle destinationRectangle = new Rectangle(x, y, sideLength, sideLength);
-            spriteBatch.Draw(Selection, destinationRectangle, sourceRectangle, Color.White);
+                Rectangle sourceRectangle = new Rectangle(texture_width * column, texture_height * row, texture_width, texture_height);
+                Rectangle destinationRectangle = new Rectangle(x, y, sideLength, sideLength);
+                spriteBatch.Draw(Selection, destinationRectangle, sourceRectangle, Color.White);
 
-
+            }
         }
 
-        public void Update(float newStartX, float newStartY, int index) 
+        public void Update(float newStartX, float newStartY, int index, int listLength)
         {
+            this.listLength = listLength;
+
             count++;
             if (count == maxcount)
             {
