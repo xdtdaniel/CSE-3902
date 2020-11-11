@@ -29,7 +29,8 @@ namespace Game1
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
         public SpriteFont _spriteFont;
-
+        private KeyboardState oldState;
+        private KeyboardState newState;
 
         public IItemSprite item; 
 
@@ -54,10 +55,7 @@ namespace Game1
         HUDPanel hudPanel;
 
         private QuitResetController quitResetController;
-
-        //red selection frame
-        //private ItemSelectionController itemSelectionController;
-
+        private bool paused;
 
         public Camera camera;
 
@@ -85,13 +83,8 @@ namespace Game1
             playerPanel = new PlayerPanel(this);
             hudPanel = new HUDPanel(this);
             LoadAll.Instance.GetGameObject(this);
-
+            paused = false;
             quitResetController = new QuitResetController();
-
-            //red selection frame
-
-           //itemSelectionController = new ItemSelectionController(this);
-
 
             camera = new Camera(GraphicsDevice.Viewport);
             audio = new Audio(this);
@@ -126,38 +119,45 @@ namespace Game1
 
             inRoomList = ItemLoader.GetItemList();
 
-
-            //TEST FOR HUD
-
-            //item selection  
             
         }
 
         protected override void Update(GameTime gameTime)
-        {    
-            mapMouseController.Update(this);
+        {
+            this.newState = Keyboard.GetState();
 
-            EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
-            EnemyList = EnemyLoader.GetEnemyList();
-            inRoomList = ItemLoader.GetItemList();              
+            if (this.newState.IsKeyDown(Keys.Space) && !this.oldState.IsKeyDown(Keys.Space))
+            {
+                paused = !paused;
 
-            DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);
-            UpdateAllItem.Instance.UpdateAll(inRoomList);       
+            } 
 
             quitResetController.Update(this);
+            if (!paused)
+            {
+                mapMouseController.Update(this);
 
-            playerPanel.PlayerUpdate();
+                EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
+                EnemyList = EnemyLoader.GetEnemyList();
+                inRoomList = ItemLoader.GetItemList();
 
-            movableBlocks = LoadAll.Instance.GetMovableBlocks();
-            LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
+                DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);
+                UpdateAllItem.Instance.UpdateAll(inRoomList);
+
+                playerPanel.PlayerUpdate();
+
+                movableBlocks = LoadAll.Instance.GetMovableBlocks();
+                LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
+            }
 
             //TEST FOR HUD
             hudPanel.HUDUpdate();
             
-            //red selection frame
-            // itemSelectionController.Update(x,y);
             camera.UpdateCamera(GraphicsDevice.Viewport);
             audio.AudioUpdate();
+
+            this.oldState = this.newState;
+
             base.Update(gameTime);
 
         }
@@ -182,15 +182,11 @@ namespace Game1
 
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
             playerPanel.PlayerDraw();
-            // item  selection
-            // todo
 
             // HUD
             // must be the last to draw
             hudPanel.HUDDraw();
 
-            // red selection frame
-           // itemSelectionController.Draw();
             string x = "hud x: " + hudPanel.x.ToString();
             string y = "hud y: " + hudPanel.y.ToString();
 
