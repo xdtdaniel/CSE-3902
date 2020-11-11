@@ -24,6 +24,8 @@ namespace Game1.Code.Item.ItemSprite
             Texture = ItemFactory.ItemSpriteFactory.CreateBomb();
             height = 16 * (int)LoadAll.Instance.scale;
             width = 8 * (int)LoadAll.Instance.scale;
+            x  = position_x;
+            y =  position_y;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
