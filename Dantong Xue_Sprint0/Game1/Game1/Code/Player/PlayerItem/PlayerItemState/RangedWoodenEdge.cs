@@ -20,6 +20,7 @@ namespace Game1.Player.PlayerCharacter
         int currentFrame;
         int totalFrame;
         int speed;
+        int rectSideLengthOffset;
 
         IPlayerItemSprite[] woodenEdge;
 
@@ -31,6 +32,7 @@ namespace Game1.Player.PlayerCharacter
             x = item.x;
             y = item.y;
 
+            rectSideLengthOffset = 8 * (int)LoadAll.Instance.scale;
             currentFrame = 0;
             totalFrame = 15;
             speed = 5;
@@ -72,7 +74,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public Rectangle GetRectangle()
         {
-            rectangle = new Rectangle(x - speed * currentFrame, y - speed * currentFrame, x + speed * currentFrame, y + speed * currentFrame);
+            rectangle = new Rectangle(x - speed * currentFrame, y - speed * currentFrame, speed * currentFrame * 2 + rectSideLengthOffset, speed * currentFrame * 2 + rectSideLengthOffset);
             return rectangle;
         }
         public bool IsDone()

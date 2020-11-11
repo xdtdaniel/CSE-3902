@@ -22,7 +22,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.WoodenSwordAttack();
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
-                        game.link.item[game.link.itemIndex].UseItem("RangedWoodenSword");
+                        game.link.itemPool[game.link.itemIndex].UseItem("RangedWoodenSword");
                     }
                     game.link.timeSinceAttack = 0;
                 }
@@ -31,7 +31,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.SwordBeamAttack();
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
-                        game.link.item[game.link.itemIndex].UseItem("RangedSwordBeam");
+                        game.link.itemPool[game.link.itemIndex].UseItem("RangedSwordBeam");
                     }
                     game.link.timeSinceAttack = 0;
                 }

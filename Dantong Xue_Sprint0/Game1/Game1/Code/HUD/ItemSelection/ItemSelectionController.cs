@@ -3,7 +3,6 @@ using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Game1.Code.HUD.Sprite;
 using System.Collections.Generic;
 using System;
-using Microsoft.Xna.Framework;
 
 namespace Game1.Code.HUD
 {
@@ -12,50 +11,80 @@ namespace Game1.Code.HUD
     {
         private KeyboardState oldState;
         private KeyboardState newState;
-        private InventoryItemSelection selection;
+        private InventoryItemSelection inventoryItemSelection;
         private InventoryObject inventoryObject;
         private int previewedItemIndex;
         private int selectedItemIndex;
         private Game1 game;
+        private int inventoryItemIndex;
+        private List<Tuple<string, int>> inventoryItemList;
 
         public ItemSelectionController(Game1 game, List<Tuple<string, int>> inventoryItemList)
         {
             this.game = game;
-            selection = new InventoryItemSelection(inventoryItemList);
-            inventoryObject = new InventoryObject(game.link.itemList, inventoryItemList);
+            inventoryItemSelection = new InventoryItemSelection();
+            inventoryObject = new InventoryObject(game, inventoryItemList);
+            inventoryItemIndex = 0;
+            this.inventoryItemList = inventoryItemList;
         }
         public void Update(float newStartX, float newStartY)
         {
-            this.newState = Keyboard.GetState();
-
-            if (this.newState.IsKeyDown(Keys.U) && !this.oldState.IsKeyDown(Keys.U))
-            {
-                selection.MovePrev();
-            }
-            if (this.newState.IsKeyDown(Keys.I) && !this.oldState.IsKeyDown(Keys.I))
-            {
-                selection.MoveNext();
-            }
-            if (this.newState.IsKeyDown(Keys.B) && !this.oldState.IsKeyDown(Keys.B))
-            {
-                //get the current index and pass it to hudBA
-                selectedItemIndex = selection.getIndex();
-            }
-            previewedItemIndex = selection.getIndex();
-
-            this.oldState = this.newState;
-            selection.Update(newStartX, newStartY);
+            
+            inventoryItemSelection.Update(newStartX, newStartY, inventoryItemIndex);
             inventoryObject.Update(newStartX, newStartY, selectedItemIndex, previewedItemIndex);
+
+            newState = Keyboard.GetState();
+
+            // update index when U is pressed
+            if (newState.IsKeyDown(Keys.U) && !oldState.IsKeyDown(Keys.U))
+            {
+                if (inventoryItemList.Count > 0)
+                {
+                    inventoryItemIndex--;
+                    if (inventoryItemIndex == -1)
+                    {
+                        inventoryItemIndex = inventoryItemList.Count - 1;
+                    }
+                }
+            }
+
+            // update index when I is pressed
+            if (newState.IsKeyDown(Keys.I) && !oldState.IsKeyDown(Keys.I))
+            {
+                if (inventoryItemList.Count > 0)
+                {
+                    inventoryItemIndex++;
+                    if (inventoryItemIndex == inventoryItemList.Count)
+                    {
+                        inventoryItemIndex = 0;
+                    }
+                }
+            }
+
+            // make sure index is not out of bound
+            if (inventoryItemList.Count > 0 && inventoryItemIndex >= inventoryItemList.Count)
+            {
+                inventoryItemIndex = inventoryItemList.Count - 1;
+            }
+
+            // update selected item index when B is pressed or it is out of bound
+            if ((newState.IsKeyDown(Keys.B) && !oldState.IsKeyDown(Keys.B)) || selectedItemIndex >= inventoryItemList.Count)
+            {
+                selectedItemIndex = inventoryItemIndex;
+            }
+
+            // always update previewed item index
+            previewedItemIndex = inventoryItemIndex;
+
+            // update keyboard state
+            oldState = newState;
 
         }
 
         public void Draw()
         {
-            selection.Draw(game._spriteBatch);
+            inventoryItemSelection.Draw(game._spriteBatch);
             inventoryObject.Draw(game._spriteBatch);
-
         }
-
     }
-
 }

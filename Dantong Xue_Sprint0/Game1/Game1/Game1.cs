@@ -29,8 +29,6 @@ namespace Game1
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
         public SpriteFont _spriteFont;
-        private KeyboardState oldState;
-        private KeyboardState newState;
 
         public IItemSprite item; 
 
@@ -53,6 +51,7 @@ namespace Game1
 
         //test for  sprint 4 hud display
         HUDPanel hudPanel;
+        public string selectedItemName;
 
         private QuitResetController quitResetController;
         private bool paused;
@@ -82,12 +81,13 @@ namespace Game1
             link = new Link();
             playerPanel = new PlayerPanel(this);
             hudPanel = new HUDPanel(this);
+            selectedItemName = "";
             LoadAll.Instance.GetGameObject(this);
             paused = false;
             quitResetController = new QuitResetController();
 
             camera = new Camera(GraphicsDevice.Viewport);
-            audio = new Audio(this);
+            audio = new Audio(this); 
             audio.AudioLoad();
         }
 
@@ -124,13 +124,7 @@ namespace Game1
 
         protected override void Update(GameTime gameTime)
         {
-            this.newState = Keyboard.GetState();
-
-            if (this.newState.IsKeyDown(Keys.Space) && !this.oldState.IsKeyDown(Keys.Space))
-            {
-                paused = !paused;
-
-            } 
+            paused = hudPanel.IsPaused();
 
             quitResetController.Update(this);
             if (!paused)
@@ -156,7 +150,6 @@ namespace Game1
             camera.UpdateCamera(GraphicsDevice.Viewport);
             audio.AudioUpdate();
 
-            this.oldState = this.newState;
 
             base.Update(gameTime);
 

@@ -37,9 +37,10 @@ namespace Game1.Code.HUD
         private IHUDSprite dungeonPauseScreen;
 
         private ItemSelectionController itemSelectionController;
+        private KeyboardState oldState;
+        private KeyboardState newState;
+        private bool paused;
 
-        // for test
-        bool pause;
         public HUDPanel(Game1 game)
         {
             this.game = game;
@@ -71,13 +72,19 @@ namespace Game1.Code.HUD
 
 
             // for test
-            pause = false;
+            paused = false;
         }
-
         public void HUDUpdate()
         {
+            newState = Keyboard.GetState();
 
-            pause = Keyboard.GetState().IsKeyDown(Keys.L);
+            if (newState.IsKeyDown(Keys.P) && !oldState.IsKeyDown(Keys.P))
+            {
+                paused = !paused;
+
+            }
+
+            oldState = newState;
 
             string side = PlayerAndBlockCollisionHandler.doorSide;
             bool switched = PlayerAndBlockCollisionHandler.roomSwitched;
@@ -154,7 +161,7 @@ namespace Game1.Code.HUD
                         break;
                 }
             }
-            else if (pause)
+            else if (paused)
             {
                 if (y < yOrigin + yDistance)
                 {
@@ -188,6 +195,10 @@ namespace Game1.Code.HUD
 
             itemSelectionController.Draw();
 
+        }
+        public bool IsPaused()
+        {
+            return paused;
         }
 
     }

@@ -33,15 +33,9 @@ namespace Game1
             RegisterCommand(Keys.N, new Attack(game));
 
             // change key Z to use current item later
-            RegisterCommand(Keys.Z, new Attack(game));
+            RegisterCommand(Keys.Z, new UseItem(game));
 
 
-            RegisterCommand(Keys.D1, new UseItem(game, "Arrow"));
-            RegisterCommand(Keys.D2, new UseItem(game, "Boomerang"));
-            RegisterCommand(Keys.D3, new UseItem(game, "Bomb"));
-            RegisterCommand(Keys.D4, new UseItem(game, "BlueCandle"));
-            RegisterCommand(Keys.D5, new UseItem(game, "BluePotion"));
-            RegisterCommand(Keys.D6, new UseItem(game, "BlueRing"));
 
         }
         public void RegisterCommand(Keys key, IPlayerCommand command)
@@ -51,6 +45,7 @@ namespace Game1
 
         public void Update()
         {
+
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
             game.link.isMoving = false;
             

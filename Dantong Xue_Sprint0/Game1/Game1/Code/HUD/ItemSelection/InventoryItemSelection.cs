@@ -15,7 +15,6 @@ namespace Game1.Code.HUD.Sprite
         private int scale;
         private int sideLength;
         private int spacing;
-        private int index;
         private int x;
         private int y;
         private Vector2[] offsetList;
@@ -31,14 +30,10 @@ namespace Game1.Code.HUD.Sprite
         //timer
         private int maxcount = 20;
 
-        private List<Tuple<string, int>> inventoryItemList;
-
         private Texture2D Selection;
-        private Texture2D[] objects;
 
-        public InventoryItemSelection(List<Tuple<string, int>> inventoryItemList)
+        public InventoryItemSelection()
         {
-            this.inventoryItemList = inventoryItemList;
             //load selections
             Selection = HUDFactory.LoadInventorySelection();
 
@@ -50,7 +45,6 @@ namespace Game1.Code.HUD.Sprite
             scale = (int)LoadAll.Instance.scale;
             sideLength = 16 * scale;
             spacing = 24 * scale;
-            index = 0;
             
 
             x = 128 * scale + (int)LoadAll.Instance.startPos.X;
@@ -83,7 +77,7 @@ namespace Game1.Code.HUD.Sprite
 
         }
 
-        public void Update(float newStartX, float newStartY) 
+        public void Update(float newStartX, float newStartY, int index) 
         {
             count++;
             if (count == maxcount)
@@ -96,42 +90,12 @@ namespace Game1.Code.HUD.Sprite
                 count = 0;
             }
 
-
             x = 128 * scale + (int)newStartX + (int)offsetList[index].X;
             y = -176 * scale + 48 * scale + (int)newStartY - 56 * scale + (int)offsetList[index].Y;
         }
      
 
-        public void MoveNext()
-        {
-            if (inventoryItemList.Count > 0)
-            {
-                index++;
-                if (index == inventoryItemList.Count)
-                {
-                    index = 0;
-                }
-            }
 
-        }
-
-        public void MovePrev()
-        {
-            if (inventoryItemList.Count > 0)
-            {
-                index--;
-                if (index == -1)
-                {
-                    index = inventoryItemList.Count - 1;
-                }
-            }
-
-            
-        }
-        public int getIndex() {
-
-            return index;
-        }
     }
 
 }

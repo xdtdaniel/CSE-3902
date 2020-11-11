@@ -33,7 +33,7 @@ namespace Game1.Code.HUD.Sprite
         private int previewedItemY;
         private int spacing;
         private Dictionary<string, Texture2D> inventoryItemDict;
-        private List<Tuple<string, int>> inventoryItemList;
+        public List<Tuple<string, int>> inventoryItemList;
 
         private Texture2D arrow;
         private Texture2D sword;
@@ -43,9 +43,12 @@ namespace Game1.Code.HUD.Sprite
         private Dictionary<string, int> hudItemList;
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle;
-        public InventoryObject(Dictionary<string, int> itemList, List<Tuple<string, int>> inventoryItemList)
+
+        private Game1 game;
+        public InventoryObject(Game1 game, List<Tuple<string, int>> inventoryItemList)
         {
-            hudItemList = itemList;
+            this.game = game;
+            hudItemList = game.link.itemList;
             //load all texture needed in inventory
 
             this.inventoryItemList = inventoryItemList;
@@ -135,6 +138,20 @@ namespace Game1.Code.HUD.Sprite
             previewedItemY = (int)newStartY - 56 * scale + 48 * scale - 176 * scale;
             arrowNumber = HUDFactory.LoadNumber(hudItemList["Arrow"]);
 
+            if (inventoryItemList.Count > 0)
+            {
+                string selectedItemName = inventoryItemList[selectedItemIndex].Item1;
+                string previewedItemName = inventoryItemList[previewedItemIndex].Item1;
+                selectedItem = inventoryItemDict[selectedItemName];
+                game.selectedItemName = selectedItemName;
+                previewedItem = inventoryItemDict[previewedItemName];
+            }
+            else
+            {
+                game.selectedItemName = "";
+                selectedItem = HUDFactory.LoadBlackSpot();
+                previewedItem = HUDFactory.LoadBlackSpot();
+            }
 
             if (hudItemList["SwordBeam"] > 0)
             {
@@ -168,18 +185,7 @@ namespace Game1.Code.HUD.Sprite
                 
             }
 
-            if (inventoryItemList.Count > 0)
-            {
-                string selectedItemName = inventoryItemList[selectedItemIndex].Item1;
-                string previewedItemName = inventoryItemList[previewedItemIndex].Item1;
-                selectedItem = inventoryItemDict[selectedItemName];
-                previewedItem = inventoryItemDict[previewedItemName];
-            }
-            else
-            {
-                selectedItem = HUDFactory.LoadBlackSpot();
-                previewedItem = HUDFactory.LoadBlackSpot();
-            }
+            
 
 
 

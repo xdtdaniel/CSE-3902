@@ -39,7 +39,7 @@ namespace Game1.Player.PlayerCharacter
 
         // link's items
         public Dictionary<string, int> itemList;
-        public LinkItem[] item;
+        public LinkItem[] itemPool;
         public bool useItemDone;
         public int itemIndex;
         private const int MAX_ITEM_SPRITE_NUM = 1000;
@@ -53,6 +53,7 @@ namespace Game1.Player.PlayerCharacter
         // environmental informations
         private int blockSideLength;
         private int numberOfBlocksBetweenRoom;
+
 
         public Link()
         {
@@ -97,21 +98,20 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("BluePotion", 0);
             itemList.Add("BlueRing", 0);
             itemList.Add("WoodenSword", 1);
-            itemList.Add("SwordBeam", 1);
+            itemList.Add("SwordBeam", 0);
 
             // for test
-            itemList["Bomb"] = 2;
             itemList["Key"] = 66;
             itemList["Ruby"] = 99;
             itemList["Arrow"] = 99;
 
             state = new NormalLink(this);
 
-            item = new LinkItem[MAX_ITEM_SPRITE_NUM];
+            itemPool = new LinkItem[MAX_ITEM_SPRITE_NUM];
             for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
             {
-                item[i] = new LinkItem(this);
-                item[i].state = new NoItem(item[i]);
+                itemPool[i] = new LinkItem(this);
+                itemPool[i].state = new NoItem(itemPool[i]);
             }
 
             timeBetweenAttack = 30;
@@ -246,13 +246,14 @@ namespace Game1.Player.PlayerCharacter
             if (itemList["SwordBeam"] > 0)
             {
                 itemList["WoodenSword"] = 0;
+                attackDamage = 2;
             }
 
-            if (!item[itemIndex].IsDone())
+            if (!itemPool[itemIndex].IsDone())
             {
                 itemIndex++;
             }
-            else if (itemIndex > 0 && item[itemIndex - 1].IsDone())
+            else if (itemIndex > 0 && itemPool[itemIndex - 1].IsDone())
             {
                 itemIndex--;
             }
@@ -277,7 +278,7 @@ namespace Game1.Player.PlayerCharacter
             state.Update();
             for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
             {
-                item[i].Update(x, y, directionIndex);
+                itemPool[i].Update(x, y, directionIndex);
             }
 
             if (timeSinceAttack < timeBetweenAttack)
@@ -304,12 +305,16 @@ namespace Game1.Player.PlayerCharacter
             state.Draw(spriteBatch);
             for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
             {
-                item[i].Draw(spriteBatch);
+                itemPool[i].Draw(spriteBatch);
             }
         }
         public string GetStateName()
         {
             return state.GetStateName();
+        }
+        public int GetMaxSpriteNumOnScreen()
+        {
+            return MAX_ITEM_SPRITE_NUM;
         }
     }
 }

@@ -56,11 +56,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public void CollisionResponse()
         {
-            if (currentFrame == 0)
-            {
-                // block
-            }
-            else
+            if (currentFrame == 1)
             {
                 // player and enemy take damage
             }
@@ -93,7 +89,14 @@ namespace Game1.Player.PlayerCharacter
 
         public Rectangle GetRectangle()
         {
-            return rectangle;
+            if (secondFrame == 60 && currentFrame == 1)
+            {
+                return rectangle;
+            }
+            else
+            {
+                return new Rectangle();
+            }
         }
         public bool IsDone()
         {

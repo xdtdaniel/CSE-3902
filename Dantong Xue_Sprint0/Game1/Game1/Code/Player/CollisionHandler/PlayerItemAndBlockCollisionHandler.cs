@@ -10,62 +10,66 @@ namespace Game1.Code.Player
     public static class PlayerItemAndBlockCollisionHandler
     {
         static string collidedSide = "";
-        public static void HandleCollision(LinkItem item, Dictionary<string, List<Rectangle>> blockList)
+        public static void HandleCollision(LinkItem[] itemPool, Dictionary<string, List<Rectangle>> blockList)
         {
-            foreach (KeyValuePair<string, List<Rectangle>> kvp in blockList)
+            for (int i = 0; i < itemPool.Length; i++)
             {
-                foreach (Rectangle rect in kvp.Value)
+                LinkItem item = itemPool[i];
+                foreach (KeyValuePair<string, List<Rectangle>> kvp in blockList)
                 {
-                    collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), rect);
-                    if (collidedSide != "")
+                    foreach (Rectangle rect in kvp.Value)
                     {
-                        switch (item.GetItemName()) {
-                            case "Arrow":
-                                item.CollisionResponse();
-                                break;
+                        collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), rect);
+                        if (collidedSide != "")
+                        {
+                            switch (item.GetItemName())
+                            {
+                                case "Arrow":
+                                    item.CollisionResponse();
+                                    break;
 
-                            case "BlueCandle":
-                                break;
+                                case "BlueCandle":
+                                    break;
 
-                            case "BluePotion":
-                                break;
+                                case "BluePotion":
+                                    break;
 
-                            case "BlueRing":
-                                break;
+                                case "BlueRing":
+                                    break;
 
-                            case "Bomb":
-                                break;
+                                case "Bomb":
+                                    break;
 
-                            case "BombExplosion":
-                                if (kvp.Key == "bombWalls")
-                                {
-                                    LoadAll.Instance.SwitchToAlternative(collidedSide);
-                                    LoadAll.Instance.LoadRoom();
-                                }
-                                break;
+                                case "BombExplosion":
+                                    if (kvp.Key == "bombWalls")
+                                    {
+                                        LoadAll.Instance.SwitchToAlternative(collidedSide);
+                                        LoadAll.Instance.LoadRoom();
+                                    }
+                                    break;
 
-                            case "Boomerang":
-                                item.CollisionResponse();
-                                break;
+                                case "Boomerang":
+                                    item.CollisionResponse();
+                                    break;
 
-                            case "RangedSwordBeam":
-                                item.CollisionResponse();
-                                break;
+                                case "RangedSwordBeam":
+                                    item.CollisionResponse();
+                                    break;
 
-                            case "RangedWoodenSword":
-                                item.CollisionResponse();
-                                break;
+                                case "RangedWoodenSword":
+                                    item.CollisionResponse();
+                                    break;
 
-                            default:
-                                break;
+                                default:
+                                    break;
+                            }
+
                         }
-                        
                     }
                 }
+
+
             }
-
-
-
         }
 
 

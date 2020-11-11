@@ -56,11 +56,9 @@ namespace Game1
             movableList = game.movableBlocks;
             PlayerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             PlayerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
-            for (int i = 0; i < 1000; i++)
-            {
-                PlayerItemAndBlockCollisionHandler.HandleCollision(game.link.item[i], roomBlockList);
-                PlayerItemAndEnemyCollisionHandler.HandleCollision(game.link.item[i], roomEnemyList);
-            }
+
+            PlayerItemAndBlockCollisionHandler.HandleCollision(game.link.itemPool, roomBlockList);
+            PlayerItemAndEnemyCollisionHandler.HandleCollision(game.link.itemPool, roomEnemyList);
             PlayerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
             PlayerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
             //

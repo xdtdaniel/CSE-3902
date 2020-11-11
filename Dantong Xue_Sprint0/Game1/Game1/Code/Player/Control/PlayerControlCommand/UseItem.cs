@@ -8,23 +8,26 @@ namespace Game1.Code.Player.PlayerControlCommand
     class UseItem : IPlayerCommand
     {
         Game1 game;
-        string itemName;
-        public UseItem(Game1 game, string itemName)
+        public UseItem(Game1 game)
         {
             this.game = game;
-            this.itemName = itemName;
         }
 
         public void Execute()
         {
+            string itemName = game.selectedItemName;
+            if (itemName == "Bow")
+            {
+                itemName = "Arrow";
+            }
             if (game.link.timeSinceItem >= game.link.timeBetweenItem)
             {
-                if (game.link.itemList[itemName] > 0)
+                if (itemName != "" && game.link.itemList[itemName] > 0)
                 {
                     if (itemName != "Arrow" || game.link.itemList["Bow"] > 0)
                     {
                         game.link.state.UseItem();
-                        game.link.item[game.link.itemIndex].UseItem(itemName);
+                        game.link.itemPool[game.link.itemIndex].UseItem(itemName);
                         game.link.timeSinceItem = 0;
                     }
                     if (itemName != "Boomerang")
@@ -33,7 +36,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     }
                 }
             }
-            game.link.useItemDone = game.link.item[game.link.itemIndex].IsDone();
+            game.link.useItemDone = game.link.itemPool[game.link.itemIndex].IsDone();
         }
     }
 }
