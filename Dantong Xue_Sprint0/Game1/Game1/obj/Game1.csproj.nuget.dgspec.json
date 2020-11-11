@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj": {}
+    "C:\\Users\\FanShenWork\\Source\\Repos\\xdtdaniel\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj": {
+    "C:\\Users\\FanShenWork\\Source\\Repos\\xdtdaniel\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
+        "projectUniqueName": "C:\\Users\\FanShenWork\\Source\\Repos\\xdtdaniel\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
         "projectName": "Game1",
-        "projectPath": "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
-        "packagesPath": "C:\\Users\\ybhba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\obj\\",
+        "projectPath": "C:\\Users\\FanShenWork\\Source\\Repos\\xdtdaniel\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
+        "packagesPath": "C:\\Users\\FanShenWork\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\FanShenWork\\Source\\Repos\\xdtdaniel\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ybhba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\FanShenWork\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

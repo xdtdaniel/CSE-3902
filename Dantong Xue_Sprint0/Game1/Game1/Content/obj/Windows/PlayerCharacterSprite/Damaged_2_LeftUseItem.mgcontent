@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerCharacterSprite/Damaged_2_LeftUseItem.png</SourceFile>
-  <SourceTime>2020-10-30T01:12:49.0608036-04:00</SourceTime>
-  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerCharacterSprite/Damaged_2_LeftUseItem.xnb</DestFile>
-  <DestTime>2020-11-08T03:06:35.6063547-05:00</DestTime>
+  <SourceFile>C:/Users/FanShenWork/source/repos/xdtdaniel/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerCharacterSprite/Damaged_2_LeftUseItem.png</SourceFile>
+  <SourceTime>2020-11-10T23:28:16.2630328-05:00</SourceTime>
+  <DestFile>C:/Users/FanShenWork/source/repos/xdtdaniel/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerCharacterSprite/Damaged_2_LeftUseItem.xnb</DestFile>
+  <DestTime>2020-11-10T23:31:03.7090386-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

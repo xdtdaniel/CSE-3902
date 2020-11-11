@@ -11,12 +11,15 @@ using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
 using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
+using Game1.Code.Audio;
+using Game1.Code.Audio.Factory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Game1
 {
@@ -58,6 +61,8 @@ namespace Game1
 
         public Camera camera;
 
+        Audio audio;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -89,7 +94,8 @@ namespace Game1
 
 
             camera = new Camera(GraphicsDevice.Viewport);
-
+            audio = new Audio(this);
+            audio.AudioLoad();
         }
 
         protected override void LoadContent()
@@ -102,7 +108,8 @@ namespace Game1
             EnemyTextureStorage.LoadTextures(Content);
             ItemSpriteFactory.LoadAllTextures(Content);
             HUDFactory.LoadAllHUDTextures(Content);
-
+            AudioFactory.LoadAllAudio(Content);
+            
             _spriteFont = Content.Load<SpriteFont>("font");
           
             LoadAll.Instance.LoadRoom();
@@ -119,10 +126,11 @@ namespace Game1
 
             inRoomList = ItemLoader.GetItemList();
 
+
             //TEST FOR HUD
 
             //item selection  
-
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -145,11 +153,11 @@ namespace Game1
 
             //TEST FOR HUD
             hudPanel.HUDUpdate();
-
-            //red selection frame
-           // itemSelectionController.Update(x,y);
-            camera.UpdateCamera(GraphicsDevice.Viewport);
             
+            //red selection frame
+            // itemSelectionController.Update(x,y);
+            camera.UpdateCamera(GraphicsDevice.Viewport);
+            audio.AudioUpdate();
             base.Update(gameTime);
 
         }
@@ -165,7 +173,6 @@ namespace Game1
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[1]);
             DrawMap.Instance.DrawMovableBlocks(_spriteBatch, movableBlocks);
             DrawMap.Instance.DrawText(_spriteBatch, "EASTMOST PENNINSULA\n          IS THE SECRET", _spriteFont);
-
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
             if (EnemyLoader.GetCurrentMapID() == 11)
             {
