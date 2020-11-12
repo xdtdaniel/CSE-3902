@@ -127,7 +127,7 @@ namespace Game1
 
         protected override void Update(GameTime gameTime)
         {
-            paused = hudPanel.IsPaused();
+            paused = camera.PauseGame();
             useClock = hudPanel.Clock();
             int mapid = LoadAll.Instance.GetCurrentMapID();
 

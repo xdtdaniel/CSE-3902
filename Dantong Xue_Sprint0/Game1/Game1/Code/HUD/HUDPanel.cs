@@ -37,8 +37,6 @@ namespace Game1.Code.HUD
         private IHUDSprite dungeonPauseScreen;
 
         private ItemSelectionController itemSelectionController;
-        private KeyboardState oldState;
-        private KeyboardState newState;
         private bool paused;
         private bool clock;
 
@@ -77,17 +75,10 @@ namespace Game1.Code.HUD
         }
         public void HUDUpdate()
         {
-            newState = Keyboard.GetState();
-
-            if (newState.IsKeyDown(Keys.P) && !oldState.IsKeyDown(Keys.P))
-            {
-                paused = !paused;
-
-            }
+           
             clock = itemSelectionController.getClock();
          
 
-            oldState = newState;
 
             string side = PlayerAndBlockCollisionHandler.doorSide;
             bool switched = PlayerAndBlockCollisionHandler.roomSwitched;

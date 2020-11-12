@@ -59,7 +59,11 @@ namespace Game1.Code.Player
                             case "lockedDoors":
                                 // to do
                                 link.StopMoving(collidedSide, interRect);
-                                LoadAll.Instance.UnlockDoor(collidedSide);
+                                if (link.itemList["Key"] > 0)
+                                {
+                                    LoadAll.Instance.UnlockDoor(collidedSide);
+                                    link.itemList["Key"]--;
+                                }
                                 break;
                             case "stairs":
                                 link.StopMoving(collidedSide, interRect);

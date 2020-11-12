@@ -103,7 +103,6 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("SwordBeam", 0);
 
             // for test
-            itemList["Key"] = 66;
             itemList["Ruby"] = 99;
             itemList["Arrow"] = 99;
 

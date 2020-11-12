@@ -29,6 +29,11 @@ namespace Game1.Code
         double VerticalMoveTime;
 
 
+        private KeyboardState oldState;
+        private KeyboardState newState;
+        private bool paused;
+
+
         public Camera(Viewport viewport)
         {
             Bounds = viewport.Bounds;
@@ -36,6 +41,7 @@ namespace Game1.Code
             Position = new Vector2(384,348);
             HorizontalMoveTime = 256.0 / speed * scale;
             VerticalMoveTime = 176.0 / speed * scale;
+            paused = false;
         }
 
         
@@ -156,6 +162,30 @@ namespace Game1.Code
             }
 
             MoveCamera(cameraMovement);
+        }
+
+        public bool PauseGame()
+        {
+            newState = Keyboard.GetState();
+
+            if (newState.IsKeyDown(Keys.P) && !oldState.IsKeyDown(Keys.P))
+            {
+                
+                paused = !paused;
+                if (paused)
+                {
+                    UpdateMovingState("up");
+                }
+                else
+                {
+                    UpdateMovingState("down");
+                }
+            }
+
+            oldState = newState;
+
+
+            return paused;
         }
     }
 }
