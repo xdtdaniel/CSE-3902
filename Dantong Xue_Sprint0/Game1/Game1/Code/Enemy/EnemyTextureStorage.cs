@@ -13,7 +13,9 @@ namespace Game1
         private static Texture2D stalfosSpriteSheet;
         private static Texture2D goriyaSpriteSheet;
         private static Texture2D goriyaProjectileSpriteSheet;
-        private static Texture2D wallmasterSpriteSheet;
+
+        private static Texture2D wallmaster0SpriteSheet;
+
         private static Texture2D aquamentusSpriteSheet;
         private static Texture2D aquamentusProjectileSpriteSheet;
         private static Texture2D oldManSpriteSheet;
@@ -27,7 +29,7 @@ namespace Game1
             stalfosSpriteSheet = content.Load<Texture2D>("Sprite/enemies/stalfos_sprite");
             goriyaSpriteSheet = content.Load<Texture2D>("Sprite/enemies/goriya_sprite");
             goriyaProjectileSpriteSheet = content.Load<Texture2D>("Sprite/enemies/goriya_projectile_sprite");
-            wallmasterSpriteSheet = content.Load<Texture2D>("Sprite/enemies/wallmaster_sprite");
+            wallmaster0SpriteSheet = content.Load<Texture2D>("Sprite/enemies/wallmaster0_sprite");
             aquamentusSpriteSheet = content.Load<Texture2D>("Sprite/enemies/aquamentus_sprite");
             aquamentusProjectileSpriteSheet = content.Load<Texture2D>("Sprite/enemies/aquamentus_projectile_sprite");
             oldManSpriteSheet = content.Load<Texture2D>("Sprite/npcs/oldman_sprite");
@@ -69,9 +71,9 @@ namespace Game1
             return aquamentusProjectileSpriteSheet;
         }
 
-        public static Texture2D GetWallmasterSpriteSheet()
+        public static Texture2D GetWallmaster0SpriteSheet()
         {
-            return wallmasterSpriteSheet;
+            return wallmaster0SpriteSheet;
         }
 
         public static Texture2D GetOldManSpriteSheet()
