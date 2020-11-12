@@ -42,6 +42,7 @@ namespace Game1.Player.PlayerCharacter
         // link's items
         public Dictionary<string, int> itemList;
         public LinkItem[] itemPool;
+        public LinkItem boomerang;
         public bool useItemDone;
         public int itemIndex;
         private const int MAX_ITEM_SPRITE_NUM = 1000;
@@ -107,6 +108,7 @@ namespace Game1.Player.PlayerCharacter
             itemList["Arrow"] = 99;
 
             state = new NormalLink(this);
+
 
             itemPool = new LinkItem[MAX_ITEM_SPRITE_NUM];
             for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
@@ -272,6 +274,7 @@ namespace Game1.Player.PlayerCharacter
             {
                 itemIndex--;
             }
+
 
             switch (direction)
             {

@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Audio;
 using Game1.Code.Audio.Sounds;
+using Game1.Code.Player;
 
 namespace Game1
 {
@@ -57,6 +58,8 @@ namespace Game1
         private QuitResetController quitResetController;
         private bool paused;
         private bool useClock;
+        private int mapID;
+        private int currentMapID;
 
         public Camera camera;
 
@@ -86,7 +89,7 @@ namespace Game1
             selectedItemName = "";
             LoadAll.Instance.GetGameObject(this);
             paused = false;
-            useClock = false;
+   
             quitResetController = new QuitResetController();
 
             camera = new Camera(GraphicsDevice.Viewport);
@@ -128,52 +131,41 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {
             paused = camera.PauseGame();
-            useClock = hudPanel.Clock();
-            int mapid = LoadAll.Instance.GetCurrentMapID();
+            mapID = PlayerAndItemCollisionHandler.getMapID();
 
             quitResetController.Update(this);
             if (!paused)
             {
+                useClock = hudPanel.Clock();               
+                currentMapID = LoadAll.Instance.GetCurrentMapID();
+                if (useClock &&  mapID != currentMapID)
+                {
+                    useClock = false;
+                    //Debug.WriteLine("mapID: " + mapID+"current id:"+currentMapID);
+                }
+
                 if (!useClock)
-                {
-                    mapMouseController.Update(this);
+                {                   
+                    DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);                  
 
-                    EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
-                    EnemyList = EnemyLoader.GetEnemyList();
-                    inRoomList = ItemLoader.GetItemList();
-
-                    DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);
-                    UpdateAllItem.Instance.UpdateAll(inRoomList);
-
-                    playerPanel.PlayerUpdate();
-
-                    movableBlocks = LoadAll.Instance.GetMovableBlocks();
-                    LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
                 }
-                if (useClock)
-                {
-                    mapMouseController.Update(this);
+            
 
-                    EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
-                    EnemyList = EnemyLoader.GetEnemyList();
-                    inRoomList = ItemLoader.GetItemList();
+                mapMouseController.Update(this);
 
-                    //DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);
-                    UpdateAllItem.Instance.UpdateAll(inRoomList);
+                EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
+                EnemyList = EnemyLoader.GetEnemyList();
+                inRoomList = ItemLoader.GetItemList();
 
-                    playerPanel.PlayerUpdate();
+                UpdateAllItem.Instance.UpdateAll(inRoomList);
 
-                    movableBlocks = LoadAll.Instance.GetMovableBlocks();
-                    LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
-                }
-                    if (mapid != LoadAll.Instance.GetCurrentMapID()) {
-                        useClock = false;
-                        
-                    }
-                
-             
+                playerPanel.PlayerUpdate();
+
+                movableBlocks = LoadAll.Instance.GetMovableBlocks();
+                LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
+              
             }
-
+ 
             //TEST FOR HUD
             hudPanel.HUDUpdate();
             
