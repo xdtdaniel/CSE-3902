@@ -23,6 +23,8 @@ namespace Game1.Code.HUD
         public float y;
         private int yOrigin;
         private int yDistance;
+        private int mapID;
+
         private List<Tuple<string, int>> inventoryItemList;
 
         private IHUDSprite HUDFrame;
@@ -191,13 +193,10 @@ namespace Game1.Code.HUD
         }
         public bool Clock()
         {
+          
             return itemSelectionController.getClock();           
         }
 
-        public int getMapID() 
-        {
-            return itemSelectionController.getMapID();
-        }
 
     }
 }

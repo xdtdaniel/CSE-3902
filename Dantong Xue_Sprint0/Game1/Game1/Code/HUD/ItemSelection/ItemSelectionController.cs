@@ -90,10 +90,6 @@ namespace Game1.Code.HUD
         {
             return inventoryObject.useClock();       
         }
-        public int getMapID() 
-        {
-            return inventoryObject.getMapID();
-        }
 
         public void Draw()
         {

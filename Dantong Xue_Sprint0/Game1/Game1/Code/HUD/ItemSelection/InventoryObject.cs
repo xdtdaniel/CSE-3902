@@ -9,6 +9,7 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Drawing.Text;
+using System.Diagnostics;
 
 namespace Game1.Code.HUD.Sprite
 {
@@ -32,7 +33,7 @@ namespace Game1.Code.HUD.Sprite
         private int previewedItemX;
         private int previewedItemY;
         private int spacing;
-        private int mapID;
+        private static int mapID;
         private Dictionary<string, Texture2D> inventoryItemDict;
         public List<Tuple<string, int>> inventoryItemList;
 
@@ -129,10 +130,7 @@ namespace Game1.Code.HUD.Sprite
             return clock;
 
         }
-        public int getMapID() {
-
-            return mapID;
-        }
+  
         public void Update(float newStartX, float newStartY, int selectedItemIndex, int previewedItemIndex)
         {
             inventoryItemX = 132 * scale + (int)newStartX;
@@ -157,12 +155,14 @@ namespace Game1.Code.HUD.Sprite
                 game.selectedItemName = selectedItemName;
                 previewedItem = inventoryItemDict[previewedItemName];
 
-                //get current mapID
                 if (inventoryItemList[selectedItemIndex].Item1 == "Clock")
                 {
-                    clock = true;
-                    mapID = LoadAll.Instance.GetCurrentMapID();
+                    clock = true;                   
                 }
+               // if (inventoryItemList[selectedItemIndex].Item1 != "Clock")
+               // {
+               //     clock = false;
+               // }
             }
             else
             {
