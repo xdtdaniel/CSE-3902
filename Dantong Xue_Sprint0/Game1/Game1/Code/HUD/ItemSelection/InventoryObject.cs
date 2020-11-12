@@ -45,6 +45,7 @@ namespace Game1.Code.HUD.Sprite
         private Rectangle destinationRectangle;
 
         private Game1 game;
+        private bool clock;
         public InventoryObject(Game1 game, List<Tuple<string, int>> inventoryItemList)
         {
             this.game = game;
@@ -75,6 +76,7 @@ namespace Game1.Code.HUD.Sprite
 
             spacing = 24 * scale;
 
+            clock = false;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -122,6 +124,11 @@ namespace Game1.Code.HUD.Sprite
             }
         }
 
+        public bool useClock()
+        {
+            return clock;
+
+        }
         public void Update(float newStartX, float newStartY, int selectedItemIndex, int previewedItemIndex)
         {
             inventoryItemX = 132 * scale + (int)newStartX;
@@ -145,6 +152,11 @@ namespace Game1.Code.HUD.Sprite
                 selectedItem = inventoryItemDict[selectedItemName];
                 game.selectedItemName = selectedItemName;
                 previewedItem = inventoryItemDict[previewedItemName];
+
+                if (inventoryItemList[selectedItemIndex].Item1 == "Clock")
+                {
+                    clock = true;
+                }
             }
             else
             {

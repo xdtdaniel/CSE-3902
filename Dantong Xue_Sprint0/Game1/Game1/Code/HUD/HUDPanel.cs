@@ -40,6 +40,7 @@ namespace Game1.Code.HUD
         private KeyboardState oldState;
         private KeyboardState newState;
         private bool paused;
+        private bool clock;
 
         public HUDPanel(Game1 game)
         {
@@ -70,9 +71,9 @@ namespace Game1.Code.HUD
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
 
-
             // for test
             paused = false;
+
         }
         public void HUDUpdate()
         {
@@ -83,6 +84,8 @@ namespace Game1.Code.HUD
                 paused = !paused;
 
             }
+            clock = itemSelectionController.getClock();
+         
 
             oldState = newState;
 
@@ -191,7 +194,6 @@ namespace Game1.Code.HUD
             hudNumberOfRuby.Draw(game._spriteBatch);
             dungeonMiniMap.Draw(game._spriteBatch);
             dungeonPauseScreen.Draw(game._spriteBatch);
-           // hudInventoryAB.Draw(game._spriteBatch);
 
             itemSelectionController.Draw();
 
@@ -200,6 +202,11 @@ namespace Game1.Code.HUD
         {
             return paused;
         }
+        public bool Clock()
+        {
+            return itemSelectionController.getClock();
+            
 
+        }
     }
 }

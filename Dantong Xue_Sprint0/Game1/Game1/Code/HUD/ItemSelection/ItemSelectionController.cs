@@ -18,6 +18,7 @@ namespace Game1.Code.HUD
         private Game1 game;
         private int inventoryItemIndex;
         private List<Tuple<string, int>> inventoryItemList;
+        private bool clock;
 
         public ItemSelectionController(Game1 game, List<Tuple<string, int>> inventoryItemList)
         {
@@ -26,6 +27,7 @@ namespace Game1.Code.HUD
             inventoryObject = new InventoryObject(game, inventoryItemList);
             inventoryItemIndex = 0;
             this.inventoryItemList = inventoryItemList;
+            clock = false;
         }
         public void Update(float newStartX, float newStartY)
         {
@@ -65,20 +67,30 @@ namespace Game1.Code.HUD
             if (inventoryItemList.Count > 0 && inventoryItemIndex >= inventoryItemList.Count)
             {
                 inventoryItemIndex = inventoryItemList.Count - 1;
+               
             }
 
             // update selected item index when B is pressed or it is out of bound
             if ((newState.IsKeyDown(Keys.B) && !oldState.IsKeyDown(Keys.B)) || selectedItemIndex >= inventoryItemList.Count)
             {
                 selectedItemIndex = inventoryItemIndex;
+              
             }
-
             // always update previewed item index
             previewedItemIndex = inventoryItemIndex;
+            //if (newState.IsKeyDown(Keys.Z) && !oldState.IsKeyDown(Keys.Z) && inventoryObject.useClock()==true)
+            //{
+            //    clock = !clock;
+            //}
+
 
             // update keyboard state
             oldState = newState;
 
+        }
+        public bool getClock()
+        {
+            return inventoryObject.useClock();       
         }
 
         public void Draw()
