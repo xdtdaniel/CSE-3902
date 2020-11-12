@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/ColorSpot/GraySpot.png</SourceFile>
-  <SourceTime>2020-11-12T04:30:59.4891284-05:00</SourceTime>
-  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/HUD/ColorSpot/GraySpot.xnb</DestFile>
-  <DestTime>2020-11-12T04:31:12.0076872-05:00</DestTime>
+  <SourceFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/ColorSpot/GraySpot.png</SourceFile>
+  <SourceTime>2020-11-11T20:50:43.433439-05:00</SourceTime>
+  <DestFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/HUD/ColorSpot/GraySpot.xnb</DestFile>
+  <DestTime>2020-11-12T11:28:59.1847968-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

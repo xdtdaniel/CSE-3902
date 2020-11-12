@@ -170,9 +170,9 @@ namespace Game1
             hudPanel.HUDUpdate();
             
             camera.UpdateCamera(GraphicsDevice.Viewport);
-            
 
-            if (link.isDead)
+
+            if (link.isDead || link.state.GetStateName().Equals("WinLink"))
             {
                 BGM.Stop();
             }
