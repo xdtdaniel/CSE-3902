@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -32,6 +33,7 @@ namespace Game1.Player.PlayerCharacter
         public void Update()
         {
             currentFrame++;
+            //LoadAll.Instance.ChangeMapColor(Color.Red);
             if (currentFrame == 60) // decide how long the hold state will take
             {
                 currentFrame = 0;
