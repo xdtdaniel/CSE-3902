@@ -306,5 +306,19 @@ namespace Game1.Code.LoadFile
         {
             return mapColor;
         }
+
+        public void ResetMap()
+        {
+            startPos = new Vector2(0, 56 * (int)scale);
+            currMapID = 17;
+            isSwitched = new List<bool>(new bool[MAP_COUNT + 1]);
+            isUnlocked = new List<int>(new int[MAP_COUNT + 1]);
+
+            // those values are hard-coded and corresponding to the maps we have
+            hasAlternative = new List<int>() { 5, 8, 9, 10, 12, 13, 14 };
+
+            roomAdjacencyList = new RoomAdjacencyList();
+            oldRoomMapBlocksToDraw = new List<Tuple<IBlock, Vector2>>();
+        }
     }
 }

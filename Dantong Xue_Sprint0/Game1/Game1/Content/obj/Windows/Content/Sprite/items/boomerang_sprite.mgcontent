@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/items/boomerang_sprite.png</SourceFile>
-  <SourceTime>2020-11-11T20:50:43.5544651-05:00</SourceTime>
-  <DestFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Sprite/items/boomerang_sprite.xnb</DestFile>
-  <DestTime>2020-11-11T20:51:05.6866618-05:00</DestTime>
+  <SourceFile>C:/git_repo/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/items/boomerang_sprite.png</SourceFile>
+  <SourceTime>2020-11-08T20:58:54.3064003+08:00</SourceTime>
+  <DestFile>C:/git_repo/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Sprite/items/boomerang_sprite.xnb</DestFile>
+  <DestTime>2020-11-12T15:33:45.8601787+08:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
+  <ImporterTime>2020-08-10T16:17:54+08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2020-08-10T16:17:54-04:00</ProcessorTime>
+  <ProcessorTime>2020-08-10T16:17:54+08:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>
