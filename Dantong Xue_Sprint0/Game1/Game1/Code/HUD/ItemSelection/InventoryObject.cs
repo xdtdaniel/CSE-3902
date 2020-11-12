@@ -88,12 +88,12 @@ namespace Game1.Code.HUD.Sprite
             spriteBatch.Draw(sword, destinationRectangle, sourceRectangle, Color.White);
 
             // draw item on tab B, except clock
-            if (selectedItem == inventoryItemDict["Clock"])
-            {
+           // if (selectedItem != inventoryItemDict["Clock"])
+           // {
                 sourceRectangle = new Rectangle(0, 0, selectedItem.Width, selectedItem.Height);
                 destinationRectangle = new Rectangle(selectedItemX, selectedItemY, width, height);
                 spriteBatch.Draw(selectedItem, destinationRectangle, sourceRectangle, Color.White);
-            }
+           // }
 
             // draw previewed item on the left of inventory
             sourceRectangle = new Rectangle(0, 0, previewedItem.Width, previewedItem.Height);
