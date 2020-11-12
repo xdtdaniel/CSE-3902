@@ -1,4 +1,5 @@
-﻿using Game1.Enemy;
+﻿using Game1.Code.Audio.Sounds;
+using Game1.Enemy;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.MediaFoundation;
@@ -274,6 +275,7 @@ namespace Game1
             {           
                 DamageTimer = 50;
             }
+
         }
 
 

@@ -1,18 +1,19 @@
-﻿using Game1.Code.Audio.Factory;
+﻿
+using Game1.Code.Audio.Factory;
 using Microsoft.Xna.Framework.Audio;
 
 namespace Game1.Code.Audio.Sounds
 {
-    class GetRupee : ISounds
+    class BombDrop : ISounds
     {
-        SoundEffect getRupee;
+        SoundEffect bombDrop;
         private static SoundEffectInstance instance;
 
 
-        public GetRupee()
+        public BombDrop()
         {
-            getRupee = AudioFactory.LoadGetRupee();
-            instance = getRupee.CreateInstance();
+            bombDrop = AudioFactory.LoadBombDrop();
+            instance = bombDrop.CreateInstance();
         }
         public void Play()
         {
@@ -25,3 +26,4 @@ namespace Game1.Code.Audio.Sounds
         }
     }
 }
+

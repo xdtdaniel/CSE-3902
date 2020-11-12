@@ -95,6 +95,8 @@ namespace Game1.Code.Player
                             item = new Heart(X, Y);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "Heart"));
                             roomItemList.RemoveAt(index);
+                            SFX = new GetHeart();
+                            SFX.Play();
                             break;
                         case "HeartContainer":
                             link.itemList["HeartContainer"] += 2;
@@ -103,12 +105,16 @@ namespace Game1.Code.Player
                             item = new HeartContainer(X, Y);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));
                             roomItemList.RemoveAt(index);
+                            SFX = new GetHeart();
+                            SFX.Play();
                             break;
                         case "Key":
                             link.itemList["Key"]++;
                             item = new Key(X, Y);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "Key"));
                             roomItemList.RemoveAt(index);
+                            SFX = new GetHeart();
+                            SFX.Play();
                             break;
                         case "Map":
                             link.itemList["Map"]++;
@@ -131,6 +137,9 @@ namespace Game1.Code.Player
                             link.PickUp(2);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                             roomItemList.RemoveAt(index);
+                            link.Win();
+                            SFX = new GetTriforce();
+                            SFX.Play();
                             break;
                     }
 

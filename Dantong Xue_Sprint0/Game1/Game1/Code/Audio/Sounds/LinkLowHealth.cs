@@ -3,20 +3,21 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace Game1.Code.Audio.Sounds
 {
-    class GetRupee : ISounds
+    class LinkLowHealth : ISounds
     {
-        SoundEffect getRupee;
+        SoundEffect SFX;
         private static SoundEffectInstance instance;
 
 
-        public GetRupee()
+        public LinkLowHealth()
         {
-            getRupee = AudioFactory.LoadGetRupee();
-            instance = getRupee.CreateInstance();
+            SFX = AudioFactory.LoadLinkLowHealth();
+            instance = SFX.CreateInstance();
         }
         public void Play()
         {
             instance.Play();
+            instance.IsLooped = true;
         }
 
         public void Stop()
@@ -25,3 +26,4 @@ namespace Game1.Code.Audio.Sounds
         }
     }
 }
+

@@ -151,7 +151,7 @@ namespace Game1
             camera.UpdateCamera(GraphicsDevice.Viewport);
             
 
-            if (link.isDead)
+            if (link.isDead || link.GetStateName().Equals("WinLink"))
             {
                 BGM.Stop();
             }

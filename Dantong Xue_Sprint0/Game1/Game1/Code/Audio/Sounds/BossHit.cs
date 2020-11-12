@@ -1,18 +1,19 @@
-﻿using Game1.Code.Audio.Factory;
+﻿
+using Game1.Code.Audio.Factory;
 using Microsoft.Xna.Framework.Audio;
 
 namespace Game1.Code.Audio.Sounds
 {
-    class GetRupee : ISounds
+    class BossScream : ISounds
     {
-        SoundEffect getRupee;
+        SoundEffect SFX;
         private static SoundEffectInstance instance;
 
 
-        public GetRupee()
+        public BossScream()
         {
-            getRupee = AudioFactory.LoadGetRupee();
-            instance = getRupee.CreateInstance();
+            SFX = AudioFactory.LoadBossScream();
+            instance = SFX.CreateInstance();
         }
         public void Play()
         {
@@ -25,3 +26,4 @@ namespace Game1.Code.Audio.Sounds
         }
     }
 }
+

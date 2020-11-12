@@ -203,8 +203,7 @@ namespace Game1
         public void TakeDamage(int damageAmount)
         {
             hp -= damageAmount;
-            // test
-            System.Diagnostics.Debug.WriteLine("hp: " + hp);
+  
         }
 
         Rectangle IEnemy.GetRectangle()

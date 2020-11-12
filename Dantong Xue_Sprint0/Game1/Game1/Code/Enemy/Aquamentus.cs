@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Code.Audio.Sounds;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.MediaFoundation;
 using System;
@@ -35,7 +36,6 @@ namespace Game1.Enemy
         private Rectangle CollisionRectangle;
         private double scale = 3;
         private List<IProjectile> ProjectileList;
-
         public Aquamentus(Vector2 location) 
         {
             Texture = EnemyTextureStorage.GetAquamentusSpriteSheet();
@@ -63,7 +63,6 @@ namespace Game1.Enemy
             int height = Texture.Height / Rows;
             int row = (int)((float)CurrentFrame / (float)Columns);
             int column = CurrentFrame % Columns;
-
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height); 
             Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X), (int)(offset.Y + Location.Y - 56 * scale), (int)(width * scale), (int)(height * scale));
             

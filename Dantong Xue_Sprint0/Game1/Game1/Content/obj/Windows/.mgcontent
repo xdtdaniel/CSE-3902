@@ -9,8 +9,6 @@
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Bomb_Drop.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Boss_Hit.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Boss_Scream1.wav</File>
-    <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Boss_Scream2.wav</File>
-    <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Boss_Scream3.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Candle.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Door_Unlock.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Enemy_Die.wav</File>
@@ -19,19 +17,17 @@
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Get_Heart.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Get_Item.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Get_Rupee.wav</File>
+    <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Get_Triforce.mp3</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Key_Appear.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Link_Die.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Link_Hurt.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/LowHealth.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/MagicalRod.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/MainTheme.mp3</File>
-    <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Recorder.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Refill_Loop.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Secret.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Shield.wav</File>
-    <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Shore.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Stairs.wav</File>
-    <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Sword_Combined.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Sword_Shoot.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Sword_Slash.wav</File>
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Text.wav</File>
@@ -292,10 +288,6 @@
     <File>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/walk_2.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

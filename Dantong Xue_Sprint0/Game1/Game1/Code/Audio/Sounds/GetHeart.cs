@@ -3,16 +3,16 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace Game1.Code.Audio.Sounds
 {
-    class GetRupee : ISounds
+    class GetHeart : ISounds
     {
-        SoundEffect getRupee;
+        SoundEffect getHeart;
         private static SoundEffectInstance instance;
 
 
-        public GetRupee()
+        public GetHeart()
         {
-            getRupee = AudioFactory.LoadGetRupee();
-            instance = getRupee.CreateInstance();
+            getHeart = AudioFactory.LoadGetHeart();
+            instance = getHeart.CreateInstance();
         }
         public void Play()
         {
@@ -25,3 +25,4 @@ namespace Game1.Code.Audio.Sounds
         }
     }
 }
+

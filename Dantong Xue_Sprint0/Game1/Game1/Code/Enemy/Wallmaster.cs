@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Code.Audio.Sounds;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,6 @@ namespace Game1.Enemy
         private int hp = 4;     
         private int DamageTimer = 0;
         private int FlashRateModifier = 0;
-
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();

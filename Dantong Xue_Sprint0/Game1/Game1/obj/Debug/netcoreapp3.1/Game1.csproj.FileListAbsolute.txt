@@ -1020,8 +1020,6 @@ C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Ga
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Bomb_Drop.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Boss_Hit.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Boss_Scream1.xnb
-C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Boss_Scream2.xnb
-C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Boss_Scream3.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Candle.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Door_Unlock.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Enemy_Die.xnb
@@ -1036,14 +1034,12 @@ C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Ga
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\LowHealth.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\MagicalRod.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\MainTheme.wma
-C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Recorder.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Refill_Loop.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Secret.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Shield.xnb
-C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Shore.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Stairs.xnb
-C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Sword_Combined.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Sword_Shoot.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Sword_Slash.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Text.xnb
 C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Text_Slow.xnb
+C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Get_Triforce.xnb

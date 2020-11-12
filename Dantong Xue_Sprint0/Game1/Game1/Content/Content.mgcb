@@ -43,18 +43,6 @@
 /processorParam:Quality=Best
 /build:Audio/Boss_Scream1.wav
 
-#begin Audio/Boss_Scream2.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Boss_Scream2.wav
-
-#begin Audio/Boss_Scream3.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Boss_Scream3.wav
-
 #begin Audio/Candle.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -103,6 +91,12 @@
 /processorParam:Quality=Best
 /build:Audio/Get_Rupee.wav
 
+#begin Audio/Get_Triforce.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Get_Triforce.mp3
+
 #begin Audio/Key_Appear.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -139,12 +133,6 @@
 /processorParam:Quality=Best
 /build:Audio/MainTheme.mp3
 
-#begin Audio/Recorder.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Recorder.wav
-
 #begin Audio/Refill_Loop.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -163,23 +151,11 @@
 /processorParam:Quality=Best
 /build:Audio/Shield.wav
 
-#begin Audio/Shore.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Shore.wav
-
 #begin Audio/Stairs.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/Stairs.wav
-
-#begin Audio/Sword_Combined.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Sword_Combined.wav
 
 #begin Audio/Sword_Shoot.wav
 /importer:WavImporter

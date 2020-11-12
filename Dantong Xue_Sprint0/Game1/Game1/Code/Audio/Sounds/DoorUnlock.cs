@@ -1,18 +1,19 @@
-﻿using Game1.Code.Audio.Factory;
+﻿
+using Game1.Code.Audio.Factory;
 using Microsoft.Xna.Framework.Audio;
 
 namespace Game1.Code.Audio.Sounds
 {
-    class GetRupee : ISounds
+    class DoorUnlock : ISounds
     {
-        SoundEffect getRupee;
+        SoundEffect doorUnlock;
         private static SoundEffectInstance instance;
 
 
-        public GetRupee()
+        public DoorUnlock()
         {
-            getRupee = AudioFactory.LoadGetRupee();
-            instance = getRupee.CreateInstance();
+            doorUnlock = AudioFactory.LoadDoorUnlock();
+            instance = doorUnlock.CreateInstance();
         }
         public void Play()
         {
@@ -25,3 +26,4 @@ namespace Game1.Code.Audio.Sounds
         }
     }
 }
+

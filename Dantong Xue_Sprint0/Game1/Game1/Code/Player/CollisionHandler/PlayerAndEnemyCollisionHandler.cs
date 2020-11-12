@@ -1,4 +1,5 @@
-﻿using Game1.Code.LoadFile;
+﻿using Game1.Code.Audio.Sounds;
+using Game1.Code.LoadFile;
 using Game1.Enemy;
 using Game1.Player.Interface;
 using Game1.Player.PlayerCharacter;
@@ -18,6 +19,8 @@ namespace Game1.Code.Player
         static bool ifHit = false;
         static bool hitAtLeastOne = false;
         static int dmgAmount = 1;
+        static ISounds enemyHit = new EnemyHit();
+        static ISounds bossHit = new BossHit();
         public static void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
         {
             if (link.GetStateName() == "SwordBeamLink" || link.GetStateName() == "WoodenSwordLink")
@@ -57,6 +60,14 @@ namespace Game1.Code.Player
                 if (!hitAtLeastOne && collidedSide != "")
                 {
                     tuple.Item1.TakeDamage(link.attackDamage);
+                    if (tuple.Item2 != "aquamentus")
+                    {
+                        enemyHit.Play();
+                    }
+                    else
+                    {
+                        bossHit.Play();
+                    }
                     ifHit = true;
                 }
 

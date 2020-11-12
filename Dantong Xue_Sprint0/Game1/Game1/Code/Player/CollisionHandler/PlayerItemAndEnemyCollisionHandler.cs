@@ -1,4 +1,5 @@
-﻿using Game1.Code.LoadFile;
+﻿using Game1.Code.Audio.Sounds;
+using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using System;
@@ -12,6 +13,9 @@ namespace Game1.Code.Player
         static string collidedSide = "";
         static int boomerangHit = -1;
         static int rangedSwordHit = -1;
+        private static ISounds bombBlow = new BombBlow();
+        private static ISounds enemyHit = new EnemyHit();
+        private static ISounds bossHit = new BossHit();
         public static void HandleCollision(LinkItem[] itemPool, List<Tuple<IEnemy, string>> enemyList)
         {
             for (int i = 0; i < itemPool.Length; i++)
@@ -39,7 +43,14 @@ namespace Game1.Code.Player
                         {
                             case "Arrow":
                                 tuple.Item1.TakeDamage(item.link.attackDamage);
-                                
+                                if(tuple.Item2 != "aquamentus")
+                                {
+                                    enemyHit.Play();
+                                }
+                                else
+                                {
+                                    bossHit.Play();
+                                }
                                 item.CollisionResponse();
                                 break;
 
@@ -57,6 +68,15 @@ namespace Game1.Code.Player
 
                             case "BombExplosion":
                                 tuple.Item1.TakeDamage(item.link.attackDamage * 5);
+                                bombBlow.Play();
+                                if (tuple.Item2 != "aquamentus")
+                                {
+                                    enemyHit.Play();
+                                }
+                                else
+                                {
+                                    bossHit.Play();
+                                }
                                 break;
 
                             case "Boomerang":
@@ -64,6 +84,14 @@ namespace Game1.Code.Player
                                 {
                                     tuple.Item1.TakeDamage(item.link.attackDamage);
                                     boomerangHit = i;
+                                }
+                                if (tuple.Item2 != "aquamentus")
+                                {
+                                    enemyHit.Play();
+                                }
+                                else
+                                {
+                                    bossHit.Play();
                                 }
                                 item.CollisionResponse();
                                 break;
@@ -74,6 +102,14 @@ namespace Game1.Code.Player
                                     tuple.Item1.TakeDamage(item.link.attackDamage);
                                     rangedSwordHit = i;
                                 }
+                                if (tuple.Item2 != "aquamentus")
+                                {
+                                    enemyHit.Play();
+                                }
+                                else
+                                {
+                                    bossHit.Play();
+                                }
                                 item.CollisionResponse();
                                 break;
 
@@ -82,6 +118,14 @@ namespace Game1.Code.Player
                                 {
                                     tuple.Item1.TakeDamage(item.link.attackDamage);
                                     rangedSwordHit = i;
+                                }
+                                if (tuple.Item2 != "aquamentus")
+                                {
+                                    enemyHit.Play();
+                                }
+                                else
+                                {
+                                    bossHit.Play();
                                 }
                                 item.CollisionResponse();
                                 break;
@@ -92,6 +136,14 @@ namespace Game1.Code.Player
                                     tuple.Item1.TakeDamage(item.link.attackDamage);
                                     rangedSwordHit = i;
                                 }
+                                if (tuple.Item2 != "aquamentus")
+                                {
+                                    enemyHit.Play();
+                                }
+                                else
+                                {
+                                    bossHit.Play();
+                                }
                                 item.CollisionResponse();
                                 break;
                             case "RangedBeamEdge":
@@ -99,6 +151,14 @@ namespace Game1.Code.Player
                                 {
                                     tuple.Item1.TakeDamage(item.link.attackDamage);
                                     rangedSwordHit = i;
+                                }
+                                if (tuple.Item2 != "aquamentus")
+                                {
+                                    enemyHit.Play();
+                                }
+                                else
+                                {
+                                    bossHit.Play();
                                 }
                                 item.CollisionResponse();
                                 break;
