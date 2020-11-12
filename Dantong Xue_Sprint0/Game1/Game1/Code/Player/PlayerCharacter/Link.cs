@@ -240,6 +240,12 @@ namespace Game1.Player.PlayerCharacter
             isDead = true;
             state = new DeadLink(this);
         }
+
+        public void Win()
+        {
+            state = new WinLink(this);
+        }
+
         public void Update()
         {
             // SwordBeam is the upgraded version of WoodenSword
