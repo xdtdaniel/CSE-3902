@@ -87,10 +87,13 @@ namespace Game1.Code.HUD.Sprite
             Rectangle destinationRectangle = new Rectangle(swordX, swordY, width, height);
             spriteBatch.Draw(sword, destinationRectangle, sourceRectangle, Color.White);
 
-            // draw item on tab B
-            sourceRectangle = new Rectangle(0, 0, selectedItem.Width, selectedItem.Height);
-            destinationRectangle = new Rectangle(selectedItemX, selectedItemY, width, height);
-            spriteBatch.Draw(selectedItem, destinationRectangle, sourceRectangle, Color.White);
+            // draw item on tab B, except clock
+            if (selectedItem == inventoryItemDict["Clock"])
+            {
+                sourceRectangle = new Rectangle(0, 0, selectedItem.Width, selectedItem.Height);
+                destinationRectangle = new Rectangle(selectedItemX, selectedItemY, width, height);
+                spriteBatch.Draw(selectedItem, destinationRectangle, sourceRectangle, Color.White);
+            }
 
             // draw previewed item on the left of inventory
             sourceRectangle = new Rectangle(0, 0, previewedItem.Width, previewedItem.Height);
@@ -155,14 +158,15 @@ namespace Game1.Code.HUD.Sprite
                 game.selectedItemName = selectedItemName;
                 previewedItem = inventoryItemDict[previewedItemName];
 
+                //use to checck if current equip is clock or not
                 if (inventoryItemList[selectedItemIndex].Item1 == "Clock")
                 {
                     clock = true;                   
                 }
-               // if (inventoryItemList[selectedItemIndex].Item1 != "Clock")
-               // {
-               //     clock = false;
-               // }
+                if (inventoryItemList[selectedItemIndex].Item1 != "Clock")
+                {
+                    clock = false;
+                }
             }
             else
             {
