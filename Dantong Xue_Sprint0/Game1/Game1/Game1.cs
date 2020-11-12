@@ -89,8 +89,8 @@ namespace Game1
             selectedItemName = "";
             LoadAll.Instance.GetGameObject(this);
             paused = false;
-            useClock = false;
-            mapID = hudPanel.getMapID();
+            //useClock = hudPanel.Clock();
+            //mapID = hudPanel.getMapID();
             quitResetController = new QuitResetController();
 
             camera = new Camera(GraphicsDevice.Viewport);
@@ -132,19 +132,27 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {
             paused = camera.PauseGame();
-            useClock = hudPanel.Clock();
-            currentMapID = LoadAll.Instance.GetCurrentMapID();
-            if (mapID != currentMapID)
-            {
-                useClock = false;
-            }
+            mapID = PlayerAndItemCollisionHandler.getMapID();
+
             quitResetController.Update(this);
             if (!paused)
             {
+                useClock = hudPanel.Clock();               
+                currentMapID = LoadAll.Instance.GetCurrentMapID();
+                if (useClock &&  mapID != currentMapID)
+                {
+                    useClock = false;
+                    LoadEnemy  lodenemy= new LoadEnemy(mapID);
+                    //Debug.WriteLine("mapID: " + mapID+"current id:"+currentMapID);
+                }
+
                 if (!useClock)
                 {                   
-                    DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);
+                    DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);                  
+
                 }
+            
+
                 mapMouseController.Update(this);
 
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
@@ -159,8 +167,7 @@ namespace Game1
                 LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
               
             }
-          
-
+ 
             //TEST FOR HUD
             hudPanel.HUDUpdate();
             
