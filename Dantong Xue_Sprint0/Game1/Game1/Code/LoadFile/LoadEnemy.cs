@@ -160,13 +160,31 @@ namespace Game1.Code.LoadFile
                         break;
                     case "trap3":
                         Enemy = new Trap3(location);
-                            EnemyCopy = new Trap3(location);
+                        EnemyCopy = new Trap3(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
                         EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "trap"));
                         break;
-                    case "wallmaster0":
+                    case "wallmaster_0":
                         Enemy = new Wallmaster0(location);
                         EnemyCopy = new Wallmaster0(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        break;
+                    case "wallmaster_1":
+                        Enemy = new Wallmaster1(location);
+                        EnemyCopy = new Wallmaster1(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        break;
+                    case "wallmaster_2":
+                        Enemy = new Wallmaster2(location);
+                        EnemyCopy = new Wallmaster2(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        break;
+                    case "wallmaster_3":
+                        Enemy = new Wallmaster3(location);
+                        EnemyCopy = new Wallmaster3(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
                         EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
                         break;

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Game1.Enemy
 {
-    class Wallmaster0 : IEnemy
+    class Wallmaster1 : IEnemy
     {
         private Texture2D Texture;
         private int Columns;
@@ -32,9 +32,9 @@ namespace Game1.Enemy
         private int Direction;
         private int Heading;
 
-        public Wallmaster0(Vector2 location)
+        public Wallmaster1(Vector2 location)
         {
-            Texture = EnemyTextureStorage.GetWallmaster0SpriteSheet();
+            Texture = EnemyTextureStorage.GetWallmaster1SpriteSheet();
             TotalFrames = 2;
             Columns = 2;
             Rows = 1;
@@ -92,12 +92,12 @@ namespace Game1.Enemy
             }
 
             if (MovingState == 0 && PlayerInAttackingRange(game)) {
-                Direction = 2;
+                Direction = 3;
                 Velocity = 1;
                 MovingState = 1;
             }
 
-            if (MovingState == 1 && Location.Y >= (32 + 56) * scale) 
+            if (MovingState == 1 && Location.X <= 208 * scale) 
             {
                 Direction = Heading;
                 MovingState = 2;
@@ -105,7 +105,7 @@ namespace Game1.Enemy
 
             if (MovingState == 2)
             {
-                if (MovingStateTimer < 16 * 10 * scale)
+                if (MovingStateTimer < 16 * 6 * scale)
                 {
                     MovingStateTimer++;
                 }
@@ -118,9 +118,9 @@ namespace Game1.Enemy
 
             if (MovingState == 3)
             {
-                if (Location.Y >= (8 + 56) * scale)
+                if (Location.X <= 232 * scale)
                 {
-                    Direction = 0;
+                    Direction = 1;
                 }
                 else 
                 {
@@ -153,15 +153,15 @@ namespace Game1.Enemy
         {
             Rectangle playerRectangle = new Rectangle((int)(game.link.GetRectangle().X - LoadAll.Instance.startPos.X), (int)(game.link.GetRectangle().Y - LoadAll.Instance.startPos.Y + 56 * scale), game.link.GetRectangle().Width, game.link.GetRectangle().Height);
 
-            if (playerRectangle.Y <= 48 * scale + 56 * scale)
+            if (playerRectangle.X >= 192 * scale)
             {               
-                if (Location.X < playerRectangle.X ) 
+                if (Location.Y < playerRectangle.Y ) 
                 {
-                    Heading = 1;
+                    Heading = 2;
                 } 
-                else if (Location.X > playerRectangle.X) 
+                else if (Location.Y > playerRectangle.Y) 
                 {
-                    Heading = 3;
+                    Heading = 0;
                 }
 
                 return true;
