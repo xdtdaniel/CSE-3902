@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Audio;
+using Game1.Code.Audio.Sounds;
 
 namespace Game1
 {
@@ -58,7 +59,7 @@ namespace Game1
 
         public Camera camera;
 
-        Audio audio;
+        private ISounds BGM;
 
         public Game1()
         {
@@ -87,8 +88,8 @@ namespace Game1
             quitResetController = new QuitResetController();
 
             camera = new Camera(GraphicsDevice.Viewport);
-            audio = new Audio(this); 
-            audio.AudioLoad();
+            BGM = new BGM();
+            BGM.Play();
         }
 
         protected override void LoadContent()
@@ -148,11 +149,14 @@ namespace Game1
             hudPanel.HUDUpdate();
             
             camera.UpdateCamera(GraphicsDevice.Viewport);
-            audio.AudioUpdate();
+            
 
-
+            if (link.isDead)
+            {
+                BGM.Stop();
+            }
             base.Update(gameTime);
-
+            
         }
 
 

@@ -13,6 +13,7 @@ using Game1.Code.LoadFile;
 using System.Linq.Expressions;
 using System.Drawing.Text;
 using SharpDX.Direct2D1.Effects;
+using Game1.Code.Audio.Sounds;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -36,6 +37,7 @@ namespace Game1.Player.PlayerCharacter
         public string direction;
         public int directionIndex;
         public IPlayerLinkState state;
+        private ISounds SFX;
 
         // link's items
         public Dictionary<string, int> itemList;
@@ -123,7 +125,13 @@ namespace Game1.Player.PlayerCharacter
         }
         public void TakeDamage(int dmgAmount)
         {
-            state.TakeDamage(dmgAmount);
+            if (!this.isDead)
+            {
+                state.TakeDamage(dmgAmount);
+
+                SFX = new LinkHurt();
+                SFX.Play();
+            }
         }
         public void PickUp(int pickUp)
         {
@@ -239,6 +247,8 @@ namespace Game1.Player.PlayerCharacter
         {
             isDead = true;
             state = new DeadLink(this);
+            SFX = new LinkDead();
+            SFX.Play();
         }
 
         public void Win()

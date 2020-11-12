@@ -1,28 +1,26 @@
 ﻿using Game1.Code.Audio.Factory;
-using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace Game1.Code.Audio.Sounds
 {
     class BGM : ISounds
     {
-        SoundEffect song;
-        private static SoundEffectInstance instance;
+        Song song;
 
 
         public BGM()
         {
             song = AudioFactory.LoadBgm();
-            instance = song.CreateInstance();
     }
         public void Play()
         {            
-            instance.IsLooped = true;
-            instance.Play();            
+            MediaPlayer.Play(song);
+            MediaPlayer.IsRepeating = true;
         }
 
         public void Stop()
         {
-            instance.Stop();
+            MediaPlayer.Stop();
         }
     }
 }

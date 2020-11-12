@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonMiniMapFrame.png</SourceFile>
-  <SourceTime>2020-11-11T07:39:40.1735235-05:00</SourceTime>
-  <DestFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/HUD/DungeonMiniMapFrame.xnb</DestFile>
-  <DestTime>2020-11-11T07:39:49.7828141-05:00</DestTime>
+  <SourceFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonMiniMapFrame.png</SourceFile>
+  <SourceTime>2020-11-11T20:50:43.4363914-05:00</SourceTime>
+  <DestFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/HUD/DungeonMiniMapFrame.xnb</DestFile>
+  <DestTime>2020-11-11T20:50:57.0959123-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
