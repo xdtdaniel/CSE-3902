@@ -71,6 +71,14 @@ namespace Game1
                     LoadAll.Instance.ChangeMapColor(Color.Red);
                 }
             }
+
+            if(game.link.itemList["Triforce"]>0 && !game.link.isDead)
+            {
+                game.link.movable = false;
+                game.link.Win();
+                LoadAll.Instance.ChangeMapColor(Color.Red);
+            }
+
         }
         public void PlayerDraw()
         {
