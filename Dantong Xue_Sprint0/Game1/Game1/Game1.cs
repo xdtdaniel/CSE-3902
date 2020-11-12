@@ -89,8 +89,7 @@ namespace Game1
             selectedItemName = "";
             LoadAll.Instance.GetGameObject(this);
             paused = false;
-            //useClock = hudPanel.Clock();
-            //mapID = hudPanel.getMapID();
+   
             quitResetController = new QuitResetController();
 
             camera = new Camera(GraphicsDevice.Viewport);
@@ -142,7 +141,6 @@ namespace Game1
                 if (useClock &&  mapID != currentMapID)
                 {
                     useClock = false;
-                    LoadEnemy  lodenemy= new LoadEnemy(mapID);
                     //Debug.WriteLine("mapID: " + mapID+"current id:"+currentMapID);
                 }
 
