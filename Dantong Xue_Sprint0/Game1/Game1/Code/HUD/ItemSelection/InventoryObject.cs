@@ -32,6 +32,7 @@ namespace Game1.Code.HUD.Sprite
         private int previewedItemX;
         private int previewedItemY;
         private int spacing;
+        private int mapID;
         private Dictionary<string, Texture2D> inventoryItemDict;
         public List<Tuple<string, int>> inventoryItemList;
 
@@ -41,8 +42,7 @@ namespace Game1.Code.HUD.Sprite
         private Texture2D previewedItem;
         private Texture2D[] arrowNumber;
         private Dictionary<string, int> hudItemList;
-        private Rectangle sourceRectangle;
-        private Rectangle destinationRectangle;
+
 
         private Game1 game;
         private bool clock;
@@ -82,8 +82,8 @@ namespace Game1.Code.HUD.Sprite
         public void Draw(SpriteBatch spriteBatch)
         {
             // draw sword on tab A
-            sourceRectangle = new Rectangle(0, 0, sword.Width, sword.Height);
-            destinationRectangle = new Rectangle(swordX, swordY, width, height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, sword.Width, sword.Height);
+            Rectangle destinationRectangle = new Rectangle(swordX, swordY, width, height);
             spriteBatch.Draw(sword, destinationRectangle, sourceRectangle, Color.White);
 
             // draw item on tab B
@@ -129,6 +129,10 @@ namespace Game1.Code.HUD.Sprite
             return clock;
 
         }
+        public int getMapID() {
+
+            return mapID;
+        }
         public void Update(float newStartX, float newStartY, int selectedItemIndex, int previewedItemIndex)
         {
             inventoryItemX = 132 * scale + (int)newStartX;
@@ -153,9 +157,11 @@ namespace Game1.Code.HUD.Sprite
                 game.selectedItemName = selectedItemName;
                 previewedItem = inventoryItemDict[previewedItemName];
 
+                //get current mapID
                 if (inventoryItemList[selectedItemIndex].Item1 == "Clock")
                 {
                     clock = true;
+                    mapID = LoadAll.Instance.GetCurrentMapID();
                 }
             }
             else

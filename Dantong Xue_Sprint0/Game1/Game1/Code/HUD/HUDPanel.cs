@@ -1,4 +1,5 @@
 ﻿using Game1.Code.HUD.Sprite;
+using Game1.Code.Item.ItemSprite;
 using Game1.Code.LoadFile;
 using Game1.Code.Player;
 using Microsoft.Xna.Framework;
@@ -38,7 +39,6 @@ namespace Game1.Code.HUD
 
         private ItemSelectionController itemSelectionController;
         private bool paused;
-        private bool clock;
 
         public HUDPanel(Game1 game)
         {
@@ -75,11 +75,7 @@ namespace Game1.Code.HUD
         }
         public void HUDUpdate()
         {
-           
-            clock = itemSelectionController.getClock();
-         
-
-
+          
             string side = PlayerAndBlockCollisionHandler.doorSide;
             bool switched = PlayerAndBlockCollisionHandler.roomSwitched;
             int targetX = (int)LoadAll.Instance.startPos.X;
@@ -195,9 +191,13 @@ namespace Game1.Code.HUD
         }
         public bool Clock()
         {
-            return itemSelectionController.getClock();
-            
-
+            return itemSelectionController.getClock();           
         }
+
+        public int getMapID() 
+        {
+            return itemSelectionController.getMapID();
+        }
+
     }
 }
