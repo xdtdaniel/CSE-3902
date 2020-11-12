@@ -16,11 +16,13 @@ namespace Game1
     {
         private Dictionary<Keys, IPlayerCommand> controllerMappings;
         private Game1 game;
+        int boomerangIndex;
 
         public LinkKeyboardController(Game1 game)
         {
             controllerMappings = new Dictionary<Keys, IPlayerCommand>();
             this.game = game;
+            boomerangIndex = -1;
 
             RegisterCommand(Keys.S, new MoveDown(game));
             RegisterCommand(Keys.D, new MoveRight(game));
@@ -34,7 +36,6 @@ namespace Game1
 
             // change key Z to use current item later
             RegisterCommand(Keys.Z, new UseItem(game));
-
 
 
         }
@@ -55,6 +56,16 @@ namespace Game1
                 {
                     controllerMappings[key].Execute();
                 }
+            }
+
+            if (boomerangIndex == -1 && game.selectedItemName == "Boomerang")
+            {
+                boomerangIndex = game.link.itemIndex;
+            }
+            if (boomerangIndex != -1 && game.link.itemPool[boomerangIndex].IsDone())
+            {
+                boomerangIndex = -1;
+                game.link.itemList["Boomerang"] = 1;
             }
         }
     }
