@@ -159,7 +159,7 @@ namespace Game1
 
                 UpdateAllItem.Instance.UpdateAll(inRoomList);
 
-                playerPanel.PlayerUpdate();
+                playerPanel.PlayerUpdate(useClock);
 
                 movableBlocks = LoadAll.Instance.GetMovableBlocks();
                 LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
