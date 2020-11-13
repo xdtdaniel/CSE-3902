@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Game1.Code.Audio;
 using Game1.Code.Player.Interface;
 using Game1.Code.Player.PlayerControlCommand;
 using Microsoft.Xna.Framework;
@@ -23,7 +24,7 @@ namespace Game1
             controllerMappings = new Dictionary<Keys, IPlayerCommand>();
             this.game = game;
             boomerangIndex = -1;
-
+            
             RegisterCommand(Keys.S, new MoveDown(game));
             RegisterCommand(Keys.D, new MoveRight(game));
             RegisterCommand(Keys.W, new MoveUp(game));

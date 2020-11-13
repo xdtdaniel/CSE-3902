@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Game1.Code.Audio;
 
 namespace Game1.Code.Player
 {
@@ -19,8 +20,6 @@ namespace Game1.Code.Player
         static bool ifHit = false;
         static bool hitAtLeastOne = false;
         static int dmgAmount = 1;
-        static ISounds enemyHit = new EnemyHit();
-        static ISounds bossHit = new BossHit();
         public static void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
         {
             if (link.GetStateName() == "SwordBeamLink" || link.GetStateName() == "WoodenSwordLink")
@@ -62,11 +61,10 @@ namespace Game1.Code.Player
                     tuple.Item1.TakeDamage(link.attackDamage);
                     if (tuple.Item2 != "aquamentus")
                     {
-                        enemyHit.Play();
-                    }
+                        AudioPlayer.enemyHit.Play();                    }
                     else
                     {
-                        bossHit.Play();
+                        AudioPlayer.bossHit.Play();
                     }
                     ifHit = true;
                 }

@@ -28,18 +28,6 @@ namespace Game1.Code.Player
                                     item.CollisionResponse();
                                     break;
 
-                                case "BlueCandle":
-                                    break;
-
-                                case "BluePotion":
-                                    break;
-
-                                case "BlueRing":
-                                    break;
-
-                                case "Bomb":
-                                    break;
-
                                 case "BombExplosion":
                                     if (kvp.Key == "bombWalls")
                                     {

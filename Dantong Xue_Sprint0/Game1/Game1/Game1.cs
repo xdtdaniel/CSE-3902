@@ -4,23 +4,17 @@ using Game1.Code.Block.BlockFactory;
 using Game1.Code.Enemy;
 using Game1.Code.HUD;
 using Game1.Code.HUD.Factory;
-using Game1.Code.HUD.Sprite;
 using Game1.Code.Item;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
-using Game1.Code.Item.ItemSprite;
 using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
 using Game1.Code.Audio;
 using Game1.Code.Audio.Factory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Microsoft.Xna.Framework.Audio;
-using Game1.Code.Audio.Sounds;
 using Game1.Code.Player;
 
 namespace Game1
@@ -63,8 +57,6 @@ namespace Game1
 
         public Camera camera;
 
-        private ISounds BGM;
-
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -93,8 +85,7 @@ namespace Game1
             quitResetController = new QuitResetController();
 
             camera = new Camera(GraphicsDevice.Viewport);
-            BGM = new BGM();
-            BGM.Play();
+            AudioPlayer.bgm.Play();
         }
 
         protected override void LoadContent()
@@ -183,7 +174,7 @@ namespace Game1
 
             if (link.isDead || link.state.GetStateName().Equals("WinLink"))
             {
-                BGM.Stop();
+                AudioPlayer.bgm.Stop();
             }
             base.Update(gameTime);
             
