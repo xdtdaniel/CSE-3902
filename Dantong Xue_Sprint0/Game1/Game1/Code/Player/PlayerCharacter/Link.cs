@@ -60,8 +60,9 @@ namespace Game1.Player.PlayerCharacter
 
         public Link()
         {
-            x = 300;
-            y = 300;
+            scale = (int)LoadAll.Instance.scale;
+            x = (int)LoadAll.Instance.startPos.X + 122 * scale;
+            y = (int)LoadAll.Instance.startPos.Y + 128 * scale;
             damageTimeCounter = 0;
             isDamaged = false;
             isMoving = false;
@@ -69,7 +70,6 @@ namespace Game1.Player.PlayerCharacter
             isDead = false;
             defaultSpeed = xSpeed = ySpeed = 5;
             attackDamage = 1;
-            scale = (int)LoadAll.Instance.scale;
             doorPositionOffset = 12;
 
             linkWidth = 13 * scale;
@@ -103,9 +103,6 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("WoodenSword", 1);
             itemList.Add("SwordBeam", 0);
 
-            // for test
-            itemList["Ruby"] = 99;
-            itemList["Arrow"] = 99;
 
             state = new NormalLink(this);
 
@@ -333,9 +330,8 @@ namespace Game1.Player.PlayerCharacter
         {
             return state.GetStateName();
         }
-        public int GetMaxSpriteNumOnScreen()
+        public void Reset()
         {
-            return MAX_ITEM_SPRITE_NUM;
         }
     }
 }

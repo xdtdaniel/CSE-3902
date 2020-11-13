@@ -1,6 +1,4 @@
 ﻿using Game1.Code.Audio.Sounds;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Media;
 
 namespace Game1.Code.Audio
 {
