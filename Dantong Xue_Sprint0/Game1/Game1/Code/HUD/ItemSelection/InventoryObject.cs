@@ -87,45 +87,52 @@ namespace Game1.Code.HUD.Sprite
             Rectangle destinationRectangle = new Rectangle(swordX, swordY, width, height);
             spriteBatch.Draw(sword, destinationRectangle, sourceRectangle, Color.White);
 
-            // draw item on tab B, except clock
-           // if (selectedItem != inventoryItemDict["Clock"])
-           // {
+            // draw item on tab B, except for clock, not draw clock at inventory but use it when pick up
+            // if (selectedItem != inventoryItemDict["Clock"])
+            //{
                 sourceRectangle = new Rectangle(0, 0, selectedItem.Width, selectedItem.Height);
                 destinationRectangle = new Rectangle(selectedItemX, selectedItemY, width, height);
                 spriteBatch.Draw(selectedItem, destinationRectangle, sourceRectangle, Color.White);
-           // }
+                // }
 
-            // draw previewed item on the left of inventory
-            sourceRectangle = new Rectangle(0, 0, previewedItem.Width, previewedItem.Height);
-            destinationRectangle = new Rectangle(previewedItemX, previewedItemY, width, height);
-            spriteBatch.Draw(previewedItem, destinationRectangle, sourceRectangle, Color.White);
+                // draw previewed item on the left of inventory
+                sourceRectangle = new Rectangle(0, 0, previewedItem.Width, previewedItem.Height);
+                destinationRectangle = new Rectangle(previewedItemX, previewedItemY, width, height);
+                spriteBatch.Draw(previewedItem, destinationRectangle, sourceRectangle, Color.White);
 
-            // draw arrow symbol
-            sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
-            destinationRectangle = new Rectangle(arrowX, arrowY, arrowWidth, arrowHeight);
-            spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White);
+                // draw arrow symbol
+                sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
+                destinationRectangle = new Rectangle(arrowX, arrowY, arrowWidth, arrowHeight);
+                spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White);
 
-            // draw arrow number
-            for (int i = 0; i < 2; i++)
-            {
-                sourceRectangle = new Rectangle(0, 0, arrowNumber[i].Width, arrowNumber[i].Height);
-                destinationRectangle = new Rectangle(arrowNumberX + i * width, arrowNumberY, width, width);
-                spriteBatch.Draw(arrowNumber[i], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            // draw inventory items 
-            for (int i = 0; i < inventoryItemList.Count; i++)
-            {
-                if (i > 3)
+                // draw arrow number
+                for (int i = 0; i < 2; i++)
                 {
-                    inventoryItemX -= spacing * 4;
-                    inventoryItemY += height;
+                    sourceRectangle = new Rectangle(0, 0, arrowNumber[i].Width, arrowNumber[i].Height);
+                    destinationRectangle = new Rectangle(arrowNumberX + i * width, arrowNumberY, width, width);
+                    spriteBatch.Draw(arrowNumber[i], destinationRectangle, sourceRectangle, Color.White);
                 }
-                Texture2D texture = inventoryItemDict[inventoryItemList[i].Item1];
-                sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
-                destinationRectangle = new Rectangle(inventoryItemX + i * spacing, inventoryItemY, width, height);
-                spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
-            }
+
+                // draw inventory items 
+                for (int i = 0; i < inventoryItemList.Count; i++)
+                {
+                    if (i > 3)
+                    {
+                        inventoryItemX -= spacing * 4;
+                        inventoryItemY += height;
+                    }
+
+                    Texture2D texture = inventoryItemDict[inventoryItemList[i].Item1];
+                    //if (selectedItem != inventoryItemDict["Clock"])
+                    //{
+                    //     texture = HUDFactory.LoadBlackSpot();
+                    //}
+                    sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+                    destinationRectangle = new Rectangle(inventoryItemX + i * spacing, inventoryItemY, width, height);
+                    spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+
+                }
+            //}
         }
 
         public bool useClock()
