@@ -30,6 +30,7 @@ namespace Game1.Code.LoadFile
         List<Tuple<int, int, string>> RoomItemList;
         private List<Tuple<IItemSprite, string>>[] AllItemInRoom = new List<Tuple<IItemSprite, string>>[MAP_COUNT];
         private List<Tuple<IItemSprite, string>> inRoom = new List<Tuple<IItemSprite, string>>();
+        private static int triforce_RoomID;
 
         public LoadItem(int currentMapID)
         {
@@ -149,6 +150,7 @@ namespace Game1.Code.LoadFile
                         break;
                     case "triforce":
                         item = new Triforce( X,Y);
+                        triforce_RoomID = CurrentMapID;
                         inRoom.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                         break;
                 }
@@ -157,6 +159,11 @@ namespace Game1.Code.LoadFile
         }
 
 
+        static public int getTriforceRoom()
+        {
+
+            return triforce_RoomID;
+        }
         public List<Tuple<IItemSprite, string>> GetItemList()
         {
            return AllItemInRoom[CurrentMapID - 1];
