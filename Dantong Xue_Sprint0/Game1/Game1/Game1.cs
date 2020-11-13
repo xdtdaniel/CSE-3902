@@ -156,16 +156,18 @@ namespace Game1
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
 
-                ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
-               // inRoomList = ItemLoader.GetItemList();              
-               // UpdateAllItem.Instance.UpdateAll(inRoomList);
                 if (EnemyLoader.NoEnemy())
                 {
-                    
+
                     ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
                     inRoomList = ItemLoader.GetItemList();
                     UpdateAllItem.Instance.UpdateAll(inRoomList);
                 }
+                else if (!EnemyLoader.NoEnemy()) {
+                    inRoomList.Clear();
+                    UpdateAllItem.Instance.UpdateAll(inRoomList);
+                }
+
                 playerPanel.PlayerUpdate(useClock);
 
                 movableBlocks = LoadAll.Instance.GetMovableBlocks();
