@@ -1,13 +1,8 @@
 ﻿using Game1.Code.HUD.Sprite;
-using Game1.Code.Item.ItemSprite;
 using Game1.Code.LoadFile;
 using Game1.Code.Player;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 
 namespace Game1.Code.HUD
 {
@@ -23,7 +18,6 @@ namespace Game1.Code.HUD
         public float y;
         private int yOrigin;
         private int yDistance;
-        private int mapID;
 
         private List<Tuple<string, int>> inventoryItemList;
 
@@ -190,11 +184,6 @@ namespace Game1.Code.HUD
         public bool IsPaused()
         {
             return paused;
-        }
-        public bool Clock()
-        {
-          
-            return itemSelectionController.getClock();           
         }
 
 

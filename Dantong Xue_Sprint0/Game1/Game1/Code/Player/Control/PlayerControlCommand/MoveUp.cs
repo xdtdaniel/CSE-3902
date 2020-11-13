@@ -1,7 +1,4 @@
 ﻿using Game1.Code.Player.Interface;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Game1.Code.Player.PlayerControlCommand
 {

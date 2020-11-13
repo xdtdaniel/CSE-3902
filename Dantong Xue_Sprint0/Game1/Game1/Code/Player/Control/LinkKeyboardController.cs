@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using Game1.Code.Audio;
+﻿using System.Collections.Generic;
 using Game1.Code.Player.Interface;
 using Game1.Code.Player.PlayerControlCommand;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Game1

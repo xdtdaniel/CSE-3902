@@ -1,12 +1,9 @@
-﻿using Game1.Code.Audio.Sounds;
-using Game1.Code.LoadFile;
+﻿using Game1.Code.LoadFile;
 using Game1.Enemy;
-using Game1.Player.Interface;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Game1.Code.Audio;
 
 namespace Game1.Code.Player

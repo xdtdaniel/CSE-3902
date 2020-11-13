@@ -86,10 +86,6 @@ namespace Game1.Code.HUD
             oldState = newState;
 
         }
-        public bool getClock()
-        {
-            return inventoryObject.useClock();       
-        }
 
         public void Draw()
         {

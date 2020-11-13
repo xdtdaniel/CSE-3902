@@ -1,12 +1,7 @@
 ﻿using Game1.Code.HUD.Factory;
-using Game1.Code.Item.ItemFactory;
 using Game1.Code.LoadFile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SharpDX.Mathematics.Interop;
-using System;
-using System.Collections.Generic;
-using System.Drawing.Text;
 
 namespace Game1.Code.HUD.Sprite
 {

@@ -1,15 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Game1.Player.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
-using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {

@@ -2,18 +2,9 @@
 using Game1.Player.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 using Microsoft.Xna.Framework;
 using Game1.Code.Player;
-using Game1.Enemy;
 using Game1.Code.LoadFile;
-using System.Linq.Expressions;
-using System.Drawing.Text;
-using SharpDX.Direct2D1.Effects;
-using Game1.Code.Audio.Sounds;
 using Game1.Code.Audio;
 
 namespace Game1.Player.PlayerCharacter
@@ -27,6 +18,7 @@ namespace Game1.Player.PlayerCharacter
         public bool isDamaged;
         public bool isMoving;
         public bool movable;
+        public bool isInvincible;
         public bool isDead;
         public int defaultSpeed;
         public int xSpeed, ySpeed;
@@ -66,6 +58,7 @@ namespace Game1.Player.PlayerCharacter
             damageTimeCounter = 0;
             isDamaged = false;
             isMoving = false;
+            isInvincible = false;
             movable = true;
             isDead = false;
             defaultSpeed = xSpeed = ySpeed = 5;
@@ -123,7 +116,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public void TakeDamage(int dmgAmount)
         {
-            if (!this.isDead)
+            if (!this.isDead && !isInvincible)
             {
                 state.TakeDamage(dmgAmount);
 
@@ -140,8 +133,11 @@ namespace Game1.Player.PlayerCharacter
         }
         public void KnockedBack(string collisionSide)
         {
-            movable = false;
-            state.KnockedBack(collisionSide);
+            if (!isInvincible)
+            {
+                movable = false;
+                state.KnockedBack(collisionSide);
+            }
         }
         public void StopMoving(string side, Rectangle interRect)
         {
@@ -251,8 +247,8 @@ namespace Game1.Player.PlayerCharacter
         {
             state = new WinLink(this);
         }
-        public void Invincible() {
-            state = new InvincibleLink(this);
+        public void BecomeInvincible() {
+            isInvincible = true;
         }
 
         public void Update()

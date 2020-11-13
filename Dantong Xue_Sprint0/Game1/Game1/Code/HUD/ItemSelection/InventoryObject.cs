@@ -5,11 +5,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Drawing.Text;
-using System.Diagnostics;
 
 namespace Game1.Code.HUD.Sprite
 {
@@ -33,7 +28,6 @@ namespace Game1.Code.HUD.Sprite
         private int previewedItemX;
         private int previewedItemY;
         private int spacing;
-        private static int mapID;
         private Dictionary<string, Texture2D> inventoryItemDict;
         public List<Tuple<string, int>> inventoryItemList;
 
@@ -46,7 +40,6 @@ namespace Game1.Code.HUD.Sprite
 
 
         private Game1 game;
-        private bool clock;
         public InventoryObject(Game1 game, List<Tuple<string, int>> inventoryItemList)
         {
             this.game = game;
@@ -58,7 +51,6 @@ namespace Game1.Code.HUD.Sprite
             inventoryItemDict.Add("Bomb", ItemSpriteFactory.CreateBomb());
             inventoryItemDict.Add("Boomerang", ItemSpriteFactory.CreateBoomerang());
             inventoryItemDict.Add("Bow", ItemSpriteFactory.CreateBow());
-            inventoryItemDict.Add("Clock", ItemSpriteFactory.CreateClock());
             inventoryItemDict.Add("BlueCandle", ItemSpriteFactory.CreateBlueCandle());
             inventoryItemDict.Add("BluePotion", ItemSpriteFactory.CreateBluePotion());
             inventoryItemDict.Add("BlueRing", ItemSpriteFactory.CreateBlueRing());
@@ -77,7 +69,6 @@ namespace Game1.Code.HUD.Sprite
 
             spacing = 24 * scale;
 
-            clock = false;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -135,11 +126,6 @@ namespace Game1.Code.HUD.Sprite
             //}
         }
 
-        public bool useClock()
-        {
-            return clock;
-
-        }
   
         public void Update(float newStartX, float newStartY, int selectedItemIndex, int previewedItemIndex)
         {
@@ -165,15 +151,6 @@ namespace Game1.Code.HUD.Sprite
                 game.selectedItemName = selectedItemName;
                 previewedItem = inventoryItemDict[previewedItemName];
 
-                //use to checck if current equip is clock or not
-                if (inventoryItemList[selectedItemIndex].Item1 == "Clock")
-                {
-                    clock = true;                   
-                }
-                if (inventoryItemList[selectedItemIndex].Item1 != "Clock")
-                {
-                    clock = false;
-                }
             }
             else
             {

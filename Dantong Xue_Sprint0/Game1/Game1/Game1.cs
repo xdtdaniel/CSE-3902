@@ -51,9 +51,9 @@ namespace Game1
 
         private QuitResetController quitResetController;
         private bool paused;
-        private bool useClock;
-        private int mapID;
-        private int currentMapID;
+        private bool clockWorking;
+        public int mapID;
+        public int currentMapID;
 
         public Camera camera;
 
@@ -127,15 +127,12 @@ namespace Game1
             quitResetController.Update(this);
             if (!paused)
             {
-                useClock = hudPanel.Clock();               
-                currentMapID = LoadAll.Instance.GetCurrentMapID();
-                if (useClock &&  mapID != currentMapID)
-                {
-                    useClock = false;
-                    //Debug.WriteLine("mapID: " + mapID+"current id:"+currentMapID);
-                }
+                playerPanel.PlayerUpdate();
 
-                if (!useClock)
+                clockWorking = playerPanel.checkClockActivation();
+                currentMapID = LoadAll.Instance.GetCurrentMapID();
+
+                if (!clockWorking)
                 {                   
                     DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);                  
 
@@ -158,8 +155,6 @@ namespace Game1
                     emptyList.Clear();
                     UpdateAllItem.Instance.UpdateAll(emptyList);
                 }
-
-                playerPanel.PlayerUpdate(useClock);
 
                 movableBlocks = LoadAll.Instance.GetMovableBlocks();
                 LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());

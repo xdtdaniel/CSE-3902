@@ -1,12 +1,8 @@
 ﻿using Game1.Code.LoadFile;
-using Game1.Code.Player.Interface;
-using Game1.Code.Player.PlayerControlCommand;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace Game1.Code.Player
 {

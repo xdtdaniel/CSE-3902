@@ -1,21 +1,9 @@
-﻿
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Game1.Player.PlayerCharacter;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Game1.Code.Player;
-using Game1.Player.Interface;
-using Game1.Enemy;
 using Game1.Code.LoadFile;
-using Game1.Code.Player.PlayerItem.PlayerItemSprite;
 using Game1.Code.Item.ItemInterface;
-using Game1.Code.HUD.Factory;
-using Game1.Code.HUD;
 
 namespace Game1
 {
@@ -30,6 +18,8 @@ namespace Game1
         private List<Tuple<IItemSprite, string>> roomItemList;
         private List<IBlock> movableList;
 
+        private bool clockWorking;
+
         //
         public PlayerPanel(Game1 game)
         {
@@ -42,11 +32,25 @@ namespace Game1
             roomItemList = new List<Tuple<IItemSprite, string>>();
             movableList = new List<IBlock>();
 
-            
+
             //
+            clockWorking = false;
+        }
+        public bool checkClockActivation()
+        {
+            if (game.link.itemList["Clock"] > 0)
+            {
+                game.link.itemList["Clock"] = 0;
+                clockWorking = true;
+            }
+            if (game.mapID != game.currentMapID)
+            {
+                clockWorking = false;
+            }
+            return clockWorking;
         }
 
-        public void PlayerUpdate(bool useClock)
+        public void PlayerUpdate()
         {
             game.link.Update();
             linkKeyboardController.Update();
@@ -74,7 +78,7 @@ namespace Game1
                 }
             }
 
-            if(game.link.itemList["Triforce"]>0 && !game.link.isDead)
+            if(game.link.itemList["Triforce"] > 0 && !game.link.isDead)
             {
                 game.link.movable = false;
                 game.link.Win();
@@ -82,10 +86,10 @@ namespace Game1
             }
 
             //similar to normal link state, but link won't get demage, when hold clock at current room
-            if (game.link.itemList["Clock"] > 0 && !game.link.isDead && useClock)
+            if (clockWorking && !game.link.isDead)
             {
                 game.link.movable = true;
-                game.link.Invincible();
+                game.link.BecomeInvincible();
                 
             }
 
