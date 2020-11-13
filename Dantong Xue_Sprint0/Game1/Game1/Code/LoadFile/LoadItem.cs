@@ -11,6 +11,7 @@ using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace Game1.Code.LoadFile
 {
@@ -88,12 +89,13 @@ namespace Game1.Code.LoadFile
             }
 
             Vector2 location;
+            Vector2 startPos = LoadAll.Instance.startPos;
             for (int index = 0; index < RoomItemList.Count; index++)
             {
 
                  X = (int)(RoomItemList[index].Item1 * multiplier * scale + startPos.X);
-                 Y = (int)(RoomItemList[index].Item2 * multiplier * scale + startPos.Y);
-
+                 Y = (int)(RoomItemList[index].Item2 * multiplier * scale + startPos.Y-56*scale);
+               
                 location = new Vector2(X, Y);
                 IItemSprite item;
 
@@ -168,7 +170,10 @@ namespace Game1.Code.LoadFile
         {
            return AllItemInRoom[CurrentMapID - 1];
         }
+        public void setRoomID(int id) {
 
+            CurrentMapID = id;
+        }
         public void Previous()
         {
             CurrentMapID--;
