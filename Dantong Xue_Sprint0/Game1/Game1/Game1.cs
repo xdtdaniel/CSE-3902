@@ -155,7 +155,7 @@ namespace Game1
 
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
-
+                emptyList = inRoomList;
                 if (EnemyLoader.NoEnemy())
                 {
 
@@ -164,8 +164,8 @@ namespace Game1
                     UpdateAllItem.Instance.UpdateAll(inRoomList);
                 }
                 else if (!EnemyLoader.NoEnemy()) {
-                    inRoomList.Clear();
-                    UpdateAllItem.Instance.UpdateAll(inRoomList);
+                    emptyList.Clear();
+                    UpdateAllItem.Instance.UpdateAll(emptyList);
                 }
 
                 playerPanel.PlayerUpdate(useClock);
