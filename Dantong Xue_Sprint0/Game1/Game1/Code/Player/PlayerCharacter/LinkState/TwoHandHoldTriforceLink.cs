@@ -18,6 +18,7 @@ namespace Game1.Player.PlayerCharacter
         IPlayerLinkSprite linkSprite;
         Triforce triforce;
         Link link;
+        private int offset;
 
         public TwoHandHoldTriforceLink(Link link)
         {
@@ -25,7 +26,8 @@ namespace Game1.Player.PlayerCharacter
 
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
-            triforce = new Triforce(link.x, link.y - 30);
+            offset = 210;
+            triforce = new Triforce(link.x, link.y - offset);
 
         }
 
