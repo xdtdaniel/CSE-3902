@@ -172,7 +172,7 @@ namespace Game1.Code
 
             if (newState.IsKeyDown(Keys.P) && !oldState.IsKeyDown(Keys.P))
             {
-                
+
                 paused = !paused;
                 if (paused)
                 {
@@ -182,6 +182,12 @@ namespace Game1.Code
                 {
                     UpdateMovingState("down");
                 }
+            }
+            //pause crrent screen by press space
+           else if (newState.IsKeyDown(Keys.Space) && !oldState.IsKeyDown(Keys.Space)) 
+            {
+                paused = !paused;
+            
             }
 
             oldState = newState;
