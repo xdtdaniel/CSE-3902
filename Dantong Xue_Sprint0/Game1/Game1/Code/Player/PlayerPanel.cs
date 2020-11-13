@@ -14,6 +14,8 @@ using Game1.Enemy;
 using Game1.Code.LoadFile;
 using Game1.Code.Player.PlayerItem.PlayerItemSprite;
 using Game1.Code.Item.ItemInterface;
+using Game1.Code.HUD.Factory;
+using Game1.Code.HUD;
 
 namespace Game1
 {
@@ -44,7 +46,7 @@ namespace Game1
             //
         }
 
-        public void PlayerUpdate()
+        public void PlayerUpdate(bool useClock)
         {
             game.link.Update();
             linkKeyboardController.Update();
@@ -71,6 +73,22 @@ namespace Game1
                     LoadAll.Instance.ChangeMapColor(Color.Red);
                 }
             }
+
+            if(game.link.itemList["Triforce"]>0 && !game.link.isDead)
+            {
+                game.link.movable = false;
+                game.link.Win();
+                LoadAll.Instance.ChangeMapColor(Color.Yellow);
+            }
+
+            //similar to normal link state, but link won't get demage, when hold clock at current room
+            if (game.link.itemList["Clock"] > 0 && !game.link.isDead && useClock)
+            {
+                game.link.movable = true;
+                game.link.Invincible();
+                
+            }
+
         }
         public void PlayerDraw()
         {

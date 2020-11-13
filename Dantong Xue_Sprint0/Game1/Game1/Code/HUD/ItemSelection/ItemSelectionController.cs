@@ -18,7 +18,6 @@ namespace Game1.Code.HUD
         private Game1 game;
         private int inventoryItemIndex;
         private List<Tuple<string, int>> inventoryItemList;
-        private bool clock;
 
         public ItemSelectionController(Game1 game, List<Tuple<string, int>> inventoryItemList)
         {
@@ -27,7 +26,6 @@ namespace Game1.Code.HUD
             inventoryObject = new InventoryObject(game, inventoryItemList);
             inventoryItemIndex = 0;
             this.inventoryItemList = inventoryItemList;
-            clock = false;
         }
         public void Update(float newStartX, float newStartY)
         {

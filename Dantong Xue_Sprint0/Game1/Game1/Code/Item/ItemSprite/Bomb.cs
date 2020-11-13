@@ -30,7 +30,7 @@ namespace Game1.Code.Item.ItemSprite
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
-            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+            Rectangle destinationRectangle = new Rectangle(x + (int)LoadAll.Instance.startPos.X, y + (int)LoadAll.Instance.startPos.Y, width, height);
             CollisionRectangle = destinationRectangle;
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);

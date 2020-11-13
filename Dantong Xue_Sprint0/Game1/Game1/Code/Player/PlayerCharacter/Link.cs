@@ -256,6 +256,9 @@ namespace Game1.Player.PlayerCharacter
         {
             state = new WinLink(this);
         }
+        public void Invincible() {
+            state = new InvincibleLink(this);
+        }
 
         public void Update()
         {

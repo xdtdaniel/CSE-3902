@@ -6,7 +6,6 @@ namespace Game1.Code.Audio
 {
     class Audio
     {
-        private Game1 game;
         private ISounds bgm;
         public Audio(Game1 game)
         {

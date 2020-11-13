@@ -1,4 +1,5 @@
-﻿using Game1.Code.LoadFile;
+﻿using Game1.Code.Audio.Sounds;
+using Game1.Code.LoadFile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,6 +10,7 @@ namespace Game1.Code.Enemy
 {
     class DrawAndUpdateEnemy
     {
+        private ISounds enemyDie = new EnemyDie();
         private static DrawAndUpdateEnemy instance = new DrawAndUpdateEnemy();
         public static DrawAndUpdateEnemy Instance
         {
@@ -32,6 +34,7 @@ namespace Game1.Code.Enemy
             {
                 Enemies[i].Item1.UpdateEnemy(game);
                 if (Enemies[i].Item1.GetHP() <= 0) {
+                    enemyDie.Play();
                     Enemies.RemoveAt(i);
                 }
             }

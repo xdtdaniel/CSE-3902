@@ -1,6 +1,7 @@
 ﻿using Game1.Code.Audio.Sounds;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
+using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using System;
@@ -17,6 +18,8 @@ namespace Game1.Code.Player
         static private List<Tuple<IItemSprite, string>> outRoomList = new List<Tuple<IItemSprite, string>>();
         static IItemSprite item;
         static ISounds SFX;
+        private static int mapID;
+        
         static public void HandleCollision(Link link, List<Tuple<IItemSprite, string>> roomItemList)
         {
             for (int  index= 0;index < roomItemList.Count;index++)
@@ -67,6 +70,7 @@ namespace Game1.Code.Player
                             item = new Clock(X, Y);
                             outRoomList.Add(new Tuple<IItemSprite, string>(item, "Clock"));
                             roomItemList.RemoveAt(index);
+                            mapID = LoadAll.Instance.GetCurrentMapID();
                             SFX = new GetItem();
                             SFX.Play();
                             break;
@@ -158,5 +162,9 @@ namespace Game1.Code.Player
             return outRoomList;
         }
 
+        static public int getMapID() {
+
+            return mapID;
+        }
     }
 }

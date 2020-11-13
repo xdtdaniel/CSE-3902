@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerCharacterSprite/Damaged_3_FrontSwordBeam.png</SourceFile>
-  <SourceTime>2020-11-11T20:50:43.4793098-05:00</SourceTime>
-  <DestFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerCharacterSprite/Damaged_3_FrontSwordBeam.xnb</DestFile>
-  <DestTime>2020-11-11T21:00:16.8355731-05:00</DestTime>
+  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerCharacterSprite/Damaged_3_FrontSwordBeam.png</SourceFile>
+  <SourceTime>2020-11-12T04:30:59.5163129-05:00</SourceTime>
+  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerCharacterSprite/Damaged_3_FrontSwordBeam.xnb</DestFile>
+  <DestTime>2020-11-12T05:21:54.5819955-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

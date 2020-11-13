@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Game1.Code.Item.ItemSprite;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
@@ -22,6 +23,7 @@ namespace Game1.Player.PlayerCharacter
         Bow bow;
 
         Link link;
+        private int offset;
 
         public OneHandHoldBow(Link link)
         {
@@ -34,7 +36,8 @@ namespace Game1.Player.PlayerCharacter
             damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedPickUpLink();
             
             this.link = link;
-            bow = new Bow(link.x, link.y-40);
+            offset = 200;
+            bow = new Bow(link.x, link.y-offset);
 
         }
         public void WoodenSwordAttack() { }

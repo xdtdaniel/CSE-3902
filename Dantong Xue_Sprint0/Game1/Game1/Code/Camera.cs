@@ -81,7 +81,9 @@ namespace Game1.Code
             Bounds = bounds.Bounds;
             UpdateMatrix();
 
-            UpdateMovingState("");          
+            UpdateMovingState("");
+
+            Reset();
 
             if (moving) {
                 if (direction == 1 || direction == 3) {
@@ -186,6 +188,15 @@ namespace Game1.Code
 
 
             return paused;
+        }
+
+        public void Reset() {
+            newState = Keyboard.GetState();
+            if (newState.IsKeyDown(Keys.H) && !moving)
+            {
+                Vector2 newPosition = new Vector2(384, 348);
+                Position = newPosition;
+            }
         }
     }
 }

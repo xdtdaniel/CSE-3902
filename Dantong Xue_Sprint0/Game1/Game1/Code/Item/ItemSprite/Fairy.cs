@@ -95,7 +95,7 @@ namespace Game1.Code.Item.ItemSprite
             int column = CurrentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(sourceWidth * column, sourceHeight * row, sourceWidth, sourceHeight);
-            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+            Rectangle destinationRectangle = new Rectangle(x + (int)LoadAll.Instance.startPos.X, y + (int)LoadAll.Instance.startPos.Y, width, height);
             CollisionRectangle = destinationRectangle;
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 

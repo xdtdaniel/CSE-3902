@@ -2636,7 +2636,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprite/enemies/trap_sprite.png
 
-#begin Sprite/enemies/wallmaster_sprite.png
+#begin Sprite/enemies/wallmaster0_sprite.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2646,7 +2646,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprite/enemies/wallmaster_sprite.png
+/build:Sprite/enemies/wallmaster0_sprite.png
+
+#begin Sprite/enemies/wallmaster1_sprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprite/enemies/wallmaster1_sprite.png
+
+#begin Sprite/enemies/wallmaster3_sprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprite/enemies/wallmaster3_sprite.png
 
 #begin Sprite/items/arrow_sprite.png
 /importer:TextureImporter

@@ -160,13 +160,31 @@ namespace Game1.Code.LoadFile
                         break;
                     case "trap3":
                         Enemy = new Trap3(location);
-                            EnemyCopy = new Trap3(location);
+                        EnemyCopy = new Trap3(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
                         EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "trap"));
                         break;
-                    case "wallmaster":
-                        Enemy = new Wallmaster(location);
-                        EnemyCopy = new Wallmaster(location);
+                    case "wallmaster_0":
+                        Enemy = new Wallmaster0(location);
+                        EnemyCopy = new Wallmaster0(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        break;
+                    case "wallmaster_1":
+                        Enemy = new Wallmaster1(location);
+                        EnemyCopy = new Wallmaster1(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        break;
+                    case "wallmaster_2":
+                        Enemy = new Wallmaster2(location);
+                        EnemyCopy = new Wallmaster2(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        break;
+                    case "wallmaster_3":
+                        Enemy = new Wallmaster3(location);
+                        EnemyCopy = new Wallmaster3(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
                         EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
                         break;
@@ -192,48 +210,6 @@ namespace Game1.Code.LoadFile
 
             }
 
-        }
-
-        private Vector2 RoomLocationOffset(int roomNumber) {
-            switch (roomNumber) 
-            {
-                case 1:
-                    return new Vector2(-256 * scale, 5 * -176 * scale);
-                case 2:
-                    return new Vector2(0, 5 * -176 * scale);
-                case 3:
-                    // may need further modification
-                    return new Vector2(0, 0);
-                case 4:
-                    return new Vector2(0, 4 * -176 * scale);
-                case 5:
-                    return new Vector2(2 * 256 * scale, 4 * -176 * scale);
-                case 6:
-                    return new Vector2(3 * 256 * scale, 4 * -176 * scale);
-                case 7:
-                    return new Vector2(2 * -256 * scale, 3 * -176 * scale);
-                case 8:
-                    return new Vector2(-256 * scale, 3 * -176 * scale);
-                case 9:
-                    return new Vector2(0, 3 * -176 * scale);
-                case 10:
-                    return new Vector2(256 * scale, 3 * -176 * scale);
-                case 11:
-                    return new Vector2(2 * 256 * scale, 3 * -176 * scale);
-                case 12:
-                    return new Vector2(-256 * scale, 2 * -176 * scale);
-                case 13:
-                    return new Vector2(0, 2 * -176 * scale);
-                case 14:
-                    return new Vector2(256 * scale, 2 * -176 * scale);
-                case 15:
-                    return new Vector2(0, 176 * scale);
-                case 16:
-                    return new Vector2(-256 * scale, 0 * scale);
-                case 18:
-                    return new Vector2(256 * scale, 0 * scale);
-            }
-            return new Vector2(0, 0);
         }
 
         public List<Tuple<IEnemy, string>> GetEnemyList() 
@@ -309,7 +285,7 @@ namespace Game1.Code.LoadFile
         {
             List<Tuple<IBlock, Vector2>> blocksListToDraw = new List<Tuple<IBlock, Vector2>>();
             List<Tuple<int, int, string>> mapElementList = new List<Tuple<int, int, string>>();
-            Vector2 startPos = new Vector2(RoomLocationOffset(11).X, RoomLocationOffset(11).Y + 56 * scale);
+            Vector2 startPos = LoadAll.Instance.startPos;
 
             string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pathNew = filePath.Substring(0, filePath.IndexOf("bin"));

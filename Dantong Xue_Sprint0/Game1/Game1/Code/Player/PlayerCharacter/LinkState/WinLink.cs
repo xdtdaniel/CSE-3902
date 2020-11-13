@@ -18,13 +18,15 @@ namespace Game1.Player.PlayerCharacter
         Link link;
         IPlayerLinkSprite linkSprite;
         Triforce triforce;
+        private int offset;
 
         public WinLink(Link link)
         {
             link.state = new TwoHandHoldTriforce(link);
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
-            triforce = new Triforce(link.x, link.y - 30);
+            offset = 200;
+            triforce = new Triforce(link.x, link.y - offset);
         }
 
 

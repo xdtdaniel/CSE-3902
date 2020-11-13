@@ -9,6 +9,7 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Drawing.Text;
+using System.Diagnostics;
 
 namespace Game1.Code.HUD.Sprite
 {
@@ -32,6 +33,7 @@ namespace Game1.Code.HUD.Sprite
         private int previewedItemX;
         private int previewedItemY;
         private int spacing;
+        private static int mapID;
         private Dictionary<string, Texture2D> inventoryItemDict;
         public List<Tuple<string, int>> inventoryItemList;
 
@@ -41,8 +43,7 @@ namespace Game1.Code.HUD.Sprite
         private Texture2D previewedItem;
         private Texture2D[] arrowNumber;
         private Dictionary<string, int> hudItemList;
-        private Rectangle sourceRectangle;
-        private Rectangle destinationRectangle;
+
 
         private Game1 game;
         private bool clock;
@@ -82,46 +83,56 @@ namespace Game1.Code.HUD.Sprite
         public void Draw(SpriteBatch spriteBatch)
         {
             // draw sword on tab A
-            sourceRectangle = new Rectangle(0, 0, sword.Width, sword.Height);
-            destinationRectangle = new Rectangle(swordX, swordY, width, height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, sword.Width, sword.Height);
+            Rectangle destinationRectangle = new Rectangle(swordX, swordY, width, height);
             spriteBatch.Draw(sword, destinationRectangle, sourceRectangle, Color.White);
 
-            // draw item on tab B
-            sourceRectangle = new Rectangle(0, 0, selectedItem.Width, selectedItem.Height);
-            destinationRectangle = new Rectangle(selectedItemX, selectedItemY, width, height);
-            spriteBatch.Draw(selectedItem, destinationRectangle, sourceRectangle, Color.White);
+            // draw item on tab B, except for clock, not draw clock at inventory but use it when pick up
+            // if (selectedItem != inventoryItemDict["Clock"])
+            //{
+                sourceRectangle = new Rectangle(0, 0, selectedItem.Width, selectedItem.Height);
+                destinationRectangle = new Rectangle(selectedItemX, selectedItemY, width, height);
+                spriteBatch.Draw(selectedItem, destinationRectangle, sourceRectangle, Color.White);
+                // }
 
-            // draw previewed item on the left of inventory
-            sourceRectangle = new Rectangle(0, 0, previewedItem.Width, previewedItem.Height);
-            destinationRectangle = new Rectangle(previewedItemX, previewedItemY, width, height);
-            spriteBatch.Draw(previewedItem, destinationRectangle, sourceRectangle, Color.White);
+                // draw previewed item on the left of inventory
+                sourceRectangle = new Rectangle(0, 0, previewedItem.Width, previewedItem.Height);
+                destinationRectangle = new Rectangle(previewedItemX, previewedItemY, width, height);
+                spriteBatch.Draw(previewedItem, destinationRectangle, sourceRectangle, Color.White);
 
-            // draw arrow symbol
-            sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
-            destinationRectangle = new Rectangle(arrowX, arrowY, arrowWidth, arrowHeight);
-            spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White);
+                // draw arrow symbol
+                sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
+                destinationRectangle = new Rectangle(arrowX, arrowY, arrowWidth, arrowHeight);
+                spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White);
 
-            // draw arrow number
-            for (int i = 0; i < 2; i++)
-            {
-                sourceRectangle = new Rectangle(0, 0, arrowNumber[i].Width, arrowNumber[i].Height);
-                destinationRectangle = new Rectangle(arrowNumberX + i * width, arrowNumberY, width, width);
-                spriteBatch.Draw(arrowNumber[i], destinationRectangle, sourceRectangle, Color.White);
-            }
-
-            // draw inventory items 
-            for (int i = 0; i < inventoryItemList.Count; i++)
-            {
-                if (i > 3)
+                // draw arrow number
+                for (int i = 0; i < 2; i++)
                 {
-                    inventoryItemX -= spacing * 4;
-                    inventoryItemY += height;
+                    sourceRectangle = new Rectangle(0, 0, arrowNumber[i].Width, arrowNumber[i].Height);
+                    destinationRectangle = new Rectangle(arrowNumberX + i * width, arrowNumberY, width, width);
+                    spriteBatch.Draw(arrowNumber[i], destinationRectangle, sourceRectangle, Color.White);
                 }
-                Texture2D texture = inventoryItemDict[inventoryItemList[i].Item1];
-                sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
-                destinationRectangle = new Rectangle(inventoryItemX + i * spacing, inventoryItemY, width, height);
-                spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
-            }
+
+                // draw inventory items 
+                for (int i = 0; i < inventoryItemList.Count; i++)
+                {
+                    if (i > 3)
+                    {
+                        inventoryItemX -= spacing * 4;
+                        inventoryItemY += height;
+                    }
+
+                    Texture2D texture = inventoryItemDict[inventoryItemList[i].Item1];
+                    //if (selectedItem != inventoryItemDict["Clock"])
+                    //{
+                    //     texture = HUDFactory.LoadBlackSpot();
+                    //}
+                    sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+                    destinationRectangle = new Rectangle(inventoryItemX + i * spacing, inventoryItemY, width, height);
+                    spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+
+                }
+            //}
         }
 
         public bool useClock()
@@ -129,6 +140,7 @@ namespace Game1.Code.HUD.Sprite
             return clock;
 
         }
+  
         public void Update(float newStartX, float newStartY, int selectedItemIndex, int previewedItemIndex)
         {
             inventoryItemX = 132 * scale + (int)newStartX;
@@ -153,9 +165,14 @@ namespace Game1.Code.HUD.Sprite
                 game.selectedItemName = selectedItemName;
                 previewedItem = inventoryItemDict[previewedItemName];
 
+                //use to checck if current equip is clock or not
                 if (inventoryItemList[selectedItemIndex].Item1 == "Clock")
                 {
-                    clock = true;
+                    clock = true;                   
+                }
+                if (inventoryItemList[selectedItemIndex].Item1 != "Clock")
+                {
+                    clock = false;
                 }
             }
             else

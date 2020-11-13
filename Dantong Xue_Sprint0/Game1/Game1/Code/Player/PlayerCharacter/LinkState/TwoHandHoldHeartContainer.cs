@@ -18,13 +18,15 @@ namespace Game1.Player.PlayerCharacter
         IPlayerLinkSprite linkSprite;
         HeartContainer heartContainer;
         Link link;
+        private int offset;
 
         public TwoHandHoldHeartContainer(Link link)
         {
             currentFrame = 0;
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
-            heartContainer = new HeartContainer(link.x, link.y - 40);
+            offset = 210;
+            heartContainer = new HeartContainer(link.x, link.y-offset);
 
         }
 
