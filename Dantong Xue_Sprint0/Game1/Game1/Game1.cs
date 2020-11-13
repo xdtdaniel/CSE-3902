@@ -44,7 +44,7 @@ namespace Game1
 
         public LoadItem ItemLoader;
         public List<Tuple<IItemSprite, string>> inRoomList;
-        public List<Tuple<IItemSprite, string>> notInRoomList;
+        public List<Tuple<IItemSprite, string>> emptyList;
 
         private IController mapMouseController;
 
@@ -155,10 +155,17 @@ namespace Game1
 
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
-                inRoomList = ItemLoader.GetItemList();
 
-                UpdateAllItem.Instance.UpdateAll(inRoomList);
-
+                ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
+               // inRoomList = ItemLoader.GetItemList();              
+               // UpdateAllItem.Instance.UpdateAll(inRoomList);
+                if (EnemyLoader.NoEnemy())
+                {
+                    
+                    ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
+                    inRoomList = ItemLoader.GetItemList();
+                    UpdateAllItem.Instance.UpdateAll(inRoomList);
+                }
                 playerPanel.PlayerUpdate(useClock);
 
                 movableBlocks = LoadAll.Instance.GetMovableBlocks();
@@ -194,7 +201,7 @@ namespace Game1
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
             if (EnemyLoader.GetCurrentMapID() == 11)
             {
-                DrawMap.Instance.DrawCurrMap(_spriteBatch, EnemyLoader.LoadRoom11Walls());
+                DrawMap.Instance.DrawCurrMap(_spriteBatch, EnemyLoader.LoadRoom11Walls());           
             }
 
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);
