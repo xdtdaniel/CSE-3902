@@ -143,6 +143,8 @@ namespace Game1
 
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
+                ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
+                inRoomList = ItemLoader.GetItemList();
                 emptyList = inRoomList;
                 if (EnemyLoader.NoEnemy())
                 {
