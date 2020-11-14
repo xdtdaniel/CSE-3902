@@ -153,7 +153,7 @@ namespace Game1
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
                 emptyList = inRoomList;
-                if (EnemyLoader.NoEnemy()||(LoadAll.Instance.GetCurrentMapID()==14))
+                if (EnemyLoader.NoEnemy()||(LoadAll.Instance.GetCurrentMapID()==15)|| (LoadAll.Instance.GetCurrentMapID() == 17))
                 {
 
                     ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
@@ -195,8 +195,6 @@ namespace Game1
                     hudPanel = new HUDPanel(this);
                     selectedItemName = "";
                     LoadAll.Instance.GetGameObject(this);
-
-                    // Need to reset all items as well.
 
                     LoadAll.Instance.ResetMap();
                     EnemyLoader.ResetAllEnemies();
