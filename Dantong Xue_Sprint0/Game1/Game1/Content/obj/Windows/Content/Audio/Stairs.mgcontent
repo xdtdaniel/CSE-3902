@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Stairs.wav</SourceFile>
   <SourceTime>2020-11-14T03:00:03.2425671-05:00</SourceTime>
   <DestFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Audio/Stairs.xnb</DestFile>
-  <DestTime>2020-11-14T03:00:14.4566096-05:00</DestTime>
+  <DestTime>2020-11-14T03:07:52.0286579-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

@@ -176,11 +176,11 @@ namespace Game1.Code.HUD.Factory
 		{
 			int firstNumber = number / 10;
 			int secondNumber = number % 10;
-			if (number > 99)
+			if (number > 99) // no more than two digits
 			{
 				firstNumber = secondNumber = 9;
 			}
-			else if (number < 0)
+			else if (number < 0) // no negative numbers
 			{
 				firstNumber = secondNumber = 0;
 			}

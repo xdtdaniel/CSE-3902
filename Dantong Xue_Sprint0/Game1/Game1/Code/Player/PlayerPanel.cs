@@ -43,7 +43,7 @@ namespace Game1
                 game.link.itemList["Clock"] = 0;
                 clockWorking = true;
             }
-            if (game.mapID != game.currentMapID)
+            if (PlayerAndBlockCollisionHandler.doorSide != "")
             {
                 clockWorking = false;
             }
