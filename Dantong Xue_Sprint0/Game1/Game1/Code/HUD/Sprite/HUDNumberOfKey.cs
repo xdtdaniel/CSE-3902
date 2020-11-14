@@ -12,11 +12,14 @@ namespace Game1.Code.HUD.Sprite
     {
         private Texture2D[] numberOfKey;
 
-        private int scale;
-        private int height;
-        private int width;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int height = 8 * scale;
+        private int width = 8 * scale;
         private int x;
         private int y;
+
+        private int preX = 104 * scale;
+        private int preY = -24 * scale;
 
         private Dictionary<string, int> hudItemList;
 
@@ -26,12 +29,6 @@ namespace Game1.Code.HUD.Sprite
             //initial values
             numberOfKey = new Texture2D[2];
             numberOfKey = HUDFactory.LoadNumber(hudItemList["Key"]);
-            //need to change later, value is incorrect
-            scale = (int)LoadAll.Instance.scale;
-            height = 8 * scale;
-            width = 8 * scale;
-            x = 104 * scale + (int)LoadAll.Instance.startPos.X;
-            y = 32 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -46,8 +43,8 @@ namespace Game1.Code.HUD.Sprite
         }
         public void Update(float newStartX, float newStartY)
         {
-            x = (int)newStartX + 104 * scale;
-            y = (int)newStartY - 56 * scale + 32 * scale;
+            x = (int)newStartX + preX;
+            y = (int)newStartY + preY;
             numberOfKey = HUDFactory.LoadNumber(hudItemList["Key"]);
         }
 

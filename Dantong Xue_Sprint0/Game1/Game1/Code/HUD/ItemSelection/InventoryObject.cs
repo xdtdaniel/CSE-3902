@@ -10,11 +10,11 @@ namespace Game1.Code.HUD.Sprite
 {
     public class InventoryObject 
     {
-        private int scale;
-        private int height;
-        private int width;
-        private int arrowHeight;
-        private int arrowWidth;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int height = 16 * scale;
+        private int width = 8 * scale;
+        private int arrowHeight = 16 * scale;
+        private int arrowWidth = 6 * scale;
         private int inventoryItemX;
         private int inventoryItemY;
         private int arrowX;
@@ -27,7 +27,22 @@ namespace Game1.Code.HUD.Sprite
         private int selectedItemY;
         private int previewedItemX;
         private int previewedItemY;
-        private int spacing;
+        private int spacing = 24 * scale;
+
+        private int preInventoryItemX = 132 * scale;
+        private int preInventoryItemY = -184 * scale;
+        private int preArrowX = 128 * scale;
+        private int preArrowY = -208 * scale;
+        private int preArrowNumberX = 16 * scale;
+        private int preArrowNumberY = 8 * scale;
+        private int preSwordX = 152 * scale;
+        private int preSwordY = -32 * scale;
+        private int preSelectedItemX = 128 * scale;
+        private int preSelectedItemY = -32 * scale;
+        private int prePreviewedItemX = 68 * scale;
+        private int prePreviewedItemY = -184 * scale;
+
+
         private Dictionary<string, Texture2D> inventoryItemDict;
         public List<Tuple<string, int>> inventoryItemList;
 
@@ -60,15 +75,6 @@ namespace Game1.Code.HUD.Sprite
             previewedItem = HUDFactory.LoadBlackSpot();
             arrowNumber = new Texture2D[2];
             arrowNumber = HUDFactory.LoadNumber(0);           
-
-            scale = (int)LoadAll.Instance.scale;
-            height = 16 * scale;
-            width = 8 * scale;
-            arrowHeight = 16 * scale;
-            arrowWidth = 6 * scale;
-
-            spacing = 24 * scale;
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -79,68 +85,61 @@ namespace Game1.Code.HUD.Sprite
             spriteBatch.Draw(sword, destinationRectangle, sourceRectangle, Color.White);
 
             // draw item on tab B, except for clock, not draw clock at inventory but use it when pick up
-            // if (selectedItem != inventoryItemDict["Clock"])
-            //{
-                sourceRectangle = new Rectangle(0, 0, selectedItem.Width, selectedItem.Height);
-                destinationRectangle = new Rectangle(selectedItemX, selectedItemY, width, height);
-                spriteBatch.Draw(selectedItem, destinationRectangle, sourceRectangle, Color.White);
-                // }
+            sourceRectangle = new Rectangle(0, 0, selectedItem.Width, selectedItem.Height);
+            destinationRectangle = new Rectangle(selectedItemX, selectedItemY, width, height);
+            spriteBatch.Draw(selectedItem, destinationRectangle, sourceRectangle, Color.White);
 
-                // draw previewed item on the left of inventory
-                sourceRectangle = new Rectangle(0, 0, previewedItem.Width, previewedItem.Height);
-                destinationRectangle = new Rectangle(previewedItemX, previewedItemY, width, height);
-                spriteBatch.Draw(previewedItem, destinationRectangle, sourceRectangle, Color.White);
+            // draw previewed item on the left of inventory
+            sourceRectangle = new Rectangle(0, 0, previewedItem.Width, previewedItem.Height);
+            destinationRectangle = new Rectangle(previewedItemX, previewedItemY, width, height);
+            spriteBatch.Draw(previewedItem, destinationRectangle, sourceRectangle, Color.White);
 
-                // draw arrow symbol
-                sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
-                destinationRectangle = new Rectangle(arrowX, arrowY, arrowWidth, arrowHeight);
-                spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White);
+            // draw arrow symbol
+            sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
+            destinationRectangle = new Rectangle(arrowX, arrowY, arrowWidth, arrowHeight);
+            spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White);
 
-                // draw arrow number
-                for (int i = 0; i < 2; i++)
+            // draw arrow number
+            for (int i = 0; i < 2; i++)
+            {
+                sourceRectangle = new Rectangle(0, 0, arrowNumber[i].Width, arrowNumber[i].Height);
+                destinationRectangle = new Rectangle(arrowNumberX + i * width, arrowNumberY, width, width);
+                spriteBatch.Draw(arrowNumber[i], destinationRectangle, sourceRectangle, Color.White);
+            }
+
+            // draw inventory items 
+            for (int i = 0; i < inventoryItemList.Count; i++)
+            {
+                if (i > 3) // when index > 3, inventory items will be displayed in next row
                 {
-                    sourceRectangle = new Rectangle(0, 0, arrowNumber[i].Width, arrowNumber[i].Height);
-                    destinationRectangle = new Rectangle(arrowNumberX + i * width, arrowNumberY, width, width);
-                    spriteBatch.Draw(arrowNumber[i], destinationRectangle, sourceRectangle, Color.White);
+                    inventoryItemX -= spacing * 4; // reset x
+                    inventoryItemY += height; // increment y
                 }
 
-                // draw inventory items 
-                for (int i = 0; i < inventoryItemList.Count; i++)
-                {
-                    if (i > 3)
-                    {
-                        inventoryItemX -= spacing * 4;
-                        inventoryItemY += height;
-                    }
+                Texture2D texture = inventoryItemDict[inventoryItemList[i].Item1];
+                sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+                destinationRectangle = new Rectangle(inventoryItemX + i * spacing, inventoryItemY, width, height);
+                spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
 
-                    Texture2D texture = inventoryItemDict[inventoryItemList[i].Item1];
-                    //if (selectedItem != inventoryItemDict["Clock"])
-                    //{
-                    //     texture = HUDFactory.LoadBlackSpot();
-                    //}
-                    sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
-                    destinationRectangle = new Rectangle(inventoryItemX + i * spacing, inventoryItemY, width, height);
-                    spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
-
-                }
-            //}
+            }
         }
 
   
         public void Update(float newStartX, float newStartY, int selectedItemIndex, int previewedItemIndex)
         {
-            inventoryItemX = 132 * scale + (int)newStartX;
-            inventoryItemY = -176 * scale + 48 * scale + (int)newStartY - 56 * scale;
-            arrowX = 128 * scale + (int)newStartX;
-            arrowY = -176 * scale + 24 * scale + (int)newStartY - 56 * scale;
-            arrowNumberX = arrowX + 16 * scale;
-            arrowNumberY = arrowY + 8 * scale;
-            swordX = (int)newStartX + 152 * scale;
-            swordY = (int)newStartY - 56 * scale + 24 * scale;
-            selectedItemX = (int)newStartX + 128 * scale;
-            selectedItemY = (int)newStartY - 56 * scale + 24 * scale;
-            previewedItemX = (int)newStartX + 68 * scale;
-            previewedItemY = (int)newStartY - 56 * scale + 48 * scale - 176 * scale;
+            inventoryItemX = preInventoryItemX + (int)newStartX;
+            inventoryItemY = preInventoryItemY + (int)newStartY;
+            arrowX = preArrowX + (int)newStartX;
+            arrowY = preArrowY + (int)newStartY;
+            arrowNumberX = arrowX + preArrowNumberX;
+            arrowNumberY = arrowY + preArrowNumberY;
+            swordX = (int)newStartX + preSwordX;
+            swordY = (int)newStartY + preSwordY;
+            selectedItemX = (int)newStartX + preSelectedItemX;
+            selectedItemY = (int)newStartY + preSelectedItemY;
+            previewedItemX = (int)newStartX + prePreviewedItemX;
+            previewedItemY = (int)newStartY + prePreviewedItemY;
+
             arrowNumber = HUDFactory.LoadNumber(hudItemList["Arrow"]);
 
             if (inventoryItemList.Count > 0)
@@ -184,22 +183,13 @@ namespace Game1.Code.HUD.Sprite
                     inventoryItemList.Add(tuple);
                 }
 
-                else if (hudItemList[itemName] <= 0 && found)
+                // boomerang is special. 
+                // It is still considered held by link after thrown out, so we don't remove it even if its amount becomes 0 after link acquires it. 
+                else if (itemName != "Boomerang" && hudItemList[itemName] <= 0 && found)
                 {
                     inventoryItemList.RemoveAt(index);
                 }
-                
             }
-
-            
-
-
-
         }
-
-
-
-
     }
-       
 }

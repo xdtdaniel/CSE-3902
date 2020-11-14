@@ -8,29 +8,25 @@ namespace Game1.Code.HUD.Sprite
 {
     class DungeonMiniMapFrame : IHUDSprite
     {
-        private int scale;
-        private int height;
-        private int width;
-        private int levelNumberSideLength;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int height = 40 * scale;
+        private int width = 64 * scale;
+        private int levelNumberSideLength = 8 * scale;
         private int mapX;
         private int mapY;
         private int levelX;
         private int levelY;
 
+        private int preMapX = 16 * scale;
+        private int preMapY = - 48 * scale;
+        private int preLevelX = 64 * scale;
+        private int preLevelY = -48 * scale;
+
         private Texture2D Texture;
         private Texture2D levelTexture;
         public DungeonMiniMapFrame(int level) {
-            scale = (int)LoadAll.Instance.scale;
-            height = 40 * scale;
-            width = 64 * scale;
-            levelNumberSideLength = 8 * scale;
-            mapX = 16 * scale + (int)LoadAll.Instance.startPos.X;
-            mapY = 8 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            levelX = 64 * scale + (int)LoadAll.Instance.startPos.X;
-            levelY = mapY + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-
             Texture = HUDFactory.LoadDungeonMiniMapFrame();
-            levelTexture = HUDFactory.LoadNumber(level)[1];
+            levelTexture = HUDFactory.LoadNumber(level)[1]; // level number has one digit
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -49,11 +45,10 @@ namespace Game1.Code.HUD.Sprite
 
         public void Update(float newStartX, float newStartY)
         {
-            mapX = (int)newStartX + 16 * scale;
-            mapY = (int)newStartY - 56 * scale + 8 * scale;
-            levelX = (int)newStartX + 64 * scale;
-            levelY = (int)newStartY - 56 * scale + 8 * scale;
-            // todo
+            mapX = (int)newStartX + preMapX;
+            mapY = (int)newStartY + preMapY;
+            levelX = (int)newStartX + preLevelX;
+            levelY = (int)newStartY + preLevelY;
         }
     }
 }

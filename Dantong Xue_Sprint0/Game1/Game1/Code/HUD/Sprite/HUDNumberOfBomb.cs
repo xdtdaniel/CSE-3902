@@ -12,11 +12,14 @@ namespace Game1.Code.HUD.Sprite
     {
         private Texture2D[] numberOfBomb;
 
-        private int scale;
-        private int height;
-        private int width;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int height = 8 * scale;
+        private int width = 8 * scale;
         private int x;
         private int y;
+
+        private int preX = 104 * scale;
+        private int preY = -16 * scale;
 
         private Dictionary<string, int> hudItemList;
 
@@ -24,19 +27,13 @@ namespace Game1.Code.HUD.Sprite
         {
             hudItemList = itemList;
             //initial values
-            numberOfBomb = new Texture2D[2];
+            numberOfBomb = new Texture2D[2]; // 2-digit number
             numberOfBomb = HUDFactory.LoadNumber(hudItemList["Bomb"]);
-            //need to change later, value is incorrect
-            scale = (int)LoadAll.Instance.scale;
-            height = 8 * scale;
-            width = 8 * scale;
-            x = 104 * scale + (int)LoadAll.Instance.startPos.X;
-            y = 40 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++) // 2-digit number
             {
                 Rectangle sourceRectangle = new Rectangle(0, 0, numberOfBomb[i].Width, numberOfBomb[i].Height);
                 Rectangle destinationRectangle = new Rectangle(x + i * width, y, width, height);
@@ -46,8 +43,8 @@ namespace Game1.Code.HUD.Sprite
         }
         public void Update(float newStartX, float newStartY)
         {
-            x = (int)newStartX + 104 * scale;
-            y = (int)newStartY - 56 * scale + 40 * scale;
+            x = (int)newStartX + preX;
+            y = (int)newStartY + preY;
             numberOfBomb = HUDFactory.LoadNumber(hudItemList["Bomb"]);
         }
 

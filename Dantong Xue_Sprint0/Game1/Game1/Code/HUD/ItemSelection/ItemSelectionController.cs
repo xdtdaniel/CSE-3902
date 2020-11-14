@@ -16,7 +16,7 @@ namespace Game1.Code.HUD
         private int previewedItemIndex;
         private int selectedItemIndex;
         private Game1 game;
-        private int inventoryItemIndex;
+        private int inventoryItemIndex = 0;
         private List<Tuple<string, int>> inventoryItemList;
 
         public ItemSelectionController(Game1 game, List<Tuple<string, int>> inventoryItemList)
@@ -24,7 +24,6 @@ namespace Game1.Code.HUD
             this.game = game;
             inventoryItemSelection = new InventoryItemSelection();
             inventoryObject = new InventoryObject(game, inventoryItemList);
-            inventoryItemIndex = 0;
             this.inventoryItemList = inventoryItemList;
         }
         public void Update(float newStartX, float newStartY)
@@ -76,11 +75,6 @@ namespace Game1.Code.HUD
             }
             // always update previewed item index
             previewedItemIndex = inventoryItemIndex;
-            //if (newState.IsKeyDown(Keys.Z) && !oldState.IsKeyDown(Keys.Z) && inventoryObject.useClock()==true)
-            //{
-            //    clock = !clock;
-            //}
-
 
             // update keyboard state
             oldState = newState;

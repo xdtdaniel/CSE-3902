@@ -10,14 +10,11 @@ namespace Game1.Code.HUD
     {
         private Game1 game;
 
-        private int scale;
-        private int level;
-        private int rollingSpeed;     // speed for hud to be drawn down when menu is called
-        private float shiftingSpeed;    // speed for shifting hud while changing room
-        public float x;
-        public float y;
-        private int yOrigin;
-        private int yDistance;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int level = 1;
+        private float shiftingSpeed = (float)16 / 3 * scale;    // speed for shifting hud while changing room
+        public float x = (int)LoadAll.Instance.startPos.X;
+        public float y = (int)LoadAll.Instance.startPos.Y;
 
         private List<Tuple<string, int>> inventoryItemList;
 
@@ -34,20 +31,11 @@ namespace Game1.Code.HUD
         private IHUDSprite dungeonPauseScreen;
 
         private ItemSelectionController itemSelectionController;
-        private bool paused;
 
         public HUDPanel(Game1 game)
         {
             this.game = game;
 
-            scale = (int)LoadAll.Instance.scale;
-            level = 1;
-            rollingSpeed = 3 * scale;
-            shiftingSpeed = (float)16/3 * scale;
-            x = (int)LoadAll.Instance.startPos.X;
-            y = (int)LoadAll.Instance.startPos.Y;
-            yOrigin = (int)LoadAll.Instance.startPos.Y;
-            yDistance = 176 * scale;
             inventoryItemList = new List<Tuple<string, int>>();
 
             HUDFrame = new HUDFrame();
@@ -61,17 +49,12 @@ namespace Game1.Code.HUD
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
             dungeonMiniMap = new DungeonMiniMap(game.link.itemList);
             dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
-           // hudInventoryAB = new HUDInventoryAB(game.link.itemList);
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
-
-            // for test
-            paused = false;
 
         }
         public void HUDUpdate()
         {
-          
             string side = PlayerAndBlockCollisionHandler.doorSide;
             bool switched = PlayerAndBlockCollisionHandler.roomSwitched;
             int targetX = (int)LoadAll.Instance.startPos.X;
@@ -88,10 +71,7 @@ namespace Game1.Code.HUD
             hudNumberOfRuby.Update(x, y);
             dungeonMiniMap.Update(x, y);
             dungeonPauseScreen.Update(x, y);
-           // hudInventoryAB.Update(x,y);
             itemSelectionController.Update(x,y);
-
-
 
             if (switched)
             {
@@ -106,7 +86,6 @@ namespace Game1.Code.HUD
                         {
                             y = targetY;
                             PlayerAndBlockCollisionHandler.roomSwitched = false;
-                            yOrigin = (int)LoadAll.Instance.startPos.Y;
                         }
                         break;
                     case "down":
@@ -118,7 +97,6 @@ namespace Game1.Code.HUD
                         {
                             y = targetY;
                             PlayerAndBlockCollisionHandler.roomSwitched = false;
-                            yOrigin = (int)LoadAll.Instance.startPos.Y;
                         }
                         break;
                     case "left":
@@ -147,21 +125,6 @@ namespace Game1.Code.HUD
                         break;
                 }
             }
-            else if (paused)
-            {
-                if (y < yOrigin + yDistance)
-                {
-                    y += rollingSpeed;
-                }
-            }
-            else
-            {
-                if (y > yOrigin)
-                {
-                    y -= rollingSpeed;
-                }
-
-            }
         }
 
         public void HUDDraw()
@@ -177,15 +140,9 @@ namespace Game1.Code.HUD
             hudNumberOfRuby.Draw(game._spriteBatch);
             dungeonMiniMap.Draw(game._spriteBatch);
             dungeonPauseScreen.Draw(game._spriteBatch);
-
             itemSelectionController.Draw();
 
         }
-        public bool IsPaused()
-        {
-            return paused;
-        }
-
 
     }
 }

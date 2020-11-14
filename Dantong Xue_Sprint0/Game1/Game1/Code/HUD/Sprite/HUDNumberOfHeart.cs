@@ -14,13 +14,16 @@ namespace Game1.Code.HUD.Sprite
         private Texture2D halfHeart;
         private Texture2D fullHeart;
 
-        private int scale;
-        private int height;
-        private int width;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int height = 8 * scale;
+        private int width = 8 * scale;
         private int x;
         private int y;
-        private int heartPerRow;
-        private int currentHeartIndex;
+        private int heartPerRow = 8;
+        private int currentHeartIndex = 0;
+
+        private int preX = 176 * scale;
+        private int preY = -16 * scale;
 
         private Dictionary<string, int> hudItemList;
         Rectangle sourceRectangle;
@@ -33,14 +36,6 @@ namespace Game1.Code.HUD.Sprite
             emptyHeart = HUDFactory.LoadEmptyHeart();
             halfHeart = HUDFactory.LoadHalfHeart();
             fullHeart = HUDFactory.LoadFullHeart();
-            //need to change later, value is incorrect
-            scale = (int)LoadAll.Instance.scale;
-            height = 8 * scale;
-            width = 8 * scale;
-            x = 176 * scale + (int)LoadAll.Instance.startPos.X;
-            y = 40 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            heartPerRow = 8;
-            currentHeartIndex = 0;
             sourceRectangle = new Rectangle();
             destinationRectangle = new Rectangle();
         }
@@ -103,9 +98,8 @@ namespace Game1.Code.HUD.Sprite
         }
         public void Update(float newStartX, float newStartY)
         {
-            x = (int)newStartX + 176 * scale;
-            y = (int)newStartY - 56 * scale + 40 * scale;
+            x = (int)newStartX + preX;
+            y = (int)newStartY + preY;
         }
-
     }
 }

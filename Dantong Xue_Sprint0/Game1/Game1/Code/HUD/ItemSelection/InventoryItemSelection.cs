@@ -7,20 +7,23 @@ namespace Game1.Code.HUD.Sprite
 {
     public class InventoryItemSelection
     {
-        private int scale;
-        private int sideLength;
-        private int spacing;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int sideLength = 16 * scale;
+        private int spacing = 24 * scale;
+        private static int preX = 128 * scale;
+        private static int preY = -184 * scale;
         private int x;
-        private int y;
+        private int y;   
         private Vector2[] offsetList;
+        private int numberOfInventoryItem = 8;
 
         private int texture_height;
         private int texture_width;
 
-        private int Columns;
-        private int Rows;
-        private int TotalFrames;
-        private int CurrentFrame;
+        private int Columns = 2;
+        private int Rows = 1;
+        private int TotalFrames = 2;
+        private int CurrentFrame = 0;
         private int count = 0;
         //timer
         private int maxcount = 20;
@@ -33,27 +36,15 @@ namespace Game1.Code.HUD.Sprite
             //load selections
             Selection = HUDFactory.LoadInventorySelection();
 
-            TotalFrames = 2;
-            Rows = 1;
-            Columns = 2;
-            CurrentFrame = 0;
-
-            scale = (int)LoadAll.Instance.scale;
-            sideLength = 16 * scale;
-            spacing = 24 * scale;
-            
-
-            x = 128 * scale + (int)LoadAll.Instance.startPos.X;
-            y = -176 * scale + 48 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;   
-            offsetList = new Vector2[8];
-            for (int i = 0; i < 8; i++)
+            offsetList = new Vector2[numberOfInventoryItem];
+            for (int i = 0; i < numberOfInventoryItem; i++)
             {
                 int xOffset = 0;
                 int yOffset = 0;
-                if (i == 4)
+                if (i == numberOfInventoryItem / 2)
                 {
-                    xOffset = -spacing * 3;
-                    yOffset = sideLength;
+                    xOffset = -spacing * 3; // reset x offset
+                    yOffset = sideLength; // increment y offset
                 }
                 offsetList[i] = new Vector2(xOffset + i * spacing, yOffset);
             }
@@ -90,8 +81,8 @@ namespace Game1.Code.HUD.Sprite
                 count = 0;
             }
 
-            x = 128 * scale + (int)newStartX + (int)offsetList[index].X;
-            y = -176 * scale + 48 * scale + (int)newStartY - 56 * scale + (int)offsetList[index].Y;
+            x = preX + (int)newStartX + (int)offsetList[index].X;
+            y = preY + (int)newStartY + (int)offsetList[index].Y;
         }
      
 

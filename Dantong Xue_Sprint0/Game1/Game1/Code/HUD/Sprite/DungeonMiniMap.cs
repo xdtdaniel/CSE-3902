@@ -11,24 +11,31 @@ namespace Game1.Code.HUD.Sprite
 {
     class DungeonMiniMap : IHUDSprite
     {
-        private int scale;
-        private int miniMapHeight;
-        private int miniMapWidth;
-        private int spotHeight;
-        private int spotWidth;
-        private int miniRoomWidth;
-        private int miniRoomHeight;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int miniMapHeight = 32 * scale;
+        private int miniMapWidth = 64 * scale;
+        private int blueSpotHeight = 3 * scale;
+        private int blueSpotWidth = 3 * scale;
+        private int miniRoomWidth = 8 * scale;
+        private int miniRoomHeight = 4 * scale;
 
 
         private int mapX;
         private int mapY;
-        private int spotX;
-        private int spotY;
+        private int blueSpotX;
+        private int blueSpotY;
         private int redSpotX;
         private int redSpotY;
-        private int spotOffsetX;
-        private int spotOffsetY;
+        private int spotOffsetX = 0;
+        private int spotOffsetY = 0;
         private Dictionary<string, int> itemList;
+
+        private int preMapX = 16 * scale;
+        private int preMapY = -36 * scale;
+        private int preBlueSpotX = 42 * scale;
+        private int preBlueSpotY = -12 * scale;
+        private int preRedSpotX = 48 * scale;
+        private int preRedSpotY = -48 * scale;
 
         private int prevMapID;
 
@@ -37,21 +44,6 @@ namespace Game1.Code.HUD.Sprite
         private Texture2D redSpot; //indicate the room with triforce.
         public DungeonMiniMap(Dictionary<string, int> itemList) {
             this.itemList = itemList;
-            scale = (int)LoadAll.Instance.scale;
-            miniMapHeight = 32 * scale;
-            miniMapWidth = 64 * scale;
-            spotHeight = 3 * scale;
-            spotWidth = 3 * scale;
-            mapX = 16 * scale + (int)LoadAll.Instance.startPos.X;
-            mapY = 20 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            spotX = 16 * scale + 26 * scale + (int)LoadAll.Instance.startPos.X;
-            spotY = 20 * scale + 24 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            spotOffsetX = 0;
-            spotOffsetY = 0;
-            redSpotX = 48 * scale + spotWidth + (int)LoadAll.Instance.startPos.X;
-            redSpotY = 8 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-            miniRoomWidth = 8*scale;
-            miniRoomHeight = 4*scale;
 
             prevMapID = LoadAll.Instance.GetCurrentMapID();
 
@@ -76,7 +68,7 @@ namespace Game1.Code.HUD.Sprite
 
             // draw link spot
             sourceRectangle = new Rectangle(0, 0, spot.Width, spot.Height);
-            destinationRectangle = new Rectangle(spotX, spotY, spotWidth, spotHeight);
+            destinationRectangle = new Rectangle(blueSpotX, blueSpotY, blueSpotWidth, blueSpotHeight);
 
             spriteBatch.Draw(spot, destinationRectangle, sourceRectangle, Color.White);
 
@@ -152,9 +144,10 @@ namespace Game1.Code.HUD.Sprite
                     redSpotX += miniRoomWidth*3;
                     redSpotY += miniRoomHeight * 5;
                 }
+
                 //draw red spot if have compass
                 sourceRectangle = new Rectangle(0, 0, redSpot.Width, redSpot.Height);
-                destinationRectangle = new Rectangle(redSpotX, redSpotY, spotWidth, spotHeight);
+                destinationRectangle = new Rectangle(redSpotX, redSpotY, blueSpotWidth, blueSpotHeight);
                 spriteBatch.Draw(redSpot, destinationRectangle, sourceRectangle, Color.White);
             }
 
@@ -169,28 +162,28 @@ namespace Game1.Code.HUD.Sprite
                 switch (doorSide)
                 {
                     case "up":
-                        spotOffsetY -= 4 * scale;
+                        spotOffsetY -= miniRoomHeight;
                         break;
                     case "down":
-                        spotOffsetY += 4 * scale;
+                        spotOffsetY += miniRoomHeight;
                         break;
                     case "left":
-                        spotOffsetX -= 8 * scale;
+                        spotOffsetX -= miniRoomWidth;
                         break;
                     case "right":
-                        spotOffsetX += 8 * scale;
+                        spotOffsetX += miniRoomWidth;
                         break;
                     default:
                         break;
                 }
             }
-            mapX = (int)newStartX + 16 * scale;
-            mapY = (int)newStartY - 56 * scale + 20 * scale;
-            spotX = spotOffsetX + 16 * scale + 26 * scale + (int)newStartX;
-            spotY = spotOffsetY + 20 * scale + 24 * scale + (int)newStartY - 56 * scale;
-            //uodate red spot position wwith camera
-            redSpotX =  48 * scale + spotWidth+(int)newStartX;
-            redSpotY =  8 * scale + (int)newStartY - 56 * scale;
+            mapX = (int)newStartX + preMapX;
+            mapY = (int)newStartY + preMapY;
+            blueSpotX = spotOffsetX + preBlueSpotX + (int)newStartX;
+            blueSpotY = spotOffsetY + preBlueSpotY + (int)newStartY;
+            //update red spot position wwith camera
+            redSpotX =  preRedSpotX + blueSpotWidth+(int)newStartX;
+            redSpotY =  preRedSpotY + (int)newStartY;
 
         }
     }

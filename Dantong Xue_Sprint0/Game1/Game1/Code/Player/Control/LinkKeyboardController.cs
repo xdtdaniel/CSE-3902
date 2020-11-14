@@ -9,7 +9,7 @@ namespace Game1
     {
         private Dictionary<Keys, IPlayerCommand> controllerMappings;
         private Game1 game;
-        private int boomerangIndex = -1;
+        public int boomerangIndex = -1;
 
         public LinkKeyboardController(Game1 game)
         {

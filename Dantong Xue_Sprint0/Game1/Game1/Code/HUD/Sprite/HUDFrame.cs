@@ -9,28 +9,18 @@ namespace Game1.Code.HUD.Sprite
 {
     class HUDFrame : IHUDSprite
     {
-        // public
-        public int level;
-
-        // private
-        private int scale;
-        private int height;
-        private int width;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int height = 56 * scale;
+        private int width = 256 * scale;
         private int x;
         private int y;
+
+        private int preY = -56 * scale;
 
         private Texture2D HUDFrameTexture;
 
         public HUDFrame()
         {
-            level = 1;
-
-            scale = (int)LoadAll.Instance.scale;
-            height = 56 * scale;
-            width = 256 * scale;
-            x = (int)LoadAll.Instance.startPos.X;
-            y = (int)LoadAll.Instance.startPos.Y - 56 * scale;
-
             HUDFrameTexture = HUDFactory.LoadHUDFrame();
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -44,11 +34,7 @@ namespace Game1.Code.HUD.Sprite
         public void Update(float newStartX, float newStartY)
         {
             x = (int)newStartX;
-            y = (int)newStartY - 56 * scale;
-
-
-
-            // todo
+            y = (int)newStartY + preY;
         }
     }
 }

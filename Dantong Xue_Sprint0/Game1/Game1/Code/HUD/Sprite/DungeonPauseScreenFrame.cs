@@ -8,20 +8,16 @@ namespace Game1.Code.HUD.Sprite
 {
     class DungeonPauseScreenFrame : IHUDSprite
     {
-        private int scale;
-        private int height;
-        private int width;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int height = 88 * scale;
+        private int width = 256 * scale;
         private int x;
         private int y;
 
+        private int preY = -144 * scale;
+
         private Texture2D Texture;
         public DungeonPauseScreenFrame() {
-            scale = (int)LoadAll.Instance.scale;
-            height = 88 * scale;
-            width = 256 * scale;
-            x = (int)LoadAll.Instance.startPos.X;
-            y = -88 * scale + (int)LoadAll.Instance.startPos.Y - 56 * scale;
-
             Texture = HUDFactory.LoadDungeonPauseScreenFrame();
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -35,7 +31,7 @@ namespace Game1.Code.HUD.Sprite
         public void Update(float newStartX, float newStartY)
         {
             x = (int)newStartX;
-            y = (int)newStartY - 56 * scale - 88 * scale;
+            y = (int)newStartY + preY;
         }
     }
 }
