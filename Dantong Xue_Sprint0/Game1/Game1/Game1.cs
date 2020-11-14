@@ -153,14 +153,14 @@ namespace Game1
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
                 emptyList = inRoomList;
-                if (EnemyLoader.NoEnemy()||(LoadAll.Instance.GetCurrentMapID()==15)|| (LoadAll.Instance.GetCurrentMapID() == 17))
+                if (EnemyLoader.NoEnemy()||(LoadAll.Instance.GetCurrentMapID()==15))
                 {
 
                     ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
                     inRoomList = ItemLoader.GetItemList();
                     UpdateAllItem.Instance.UpdateAll(inRoomList);
                 }
-                else if (!EnemyLoader.NoEnemy())
+                else if (!EnemyLoader.NoEnemy() || (LoadAll.Instance.GetCurrentMapID() == 17))
                 {
                     emptyList.Clear();
                     UpdateAllItem.Instance.UpdateAll(emptyList);
