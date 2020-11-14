@@ -153,7 +153,7 @@ namespace Game1
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
                 emptyList = inRoomList;
-                if (EnemyLoader.NoEnemy())
+                if (EnemyLoader.NoEnemy()||(LoadAll.Instance.GetCurrentMapID()==14))
                 {
 
                     ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
@@ -200,6 +200,7 @@ namespace Game1
 
                     LoadAll.Instance.ResetMap();
                     EnemyLoader.ResetAllEnemies();
+                    ItemLoader.ResetAllItems();
                     LoadAll.Instance.ChangeMapColor(Color.White);
                     AudioPlayer.bgm.Play();
 
