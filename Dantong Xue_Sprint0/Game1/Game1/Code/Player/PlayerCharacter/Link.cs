@@ -83,8 +83,8 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("Bow", 0);
             itemList.Add("Clock", 0);
             itemList.Add("Compass", 0);
-            itemList.Add("Heart", 6);                      // default current health = 6
-            itemList.Add("HeartContainer", 6);             // default max health = 6
+            itemList.Add("Heart", 1);                      // default current health = 6
+            itemList.Add("HeartContainer", 1);             // default max health = 6
             itemList.Add("Key", 0);
             itemList.Add("Map", 0);
             itemList.Add("Ruby", 0);

@@ -16,6 +16,8 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Game1.Code.Player;
+using System.Diagnostics;
+using System.Threading;
 
 namespace Game1
 {
@@ -55,6 +57,9 @@ namespace Game1
         public int mapID;
         public int currentMapID;
 
+        private int deathCounter;
+        private const int deathCounterLimit = 200;
+
         public Camera camera;
 
         public Game1()
@@ -83,6 +88,8 @@ namespace Game1
             paused = false;
    
             quitResetController = new QuitResetController();
+
+            deathCounter = deathCounterLimit;
 
             camera = new Camera(GraphicsDevice.Viewport);
             AudioPlayer.bgm.Play();
@@ -166,11 +173,43 @@ namespace Game1
             
             camera.UpdateCamera(GraphicsDevice.Viewport);
 
+            
 
-            if (link.isDead || link.state.GetStateName().Equals("WinLink"))
+            if (link.isDead)
+            {
+                deathCounter--;
+                EnemyList.Clear();
+                AudioPlayer.bgm.Stop();
+
+                if (deathCounter <= 0)
+                {
+                    
+
+                    link = new Link();
+                    playerPanel = new PlayerPanel(this);
+                    hudPanel = new HUDPanel(this);
+                    selectedItemName = "";
+                    LoadAll.Instance.GetGameObject(this);
+
+                    // Need to reset all items as well.
+
+                    LoadAll.Instance.ResetMap();
+                    EnemyLoader.ResetAllEnemies();
+                    LoadAll.Instance.ChangeMapColor(Color.White);
+                    AudioPlayer.bgm.Play();
+
+                    deathCounter = deathCounterLimit;
+                }
+                
+            }
+
+
+            if (link.state.GetStateName().Equals("WinLink"))
             {
                 AudioPlayer.bgm.Stop();
             }
+
+
             base.Update(gameTime);
             
         }
@@ -178,9 +217,12 @@ namespace Game1
 
         protected override void Draw(GameTime gameTime)
         {
+            
+
             base.Draw(gameTime);
 
             _spriteBatch.Begin(transformMatrix: camera.Transform);
+
 
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[0]);
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[1]);
@@ -204,11 +246,11 @@ namespace Game1
 
 
             // for hud debugging
-            _spriteBatch.DrawString(_spriteFont, x, new Vector2(link.x - 150, link.y - 25), Color.Black);
-            _spriteBatch.DrawString(_spriteFont, y, new Vector2(link.x - 150, link.y), Color.Black);
-            
+            _spriteBatch.DrawString(_spriteFont, x, new Vector2(link.x - 150, link.y - 25), Color.White);
+            _spriteBatch.DrawString(_spriteFont, y, new Vector2(link.x - 150, link.y), Color.White);
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
 
             _spriteBatch.End();
         }

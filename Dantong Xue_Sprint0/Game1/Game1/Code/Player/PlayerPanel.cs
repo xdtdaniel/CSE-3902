@@ -68,6 +68,8 @@ namespace Game1
             PlayerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
             PlayerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
             //
+
+
             if (game.link.itemList["Heart"] <= 0 && !game.link.isDead)
             {
                 game.link.movable = false;

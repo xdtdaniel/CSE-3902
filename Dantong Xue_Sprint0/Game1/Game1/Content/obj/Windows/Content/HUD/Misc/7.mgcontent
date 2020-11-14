@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Misc/7.png</SourceFile>
-  <SourceTime>2020-11-12T04:16:37.0239813-05:00</SourceTime>
-  <DestFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/HUD/Misc/7.xnb</DestFile>
-  <DestTime>2020-11-13T02:18:29.3405408-05:00</DestTime>
+  <SourceFile>C:/git_repo/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Misc/7.png</SourceFile>
+  <SourceTime>2020-11-03T21:04:42.3949794+08:00</SourceTime>
+  <DestFile>C:/git_repo/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/HUD/Misc/7.xnb</DestFile>
+  <DestTime>2020-11-13T22:49:20.8949669+08:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
+  <ImporterTime>2020-08-10T16:17:54+08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2020-08-10T16:17:54-04:00</ProcessorTime>
+  <ProcessorTime>2020-08-10T16:17:54+08:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>
