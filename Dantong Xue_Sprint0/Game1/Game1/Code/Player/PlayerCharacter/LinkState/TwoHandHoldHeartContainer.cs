@@ -1,31 +1,35 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Game1.Player.Interface;
 using Game1.Code.Item.ItemSprite;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
     class TwoHandHoldHeartContainer : IPlayerLinkState
     {
-        int currentFrame;
-        IPlayerLinkSprite linkSprite;
-        HeartContainer heartContainer;
-        Link link;
-        private int offset;
+        private static int scale = (int)LoadAll.Instance.scale;
+
+        private int currentFrame = 0;
+        private int maxCurrentFrame = 60;
+
+        private IPlayerLinkSprite linkSprite;
+        private HeartContainer heartContainer;
+        private Link link;
+
+        private int offset = 70 * scale;
 
         public TwoHandHoldHeartContainer(Link link)
         {
-            currentFrame = 0;
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
-            offset = 210;
-            heartContainer = new HeartContainer(link.x, link.y-offset);
+            heartContainer = new HeartContainer(link.x, link.y - offset);
 
         }
 
         public void Update()
         {
             currentFrame++;
-            if (currentFrame == 60) // decide how long the hold state will take
+            if (currentFrame == maxCurrentFrame) // decide how long the hold state will take
             {
                 currentFrame = 0;
                 link.state = new NormalLink(link);

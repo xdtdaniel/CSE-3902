@@ -8,19 +8,15 @@ namespace Game1.Player.PlayerCharacter
     {
         public IPlayerItemState state;
 
-        public int x;
-        public int y;
-        public int linkX;
-        public int linkY;
-        public int direction;
+        public int x = 0;
+        public int y = 0;
+        public int direction = -1;
+        public int lastLinkX;
+        public int lastLinkY;
         public Link link;
         public LinkItem(Link link)
         {
             this.state = new NoItem(this);
-            x = 0;
-            y = 0;
-            direction = -1;
-
             this.link = link;
         }
 
@@ -49,8 +45,8 @@ namespace Game1.Player.PlayerCharacter
                 this.y = y;
                 this.direction = direction;
             }
-            linkX = x;
-            linkY = y;
+            lastLinkX = x;
+            lastLinkY = y;
         }
         public void Draw(SpriteBatch spriteBatch)
         {

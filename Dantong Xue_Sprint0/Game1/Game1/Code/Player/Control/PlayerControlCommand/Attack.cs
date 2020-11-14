@@ -4,7 +4,7 @@ namespace Game1.Code.Player.PlayerControlCommand
 {
     class Attack : IPlayerCommand
     {
-        Game1 game;
+        private Game1 game;
         public Attack(Game1 game)
         {
             this.game = game;

@@ -1,29 +1,29 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Game1.Player.Interface;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
     class KnockedBackLink : IPlayerLinkState
     {
-        int currentFrame;
-        int thirdFrame;
-        string collisionSide;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private int currentFrame = 0;
+        private int secondFrame = 0;
+        private string collisionSide;
 
-        int knockedBackSpeed;
-        int knockedBackSpeedDecay;
+        private int knockedBackSpeed = 5 * scale;
+        private int knockedBackSpeedDecay = (int)(1/3.0 * scale);
+        private int blinkFrequency = 8;
+        private int maxSecondFrame = 4;
 
-        IPlayerLinkSprite[] damagedLinkSprite;
+        private IPlayerLinkSprite[] damagedLinkSprite;
 
-        Link link;
+        private Link link;
 
         public KnockedBackLink(Link link, string collisionSide)
         {
-            currentFrame = 0;
-            thirdFrame = 0;
             this.collisionSide = collisionSide;
 
-            knockedBackSpeed = 15;
-            knockedBackSpeedDecay = 1;
 
             damagedLinkSprite = new IPlayerLinkSprite[4];
             damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedLink(link.directionIndex);
@@ -44,12 +44,12 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update()
         {
-            if (link.damageTimeCounter % 8 == 0)
+            if (link.damageTimeCounter % blinkFrequency == 0)
             {
-                thirdFrame++;
-                if (thirdFrame == 4)
+                secondFrame++;
+                if (secondFrame == maxSecondFrame)
                 {
-                    thirdFrame = 0;
+                    secondFrame = 0;
                 }
             }
 
@@ -81,7 +81,7 @@ namespace Game1.Player.PlayerCharacter
         public void Draw(SpriteBatch spriteBatch)
         {
             
-            damagedLinkSprite[thirdFrame].Draw(spriteBatch, link.x, link.y, 1, link.direction);
+            damagedLinkSprite[secondFrame].Draw(spriteBatch, link.x, link.y, 1, link.direction);
             
         }
         public string GetStateName()

@@ -7,22 +7,24 @@ namespace Game1.Player.PlayerCharacter
 {
     class RangedWoodenSword : IPlayerItemState
     {
-        LinkItem item;
-        int direction;
-        int x;
-        int y;
-        int currentFrame;
-        int totalFrame;
 
-        int speed;
-        int offsetX;
-        int offsetY;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private LinkItem item;
+        private int direction;
+        private int x;
+        private int y;
+        private int currentFrame = 0;
+        private int totalFrame = 120;
 
-        bool used;
+        private int speed = 5 * scale;
+        private int offsetX = 3 * scale;
+        private int offsetY = 3 * scale;
+        private bool used = false;
+        private int numberOfSprite = 4;
 
-        IPlayerItemSprite[] woodenSword;
+        private IPlayerItemSprite[] woodenSword;
 
-        Rectangle rectangle;
+        private Rectangle rectangle;
 
 
         public RangedWoodenSword(LinkItem item)
@@ -31,17 +33,8 @@ namespace Game1.Player.PlayerCharacter
             x = item.x;
             y = item.y;
 
-            currentFrame = 0;
-            totalFrame = 120;
-
-            speed = 15;
-            offsetX = 9;
-            offsetY = 7;
-
-            used = false;
-
-            woodenSword = new IPlayerItemSprite[4];
-            for (int i = 0; i < 4; i++)
+            woodenSword = new IPlayerItemSprite[numberOfSprite];
+            for (int i = 0; i < numberOfSprite; i++)
             {
                 woodenSword[i] = PlayerItemFactory.Instance.CreateWoodenSword(i);
             }
@@ -80,16 +73,16 @@ namespace Game1.Player.PlayerCharacter
                 switch (direction)
                 {
                     case 0: /* front */
-                        woodenSword[2].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y += (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
+                        woodenSword[2].Draw(spriteBatch, x += item.link.linkWidth / 2 - offsetX, y += item.link.linkHeight, currentFrame, direction);
                         break;
                     case 1: /* right */
-                        woodenSword[1].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
+                        woodenSword[1].Draw(spriteBatch, x += item.link.linkWidth, y += item.link.linkHeight / 2 - offsetY, currentFrame, direction);
                         break;
                     case 2: /* back */
-                        woodenSword[0].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y -= (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
+                        woodenSword[0].Draw(spriteBatch, x += item.link.linkWidth / 2 - offsetX, y -= item.link.linkHeight, currentFrame, direction);
                         break;
                     case 3: /* left */
-                        woodenSword[3].Draw(spriteBatch, x -= (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
+                        woodenSword[3].Draw(spriteBatch, x -= item.link.linkWidth, y += item.link.linkHeight / 2 - offsetY, currentFrame, direction);
                         break;
                     default:
                         break;

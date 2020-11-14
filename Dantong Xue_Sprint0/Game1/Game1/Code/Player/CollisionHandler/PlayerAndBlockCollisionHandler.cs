@@ -53,7 +53,6 @@ namespace Game1.Code.Player
                                 link.StopMoving(collidedSide, interRect);
                                 break;
                             case "lockedDoors":
-                                // to do
                                 link.StopMoving(collidedSide, interRect);
                                 if (link.itemList["Key"] > 0)
                                 {

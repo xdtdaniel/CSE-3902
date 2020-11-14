@@ -7,23 +7,25 @@ namespace Game1.Player.PlayerCharacter
 {
     class UseArrow : IPlayerItemState
     {
-        LinkItem item;
-        bool used; 
-        int direction;
-        int x;
-        int y;
-        int currentFrame;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private LinkItem item;
+        private bool used = false;
+        private int direction;
+        private int x;
+        private int y;
+        private int currentFrame = 0;
+        private int maxCurrentFrame = 120;
 
-        int speed;
-        int offsetX;
-        int offsetY;
+        private int speed = 5 * scale;
+        private int offsetX = 3 * scale;
+        private int offsetY = 3 * scale;
 
-        IPlayerItemSprite frontArrow;
-        IPlayerItemSprite rightArrow;
-        IPlayerItemSprite backArrow;
-        IPlayerItemSprite leftArrow;
+        private IPlayerItemSprite frontArrow;
+        private IPlayerItemSprite rightArrow;
+        private IPlayerItemSprite backArrow;
+        private IPlayerItemSprite leftArrow;
 
-        Rectangle rectangle;
+        private Rectangle rectangle;
 
         public UseArrow(LinkItem item)
         {
@@ -31,12 +33,6 @@ namespace Game1.Player.PlayerCharacter
             direction = item.direction;
             x = item.x;
             y = item.y;
-
-            currentFrame = 0;
-
-            speed = 15;
-            offsetX = 9;
-            offsetY = 7;
 
             frontArrow = PlayerItemFactory.Instance.CreateFrontArrow();
             rightArrow = PlayerItemFactory.Instance.CreateRightArrow();
@@ -56,13 +52,13 @@ namespace Game1.Player.PlayerCharacter
         }
         public void CollisionResponse()
         {
-            currentFrame = 120;
+            currentFrame = maxCurrentFrame;
         }
         public void Update() 
         {
             
             currentFrame++;
-            if (currentFrame >= 120)
+            if (currentFrame >= maxCurrentFrame)
             {
                 item.state = new NoItem(item);
             }
@@ -74,16 +70,16 @@ namespace Game1.Player.PlayerCharacter
                 switch (direction)
                 {
                     case 0: /* front */
-                        frontArrow.Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y += (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
+                        frontArrow.Draw(spriteBatch, x += item.link.linkWidth / 2 - offsetX, y += item.link.linkHeight, currentFrame, direction);
                         break;
                     case 1: /* right */
-                        rightArrow.Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
+                        rightArrow.Draw(spriteBatch, x += item.link.linkWidth, y += item.link.linkHeight / 2 - offsetY, currentFrame, direction);
                         break;
                     case 2: /* back */
-                        backArrow.Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y -= (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
+                        backArrow.Draw(spriteBatch, x += item.link.linkWidth / 2 - offsetX, y -= item.link.linkHeight, currentFrame, direction);
                         break;
                     case 3: /* left */
-                        leftArrow.Draw(spriteBatch, x -= (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
+                        leftArrow.Draw(spriteBatch, x -= item.link.linkWidth, y += item.link.linkHeight / 2 - offsetY, currentFrame, direction);
                         break;
                     default:
                         break;

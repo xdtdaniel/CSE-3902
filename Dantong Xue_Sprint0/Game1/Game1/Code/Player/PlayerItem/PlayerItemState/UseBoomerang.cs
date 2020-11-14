@@ -8,32 +8,33 @@ namespace Game1.Player.PlayerCharacter
 {
     class UseBoomerang : IPlayerItemState
     {
-        LinkItem item;
-        int direction;
-        int x;
-        int y;
-        int boomerangSpeed;
-        int currentFrame;
-        int totalFrame;
-        int secondFrame;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private LinkItem item;
+        private int direction;
+        private int x;
+        private int y;
+        private int boomerangSpeed = 2 * scale;
+        private int maxBoomerangSpeed = 3 * scale;
+        private int currentFrame = 0;
+        private int totalFrame = 4;
+        private int secondFrame = 0;
+        private int maxSecondFrame = 120;
+        private int boomerangHitboxOffset = 7 * scale;
+        private int linkHitboxSize = 20 * scale;
+        private int boomerangSpinFrequency = 10;
 
-        IPlayerItemSprite frontBoomerang;
-        IPlayerItemSprite rightBoomerang;
-        IPlayerItemSprite backBoomerang;
-        IPlayerItemSprite leftBoomerang;
+        private IPlayerItemSprite frontBoomerang;
+        private IPlayerItemSprite rightBoomerang;
+        private IPlayerItemSprite backBoomerang;
+        private IPlayerItemSprite leftBoomerang;
 
-        Rectangle rectangle;
+        private Rectangle rectangle;
 
         public UseBoomerang(LinkItem item)
         {
             direction = item.direction;
             x = item.x;
             y = item.y;
-            boomerangSpeed = 5;
-
-            currentFrame = 0;
-            totalFrame = 4;
-            secondFrame = 0;
 
             frontBoomerang = PlayerItemFactory.Instance.CreateFrontBoomerang();
             rightBoomerang = PlayerItemFactory.Instance.CreateRightBoomerang();
@@ -53,42 +54,42 @@ namespace Game1.Player.PlayerCharacter
         }
         public void CollisionResponse()
         {
-            secondFrame = 120;
+            secondFrame = maxSecondFrame;
         }
         public void Update() 
         {
-            if (secondFrame >= 120)
+            if (secondFrame >= maxSecondFrame)
             {
-                if (boomerangSpeed <= 10)
+                if (boomerangSpeed <= maxBoomerangSpeed)
                 {
                     boomerangSpeed++;
                 }
-                double xDistance = Math.Abs(item.linkX - x);
-                double yDistance = Math.Abs(item.linkY - y);
+                double xDistance = Math.Abs(item.lastLinkX - x);
+                double yDistance = Math.Abs(item.lastLinkY - y);
                 double angle = Math.Atan(xDistance / yDistance);
                 int xSpeed = Convert.ToInt32(boomerangSpeed * Math.Sin(angle));
                 int ySpeed = Convert.ToInt32(boomerangSpeed * Math.Cos(angle));
 
-                if (item.linkX < x)
+                if (item.lastLinkX < x)
                 {
                     x -= xSpeed;
                 }
-                else if (item.linkX > x)
+                else if (item.lastLinkX > x)
                 {
                     x += xSpeed;
                 }
-                if (item.linkY < y)
+                if (item.lastLinkY < y)
                 {
                     y -= ySpeed;
                 }
-                else if (item.linkY > y)
+                else if (item.lastLinkY > y)
                 {
                     y += ySpeed;
                 }
                 
                 
-                Point point = new Point(x + (int)(7 * LoadAll.Instance.scale), y + (int)(7 * LoadAll.Instance.scale));
-                Rectangle rec = new Rectangle(item.linkX, item.linkY, 50, 50);
+                Point point = new Point(x + boomerangHitboxOffset, y + boomerangHitboxOffset);
+                Rectangle rec = new Rectangle(item.lastLinkX, item.lastLinkY, linkHitboxSize, linkHitboxSize);
                 if (rec.Contains(point))
                 {
                     item.state = new NoItem(item);
@@ -117,7 +118,7 @@ namespace Game1.Player.PlayerCharacter
            
 
             secondFrame++;
-            if (secondFrame % 10 == 0 && secondFrame != 0)
+            if (secondFrame % boomerangSpinFrequency == 0 && secondFrame != 0)
             {
                 currentFrame++;
             }

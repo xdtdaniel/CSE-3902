@@ -6,18 +6,20 @@ namespace Game1.Player
 {
     class WoodenSword: IPlayerItemSprite
     {
-        Texture2D Texture;
-        int sourceWidth;
-        int sourceHeight;
-        int destinationWidth;
-        int destinationHeight;
+        private Texture2D Texture;
+        private int sourceWidth;
+        private int sourceHeight;
+        private int destinationWidth;
+        private int destinationHeight;
+        private int widthDivider = 50;
+        private int heightDivider = 50;
         public WoodenSword(Texture2D texture)
         {
             Texture = texture;
             sourceWidth = texture.Width;
             sourceHeight = texture.Height;
-            destinationWidth = (int)(LoadAll.Instance.scale * Texture.Width / 50);
-            destinationHeight = (int)(LoadAll.Instance.scale * Texture.Height / 50);
+            destinationWidth = (int)(LoadAll.Instance.scale * Texture.Width / widthDivider);
+            destinationHeight = (int)(LoadAll.Instance.scale * Texture.Height / heightDivider);
         }
         public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
         {

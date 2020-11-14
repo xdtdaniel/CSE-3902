@@ -10,10 +10,10 @@ namespace Game1.Code.Player
 {
     public static class PlayerAndItemCollisionHandler
     {
-        static string collidedSide = "";
+        private static string collidedSide = "";
         //used to store the removed items, it might used to count number of each item player had.
-        static private List<Tuple<IItemSprite, string>> outRoomList = new List<Tuple<IItemSprite, string>>();
-        static IItemSprite item;
+        private static List<Tuple<IItemSprite, string>> outRoomList = new List<Tuple<IItemSprite, string>>();
+        private static IItemSprite item;
         private static int mapID;
         
         static public void HandleCollision(Link link, List<Tuple<IItemSprite, string>> roomItemList)

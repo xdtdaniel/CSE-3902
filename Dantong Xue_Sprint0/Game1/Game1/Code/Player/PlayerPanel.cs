@@ -60,9 +60,9 @@ namespace Game1
             roomEnemyList = game.EnemyList;
             roomItemList = game.inRoomList;
             movableList = game.movableBlocks;
+
             PlayerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             PlayerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
-
             PlayerItemAndBlockCollisionHandler.HandleCollision(game.link.itemPool, roomBlockList);
             PlayerItemAndEnemyCollisionHandler.HandleCollision(game.link.itemPool, roomEnemyList);
             PlayerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);

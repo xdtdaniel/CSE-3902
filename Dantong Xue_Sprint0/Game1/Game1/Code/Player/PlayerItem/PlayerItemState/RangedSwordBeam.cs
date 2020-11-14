@@ -7,39 +7,31 @@ namespace Game1.Player.PlayerCharacter
 {
     class RangedSwordBeam : IPlayerItemState
     {
-        LinkItem item;
-        int direction;
-        int x;
-        int y;
-        int currentFrame;
-        int totalFrame;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private LinkItem item;
+        private int direction;
+        private int x;
+        private int y;
+        private int currentFrame = 0;
+        private int totalFrame = 120;
 
-        int speed;
-        int offsetX;
-        int offsetY;
-        bool used;
+        private int speed = 5 * scale;
+        private int offsetX = 3 * scale;
+        private int offsetY = 3 * scale;
+        private bool used = false;
+        private int numberOfSprite = 4;
 
-        IPlayerItemSprite[] swordBeam;
+        private IPlayerItemSprite[] swordBeam;
 
-        Rectangle rectangle;
-
-
+        private Rectangle rectangle;
         public RangedSwordBeam(LinkItem item)
         {
             direction = item.direction;
             x = item.x;
             y = item.y;
 
-            currentFrame = 0;
-            totalFrame = 120;
-
-            speed = 15;
-            offsetX = 9;
-            offsetY = 7;
-            used = false;
-
-            swordBeam = new IPlayerItemSprite[4];
-            for (int i = 0; i < 4; i++)
+            swordBeam = new IPlayerItemSprite[numberOfSprite];
+            for (int i = 0; i < numberOfSprite; i++)
             {
                 swordBeam[i] = PlayerItemFactory.Instance.CreateSwordBeam(i);
             }
@@ -78,16 +70,16 @@ namespace Game1.Player.PlayerCharacter
                 switch (direction)
                 {
                     case 0: /* front */
-                        swordBeam[2].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y += (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
+                        swordBeam[2].Draw(spriteBatch, x += item.link.linkWidth / 2 - offsetX, y += item.link.linkHeight, currentFrame, direction);
                         break;
                     case 1: /* right */
-                        swordBeam[1].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
+                        swordBeam[1].Draw(spriteBatch, x += item.link.linkWidth, y += item.link.linkHeight / 2 - offsetY, currentFrame, direction);
                         break;
                     case 2: /* back */
-                        swordBeam[0].Draw(spriteBatch, x += (int)(13 * LoadAll.Instance.scale) / 2 - offsetX, y -= (int)(13 * LoadAll.Instance.scale), currentFrame, direction);
+                        swordBeam[0].Draw(spriteBatch, x += item.link.linkWidth / 2 - offsetX, y -= item.link.linkHeight, currentFrame, direction);
                         break;
                     case 3: /* left */
-                        swordBeam[3].Draw(spriteBatch, x -= (int)(13 * LoadAll.Instance.scale), y += (int)(13 * LoadAll.Instance.scale) / 2 - offsetY, currentFrame, direction);
+                        swordBeam[3].Draw(spriteBatch, x -= item.link.linkWidth, y += item.link.linkHeight / 2 - offsetY, currentFrame, direction);
                         break;
                     default:
                         break;

@@ -6,44 +6,48 @@ namespace Game1.Player
 {
     class BombExplosion : IPlayerItemSprite
     {
-        Texture2D Texture;
-        int sourceWidth;
-        int sourceHeight;
-        int destinationWidth;
-        int destinationHeight;
-        int collisionWidth;
-        int collisionHeight;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private Texture2D Texture;
+        private int sourceWidth;
+        private int sourceHeight;
+        private int destinationWidth;
+        private int destinationHeight;
+        private int column = 3;
+        private int widthDivider = 16;
+        private int heightDivider = 16;
+        private int collisionWidth = scale * 100;
+        private int collisionHeight = scale * 100;
+        private int offsetX = 2 * scale;
+        private int numberOfSprite = 9;
         public BombExplosion(Texture2D texture)
         {
             Texture = texture;
-            sourceWidth = texture.Width / 3;
+            sourceWidth = texture.Width / column;
             sourceHeight = texture.Height;
-            destinationWidth = (int)(LoadAll.Instance.scale * 16);
-            destinationHeight = (int)(LoadAll.Instance.scale * 16);
-            collisionWidth = (int)(LoadAll.Instance.scale * 100);
-            collisionHeight = (int)(LoadAll.Instance.scale * 100);
+            destinationWidth = (int)(LoadAll.Instance.scale * widthDivider);
+            destinationHeight = (int)(LoadAll.Instance.scale * heightDivider);
         }
         public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
         {
 
             Rectangle sourceRectangle = new Rectangle(currentFrame * sourceWidth, 0, sourceWidth, sourceHeight);
-            Rectangle[] destinationRectangles = new Rectangle[9];
-            destinationRectangles[0] = new Rectangle(x - 7, y, destinationWidth, destinationHeight);              
-            destinationRectangles[1] = new Rectangle(x - 7 - destinationWidth, y, destinationWidth, destinationHeight);
-            destinationRectangles[2] = new Rectangle(x - 7 + destinationWidth, y, destinationWidth, destinationHeight);
-            destinationRectangles[3] = new Rectangle(x - 7, y - destinationHeight, destinationWidth, destinationHeight);
-            destinationRectangles[4] = new Rectangle(x - 7 - destinationWidth, y - destinationHeight, destinationWidth, destinationHeight);
-            destinationRectangles[5] = new Rectangle(x - 7 + destinationWidth, y - destinationHeight, destinationWidth, destinationHeight);
-            destinationRectangles[6] = new Rectangle(x - 7, y + destinationHeight, destinationWidth, destinationHeight);
-            destinationRectangles[7] = new Rectangle(x - 7 - destinationWidth, y + destinationHeight, destinationWidth, destinationHeight);
-            destinationRectangles[8] = new Rectangle(x - 7 + destinationWidth, y + destinationHeight, destinationWidth, destinationHeight);
+            Rectangle[] destinationRectangles = new Rectangle[numberOfSprite];
+            destinationRectangles[0] = new Rectangle(x - offsetX, y, destinationWidth, destinationHeight);              
+            destinationRectangles[1] = new Rectangle(x - offsetX - destinationWidth, y, destinationWidth, destinationHeight);
+            destinationRectangles[2] = new Rectangle(x - offsetX + destinationWidth, y, destinationWidth, destinationHeight);
+            destinationRectangles[3] = new Rectangle(x - offsetX, y - destinationHeight, destinationWidth, destinationHeight);
+            destinationRectangles[4] = new Rectangle(x - offsetX - destinationWidth, y - destinationHeight, destinationWidth, destinationHeight);
+            destinationRectangles[5] = new Rectangle(x - offsetX + destinationWidth, y - destinationHeight, destinationWidth, destinationHeight);
+            destinationRectangles[6] = new Rectangle(x - offsetX, y + destinationHeight, destinationWidth, destinationHeight);
+            destinationRectangles[7] = new Rectangle(x - offsetX - destinationWidth, y + destinationHeight, destinationWidth, destinationHeight);
+            destinationRectangles[8] = new Rectangle(x - offsetX + destinationWidth, y + destinationHeight, destinationWidth, destinationHeight);
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < numberOfSprite; i++)
             {
                 spriteBatch.Draw(Texture, destinationRectangles[i], sourceRectangle, Color.White);
             }
 
-            return new Rectangle(x - 20 - collisionWidth / 3, y - collisionHeight / 3, collisionWidth, collisionHeight);
+            return new Rectangle(x - column * offsetX - collisionWidth / column, y - collisionHeight / column, collisionWidth, collisionHeight);
         }
     }
 }

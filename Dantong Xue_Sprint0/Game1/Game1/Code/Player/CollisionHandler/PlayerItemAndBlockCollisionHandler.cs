@@ -7,7 +7,7 @@ namespace Game1.Code.Player
 {
     public static class PlayerItemAndBlockCollisionHandler
     {
-        static string collidedSide = "";
+        private static string collidedSide = "";
         public static void HandleCollision(LinkItem[] itemPool, Dictionary<string, List<Rectangle>> blockList)
         {
             for (int i = 0; i < itemPool.Length; i++)

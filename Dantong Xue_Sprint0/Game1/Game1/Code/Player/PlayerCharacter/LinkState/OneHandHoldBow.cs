@@ -1,35 +1,40 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Game1.Player.Interface;
 using Game1.Code.Item.ItemSprite;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
     class OneHandHoldBow : IPlayerLinkState
     {
-        int currentFrame;
-        int thirdFrame;
+        private static int scale = (int)LoadAll.Instance.scale;
 
-        IPlayerLinkSprite linkSprite;
-        IPlayerLinkSprite[] damagedLinkSprite;
+        private int currentFrame = 0;
+        private int secondFrame = 0;
 
-        Bow bow;
+        private int numberOfDamagedLinkSprite = 4;
+        private int blinkFrequency = 8;
+        private int maxCurrentFrame = 60;
+        private int maxSecondFrame = 60;
 
-        Link link;
-        private int offset;
+        private IPlayerLinkSprite linkSprite;
+        private IPlayerLinkSprite[] damagedLinkSprite;
+
+        private Bow bow;
+
+        private Link link;
+        private int offset = 66 * scale;
 
         public OneHandHoldBow(Link link)
         {
-            currentFrame = 0;
-            thirdFrame = 0;
-
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             
-            damagedLinkSprite = new IPlayerLinkSprite[4];
+            damagedLinkSprite = new IPlayerLinkSprite[numberOfDamagedLinkSprite];
             damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedPickUpLink();
             
             this.link = link;
-            offset = 200;
-            bow = new Bow(link.x, link.y-offset);
+
+            bow = new Bow(link.x, link.y - offset);
 
         }
         public void WoodenSwordAttack() { }
@@ -48,17 +53,17 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update()
         {
-            if (link.damageTimeCounter % 8 == 0)
+            if (link.damageTimeCounter % blinkFrequency == 0)
             {
-                thirdFrame++;
-                if (thirdFrame == 60)
+                secondFrame++;
+                if (secondFrame == maxSecondFrame)
                 {
-                    thirdFrame = 0;
+                    secondFrame = 0;
                 }
             }
 
             currentFrame++;
-            if (currentFrame == 60)
+            if (currentFrame == maxCurrentFrame)
             {
                 currentFrame = 0;
                 link.state = new NormalLink(link);
@@ -74,7 +79,7 @@ namespace Game1.Player.PlayerCharacter
             }
             else
             {
-                damagedLinkSprite[thirdFrame].Draw(spriteBatch, link.x, link.y, 0, link.direction);
+                damagedLinkSprite[secondFrame].Draw(spriteBatch, link.x, link.y, 0, link.direction);
                 bow.Draw(spriteBatch);
             }
         }

@@ -7,18 +7,21 @@ namespace Game1.Player.PlayerCharacter
 {
     class RangedWoodenEdge : IPlayerItemState
     {
-        LinkItem item;
-        int direction;
-        int x;
-        int y;
-        int currentFrame;
-        int totalFrame;
-        int speed;
-        int rectSideLengthOffset;
 
-        IPlayerItemSprite[] woodenEdge;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private LinkItem item;
+        private int direction;
+        private int x;
+        private int y;
+        private int currentFrame = 0;
+        private int totalFrame = 15;
+        private int speed = 2 * scale;
+        private int rectSideLengthOffset = 8 * scale;
+        private int numberOfSprite = 4;
 
-        Rectangle rectangle;
+        private IPlayerItemSprite[] woodenEdge;
+
+        private Rectangle rectangle;
 
         public RangedWoodenEdge(LinkItem item)
         {
@@ -27,12 +30,9 @@ namespace Game1.Player.PlayerCharacter
             y = item.y;
 
             rectSideLengthOffset = 8 * (int)LoadAll.Instance.scale;
-            currentFrame = 0;
-            totalFrame = 15;
-            speed = 5;
 
-            woodenEdge = new IPlayerItemSprite[4];
-            for (int i = 0; i < 4; i++)
+            woodenEdge = new IPlayerItemSprite[numberOfSprite];
+            for (int i = 0; i < numberOfSprite; i++)
             {
                 woodenEdge[i] = PlayerItemFactory.Instance.CreateWoodenEdge(i);
             }

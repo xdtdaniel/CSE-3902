@@ -6,28 +6,26 @@ namespace Game1.Player.PlayerCharacter
 {
     class UseBomb : IPlayerItemState
     {
-        LinkItem item;
-        int x;
-        int y;
-        int direction;
-        int currentFrame;
-        int totalFrame;
-        int secondFrame;
+        private LinkItem item;
+        private int x;
+        private int y;
+        private int direction;
+        private int currentFrame = 0;
+        private int totalFrame = 3;
+        private int secondFrame = 0;
+        private int maxSecondFrame = 80;
+        private int resetSecondFrame = 60;
 
-        IPlayerItemSprite bomb;
-        IPlayerItemSprite bombExplosion;
+        private IPlayerItemSprite bomb;
+        private IPlayerItemSprite bombExplosion;
 
-        Rectangle rectangle;
+        private Rectangle rectangle;
 
         public UseBomb(LinkItem item)
         {
             this.x = item.x;
             this.y = item.y;
             this.direction = item.direction;
-
-            currentFrame = 0;
-            totalFrame = 3;
-            secondFrame = 0;
 
             bomb = PlayerItemFactory.Instance.CreateBomb();
             bombExplosion = PlayerItemFactory.Instance.CreateBombExplosion();
@@ -50,19 +48,15 @@ namespace Game1.Player.PlayerCharacter
         }
         public void CollisionResponse()
         {
-            if (currentFrame == 1)
-            {
-                // player and enemy take damage
-            }
         }
         public void Update() 
         { 
             secondFrame++;
             /* explode after 80 frames */
-            if (secondFrame == 80)
+            if (secondFrame == maxSecondFrame)
             {
                 currentFrame++;
-                secondFrame = 60;
+                secondFrame = resetSecondFrame;
             }
             if (currentFrame == totalFrame)
             {
@@ -83,7 +77,7 @@ namespace Game1.Player.PlayerCharacter
 
         public Rectangle GetRectangle()
         {
-            if (secondFrame == 60 && currentFrame == 1)
+            if (secondFrame == resetSecondFrame && currentFrame == 1)
             {
                 return rectangle;
             }

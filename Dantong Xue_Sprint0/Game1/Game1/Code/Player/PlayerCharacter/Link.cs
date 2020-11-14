@@ -12,69 +12,49 @@ namespace Game1.Player.PlayerCharacter
     public class Link
     {
         // link's properties
-        public int x;
-        public int y;
-        public int damageTimeCounter;
-        public bool isDamaged;
-        public bool isMoving;
-        public bool movable;
-        public bool isInvincible;
-        public bool isDead;
-        public int defaultSpeed;
-        public int xSpeed, ySpeed;
-        public int attackDamage;
-        private int linkWidth;
-        private int linkHeight;
-        private int scale;
-        private int doorPositionOffset;
-        public string direction;
-        public int directionIndex;
+        private static int scale = (int)LoadAll.Instance.scale;           
+        public int x = (int)LoadAll.Instance.startPos.X + 122 * scale;
+        public int y = (int)LoadAll.Instance.startPos.Y + 128 * scale;
+        public int damageTimeCounter = 0;
+        public bool isDamaged = false;
+        public bool isMoving = false;
+        public bool movable = true;
+        private bool isInvincible = false;
+        public bool isDead = false;
+        public int xSpeed = (int)(1.5 * scale);
+        public int ySpeed = (int)(1.5 * scale);
+        public int basicAttackDamage = 1;
+        public int linkWidth = 13 * scale;
+        public int linkHeight = 13 * scale;
+        private int doorPositionOffset = 12 * scale;
+        public string direction = "down";
+        public int directionIndex = 0;
         public IPlayerLinkState state;
 
         // link's items
         public Dictionary<string, int> itemList;
         public LinkItem[] itemPool;
         public LinkItem boomerang;
-        public bool useItemDone;
-        public int itemIndex;
+        public bool useItemDone = true;
+        public int itemIndex = 0;
         private const int MAX_ITEM_SPRITE_NUM = 1000;
+        private int swordBeamAttackDamage = 2;
+        public int bombExplosionDamage = 5;
 
         // time intervals
-        public int timeBetweenAttack;
-        public int timeSinceAttack;
-        public int timeBetweenItem;
-        public int timeSinceItem;
+        public int timeBetweenAttack = 40;
+        public int timeSinceAttack = 0;
+        public int timeBetweenItem = 40;
+        public int timeSinceItem = 0;
 
         // environmental informations
-        private int blockSideLength;
-        private int numberOfBlocksBetweenRoom;
+        private int blockSideLength = 16 * scale;
+        private int numberOfBlocksBetweenRoom = 5;
 
 
         public Link()
         {
-            scale = (int)LoadAll.Instance.scale;
-            x = (int)LoadAll.Instance.startPos.X + 122 * scale;
-            y = (int)LoadAll.Instance.startPos.Y + 128 * scale;
-            damageTimeCounter = 0;
-            isDamaged = false;
-            isMoving = false;
-            isInvincible = false;
-            movable = true;
-            isDead = false;
-            defaultSpeed = xSpeed = ySpeed = 5;
-            attackDamage = 1;
-            doorPositionOffset = 12;
-
-            linkWidth = 13 * scale;
-            linkHeight = 13 * scale;
-
-            blockSideLength = 16 * scale;
-            numberOfBlocksBetweenRoom = 5;
-
-            itemIndex = 0;
-
-            direction = "down";
-            directionIndex = 0;
+            state = new NormalLink(this);
 
             itemList = new Dictionary<string, int>();
             itemList.Add("Arrow", 0);
@@ -84,7 +64,7 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("Clock", 0);
             itemList.Add("Compass", 0);
             itemList.Add("Heart", 1);                      // default current health = 6
-            itemList.Add("HeartContainer", 1);             // default max health = 6
+            itemList.Add("HeartContainer", 2);             // default max health = 6, heart container cannot be odd number
             itemList.Add("Key", 0);
             itemList.Add("Map", 0);
             itemList.Add("Ruby", 0);
@@ -96,23 +76,12 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("WoodenSword", 1);
             itemList.Add("SwordBeam", 0);
 
-
-            state = new NormalLink(this);
-
-
             itemPool = new LinkItem[MAX_ITEM_SPRITE_NUM];
             for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
             {
                 itemPool[i] = new LinkItem(this);
                 itemPool[i].state = new NoItem(itemPool[i]);
             }
-
-            timeBetweenAttack = 30;
-            timeSinceAttack = 0; 
-            timeBetweenItem = 30;
-            timeSinceItem = 0;
-            useItemDone = true;
-
         }
         public void TakeDamage(int dmgAmount)
         {
@@ -144,6 +113,8 @@ namespace Game1.Player.PlayerCharacter
             if (side == "down")
             {
                 y -= interRect.Height;
+
+                // if link is colliding with the edge of a block
                 if (Math.Abs(interRect.Width - linkWidth) > linkWidth / 2)
                 {
                     if (interRect.X == x)
@@ -159,6 +130,8 @@ namespace Game1.Player.PlayerCharacter
             if (side == "right")
             {
                 x -= interRect.Width;
+
+                // if link is colliding with the edge of a block
                 if (Math.Abs(interRect.Height - linkHeight) > linkHeight / 2)
                 {
                     if (interRect.Y == y)
@@ -174,6 +147,8 @@ namespace Game1.Player.PlayerCharacter
             if (side == "up")
             {
                 y += interRect.Height;
+
+                // if link is colliding with the edge of a block
                 if (Math.Abs(interRect.Width - linkWidth) > linkWidth / 2)
                 {
                     if (interRect.X == x)
@@ -189,6 +164,8 @@ namespace Game1.Player.PlayerCharacter
             if (side == "left")
             {
                 x += interRect.Width;
+
+                // if link is colliding with the edge of a block
                 if (Math.Abs(interRect.Height - linkHeight) > linkHeight / 2)
                 {
                     if (interRect.Y == y)
@@ -209,18 +186,19 @@ namespace Game1.Player.PlayerCharacter
             switch (doorSide)
             {
                 case "up":
-                    y -= (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
+                    y -= (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset);
                     break;
                 case "down":
-                    y += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
+                    y += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset);
                     break;
                 case "left":
-                    x -= (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
+                    x -= (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset);
                     break;
                 case "right":
-                    x += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset * scale);
+                    x += (numberOfBlocksBetweenRoom * blockSideLength - doorPositionOffset);
                     break;
                 case "stairs":
+                    // special case for rooms 1 and 3, move link to specific position
                     if (LoadAll.Instance.GetCurrentMapID() == 3)
                     {
                         x -= 2 * blockSideLength;
@@ -257,9 +235,10 @@ namespace Game1.Player.PlayerCharacter
             if (itemList["SwordBeam"] > 0)
             {
                 itemList["WoodenSword"] = 0;
-                attackDamage = 2;
+                basicAttackDamage = swordBeamAttackDamage;
             }
 
+            // update item pool
             if (!itemPool[itemIndex].IsDone())
             {
                 itemIndex++;
@@ -269,7 +248,7 @@ namespace Game1.Player.PlayerCharacter
                 itemIndex--;
             }
 
-
+            // update direction index based on current direction
             switch (direction)
             {
                 case "down":
@@ -287,12 +266,17 @@ namespace Game1.Player.PlayerCharacter
                 default:
                     break;
             }
+
+            // update state
             state.Update();
+
+            // update items in item pool
             for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
             {
                 itemPool[i].Update(x, y, directionIndex);
             }
 
+            // increment time between attack and item
             if (timeSinceAttack < timeBetweenAttack)
             {
                 timeSinceAttack++;
@@ -302,6 +286,7 @@ namespace Game1.Player.PlayerCharacter
                 timeSinceItem++;
             }
 
+            // update damage time if link is hurt
             if (isDamaged)
             {
                 damageTimeCounter++;
@@ -314,7 +299,10 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            // draw link
             state.Draw(spriteBatch);
+
+            // draw item
             for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
             {
                 itemPool[i].Draw(spriteBatch);
@@ -323,9 +311,6 @@ namespace Game1.Player.PlayerCharacter
         public string GetStateName()
         {
             return state.GetStateName();
-        }
-        public void Reset()
-        {
         }
     }
 }

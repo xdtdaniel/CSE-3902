@@ -9,10 +9,10 @@ namespace Game1.Code.Player
 {
     public static class PlayerItemAndEnemyCollisionHandler
     {
-        static string collidedSide = "";
-        static int boomerangHit = -1;
-        static int rangedSwordHit = -1;
-        static bool[] enemyHitByRangedSword;
+        private static string collidedSide = "";
+        private static int boomerangHit = -1;
+        private static int rangedSwordHit = -1;
+        private static bool[] enemyHitByRangedSword;
         public static void HandleCollision(LinkItem[] itemPool, List<Tuple<IEnemy, string>> enemyList)
         {
             for (int i = 0; i < itemPool.Length; i++)
@@ -48,19 +48,19 @@ namespace Game1.Code.Player
                         switch (item.GetItemName())
                         {
                             case "Arrow":
-                                tuple.Item1.TakeDamage(item.link.attackDamage);
+                                tuple.Item1.TakeDamage(item.link.basicAttackDamage);
                                 item.CollisionResponse();
                                 break;
 
                             case "BombExplosion":
-                                tuple.Item1.TakeDamage(item.link.attackDamage * 5);
+                                tuple.Item1.TakeDamage(item.link.bombExplosionDamage);
                                 AudioPlayer.bombBlow.Play();
                                 break;
 
                             case "Boomerang":
                                 if (boomerangHit == -1)
                                 {
-                                    tuple.Item1.TakeDamage(item.link.attackDamage);
+                                    tuple.Item1.TakeDamage(item.link.basicAttackDamage);
                                     boomerangHit = i;
                                 }
                                 item.CollisionResponse();
@@ -69,7 +69,7 @@ namespace Game1.Code.Player
                             case "RangedSwordBeam":
                                 if (!enemyHitByRangedSword[currEnemyIndex])
                                 {
-                                    tuple.Item1.TakeDamage(item.link.attackDamage);
+                                    tuple.Item1.TakeDamage(item.link.basicAttackDamage);
                                     rangedSwordHit = i;
                                 }
                                 item.CollisionResponse();
@@ -78,7 +78,7 @@ namespace Game1.Code.Player
                             case "RangedWoodenSword":
                                 if (!enemyHitByRangedSword[currEnemyIndex])
                                 {
-                                    tuple.Item1.TakeDamage(item.link.attackDamage);
+                                    tuple.Item1.TakeDamage(item.link.basicAttackDamage);
                                     rangedSwordHit = i;
                                     enemyHitByRangedSword[currEnemyIndex] = true;
                                 }
@@ -88,7 +88,7 @@ namespace Game1.Code.Player
                             case "RangedWoodenEdge":
                                 if (!enemyHitByRangedSword[currEnemyIndex])
                                 {
-                                    tuple.Item1.TakeDamage(item.link.attackDamage);
+                                    tuple.Item1.TakeDamage(item.link.basicAttackDamage);
                                     rangedSwordHit = i;
                                     enemyHitByRangedSword[currEnemyIndex] = true;
                                 }
@@ -97,7 +97,7 @@ namespace Game1.Code.Player
                             case "RangedBeamEdge":
                                 if (!enemyHitByRangedSword[currEnemyIndex])
                                 {
-                                    tuple.Item1.TakeDamage(item.link.attackDamage);
+                                    tuple.Item1.TakeDamage(item.link.basicAttackDamage);
                                     rangedSwordHit = i;
                                 }
                                 item.CollisionResponse();

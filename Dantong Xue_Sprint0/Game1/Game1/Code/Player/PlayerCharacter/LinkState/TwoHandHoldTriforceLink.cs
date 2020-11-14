@@ -1,24 +1,27 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Game1.Player.Interface;
 using Game1.Code.Item.ItemSprite;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
     class TwoHandHoldTriforceLink : IPlayerLinkState
     {
-       int currentFrame;
-        IPlayerLinkSprite linkSprite;
-        Triforce triforce;
-        Link link;
-        private int offset;
+        private static int scale = (int)LoadAll.Instance.scale;
+
+        private int currentFrame = 0;
+        private int maxCurrentFrame = 90;
+
+        private IPlayerLinkSprite linkSprite;
+        private Triforce triforce;
+        private Link link;
+
+        private int offset = 70 * scale;
 
         public TwoHandHoldTriforceLink(Link link)
         {
-            currentFrame = 0;
-
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
-            offset = 210;
             triforce = new Triforce(link.x, link.y - offset);
 
         }
@@ -26,7 +29,7 @@ namespace Game1.Player.PlayerCharacter
         public void Update()
         {
             currentFrame++;
-            if (currentFrame == 90) // decide how long the hold state will take
+            if (currentFrame == maxCurrentFrame) // decide how long the hold state will take
             {
                 currentFrame = 0;
                 link.state = new NormalLink(link);

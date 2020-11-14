@@ -26,15 +26,6 @@ namespace Game1.Player.PlayerCharacter
                 case "Bomb":
                     item.state = new UseBomb(item);
                     break;
-                case "BlueCandle":
-                    item.state = new UseBlueCandle(item);
-                    break;
-                case "BluePotion":
-                    item.state = new UseBluePotion(item);
-                    break;
-                case "BlueRing":
-                    item.state = new UseBlueRing(item);
-                    break;
                 case "RangedWoodenSword":
                     item.state = new RangedWoodenSword(item);
                     break;

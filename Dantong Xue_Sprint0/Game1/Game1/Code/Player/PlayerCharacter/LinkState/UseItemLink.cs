@@ -5,27 +5,30 @@ namespace Game1.Player.PlayerCharacter
 {
     class UseItemLink : IPlayerLinkState
     {
-        int currentFrame;
-        int thirdFrame;
+        private int currentFrame = 0;
+        private int secondFrame = 0;
 
-        IPlayerLinkSprite[] linkSprite;
-        IPlayerLinkSprite[][] damagedLinkSprite;
+        private int numberOfLinkSprite = 4;
+        private int numberOfDamagedLinkSprite = 4;
+        private int blinkFrequency = 8;
+        private int maxCurrentFrame = 15;
+        private int maxSecondFrame = 4;
 
-        Link link;
+        private IPlayerLinkSprite[] linkSprite;
+        private IPlayerLinkSprite[][] damagedLinkSprite;
+
+        private Link link;
 
         public UseItemLink(Link link)
         {
-            currentFrame = 0;
-            thirdFrame = 0;
-
-            linkSprite = new IPlayerLinkSprite[4];
-            for (int i = 0; i < 4; i++)
+            linkSprite = new IPlayerLinkSprite[numberOfLinkSprite];
+            for (int i = 0; i < numberOfLinkSprite; i++)
             {
                 linkSprite[i] = PlayerCharacterFactory.Instance.CreateUseItemLink(i);
             }
 
-            damagedLinkSprite = new IPlayerLinkSprite[4][];
-            for (int i = 0; i < 4; i++)
+            damagedLinkSprite = new IPlayerLinkSprite[numberOfDamagedLinkSprite][];
+            for (int i = 0; i < numberOfDamagedLinkSprite; i++)
             {
                 damagedLinkSprite[i] = PlayerCharacterFactory.Instance.CreateDamagedUseItemLink(i);
             }
@@ -49,17 +52,17 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update()
         {
-            if (link.damageTimeCounter % 8 == 0)
+            if (link.damageTimeCounter % blinkFrequency == 0)
             {
-                thirdFrame++;
-                if (thirdFrame == 4)
+                secondFrame++;
+                if (secondFrame == maxSecondFrame)
                 {
-                    thirdFrame = 0;
+                    secondFrame = 0;
                 }
             }
 
             currentFrame++;
-            if (currentFrame == 15)
+            if (currentFrame == maxCurrentFrame)
             {
                 currentFrame = 0;
                 link.state = new NormalLink(link);
@@ -73,7 +76,7 @@ namespace Game1.Player.PlayerCharacter
             }
             else
             {
-                damagedLinkSprite[link.directionIndex][thirdFrame].Draw(spriteBatch, link.x, link.y, currentFrame, link.direction);
+                damagedLinkSprite[link.directionIndex][secondFrame].Draw(spriteBatch, link.x, link.y, currentFrame, link.direction);
 
             }
         }

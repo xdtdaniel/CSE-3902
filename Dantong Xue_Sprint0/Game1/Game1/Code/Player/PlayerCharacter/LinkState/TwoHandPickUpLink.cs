@@ -5,8 +5,13 @@ namespace Game1.Player.PlayerCharacter
 {
     class TwoHandPickUpLink : IPlayerLinkState
     {
-        int currentFrame;
-        int thirdFrame;
+        private int currentFrame = 0;
+        private int secondFrame = 0;
+
+        private int numberOfDamagedLinkSprite = 4;
+        private int blinkFrequency = 8;
+        private int maxCurrentFrame = 15;
+        private int maxSecondFrame = 4;
 
         IPlayerLinkSprite linkSprite;
         IPlayerLinkSprite[] damagedLinkSprite;
@@ -15,18 +20,12 @@ namespace Game1.Player.PlayerCharacter
 
         public TwoHandPickUpLink(Link link)
         {
-            currentFrame = 0;
-            thirdFrame = 0;
-
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             
-
-            damagedLinkSprite = new IPlayerLinkSprite[4];
+            damagedLinkSprite = new IPlayerLinkSprite[numberOfDamagedLinkSprite];
             damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedPickUpLink();
             
-
             this.link = link;
-
         }
         public void WoodenSwordAttack() { }
         public void SwordBeamAttack() { }
@@ -44,18 +43,18 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update()
         {
-            if (link.damageTimeCounter % 8 == 0)
+            if (link.damageTimeCounter % blinkFrequency == 0)
             {
-                thirdFrame++;
-                if (thirdFrame == 4)
+                secondFrame++;
+                if (secondFrame == maxSecondFrame)
                 {
-                    thirdFrame = 0;
+                    secondFrame = 0;
                 }
             }
 
             // delete currentFrame later
             currentFrame++;
-            if (currentFrame == 15)
+            if (currentFrame == maxCurrentFrame)
             {
                 currentFrame = 0;
                 link.state = new NormalLink(link);
@@ -69,7 +68,7 @@ namespace Game1.Player.PlayerCharacter
             }
             else
             {
-                damagedLinkSprite[thirdFrame].Draw(spriteBatch, link.x, link.y, 1, link.direction);
+                damagedLinkSprite[secondFrame].Draw(spriteBatch, link.x, link.y, 1, link.direction);
 
             }
         }

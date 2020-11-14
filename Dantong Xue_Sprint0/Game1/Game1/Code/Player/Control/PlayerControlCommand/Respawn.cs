@@ -9,7 +9,7 @@ namespace Game1.Code.Player.PlayerControlCommand
 {
     class Respawn : IPlayerCommand
     {
-        Game1 game;
+        private Game1 game;
         public Respawn(Game1 game)
         {
             this.game = game;

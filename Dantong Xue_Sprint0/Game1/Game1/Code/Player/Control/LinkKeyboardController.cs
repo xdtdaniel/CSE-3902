@@ -9,13 +9,12 @@ namespace Game1
     {
         private Dictionary<Keys, IPlayerCommand> controllerMappings;
         private Game1 game;
-        int boomerangIndex;
+        private int boomerangIndex = -1;
 
         public LinkKeyboardController(Game1 game)
         {
             controllerMappings = new Dictionary<Keys, IPlayerCommand>();
             this.game = game;
-            boomerangIndex = -1;
             
             RegisterCommand(Keys.S, new MoveDown(game));
             RegisterCommand(Keys.D, new MoveRight(game));
@@ -26,8 +25,6 @@ namespace Game1
             //RegisterCommand(Keys.Up, new MoveUp(game));
             //RegisterCommand(Keys.Left, new MoveLeft(game));
             RegisterCommand(Keys.N, new Attack(game));
-
-            // change key Z to use current item later
             RegisterCommand(Keys.Z, new UseItem(game));
 
             RegisterCommand(Keys.M, new Respawn(game));

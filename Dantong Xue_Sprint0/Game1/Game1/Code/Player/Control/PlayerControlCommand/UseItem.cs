@@ -4,7 +4,7 @@ namespace Game1.Code.Player.PlayerControlCommand
 {
     class UseItem : IPlayerCommand
     {
-        Game1 game;
+        private Game1 game;
         public UseItem(Game1 game)
         {
             this.game = game;
@@ -27,7 +27,6 @@ namespace Game1.Code.Player.PlayerControlCommand
                         
                     game.link.timeSinceItem = 0;
                     
-
                     game.link.itemList[itemName]--;
                 }
             }

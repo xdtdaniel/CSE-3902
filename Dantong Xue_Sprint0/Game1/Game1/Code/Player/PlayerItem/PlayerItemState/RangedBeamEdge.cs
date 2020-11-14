@@ -7,18 +7,20 @@ namespace Game1.Player.PlayerCharacter
 {
     class RangedBeamEdge : IPlayerItemState
     {
-        LinkItem item;
-        int direction;
-        int x;
-        int y;
-        int currentFrame;
-        int totalFrame;
-        int speed;
-        int rectSideLengthOffset;
+        private static int scale = (int)LoadAll.Instance.scale;
+        private LinkItem item;
+        private int direction;
+        private int x;
+        private int y;
+        private int currentFrame = 0;
+        private int totalFrame = 15;
+        private int speed = 2 * scale;
+        private int rectSideLengthOffset = 8 * scale;
+        private int numberOfSprite = 4;
 
-        IPlayerItemSprite[] beamEdge;
+        private IPlayerItemSprite[] beamEdge;
 
-        Rectangle rectangle;
+        private Rectangle rectangle;
 
         public RangedBeamEdge(LinkItem item)
         {
@@ -26,13 +28,8 @@ namespace Game1.Player.PlayerCharacter
             x = item.x;
             y = item.y;
 
-            rectSideLengthOffset = 8 * (int)LoadAll.Instance.scale;
-            currentFrame = 0;
-            totalFrame = 15;
-            speed = 5;
-
-            beamEdge = new IPlayerItemSprite[4];
-            for (int i = 0; i < 4; i++)
+            beamEdge = new IPlayerItemSprite[numberOfSprite];
+            for (int i = 0; i < numberOfSprite; i++)
             {
                 beamEdge[i] = PlayerItemFactory.Instance.CreateBeamEdge(i);
             }

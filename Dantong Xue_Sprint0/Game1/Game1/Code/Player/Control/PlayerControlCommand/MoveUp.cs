@@ -4,7 +4,7 @@ namespace Game1.Code.Player.PlayerControlCommand
 {
     class MoveUp : IPlayerCommand
     {
-        Game1 game;
+        private Game1 game;
         public MoveUp(Game1 game)
         {
             this.game = game;

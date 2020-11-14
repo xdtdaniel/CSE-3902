@@ -1,17 +1,19 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Game1.Player.Interface;
 using Game1.Code.Item.ItemSprite;
+using Game1.Code.LoadFile;
 
 namespace Game1.Player.PlayerCharacter
 {
 
     class WinLink : IPlayerLinkState
     {
+        private static int scale = (int)LoadAll.Instance.scale;
 
-        Link link;
-        IPlayerLinkSprite linkSprite;
-        Triforce triforce;
-        private int offset;
+        private Link link;
+        private IPlayerLinkSprite linkSprite;
+        private Triforce triforce;
+        private int offset = 66 * scale;
 
         public WinLink(Link link)
         {
