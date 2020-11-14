@@ -181,10 +181,10 @@ namespace Game1
             if (link.isDead)
             {
                 deathCounter--;
-                EnemyList.Clear();
+               EnemyList.Clear();
                 AudioPlayer.bgm.Stop();
-                inRoomList.Clear();
-                emptyList.Clear();
+                //inRoomList.Clear();
+                //emptyList.Clear();
 
                 if (deathCounter <= 0 && goodToRespawn)
                 {
