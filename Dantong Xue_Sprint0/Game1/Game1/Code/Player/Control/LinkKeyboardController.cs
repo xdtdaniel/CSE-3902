@@ -30,6 +30,8 @@ namespace Game1
             // change key Z to use current item later
             RegisterCommand(Keys.Z, new UseItem(game));
 
+            RegisterCommand(Keys.M, new Respawn(game));
+
 
         }
         public void RegisterCommand(Keys key, IPlayerCommand command)

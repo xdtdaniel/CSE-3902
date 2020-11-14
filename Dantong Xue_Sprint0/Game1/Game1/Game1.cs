@@ -48,7 +48,7 @@ namespace Game1
         // private MouseEnemyController enemyController;
 
         //test for  sprint 4 hud display
-        HUDPanel hudPanel;
+        public HUDPanel hudPanel;
         public string selectedItemName;
 
         private QuitResetController quitResetController;
@@ -59,6 +59,7 @@ namespace Game1
 
         private int deathCounter;
         private const int deathCounterLimit = 200;
+        public bool goodToRespawn;
 
         public Camera camera;
 
@@ -90,6 +91,7 @@ namespace Game1
             quitResetController = new QuitResetController();
 
             deathCounter = deathCounterLimit;
+            goodToRespawn = false;
 
             camera = new Camera(GraphicsDevice.Viewport);
             AudioPlayer.bgm.Play();
@@ -183,7 +185,8 @@ namespace Game1
                 EnemyList.Clear();
                 AudioPlayer.bgm.Stop();
 
-                if (deathCounter <= 0)
+                
+                if (deathCounter <= 0 && goodToRespawn)
                 {
                     
 
@@ -201,6 +204,7 @@ namespace Game1
                     AudioPlayer.bgm.Play();
 
                     deathCounter = deathCounterLimit;
+                    goodToRespawn = false;
                 }
                 
             }
@@ -234,6 +238,12 @@ namespace Game1
             if (EnemyLoader.GetCurrentMapID() == 11)
             {
                 DrawMap.Instance.DrawCurrMap(_spriteBatch, EnemyLoader.LoadRoom11Walls());           
+            }
+
+            if (link.isDead)
+            {
+                _spriteBatch.DrawString(_spriteFont, "Press M to Respawn", new Vector2(LoadAll.Instance.startPos.X + 200, LoadAll.Instance.startPos.Y + 200), Color.White);
+
             }
 
             DrawAllItem.Instance.DrawAll(inRoomList, _spriteBatch);

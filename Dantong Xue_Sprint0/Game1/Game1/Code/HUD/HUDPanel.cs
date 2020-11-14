@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Game1.Code.HUD
 {
-    class HUDPanel
+    public class HUDPanel
     {
         private Game1 game;
 
