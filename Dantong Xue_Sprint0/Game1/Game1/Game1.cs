@@ -146,14 +146,12 @@ namespace Game1
                     DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);                  
 
                 }
-            
+
 
                 mapMouseController.Update(this);
 
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
-                ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
-                inRoomList = ItemLoader.GetItemList();
                 emptyList = inRoomList;
                 if (EnemyLoader.NoEnemy())
                 {
@@ -162,7 +160,8 @@ namespace Game1
                     inRoomList = ItemLoader.GetItemList();
                     UpdateAllItem.Instance.UpdateAll(inRoomList);
                 }
-                else if (!EnemyLoader.NoEnemy()) {
+                else if (!EnemyLoader.NoEnemy())
+                {
                     emptyList.Clear();
                     UpdateAllItem.Instance.UpdateAll(emptyList);
                 }
@@ -184,8 +183,9 @@ namespace Game1
                 deathCounter--;
                 EnemyList.Clear();
                 AudioPlayer.bgm.Stop();
+                inRoomList.Clear();
+                emptyList.Clear();
 
-                
                 if (deathCounter <= 0 && goodToRespawn)
                 {
                     
