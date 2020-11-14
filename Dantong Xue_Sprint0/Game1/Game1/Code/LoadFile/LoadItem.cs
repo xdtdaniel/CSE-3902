@@ -30,7 +30,9 @@ namespace Game1.Code.LoadFile
         private Vector2 startPos;
         List<Tuple<int, int, string>> RoomItemList;
         private List<Tuple<IItemSprite, string>>[] AllItemInRoom = new List<Tuple<IItemSprite, string>>[MAP_COUNT];
-        private List<Tuple<IItemSprite, string>> inRoom = new List<Tuple<IItemSprite, string>>();
+        private List<Tuple<IItemSprite, string>> inRoomItems = new List<Tuple<IItemSprite, string>>();
+        private List<Tuple<IItemSprite, string>>[] AllItemInRoomCpoy = new List<Tuple<IItemSprite, string>>[MAP_COUNT];
+        private List<Tuple<IItemSprite, string>> inRoomItemsCopy = new List<Tuple<IItemSprite, string>>();
         private static int triforce_RoomID;
 
         public LoadItem(int currentMapID)
@@ -47,8 +49,11 @@ namespace Game1.Code.LoadFile
             for (int i = 0; i < MAP_COUNT; i++)
             {
                 LoadRoomItem((i + 1).ToString() + "_item.csv");             
-                AllItemInRoom[i] = inRoom;
-                inRoom = new List<Tuple<IItemSprite, string>>();
+                AllItemInRoom[i] = inRoomItems;
+                AllItemInRoomCpoy[i] = inRoomItemsCopy;
+                inRoomItems = new List<Tuple<IItemSprite, string>>();
+                inRoomItemsCopy = new List<Tuple<IItemSprite, string>>();
+
 
             }
         }
@@ -103,57 +108,57 @@ namespace Game1.Code.LoadFile
                 {
                     case "arrow":
                         item = new Arrow(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Arrow"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Arrow"));
                        
                         break;
                     case "bomb":
                         item = new Bomb( X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Bomb"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Bomb"));
                         break;
                     case "boomerang":
                         item = new Boomerang( X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Boomerang"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Boomerang"));
                         break;
                     case "bow":
                         item = new Bow(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Bow"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Bow"));
                         break;
                     case "clock":
                         item = new Clock(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Clock"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Clock"));
                         break;
                     case "compass":
                         item = new Compass(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Compass"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Compass"));
                         break;
                     case "fairy":
                         item = new Fairy(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Fairy"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Fairy"));
                         break;
                     case "heart":
                         item = new Heart(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Heart"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Heart"));
                         break;
                     case "heartcontainer":
                         item = new HeartContainer(X, Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));
                         break;
                     case "key":
                         item = new Key(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Key"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Key"));
                         break;
                     case "map":
                         item = new Map(X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Map"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Map"));
                         break;
                     case "ruby":
                         item = new Ruby( X,Y);
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Ruby"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Ruby"));
                         break;
                     case "triforce":
                         item = new Triforce( X,Y);
                         triforce_RoomID = CurrentMapID;
-                        inRoom.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                         break;
                 }
 
@@ -161,6 +166,26 @@ namespace Game1.Code.LoadFile
         }
 
 
+        // reload item to restart
+        public void ResetAllItems()
+        {
+            AllItemInRoom = new List<Tuple<IItemSprite, string>>[MAP_COUNT];
+
+            inRoomItems.Clear();
+            for (int i = 0; i < MAP_COUNT; i++)
+            {
+                Tuple<IItemSprite, string>[] Array = new Tuple<IItemSprite, string>[AllItemInRoomCpoy[i].Count];
+                AllItemInRoomCpoy[i].CopyTo(Array);
+                for (int j = 0; j < AllItemInRoomCpoy[i].Count; j++)
+                {
+                    inRoomItems.Add(Array[j]);
+                }
+
+                AllItemInRoom[i] = inRoomItems;
+
+                inRoomItems = new List<Tuple<IItemSprite, string>>();
+            }
+        }
         static public int getTriforceRoom()
         {
 
