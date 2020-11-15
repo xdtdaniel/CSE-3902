@@ -14,8 +14,8 @@ namespace Game1.Code.HUD.Sprite
         private static int scale = (int)LoadAll.Instance.scale;
         private int miniMapHeight = 32 * scale;
         private int miniMapWidth = 64 * scale;
-        private int blueSpotHeight = 3 * scale;
-        private int blueSpotWidth = 3 * scale;
+        private int greenSpotHeight = 3 * scale;
+        private int greenSpotWidth = 3 * scale;
         private static int miniRoomWidth = 8 * scale;
         private static int miniRoomHeight = 4 * scale;
 
@@ -27,7 +27,7 @@ namespace Game1.Code.HUD.Sprite
         private Vector2 roomPos_4 = new Vector2(3 * miniRoomWidth, 2 * miniRoomHeight);
         private Vector2 roomPos_5 = new Vector2(5 * miniRoomWidth, 2 * miniRoomHeight);
         private Vector2 roomPos_6 = new Vector2(6 * miniRoomWidth, 2 * miniRoomHeight);
-        private Vector2 roomPos_7 = new Vector2(miniRoomWidth, 3 * miniRoomHeight);
+        private Vector2 roomPos_7 = new Vector2(1 * miniRoomWidth, 3 * miniRoomHeight);
         private Vector2 roomPos_8 = new Vector2(2 * miniRoomWidth, 3 * miniRoomHeight);
         private Vector2 roomPos_9 = new Vector2(3 * miniRoomWidth, 3 * miniRoomHeight);
         private Vector2 roomPos_10 = new Vector2(4 * miniRoomWidth, 3 * miniRoomHeight);
@@ -42,8 +42,8 @@ namespace Game1.Code.HUD.Sprite
         
         private int mapX;
         private int mapY;
-        private int blueSpotX;
-        private int blueSpotY;
+        private int greenSpotX;
+        private int greenSpotY;
         private int redSpotX;
         private int redSpotY;
         private int spotOffsetX = 0;
@@ -52,14 +52,14 @@ namespace Game1.Code.HUD.Sprite
 
         private int preMapX = 16 * scale;
         private int preMapY = -36 * scale;
-        private int preBlueSpotX = 42 * scale;
-        private int preBlueSpotY = -12 * scale;
+        private int preGreenSpotX = 42 * scale;
+        private int preGreenSpotY = -12 * scale;
         private int preRedSpotX = 2 * scale;
 
         private int prevMapID;
 
         private Texture2D miniMap;
-        private Texture2D spot;
+        private Texture2D greenSpot;
         private Texture2D redSpot; //indicate the room with triforce.
         public DungeonMiniMap(Dictionary<string, int> itemList) {
             this.itemList = itemList;
@@ -87,7 +87,7 @@ namespace Game1.Code.HUD.Sprite
             prevMapID = LoadAll.Instance.GetCurrentMapID();
 
             miniMap = HUDFactory.LoadDungeonMiniMapCell_Level1();
-            spot = HUDFactory.LoadGreenSpot();
+            greenSpot = HUDFactory.LoadGreenSpot();
             redSpot = HUDFactory.LoadRedSpot();
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -106,19 +106,20 @@ namespace Game1.Code.HUD.Sprite
 
 
             // draw link spot
-            sourceRectangle = new Rectangle(0, 0, spot.Width, spot.Height);
-            destinationRectangle = new Rectangle(blueSpotX, blueSpotY, blueSpotWidth, blueSpotHeight);
+            sourceRectangle = new Rectangle(0, 0, greenSpot.Width, greenSpot.Height);
+            destinationRectangle = new Rectangle(greenSpotX, greenSpotY, greenSpotWidth, greenSpotHeight);
 
-            spriteBatch.Draw(spot, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(greenSpot, destinationRectangle, sourceRectangle, Color.White);
 
             //draw redspot if player have compass
-            if (itemList["Compass"] > 0) {
+            if (itemList["Compass"] > 0 && itemList["Map"] > 0) {
                 int triforceRoomID = LoadItem.getTriforceRoom() - 1; // map id starts from 1
+
                 redSpotX += (int)miniRoomPosOnMap[triforceRoomID].X;
                 redSpotY += (int)miniRoomPosOnMap[triforceRoomID].Y;
                
                 sourceRectangle = new Rectangle(0, 0, redSpot.Width, redSpot.Height);
-                destinationRectangle = new Rectangle(redSpotX, redSpotY, blueSpotWidth, blueSpotHeight);
+                destinationRectangle = new Rectangle(redSpotX, redSpotY, greenSpotWidth, greenSpotHeight);
 
                 spriteBatch.Draw(redSpot, destinationRectangle, sourceRectangle, Color.White);
             }
@@ -151,8 +152,8 @@ namespace Game1.Code.HUD.Sprite
             }
             mapX = (int)newStartX + preMapX;
             mapY = (int)newStartY + preMapY;
-            blueSpotX = spotOffsetX + preBlueSpotX + (int)newStartX;
-            blueSpotY = spotOffsetY + preBlueSpotY + (int)newStartY;
+            greenSpotX = spotOffsetX + preGreenSpotX;
+            greenSpotY = spotOffsetY + preGreenSpotY + (int)newStartY;
             //update red spot position wwith camera
             redSpotX = preRedSpotX + mapX;
             redSpotY = mapY;

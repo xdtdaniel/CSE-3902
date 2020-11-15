@@ -48,7 +48,7 @@ namespace Game1.Code.LoadFile
         {
             for (int i = 0; i < MAP_COUNT; i++)
             {
-                LoadRoomItem((i + 1).ToString() + "_item.csv");             
+                LoadRoomItem(i + 1);             
                 AllItemInRoom[i] = inRoomItems;
                 AllItemInRoomCpoy[i] = inRoomItemsCopy;
                 inRoomItems = new List<Tuple<IItemSprite, string>>();
@@ -58,9 +58,9 @@ namespace Game1.Code.LoadFile
             }
         }
 
-        public void LoadRoomItem(string mapName)
+        public void LoadRoomItem(int mapID)
         {
-     
+            string mapName = mapID.ToString() + "_item.csv";
             RoomItemList = new List<Tuple<int, int, string>>();
             string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pathNew = filePath.Substring(0, filePath.IndexOf("bin"));
@@ -182,7 +182,7 @@ namespace Game1.Code.LoadFile
                     case "triforce":
                         item = new Triforce( X,Y);
                         itemCopy = new Triforce(X, Y);
-                        triforce_RoomID = CurrentMapID;
+                        triforce_RoomID = mapID;
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                         inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                         break;
