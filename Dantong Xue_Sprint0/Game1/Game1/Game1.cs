@@ -153,8 +153,8 @@ namespace Game1
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
 
-                ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
-                inRoomList = ItemLoader.GetItemList();
+                // ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
+                // inRoomList = ItemLoader.GetItemList();
                 emptyList = inRoomList;
                 if (EnemyLoader.NoEnemy() || (LoadAll.Instance.GetCurrentMapID()==15))
                 {
@@ -168,7 +168,7 @@ namespace Game1
                     emptyList.Clear();
                     UpdateAllItem.Instance.UpdateAll(emptyList);
                 }
-                emptyList = inRoomList;
+                // emptyList = inRoomList;
                 movableBlocks = LoadAll.Instance.GetMovableBlocks();
                 LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
               
