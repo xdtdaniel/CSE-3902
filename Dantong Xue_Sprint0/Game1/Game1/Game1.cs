@@ -44,10 +44,7 @@ namespace Game1
 
         private IController mapMouseController;
 
-        //Testing controller for sprint 3
-        // private MouseEnemyController enemyController;
 
-        //test for  sprint 4 hud display
         public HUDPanel hudPanel;
         public string selectedItemName;
 
@@ -153,8 +150,6 @@ namespace Game1
                 EnemyLoader.SetCurrentMapID(LoadAll.Instance.GetCurrentMapID());
                 EnemyList = EnemyLoader.GetEnemyList();
 
-                // ItemLoader.setRoomID(LoadAll.Instance.GetCurrentMapID());
-                // inRoomList = ItemLoader.GetItemList();
                 emptyList = inRoomList;
                 if (EnemyLoader.NoEnemy() || (LoadAll.Instance.GetCurrentMapID()==15))
                 {
@@ -168,13 +163,11 @@ namespace Game1
                     emptyList.Clear();
                     UpdateAllItem.Instance.UpdateAll(emptyList);
                 }
-                // emptyList = inRoomList;
                 movableBlocks = LoadAll.Instance.GetMovableBlocks();
                 LoadAll.Instance.SetEnemyStatus(EnemyLoader.NoEnemy());
               
             }
  
-            //TEST FOR HUD
             hudPanel.HUDUpdate();
             
             camera.UpdateCamera(GraphicsDevice.Viewport);
@@ -186,8 +179,6 @@ namespace Game1
                 deathCounter--;
                EnemyList.Clear();
                 AudioPlayer.bgm.Stop();
-                //inRoomList.Clear();
-                //emptyList.Clear();
 
                 if (deathCounter <= 0 && goodToRespawn)
                 {
@@ -258,10 +249,6 @@ namespace Game1
             string x = "hud x: " + hudPanel.x.ToString();
             string y = "hud y: " + hudPanel.y.ToString();
 
-
-            // for hud debugging
-            _spriteBatch.DrawString(_spriteFont, x, new Vector2(link.x - 150, link.y - 25), Color.White);
-            _spriteBatch.DrawString(_spriteFont, y, new Vector2(link.x - 150, link.y), Color.White);
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
