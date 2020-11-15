@@ -1077,3 +1077,4 @@ C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Ga
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\enemies\wallmaster0_sprite.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\enemies\wallmaster1_sprite.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\enemies\wallmaster3_sprite.xnb
+C:\Users\FanShenWork\source\repos\CSE-3902\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\start_menu.xnb

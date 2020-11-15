@@ -7,7 +7,7 @@ namespace Game1.Code.Audio
         public static ISounds arrowShoot = new ArrowShoot();
         public static ISounds bgm = new BGM();
         public static ISounds bombBlow = new BombBlow();
-        public static ISounds bombDrop = new BGM();
+        public static ISounds bombDrop = new BombDrop();
         public static ISounds bossHit = new BossHit();
         public static ISounds bossScream = new BossScream();
         public static ISounds doorUnlock = new DoorUnlock();

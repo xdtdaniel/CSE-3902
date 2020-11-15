@@ -71,9 +71,13 @@ namespace Game1.Player.PlayerCharacter
             {
                 rectangle = bomb.Draw(spriteBatch, x, y, currentFrame, direction);
             }
-            else 
+            else if(currentFrame == 1)
             {
                 AudioPlayer.bombBlow.Play();
+                rectangle = bombExplosion.Draw(spriteBatch, x, y, currentFrame, direction);
+            }
+            else
+            {
                 rectangle = bombExplosion.Draw(spriteBatch, x, y, currentFrame, direction);
             }
         }

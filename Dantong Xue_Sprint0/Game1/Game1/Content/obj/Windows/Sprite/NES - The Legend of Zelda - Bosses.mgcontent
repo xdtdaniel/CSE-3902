@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/git_repo/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/NES - The Legend of Zelda - Bosses.png</SourceFile>
-  <SourceTime>2020-09-21T16:56:37.4117768+08:00</SourceTime>
-  <DestFile>C:/git_repo/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/NES - The Legend of Zelda - Bosses.xnb</DestFile>
-  <DestTime>2020-11-15T19:35:50.0343743+08:00</DestTime>
+  <SourceFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/NES - The Legend of Zelda - Bosses.png</SourceFile>
+  <SourceTime>2020-11-11T20:50:43.5447023-05:00</SourceTime>
+  <DestFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/NES - The Legend of Zelda - Bosses.xnb</DestFile>
+  <DestTime>2020-11-15T18:16:44.3038424-05:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2018-12-09T00:35:54+08:00</ImporterTime>
+  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2018-12-09T00:35:54+08:00</ProcessorTime>
+  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

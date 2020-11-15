@@ -7,7 +7,7 @@ namespace Game1.Code.Audio.Factory
 	public static class AudioFactory
 	{
 		// BGM
-		private static Song bgm;
+		private static SoundEffect bgm;
 
 		//SoundEffects
 		private static SoundEffect getRupee;
@@ -30,7 +30,7 @@ namespace Game1.Code.Audio.Factory
 		public static void LoadAllAudio(ContentManager content)
 		{
 			// BGM
-			bgm = content.Load<Song>("Audio/MainTheme");
+			bgm = content.Load<SoundEffect>("Audio/MainTheme");
 
 			//SoundEffects
 			//implemented
@@ -57,7 +57,7 @@ namespace Game1.Code.Audio.Factory
 		}
 
 		// BGM
-		public static Song LoadBgm()
+		public static SoundEffect LoadBgm()
 		{
 			return bgm;
 		}
