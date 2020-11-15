@@ -44,6 +44,8 @@ namespace Game1
 
         private IController mapMouseController;
 
+        private const int preferredWidthUnscaled = 256;
+        private const int preferredHeightUnscaled = 232;
 
         public HUDPanel hudPanel;
         public string selectedItemName;
@@ -51,6 +53,7 @@ namespace Game1
         private QuitResetController quitResetController;
         private bool paused;
         private bool clockWorking;
+        private bool gameStarted;
         public int mapID;
         public int currentMapID;
 
@@ -59,6 +62,7 @@ namespace Game1
         public bool goodToRespawn;
 
         public Camera camera;
+        private StartScreen startScreen;
 
         public Game1()
         {
@@ -67,8 +71,8 @@ namespace Game1
             IsMouseVisible = true;
 
             //temporary screen size suitable for Sprint 3
-            _graphics.PreferredBackBufferWidth = (int)(256 * LoadAll.Instance.scale);
-            _graphics.PreferredBackBufferHeight = (int)(232 * LoadAll.Instance.scale);
+            _graphics.PreferredBackBufferWidth = (int)(preferredWidthUnscaled * LoadAll.Instance.scale);
+            _graphics.PreferredBackBufferHeight = (int)(preferredHeightUnscaled * LoadAll.Instance.scale);
         }
 
         protected override void Initialize()
@@ -92,6 +96,7 @@ namespace Game1
 
             camera = new Camera(GraphicsDevice.Viewport);
             AudioPlayer.bgm.Play();
+            
         }
 
         protected override void LoadContent()
@@ -111,15 +116,18 @@ namespace Game1
             LoadAll.Instance.LoadRoom();
             movableBlocks = LoadAll.Instance.GetMovableBlocks();
 
+            
+
             EnemyLoader = new LoadEnemy(LoadAll.Instance.GetCurrentMapID());
             ItemLoader = new LoadItem(LoadAll.Instance.GetCurrentMapID());
 
             EnemyLoader.LoadAllEnemy();
-
             ItemLoader.LoadAllItem();
 
-            EnemyList = EnemyLoader.GetEnemyList();
+            startScreen = new StartScreen();
+            startScreen.LoadTexture(Content);
 
+            EnemyList = EnemyLoader.GetEnemyList();
             inRoomList = ItemLoader.GetItemList();
 
             
@@ -127,11 +135,14 @@ namespace Game1
 
         protected override void Update(GameTime gameTime)
         {
+            gameStarted = startScreen.IsGameStarted();
+            startScreen.Update();
+
             paused = camera.PauseGame();
             mapID = PlayerAndItemCollisionHandler.getMapID();
 
             quitResetController.Update(this);
-            if (!paused)
+            if (!paused && gameStarted)
             {
                 playerPanel.PlayerUpdate();
 
@@ -141,9 +152,7 @@ namespace Game1
                 if (!clockWorking)
                 {                   
                     DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);                  
-
                 }
-
 
                 mapMouseController.Update(this);
 
@@ -177,7 +186,7 @@ namespace Game1
             if (link.isDead)
             {
                 deathCounter--;
-               EnemyList.Clear();
+                EnemyList.Clear();
                 AudioPlayer.bgm.Stop();
 
                 if (deathCounter <= 0 && goodToRespawn)
@@ -222,7 +231,6 @@ namespace Game1
 
             _spriteBatch.Begin(transformMatrix: camera.Transform);
 
-
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[0]);
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[1]);
             DrawMap.Instance.DrawMovableBlocks(_spriteBatch, movableBlocks);
@@ -230,7 +238,7 @@ namespace Game1
             DrawAndUpdateEnemy.Instance.DrawAllEnemy(EnemyList, _spriteBatch);
             if (EnemyLoader.GetCurrentMapID() == 11)
             {
-                DrawMap.Instance.DrawCurrMap(_spriteBatch, EnemyLoader.LoadRoom11Walls());           
+                DrawMap.Instance.DrawCurrMap(_spriteBatch, EnemyLoader.LoadRoom11Walls());
             }
 
             if (link.isDead)
@@ -249,6 +257,10 @@ namespace Game1
             string x = "hud x: " + hudPanel.x.ToString();
             string y = "hud y: " + hudPanel.y.ToString();
 
+            if (!gameStarted)
+            {
+                startScreen.Draw(_spriteBatch, (int)(preferredWidthUnscaled * LoadAll.Instance.scale), (int)(preferredHeightUnscaled * LoadAll.Instance.scale));
+            }
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
