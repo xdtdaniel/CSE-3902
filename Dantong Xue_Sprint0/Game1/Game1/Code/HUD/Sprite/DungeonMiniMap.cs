@@ -152,7 +152,7 @@ namespace Game1.Code.HUD.Sprite
             }
             mapX = (int)newStartX + preMapX;
             mapY = (int)newStartY + preMapY;
-            greenSpotX = spotOffsetX + preGreenSpotX;
+            greenSpotX = spotOffsetX + preGreenSpotX + (int)newStartX;
             greenSpotY = spotOffsetY + preGreenSpotY + (int)newStartY;
             //update red spot position wwith camera
             redSpotX = preRedSpotX + mapX;
