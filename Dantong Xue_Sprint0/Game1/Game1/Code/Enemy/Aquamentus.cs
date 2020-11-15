@@ -36,6 +36,10 @@ namespace Game1.Enemy
         private Rectangle CollisionRectangle;
         private double scale = 3;
         private List<IProjectile> ProjectileList;
+
+        private ISounds BossScream = new BossScream();
+        private bool BossScreamPlayed;
+
         public Aquamentus(Vector2 location) 
         {
             Texture = EnemyTextureStorage.GetAquamentusSpriteSheet();
@@ -55,6 +59,7 @@ namespace Game1.Enemy
             Projectile2.SetDirection(2);
             CollisionRectangle = new Rectangle((int)(Location.X * scale), (int)(Location.Y * scale), 24, 32 );
             ProjectileList = new List<IProjectile>();
+            BossScreamPlayed = false;
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
@@ -118,6 +123,11 @@ namespace Game1.Enemy
 
         public void UpdateEnemy(Game1 game)
         {
+            if (BossScreamPlayed == false) {
+                BossScream.Play();
+                BossScreamPlayed = true;
+            }
+
             if (FireTimer < (Rnd.Next(7, 10) * 24))
             {
                 FireTimer++;
