@@ -103,62 +103,88 @@ namespace Game1.Code.LoadFile
                
                 location = new Vector2(X, Y);
                 IItemSprite item;
+                IItemSprite itemCopy;
 
                 switch (RoomItemList[index].Item3)
                 {
                     case "arrow":
                         item = new Arrow(X, Y);
+                        itemCopy = new Arrow(X,Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Arrow"));
-                       
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Arrow"));
                         break;
                     case "bomb":
                         item = new Bomb( X, Y);
+                        itemCopy  = new Bomb(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Bomb"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Bomb"));
                         break;
                     case "boomerang":
                         item = new Boomerang( X, Y);
+                        itemCopy = new Boomerang(X,Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Boomerang"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Boomerang"));
                         break;
                     case "bow":
                         item = new Bow(X,Y);
+                        itemCopy = new Bow(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Bow"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Bow"));
                         break;
                     case "clock":
                         item = new Clock(X, Y);
+                        itemCopy= new Clock(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Clock"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Clock"));
                         break;
                     case "compass":
                         item = new Compass(X, Y);
+                        itemCopy= new Compass(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Compass"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Compass"));
                         break;
                     case "fairy":
                         item = new Fairy(X,Y);
+                        itemCopy = new Fairy(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Fairy"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Fairy"));
                         break;
                     case "heart":
                         item = new Heart(X,Y);
+                        itemCopy = new Heart(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Heart"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Heart"));
                         break;
                     case "heartcontainer":
                         item = new HeartContainer(X, Y);
+                        itemCopy = new HeartContainer(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));
                         break;
                     case "key":
                         item = new Key(X,Y);
+                        itemCopy = new Key(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Key"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Key"));
                         break;
                     case "map":
                         item = new Map(X,Y);
+                        itemCopy = new Map(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Map"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Map"));
                         break;
                     case "ruby":
                         item = new Ruby( X,Y);
+                        itemCopy = new Ruby(X, Y);
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Ruby"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Ruby"));
                         break;
                     case "triforce":
                         item = new Triforce( X,Y);
+                        itemCopy = new Triforce(X, Y);
                         triforce_RoomID = CurrentMapID;
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                         break;
                 }
 
