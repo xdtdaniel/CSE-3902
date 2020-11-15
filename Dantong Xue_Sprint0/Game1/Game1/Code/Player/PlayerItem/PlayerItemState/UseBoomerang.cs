@@ -60,6 +60,8 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update() 
         {
+            // boomerang sounds same as arrow does
+            AudioPlayer.arrowShoot.Play();
             if (secondFrame >= maxSecondFrame)
             {
                 if (boomerangSpeed <= maxBoomerangSpeed)
@@ -94,6 +96,7 @@ namespace Game1.Player.PlayerCharacter
                 Rectangle rec = new Rectangle(item.lastLinkX, item.lastLinkY, linkHitboxSize, linkHitboxSize);
                 if (rec.Contains(point))
                 {
+                    AudioPlayer.arrowShoot.Stop();
                     item.state = new NoItem(item);
                 }
             }
