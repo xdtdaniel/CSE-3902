@@ -19,7 +19,7 @@ namespace Game1.Player.PlayerCharacter
         public bool isDamaged = false;
         public bool isMoving = false;
         public bool movable = true;
-        private bool isInvincible = false;
+        public bool isInvincible = false;
         public bool isDead = false;
         public int xSpeed = (int)(1.5 * scale);
         public int ySpeed = (int)(1.5 * scale);
@@ -224,9 +224,6 @@ namespace Game1.Player.PlayerCharacter
         public void Win()
         {
             state = new WinLink(this);
-        }
-        public void BecomeInvincible() {
-            isInvincible = true;
         }
 
         public void Update()

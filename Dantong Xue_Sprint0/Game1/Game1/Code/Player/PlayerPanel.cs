@@ -46,6 +46,7 @@ namespace Game1
             if (PlayerAndBlockCollisionHandler.doorSide != "")
             {
                 clockWorking = false;
+                game.link.isInvincible = false;
             }
             return clockWorking;
         }
@@ -91,7 +92,7 @@ namespace Game1
             if (clockWorking && !game.link.isDead)
             {
                 game.link.movable = true;
-                game.link.BecomeInvincible();
+                game.link.isInvincible = true;
                 
             }
 
