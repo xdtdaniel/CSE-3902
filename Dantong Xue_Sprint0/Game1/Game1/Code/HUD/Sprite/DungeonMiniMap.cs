@@ -16,10 +16,30 @@ namespace Game1.Code.HUD.Sprite
         private int miniMapWidth = 64 * scale;
         private int blueSpotHeight = 3 * scale;
         private int blueSpotWidth = 3 * scale;
-        private int miniRoomWidth = 8 * scale;
-        private int miniRoomHeight = 4 * scale;
+        private static int miniRoomWidth = 8 * scale;
+        private static int miniRoomHeight = 4 * scale;
 
-
+        private static int numberOfRoom = 18;
+        private Vector2[] miniRoomPosOnMap = new Vector2[numberOfRoom];
+        private Vector2 roomPos_1 = new Vector2(2 * miniRoomWidth, miniRoomHeight);
+        private Vector2 roomPos_2 = new Vector2(3 * miniRoomWidth, miniRoomHeight);
+        private Vector2 roomPos_3 = new Vector2(2 * miniRoomWidth, 2 * miniRoomHeight);
+        private Vector2 roomPos_4 = new Vector2(3 * miniRoomWidth, 2 * miniRoomHeight);
+        private Vector2 roomPos_5 = new Vector2(5 * miniRoomWidth, 2 * miniRoomHeight);
+        private Vector2 roomPos_6 = new Vector2(6 * miniRoomWidth, 2 * miniRoomHeight);
+        private Vector2 roomPos_7 = new Vector2(miniRoomWidth, 3 * miniRoomHeight);
+        private Vector2 roomPos_8 = new Vector2(2 * miniRoomWidth, 3 * miniRoomHeight);
+        private Vector2 roomPos_9 = new Vector2(3 * miniRoomWidth, 3 * miniRoomHeight);
+        private Vector2 roomPos_10 = new Vector2(4 * miniRoomWidth, 3 * miniRoomHeight);
+        private Vector2 roomPos_11 = new Vector2(5 * miniRoomWidth, 3 * miniRoomHeight);
+        private Vector2 roomPos_12 = new Vector2(2 * miniRoomWidth, 4 * miniRoomHeight);
+        private Vector2 roomPos_13 = new Vector2(3 * miniRoomWidth, 4 * miniRoomHeight);
+        private Vector2 roomPos_14 = new Vector2(4 * miniRoomWidth, 4 * miniRoomHeight);
+        private Vector2 roomPos_15 = new Vector2(3 * miniRoomWidth, 5 * miniRoomHeight);
+        private Vector2 roomPos_16 = new Vector2(2 * miniRoomWidth, 6 * miniRoomHeight);
+        private Vector2 roomPos_17 = new Vector2(3 * miniRoomWidth, 6 * miniRoomHeight);
+        private Vector2 roomPos_18 = new Vector2(4 * miniRoomWidth, 6 * miniRoomHeight);
+        
         private int mapX;
         private int mapY;
         private int blueSpotX;
@@ -34,8 +54,7 @@ namespace Game1.Code.HUD.Sprite
         private int preMapY = -36 * scale;
         private int preBlueSpotX = 42 * scale;
         private int preBlueSpotY = -12 * scale;
-        private int preRedSpotX = 48 * scale;
-        private int preRedSpotY = -48 * scale;
+        private int preRedSpotX = 2 * scale;
 
         private int prevMapID;
 
@@ -44,6 +63,26 @@ namespace Game1.Code.HUD.Sprite
         private Texture2D redSpot; //indicate the room with triforce.
         public DungeonMiniMap(Dictionary<string, int> itemList) {
             this.itemList = itemList;
+
+            miniRoomPosOnMap = new Vector2[numberOfRoom];
+            miniRoomPosOnMap[0] = roomPos_1;
+            miniRoomPosOnMap[1] = roomPos_2;
+            miniRoomPosOnMap[2] = roomPos_3;
+            miniRoomPosOnMap[3] = roomPos_4;
+            miniRoomPosOnMap[4] = roomPos_5;
+            miniRoomPosOnMap[5] = roomPos_6;
+            miniRoomPosOnMap[6] = roomPos_7;
+            miniRoomPosOnMap[7] = roomPos_8;
+            miniRoomPosOnMap[8] = roomPos_9;
+            miniRoomPosOnMap[9] = roomPos_10;
+            miniRoomPosOnMap[10] = roomPos_11;
+            miniRoomPosOnMap[11] = roomPos_12;
+            miniRoomPosOnMap[12] = roomPos_13;
+            miniRoomPosOnMap[13] = roomPos_14;
+            miniRoomPosOnMap[14] = roomPos_15;
+            miniRoomPosOnMap[15] = roomPos_16;
+            miniRoomPosOnMap[16] = roomPos_17;
+            miniRoomPosOnMap[17] = roomPos_18;
 
             prevMapID = LoadAll.Instance.GetCurrentMapID();
 
@@ -73,81 +112,14 @@ namespace Game1.Code.HUD.Sprite
             spriteBatch.Draw(spot, destinationRectangle, sourceRectangle, Color.White);
 
             //draw redspot if player have compass
-            if (itemList["Compass"] > 0 &&itemList["Map"]>0) {
-                if (LoadItem.getTriforceRoom() == 1 || LoadItem.getTriforceRoom() == 2)
-                {                   
-                    redSpotX -= LoadItem.getTriforceRoom() * miniRoomWidth;
-                }
-                if (LoadItem.getTriforceRoom() == 4) 
-                {
-                    redSpotX += miniRoomWidth * 2;
-                    redSpotY += miniRoomHeight;
-                }
-                if (LoadItem.getTriforceRoom() == 5|| LoadItem.getTriforceRoom() == 6)
-                {
-                    redSpotX += miniRoomWidth* LoadItem.getTriforceRoom()-1;
-                    redSpotY += miniRoomHeight;
-                }
-                if (LoadItem.getTriforceRoom() == 8)
-                {
-                    redSpotX += miniRoomWidth;
-                    redSpotY += miniRoomHeight*2;
-                }
-                if (LoadItem.getTriforceRoom() == 9)
-                {
-                    redSpotX += miniRoomWidth*2;
-                    redSpotY += miniRoomHeight * 2;
-                }
-                if (LoadItem.getTriforceRoom() == 10)
-                {
-                    redSpotX += miniRoomWidth * 3;
-                    redSpotY += miniRoomHeight * 2;
-                }
-                if (LoadItem.getTriforceRoom() == 11)
-                {
-                    redSpotX += miniRoomWidth * 4;
-                    redSpotY += miniRoomHeight * 2;
-                }
-                if (LoadItem.getTriforceRoom() == 12)
-                {
-                    redSpotX += miniRoomWidth;
-                    redSpotY += miniRoomHeight * 3;
-                }
-                if (LoadItem.getTriforceRoom() == 13)
-                {
-                    redSpotX += miniRoomWidth * 2;
-                    redSpotY += miniRoomHeight * 3;
-                }
-                if (LoadItem.getTriforceRoom() == 14)
-                {
-                    redSpotX += miniRoomWidth * 3;
-                    redSpotY += miniRoomHeight * 3;
-                }
-                if (LoadItem.getTriforceRoom() == 15)
-                {
-                    redSpotX += miniRoomWidth * 2;
-                    redSpotY += miniRoomHeight * 4;
-                }
-                if (LoadItem.getTriforceRoom() == 16)
-                {
-                    redSpotX += miniRoomWidth;
-                    redSpotY += miniRoomHeight * 5;
-                }
-                if (LoadItem.getTriforceRoom() == 17)
-                {
-                    Debug.WriteLine("roomID: " + LoadItem.getTriforceRoom());
-                    redSpotX += miniRoomWidth*2;
-                    redSpotY += miniRoomHeight * 5;
-                }
-                if (LoadItem.getTriforceRoom() == 18)
-                {
-                    redSpotX += miniRoomWidth*3;
-                    redSpotY += miniRoomHeight * 5;
-                }
-
-                //draw red spot if have compass
+            if (itemList["Compass"] > 0) {
+                int triforceRoomID = LoadItem.getTriforceRoom() - 1; // map id starts from 1
+                redSpotX += (int)miniRoomPosOnMap[triforceRoomID].X;
+                redSpotY += (int)miniRoomPosOnMap[triforceRoomID].Y;
+               
                 sourceRectangle = new Rectangle(0, 0, redSpot.Width, redSpot.Height);
                 destinationRectangle = new Rectangle(redSpotX, redSpotY, blueSpotWidth, blueSpotHeight);
+
                 spriteBatch.Draw(redSpot, destinationRectangle, sourceRectangle, Color.White);
             }
 
@@ -182,8 +154,8 @@ namespace Game1.Code.HUD.Sprite
             blueSpotX = spotOffsetX + preBlueSpotX + (int)newStartX;
             blueSpotY = spotOffsetY + preBlueSpotY + (int)newStartY;
             //update red spot position wwith camera
-            redSpotX =  preRedSpotX + blueSpotWidth+(int)newStartX;
-            redSpotY =  preRedSpotY + (int)newStartY;
+            redSpotX = preRedSpotX + mapX;
+            redSpotY = mapY;
 
         }
     }
