@@ -58,8 +58,8 @@ namespace Game1.Player.PlayerCharacter
 
             itemList = new Dictionary<string, int>();
             itemList.Add("Arrow", 0);
-            itemList.Add("Bomb", 0);
-            itemList.Add("Boomerang", 0);
+            itemList.Add("Bomb", 10);
+            itemList.Add("Boomerang", 10);
             itemList.Add("Bow", 0);
             itemList.Add("Clock", 0);
             itemList.Add("Compass", 0);
@@ -228,6 +228,10 @@ namespace Game1.Player.PlayerCharacter
 
         public void Update()
         {
+            if (itemList["Heart"] == 1)
+            {
+                AudioPlayer.linkLowHealth.Play();
+            }
             // SwordBeam is the upgraded version of WoodenSword
             if (itemList["SwordBeam"] > 0)
             {

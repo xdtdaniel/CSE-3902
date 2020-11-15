@@ -54,7 +54,6 @@ namespace Game1.Code.Player
 
                             case "BombExplosion":
                                 tuple.Item1.TakeDamage(item.link.bombExplosionDamage);
-                                AudioPlayer.bombBlow.Play();
                                 break;
 
                             case "Boomerang":

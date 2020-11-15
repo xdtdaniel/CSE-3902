@@ -17,7 +17,6 @@ namespace Game1.Code.Audio.Sounds
         public void Play()
         {
             instance.Play();
-            instance.IsLooped = true;
         }
 
         public void Stop()

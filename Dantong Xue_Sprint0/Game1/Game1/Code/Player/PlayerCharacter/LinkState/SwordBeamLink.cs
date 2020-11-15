@@ -37,6 +37,7 @@ namespace Game1.Player.PlayerCharacter
             }
 
             this.link = link;
+
         }
         public void WoodenSwordAttack() { }
         public void SwordBeamAttack() { }

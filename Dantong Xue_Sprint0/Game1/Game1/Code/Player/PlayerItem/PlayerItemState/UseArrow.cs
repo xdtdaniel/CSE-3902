@@ -43,7 +43,6 @@ namespace Game1.Player.PlayerCharacter
             this.item = item;
 
             rectangle = new Rectangle();
-            AudioPlayer.arrowShoot.Play();
         }
         public void UseItem(string itemName) 
         {
@@ -58,7 +57,11 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update() 
         {
-            
+            if (currentFrame == 0)
+            {
+
+                AudioPlayer.arrowShoot.Play();
+            }
             currentFrame++;
             if (currentFrame >= maxCurrentFrame)
             {

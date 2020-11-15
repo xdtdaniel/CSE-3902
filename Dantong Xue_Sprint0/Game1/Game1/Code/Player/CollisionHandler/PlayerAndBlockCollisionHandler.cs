@@ -1,4 +1,5 @@
-﻿using Game1.Code.LoadFile;
+﻿using Game1.Code.Audio;
+using Game1.Code.LoadFile;
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -58,6 +59,7 @@ namespace Game1.Code.Player
                                 {
                                     LoadAll.Instance.UnlockDoor(collidedSide);
                                     link.itemList["Key"]--;
+                                    AudioPlayer.doorUnlock.Play();
                                 }
                                 break;
                             case "stairs":

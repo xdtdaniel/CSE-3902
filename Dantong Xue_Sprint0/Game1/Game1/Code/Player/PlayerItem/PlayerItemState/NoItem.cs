@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Player.Interface;
+using Game1.Code.Audio;
 
 namespace Game1.Player.PlayerCharacter
 {

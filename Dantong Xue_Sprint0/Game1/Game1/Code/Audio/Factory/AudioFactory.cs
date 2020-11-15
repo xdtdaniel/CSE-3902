@@ -41,9 +41,6 @@ namespace Game1.Code.Audio.Factory
 			getHeart = content.Load<SoundEffect>("Audio/Get_Heart"); //or key
 			getTriforce = content.Load<SoundEffect>("Audio/Get_Triforce");
 			bossHit = content.Load<SoundEffect>("Audio/Boss_Hit");
-			
-			
-			//impelementation Pending
 			bombBlow = content.Load<SoundEffect>("Audio/Bomb_Blow");
 			bombDrop = content.Load<SoundEffect>("Audio/Bomb_Drop");
 			swordSlash = content.Load<SoundEffect>("Audio/Sword_Slash");

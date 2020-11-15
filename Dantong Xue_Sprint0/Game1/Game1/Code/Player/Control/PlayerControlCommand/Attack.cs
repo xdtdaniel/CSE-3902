@@ -1,4 +1,5 @@
-﻿using Game1.Code.Player.Interface;
+﻿using Game1.Code.Audio;
+using Game1.Code.Player.Interface;
 
 namespace Game1.Code.Player.PlayerControlCommand
 {
@@ -12,6 +13,7 @@ namespace Game1.Code.Player.PlayerControlCommand
 
         public void Execute()
         {
+            AudioPlayer.swordSlash.Play();
             if (game.link.timeSinceAttack >= game.link.timeBetweenAttack)
             {
                 if (game.link.itemList["WoodenSword"] > 0)
@@ -19,6 +21,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.WoodenSwordAttack();
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
+                        AudioPlayer.swordShoot.Play();
                         game.link.itemPool[game.link.itemIndex].UseItem("RangedWoodenSword");
                     }
                     game.link.timeSinceAttack = 0;
@@ -28,6 +31,7 @@ namespace Game1.Code.Player.PlayerControlCommand
                     game.link.state.SwordBeamAttack();
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
+                        AudioPlayer.swordShoot.Play();
                         game.link.itemPool[game.link.itemIndex].UseItem("RangedSwordBeam");
                     }
                     game.link.timeSinceAttack = 0;
