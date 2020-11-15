@@ -8,8 +8,8 @@ Author of the .cs file: Dantong Xue
 
 Specific comments on code quality:
 
-This class does not contain lot of fields and all the fields are private. There are not much of dependency from the outside
-and the overall coupling should be loose. The main method of the class is lengthy and performs more than one functions, but
+All fields of this class are private and methods have very few references outside the class. It has a low coupling due to the low dependency. 
+The main method of the class is lengthy and performs more than one functions, but
 there are not many methods in the class and other methods are very simple to read. So I think the cohesion of the class is high.
 
 A hypothetical change and how to implement it:

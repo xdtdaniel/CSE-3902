@@ -1,0 +1,19 @@
+﻿Description: This is the qualiy Code Review file for HUDPanel.cs
+
+Author: Jason Lian
+Date: 11/15/2020
+Sprint number: 4
+Name of the .cs file: HUDPanel.cs
+Author of the .cs file: Baihua Yang & Zhihan Li
+
+Specific comments on code quality:
+
+This class does not contain lot of fields and all the fields are private. There are not much of dependency from the outside
+and the overall coupling should be loose. The class contains very little implementation details about how each part of the
+HUD menu actually work so it has a high cohesion.
+
+A hypothetical change and how to implement it:
+
+We can add a functionality which let the player choose a room on the map in the HUD menu and teleport to the chosen room. 
+This functionality requires changes in the HUD panel class and the relative player classes. For the HUD part, the new HUD
+panel should allow room selection, and this can be implemented in the similar way of implementing the item selection mechanism.
