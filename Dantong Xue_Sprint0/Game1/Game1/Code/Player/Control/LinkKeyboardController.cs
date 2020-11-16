@@ -20,10 +20,10 @@ namespace Game1
             RegisterCommand(Keys.D, new MoveRight(game));
             RegisterCommand(Keys.W, new MoveUp(game));
             RegisterCommand(Keys.A, new MoveLeft(game));
-            //RegisterCommand(Keys.Down, new MoveDown(game));
-            //RegisterCommand(Keys.Right, new MoveRight(game));
-            //RegisterCommand(Keys.Up, new MoveUp(game));
-            //RegisterCommand(Keys.Left, new MoveLeft(game));
+            RegisterCommand(Keys.Down, new MoveDown(game));
+            RegisterCommand(Keys.Right, new MoveRight(game));
+            RegisterCommand(Keys.Up, new MoveUp(game));
+            RegisterCommand(Keys.Left, new MoveLeft(game));
             RegisterCommand(Keys.N, new Attack(game));
             RegisterCommand(Keys.Z, new UseItem(game));
 

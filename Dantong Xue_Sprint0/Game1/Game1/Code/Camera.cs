@@ -115,25 +115,25 @@ namespace Game1.Code
         }
 
         public void UpdateMovingState(string movingDirection) {
-            if ((Keyboard.GetState().IsKeyDown(Keys.Up) && !moving) || movingDirection == "up")
+            if (movingDirection == "up")
             {
                 moving = true;
                 direction = 0;
             }
 
-            if ((Keyboard.GetState().IsKeyDown(Keys.Down) && !moving) || movingDirection == "down")
+            if (movingDirection == "down")
             {
                 moving = true;
                 direction = 2;
             }
 
-            if ((Keyboard.GetState().IsKeyDown(Keys.Left) && !moving) || movingDirection == "left")
+            if (movingDirection == "left")
             {
                 moving = true;
                 direction = 3;
             }
 
-            if ((Keyboard.GetState().IsKeyDown(Keys.Right) && !moving) || movingDirection == "right")
+            if (movingDirection == "right")
             {
                 moving = true;
                 direction = 1;
@@ -191,8 +191,6 @@ namespace Game1.Code
             }
 
             oldState = newState;
-
-
             return paused;
         }
 

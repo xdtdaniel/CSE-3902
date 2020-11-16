@@ -1,6 +1,8 @@
-﻿using Game1.Code.HUD.Sprite;
+﻿using Game1.Code.HUD.Factory;
+using Game1.Code.HUD.Sprite;
 using Game1.Code.LoadFile;
 using Game1.Code.Player;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
@@ -29,8 +31,10 @@ namespace Game1.Code.HUD
         private IHUDSprite hudNumberOfRuby;
         private IHUDSprite dungeonMiniMap;
         private IHUDSprite dungeonPauseScreen;
+        private IHUDSprite displayPause;
 
         private ItemSelectionController itemSelectionController;
+
 
         public HUDPanel(Game1 game)
         {
@@ -49,12 +53,15 @@ namespace Game1.Code.HUD
             hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
             dungeonMiniMap = new DungeonMiniMap(game.link.itemList);
             dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
+            displayPause = new DisplayPause(game);
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
+
 
         }
         public void HUDUpdate()
         {
+
             string side = PlayerAndBlockCollisionHandler.doorSide;
             bool switched = PlayerAndBlockCollisionHandler.roomSwitched;
             int targetX = (int)LoadAll.Instance.startPos.X;
@@ -72,6 +79,7 @@ namespace Game1.Code.HUD
             dungeonMiniMap.Update(x, y);
             dungeonPauseScreen.Update(x, y);
             itemSelectionController.Update(x,y);
+            displayPause.Update(x, y);
 
             if (switched)
             {
@@ -141,6 +149,7 @@ namespace Game1.Code.HUD
             dungeonMiniMap.Draw(game._spriteBatch);
             dungeonPauseScreen.Draw(game._spriteBatch);
             itemSelectionController.Draw();
+            displayPause.Draw(game._spriteBatch);
 
         }
 

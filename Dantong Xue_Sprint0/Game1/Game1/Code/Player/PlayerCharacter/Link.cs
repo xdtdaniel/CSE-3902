@@ -58,8 +58,8 @@ namespace Game1.Player.PlayerCharacter
 
             itemList = new Dictionary<string, int>();
             itemList.Add("Arrow", 0);
-            itemList.Add("Bomb", 10);
-            itemList.Add("Boomerang", 10);
+            itemList.Add("Bomb", 0);
+            itemList.Add("Boomerang", 0);
             itemList.Add("Bow", 0);
             itemList.Add("Clock", 0);
             itemList.Add("Compass", 0);
@@ -73,7 +73,7 @@ namespace Game1.Player.PlayerCharacter
             itemList.Add("BlueCandle", 0);
             itemList.Add("BluePotion", 0);
             itemList.Add("BlueRing", 0);
-            itemList.Add("WoodenSword", 1);
+            itemList.Add("WoodenSword", 1);                // default weapon
             itemList.Add("SwordBeam", 0);
 
             itemPool = new LinkItem[MAX_ITEM_SPRITE_NUM];

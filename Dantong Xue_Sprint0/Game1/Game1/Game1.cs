@@ -51,7 +51,7 @@ namespace Game1
         public string selectedItemName;
 
         private QuitResetController quitResetController;
-        private bool paused;
+        public bool paused;
         private bool clockWorking;
         private bool gameStarted;
         public int mapID;
@@ -96,7 +96,7 @@ namespace Game1
 
             camera = new Camera(GraphicsDevice.Viewport);
             AudioPlayer.bgm.Play();
-            
+
         }
 
         protected override void LoadContent()
@@ -258,11 +258,8 @@ namespace Game1
             playerPanel.PlayerDraw();
 
             // HUD
-            // must be the last to draw
             hudPanel.HUDDraw();
 
-            string x = "hud x: " + hudPanel.x.ToString();
-            string y = "hud y: " + hudPanel.y.ToString();
 
             if (!gameStarted)
             {

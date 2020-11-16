@@ -1111,3 +1111,4 @@ C:\Users\FanShenWork\Source\Repos\xdtdaniel\CSE-3902\Dantong Xue_Sprint0\Game1\G
 C:\Users\FanShenWork\Source\Repos\xdtdaniel\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\enemies\wallmaster3_sprite.xnb
 C:\Users\FanShenWork\Source\Repos\xdtdaniel\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\start_menu.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\start_menu.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Pause.xnb
