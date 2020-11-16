@@ -1,0 +1,10 @@
+﻿Author: Fan Shen
+Review date: 11/15/2020
+Sprint number: 4
+Name of the .cs file being reviewed: WinLink.cs
+Author of the .cs file being reviewed: Patrick Cheng
+Number of minutes taken to complete the code review: 1 minute
+
+Specific comments on what is readable and what is not: 
+All the varaibles and their name is clearly labeled and follows convention. They are easy to understand and to follow.
+The methods that are implemented are clear and easy to read as well.

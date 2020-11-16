@@ -1,0 +1,14 @@
+
+Author: Fan Shen
+Date: 11/15/2020
+Sprint number: 4
+Name of the .cs file: WinLink.cs
+Author of the .cs file: Patrick Cheng
+
+Specific comments on code quality:
+
+Low coupling: Only used Link class, LinkSprite Class and Triforce Class 
+High cohesion: This method is only concerned with handling a change in the state of the player character when picking up Triforce.
+
+Suggestions: 
+Nothing much more is needed.
