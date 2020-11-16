@@ -1,0 +1,13 @@
+Description: This is the qualiy Code Review file for the damage taking part of GetHeart.cs
+Author: Patrick Cheng
+Date: 11/15/2020
+Sprint number: 4
+Name of the .cs file: GetHeart.cs
+Author of the .cs file: Fan Shen
+
+Specific comments on code quality:
+
+This is the class implementation for the sound of getting a heart.The getheart audio class is really simple and straight forward. The method deals with when the player picks up a heart the audio of it sould be played. The class is very easy to maintain.The class has low coupling and high cohesion.
+ 
+Hyporhetical change:
+The implementation of the class is very simple. If new content is needed in the future we only need to change the condition of when the sound should be played. Though many other audio classes have been implemented, not a lot of chagnes will be needed in the future.
