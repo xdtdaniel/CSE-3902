@@ -17,10 +17,10 @@ Author: Baihua Yang, Zhihan Li.
 [Camera]
 [Sound]
 [States]
-      1. [Pause Screen] Press [Space] to pause the game, press [Space] to resume.
-      2. [Winning State] Grab the triforce, change the screen color to green, end the game. 
-      3. [Game over State] Change the screen color to black, Prompt user to restart a new game by press [M].    
+      1. Pause Screen Press: [Space] to pause the game, press [Space] to resume.
+      2. Winning State: Grab the triforce, change the screen color to green, end the game. 
+      3. Game over State: Change the screen color to black, Prompt user to restart a new game by press [M].    
       
 [Start Screen]
-       Start Screen,  press [Enter] to start game.
+       Start Screen, press [Enter] to start game.
  
