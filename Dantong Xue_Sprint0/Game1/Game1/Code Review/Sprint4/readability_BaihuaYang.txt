@@ -1,0 +1,10 @@
+Author: Baihua Yang
+Date: Nov 15, 2020
+Sprint 4
+
+File: StartScreen.cs
+File Author: Dantong Xue
+
+Class name is intuitively understandable, telling this class is meant to construct an object to display a start screen of the game.
+Names of fields and methods are easily comprehensible. 
+No complicated algorithms.

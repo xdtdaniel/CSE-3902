@@ -1,0 +1,14 @@
+
+Author: Baihua Yang
+Date: 11/15/2020
+Sprint number: 4
+Name of the .cs file: StartScreen.cs
+Author of the .cs file: Dantong Xue
+
+Specific comments on code quality:
+
+Low coupling: only using a texture loader from another class. 
+High cohesion: every method and data in this class are used to construct a start screen of the game. 
+
+Suggestions: 
+Good enough. No change is needed.
