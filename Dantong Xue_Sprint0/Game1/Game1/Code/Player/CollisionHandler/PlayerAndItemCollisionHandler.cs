@@ -7,12 +7,11 @@ using System;
 using System.Collections.Generic;
 
 namespace Game1.Code.Player
-{
+{ 
     public static class PlayerAndItemCollisionHandler
     {
         private static string collidedSide = "";
         //used to store the removed items, it might used to count number of each item player had.
-        private static List<Tuple<IItemSprite, string>> outRoomList = new List<Tuple<IItemSprite, string>>();
         private static IItemSprite item;
         private static int mapID;
         
@@ -31,36 +30,31 @@ namespace Game1.Code.Player
                     {
                         case "Arrow":
                             link.itemList["Arrow"]++;
-                            item = new Arrow(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Arrow"));
+                            item = new Arrow(X, Y);                          
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getItem.Play();
                             break;
                         case "Bomb":
                             link.itemList["Bomb"]++;
-                            item = new Bomb(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Bomb"));
+                            item = new Bomb(X, Y);                          
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getItem.Play();
                             break;
                         case "Boomerang":
                             link.itemList["Boomerang"]++;
                             item = new Boomerang(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Boomerang"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getItem.Play();
                             break;
                         case "Bow":
                             link.itemList["Bow"]++;
                             link.PickUp(3);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Bow"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getItem.Play();
                             break;
                         case "Clock":
                             link.itemList["Clock"]++;
                             item = new Clock(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Clock"));
                             roomItemList.RemoveAt(index);
                             mapID = LoadAll.Instance.GetCurrentMapID();
                             AudioPlayer.getItem.Play();
@@ -68,14 +62,12 @@ namespace Game1.Code.Player
                         case "Compass":
                             link.itemList["Compass"]++;
                             item = new Compass(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Compass"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getItem.Play();
                             break;
                         case "Fairy":
                             link.itemList["Fairy"]++;
                             item = new Fairy(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Fairy"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getItem.Play();
                             break;
@@ -86,7 +78,6 @@ namespace Game1.Code.Player
                                 link.itemList["Heart"] = link.itemList["HeartContainer"];
                             }
                             item = new Heart(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Heart"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getHeart.Play();
                             break;
@@ -95,35 +86,30 @@ namespace Game1.Code.Player
                             link.itemList["Heart"] += 2;
                             link.PickUp(4);
                             item = new HeartContainer(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "HeartContainer"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getHeart.Play();
                             break;
                         case "Key":
                             link.itemList["Key"]++;
                             item = new Key(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Key"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getHeart.Play();
                             break;
                         case "Map":
                             link.itemList["Map"]++;
                             item = new Map(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Map"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getItem.Play();
                             break;
                         case "Ruby":
                             link.itemList["Ruby"]++;
                             item = new Ruby(X, Y);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Ruby"));
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getRupee.Play();
                             break;
                         case "Triforce":
                             link.itemList["Triforce"]++;
                             link.PickUp(2);
-                            outRoomList.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                             roomItemList.RemoveAt(index);
                             link.Win();
                             AudioPlayer.getTriforce.Play();
@@ -131,18 +117,9 @@ namespace Game1.Code.Player
                     }
 
                 }
-                
-
 
             }
 
-
-        }
-
-        //might use it later
-        static public List<Tuple<IItemSprite, string>> GetOutRoomItemList()
-        {
-            return outRoomList;
         }
 
         static public int getMapID() {
