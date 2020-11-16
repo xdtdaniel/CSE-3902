@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Boss_Hit.wav</SourceFile>
-  <SourceTime>2020-11-11T20:48:44.0632237-05:00</SourceTime>
-  <DestFile>C:/Users/FanShenWork/source/repos/CSE-3902/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Audio/Boss_Hit.xnb</DestFile>
-  <DestTime>2020-11-15T17:57:41.8115907-05:00</DestTime>
+  <SourceFile>C:/git_repo/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Boss_Hit.wav</SourceFile>
+  <SourceTime>2020-11-12T15:31:50.596801+08:00</SourceTime>
+  <DestFile>C:/git_repo/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Audio/Boss_Hit.xnb</DestFile>
+  <DestTime>2020-11-16T08:28:12.7230847+08:00</DestTime>
   <Importer>WavImporter</Importer>
-  <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
+  <ImporterTime>2020-08-10T16:17:54+08:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
-  <ProcessorTime>2020-08-10T16:17:54-04:00</ProcessorTime>
+  <ProcessorTime>2020-08-10T16:17:54+08:00</ProcessorTime>
   <Parameters>
     <Key>Quality</Key>
     <Value>Best</Value>

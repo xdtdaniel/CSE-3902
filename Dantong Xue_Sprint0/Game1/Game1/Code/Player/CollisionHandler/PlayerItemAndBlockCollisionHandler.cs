@@ -2,6 +2,7 @@
 using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Game1.Code.Player
 {
@@ -20,6 +21,8 @@ namespace Game1.Code.Player
                         collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), rect);
                         if (collidedSide != "")
                         {
+                            Debug.WriteLine(item.GetItemName());
+                            Debug.WriteLine(collidedSide);
                             switch (item.GetItemName())
                             {
                                 case "Arrow":
@@ -29,6 +32,7 @@ namespace Game1.Code.Player
                                 case "BombExplosion":
                                     if (kvp.Key == "bombWalls")
                                     {
+                                        Debug.WriteLine(collidedSide);
                                         LoadAll.Instance.SwitchToAlternative(collidedSide);
                                         LoadAll.Instance.LoadRoom();
                                     }

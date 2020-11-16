@@ -127,11 +127,6 @@ namespace Game1.Code.LoadFile
             }
         }
 
-        public void ClearOldRoom()
-        {
-            oldRoomMapBlocksToDraw.Clear();
-        }
-
 
         public void PrevMap()
         {
@@ -213,6 +208,12 @@ namespace Game1.Code.LoadFile
             return movables;
         }
 
+        private int GetHoleCount()
+        {
+            Dictionary<string, List<Rectangle>> artifacts = LoadMap.Instance.GetArtifacts();
+            return artifacts["bombWalls"].Count;
+        }
+
         public int GetCurrentMapID() 
         {
             return currMapID;
@@ -237,7 +238,7 @@ namespace Game1.Code.LoadFile
         {
             noEnemy = enemyStatus;
 
-            if (noEnemy && movables.Count == 0)
+            if (noEnemy && movables.Count == 0 && GetHoleCount() == 0)
             {
                 SwitchToAlternative("");
                 LoadRoom();
