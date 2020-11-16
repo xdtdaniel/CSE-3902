@@ -150,10 +150,16 @@ namespace Game1
                 clockWorking = playerPanel.checkClockActivation();
                 currentMapID = LoadAll.Instance.GetCurrentMapID();
 
-                if (!clockWorking)
-                {                   
-                    DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, _spriteBatch, this);                  
+                if (clockWorking)
+                {
+                    for (int i = 0; i < EnemyList.Count; i++)
+                    {
+                        EnemyList[i].Item1.Freeze();
+                    }
+                    //                
                 }
+
+                DrawAndUpdateEnemy.Instance.UpdateAllEnemy(EnemyList, this);
 
                 mapMouseController.Update(this);
 

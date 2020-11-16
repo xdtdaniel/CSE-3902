@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/FanShenWork/Source/Repos/xdtdaniel/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerCharacterSprite/LeftShield.png</SourceFile>
-  <SourceTime>2020-11-15T22:39:58.6642876-05:00</SourceTime>
-  <DestFile>C:/Users/FanShenWork/Source/Repos/xdtdaniel/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/PlayerCharacterSprite/LeftShield.xnb</DestFile>
-  <DestTime>2020-11-15T22:55:28.2390198-05:00</DestTime>
+  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerCharacterSprite/LeftShield.png</SourceFile>
+  <SourceTime>2020-11-15T10:53:02.7561906-05:00</SourceTime>
+  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/PlayerCharacterSprite/LeftShield.xnb</DestFile>
+  <DestTime>2020-11-15T23:55:09.8037612-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

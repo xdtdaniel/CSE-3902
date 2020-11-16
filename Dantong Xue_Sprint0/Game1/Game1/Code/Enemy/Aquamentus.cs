@@ -40,6 +40,8 @@ namespace Game1.Enemy
         private ISounds BossScream = new BossScream();
         private bool BossScreamPlayed;
 
+        private bool IsFreezed = false;
+
         public Aquamentus(Vector2 location) 
         {
             Texture = EnemyTextureStorage.GetAquamentusSpriteSheet();
@@ -128,48 +130,56 @@ namespace Game1.Enemy
                 BossScreamPlayed = true;
             }
 
-            if (FireTimer < (Rnd.Next(7, 10) * 24))
+            if (!IsFreezed)
             {
-                FireTimer++;
+                if (FireTimer < (Rnd.Next(7, 10) * 24))
+                {
+                    FireTimer++;
+                }
+                else
+                {
+                    Firing = true;
+                    FireTimer = 0;
+                    CurrentFrame = 0;
+                }
+
+                UpdateFireState();
+
+                if (FrameRateModifier < 11)
+                {
+                    FrameRateModifier++;
+                }
+                else
+                {
+                    CurrentFrame++;
+                    FrameRateModifier = 0;
+                }
+
+                if (OutsideMovingRange() == true)
+                {
+                    if (Direction == 0)
+                    {
+                        Direction = 1;
+                    }
+                    else
+                    {
+                        Direction = 0;
+                    }
+                }
+
+                if (DamageTimer > 0)
+                {
+                    DamageTimer--;
+                }
+
+                UpdateLocation();
+
+                FireProjectile();
             }
             else 
             {
-                Firing = true;
-                FireTimer = 0;
-                CurrentFrame = 0;
+                IsFreezed = false;
             }
-
-            UpdateFireState();
-
-            if (FrameRateModifier < 11)
-            {
-                FrameRateModifier++;
-            }
-            else 
-            {
-                CurrentFrame++;
-                FrameRateModifier = 0;
-            }
-
-            if (OutsideMovingRange() == true) {
-                if (Direction == 0) 
-                {
-                    Direction = 1;
-                }
-                else 
-                {
-                    Direction = 0;
-                }
-            }
-
-            if (DamageTimer > 0)
-            {
-                DamageTimer--;
-            }
-
-            UpdateLocation();
-
-            FireProjectile();
 
             if (Projectile0.GetIsOnScreen())
             {
@@ -279,6 +289,11 @@ namespace Game1.Enemy
         int IEnemy.GetHP()
         {
             return hp;
+        }
+
+        void IEnemy.Freeze()
+        {
+            IsFreezed = true;
         }
     }
 }

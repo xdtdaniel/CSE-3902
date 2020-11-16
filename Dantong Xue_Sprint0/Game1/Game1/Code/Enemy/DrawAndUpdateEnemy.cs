@@ -28,7 +28,7 @@ namespace Game1.Code.Enemy
             }
         }
 
-        public void UpdateAllEnemy(List<Tuple<IEnemy, string>> Enemies, SpriteBatch spriteBatch, Game1 game)
+        public void UpdateAllEnemy(List<Tuple<IEnemy, string>> Enemies, Game1 game)
         {
             for (int i = 0; i < Enemies.Count; i++)
             {

@@ -30,6 +30,8 @@ namespace Game1
         private int hp = 100;
         private bool CanChangeDirection;
 
+        private bool IsFreezed = false;
+
         public Trap1(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetTrapSpriteSheet();
@@ -57,25 +59,35 @@ namespace Game1
         }
         public void UpdateEnemy(Game1 game)
         {
-            if (PlayerInAttackingRange(game) && MovingState == 0) {
-                MovingState = 1;
-                Velocity = 5.0;
-                CanChangeDirection = false;
+            if (!IsFreezed)
+            {
+                if (PlayerInAttackingRange(game) && MovingState == 0)
+                {
+                    MovingState = 1;
+                    Velocity = 5.0;
+                    CanChangeDirection = false;
+                }
+
+                else if (HitEdge() && MovingState == 1)
+                {
+                    MovingState = 2;
+                    Velocity = -1.0;
+
+                }
+
+                else if (Location == OriginalLocation && MovingState == 2)
+                {
+                    MovingState = 0;
+                    Velocity = 0;
+                    CanChangeDirection = true;
+                }
+
+                UpdateLocation();
             }
-
-            else if (HitEdge() && MovingState == 1) {
-                MovingState = 2;
-                Velocity = -1.0;
-
-            }
-
-            else if (Location == OriginalLocation && MovingState == 2) {
-                MovingState = 0;
-                Velocity = 0;
-                CanChangeDirection = true;
-            }
-
-            UpdateLocation();
+            else
+            {
+                IsFreezed = false;
+            }  
         }
 
         private bool PlayerInAttackingRange(Game1 game)
@@ -155,6 +167,11 @@ namespace Game1
         int IEnemy.GetHP()
         {
             return hp;
+        }
+
+        void IEnemy.Freeze()
+        {
+            IsFreezed = true;
         }
     }
 }

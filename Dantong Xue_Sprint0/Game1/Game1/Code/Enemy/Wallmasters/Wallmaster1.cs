@@ -32,6 +32,8 @@ namespace Game1.Enemy
         private int Direction;
         private int Heading;
 
+        private bool IsFreezed = false;
+
         public Wallmaster1(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetWallmaster1SpriteSheet();
@@ -91,48 +93,57 @@ namespace Game1.Enemy
                 FrameRateModifier = 0;
             }
 
-            if (MovingState == 0 && PlayerInAttackingRange(game)) {
-                Direction = 3;
-                Velocity = 1;
-                MovingState = 1;
-            }
-
-            if (MovingState == 1 && Location.X <= 208 * scale) 
+            if (!IsFreezed) 
             {
-                Direction = Heading;
-                MovingState = 2;
-            }
+                if (MovingState == 0 && PlayerInAttackingRange(game))
+                {
+                    Direction = 3;
+                    Velocity = 1;
+                    MovingState = 1;
+                }
 
-            if (MovingState == 2)
+                if (MovingState == 1 && Location.X <= 208 * scale)
+                {
+                    Direction = Heading;
+                    MovingState = 2;
+                }
+
+                if (MovingState == 2)
+                {
+                    if (MovingStateTimer < 16 * 6 * scale)
+                    {
+                        MovingStateTimer++;
+                    }
+                    else
+                    {
+                        MovingStateTimer = 0;
+                        MovingState = 3;
+                    }
+                }
+
+                if (MovingState == 3)
+                {
+                    if (Location.X <= 232 * scale)
+                    {
+                        Direction = 1;
+                    }
+                    else
+                    {
+                        MovingState = 0;
+                        Velocity = 0;
+                        Location = new Vector2(OriginalLocation.X, OriginalLocation.Y);
+                        CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
+                    }
+                }
+
+                UpdateLocation();
+
+            }
+            else 
             {
-                if (MovingStateTimer < 16 * 6 * scale)
-                {
-                    MovingStateTimer++;
-                }
-                else 
-                {
-                    MovingStateTimer = 0;
-                    MovingState = 3;
-                }
+                IsFreezed = false;
             }
-
-            if (MovingState == 3)
-            {
-                if (Location.X <= 232 * scale)
-                {
-                    Direction = 1;
-                }
-                else 
-                {
-                    MovingState = 0;
-                    Velocity = 0;
-                    Location = new Vector2(OriginalLocation.X, OriginalLocation.Y);
-                    CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
-                }
-            }
-
-            UpdateLocation();
-
+           
             if (DamageTimer > 0)
             {
                 Velocity = 0;
@@ -221,6 +232,11 @@ namespace Game1.Enemy
         int IEnemy.GetHP()
         {
             return hp;
+        }
+
+        void IEnemy.Freeze()
+        {
+            IsFreezed = false;
         }
     }
 }

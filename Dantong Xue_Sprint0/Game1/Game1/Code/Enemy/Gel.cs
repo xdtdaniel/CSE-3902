@@ -34,6 +34,8 @@ namespace Game1
         private bool LeftCollide = false;
         private bool RightCollide = false;
 
+        private bool IsFreezed = false;
+
         public Gel(Vector2 location, List<Rectangle> blockList)
         {
             Texture = EnemyTextureStorage.GetGelSpriteSheet();
@@ -80,18 +82,25 @@ namespace Game1
 
             HandleBlockCollision();
 
-            if (MovingState == 1)
+            if (!IsFreezed) 
             {
-                if (MoveTimer == 0)
+                if (MovingState == 1)
                 {
-                    Direction = rnd.Next(4);
-                }
-                Move(Direction);
+                    if (MoveTimer == 0)
+                    {
+                        Direction = rnd.Next(4);
+                    }
+                    Move(Direction);
 
-                UpCollide = false;
-                DownCollide = false;
-                LeftCollide = false;
-                RightCollide = false;
+                    UpCollide = false;
+                    DownCollide = false;
+                    LeftCollide = false;
+                    RightCollide = false;
+                }
+            }
+            else
+            {
+                IsFreezed = false;
             }
 
             if (CurrentFrame == TotalFrames)
@@ -219,6 +228,11 @@ namespace Game1
         int IEnemy.GetHP()
         {
             return hp;
+        }
+
+        void IEnemy.Freeze()
+        {
+            IsFreezed = true;
         }
     }
 }

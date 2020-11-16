@@ -16,5 +16,6 @@ namespace Game1
         public List<IProjectile> GetProjectile();
         public void TakeDamage(int damageAmount);
         public int GetHP();
+        public void Freeze();
     }
 }

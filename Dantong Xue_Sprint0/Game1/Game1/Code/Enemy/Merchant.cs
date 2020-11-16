@@ -72,5 +72,10 @@ namespace Game1.Enemy
         {
             return hp;
         }
+
+        void IEnemy.Freeze()
+        {
+            // Do nothing.
+        }
     }
 }

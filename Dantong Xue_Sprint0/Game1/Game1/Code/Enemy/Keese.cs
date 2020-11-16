@@ -33,6 +33,8 @@ namespace Game1
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
 
+        private bool IsFreezed = false;
+
         public Keese(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetKeeseSpriteSheet();
@@ -69,11 +71,16 @@ namespace Game1
             Random rnd = new Random();
 #pragma warning restore IDE0059 // Unnecessary assignment of a value
 
-            UpdateDirection();
-
-            UpdateMovingState();
-
-            UpdateLocation();
+            if (!IsFreezed)
+            {
+                UpdateDirection();
+                UpdateMovingState();
+                UpdateLocation();
+            }
+            else 
+            {
+                IsFreezed = false;
+            }
 
             if (CurrentFrame == TotalFrames)
             {
@@ -294,6 +301,11 @@ namespace Game1
         int IEnemy.GetHP()
         {
             return hp;
+        }
+
+        void IEnemy.Freeze()
+        {
+            IsFreezed = true;
         }
     }
 }

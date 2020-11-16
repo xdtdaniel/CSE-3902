@@ -37,6 +37,8 @@ namespace Game1
         private bool LeftCollide = false;
         private bool RightCollide = false;
 
+        private bool IsFreezed = false;
+
         public Stalfos(Vector2 location, List<Rectangle> blockList)
         {
             Texture = EnemyTextureStorage.GetStalfosSpriteSheet();
@@ -106,7 +108,15 @@ namespace Game1
                 UpdateDirection();
             }
 
-            UpdateLocation();
+            if (!IsFreezed)
+            {
+                UpdateLocation();
+            }
+            else 
+            {
+                IsFreezed = false;
+            }
+
 
             if (DamageTimer > 0)
             {
@@ -278,8 +288,6 @@ namespace Game1
 
         }
 
-
-
         Rectangle IEnemy.GetRectangle()
         {
             return CollisionRectangle;
@@ -293,6 +301,11 @@ namespace Game1
         int IEnemy.GetHP()
         {
             return hp;
+        }
+
+        void IEnemy.Freeze()
+        {
+            IsFreezed = true;
         }
     }
 }

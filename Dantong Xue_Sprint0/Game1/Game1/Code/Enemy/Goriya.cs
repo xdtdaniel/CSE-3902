@@ -38,6 +38,9 @@ namespace Game1.Enemy
         private bool DownCollide = false;
         private bool LeftCollide = false;
         private bool RightCollide = false;
+
+        private bool IsFreezed = false;
+
         public Goriya(Vector2 location, List<Rectangle> blockList)
         {
             Texture = EnemyTextureStorage.GetGoriyaSpriteSheet();
@@ -104,35 +107,44 @@ namespace Game1.Enemy
 
         public void UpdateEnemy(Game1 game)
         {
-            if (FireTimer > Rnd.Next(180, 200) || Projectile.GetIsOnScreen())
+            if (!IsFreezed)
             {
-                if (CanFire)
+                if (FireTimer > Rnd.Next(180, 200) || Projectile.GetIsOnScreen())
                 {
-                    FireProjectile();
-                }
-                Projectile.UpdateProjectile();
+                    if (CanFire)
+                    {
+                        FireProjectile();
+                    }
+                    Projectile.UpdateProjectile();
 
-                ProjectileList.Clear();
-                ProjectileList.Add(Projectile);
+                    ProjectileList.Clear();
+                    ProjectileList.Add(Projectile);
+                }
+                else
+                {
+                    Velocity = 1;
+
+                    HandleBlockCollision();
+                    UpdateCanTurn();
+
+                    if (CanTurn)
+                    {
+                        UpdateDirection();
+                        FrameBound = UpdateFacing();
+                    }
+
+                    FireTimer++;
+
+                    CanFire = true;
+                }
+
+                UpdateLocation();
             }
-            else
+            else 
             {
-                Velocity = 1;
-
-                HandleBlockCollision();
-                UpdateCanTurn();
-
-                if (CanTurn)
-                {
-                    UpdateDirection();
-                    FrameBound = UpdateFacing();
-                }
-
-                FireTimer++;
-
-                CanFire = true;
+                IsFreezed = false;
             }
-
+            
             if (DamageTimer > 0)
             {
                 DamageTimer--;
@@ -151,8 +163,6 @@ namespace Game1.Enemy
             {
                 CurrentFrame -= 2;
             }
-
-            UpdateLocation();
         }
 
         public int GetDirection()
@@ -353,6 +363,11 @@ namespace Game1.Enemy
         int IEnemy.GetHP()
         {
             return hp;
+        }
+
+        void IEnemy.Freeze()
+        {
+            IsFreezed = true;
         }
     }
 }
