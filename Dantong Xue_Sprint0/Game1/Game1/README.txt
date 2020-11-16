@@ -15,7 +15,7 @@ Author: Baihua Yang, Zhihan Li.
     and it also display the current postion of Link.
     
 [Camera]
-[Music]
+[Sound]
 [States]
       1. [Pause Screen] Press "Space" to pause the game, press "Space" to resume.
       2. [Winning State] Grab the triforce, change the screen color to green, end the game. 
