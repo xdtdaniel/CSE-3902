@@ -232,6 +232,10 @@ namespace Game1.Player.PlayerCharacter
             {
                 AudioPlayer.linkLowHealth.Play();
             }
+            else
+            {
+                AudioPlayer.linkLowHealth.Stop();
+            }
             // SwordBeam is the upgraded version of WoodenSword
             if (itemList["SwordBeam"] > 0)
             {
