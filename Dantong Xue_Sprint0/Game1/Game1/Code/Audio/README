@@ -1,0 +1,6 @@
+This is the Readme file for Audio.
+
+Author: Fan Shen, Dantong Xue.
+  
+[Description of Features]
+Audio provides soundeffects(SFX) and background music functionality to the game with an ISounds interface with multiple concrete classes reponsible for different kinds of SFX in Game. The interface provides mainly 2 functions: Play and Stop by utilizing built-in functions of SoundEffectInstance. For specific few SFX that needs to be looped like lowhealth and arrow sound, SoundEffectInstance.isRepeated is set to true manually in the specfic class and can be modified or added accordingly in the future. AudioPlayer is a seperate static class for other classes in other parts of the game to call and load the specific SFX objects.
