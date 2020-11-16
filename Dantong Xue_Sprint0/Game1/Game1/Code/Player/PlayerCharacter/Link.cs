@@ -58,7 +58,7 @@ namespace Game1.Player.PlayerCharacter
 
             itemList = new Dictionary<string, int>();
             itemList.Add("Arrow", 0);
-            itemList.Add("Bomb", 0);
+            itemList.Add("Bomb", 2);
             itemList.Add("Boomerang", 0);
             itemList.Add("Bow", 0);
             itemList.Add("Clock", 0);
