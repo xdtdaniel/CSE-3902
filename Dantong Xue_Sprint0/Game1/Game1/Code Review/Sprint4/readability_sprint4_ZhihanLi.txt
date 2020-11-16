@@ -1,0 +1,12 @@
+﻿Author of the code review: Zhihan Li
+
+Date of the code review: 11/16/2020
+Sprint number: 4
+
+Name of the .cs file being reviewed: HUDNumberOfHeart.cs
+Author of the .cs file being reviewed: Baihua Yang
+Number of minutes taken to complete the code review: 2 minutes
+Specific comments on code quality: 	
+    Overall, every parameter named clearly and easy to understand, each method give a short comment to describe its funtion.
+    This class read a Dictionary type itemList passed from HUDPanel, and draw number of hearts on HUD. It update the postion
+    of the heart  based on the position from camera.cs, so, it can make sure  the hearts always display on the right place when camera changed.
