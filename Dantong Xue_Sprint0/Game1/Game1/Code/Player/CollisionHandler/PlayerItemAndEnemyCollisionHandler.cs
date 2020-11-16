@@ -12,7 +12,9 @@ namespace Game1.Code.Player
         private static string collidedSide = "";
         private static int boomerangHit = -1;
         private static int rangedSwordHit = -1;
+        private static int bombExplosionHit = -1;
         private static bool[] enemyHitByRangedSword;
+        private static bool[] enemyHitByBombExplosion;
         public static void HandleCollision(LinkItem[] itemPool, List<Tuple<IEnemy, string>> enemyList)
         {
             for (int i = 0; i < itemPool.Length; i++)
@@ -27,6 +29,10 @@ namespace Game1.Code.Player
                 {
                     rangedSwordHit = -1;
                 }
+                if (i == bombExplosionHit && item.IsDone())
+                {
+                    bombExplosionHit = -1;
+                }
                 // 
                 if (rangedSwordHit == -1)
                 {
@@ -34,6 +40,14 @@ namespace Game1.Code.Player
                     for (int j = 0; j < enemyHitByRangedSword.Length; j++)
                     {
                         enemyHitByRangedSword[j] = false;
+                    }
+                }
+                if (bombExplosionHit == -1)
+                {
+                    enemyHitByBombExplosion = new bool[enemyList.Count];
+                    for (int j = 0; j < enemyHitByBombExplosion.Length; j++)
+                    {
+                        enemyHitByBombExplosion[j] = false;
                     }
                 }
 
@@ -53,7 +67,12 @@ namespace Game1.Code.Player
                                 break;
 
                             case "BombExplosion":
-                                tuple.Item1.TakeDamage(item.link.bombExplosionDamage);
+                                if (!enemyHitByBombExplosion[currEnemyIndex])
+                                {
+                                    tuple.Item1.TakeDamage(item.link.bombExplosionDamage);
+                                    bombExplosionHit = i;
+                                    enemyHitByBombExplosion[currEnemyIndex] = true;
+                                }
                                 break;
 
                             case "Boomerang":
@@ -70,6 +89,7 @@ namespace Game1.Code.Player
                                 {
                                     tuple.Item1.TakeDamage(item.link.basicAttackDamage);
                                     rangedSwordHit = i;
+                                    enemyHitByRangedSword[currEnemyIndex] = true;
                                 }
                                 item.CollisionResponse();
                                 break;
@@ -98,6 +118,7 @@ namespace Game1.Code.Player
                                 {
                                     tuple.Item1.TakeDamage(item.link.basicAttackDamage);
                                     rangedSwordHit = i;
+                                    enemyHitByRangedSword[currEnemyIndex] = true;
                                 }
                                 item.CollisionResponse();
                                 break;

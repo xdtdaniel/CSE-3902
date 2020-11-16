@@ -10,13 +10,9 @@ namespace Game1.Player
         private Texture2D Texture;
         private int sourceWidth;
         private int sourceHeight;
-        private int destinationWidth;
-        private int destinationHeight;
+        private int destinationWidth = 15 * scale;
+        private int destinationHeight = 15 * scale;
         private int column = 3;
-        private int widthDivider = 16;
-        private int heightDivider = 16;
-        private int collisionWidth = scale * 100;
-        private int collisionHeight = scale * 100;
         private int offsetX = 2 * scale;
         private int numberOfSprite = 9;
         public BombExplosion(Texture2D texture)
@@ -24,8 +20,6 @@ namespace Game1.Player
             Texture = texture;
             sourceWidth = texture.Width / column;
             sourceHeight = texture.Height;
-            destinationWidth = (int)(LoadAll.Instance.scale * widthDivider);
-            destinationHeight = (int)(LoadAll.Instance.scale * heightDivider);
         }
         public Rectangle Draw(SpriteBatch spriteBatch, int x, int y, int currentFrame, int direction)
         {
@@ -47,7 +41,7 @@ namespace Game1.Player
                 spriteBatch.Draw(Texture, destinationRectangles[i], sourceRectangle, Color.White);
             }
 
-            return new Rectangle(x - column * offsetX - collisionWidth / column, y - collisionHeight / column, collisionWidth, collisionHeight);
+            return new Rectangle(x - offsetX - destinationWidth, y - destinationHeight, destinationWidth * column, destinationHeight * column);
         }
     }
 }

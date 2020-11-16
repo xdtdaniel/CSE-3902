@@ -84,14 +84,7 @@ namespace Game1.Player.PlayerCharacter
 
         public Rectangle GetRectangle()
         {
-            if (secondFrame == resetSecondFrame && currentFrame == 1)
-            {
                 return rectangle;
-            }
-            else
-            {
-                return new Rectangle();
-            }
         }
         public bool IsDone()
         {

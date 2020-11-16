@@ -13,9 +13,9 @@ namespace Game1.Code.Player.PlayerControlCommand
 
         public void Execute()
         {
-            AudioPlayer.swordSlash.Play();
             if (game.link.timeSinceAttack >= game.link.timeBetweenAttack)
             {
+                AudioPlayer.swordSlash.Play();
                 if (game.link.itemList["WoodenSword"] > 0)
                 {
                     game.link.state.WoodenSwordAttack();
