@@ -63,6 +63,7 @@ namespace Game1.Code.LoadFile
         public void LoadOneMap(string mapName) 
         
         {
+            Debug.WriteLine(mapName);
             startPos = LoadAll.Instance.startPos;
             blocksListToDraw = new List<Tuple<IBlock, Vector2>>();
 

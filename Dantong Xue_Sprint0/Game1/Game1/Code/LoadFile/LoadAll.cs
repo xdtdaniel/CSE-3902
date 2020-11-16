@@ -194,6 +194,11 @@ namespace Game1.Code.LoadFile
             return LoadMap.Instance.GetArtifacts();
         }
 
+        public void ResetRoomID()
+        {
+            currMapID = 17;
+        }
+
         public List<List<Tuple<IBlock, Vector2>>> GetMapBlocksToDraw()
         {
             List<List<Tuple<IBlock, Vector2>>> toDraw = new List<List<Tuple<IBlock, Vector2>>>();

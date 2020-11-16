@@ -112,9 +112,6 @@ namespace Game1
             AudioFactory.LoadAllAudio(Content);
             
             _spriteFont = Content.Load<SpriteFont>("font");
-          
-            LoadAll.Instance.LoadRoom();
-            movableBlocks = LoadAll.Instance.GetMovableBlocks();
 
             
 
@@ -130,7 +127,11 @@ namespace Game1
             EnemyList = EnemyLoader.GetEnemyList();
             inRoomList = ItemLoader.GetItemList();
 
-            
+            LoadAll.Instance.ResetRoomID();
+            LoadAll.Instance.LoadRoom();
+            movableBlocks = LoadAll.Instance.GetMovableBlocks();
+
+
         }
 
         protected override void Update(GameTime gameTime)
