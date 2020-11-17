@@ -1,4 +1,0 @@
-Patrick Cheng
-Sprint 4 Reflection
-
-In this sprint, sprint 4. We manage to implement one level of Legend of Zelda. More new features were add such as the HUD, moving camera and more character states. Now players can complete from the start to finsih of the game with gameplay audio. Implementing the winning state was the main task I focused on this time. Making Link get the triforce and hold it when he got it. Change in color and audio were though the help of other teammate's implementation of the other classes. The team worked really hard, trying to making everything look good. The team communicated throughly and help each other out to make the game work. Now that sprint 4 is completed, the team will head on and do more for the next one coming up.

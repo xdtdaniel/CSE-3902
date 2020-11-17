@@ -1,5 +1,19 @@
 This is the Readme file for Sprint 4.
 
+[Complete List of Controls]
+[W,A,S,D / Arrow Up,Left,Down,Right] Move Up,Left,Down,Right
+[N] Attack
+[Z] Use current item
+[P] Go to/back from item selection interface
+[U] Item select left
+[I] Item select right
+[B] Choose item to use in inventory
+[Space] Pause/unpause the game
+[M] Respawn after death
+[Q] Quit
+[R] Hard restart (kill current process and start a new one)
+[Mouse left/right Clicks] Teleport between maps
+
 [HUD]
 Author: Baihua Yang, Zhihan Li.
   [Description of inventory Control]
@@ -14,9 +28,15 @@ Author: Baihua Yang, Zhihan Li.
     and it also display the current postion of Link.
     
 [Camera]
+Author: Jason Lian
+Camera features have been integrated to other part of this sprint.
+
+[Room Scrolling Switch]
+Author: Dantong Xue
+Room scrolling will apply when link are walking through doors.
 
 [Sound]
-Author: Fan Shen, Dantong Xue.
+Author: Fan Shen
   [Description of Features]
     Audio provides soundeffects(SFX) and background music functionality to the game with an ISounds interface with multiple concrete classes reponsible for different kinds of       SFX in Game. The interface provides mainly 2 functions: Play and Stop by utilizing built-in functions of SoundEffectInstance. For specific few SFX that needs to be looped       like lowhealth and arrow sound, SoundEffectInstance.isRepeated is set to true manually in the specfic class and can be modified or added accordingly in the future.               AudioPlayer is a seperate static class for other classes in other parts of the game to call and load the specific SFX objects.
 
