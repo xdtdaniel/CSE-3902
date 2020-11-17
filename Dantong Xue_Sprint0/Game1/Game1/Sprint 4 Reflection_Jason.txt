@@ -1,0 +1,11 @@
+﻿For this sprint, I was responsible for the implementation of camera movement.
+I also fixed the respawn location of enemies and other bugs related with enemies 
+in the game. I made sure that all the enemies and npcs in the game can be generated
+in the correct room and the correct cordinates. I had finally implement the ai for
+Wallmasters, but I think it is kind of different from the ai in the original game.
+I realized the importance of comments and commnucation in the process of fixing the
+positions of enemies, because I misunderstood the meaning of StartPos variable at
+the very begining. I assumed a different functionality of the variable and had to
+go back and rework in the correct way after putting in a lot of effort. I think 
+giving explicit variable names and provide necessary demostration comments is really
+important, especially when working with other people. 
