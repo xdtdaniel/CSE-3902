@@ -4,8 +4,6 @@ namespace Game1.Player.Interface
 {
     public interface IPlayerLinkState
     {
-        void WoodenSwordAttack();
-        void SwordBeamAttack();
         void UseItem();
         void TakeDamage(int dmgAmount);
         void KnockedBack(string collisionSide);

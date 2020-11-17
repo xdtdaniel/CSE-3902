@@ -21,6 +21,7 @@ namespace Game1.Player.PlayerCharacter
         {
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
+            link.canAttack = false;
             heartContainer = new HeartContainer(link.x - (int)LoadAll.Instance.startPos.X, link.y - (int)LoadAll.Instance.startPos.Y-offset);
 
         }
@@ -48,15 +49,6 @@ namespace Game1.Player.PlayerCharacter
             return "TwoHandHoldHeartContainer";
         }
 
-        public void WoodenSwordAttack()
-        {
-
-        }
-
-        public void SwordBeamAttack()
-        {
-
-        }
 
         public void UseItem()
         {

@@ -26,9 +26,8 @@ namespace Game1.Player.PlayerCharacter
             damagedLinkSprite = PlayerCharacterFactory.Instance.CreateDamagedPickUpLink();
             
             this.link = link;
+            link.canAttack = false;
         }
-        public void WoodenSwordAttack() { }
-        public void SwordBeamAttack() { }
         public void UseItem() { }
         public void PickUp(int pickUp) { }
         public void TakeDamage(int dmgAmount)

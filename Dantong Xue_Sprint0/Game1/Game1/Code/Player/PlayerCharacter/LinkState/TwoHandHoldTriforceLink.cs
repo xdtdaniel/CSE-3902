@@ -22,6 +22,7 @@ namespace Game1.Player.PlayerCharacter
         {
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
+            link.canAttack = false;
             triforce = new Triforce(link.x, link.y - offset);
 
         }
@@ -47,16 +48,6 @@ namespace Game1.Player.PlayerCharacter
         public string GetStateName()
         {
             return "TwoHandHoldTriforceLink";
-        }
-
-        public void WoodenSwordAttack()
-        {
-
-        }
-
-        public void SwordBeamAttack()
-        {
-
         }
 
         public void UseItem()

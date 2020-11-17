@@ -21,6 +21,7 @@ namespace Game1.Player.PlayerCharacter
         public bool movable = true;
         public bool isInvincible = false;
         public bool isDead = false;
+        public bool canAttack = true;
         public int xSpeed = (int)(1.5 * scale);
         public int ySpeed = (int)(1.5 * scale);
         public int basicAttackDamage = 1;
@@ -83,6 +84,18 @@ namespace Game1.Player.PlayerCharacter
                 itemPool[i].state = new NoItem(itemPool[i]);
             }
         }
+        public void Attack()
+        {
+            if (itemList["WoodenSword"] > 0)
+            {
+                state = new WoodenSwordLink(this);
+            }
+            else if (itemList["SwordBeam"] > 0)
+            {
+                state = new SwordBeamLink(this);
+            }
+
+        }
         public void TakeDamage(int dmgAmount)
         {
             if (!this.isDead && !isInvincible)
@@ -104,7 +117,6 @@ namespace Game1.Player.PlayerCharacter
         {
             if (!isInvincible)
             {
-                movable = false;
                 state.KnockedBack(collisionSide);
             }
         }

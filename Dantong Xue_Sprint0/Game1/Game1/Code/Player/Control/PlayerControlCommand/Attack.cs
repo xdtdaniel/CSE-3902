@@ -13,12 +13,12 @@ namespace Game1.Code.Player.PlayerControlCommand
 
         public void Execute()
         {
-            if (game.link.timeSinceAttack >= game.link.timeBetweenAttack && game.link.GetStateName() == "NormalLink")
+            if (game.link.timeSinceAttack >= game.link.timeBetweenAttack && game.link.canAttack)
             {
+                game.link.Attack();
                 AudioPlayer.swordSlash.Play();
                 if (game.link.itemList["WoodenSword"] > 0)
                 {
-                    game.link.state.WoodenSwordAttack();
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
                         AudioPlayer.swordShoot.Play();
@@ -28,7 +28,6 @@ namespace Game1.Code.Player.PlayerControlCommand
                 }
                 else if (game.link.itemList["SwordBeam"] > 0)
                 {
-                    game.link.state.SwordBeamAttack();
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
                         AudioPlayer.swordShoot.Play();

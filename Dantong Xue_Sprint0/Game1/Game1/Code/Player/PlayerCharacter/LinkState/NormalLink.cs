@@ -37,18 +37,9 @@ namespace Game1.Player.PlayerCharacter
             }
             this.link = link;
             link.movable = true;
+            link.canAttack = true;
         }
 
-        public void WoodenSwordAttack()
-        {
-            link.movable = false;
-            link.state = new WoodenSwordLink(link);
-        }
-        public void SwordBeamAttack()
-        {
-            link.movable = false;
-            link.state = new SwordBeamLink(link);
-        }
         public void UseItem()
         {
             link.movable = false;
