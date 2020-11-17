@@ -15,7 +15,14 @@ PlayerItem: Contains PlayerItemSprite and PlayerItemDrawer folders and PlayerIte
 
 PlayerCommand.cs: Integrate all the commands for Player so only a PlayerCommand and a Link instances in main game class are needed. 
 
+***Player Control***
 
+W or ↑: Move up
+A or ←: Move left
+S or ↓: Move down
+D or →: Move right
+N: Sword attack
+Z: Use current selected item
 
 /* required in Game1.cs */
 
