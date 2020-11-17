@@ -1,0 +1,5 @@
+Sprint 4 Reflection
+
+Baihua Yang
+ 
+After Sprint4, our game is supposed to have all elements that a regular game does. Compared to previous sprint, we fixed a lot of bugs and added some more new features to enrich our game, such as sound, hud, pause and start screen, etc. During the process of extending the system, I recognized the importance of maintaining high cohesion and low coupling in code development, and realized parts of my previous code was kind of abundant and not easy enough to maintain. In this sprint, I cooperated with Zhihan Li on implementing the HUD section. Sometimes wierd bugs came out but they were all eventually fixed. Overall, I think we have done a good job. 

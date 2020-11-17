@@ -13,15 +13,17 @@ namespace Game1.Player.PlayerCharacter
         private Link link;
         private IPlayerLinkSprite linkSprite;
         private Triforce triforce;
-        private int offset = 66 * scale;
+        private int offset = 16 * scale;
+        private int currentFrame = 0;
+        private int maxCurrentFrame = 90;
 
         public WinLink(Link link)
         {
             link.state = new TwoHandHoldTriforce(link);
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
-            offset = 200;
-            triforce = new Triforce(link.x, link.y - offset);
+            triforce = new Triforce(link.x - (int)LoadAll.Instance.startPos.X, link.y - (int)LoadAll.Instance.startPos.Y - offset);
+
         }
 
 
@@ -45,6 +47,13 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update()
         {
+            currentFrame++;
+            if (currentFrame == maxCurrentFrame) // decide how long the hold state will take
+            {
+                currentFrame = 0;
+                link.state = new WinLink(link);
+            }
+            triforce.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
