@@ -13,7 +13,7 @@ namespace Game1.Code.Player.PlayerControlCommand
 
         public void Execute()
         {
-            if (game.link.timeSinceAttack >= game.link.timeBetweenAttack)
+            if (game.link.timeSinceAttack >= game.link.timeBetweenAttack && game.link.GetStateName() == "NormalLink")
             {
                 AudioPlayer.swordSlash.Play();
                 if (game.link.itemList["WoodenSword"] > 0)
