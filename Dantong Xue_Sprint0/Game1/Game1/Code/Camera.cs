@@ -32,6 +32,7 @@ namespace Game1.Code
         private KeyboardState oldState;
         private KeyboardState newState;
         private bool paused;
+        public int pausedType = -1; // -1 for not paused, 0 for paused, 1 for openning inventory
 
 
         public Camera(Viewport viewport)
@@ -172,20 +173,29 @@ namespace Game1.Code
 
             if (newState.IsKeyDown(Keys.P) && !oldState.IsKeyDown(Keys.P))
             {
-
                 paused = !paused;
                 if (paused)
                 {
+                    pausedType = 1;
                     UpdateMovingState("up");
                 }
                 else
                 {
+                    pausedType = -1;
                     UpdateMovingState("down");
                 }
             }
             //pause crrent screen by press space
            else if (newState.IsKeyDown(Keys.Space) && !oldState.IsKeyDown(Keys.Space)) 
             {
+                if (!paused)
+                {
+                    pausedType = 0;
+                }
+                else
+                {
+                    pausedType = -1;
+                }
                 paused = !paused;
             
             }

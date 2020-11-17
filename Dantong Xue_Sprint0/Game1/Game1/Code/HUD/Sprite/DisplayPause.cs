@@ -26,7 +26,7 @@ namespace Game1.Code.HUD.Sprite
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (game.paused)
+            if (game.camera.pausedType == 0)
             {
                 Rectangle sourceRectangle = new Rectangle(0, 0, pauseTexture.Width, pauseTexture.Height);
                 Rectangle destinationRectangle = new Rectangle(x, y, game._graphics.PreferredBackBufferWidth, game._graphics.PreferredBackBufferHeight);
