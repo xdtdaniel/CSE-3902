@@ -108,7 +108,6 @@ namespace Game1.Code.Player
                 {
                     link.StopMoving(collidedSide, interRect);
                     movable.SetDestination(collidedSide);
-                    Debug.WriteLine(collidedSide);
                     
                 }
             }
