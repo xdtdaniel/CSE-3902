@@ -236,6 +236,7 @@ namespace Game1.Player.PlayerCharacter
         public void Win()
         {
             state = new WinLink(this);
+            LoadAll.Instance.ChangeMapColor(Color.Yellow);
         }
 
         public void Update()

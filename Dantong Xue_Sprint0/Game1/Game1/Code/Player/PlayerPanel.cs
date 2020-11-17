@@ -81,20 +81,6 @@ namespace Game1
                 }
             }
 
-            if(game.link.itemList["Triforce"] > 0 && !game.link.isDead)
-            {
-                game.link.movable = false;
-
-                game.link.Win();
-                game.link.itemList["Bomb"] = 0;
-                game.link.itemList["Arrow"] = 0;
-                game.link.itemList["SwordBeam"] = 0;
-                game.link.itemList["WoodSword"] = 0;
-                game.link.itemList["Bow"] = 0;    
-                
-                LoadAll.Instance.ChangeMapColor(Color.Yellow);
-            }
-
             //similar to normal link state, but link won't get demage, when hold clock at current room
             if (clockWorking && !game.link.isDead)
             {

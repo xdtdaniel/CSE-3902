@@ -22,6 +22,7 @@ namespace Game1.Player.PlayerCharacter
             link.state = new TwoHandHoldTriforce(link);
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
+            link.movable = false;
             link.canAttack = false;
             triforce = new Triforce(link.x - (int)LoadAll.Instance.startPos.X, link.y - (int)LoadAll.Instance.startPos.Y - offset);
 
