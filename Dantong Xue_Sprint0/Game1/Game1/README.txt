@@ -29,4 +29,7 @@ Author: Patrick Cheng, Dantong Xue, Baihua Yang, Zhihan Li, Jason Lian.
 [Start Screen]
 Author: Dantong Xue.
        Start Screen, press [Enter] to start game.
+       
+[Code Analysis]
+       No Warning or Error found in this Sprint.
  
