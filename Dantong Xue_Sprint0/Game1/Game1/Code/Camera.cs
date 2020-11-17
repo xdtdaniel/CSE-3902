@@ -18,6 +18,8 @@ namespace Game1.Code
 
         private bool moving = false;
         private int direction;
+        private const float defaultWidth = 256;
+        private const float defaultHeight = 176;
 
         private float speed = (float)16/3 * (int)LoadAll.Instance.scale;
 
@@ -40,8 +42,8 @@ namespace Game1.Code
             Bounds = viewport.Bounds;
             //Position = Vector2.Zero;
             Position = new Vector2(384,348);
-            HorizontalMoveTime = 256.0 / speed * scale;
-            VerticalMoveTime = 176.0 / speed * scale;
+            HorizontalMoveTime = defaultWidth / speed * scale;
+            VerticalMoveTime = defaultHeight / speed * scale;
             paused = false;
         }
 

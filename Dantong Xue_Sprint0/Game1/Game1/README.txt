@@ -29,7 +29,9 @@ Author: Baihua Yang, Zhihan Li.
     
 [Camera]
 Author: Jason Lian
-Camera features have been integrated to other part of this sprint.
+Camera features have been integrated to other part of this sprint. The camera class provides basic control of transition in four directions.
+It also supports the reset function which reset the camera location to the initial location, used for the ressting of the game.
+Camera transition function is incorportaed in the room transition part. The scrolling speed can be changed by changing the speed variable.
 
 [Room Scrolling Switch]
 Author: Dantong Xue

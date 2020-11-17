@@ -32,6 +32,8 @@ namespace Game1.Code.LoadFile
         private RoomAdjacencyList roomAdjacencyList;
         private List<Tuple<IBlock, Vector2>> oldRoomMapBlocksToDraw;
         private Game1 game1;
+        private const int defaultMultiplier = 8;
+        private const int defaultScale = 3;
 
         public int multiplier { get; set; }
         public double scale { get; set; }
@@ -53,8 +55,8 @@ namespace Game1.Code.LoadFile
 
         private LoadAll()
         {
-            multiplier = 8;
-            scale = 3;
+            multiplier = defaultMultiplier;
+            scale = defaultScale;
             startPos = new Vector2(0, 56 * (int)scale);
             currMapID = 17;
             isSwitched = new List<bool>(new bool[MAP_COUNT + 1]);

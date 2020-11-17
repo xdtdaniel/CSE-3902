@@ -109,7 +109,6 @@ namespace Game1.Code.Player
                             break;
                         case "Triforce":
                             link.itemList["Triforce"]++;
-                            link.PickUp(2);
                             roomItemList.RemoveAt(index);
                             link.Win();
                             AudioPlayer.getTriforce.Play();

@@ -1,0 +1,11 @@
+Author of the code review:  Dantong Xue
+
+Date of the code review: 11/16/2020 
+Sprint number: 4
+
+Name of the .cs file being reviewed: Camara.cs
+Author of the .cs file being reviewed: Jason Lian
+Number of minutes taken to complete the code review: 5 minutes
+
+Specific comments on code quality:
+Variable names are easy to understand. The code logic is straightforward to follow. The magic numbers are fixed. Overall, the camera class is very readable.

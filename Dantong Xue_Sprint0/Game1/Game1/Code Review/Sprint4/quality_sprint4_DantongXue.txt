@@ -1,0 +1,15 @@
+Author of the code review:  Dantong Xue
+
+Date of the code review: 11/16/2020 
+Sprint number: 4
+
+Name of the .cs file being reviewed: Camara.cs
+Author of the .cs file being reviewed: Jason Lian
+Number of minutes taken to complete the code review: 5 minutes
+
+Specific comments on code quality:
+Camera class was used by room scrolling transition as well as item selection interface. Considering that it was only used by those two other classes and it was designed to be that, the coupling is low.
+Since camera.cs is only responsible for switching the camera position, the cohesion is high.
+
+Suggestions:
+The functionality of pausing the game can be potentially moved to a new class. But it should be fine as this functionality do have the participation of the camera class.
