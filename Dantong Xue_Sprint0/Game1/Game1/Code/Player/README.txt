@@ -13,7 +13,7 @@ PlayerCharacter: Contains LinkSprite and LinkState folders and Link.cs. Classes 
 
 PlayerItem: Contains PlayerItemSprite and PlayerItemDrawer folders and PlayerItem.cs. Classes in PlayerItemSprite provide Draw() method for classes in PlayerItemDrawer to draw the according sprites on screen. Classes in PlayerItemDrawer implement different states of item using state pattern. PlayerItem.cs is the instance represents the item that is being used by Link. 
 
-PlayerCommand.cs: Integrate all the commands for Player so only a PlayerCommand and a Link instances in main game class are needed. 
+PlayerPanel.cs: Integrate all the commands for Player so only a PlayerCommand and a Link instances in main game class are needed. 
 
 ***Player Control***
 
