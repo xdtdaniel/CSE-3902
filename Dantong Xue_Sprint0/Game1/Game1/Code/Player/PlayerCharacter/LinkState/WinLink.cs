@@ -22,6 +22,7 @@ namespace Game1.Player.PlayerCharacter
             this.link = link;
             offset = 200;
             triforce = new Triforce(link.x, link.y - offset);
+            
         }
 
 
@@ -45,6 +46,7 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Update()
         {
+            triforce.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
