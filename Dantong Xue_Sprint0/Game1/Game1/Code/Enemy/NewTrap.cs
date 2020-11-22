@@ -15,29 +15,24 @@ namespace Game1.Code.Enemy
         private int TotalFrames;
         private int CurrentFrame;
         private Vector2 Location { get; set; }
-        private int MovingState;
         private int Direction;
-        private double Velocity;
-        private Vector2 OriginalLocation;
+        private double Velocity = 1.5;
 
         private Rectangle CollisionRectangle;
         private int scale = 3;
         private List<IProjectile> ProjectileList = new List<IProjectile>();
         private int hp = 100;
-        private bool CanChangeDirection;
 
         private bool IsFreezed = false;
 
         public NewTrap(Vector2 location)
         {
-            Texture = EnemyTextureStorage.GetTrapSpriteSheet();
+            Texture = EnemyTextureStorage.GetNewTrapSpriteSheet();
             TotalFrames = 1;
             Columns = TotalFrames;
             CurrentFrame = 0;
             Location = location;
-            OriginalLocation = location;
-            MovingState = 0;
-            CanChangeDirection = true;
+            Direction = 0;
             CollisionRectangle = new Rectangle((int)(Location.X), (int)(Location.Y), 16 * scale, 16 * scale);
         }
 
@@ -56,13 +51,33 @@ namespace Game1.Code.Enemy
 
         public void UpdateEnemy(Game1 game)
         {
-            // To do.
+            if (!IsFreezed) 
+            {
+                if (HitEdge())
+                {
+                    ChangeDirection();
+                }
+
+                UpdateLocation();
+            }
+        }
+
+        private void ChangeDirection() 
+        {
+            if (Direction == 2) 
+            {
+                Direction = 0;
+            } 
+            else if (Direction == 0) 
+            {
+                Direction = 2;
+            }
         }
 
         private bool HitEdge()
         {
             Boolean outside = false;
-            if (Location.Y > 72 * scale + 56 * scale || Location.X > 112 * scale)
+            if (Location.Y > 128 * scale + 56 * scale || Location.Y < (32 + 56) * scale)
             {
                 outside = true;
             }

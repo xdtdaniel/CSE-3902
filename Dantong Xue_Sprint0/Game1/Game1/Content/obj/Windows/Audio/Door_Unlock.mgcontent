@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Door_Unlock.wav</SourceFile>
   <SourceTime>2020-11-19T07:50:16.5499416-05:00</SourceTime>
   <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Audio/Door_Unlock.xnb</DestFile>
-  <DestTime>2020-11-19T09:37:58.8092235-05:00</DestTime>
+  <DestTime>2020-11-22T07:36:15.0545171-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

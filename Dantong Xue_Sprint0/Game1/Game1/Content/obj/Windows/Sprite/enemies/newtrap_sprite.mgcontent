@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/enemies/newtrap_sprite.png</SourceFile>
-  <SourceTime>2020-11-13T03:58:00.9717653-05:00</SourceTime>
+  <SourceTime>2020-11-22T07:35:26.1653817-05:00</SourceTime>
   <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/enemies/newtrap_sprite.xnb</DestFile>
-  <DestTime>2020-11-19T09:38:07.8700573-05:00</DestTime>
+  <DestTime>2020-11-22T07:36:22.5244301-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
