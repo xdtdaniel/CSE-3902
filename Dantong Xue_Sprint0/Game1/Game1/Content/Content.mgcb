@@ -2156,6 +2156,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprite/Blocks/doors.png
 
+#begin Sprite/Blocks/down_arrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprite/Blocks/down_arrow.png
+
 #begin Sprite/Blocks/dragon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2288,6 +2300,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprite/Blocks/hole_4.png
 
+#begin Sprite/Blocks/left_arrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprite/Blocks/left_arrow.png
+
 #begin Sprite/Blocks/locked_door_1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2384,6 +2408,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprite/Blocks/open_door_4.png
 
+#begin Sprite/Blocks/right_arrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprite/Blocks/right_arrow.png
+
 #begin Sprite/Blocks/room_interior.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2467,6 +2503,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprite/Blocks/stair.png
+
+#begin Sprite/Blocks/up_arrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprite/Blocks/up_arrow.png
 
 #begin Sprite/Blocks/wall_1.png
 /importer:TextureImporter
