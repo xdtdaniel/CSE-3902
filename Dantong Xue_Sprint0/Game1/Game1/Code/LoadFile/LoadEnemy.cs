@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Diagnostics;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using System.Linq;
+using Game1.Code.Enemy;
 
 namespace Game1.Code.LoadFile
 {
@@ -24,7 +25,7 @@ namespace Game1.Code.LoadFile
         private int multiplier = 8;
         public int scale = 3;
 
-        private const int MAP_COUNT = 18;
+        private const int MAP_COUNT = LoadAll.MAP_COUNT;
         private int CurrentMapID;
 
         List<Tuple<int, int, string>> EnemyList;
@@ -205,6 +206,12 @@ namespace Game1.Code.LoadFile
                         EnemyCopy = new Fire(location);
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "fire"));
                         EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "fire"));
+                        break;
+                    case "newtrap":
+                        Enemy = new NewTrap(location);
+                        EnemyCopy = new NewTrap(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "newtrap"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "newtrap"));
                         break;
                 }
 

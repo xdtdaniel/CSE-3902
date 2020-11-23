@@ -17,8 +17,10 @@ namespace Game1.Enemy
         private int CurrentFrame;
         private double Velocity;
         private bool IsOnScreen;
-        private readonly double Sin15 = 0.2588190451 ;
-        private readonly double Cos15 = 0.96592582628;
+        private readonly double Sin10 = 0.1736481777;
+        private readonly double Cos10 = 0.984807753;
+        private readonly double Sin20 = 0.3420201433;
+        private readonly double Cos20 = 0.9396926208;
         private int scale = 3;
 
         private Rectangle CollisionRectangle;
@@ -89,8 +91,8 @@ namespace Game1.Enemy
 
             if (Direction == 0) 
             {
-                x -= (float)(Velocity * Cos15);
-                y -= (float)(Velocity * Sin15);
+                x -= (float)(Velocity * Cos10);
+                y -= (float)(Velocity * Sin10);
             } 
             else if (Direction == 1) 
             {
@@ -98,8 +100,18 @@ namespace Game1.Enemy
             } 
             else if (Direction == 2) 
             {
-                x -= (float)(Velocity * Cos15);
-                y += (float)(Velocity * Sin15);
+                x -= (float)(Velocity * Cos10);
+                y += (float)(Velocity * Sin10);
+            }
+            else if (Direction == 3)
+            {
+                x -= (float)(Velocity * Cos20);
+                y -= (float)(Velocity * Sin20);
+            }
+            else if (Direction == 4)
+            {
+                x -= (float)(Velocity * Cos20);
+                y += (float)(Velocity * Sin20);
             }
 
             Location = new Vector2(x, y);

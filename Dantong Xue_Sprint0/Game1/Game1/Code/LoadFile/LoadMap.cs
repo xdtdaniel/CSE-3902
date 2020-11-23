@@ -57,6 +57,10 @@ namespace Game1.Code.LoadFile
         private List<Rectangle> stairs;
         private List<Rectangle> bombWalls;
         private List<IBlock> movableBlocksList;
+        private List<Rectangle> leftArrows;
+        private List<Rectangle> rightArrows;
+        private List<Rectangle> upArrows;
+        private List<Rectangle> downArrows;
 
         private Dictionary<string, List<Rectangle>> artifacts;
 
@@ -74,6 +78,10 @@ namespace Game1.Code.LoadFile
             shutDoors = new List<Rectangle>();
             lockedDoors = new List<Rectangle>();
             bombWalls = new List<Rectangle>();
+            leftArrows = new List<Rectangle>();
+            rightArrows = new List<Rectangle>();
+            upArrows = new List<Rectangle>();
+            downArrows = new List<Rectangle>();
 
             stairs = new List<Rectangle>();
 
@@ -357,6 +365,26 @@ namespace Game1.Code.LoadFile
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
                         bombWalls.Add(blockToDraw.GetRectangle(location));
                         break;
+                    case "leftArrow":
+                        blockToDraw = BlockFactory.Instance.CreateLeftArrow();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        leftArrows.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "rightArrow":
+                        blockToDraw = BlockFactory.Instance.CreateRightArrow();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        rightArrows.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "upArrow":
+                        blockToDraw = BlockFactory.Instance.CreateUpArrow();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        upArrows.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "downArrow":
+                        blockToDraw = BlockFactory.Instance.CreateDownArrow();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        downArrows.Add(blockToDraw.GetRectangle(location));
+                        break;
                 }
 
             }
@@ -368,6 +396,10 @@ namespace Game1.Code.LoadFile
             artifacts.Add("lockedDoors", lockedDoors);
             artifacts.Add("stairs", stairs);
             artifacts.Add("bombWalls", bombWalls);
+            artifacts.Add("leftArrows", leftArrows);
+            artifacts.Add("rightArrows", rightArrows);
+            artifacts.Add("upArrows", upArrows);
+            artifacts.Add("downArrows", downArrows);
         }
 
         public Dictionary<string, List<Rectangle>> GetArtifacts()

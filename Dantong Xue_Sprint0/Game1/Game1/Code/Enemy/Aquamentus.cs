@@ -28,6 +28,8 @@ namespace Game1.Enemy
         private IProjectile Projectile0;
         private IProjectile Projectile1;
         private IProjectile Projectile2;
+        private IProjectile Projectile3;
+        private IProjectile Projectile4;
 
         private int hp = 10;
         private int DamageTimer = 0;
@@ -56,9 +58,13 @@ namespace Game1.Enemy
             Projectile0 = new AquamentusProjectile();
             Projectile1 = new AquamentusProjectile();
             Projectile2 = new AquamentusProjectile();
+            Projectile3 = new AquamentusProjectile();
+            Projectile4 = new AquamentusProjectile();
             Projectile0.SetDirection(0);
             Projectile1.SetDirection(1);
             Projectile2.SetDirection(2);
+            Projectile3.SetDirection(3);
+            Projectile4.SetDirection(4);
             CollisionRectangle = new Rectangle((int)(Location.X * scale), (int)(Location.Y * scale), 24, 32 );
             ProjectileList = new List<IProjectile>();
             BossScreamPlayed = false;
@@ -104,20 +110,34 @@ namespace Game1.Enemy
             {
                 Projectile2.DrawProjectile(spriteBatch, offset);
             }
+
+            if (Projectile3.GetIsOnScreen())
+            {
+                Projectile3.DrawProjectile(spriteBatch, offset);
+            }
+
+            if (Projectile4.GetIsOnScreen())
+            {
+                Projectile4.DrawProjectile(spriteBatch, offset);
+            }
         }
 
         public void FireProjectile()
         {
             if (CanFire) 
             {
-                Projectile0.SetLocation(new Vector2(Location.X, (float)(Location.Y - 12 * scale)));
+                Projectile3.SetLocation(new Vector2(Location.X, (float)(Location.Y - 12 * scale)));
+                Projectile0.SetLocation(new Vector2(Location.X, (float)(Location.Y - 6 * scale)));
                 Projectile1.SetLocation(Location);
-                Projectile2.SetLocation(new Vector2(Location.X, (float)(Location.Y + 12 * scale)));
+                Projectile2.SetLocation(new Vector2(Location.X, (float)(Location.Y + 6 * scale)));
+                Projectile4.SetLocation(new Vector2(Location.X, (float)(Location.Y + 12 * scale)));
 
                 ProjectileList.Clear();
                 ProjectileList.Add(Projectile0);
                 ProjectileList.Add(Projectile1);
                 ProjectileList.Add(Projectile2);
+                ProjectileList.Add(Projectile3);
+                ProjectileList.Add(Projectile4);
 
                 CanFire = false;
             }
@@ -193,11 +213,21 @@ namespace Game1.Enemy
             {
                 Projectile2.UpdateProjectile();
             }
+            if (Projectile3.GetIsOnScreen())
+            {
+                Projectile3.UpdateProjectile();
+            }
+            if (Projectile4.GetIsOnScreen())
+            {
+                Projectile4.UpdateProjectile();
+            }
 
             ProjectileList.Clear();
             ProjectileList.Add(Projectile0);
             ProjectileList.Add(Projectile1);
             ProjectileList.Add(Projectile2);
+            ProjectileList.Add(Projectile3);
+            ProjectileList.Add(Projectile4);
 
 
             if (Firing)
@@ -232,6 +262,8 @@ namespace Game1.Enemy
                     Projectile0.SetIsOnScreen(true);
                     Projectile1.SetIsOnScreen(true);
                     Projectile2.SetIsOnScreen(true);
+                    Projectile3.SetIsOnScreen(true);
+                    Projectile4.SetIsOnScreen(true);
                 }
 
                 FireTimer = 0;

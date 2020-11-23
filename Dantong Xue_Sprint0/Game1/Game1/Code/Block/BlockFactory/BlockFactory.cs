@@ -44,6 +44,10 @@ namespace Game1.Code.Block.BlockFactory
         private Texture2D wallGrey;
         private Texture2D water;
         private Texture2D room;
+        private Texture2D leftArrow;
+        private Texture2D rightArrow;
+        private Texture2D upArrow;
+        private Texture2D downArrow;
 
         private static BlockFactory instance = new BlockFactory();
 
@@ -97,6 +101,10 @@ namespace Game1.Code.Block.BlockFactory
             wallGrey = content.Load<Texture2D>("Sprite/Blocks/wall_grey");
             water = content.Load<Texture2D>("Sprite/Blocks/water");
             room = content.Load<Texture2D>("Sprite/Blocks/room_interior");
+            leftArrow = content.Load<Texture2D>("Sprite/Blocks/left_arrow");
+            rightArrow = content.Load<Texture2D>("Sprite/Blocks/right_arrow");
+            upArrow = content.Load<Texture2D>("Sprite/Blocks/up_arrow");
+            downArrow = content.Load<Texture2D>("Sprite/Blocks/down_arrow");
         }
 
         public IBlock CreateRoom()
@@ -282,6 +290,26 @@ namespace Game1.Code.Block.BlockFactory
         public Texture2D GetMovableBlockTexture()
         {
             return floatBlock;
+        }
+
+        public IBlock CreateLeftArrow()
+        {
+            return new NonMovingNonAnimatedBlock(leftArrow);
+        }
+
+        public IBlock CreateRightArrow()
+        {
+            return new NonMovingNonAnimatedBlock(rightArrow);
+        }
+
+        public IBlock CreateUpArrow()
+        {
+            return new NonMovingNonAnimatedBlock(upArrow);
+        }
+
+        public IBlock CreateDownArrow()
+        {
+            return new NonMovingNonAnimatedBlock(downArrow);
         }
     }
 }
