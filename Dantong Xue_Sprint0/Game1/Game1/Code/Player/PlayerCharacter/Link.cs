@@ -22,6 +22,7 @@ namespace Game1.Player.PlayerCharacter
         public bool isInvincible = false;
         public bool isDead = false;
         public bool canAttack = true;
+        public bool isCollidible = true;
         public int xSpeed = (int)(1.5 * scale);
         public int ySpeed = (int)(1.5 * scale);
         public int basicAttackDamage = 1;
@@ -51,7 +52,7 @@ namespace Game1.Player.PlayerCharacter
         // environmental informations
         private int blockSideLength = 16 * scale;
         private int numberOfBlocksBetweenRoom = 5;
-
+        public string collisionSide = "";
 
         public Link()
         {
@@ -84,6 +85,11 @@ namespace Game1.Player.PlayerCharacter
                 itemPool[i].state = new NoItem(itemPool[i]);
             }
         }
+
+        public void Jump()
+        {
+            state = new JumpLink(this);
+        }
         public void Attack()
         {
             if (itemList["WoodenSword"] > 0)
@@ -111,7 +117,14 @@ namespace Game1.Player.PlayerCharacter
         }
         public Rectangle GetRectangle()
         {
-            return new Rectangle(x, y, linkWidth, linkHeight);
+            if (isCollidible)
+            {
+                return new Rectangle(x, y, linkWidth, linkHeight);
+            }
+            else
+            {
+                return new Rectangle();
+            }
         }
         public void KnockedBack(string collisionSide)
         {
@@ -122,7 +135,8 @@ namespace Game1.Player.PlayerCharacter
         }
         public void StopMoving(string side, Rectangle interRect)
         {
-            if (side == "down")
+            collisionSide = side;
+            if (collisionSide == "down")
             {
                 y -= interRect.Height;
 
@@ -139,7 +153,7 @@ namespace Game1.Player.PlayerCharacter
                     }
                 }
             }
-            if (side == "right")
+            if (collisionSide == "right")
             {
                 x -= interRect.Width;
 
@@ -156,7 +170,7 @@ namespace Game1.Player.PlayerCharacter
                     }
                 }
             }
-            if (side == "up")
+            if (collisionSide == "up")
             {
                 y += interRect.Height;
 
@@ -173,7 +187,7 @@ namespace Game1.Player.PlayerCharacter
                     }
                 }
             }
-            if (side == "left")
+            if (collisionSide == "left")
             {
                 x += interRect.Width;
 
@@ -241,6 +255,8 @@ namespace Game1.Player.PlayerCharacter
 
         public void Update()
         {
+            collisionSide = "";
+
             if (itemList["Heart"] == 1)
             {
                 AudioPlayer.linkLowHealth.Play();

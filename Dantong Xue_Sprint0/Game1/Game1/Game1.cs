@@ -16,8 +16,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Game1.Code.Player;
-using System.Diagnostics;
-using System.Threading;
 
 namespace Game1
 {

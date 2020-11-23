@@ -25,6 +25,7 @@ namespace Game1
             RegisterCommand(Keys.Up, new MoveUp(game));
             RegisterCommand(Keys.Left, new MoveLeft(game));
             RegisterCommand(Keys.N, new Attack(game));
+            RegisterCommand(Keys.J, new Jump(game));
             RegisterCommand(Keys.Z, new UseItem(game));
 
             RegisterCommand(Keys.M, new Respawn(game));
