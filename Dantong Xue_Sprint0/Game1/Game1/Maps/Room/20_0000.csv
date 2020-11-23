@@ -6,11 +6,11 @@ wall_2,,,,water,,water,,water,,water,,water,,water,,water,,water,,water,,water,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,water,,water,,water,,water,,water,,water,,water,,water,,water,,water,,water,,water,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,water,,block,,water,,block,,water,,block,,water,,block,,water,,block,,water,,block,,
+,,,,block,,water,,water,,water,,block,,block,,block,,block,,water,,water,,water,,block,,
 openDoorLeft,,,,,,,,,,,,,,,,,,,,,,,,,,,,openDoorRight
 ,,,,block,,block,,block,,block,,block,,block,,block,,block,,block,,block,,block,,block,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,water,,block,,water,,block,,water,,block,,water,,block,,water,,block,,water,,block,,
+,,,,block,,water,,water,,water,,block,,block,,block,,block,,water,,water,,water,,block,,
 wall_2,,,,,,,,,,,,,,,,,,,,,,,,,,,,wall_2
 ,,,,water,,water,,water,,water,,water,,water,,water,,water,,water,,water,,water,,water,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
