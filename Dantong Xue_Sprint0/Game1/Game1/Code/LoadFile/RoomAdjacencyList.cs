@@ -163,11 +163,18 @@ namespace Game1.Code.LoadFile
                 new Dictionary<string, int>()
                 {
                     {"left", 19},
-                    {"right", 0},
+                    {"right", 21},
                     {"up", 0},
                     {"down", 0}
+                },
+                // #21
+                new Dictionary<string, int>()
+                {
+                    {"left", 20},
+                    {"right", 0},
+                    {"up", 17},
+                    {"down", 0}
                 }
-                //
             };
         }
 
