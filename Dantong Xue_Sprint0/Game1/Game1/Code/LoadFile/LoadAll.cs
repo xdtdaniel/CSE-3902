@@ -28,7 +28,8 @@ namespace Game1.Code.LoadFile
         private int currMapID = 1;
         public bool noEnemy = false;
         private List<IBlock> movables;
-        private const int MAP_COUNT = 18;
+        // original 18
+        public const int MAP_COUNT = 20;
         private RoomAdjacencyList roomAdjacencyList;
         private List<Tuple<IBlock, Vector2>> oldRoomMapBlocksToDraw;
         private Game1 game1;

@@ -25,7 +25,7 @@ namespace Game1.Code.LoadFile
         private int multiplier = 8;
         public int scale = 3;
 
-        private const int MAP_COUNT = 18;
+        private const int MAP_COUNT = LoadAll.MAP_COUNT;
         private int CurrentMapID;
 
         List<Tuple<int, int, string>> EnemyList;

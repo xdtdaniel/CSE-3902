@@ -22,7 +22,7 @@ namespace Game1.Code.LoadFile
     {
         private int MAX_COLUMNS = 32;
         private int multiplier = 8;
-        private const int MAP_COUNT = 18;
+        private const int MAP_COUNT = LoadAll.MAP_COUNT;
         private int CurrentMapID;
         private double scale = 2;
         private int X;

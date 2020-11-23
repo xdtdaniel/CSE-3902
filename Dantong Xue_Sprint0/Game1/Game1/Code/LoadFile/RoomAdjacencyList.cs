@@ -141,7 +141,7 @@ namespace Game1.Code.LoadFile
                     {"left", 16},
                     {"right", 18},
                     {"up", 15},
-                    {"down", 0}
+                    {"down", 19}
                 },
                 // #18
                 new Dictionary<string, int>()
@@ -150,7 +150,24 @@ namespace Game1.Code.LoadFile
                     {"right", 0},
                     {"up", 0},
                     {"down", 0}
+                },
+                // #19
+                new Dictionary<string, int>()
+                {
+                    {"left", 0},
+                    {"right", 20},
+                    {"up", 17},
+                    {"down", 0}
+                },
+                // #20
+                new Dictionary<string, int>()
+                {
+                    {"left", 19},
+                    {"right", 0},
+                    {"up", 0},
+                    {"down", 0}
                 }
+                //
             };
         }
 
