@@ -93,11 +93,11 @@ namespace Game1
         public void PlayerDraw()
         {
             game.link.Draw(game._spriteBatch);
-            string x = "x" + game.link.x.ToString();
-            string y = "y" + game.link.y.ToString();
+            //string x = "x" + game.link.x.ToString();
+            //string y = "y" + game.link.y.ToString();
 
-            game._spriteBatch.DrawString(game._spriteFont, x, new Vector2(LoadAll.Instance.startPos.X + 200, LoadAll.Instance.startPos.Y + 200), Color.White);
-            game._spriteBatch.DrawString(game._spriteFont, y, new Vector2(LoadAll.Instance.startPos.X + 100, LoadAll.Instance.startPos.Y + 200), Color.White);
+            //game._spriteBatch.DrawString(game._spriteFont, x, new Vector2(LoadAll.Instance.startPos.X + 200, LoadAll.Instance.startPos.Y + 200), Color.White);
+            //game._spriteBatch.DrawString(game._spriteFont, y, new Vector2(LoadAll.Instance.startPos.X + 100, LoadAll.Instance.startPos.Y + 200), Color.White);
         }
     }
 }

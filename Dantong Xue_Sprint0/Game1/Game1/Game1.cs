@@ -16,6 +16,8 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Game1.Code.Player;
+using Game1.Code.Achievement;
+using Game1.Code.Achievement.Factory;
 
 namespace Game1
 {
@@ -61,6 +63,7 @@ namespace Game1
 
         public Camera camera;
         private StartScreen startScreen;
+        private AchievementPanel achievementPanel;
 
         public Game1()
         {
@@ -82,6 +85,7 @@ namespace Game1
 
             link = new Link();
             playerPanel = new PlayerPanel(this);
+            achievementPanel = new AchievementPanel(this);
             hudPanel = new HUDPanel(this);
             selectedItemName = "";
             LoadAll.Instance.GetGameObject(this);
@@ -108,7 +112,8 @@ namespace Game1
             ItemSpriteFactory.LoadAllTextures(Content);
             HUDFactory.LoadAllHUDTextures(Content);
             AudioFactory.LoadAllAudio(Content);
-            
+            AchievementFactory.LoadAll(Content);
+
             _spriteFont = Content.Load<SpriteFont>("font");
 
             
@@ -139,6 +144,8 @@ namespace Game1
 
             paused = camera.PauseGame();
             mapID = PlayerAndItemCollisionHandler.getMapID();
+
+            achievementPanel.Update();
 
             quitResetController.Update(this);
             if (!paused && gameStarted)
@@ -257,6 +264,8 @@ namespace Game1
 
             // HUD
             hudPanel.HUDDraw();
+
+            achievementPanel.Draw();
 
 
             if (!gameStarted)

@@ -45,9 +45,11 @@ namespace Game1.Player.PlayerCharacter
 
         // time intervals
         public int timeBetweenAttack = 40;
-        public int timeSinceAttack = 0;
+        public int timeSinceAttack = 40;
         public int timeBetweenItem = 40;
-        public int timeSinceItem = 0;
+        public int timeSinceItem = 40;
+        public int timeBetweenJump = 15;
+        public int timeSinceJump = 15;
         public int timeBetweenDash = 120;
         public int timeSinceDash = 120;
 
@@ -98,7 +100,11 @@ namespace Game1.Player.PlayerCharacter
         }
         public void Jump()
         {
-            state = new JumpLink(this);
+            if (timeSinceJump >= timeBetweenJump)
+            {
+                timeSinceJump = 0;
+                state = new JumpLink(this);
+            }
         }
         public void Attack()
         {
@@ -328,6 +334,10 @@ namespace Game1.Player.PlayerCharacter
             if (timeSinceItem < timeBetweenItem)
             {
                 timeSinceItem++;
+            }
+            if (timeSinceJump < timeBetweenJump)
+            {
+                timeSinceJump++;
             }
             if (timeSinceDash < timeBetweenDash)
             {
