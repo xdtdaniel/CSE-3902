@@ -213,6 +213,18 @@ namespace Game1.Code.LoadFile
                         Enemies.Add(new Tuple<IEnemy, string>(Enemy, "newtrap"));
                         EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "newtrap"));
                         break;
+                    case "newtrap1":
+                        Enemy = new NewTrap1(location);
+                        EnemyCopy = new NewTrap1(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "newtrap1"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "newtrap1"));
+                        break;
+                    case "saw":
+                        Enemy = new Saw(location);
+                        EnemyCopy = new Saw(location);
+                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "saw"));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "saw"));
+                        break;
                 }
 
             }
