@@ -16,8 +16,9 @@ namespace Game1.Code.Achievement.Tracker
 
         private bool completed = false;
         private bool doneDisplay = false;
+
         private int movedDistance = 0;
-        private int goalDistance = 10;
+        private int goalDistance = 10000; 
 
         private int currentFrame = 0;
         private int totalFrame = 100;
