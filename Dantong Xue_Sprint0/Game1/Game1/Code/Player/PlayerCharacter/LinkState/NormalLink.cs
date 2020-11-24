@@ -39,6 +39,7 @@ namespace Game1.Player.PlayerCharacter
             link.movable = true;
             link.canAttack = true;
             link.isCollidible = true;
+            link.isInvincible = false;
         }
 
         public void UseItem()

@@ -48,6 +48,8 @@ namespace Game1.Player.PlayerCharacter
         public int timeSinceAttack = 0;
         public int timeBetweenItem = 40;
         public int timeSinceItem = 0;
+        public int timeBetweenDash = 120;
+        public int timeSinceDash = 120;
 
         // environmental informations
         private int blockSideLength = 16 * scale;
@@ -86,6 +88,14 @@ namespace Game1.Player.PlayerCharacter
             }
         }
 
+        public void Dash()
+        {
+            if (timeSinceDash >= timeBetweenDash)
+            {
+                timeSinceDash = 0;
+                state = new DashLink(this);
+            }
+        }
         public void Jump()
         {
             state = new JumpLink(this);
@@ -318,6 +328,10 @@ namespace Game1.Player.PlayerCharacter
             if (timeSinceItem < timeBetweenItem)
             {
                 timeSinceItem++;
+            }
+            if (timeSinceDash < timeBetweenDash)
+            {
+                timeSinceDash++;
             }
 
             // update damage time if link is hurt

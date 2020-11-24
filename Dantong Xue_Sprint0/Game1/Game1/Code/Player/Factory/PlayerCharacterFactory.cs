@@ -183,6 +183,10 @@ namespace Game1
             return new NormalLinkSprite(normalLink[index]);
         }
 
+        public IPlayerLinkSprite CreateDashLink(int index)
+        {
+            return new DashLinkSprite(normalLink[index]);
+        }
         // Link with SwordBeam 
         public IPlayerLinkSprite CreateSwordBeamLink(int index)
         {
