@@ -150,6 +150,14 @@ namespace Game1
             quitResetController.Update(this);
             if (!paused && gameStarted)
             {
+                if (link.isDamaged && link.damageTimeCounter < 20)
+                {
+                    camera.startShaking = true;
+                }
+                else
+                {
+                    camera.startShaking = false;
+                }
                 playerPanel.PlayerUpdate();
 
                 clockWorking = playerPanel.checkClockActivation();

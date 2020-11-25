@@ -23,13 +23,19 @@ namespace Game1.Code
 
         private float speed = (float)16/3 * (int)LoadAll.Instance.scale;
 
-        private int scale = (int)LoadAll.Instance.scale;
+        private static int scale = (int)LoadAll.Instance.scale;
 
         int moveTimer = 0;
 
         double HorizontalMoveTime;
         double VerticalMoveTime;
 
+        private int shakeCameraMin = -3 * scale;
+        private int shakeCameraMax = 3 * scale;
+        private int shakeCameraOffset_x = 0;
+        private int shakeCameraOffset_y = 0;
+        private Vector2 shakeCameraOffset = new Vector2(0, 0);
+        public bool startShaking = false;
 
         private KeyboardState oldState;
         private KeyboardState newState;
@@ -68,7 +74,7 @@ namespace Game1.Code
 
         private void UpdateMatrix()
         {
-            Transform = Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *
+            Transform = Matrix.CreateTranslation(new Vector3(-Position.X + shakeCameraOffset_x, -Position.Y + shakeCameraOffset_y, 0)) *
                     Matrix.CreateTranslation(new Vector3(Bounds.Width * 0.5f, Bounds.Height * 0.5f, 0));
             UpdateVisibleArea();
         }
@@ -78,15 +84,28 @@ namespace Game1.Code
             Vector2 newPosition = Position + movePosition;
             Position = newPosition;
         }
+        public void ShakeCamera()
+        {
+            Random rd = new Random();
+            shakeCameraOffset_x = rd.Next(shakeCameraMin, shakeCameraMax);
+            shakeCameraOffset_y = rd.Next(shakeCameraMin, shakeCameraMax);
+        }
 
         public void UpdateCamera(Viewport bounds)
         {
             Bounds = bounds.Bounds;
+            shakeCameraOffset_x = 0;
+            shakeCameraOffset_y = 0;
+            if (startShaking)
+            {
+                ShakeCamera();
+            }
             UpdateMatrix();
 
             UpdateMovingState("");
 
             Reset();
+
 
             if (moving) {
                 if (direction == 1 || direction == 3) {
