@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Game1.Code.Player;
 using Game1.Code.LoadFile;
 using Game1.Code.Item.ItemInterface;
+using Game1.Code.Player.Control;
+using Game1.Code.Player.CollisionHandler;
 
-namespace Game1
+namespace Game1.Code.Player
 {
     public class PlayerPanel
     {

@@ -2,6 +2,7 @@
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.LoadFile;
 using Game1.Code.Player;
+using Game1.Code.Player.CollisionHandler;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

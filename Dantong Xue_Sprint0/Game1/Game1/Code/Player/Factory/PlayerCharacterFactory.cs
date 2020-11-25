@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Game1.Code.Player.Interface;
+using Game1.Code.Player.PlayerCharacter.LinkSprite;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Game1.Player;
 
-namespace Game1
+namespace Game1.Code.Player.Factory
 {
     class PlayerCharacterFactory
     {

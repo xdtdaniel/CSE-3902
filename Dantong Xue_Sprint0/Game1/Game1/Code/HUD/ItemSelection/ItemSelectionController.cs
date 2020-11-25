@@ -4,7 +4,7 @@ using Game1.Code.HUD.Sprite;
 using System.Collections.Generic;
 using System;
 
-namespace Game1.Code.HUD
+namespace Game1.Code.HUD.ItemSelection
 {
     /*U for previous item, I for next item*/
     public class ItemSelectionController

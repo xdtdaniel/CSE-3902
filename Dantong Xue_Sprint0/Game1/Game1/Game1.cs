@@ -8,7 +8,6 @@ using Game1.Code.Item;
 using Game1.Code.Item.ItemFactory;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.LoadFile;
-using Game1.Player.PlayerCharacter;
 using Game1.Code.Audio;
 using Game1.Code.Audio.Factory;
 using Microsoft.Xna.Framework;
@@ -18,6 +17,9 @@ using System.Collections.Generic;
 using Game1.Code.Player;
 using Game1.Code.Achievement;
 using Game1.Code.Achievement.Factory;
+using Game1.Code.Player.PlayerCharacter;
+using Game1.Code.Player.Factory;
+using Game1.Code.Player.CollisionHandler;
 
 namespace Game1
 {

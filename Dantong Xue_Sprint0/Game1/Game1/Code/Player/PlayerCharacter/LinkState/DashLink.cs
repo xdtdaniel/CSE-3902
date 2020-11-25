@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Game1.Player.Interface;
-using Microsoft.Xna.Framework.Input;
 using Game1.Code.LoadFile;
+using Game1.Code.Player.Interface;
+using Game1.Code.Player.Factory;
 
-namespace Game1.Player.PlayerCharacter
+namespace Game1.Code.Player.PlayerCharacter.LinkState
 {
     class DashLink : IPlayerLinkState
     {

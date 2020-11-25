@@ -1,7 +1,7 @@
 ﻿using Game1.Code.Audio;
 using Game1.Code.Player.Interface;
 
-namespace Game1.Code.Player.PlayerControlCommand
+namespace Game1.Code.Player.Control.PlayerControlCommand
 {
     class Attack : IPlayerCommand
     {

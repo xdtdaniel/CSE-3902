@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace Game1.Code.HUD.Sprite
+namespace Game1.Code.HUD.ItemSelection
 {
     public class InventoryObject 
     {

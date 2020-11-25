@@ -1,8 +1,7 @@
-﻿using Game1.Code.HUD.Factory;
+﻿using Game1.Code.HUD.ItemSelection;
 using Game1.Code.HUD.Sprite;
 using Game1.Code.LoadFile;
-using Game1.Code.Player;
-using Microsoft.Xna.Framework.Graphics;
+using Game1.Code.Player.CollisionHandler;
 using System;
 using System.Collections.Generic;
 

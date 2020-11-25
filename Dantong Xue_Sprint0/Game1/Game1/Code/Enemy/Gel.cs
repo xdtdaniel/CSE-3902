@@ -1,10 +1,8 @@
 ﻿using Game1.Enemy;
-using Game1.Player.PlayerCharacter;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Game1
 {

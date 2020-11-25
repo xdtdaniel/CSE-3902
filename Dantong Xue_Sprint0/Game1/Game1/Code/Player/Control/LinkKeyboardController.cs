@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using Game1.Code.Player.Control.PlayerControlCommand;
 using Game1.Code.Player.Interface;
-using Game1.Code.Player.PlayerControlCommand;
 using Microsoft.Xna.Framework.Input;
 
-namespace Game1
+namespace Game1.Code.Player.Control
 {
     public class LinkKeyboardController 
     {

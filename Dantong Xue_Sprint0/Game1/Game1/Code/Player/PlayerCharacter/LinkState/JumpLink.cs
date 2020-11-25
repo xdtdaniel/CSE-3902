@@ -1,9 +1,10 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Game1.Player.Interface;
 using Microsoft.Xna.Framework.Input;
 using Game1.Code.LoadFile;
+using Game1.Code.Player.Interface;
+using Game1.Code.Player.Factory;
 
-namespace Game1.Player.PlayerCharacter
+namespace Game1.Code.Player.PlayerCharacter.LinkState
 {
     class JumpLink : IPlayerLinkState
     {
@@ -27,10 +28,6 @@ namespace Game1.Player.PlayerCharacter
         private int blinkFrequency = 8;
         private int maxThridFrame = 4;
 
-        private int xLowerBound = 32 * scale;
-        private int xUpperBound = 211 * scale;
-        private int yLowerBound = 128 * scale;
-        private int yUpperBound = 147 * scale;
 
         private IPlayerLinkSprite[] linkSprite;
         private IPlayerLinkSprite[][] damagedLinkSprite;
@@ -57,7 +54,7 @@ namespace Game1.Player.PlayerCharacter
             this.link = link;
             link.movable = true;
             link.canAttack = false;
-            link.isCollidible = false;
+            link.isInvincible = true;
         }
 
         public void UseItem()
@@ -86,22 +83,16 @@ namespace Game1.Player.PlayerCharacter
                 }
             }
 
-            // can't jump over walls
-            if (link.y > yUpperBound || link.y < yLowerBound)
-            {
-                if (link.x > xUpperBound)
-                {
-                    link.x = xUpperBound;
-                }
-                else if (link.x < xLowerBound)
-                {
-                    link.x = xLowerBound;
-                }
-            }
-
-
             // update the location
             newState = Keyboard.GetState();
+            if (newState.IsKeyDown(Keys.W) || newState.IsKeyDown(Keys.Up))
+            {
+                jumpY -= link.ySpeed;
+            }
+            if (newState.IsKeyDown(Keys.S) || newState.IsKeyDown(Keys.Down))
+            {
+                jumpY += link.ySpeed;
+            }
             jumpX = link.x;
             
             // hold key J to jump higher
@@ -121,6 +112,7 @@ namespace Game1.Player.PlayerCharacter
             if (jumpY > link.y)
             {
                 jumpY = link.y;
+                link.timeSinceJump = 0;
                 link.state = new NormalLink(link);
             }
 

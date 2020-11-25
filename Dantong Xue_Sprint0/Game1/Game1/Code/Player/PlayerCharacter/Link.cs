@@ -1,13 +1,16 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Game1.Player.Interface;
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Game1.Code.Player;
 using Game1.Code.LoadFile;
 using Game1.Code.Audio;
+using Game1.Code.Player.Interface;
+using Game1.Code.Player.PlayerItem;
+using Game1.Code.Player.PlayerCharacter.LinkState;
+using Game1.Code.Player.CollisionHandler;
+using Game1.Code.Player.PlayerItem.PlayerItemState;
 
-namespace Game1.Player.PlayerCharacter
+namespace Game1.Code.Player.PlayerCharacter
 {
     public class Link
     {

@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Game1.Player.Interface;
+using Game1.Code.Player.Interface;
+using Game1.Code.Player.Factory;
 using System;
 using Game1.Code.LoadFile;
 using Game1.Code.Audio;
 
-namespace Game1.Player.PlayerCharacter
+namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
     class UseBoomerang : IPlayerItemState
     {

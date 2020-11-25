@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Game1.Player.Interface;
+using Game1.Code.Player.Interface;
+using Game1.Code.Player.Factory;
 using Game1.Code.LoadFile;
 
-namespace Game1.Player.PlayerCharacter
+namespace Game1.Code.Player.PlayerCharacter.LinkState
 {
     class KnockedBackLink : IPlayerLinkState
     {

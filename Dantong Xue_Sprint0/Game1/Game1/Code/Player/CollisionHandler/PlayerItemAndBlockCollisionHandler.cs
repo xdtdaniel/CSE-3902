@@ -1,10 +1,9 @@
 ﻿using Game1.Code.LoadFile;
-using Game1.Player.PlayerCharacter;
+using Game1.Code.Player.PlayerItem;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Diagnostics;
 
-namespace Game1.Code.Player
+namespace Game1.Code.Player.CollisionHandler
 {
     public static class PlayerItemAndBlockCollisionHandler
     {

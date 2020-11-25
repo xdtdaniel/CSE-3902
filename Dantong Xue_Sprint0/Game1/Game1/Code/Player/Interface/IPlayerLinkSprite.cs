@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace Game1
+namespace Game1.Code.Player.Interface
 {
     interface IPlayerLinkSprite
     {

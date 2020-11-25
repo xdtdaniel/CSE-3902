@@ -1,6 +1,7 @@
 ﻿using Game1.Code.HUD.Factory;
 using Game1.Code.LoadFile;
 using Game1.Code.Player;
+using Game1.Code.Player.CollisionHandler;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.Direct2D1.Effects;

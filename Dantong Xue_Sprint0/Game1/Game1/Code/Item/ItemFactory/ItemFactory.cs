@@ -1,12 +1,5 @@
-﻿using Game1.Code.Item.ItemInterface;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Game1.Code.Item.ItemSprite;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Game1.Player;
-using Microsoft.Xna.Framework;
 
 namespace Game1.Code.Item.ItemFactory
 {

@@ -1,8 +1,9 @@
 ﻿using Game1.Code.LoadFile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Game1.Code.Player.Interface;
 
-namespace Game1.Player
+namespace Game1.Code.Player.PlayerItem.PlayerItemSprite
 {
     class BlueRing : IPlayerItemSprite
     {

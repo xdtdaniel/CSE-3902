@@ -1,5 +1,5 @@
 ﻿
-namespace Game1
+namespace Game1.Code.Player.Control
 {
     interface IPlayerController
     {

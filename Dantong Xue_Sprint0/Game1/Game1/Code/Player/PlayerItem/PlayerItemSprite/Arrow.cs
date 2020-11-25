@@ -1,8 +1,9 @@
 ﻿using Game1.Code.LoadFile;
+using Game1.Code.Player.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Game1.Player
+namespace Game1.Code.Player.PlayerItem.PlayerItemSprite
 {
     class Arrow : IPlayerItemSprite
     {

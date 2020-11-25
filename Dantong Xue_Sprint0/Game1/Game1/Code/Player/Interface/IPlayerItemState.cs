@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Game1.Player.Interface
+namespace Game1.Code.Player.Interface
 {
     public interface IPlayerItemState
     {

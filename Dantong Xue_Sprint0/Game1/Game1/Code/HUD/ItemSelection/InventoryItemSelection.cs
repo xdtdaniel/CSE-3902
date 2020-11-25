@@ -3,7 +3,7 @@ using Game1.Code.LoadFile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Game1.Code.HUD.Sprite
+namespace Game1.Code.HUD.ItemSelection
 {
     public class InventoryItemSelection
     {

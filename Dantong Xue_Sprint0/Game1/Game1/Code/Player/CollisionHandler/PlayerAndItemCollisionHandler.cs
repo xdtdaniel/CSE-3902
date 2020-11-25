@@ -2,11 +2,11 @@
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Item.ItemSprite;
 using Game1.Code.LoadFile;
-using Game1.Player.PlayerCharacter;
+using Game1.Code.Player.PlayerCharacter;
 using System;
 using System.Collections.Generic;
 
-namespace Game1.Code.Player
+namespace Game1.Code.Player.CollisionHandler
 { 
     public static class PlayerAndItemCollisionHandler
     {
