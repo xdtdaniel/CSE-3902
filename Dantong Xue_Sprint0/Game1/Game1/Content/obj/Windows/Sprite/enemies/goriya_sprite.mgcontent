@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/enemies/goriya_sprite.png</SourceFile>
-  <SourceTime>2020-11-24T04:20:27.1320461-05:00</SourceTime>
-  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/enemies/goriya_sprite.xnb</DestFile>
-  <DestTime>2020-11-24T15:46:46.0492705-05:00</DestTime>
+  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/enemies/goriya_sprite.png</SourceFile>
+  <SourceTime>2020-11-25T04:01:09.4846098-05:00</SourceTime>
+  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/enemies/goriya_sprite.xnb</DestFile>
+  <DestTime>2020-11-25T04:02:14.7512592-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

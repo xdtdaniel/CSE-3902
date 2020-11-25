@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/Edge/BeamEdge3.png</SourceFile>
-  <SourceTime>2020-11-24T04:20:27.1101093-05:00</SourceTime>
-  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerItemSprite/Edge/BeamEdge3.xnb</DestFile>
-  <DestTime>2020-11-24T15:46:43.8152453-05:00</DestTime>
+  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/Edge/BeamEdge3.png</SourceFile>
+  <SourceTime>2020-11-25T04:01:09.4666576-05:00</SourceTime>
+  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerItemSprite/Edge/BeamEdge3.xnb</DestFile>
+  <DestTime>2020-11-25T04:02:14.4610343-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

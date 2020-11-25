@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/enemies/wallmaster3_sprite.png</SourceFile>
-  <SourceTime>2020-11-24T04:20:27.1340446-05:00</SourceTime>
-  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/enemies/wallmaster3_sprite.xnb</DestFile>
-  <DestTime>2020-11-24T15:46:46.4093062-05:00</DestTime>
+  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/enemies/wallmaster3_sprite.png</SourceFile>
+  <SourceTime>2020-11-25T04:01:09.4866044-05:00</SourceTime>
+  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/enemies/wallmaster3_sprite.xnb</DestFile>
+  <DestTime>2020-11-25T04:02:14.7652216-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -49,6 +49,11 @@ namespace Game1.Code.HUD.Factory
 		private static Texture2D secondEquipment;
 		private static Texture2D inventorySelection;
 
+		// indicators
+		private static Texture2D emptyDashCharge;
+		private static Texture2D fullDashCharge;
+		private static Texture2D[] dashChargeGlitter;
+
 
 		public static void LoadAllHUDTextures(ContentManager content)
 		{
@@ -96,7 +101,14 @@ namespace Game1.Code.HUD.Factory
 			secondEquipment = content.Load<Texture2D>("HUD/Misc/SecondEquipment");
 			inventorySelection = content.Load<Texture2D>("HUD/Misc/InventorySelection");
 
+			// indicators
+			emptyDashCharge = content.Load<Texture2D>("HUD/Indicator/EmptyDashCharge");
+			fullDashCharge = content.Load<Texture2D>("HUD/Indicator/FullDashCharge");
 
+			dashChargeGlitter = new Texture2D[3];
+			dashChargeGlitter[0] = content.Load<Texture2D>("HUD/Indicator/DashChargeGlitter_0");
+			dashChargeGlitter[1] = content.Load<Texture2D>("HUD/Indicator/DashChargeGlitter_1");
+			dashChargeGlitter[2] = content.Load<Texture2D>("HUD/Indicator/DashChargeGlitter_2");
 		}
 
 		// HUD
@@ -299,5 +311,18 @@ namespace Game1.Code.HUD.Factory
 			return inventorySelection;
 		}
 
+		// indicators
+		public static Texture2D LoadEmptyDashChagre()
+		{
+			return emptyDashCharge;
+		}
+		public static Texture2D LoadFullDashCharge()
+		{
+			return fullDashCharge;
+		}
+		public static Texture2D[] LoadDashChargeGlitter()
+		{
+			return dashChargeGlitter;
+		}
 	}
 }

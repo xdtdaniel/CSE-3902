@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Arrow_Boomerang.wav</SourceFile>
-  <SourceTime>2020-11-24T04:20:27.0132967-05:00</SourceTime>
-  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Audio/Arrow_Boomerang.xnb</DestFile>
-  <DestTime>2020-11-24T15:46:32.0270493-05:00</DestTime>
+  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Arrow_Boomerang.wav</SourceFile>
+  <SourceTime>2020-11-25T04:01:09.3858735-05:00</SourceTime>
+  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Audio/Arrow_Boomerang.xnb</DestFile>
+  <DestTime>2020-11-25T04:02:09.2260283-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

@@ -32,6 +32,7 @@ namespace Game1.Code.HUD
         private IHUDSprite dungeonMiniMap;
         private IHUDSprite dungeonPauseScreen;
         private IHUDSprite displayPause;
+        private IHUDSprite dashChargeIndicator;
 
         private ItemSelectionController itemSelectionController;
 
@@ -54,6 +55,7 @@ namespace Game1.Code.HUD
             dungeonMiniMap = new DungeonMiniMap(game.link.itemList);
             dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
             displayPause = new DisplayPause(game);
+            dashChargeIndicator = new DashChargeIndicator(game);
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
 
@@ -80,6 +82,7 @@ namespace Game1.Code.HUD
             dungeonPauseScreen.Update(x, y);
             itemSelectionController.Update(x,y);
             displayPause.Update(x, y);
+            dashChargeIndicator.Update(x, y);
 
             if (switched)
             {
@@ -150,6 +153,7 @@ namespace Game1.Code.HUD
             dungeonPauseScreen.Draw(game._spriteBatch);
             itemSelectionController.Draw();
             displayPause.Draw(game._spriteBatch);
+            dashChargeIndicator.Draw(game._spriteBatch);
 
         }
 
