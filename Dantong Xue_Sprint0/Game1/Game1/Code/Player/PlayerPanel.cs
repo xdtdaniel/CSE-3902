@@ -5,6 +5,7 @@ using Game1.Code.LoadFile;
 using Game1.Code.Item.ItemInterface;
 using Game1.Code.Player.Control;
 using Game1.Code.Player.CollisionHandler;
+using System.Diagnostics;
 
 namespace Game1.Code.Player
 {
@@ -65,8 +66,8 @@ namespace Game1.Code.Player
 
             PlayerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             PlayerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
-            PlayerItemAndBlockCollisionHandler.HandleCollision(game.link.itemPool, roomBlockList);
-            PlayerItemAndEnemyCollisionHandler.HandleCollision(game.link.itemPool, roomEnemyList);
+            PlayerItemAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
+            PlayerItemAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             PlayerAndItemCollisionHandler.HandleCollision(game.link, roomItemList);
             PlayerAndBlockCollisionHandler.HandleMovableCollision(game.link, movableList);
             //

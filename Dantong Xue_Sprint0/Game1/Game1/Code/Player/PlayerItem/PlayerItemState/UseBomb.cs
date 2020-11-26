@@ -3,12 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Game1.Code.Player.Interface;
 using Game1.Code.Player.Factory;
 using Game1.Code.Audio;
+using Game1.Code.Player.PlayerCharacter;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
     class UseBomb : IPlayerItemState
     {
-        private LinkItem item;
+        private Link link;
         private int x;
         private int y;
         private int direction;
@@ -17,26 +18,32 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int secondFrame = 0;
         private int maxSecondFrame = 80;
         private int resetSecondFrame = 60;
+        private int damageMultiplier = 5;
+        private bool done = false;
 
         private IPlayerItemSprite bomb;
         private IPlayerItemSprite bombExplosion;
 
         private Rectangle rectangle;
 
-        public UseBomb(LinkItem item)
+        public UseBomb(Link link)
         {
-            this.x = item.x;
-            this.y = item.y;
-            this.direction = item.direction;
+            this.x = link.x;
+            this.y = link.y;
+            this.direction = link.directionIndex;
 
             bomb = PlayerItemFactory.Instance.CreateBomb();
             bombExplosion = PlayerItemFactory.Instance.CreateBombExplosion();
 
-            this.item = item;
+            this.link = link;
             AudioPlayer.bombDrop.Play();
         }
         public void UseItem(string itemName) 
         {
+        }
+        public int GetDamage()
+        {
+            return link.basicAttackDamage * damageMultiplier;
         }
         public string GetItemName()
         {
@@ -63,7 +70,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             }
             if (currentFrame == totalFrame)
             {
-                item.state = new NoItem(item);
+                done = true;
             }
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -89,7 +96,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public bool IsDone()
         {
-            return false;
+            return done;
         }
     }
 }

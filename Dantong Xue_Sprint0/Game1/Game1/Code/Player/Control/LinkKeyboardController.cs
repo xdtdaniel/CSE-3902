@@ -28,6 +28,7 @@ namespace Game1.Code.Player.Control
             RegisterCommand(Keys.J, new Jump(game));
             RegisterCommand(Keys.K, new Dash(game));
             RegisterCommand(Keys.Z, new UseItem(game));
+            RegisterCommand(Keys.D1, new UseAbility(game));
 
             RegisterCommand(Keys.M, new Respawn(game));
 
@@ -52,15 +53,6 @@ namespace Game1.Code.Player.Control
                 }
             }
 
-            if (boomerangIndex == -1 && game.selectedItemName == "Boomerang")
-            {
-                boomerangIndex = game.link.itemIndex;
-            }
-            if (boomerangIndex != -1 && game.link.itemPool[boomerangIndex].IsDone())
-            {
-                boomerangIndex = -1;
-                game.link.itemList["Boomerang"] = 1;
-            }
         }
     }
 }

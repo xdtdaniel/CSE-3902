@@ -9,6 +9,8 @@ using Game1.Code.Player.PlayerItem;
 using Game1.Code.Player.PlayerCharacter.LinkState;
 using Game1.Code.Player.CollisionHandler;
 using Game1.Code.Player.PlayerItem.PlayerItemState;
+using Zelda.Code.Player.PlayerCharacter;
+using System.Diagnostics;
 
 namespace Game1.Code.Player.PlayerCharacter
 {
@@ -38,11 +40,8 @@ namespace Game1.Code.Player.PlayerCharacter
 
         // link's items
         public Dictionary<string, int> itemList;
-        public LinkItem[] itemPool;
-        public LinkItem boomerang;
+        public ItemPool itemPool;
         public bool useItemDone = true;
-        public int itemIndex = 0;
-        private const int MAX_ITEM_SPRITE_NUM = 1000;
         private int swordBeamAttackDamage = 2;
         public int bombExplosionDamage = 5;
 
@@ -61,6 +60,7 @@ namespace Game1.Code.Player.PlayerCharacter
         private int numberOfBlocksBetweenRoom = 5;
         public string collisionSide = "";
 
+
         public Link()
         {
             state = new NormalLink(this);
@@ -68,7 +68,7 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList = new Dictionary<string, int>();
             itemList.Add("Arrow", 0);
             itemList.Add("Bomb", 2);
-            itemList.Add("Boomerang", 0);
+            itemList.Add("Boomerang", 1);
             itemList.Add("Bow", 0);
             itemList.Add("Clock", 0);
             itemList.Add("Compass", 0);
@@ -85,14 +85,10 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("WoodenSword", 1);                // default weapon
             itemList.Add("SwordBeam", 0);
 
-            itemPool = new LinkItem[MAX_ITEM_SPRITE_NUM];
-            for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
-            {
-                itemPool[i] = new LinkItem(this);
-                itemPool[i].state = new NoItem(itemPool[i]);
-            }
-        }
+            itemPool = new ItemPool(this);
 
+            //abilityList.Add(new BladeBarrage(this));
+        }
         public void Dash()
         {
             if (timeSinceDash >= timeBetweenDash)
@@ -292,14 +288,7 @@ namespace Game1.Code.Player.PlayerCharacter
             }
 
             // update item pool
-            if (!itemPool[itemIndex].IsDone())
-            {
-                itemIndex++;
-            }
-            else if (itemIndex > 0 && itemPool[itemIndex - 1].IsDone())
-            {
-                itemIndex--;
-            }
+            itemPool.Update(x, y, directionIndex);
 
             // update direction index based on current direction
             switch (direction)
@@ -323,11 +312,6 @@ namespace Game1.Code.Player.PlayerCharacter
             // update state
             state.Update();
 
-            // update items in item pool
-            for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
-            {
-                itemPool[i].Update(x, y, directionIndex);
-            }
 
             // increment time between attack and item
             if (timeSinceAttack < timeBetweenAttack)
@@ -357,6 +341,7 @@ namespace Game1.Code.Player.PlayerCharacter
                 damageTimeCounter = 0;
                 isDamaged = false;
             }
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -364,10 +349,7 @@ namespace Game1.Code.Player.PlayerCharacter
             state.Draw(spriteBatch);
 
             // draw item
-            for (int i = 0; i < MAX_ITEM_SPRITE_NUM; i++)
-            {
-                itemPool[i].Draw(spriteBatch);
-            }
+            itemPool.Draw(spriteBatch);
         }
         public string GetStateName()
         {

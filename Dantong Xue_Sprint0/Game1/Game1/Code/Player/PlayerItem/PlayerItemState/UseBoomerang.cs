@@ -5,13 +5,14 @@ using Game1.Code.Player.Factory;
 using System;
 using Game1.Code.LoadFile;
 using Game1.Code.Audio;
+using Game1.Code.Player.PlayerCharacter;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
     class UseBoomerang : IPlayerItemState
     {
         private static int scale = (int)LoadAll.Instance.scale;
-        private LinkItem item;
+        private Link link;
         private int direction;
         private int x;
         private int y;
@@ -24,6 +25,10 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int boomerangHitboxOffset = 7 * scale;
         private int linkHitboxSize = 20 * scale;
         private int boomerangSpinFrequency = 10;
+        private int damageMultiplier = 1;
+        private bool done = false;
+        private bool collided = false;
+
 
         private IPlayerItemSprite frontBoomerang;
         private IPlayerItemSprite rightBoomerang;
@@ -32,18 +37,18 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
         private Rectangle rectangle;
 
-        public UseBoomerang(LinkItem item)
+        public UseBoomerang(Link link)
         {
-            direction = item.direction;
-            x = item.x;
-            y = item.y;
+            direction = link.directionIndex;
+            x = link.x;
+            y = link.y;
 
             frontBoomerang = PlayerItemFactory.Instance.CreateFrontBoomerang();
             rightBoomerang = PlayerItemFactory.Instance.CreateRightBoomerang();
             backBoomerang = PlayerItemFactory.Instance.CreateBackBoomerang();
             leftBoomerang = PlayerItemFactory.Instance.CreateLeftBoomerang();
 
-            this.item = item;
+            this.link = link;
 
             rectangle = new Rectangle();
             
@@ -58,6 +63,12 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         public void CollisionResponse()
         {
             secondFrame = maxSecondFrame;
+            damageMultiplier = 0;
+            collided = true;
+        }
+        public int GetDamage()
+        {
+            return link.basicAttackDamage * damageMultiplier;
         }
         public void Update() 
         {
@@ -69,36 +80,36 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
                 {
                     boomerangSpeed++;
                 }
-                double xDistance = Math.Abs(item.lastLinkX - x);
-                double yDistance = Math.Abs(item.lastLinkY - y);
+                double xDistance = Math.Abs(link.x - x);
+                double yDistance = Math.Abs(link.y - y);
                 double angle = Math.Atan(xDistance / yDistance);
                 int xSpeed = Convert.ToInt32(boomerangSpeed * Math.Sin(angle));
                 int ySpeed = Convert.ToInt32(boomerangSpeed * Math.Cos(angle));
 
-                if (item.lastLinkX < x)
+                if (link.x < x)
                 {
                     x -= xSpeed;
                 }
-                else if (item.lastLinkX > x)
+                else if (link.x > x)
                 {
                     x += xSpeed;
                 }
-                if (item.lastLinkY < y)
+                if (link.y < y)
                 {
                     y -= ySpeed;
                 }
-                else if (item.lastLinkY > y)
+                else if (link.y > y)
                 {
                     y += ySpeed;
                 }
-                
-                
+
+
                 Point point = new Point(x + boomerangHitboxOffset, y + boomerangHitboxOffset);
-                Rectangle rec = new Rectangle(item.lastLinkX, item.lastLinkY, linkHitboxSize, linkHitboxSize);
+                Rectangle rec = new Rectangle(link.x, link.y, linkHitboxSize, linkHitboxSize);
                 if (rec.Contains(point))
                 {
                     AudioPlayer.arrowShoot.Stop();
-                    item.state = new NoItem(item);
+                    done = true;
                 }
             }
             else
@@ -155,11 +166,15 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public Rectangle GetRectangle()
         {
+            if (collided)
+            {
+                rectangle = new Rectangle();
+            }
             return rectangle;
         }
         public bool IsDone()
         {
-            return false;
+            return done;
         }
     }
 }

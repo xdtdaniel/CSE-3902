@@ -1,4 +1,6 @@
 ﻿using Game1.Code.LoadFile;
+using Game1.Code.Player.Interface;
+using Game1.Code.Player.PlayerCharacter;
 using Game1.Code.Player.PlayerItem;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -8,11 +10,11 @@ namespace Game1.Code.Player.CollisionHandler
     public static class PlayerItemAndBlockCollisionHandler
     {
         private static string collidedSide = "";
-        public static void HandleCollision(LinkItem[] itemPool, Dictionary<string, List<Rectangle>> blockList)
+        public static void HandleCollision(Link link, Dictionary<string, List<Rectangle>> blockList)
         {
-            for (int i = 0; i < itemPool.Length; i++)
+            for (int i = 0; i < link.itemPool.GetItemPool().Count; i++)
             {
-                LinkItem item = itemPool[i];
+                IPlayerItemState item = link.itemPool.GetItemPool()[i];
                 foreach (KeyValuePair<string, List<Rectangle>> kvp in blockList)
                 {
                     foreach (Rectangle rect in kvp.Value)
@@ -38,11 +40,7 @@ namespace Game1.Code.Player.CollisionHandler
                                     item.CollisionResponse();
                                     break;
 
-                                case "RangedSwordBeam":
-                                    item.CollisionResponse();
-                                    break;
-
-                                case "RangedWoodenSword":
+                                case "RangedSword":
                                     item.CollisionResponse();
                                     break;
 
