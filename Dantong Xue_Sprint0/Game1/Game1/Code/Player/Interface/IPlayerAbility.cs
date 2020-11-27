@@ -8,7 +8,7 @@ namespace Game1.Code.Player.Interface
     {
         void Update();
         void Draw(SpriteBatch spriteBatch);
-        Rectangle GetRectangle();
         string GetAbilityName();
+        bool IsDone();
     }
 }

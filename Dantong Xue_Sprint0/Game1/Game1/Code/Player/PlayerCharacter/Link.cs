@@ -41,6 +41,7 @@ namespace Game1.Code.Player.PlayerCharacter
         // link's items
         public Dictionary<string, int> itemList;
         public ItemPool itemPool;
+        public PlayerAbilityPanel playerAbilityPanel;
         public bool useItemDone = true;
         private int swordBeamAttackDamage = 2;
         public int bombExplosionDamage = 5;
@@ -86,8 +87,7 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("SwordBeam", 0);
 
             itemPool = new ItemPool(this);
-
-            //abilityList.Add(new BladeBarrage(this));
+            playerAbilityPanel = new PlayerAbilityPanel(this, itemPool);
         }
         public void Dash()
         {
@@ -287,8 +287,6 @@ namespace Game1.Code.Player.PlayerCharacter
                 basicAttackDamage = swordBeamAttackDamage;
             }
 
-            // update item pool
-            itemPool.Update(x, y, directionIndex);
 
             // update direction index based on current direction
             switch (direction)
@@ -311,6 +309,11 @@ namespace Game1.Code.Player.PlayerCharacter
 
             // update state
             state.Update();
+
+            // update item pool
+            itemPool.Update(x, y, directionIndex);
+
+            playerAbilityPanel.Update();
 
 
             // increment time between attack and item

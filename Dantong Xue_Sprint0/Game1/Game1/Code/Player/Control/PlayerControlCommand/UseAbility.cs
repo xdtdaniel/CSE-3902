@@ -14,7 +14,8 @@ namespace Game1.Code.Player.Control.PlayerControlCommand
 
         public void Execute()
         {
-            game.link.itemPool.UseAbility("");
+                game.link.playerAbilityPanel.UseBladeBarrage();
+            
         }
     }
 }

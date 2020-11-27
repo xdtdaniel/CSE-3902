@@ -52,8 +52,6 @@ namespace Zelda.Code.Player.PlayerCharacter
         }
         public void UseAbility(string abilityName)
         {
-            float angle = (float)(Math.PI / 180) * 45;
-            list.Add(new SingleBlade(link, angle));
         }
 
         public Rectangle GetRectangle(int index)

@@ -109,6 +109,7 @@ namespace Game1
 
             PlayerCharacterFactory.Instance.LoadAllTextures(Content);
             PlayerItemFactory.Instance.LoadAllTextures(Content);
+            PlayerAbilityFactory.Instance.LoadAllTextures(Content);
             BlockFactory.Instance.LoadAllTexture(Content);
             EnemyTextureStorage.LoadTextures(Content);
             ItemSpriteFactory.LoadAllTextures(Content);

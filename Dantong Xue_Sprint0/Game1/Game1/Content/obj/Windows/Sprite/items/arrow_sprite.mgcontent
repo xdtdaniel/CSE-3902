@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/items/arrow_sprite.png</SourceFile>
-  <SourceTime>2020-11-26T08:00:22.9478289-05:00</SourceTime>
+  <SourceTime>2020-11-27T07:17:08.3702449-05:00</SourceTime>
   <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/items/arrow_sprite.xnb</DestFile>
-  <DestTime>2020-11-26T08:01:25.197513-05:00</DestTime>
+  <DestTime>2020-11-27T07:20:33.7912014-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
