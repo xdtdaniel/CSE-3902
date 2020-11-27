@@ -33,7 +33,7 @@ namespace Game1.Code.Enemy
             CurrentFrame = 0;
             Location = location;
             Direction = 0;
-            CollisionRectangle = new Rectangle((int)(Location.X + 2 * scale), (int)(Location.Y + 2 * scale), 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X + 2 * scale), (int)(Location.Y + 2 * scale), 12 * scale, 12 * scale);
         }
 
         public void DrawEnemy(SpriteBatch spriteBatch, Vector2 offset)
@@ -100,7 +100,7 @@ namespace Game1.Code.Enemy
 
             Location = new Vector2(x, y);
 
-            CollisionRectangle = new Rectangle((int)(Location.X + 2 * scale), (int)(Location.Y + 2 * scale), 16 * scale, 16 * scale);
+            CollisionRectangle = new Rectangle((int)(Location.X + 2 * scale), (int)(Location.Y + 2 * scale), 12 * scale, 12 * scale);
         }
 
         public void FireProjectile()

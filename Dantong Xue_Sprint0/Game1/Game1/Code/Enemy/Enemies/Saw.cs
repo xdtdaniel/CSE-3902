@@ -20,14 +20,16 @@ namespace Game1.Code.Enemy
         private bool Clockwise;
         private int FrameRateModifier = 0;
         private double Velocity = 0;
-        private double MaxVelocity = 25;
+        private double MaxVelocity = 22;
         private Random Rnd;
+
         private int hp = 8;
+        private int DamageTimer = 0;
+        private int FlashRateModifier = 0;
 
         private int vibrateCounter = 0;
         private readonly int vibrateAmount = 2;
 
-        //private int DamageTimer = 0;
 
         private Rectangle CollisionRectangle;
         private int scale = 3;
@@ -58,7 +60,22 @@ namespace Game1.Code.Enemy
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X - 6), (int)(offset.Y + Location.Y - 56 * scale), (width + 4) * scale, height * scale);
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            if (DamageTimer > 0)
+            {
+                if (FlashRateModifier >= 3)
+                {
+                    spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+                    FlashRateModifier = 0;
+                }
+                else
+                {
+                    FlashRateModifier++;
+                }
+            }
+            else
+            {
+                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
 
         public void UpdateEnemy(Game1 game)
@@ -135,6 +152,11 @@ namespace Game1.Code.Enemy
                 }
 
                 UpdateLocation();
+            }
+
+            if (DamageTimer > 0)
+            {
+                DamageTimer--;
             }
 
             if (CurrentFrame == TotalFrames)
@@ -301,7 +323,11 @@ namespace Game1.Code.Enemy
 
         public void TakeDamage(int damageAmount)
         {
-            // Do nothing.
+            hp -= damageAmount;
+            if (DamageTimer == 0)
+            {
+                DamageTimer = 50;
+            }
         }
     }
 }
