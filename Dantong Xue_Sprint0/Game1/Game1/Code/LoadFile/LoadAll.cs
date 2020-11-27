@@ -35,6 +35,7 @@ namespace Game1.Code.LoadFile
         private Game1 game1;
         private const int defaultMultiplier = 8;
         private const int defaultScale = 3;
+        private const int arrowLevelID = 21;
 
         public int multiplier { get; set; }
         public double scale { get; set; }
@@ -273,7 +274,12 @@ namespace Game1.Code.LoadFile
                         break;
                 }
 
-                UnlockAdjacentDoor(door);
+
+                if (currMapID != arrowLevelID)
+                {
+                    UnlockAdjacentDoor(door);
+                }
+                
 
                 LoadRoom();
             }

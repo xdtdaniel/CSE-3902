@@ -62,6 +62,13 @@ namespace Game1.Code.LoadFile
         private List<Rectangle> upArrows;
         private List<Rectangle> downArrows;
 
+        // designated for level 21
+        private List<Rectangle> unlock1;
+        private List<Rectangle> unlock2;
+        private List<Rectangle> unlock3;
+        private List<Rectangle> unlock4;
+
+
         private Dictionary<string, List<Rectangle>> artifacts;
 
         public void LoadOneMap(string mapName) 
@@ -82,7 +89,10 @@ namespace Game1.Code.LoadFile
             rightArrows = new List<Rectangle>();
             upArrows = new List<Rectangle>();
             downArrows = new List<Rectangle>();
-
+            unlock1 = new List<Rectangle>();
+            unlock2 = new List<Rectangle>();
+            unlock3 = new List<Rectangle>();
+            unlock4 = new List<Rectangle>();
             stairs = new List<Rectangle>();
 
             artifacts = new Dictionary<string, List<Rectangle>>();
@@ -368,22 +378,42 @@ namespace Game1.Code.LoadFile
                     case "leftArrow":
                         blockToDraw = BlockFactory.Instance.CreateLeftArrow();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        leftArrows.Add(blockToDraw.GetRectangle(location));
+                        leftArrows.Add(new Rectangle((int)(location.X + 8 * LoadAll.Instance.scale), (int)(location.Y + 8 * LoadAll.Instance.scale), 6, 6));
                         break;
                     case "rightArrow":
                         blockToDraw = BlockFactory.Instance.CreateRightArrow();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        rightArrows.Add(blockToDraw.GetRectangle(location));
+                        rightArrows.Add(new Rectangle((int)(location.X + 8 * LoadAll.Instance.scale), (int)(location.Y + 8 * LoadAll.Instance.scale), 6, 6));
                         break;
                     case "upArrow":
                         blockToDraw = BlockFactory.Instance.CreateUpArrow();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        upArrows.Add(blockToDraw.GetRectangle(location));
+                        upArrows.Add(new Rectangle((int)(location.X + 8 * LoadAll.Instance.scale), (int)(location.Y + 8 * LoadAll.Instance.scale), 6, 6));
                         break;
                     case "downArrow":
                         blockToDraw = BlockFactory.Instance.CreateDownArrow();
                         blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
-                        downArrows.Add(blockToDraw.GetRectangle(location));
+                        downArrows.Add(new Rectangle((int)(location.X + 8 * LoadAll.Instance.scale), (int)(location.Y + 8 * LoadAll.Instance.scale), 6, 6));
+                        break;
+                    case "unlock_1":
+                        blockToDraw = BlockFactory.Instance.CreateFlatBlock();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        unlock1.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "unlock_2":
+                        blockToDraw = BlockFactory.Instance.CreateFlatBlock();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        unlock2.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "unlock_3":
+                        blockToDraw = BlockFactory.Instance.CreateFlatBlock();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        unlock3.Add(blockToDraw.GetRectangle(location));
+                        break;
+                    case "unlock_4":
+                        blockToDraw = BlockFactory.Instance.CreateFlatBlock();
+                        blocksListToDraw.Add(new Tuple<IBlock, Vector2>(blockToDraw, location));
+                        unlock4.Add(blockToDraw.GetRectangle(location));
                         break;
                 }
 
@@ -400,6 +430,10 @@ namespace Game1.Code.LoadFile
             artifacts.Add("rightArrows", rightArrows);
             artifacts.Add("upArrows", upArrows);
             artifacts.Add("downArrows", downArrows);
+            artifacts.Add("unlock1", unlock1);
+            artifacts.Add("unlock2", unlock2);
+            artifacts.Add("unlock3", unlock3);
+            artifacts.Add("unlock4", unlock4);
         }
 
         public Dictionary<string, List<Rectangle>> GetArtifacts()
