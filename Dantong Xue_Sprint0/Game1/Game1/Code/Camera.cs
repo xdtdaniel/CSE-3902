@@ -40,7 +40,7 @@ namespace Game1.Code
         private KeyboardState oldState;
         private KeyboardState newState;
         private bool paused;
-        public int pausedType = -1; // -1 for not paused, 0 for paused, 1 for openning inventory
+        public int pausedType = -1; // -1 for not paused, 0 for paused, 1 for openning inventory, 2 for openning ability tree
 
 
         public Camera(Viewport viewport)
@@ -192,33 +192,50 @@ namespace Game1.Code
         {
             newState = Keyboard.GetState();
 
-            if (newState.IsKeyDown(Keys.P) && !oldState.IsKeyDown(Keys.P))
+            if (!moving)
             {
-                paused = !paused;
-                if (paused)
+                if (newState.IsKeyDown(Keys.P) && !oldState.IsKeyDown(Keys.P))
                 {
-                    pausedType = 1;
-                    UpdateMovingState("up");
+                    paused = !paused;
+                    if (paused && pausedType == -1)
+                    {
+                        pausedType = 1;
+                        UpdateMovingState("up");
+                    }
+                    else if (pausedType == 1)
+                    {
+                        pausedType = -1;
+                        UpdateMovingState("down");
+                    }
                 }
-                else
+                else if (newState.IsKeyDown(Keys.O) && !oldState.IsKeyDown(Keys.O))
                 {
-                    pausedType = -1;
-                    UpdateMovingState("down");
+                    paused = !paused;
+                    if (paused && pausedType == -1)
+                    {
+                        pausedType = 2;
+                        UpdateMovingState("down");
+                    }
+                    else if (pausedType == 2)
+                    {
+                        pausedType = -1;
+                        UpdateMovingState("up");
+                    }
                 }
-            }
-            //pause crrent screen by press space
-           else if (newState.IsKeyDown(Keys.Space) && !oldState.IsKeyDown(Keys.Space)) 
-            {
-                if (!paused)
+                //pause crrent screen by press space
+                else if (newState.IsKeyDown(Keys.Space) && !oldState.IsKeyDown(Keys.Space))
                 {
-                    pausedType = 0;
+                    if (!paused && pausedType == -1)
+                    {
+                        pausedType = 0;
+                    }
+                    else if (pausedType == 0)
+                    {
+                        pausedType = -1;
+                    }
+                    paused = !paused;
+
                 }
-                else
-                {
-                    pausedType = -1;
-                }
-                paused = !paused;
-            
             }
 
             oldState = newState;

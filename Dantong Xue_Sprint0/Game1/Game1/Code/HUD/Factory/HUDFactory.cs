@@ -9,6 +9,8 @@ namespace Game1.Code.HUD.Factory
 		private static Texture2D hudFrame;
 		private static Texture2D inventoryFrame;
 		private static Texture2D pause;
+		private static Texture2D abilityTreeFrame;
+		private static Texture2D abilityBar;
 
 		// dungeon only
 		private static Texture2D dungeonMiniMapCell_Level1;
@@ -61,6 +63,9 @@ namespace Game1.Code.HUD.Factory
 			hudFrame = content.Load<Texture2D>("HUD/HUDFrame");
 			inventoryFrame = content.Load<Texture2D>("HUD/InventoryFrame");
 			pause = content.Load<Texture2D>("HUD/Pause");
+			abilityTreeFrame = content.Load<Texture2D>("HUD/AbilityTreeFrame");
+			abilityBar = content.Load<Texture2D>("HUD/AbilityBar");
+
 
 			// dungeon only
 			dungeonMiniMapCell_Level1 = content.Load<Texture2D>("HUD/DungeonMiniMapCell_Level1");
@@ -123,6 +128,14 @@ namespace Game1.Code.HUD.Factory
 		public static Texture2D LoadPause()
 		{
 			return pause;
+		}
+		public static Texture2D LoadAbilityTreeFrame()
+		{
+			return abilityTreeFrame;
+		}
+		public static Texture2D LoadAbilityBar()
+		{
+			return abilityBar;
 		}
 
 		// dungeon only

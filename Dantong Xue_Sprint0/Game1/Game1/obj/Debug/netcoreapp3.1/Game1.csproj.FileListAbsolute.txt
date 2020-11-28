@@ -1129,3 +1129,14 @@ C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\n
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\enemies\saw_sprite.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\Blade.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\BladeEdge.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\AbilityBar.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\AbilityTreeFrame.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\BladeBarrage.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\EmpoweredShot.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\FatalSlash.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\FieldBlast.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\LineImpact.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\PiercingArrow.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Pointer.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\QuickShot.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\SplitArrow.xnb

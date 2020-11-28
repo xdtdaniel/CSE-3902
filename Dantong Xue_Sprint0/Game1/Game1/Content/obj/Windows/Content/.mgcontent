@@ -35,6 +35,9 @@
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Text.wav</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Text_Slow.wav</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/font.spritefont</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/AbilityBar.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/AbilityTreeFrame.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/BladeBarrage.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/ColorSpot/BlackSpot.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/ColorSpot/BlueSpot.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/ColorSpot/BrownSpot.png</File>
@@ -50,6 +53,9 @@
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonMiniMapFrame.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonPauseScreenFrame.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonPauseScreenMapCell_Level1.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/EmpoweredShot.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/FatalSlash.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/FieldBlast.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/HUDFrame.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Indicator/DashChargeGlitter_0.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Indicator/DashChargeGlitter_1.png</File>
@@ -57,6 +63,7 @@
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Indicator/EmptyDashCharge.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Indicator/FullDashCharge.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/InventoryFrame.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/LineImpact.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Misc/0.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Misc/1.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Misc/2.png</File>
@@ -80,6 +87,10 @@
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Others/OverworldMiniMapFrame.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Others/OverworldPauseScreenFrame.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Pause.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/PiercingArrow.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Pointer.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/QuickShot.png</File>
+    <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/SplitArrow.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerAbility/Blade.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerAbility/BladeEdge.png</File>
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerCharacterSprite/BackLink.png</File>
@@ -309,6 +320,17 @@
     <File>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/walk_2.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

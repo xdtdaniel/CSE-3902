@@ -20,19 +20,7 @@ namespace Game1.Code.HUD
 
         private List<Tuple<string, int>> inventoryItemList;
 
-        private IHUDSprite HUDFrame;
-        private IHUDSprite inventoryFrame;
-        private IHUDSprite dungeonPauseScreenFrame;
-        private IHUDSprite dungeonMiniMapFrame;
-        private IHUDSprite hudSymbol;
-        private IHUDSprite hudNumberOfHeart;
-        private IHUDSprite hudNumberOfBomb;
-        private IHUDSprite hudNumberOfKey;
-        private IHUDSprite hudNumberOfRuby;
-        private IHUDSprite dungeonMiniMap;
-        private IHUDSprite dungeonPauseScreen;
-        private IHUDSprite displayPause;
-        private IHUDSprite dashChargeIndicator;
+        private List<IHUDSprite> hudList = new List<IHUDSprite>();
 
         private ItemSelectionController itemSelectionController;
 
@@ -44,19 +32,20 @@ namespace Game1.Code.HUD
 
             inventoryItemList = new List<Tuple<string, int>>();
 
-            HUDFrame = new HUDFrame();
-            inventoryFrame = new InventoryFrame();
-            dungeonPauseScreenFrame = new DungeonPauseScreenFrame();
-            dungeonMiniMapFrame = new DungeonMiniMapFrame(level);
-            hudSymbol = new HUDSymbol();
-            hudNumberOfHeart = new HUDNumberOfHeart(game.link.itemList);
-            hudNumberOfBomb = new HUDNumberOfBomb(game.link.itemList);
-            hudNumberOfKey = new HUDNumberOfKey(game.link.itemList);
-            hudNumberOfRuby = new HUDNumberOfRuby(game.link.itemList);
-            dungeonMiniMap = new DungeonMiniMap(game.link.itemList);
-            dungeonPauseScreen = new DungeonPauseScreen(game.link.itemList);
-            displayPause = new DisplayPause(game);
-            dashChargeIndicator = new DashChargeIndicator(game);
+            hudList.Add(new HUDFrame());
+            hudList.Add(new InventoryFrame());
+            hudList.Add(new DungeonPauseScreenFrame());
+            hudList.Add(new DungeonMiniMapFrame(level));
+            hudList.Add(new HUDSymbol());
+            hudList.Add(new HUDNumberOfHeart(game.link.itemList));
+            hudList.Add(new HUDNumberOfBomb(game.link.itemList));
+            hudList.Add(new HUDNumberOfKey(game.link.itemList));
+            hudList.Add(new HUDNumberOfRuby(game.link.itemList));
+            hudList.Add(new DungeonMiniMap(game.link.itemList));
+            hudList.Add(new DungeonPauseScreen(game.link.itemList));
+            hudList.Add(new DisplayPause(game));
+            hudList.Add(new DashChargeIndicator(game));
+            hudList.Add(new AbilityTreeFrame());
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
 
@@ -72,21 +61,12 @@ namespace Game1.Code.HUD
             int targetX = (int)LoadAll.Instance.startPos.X;
             int targetY = (int)LoadAll.Instance.startPos.Y;
 
-            HUDFrame.Update(x, y);
-            inventoryFrame.Update(x, y);
-            dungeonPauseScreenFrame.Update(x, y);
-            dungeonMiniMapFrame.Update(x, y);
-            hudSymbol.Update(x, y);
-            hudNumberOfHeart.Update(x, y);
-            hudNumberOfBomb.Update(x, y);
-            hudNumberOfKey.Update(x, y);
-            hudNumberOfRuby.Update(x, y);
-            dungeonMiniMap.Update(x, y);
-            dungeonPauseScreen.Update(x, y);
-            itemSelectionController.Update(x,y);
-            displayPause.Update(x, y);
-            dashChargeIndicator.Update(x, y);
+            for (int i = 0; i < hudList.Count; i++)
+            {
+                hudList[i].Update(x, y);
+            }
 
+            itemSelectionController.Update(x, y);
             achievementPanel.Update((int)x, (int)y);
 
             if (switched)
@@ -145,21 +125,12 @@ namespace Game1.Code.HUD
 
         public void HUDDraw()
         {
-            HUDFrame.Draw(game._spriteBatch);
-            inventoryFrame.Draw(game._spriteBatch);
-            dungeonPauseScreenFrame.Draw(game._spriteBatch);
-            dungeonMiniMapFrame.Draw(game._spriteBatch);
-            hudSymbol.Draw(game._spriteBatch);
-            hudNumberOfHeart.Draw(game._spriteBatch);
-            hudNumberOfBomb.Draw(game._spriteBatch);
-            hudNumberOfKey.Draw(game._spriteBatch);
-            hudNumberOfRuby.Draw(game._spriteBatch);
-            dungeonMiniMap.Draw(game._spriteBatch);
-            dungeonPauseScreen.Draw(game._spriteBatch);
-            itemSelectionController.Draw();
-            displayPause.Draw(game._spriteBatch);
-            dashChargeIndicator.Draw(game._spriteBatch);
+            for (int i = 0; i < hudList.Count; i++)
+            {
+                hudList[i].Draw(game._spriteBatch);
+            }
 
+            itemSelectionController.Draw();
             achievementPanel.Draw();
         }
 
