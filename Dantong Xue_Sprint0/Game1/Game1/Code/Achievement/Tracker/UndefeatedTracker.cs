@@ -50,7 +50,7 @@ namespace Game1.Code.Achievement.Tracker
             return doneDisplay;
         }
 
-        public void Draw()
+        public void Draw(int x, int y)
         {
             if (completed && !doneDisplay)
             {

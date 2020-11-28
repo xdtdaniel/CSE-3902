@@ -26,8 +26,10 @@ namespace Game1.Code.Achievement.Tracker
         private int stayedTime = 0;
         private int transitionTime = 60;
 
-        private int startX = 68 * scale;
-        private int startY = 56 * scale;
+        private int offset_x = 68 * scale;
+        private int offset_y = 1 * scale;
+        private int start_x;
+        private int start_y;
         private int drawWidth = 120 * scale;
         private int drawHeight = 54 * scale;
 
@@ -45,8 +47,10 @@ namespace Game1.Code.Achievement.Tracker
 
         }
 
-        public bool Update(bool startDrawing)
+        public bool Update(bool startDrawing, int x, int y)
         {
+            start_x = x + offset_x;
+            start_y = y + offset_y;
             if (!completed)
             {
                 currX = game.link.x;
@@ -97,7 +101,7 @@ namespace Game1.Code.Achievement.Tracker
             if (completed && !doneDisplay)
             {
                 Rectangle sourceRectangle = new Rectangle(0, 0, marathonRunnerSprite.Width, marathonRunnerSprite.Height);
-                Rectangle destinationRectangle = new Rectangle(startX, startY, drawWidth, drawHeight);
+                Rectangle destinationRectangle = new Rectangle(start_x, start_y, drawWidth, drawHeight);
                 game._spriteBatch.Draw(marathonRunnerSprite, destinationRectangle, sourceRectangle, Color.White * ((float)currentFrame / transitionTime));
             }
         }

@@ -1,4 +1,5 @@
-﻿using Game1.Code.HUD.ItemSelection;
+﻿using Game1.Code.Achievement;
+using Game1.Code.HUD.ItemSelection;
 using Game1.Code.HUD.Sprite;
 using Game1.Code.LoadFile;
 using Game1.Code.Player.CollisionHandler;
@@ -35,6 +36,7 @@ namespace Game1.Code.HUD
 
         private ItemSelectionController itemSelectionController;
 
+        private AchievementPanel achievementPanel;
 
         public HUDPanel(Game1 game)
         {
@@ -57,6 +59,8 @@ namespace Game1.Code.HUD
             dashChargeIndicator = new DashChargeIndicator(game);
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
+
+            achievementPanel = new AchievementPanel(game);
 
 
         }
@@ -82,6 +86,8 @@ namespace Game1.Code.HUD
             itemSelectionController.Update(x,y);
             displayPause.Update(x, y);
             dashChargeIndicator.Update(x, y);
+
+            achievementPanel.Update((int)x, (int)y);
 
             if (switched)
             {
@@ -154,6 +160,7 @@ namespace Game1.Code.HUD
             displayPause.Draw(game._spriteBatch);
             dashChargeIndicator.Draw(game._spriteBatch);
 
+            achievementPanel.Draw();
         }
 
     }

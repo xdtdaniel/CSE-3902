@@ -16,9 +16,9 @@ namespace Game1.Code.Achievement
 
             trackerList = new List<ITracker>();
             trackerList.Add(new MarathonRunnerTracker(game));
-            trackerList.Add(new UndefeatedTracker(game));
+            //trackerList.Add(new UndefeatedTracker(game));
         }
-        public void Update()
+        public void Update(int x, int y)
         {
             bool done = false;
 
@@ -29,7 +29,7 @@ namespace Game1.Code.Achievement
                 if (!completed)
                 {
                     // keep tracking if not done yet
-                    done = trackerList[i].Update(false);
+                    done = trackerList[i].Update(false, x, y);
                 }
                 else
                 {
@@ -48,7 +48,7 @@ namespace Game1.Code.Achievement
             if (drawingWaitList.Count > 0)
             {
                 // only update the first one
-                done = drawingWaitList[0].Update(true);
+                done = drawingWaitList[0].Update(true, x, y);
 
                 // remove if done
                 if (done)

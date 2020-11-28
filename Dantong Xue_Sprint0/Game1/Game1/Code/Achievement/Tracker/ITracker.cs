@@ -6,7 +6,7 @@ namespace Game1.Code.Achievement.Tracker
 {
     public interface ITracker
     {
-        bool Update(bool startDrawing);
+        bool Update(bool startDrawing, int x, int y);
         void Draw();
         bool AchievementCompleted();
     }

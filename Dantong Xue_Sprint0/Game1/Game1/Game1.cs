@@ -65,7 +65,6 @@ namespace Game1
 
         public Camera camera;
         private StartScreen startScreen;
-        private AchievementPanel achievementPanel;
 
         public Game1()
         {
@@ -87,7 +86,6 @@ namespace Game1
 
             link = new Link();
             playerPanel = new PlayerPanel(this);
-            achievementPanel = new AchievementPanel(this);
             hudPanel = new HUDPanel(this);
             selectedItemName = "";
             LoadAll.Instance.GetGameObject(this);
@@ -148,7 +146,6 @@ namespace Game1
             paused = camera.PauseGame();
             mapID = PlayerAndItemCollisionHandler.getMapID();
 
-            achievementPanel.Update();
 
             quitResetController.Update(this);
             if (!paused && gameStarted)
@@ -276,7 +273,6 @@ namespace Game1
             // HUD
             hudPanel.HUDDraw();
 
-            achievementPanel.Draw();
 
 
             if (!gameStarted)

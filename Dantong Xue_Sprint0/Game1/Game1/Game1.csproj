@@ -11,6 +11,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Code\Achievement\Tracker\UndefeatedTracker.cs" />
     <Compile Remove="Code\Block\BlockFactory.cs" />
     <Compile Remove="Code\Block\BlockKeyboardController.cs" />
     <Compile Remove="Code\Block\MovingAnimatedBlock.cs" />
