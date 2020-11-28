@@ -110,7 +110,7 @@ namespace Game1.Code.HUD.ItemSelection
             // draw inventory items 
             for (int i = 0; i < inventoryItemList.Count; i++)
             {
-                if (i > 3) // when index > 3, inventory items will be displayed in next row
+                if (i == 4) // when index > 3, inventory items will be displayed in next row
                 {
                     inventoryItemX -= spacing * 4; // reset x
                     inventoryItemY += height; // increment y

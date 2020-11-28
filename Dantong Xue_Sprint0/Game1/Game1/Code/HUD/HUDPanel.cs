@@ -1,4 +1,5 @@
 ﻿using Game1.Code.Achievement;
+using Game1.Code.HUD.AbilitySelection;
 using Game1.Code.HUD.ItemSelection;
 using Game1.Code.HUD.Sprite;
 using Game1.Code.LoadFile;
@@ -23,6 +24,7 @@ namespace Game1.Code.HUD
         private List<IHUDSprite> hudList = new List<IHUDSprite>();
 
         private ItemSelectionController itemSelectionController;
+        private AbilitySelectionController abilitySelectionController;
 
         private AchievementPanel achievementPanel;
 
@@ -46,8 +48,10 @@ namespace Game1.Code.HUD
             hudList.Add(new DisplayPause(game));
             hudList.Add(new DashChargeIndicator(game));
             hudList.Add(new AbilityTreeFrame());
+            hudList.Add(new AbilityBar());
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
+            abilitySelectionController = new AbilitySelectionController(game.link.playerAbilityPanel);
 
             achievementPanel = new AchievementPanel(game);
 
@@ -67,6 +71,7 @@ namespace Game1.Code.HUD
             }
 
             itemSelectionController.Update(x, y);
+            abilitySelectionController.Update(x, y);
             achievementPanel.Update((int)x, (int)y);
 
             if (switched)
@@ -131,6 +136,7 @@ namespace Game1.Code.HUD
             }
 
             itemSelectionController.Draw();
+            abilitySelectionController.Draw(game._spriteBatch);
             achievementPanel.Draw();
         }
 

@@ -41,10 +41,13 @@ namespace Game1.Code.Player.PlayerCharacter
         // link's items
         public Dictionary<string, int> itemList;
         public ItemPool itemPool;
-        public PlayerAbilityPanel playerAbilityPanel;
         public bool useItemDone = true;
         private int swordBeamAttackDamage = 2;
         public int bombExplosionDamage = 5;
+
+        // abilities
+        public PlayerAbilityPanel playerAbilityPanel;
+        public int abilityPoint = 8; // test
 
         // time intervals
         public int timeBetweenAttack = 40;
@@ -70,9 +73,9 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("Arrow", 0);
             itemList.Add("Bomb", 2);
             itemList.Add("Boomerang", 1);
-            itemList.Add("Bow", 0);
+            itemList.Add("Bow", 1);
             itemList.Add("Clock", 0);
-            itemList.Add("Compass", 0);
+            itemList.Add("Compass", 1);
             itemList.Add("Heart", 6);                      // default current health = 6
             itemList.Add("HeartContainer", 6);             // default max health = 6, heart container cannot be odd number
             itemList.Add("Key", 0);
@@ -80,9 +83,9 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("Ruby", 0);
             itemList.Add("Triforce", 0);
             itemList.Add("Fairy", 0);
-            itemList.Add("BlueCandle", 0);
-            itemList.Add("BluePotion", 0);
-            itemList.Add("BlueRing", 0);
+            itemList.Add("BlueCandle", 1);
+            itemList.Add("BluePotion", 1);
+            itemList.Add("BlueRing", 1);
             itemList.Add("WoodenSword", 1);                // default weapon
             itemList.Add("SwordBeam", 0);
 

@@ -15,7 +15,7 @@ namespace Game1.Code.HUD.ItemSelection
         private int x;
         private int y;   
         private Vector2[] offsetList;
-        private int numberOfInventoryItem = 8;
+        private int numberOfInventoryItems = 8;
 
         private int texture_height;
         private int texture_width;
@@ -36,14 +36,14 @@ namespace Game1.Code.HUD.ItemSelection
             //load selections
             Selection = HUDFactory.LoadInventorySelection();
 
-            offsetList = new Vector2[numberOfInventoryItem];
-            for (int i = 0; i < numberOfInventoryItem; i++)
+            offsetList = new Vector2[numberOfInventoryItems];
+            for (int i = 0; i < numberOfInventoryItems; i++)
             {
                 int xOffset = 0;
                 int yOffset = 0;
-                if (i == numberOfInventoryItem / 2)
+                if (i >= numberOfInventoryItems / 2)
                 {
-                    xOffset = -spacing * 3; // reset x offset
+                    xOffset = -spacing * 4; // reset x offset
                     yOffset = sideLength; // increment y offset
                 }
                 offsetList[i] = new Vector2(xOffset + i * spacing, yOffset);
@@ -84,9 +84,6 @@ namespace Game1.Code.HUD.ItemSelection
             x = preX + (int)newStartX + (int)offsetList[index].X;
             y = preY + (int)newStartY + (int)offsetList[index].Y;
         }
-     
-
-
     }
 
 }
