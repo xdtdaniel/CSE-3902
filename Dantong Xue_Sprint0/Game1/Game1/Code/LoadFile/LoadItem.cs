@@ -186,6 +186,12 @@ namespace Game1.Code.LoadFile
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                         inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Triforce"));
                         break;
+                    case "crown":
+                        item = new Crown(X, Y);
+                        itemCopy = new Crown(X, Y);
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Crown"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Crown"));
+                        break;
                 }
 
             }
