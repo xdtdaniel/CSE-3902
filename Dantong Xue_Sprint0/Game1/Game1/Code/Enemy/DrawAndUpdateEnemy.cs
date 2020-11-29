@@ -33,9 +33,16 @@ namespace Game1.Code.Enemy
             for (int i = 0; i < Enemies.Count; i++)
             {
                 Enemies[i].Item1.UpdateEnemy(game);
-                if (Enemies[i].Item1.GetHP() <= 0) {
+
+                if (Enemies[i].Item1.GetHP() <= 0) 
+                {
                     enemyDie.Play();
                     Enemies.RemoveAt(i);
+
+                    if (LoadAll.Instance.GetCurrentMapID() == 22) 
+                    {
+                        Enemies.Clear();
+                    }
                 }
             }
         }
