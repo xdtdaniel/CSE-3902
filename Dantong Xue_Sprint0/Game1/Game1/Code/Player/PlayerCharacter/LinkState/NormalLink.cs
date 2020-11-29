@@ -73,8 +73,12 @@ namespace Game1.Code.Player.PlayerCharacter.LinkState
             {
                 link.state = new OneHandHoldBow(link);
             }
-            else if (pickUp == 4) {
+            else if (pickUp == 4)
+            {
                 link.state = new TwoHandHoldHeartContainer(link);
+            }
+            else if (pickUp == 5) {
+                link.state = new CrownLink(link);
             }
         }
         public void KnockedBack(string collisionSide)

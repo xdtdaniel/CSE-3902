@@ -17,15 +17,13 @@ namespace Game1.Code.Player.PlayerCharacter.LinkState
         private int offsetX = 6 * scale;
         private int offsetY = 25 * scale;
         private int currentFrame = 0;
-        private int maxCurrentFrame = 90;
+        private int maxCurrentFrame = 120;
 
         public CrownLink(Link link)
         {
-            link.state = new TwoHandHoldTriforce(link);
             linkSprite = PlayerCharacterFactory.Instance.CreatePickUpLink();
             this.link = link;
-            link.movable = false;
-            link.canAttack = false;
+            link.canAttack = false;      
             crown = new Crown(link.x - (int)LoadAll.Instance.startPos.X-offsetX, link.y - (int)LoadAll.Instance.startPos.Y - offsetY);
 
         }
@@ -49,7 +47,7 @@ namespace Game1.Code.Player.PlayerCharacter.LinkState
             if (currentFrame == maxCurrentFrame) // decide how long the hold state will take
             {
                 currentFrame = 0;
-                link.state = new CrownLink(link);
+                link.state = new NormalLink(link);
             }
             crown.Update();
         }

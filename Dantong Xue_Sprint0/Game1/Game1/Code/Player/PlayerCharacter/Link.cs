@@ -75,7 +75,7 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("Boomerang", 1);
             itemList.Add("Bow", 1);
             itemList.Add("Clock", 0);
-            itemList.Add("Compass", 1);
+            itemList.Add("Compass", 0);
             itemList.Add("Heart", 12);                      // default current health = 6
             itemList.Add("HeartContainer", 12);             // default max health = 6, heart container cannot be odd number
             itemList.Add("Key", 0);
@@ -87,7 +87,7 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("BluePotion", 1);
             itemList.Add("BlueRing", 1);
             itemList.Add("WoodenSword", 1);                // default weapon
-            itemList.Add("SwordBeam", 1);
+            itemList.Add("SwordBeam", 0);
             itemList.Add("Crown", 0);
 
             itemPool = new ItemPool(this);
@@ -272,11 +272,6 @@ namespace Game1.Code.Player.PlayerCharacter
             LoadAll.Instance.ChangeMapColor(Color.Yellow);
         }
 
-        //new levels win state
-        public void CrownState() {
-            state = new CrownLink(this);
-            LoadAll.Instance.ChangeMapColor(Color.SkyBlue);
-        }
 
         public void Update()
         {
