@@ -450,7 +450,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:HUD/FatalSlash.png;HUD/DeadlySlash.png
+/build:HUD/FatalSlash.png
 
 #begin HUD/FieldBlast.png
 /importer:TextureImporter
@@ -776,7 +776,7 @@
 /processorParam:TextureFormat=Color
 /build:HUD/Misc/X.png
 
-#begin HUD/Others/greenDiamond.png
+#begin HUD/Others/expPattern.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -786,7 +786,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:HUD/Others/greenDiamond.png
+/build:HUD/Others/expPattern.png
 
 #begin HUD/Others/MiniMapCell.png
 /importer:TextureImporter
@@ -919,18 +919,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerAbility/BladeEdge.png
-
-#begin PlayerAbility/slash.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:PlayerAbility/slash.png
 
 #begin PlayerCharacterSprite/BackLink.png
 /importer:TextureImporter
