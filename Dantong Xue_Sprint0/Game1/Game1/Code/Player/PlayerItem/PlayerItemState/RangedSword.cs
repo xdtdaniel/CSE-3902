@@ -76,9 +76,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
             rectangle = new Rectangle();
         }
-        public void UseItem(string itemName) 
-        {
-        }
         public string GetItemName()
         {
             if (phase == 0)

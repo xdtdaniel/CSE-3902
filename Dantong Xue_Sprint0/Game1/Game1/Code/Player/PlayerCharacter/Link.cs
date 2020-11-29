@@ -45,8 +45,6 @@ namespace Game1.Code.Player.PlayerCharacter
         private int swordBeamAttackDamage = 2;
         public int bombExplosionDamage = 5;
 
-        // abilities
-        public PlayerAbilityPanel playerAbilityPanel;
         public int abilityPoint = 8; // test
 
         // time intervals
@@ -91,7 +89,6 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("Crown", 0);
 
             itemPool = new ItemPool(this);
-            playerAbilityPanel = new PlayerAbilityPanel(this, itemPool);
         }
         public void Dash()
         {
@@ -318,7 +315,6 @@ namespace Game1.Code.Player.PlayerCharacter
             // update item pool
             itemPool.Update(x, y, directionIndex);
 
-            playerAbilityPanel.Update();
 
 
             // increment time between attack and item

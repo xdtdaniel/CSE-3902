@@ -20,6 +20,8 @@ using Game1.Code.Achievement.Factory;
 using Game1.Code.Player.PlayerCharacter;
 using Game1.Code.Player.Factory;
 using Game1.Code.Player.CollisionHandler;
+using Game1.Code.Player.PlayerItem;
+using Game1.Code.Player.PlayerAbility;
 
 namespace Game1
 {
@@ -34,6 +36,7 @@ namespace Game1
 
         public Link link;
         public PlayerPanel playerPanel;
+        public PlayerAbilityPanel playerAbilityPanel;
 
         public List<IBlock> movableBlocks;
 
@@ -86,6 +89,7 @@ namespace Game1
 
             link = new Link();
             playerPanel = new PlayerPanel(this);
+            playerAbilityPanel = new PlayerAbilityPanel(this);
             hudPanel = new HUDPanel(this);
             selectedItemName = "";
             LoadAll.Instance.GetGameObject(this);
@@ -159,6 +163,7 @@ namespace Game1
                     camera.startShaking = false;
                 }
                 playerPanel.PlayerUpdate();
+                playerAbilityPanel.Update();
 
                 clockWorking = playerPanel.checkClockActivation();
                 currentMapID = LoadAll.Instance.GetCurrentMapID();

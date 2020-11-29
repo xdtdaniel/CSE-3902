@@ -7,14 +7,20 @@ namespace Game1.Code.Player.Control.PlayerControlCommand
     class UseAbility : IPlayerCommand
     {
         private Game1 game;
-        public UseAbility(Game1 game)
+
+        private int type;
+        private int index;
+
+        public UseAbility(Game1 game, int type, int index)
         {
             this.game = game;
+            this.type = type;
+            this.index = index;
         }
 
         public void Execute()
         {
-                game.link.playerAbilityPanel.UseBladeBarrage();
+                game.playerAbilityPanel.UseAbility(type, index);
             
         }
     }

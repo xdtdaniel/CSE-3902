@@ -12,7 +12,7 @@ namespace Game1.Code.Player
     public class PlayerPanel
     {
         private Game1 game;
-        private LinkKeyboardController linkKeyboardController;
+        public LinkKeyboardController linkKeyboardController;
 
         // test
         private Dictionary<string, List<Rectangle>> roomBlockList;

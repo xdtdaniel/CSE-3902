@@ -6,6 +6,7 @@ using System;
 using Game1.Code.Player.PlayerItem;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
+using Game1.Code.Player.PlayerAbility;
 
 namespace Game1.Code.HUD.AbilitySelection
 {
@@ -14,7 +15,7 @@ namespace Game1.Code.HUD.AbilitySelection
     {
         private KeyboardState oldState;
         private KeyboardState newState;
-        private InventoryAbilitySelection inventoryAbilitySelection = new InventoryAbilitySelection();
+        private InventoryAbilitySelection inventoryAbilitySelection;
         private PlayerAbilityPanel playerAbilityPanel;
 
         private int type = 0;
@@ -23,27 +24,29 @@ namespace Game1.Code.HUD.AbilitySelection
         public AbilitySelectionController(PlayerAbilityPanel playerAbilityPanel)
         {
             this.playerAbilityPanel = playerAbilityPanel;
+            inventoryAbilitySelection = new InventoryAbilitySelection(playerAbilityPanel);
         }
         public void Update(float newStartX, float newStartY)
         {
             if (index < 0)
             {
-                type = playerAbilityPanel.treeList.Count - 1;
-                index = playerAbilityPanel.treeList[type].Count - 1;
+                type--;
+                if (type < 0)
+                {
+                    type = playerAbilityPanel.abilityDictList.Count - 1;
+                }
+                index = playerAbilityPanel.abilityDictList[type].Count - 1;
             }
-            else if (index > playerAbilityPanel.treeList[type].Count - 1)
+            else if (index > playerAbilityPanel.abilityDictList[type].Count - 1)
             {
                 type++;
                 index = 0;
             }
-            if (type > playerAbilityPanel.treeList.Count - 1)
+            if (type > playerAbilityPanel.abilityDictList.Count - 1)
             {
                 type = 0;
             }
-            Debug.Print("type: " + type.ToString());
-            Debug.Print("index: " + index.ToString());
-            Debug.Print("global Index: " + playerAbilityPanel.GetGlobalIndex(type, index).ToString());
-            inventoryAbilitySelection.Update(newStartX, newStartY, playerAbilityPanel.GetGlobalIndex(type, index));
+            inventoryAbilitySelection.Update(newStartX, newStartY, index, type);
 
             newState = Keyboard.GetState();
 

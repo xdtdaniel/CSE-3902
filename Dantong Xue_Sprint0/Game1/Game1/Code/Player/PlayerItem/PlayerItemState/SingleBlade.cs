@@ -71,9 +71,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             edge = PlayerAbilityFactory.Instance.GetBladeEdge();
             
         }
-        public void UseItem(string itemName) 
-        {
-        }
         public string GetItemName()
         {
             return "RangedSword";

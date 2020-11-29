@@ -28,7 +28,6 @@ namespace Game1.Code.Player.Control
             RegisterCommand(Keys.J, new Jump(game));
             RegisterCommand(Keys.K, new Dash(game));
             RegisterCommand(Keys.Z, new UseItem(game));
-            RegisterCommand(Keys.D1, new UseAbility(game));
 
             RegisterCommand(Keys.M, new Respawn(game));
 

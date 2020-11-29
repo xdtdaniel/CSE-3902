@@ -1540,3 +1540,7 @@ C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debu
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.dll
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.pdb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.genruntimeconfig.cache
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Others\greenDiamond.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\items\crown.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\DeadlySlash.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\slash.xnb

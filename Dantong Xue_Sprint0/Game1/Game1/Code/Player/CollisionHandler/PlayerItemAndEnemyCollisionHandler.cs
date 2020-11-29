@@ -14,8 +14,11 @@ namespace Game1.Code.Player.CollisionHandler
         private static string collidedSide = "";
         private static int rangedSwordHit = -1;
         private static int bombExplosionHit = -1;
+        private static int slashHit = -1;
         private static bool[] enemyHitByRangedSword;
         private static bool[] enemyHitByBombExplosion;
+        private static bool[] enemyHitByVacuum;
+        private static bool[] enemyHitBySlash;
         public static void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
         {
             for (int i = 0; i < link.itemPool.GetItemPool().Count; i++)
@@ -29,6 +32,10 @@ namespace Game1.Code.Player.CollisionHandler
                 if (i == bombExplosionHit && item.GetItemName() != "BombExplosion")
                 {
                     bombExplosionHit = -1;
+                }
+                if (i == slashHit && item.GetItemName() != "Slash")
+                {
+                    slashHit = -1;
                 }
                 // 
                 if (rangedSwordHit == -1)
@@ -45,6 +52,14 @@ namespace Game1.Code.Player.CollisionHandler
                     for (int j = 0; j < enemyHitByBombExplosion.Length; j++)
                     {
                         enemyHitByBombExplosion[j] = false;
+                    }
+                }
+                if (slashHit == -1)
+                {
+                    enemyHitBySlash = new bool[enemyList.Count];
+                    for (int j = 0; j < enemyHitBySlash.Length; j++)
+                    {
+                        enemyHitBySlash[j] = false;
                     }
                 }
 
@@ -95,6 +110,17 @@ namespace Game1.Code.Player.CollisionHandler
                                     enemyHitByRangedSword[currEnemyIndex] = true;
                                 }
                                 item.CollisionResponse();
+                                break;
+                            case "Vacuum":
+                                tuple.Item1.Freeze();
+                                break;
+                            case "Slash":
+                                if (!enemyHitBySlash[currEnemyIndex])
+                                {
+                                    tuple.Item1.TakeDamage(item.GetDamage());
+                                    slashHit = i;
+                                    enemyHitBySlash[currEnemyIndex] = true;
+                                }
                                 break;
                             default:
                                 break;

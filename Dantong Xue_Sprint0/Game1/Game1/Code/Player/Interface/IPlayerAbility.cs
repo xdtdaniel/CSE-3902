@@ -7,8 +7,9 @@ namespace Game1.Code.Player.Interface
     public interface IPlayerAbility
     {
         void Update();
-        void Draw(SpriteBatch spriteBatch);
+        void Use();
         string GetAbilityName();
-        bool IsDone();
+        bool IsLearned();
+        void Learn();
     }
 }

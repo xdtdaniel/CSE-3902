@@ -38,9 +38,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             this.link = link;
             AudioPlayer.bombDrop.Play();
         }
-        public void UseItem(string itemName) 
-        {
-        }
         public int GetDamage()
         {
             return link.basicAttackDamage * damageMultiplier;

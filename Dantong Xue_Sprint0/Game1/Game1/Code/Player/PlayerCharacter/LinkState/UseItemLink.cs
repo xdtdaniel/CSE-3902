@@ -36,6 +36,7 @@ namespace Game1.Code.Player.PlayerCharacter.LinkState
 
             this.link = link;
             link.canAttack = false;
+            link.movable = false;
         }
         public void UseItem() { }
         public void PickUp(int pickUp) { }

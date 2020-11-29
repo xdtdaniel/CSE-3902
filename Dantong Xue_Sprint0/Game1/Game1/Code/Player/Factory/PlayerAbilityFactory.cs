@@ -9,6 +9,7 @@ namespace Game1.Code.Player.Factory
     {
         private Texture2D blade;
         private Texture2D bladeEdge;
+        private Texture2D slash;
 
 
         public static PlayerAbilityFactory Instance { get; } = new PlayerAbilityFactory();
@@ -22,6 +23,7 @@ namespace Game1.Code.Player.Factory
 
             blade = content.Load<Texture2D>("PlayerAbility/Blade");
             bladeEdge = content.Load<Texture2D>("PlayerAbility/BladeEdge");
+            slash = content.Load<Texture2D>("PlayerAbility/Slash");
         }
 
         public Texture2D GetBlade()
@@ -31,6 +33,10 @@ namespace Game1.Code.Player.Factory
         public Texture2D GetBladeEdge()
         {
             return bladeEdge;
+        }
+        public Texture2D GetSlash()
+        {
+            return slash;
         }
     }
 }
