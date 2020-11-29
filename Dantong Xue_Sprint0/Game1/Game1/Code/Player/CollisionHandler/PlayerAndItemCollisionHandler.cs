@@ -113,6 +113,12 @@ namespace Game1.Code.Player.CollisionHandler
                             link.Win();
                             AudioPlayer.getTriforce.Play();
                             break;
+                        case "Crown":
+                            link.itemList["Crown"]++;
+                            roomItemList.RemoveAt(index);
+                            //link.Win();
+                            //AudioPlayer.getTriforce.Play();
+                            break;
                     }
 
                 }
