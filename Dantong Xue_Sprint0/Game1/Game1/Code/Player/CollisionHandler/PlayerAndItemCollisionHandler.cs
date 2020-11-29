@@ -115,9 +115,16 @@ namespace Game1.Code.Player.CollisionHandler
                             break;
                         case "Crown":
                             link.itemList["Crown"]++;
+                            link.itemList["Ruby"]+=20;
+                            link.itemList["Bomb"]+=10;
+                            link.itemList["Heart"] += link.itemList["HeartContainer"];
+                            if (link.itemList["Heart"] > link.itemList["HeartContainer"])
+                            {
+                                link.itemList["Heart"] = link.itemList["HeartContainer"];
+                            }
+                            item = new Heart(X, Y);
                             roomItemList.RemoveAt(index);
                             link.PickUp(5);
-                            //AudioPlayer.getTriforce.Play();
                             break;
                     }
 
