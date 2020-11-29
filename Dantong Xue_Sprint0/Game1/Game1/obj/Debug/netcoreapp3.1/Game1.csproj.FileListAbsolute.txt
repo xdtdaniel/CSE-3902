@@ -1140,6 +1140,10 @@ C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\n
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Pointer.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\QuickShot.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\SplitArrow.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Others\greenDiamond.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\items\crown.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\DeadlySlash.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\slash.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\MarathonRunner.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\Undefeated.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Audio\Arrow_Boomerang.xnb
@@ -1187,6 +1191,7 @@ C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debu
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\ColorSpot\RedSpot.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\ColorSpot\SkySpot.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\ColorSpot\SteelSpot.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\DeadlySlash.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\DungeonMiniMapCell_Level1.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\DungeonMiniMapFrame.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\DungeonPauseScreenFrame.xnb
@@ -1223,6 +1228,7 @@ C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debu
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Misc\InventorySelection.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Misc\SecondEquipment.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Misc\X.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Others\greenDiamond.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Others\MiniMapCell.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Others\OverworldMiniMapCell.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Others\OverworldMiniMapFrame.xnb
@@ -1236,6 +1242,7 @@ C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debu
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\ItemSelection\Item_Selection_Top.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\Blade.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\BladeEdge.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\slash.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerCharacterSprite\BackLink.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerCharacterSprite\BackSwordBeam.xnb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerCharacterSprite\BackUseItem.xnb
@@ -1540,7 +1547,4 @@ C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debu
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.dll
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.pdb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.genruntimeconfig.cache
-C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Others\greenDiamond.xnb
-C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Sprite\items\crown.xnb
-C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\DeadlySlash.xnb
-C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\slash.xnb
+C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.csprojAssemblyReference.cache

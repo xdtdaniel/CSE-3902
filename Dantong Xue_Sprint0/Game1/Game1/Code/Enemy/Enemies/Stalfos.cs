@@ -24,7 +24,7 @@ namespace Game1
         private int Velocity = 1;
         private bool CanTurn = false;
 
-        private int hp = 2;
+        private int hp = 8;
         private int DamageTimer = 0;
         private int FlashRateModifier = 0;
 

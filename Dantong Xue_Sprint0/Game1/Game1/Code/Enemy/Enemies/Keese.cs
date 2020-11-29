@@ -25,9 +25,10 @@ namespace Game1
         private double Velocity = 0;
         private double MaxVelocity = 3;
         private Random Rnd;
-        private int hp = 1;
+        private int hp = 4;
 
-        //private int DamageTimer = 0;
+        private int DamageTimer = 0;
+        private int FlashRateModifier = 0;
 
         private Rectangle CollisionRectangle;
         private int scale = 3;
@@ -57,7 +58,22 @@ namespace Game1
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)(offset.X + Location.X - scale), (int)(offset.Y + Location.Y - scale - 56 * scale), width * scale, height * scale);
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            if (DamageTimer > 0)
+            {
+                if (FlashRateModifier >= 3)
+                {
+                    spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+                    FlashRateModifier = 0;
+                }
+                else
+                {
+                    FlashRateModifier++;
+                }
+            }
+            else
+            {
+                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            }
         }
 
         public void FireProjectile()
@@ -80,6 +96,11 @@ namespace Game1
             else 
             {
                 IsFreezed = false;
+            }
+
+            if (DamageTimer > 0) 
+            {
+                DamageTimer--;
             }
 
             if (CurrentFrame == TotalFrames)
@@ -290,6 +311,10 @@ namespace Game1
         public void TakeDamage(int damageAmount)
         {
             hp -= damageAmount;
+            if (DamageTimer == 0)
+            {
+                DamageTimer = 50;
+            }
         }
 
 

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Game1.Enemy
 {
-    class Wallmaster0 : IEnemy
+    class Wallmaster3 : IEnemy
     {
         private Texture2D Texture;
         private int Columns;
@@ -19,7 +19,7 @@ namespace Game1.Enemy
         private Vector2 OriginalLocation { get; set; }
         private int FrameRateModifier = 0;
 
-        private int hp = 4;     
+        private int hp = 16;     
         private int DamageTimer = 0;
         private int FlashRateModifier = 0;
         private Rectangle CollisionRectangle;
@@ -34,9 +34,9 @@ namespace Game1.Enemy
 
         private bool IsFreezed = false;
 
-        public Wallmaster0(Vector2 location)
+        public Wallmaster3(Vector2 location)
         {
-            Texture = EnemyTextureStorage.GetWallmaster0SpriteSheet();
+            Texture = EnemyTextureStorage.GetWallmaster3SpriteSheet();
             TotalFrames = 2;
             Columns = 2;
             Rows = 1;
@@ -97,12 +97,12 @@ namespace Game1.Enemy
             {
                 if (MovingState == 0 && PlayerInAttackingRange(game))
                 {
-                    Direction = 2;
+                    Direction = 1;
                     Velocity = 1;
                     MovingState = 1;
                 }
 
-                if (MovingState == 1 && Location.Y >= (32 + 56) * scale)
+                if (MovingState == 1 && Location.X >= 32 * scale)
                 {
                     Direction = Heading;
                     MovingState = 2;
@@ -110,7 +110,7 @@ namespace Game1.Enemy
 
                 if (MovingState == 2)
                 {
-                    if (MovingStateTimer < 16 * 10 * scale)
+                    if (MovingStateTimer < 16 * 6 * scale)
                     {
                         MovingStateTimer++;
                     }
@@ -123,9 +123,9 @@ namespace Game1.Enemy
 
                 if (MovingState == 3)
                 {
-                    if (Location.Y >= (8 + 56) * scale)
+                    if (Location.X >= 8 * scale)
                     {
-                        Direction = 0;
+                        Direction = 3;
                     }
                     else
                     {
@@ -138,11 +138,11 @@ namespace Game1.Enemy
 
                 UpdateLocation();
             }
-            else 
+            else
             {
                 IsFreezed = false;
             }
-
+            
             if (DamageTimer > 0)
             {
                 Velocity = 0;
@@ -163,15 +163,15 @@ namespace Game1.Enemy
         {
             Rectangle playerRectangle = new Rectangle((int)(game.link.GetRectangle().X - LoadAll.Instance.startPos.X), (int)(game.link.GetRectangle().Y - LoadAll.Instance.startPos.Y + 56 * scale), game.link.GetRectangle().Width, game.link.GetRectangle().Height);
 
-            if (playerRectangle.Y <= 48 * scale + 56 * scale)
+            if (playerRectangle.X <= 48 * scale)
             {               
-                if (Location.X < playerRectangle.X ) 
+                if (Location.Y < playerRectangle.Y ) 
                 {
-                    Heading = 1;
+                    Heading = 2;
                 } 
-                else if (Location.X > playerRectangle.X) 
+                else if (Location.Y > playerRectangle.Y) 
                 {
-                    Heading = 3;
+                    Heading = 0;
                 }
 
                 return true;

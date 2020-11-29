@@ -23,7 +23,7 @@ namespace Game1.Code.Enemy
         private double MaxVelocity = 22;
         private Random Rnd;
 
-        private int hp = 10;
+        private int hp = 40;
         private int DamageTimer = 0;
         private int FlashRateModifier = 0;
 
