@@ -3092,6 +3092,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprite/items/compass_sprite.png
 
+#begin Sprite/items/crown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprite/items/crown.png
+
 #begin Sprite/items/fairy_sprite (8x16 for each).png
 /importer:TextureImporter
 /processor:TextureProcessor
