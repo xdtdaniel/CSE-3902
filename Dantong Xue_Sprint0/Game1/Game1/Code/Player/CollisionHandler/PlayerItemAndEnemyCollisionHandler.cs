@@ -25,6 +25,7 @@ namespace Game1.Code.Player.CollisionHandler
             {
                 IPlayerItemState item = link.itemPool.GetItemPool()[i];
 
+                // bugs exist in following code
                 if (i == rangedSwordHit && item.GetItemName() != "SwordEdge")
                 {
                     rangedSwordHit = -1;
@@ -37,7 +38,7 @@ namespace Game1.Code.Player.CollisionHandler
                 {
                     slashHit = -1;
                 }
-                // 
+
                 if (rangedSwordHit == -1)
                 {
                     enemyHitByRangedSword = new bool[enemyList.Count];
@@ -62,6 +63,7 @@ namespace Game1.Code.Player.CollisionHandler
                         enemyHitBySlash[j] = false;
                     }
                 }
+                ////////////////////////////////////
 
                 int currEnemyIndex = 0;
                 foreach (Tuple<IEnemy, string> tuple in enemyList)
