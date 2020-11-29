@@ -12,6 +12,7 @@ namespace Game1.Code.Enemy
     {
         private ISounds enemyDie = new EnemyDie();
         private static DrawAndUpdateEnemy instance = new DrawAndUpdateEnemy();
+        private static int killedEnemies;
         public static DrawAndUpdateEnemy Instance
         {
             get
@@ -38,13 +39,19 @@ namespace Game1.Code.Enemy
                 {
                     enemyDie.Play();
                     Enemies.RemoveAt(i);
-
+                    killedEnemies++;
+                    game.link.expCount = killedEnemies;
                     if (LoadAll.Instance.GetCurrentMapID() == 22) 
                     {
                         Enemies.Clear();
                     }
                 }
             }
+        }
+        static public int numberOfKilled()
+        {
+
+            return killedEnemies;
         }
     }
 }
