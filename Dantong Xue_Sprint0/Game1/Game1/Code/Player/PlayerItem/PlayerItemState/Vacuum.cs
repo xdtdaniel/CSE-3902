@@ -142,7 +142,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             }
             sourceRectangle = new Rectangle(0, 0, radiation.Width, radiation.Height);
             destinationRectangle = new Rectangle(x + offset_x, y + offset_y, drawWidth, drawHeight);
-            spriteBatch.Draw(radiation, destinationRectangle, sourceRectangle, Color.White * 0.3f);
+            spriteBatch.Draw(radiation, destinationRectangle, sourceRectangle, Color.White * 0.6f);
 
 
         }

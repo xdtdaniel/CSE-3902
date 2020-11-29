@@ -25,7 +25,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private Texture2D slash;
         private int width = 45 * scale;
         private int height = 50 * scale;
-        private int speed = 5 * scale;
+        private int speed = 7 * scale;
         private int x;
         private int y;
         private int offset_x;
@@ -54,23 +54,19 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             {
                 // since the original sprite is facing left, we need to rotate it to the according direction
                 case "up":
-                    offset_x = 0;
-                    offset_y = -distance + currentFrame * 2;
+                    offset_y = distance - currentFrame * speed;
                     angle = (float)((Math.PI / 180) * 90);
                     break;
                 case "down":
-                    offset_x = 0;
-                    offset_y = distance - currentFrame * 2;
+                    offset_y = -distance + currentFrame * speed;
                     angle = (float)((Math.PI / 180) * 270);
                     break;
                 case "left":
-                    offset_x = -distance + currentFrame * 2;
-                    offset_y = 0;
+                    offset_x = distance - currentFrame * speed;
                     angle = (float)((Math.PI / 180) * 0);
                     break;
                 case "right":
-                    offset_x = distance - currentFrame * 2;
-                    offset_y = 0;
+                    offset_x = -distance + currentFrame * speed;
                     angle = (float)((Math.PI / 180) * 180);
                     break;
             }
