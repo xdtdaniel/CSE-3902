@@ -34,6 +34,7 @@ namespace Game1.Code.LoadFile
         private List<Tuple<IItemSprite, string>>[] AllItemInRoomCpoy = new List<Tuple<IItemSprite, string>>[MAP_COUNT];
         private List<Tuple<IItemSprite, string>> inRoomItemsCopy = new List<Tuple<IItemSprite, string>>();
         private static int triforce_RoomID;
+        private static int crown_RoomID;
 
         public LoadItem(int currentMapID)
         {
@@ -189,6 +190,7 @@ namespace Game1.Code.LoadFile
                     case "crown":
                         item = new Crown(X, Y);
                         itemCopy = new Crown(X, Y);
+                        crown_RoomID = mapID;
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "Crown"));
                         inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "Crown"));
                         break;
@@ -223,6 +225,12 @@ namespace Game1.Code.LoadFile
 
             return triforce_RoomID;
         }
+        static public int getCrownRoom()
+        {
+
+            return crown_RoomID;
+        }
+
         public List<Tuple<IItemSprite, string>> GetItemList()
         {
            return AllItemInRoom[CurrentMapID - 1];
