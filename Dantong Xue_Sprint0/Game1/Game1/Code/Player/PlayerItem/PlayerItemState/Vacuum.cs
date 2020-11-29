@@ -21,21 +21,21 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
         private Link link;
 
-        private Texture2D blackSpot;
+        private Texture2D radiation;
         private int width = 5 * scale;
         private int height = 70 * scale;
         private int decrementSpeed = 1 * scale;
-        private int blackSpeed = 2 * scale;
-        private int black_x;
-        private int black_y;
-        private int blackOffset_x;
-        private int blackOffset_y;
+        private int speed = 2 * scale;
+        private int x;
+        private int y;
+        private int offset_x;
+        private int offset_y;
 
         private int distance = 80 * scale;
 
         private string direction;
-        private int blackCurrentFrame = 0;
-        private int blackTotalFrame = 35;
+        private int currentFrame = 0;
+        private int totalFrame = 35;
 
         private Rectangle rect = new Rectangle();
 
@@ -44,30 +44,30 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         {
             this.link = link;
             this.direction = direction;
-            black_x = x + link.linkWidth / 2;
-            black_y = y + link.linkHeight / 2;
+            this.x = x + link.linkWidth / 2;
+            this.y = y + link.linkHeight / 2;
 
             switch (direction)
             {
                 case "up":
-                    blackOffset_x = -height / 2;
-                    blackOffset_y = -distance + blackCurrentFrame * 2;
+                    offset_x = -height / 2;
+                    offset_y = -distance + currentFrame * 2;
                     break;
                 case "down":
-                    blackOffset_x = -height / 2;
-                    blackOffset_y = distance - blackCurrentFrame * 2;
+                    offset_x = -height / 2;
+                    offset_y = distance - currentFrame * 2;
                     break;
                 case "left":
-                    blackOffset_x = -distance + blackCurrentFrame * 2;
-                    blackOffset_y = -height / 2;
+                    offset_x = -distance + currentFrame * 2;
+                    offset_y = -height / 2;
                     break;
                 case "right":
-                    blackOffset_x = distance - blackCurrentFrame * 2;
-                    blackOffset_y = -height / 2;
+                    offset_x = distance - currentFrame * 2;
+                    offset_y = -height / 2;
                     break;
             }
 
-            blackSpot = HUDFactory.LoadBlackSpot();
+            radiation = HUDFactory.LoadSkySpot();
             
         }
         public string GetItemName()
@@ -83,8 +83,8 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public void Update()
         {
-            blackCurrentFrame++;
-            if (blackCurrentFrame == blackTotalFrame)
+            currentFrame++;
+            if (currentFrame == totalFrame)
             {
                 done = true;
             }
@@ -97,20 +97,20 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             switch (direction)
             {
                 case "up":
-                    blackOffset_x = -height / 2;
-                    blackOffset_y = -distance + blackCurrentFrame * blackSpeed;
+                    offset_x = -height / 2;
+                    offset_y = -distance + currentFrame * speed;
                     break;
                 case "down":
-                    blackOffset_x = -height / 2;
-                    blackOffset_y = distance - blackCurrentFrame * blackSpeed;
+                    offset_x = -height / 2;
+                    offset_y = distance - currentFrame * speed;
                     break;
                 case "left":
-                    blackOffset_x = -distance + blackCurrentFrame * blackSpeed;
-                    blackOffset_y = -height / 2;
+                    offset_x = -distance + currentFrame * speed;
+                    offset_y = -height / 2;
                     break;
                 case "right":
-                    blackOffset_x = distance - blackCurrentFrame * blackSpeed;
-                    blackOffset_y = -height / 2;
+                    offset_x = distance - currentFrame * speed;
+                    offset_y = -height / 2;
                     break;
             }
         }
@@ -140,16 +140,16 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
                     drawHeight = height;
                     break;
             }
-            sourceRectangle = new Rectangle(0, 0, blackSpot.Width, blackSpot.Height);
-            destinationRectangle = new Rectangle(black_x + blackOffset_x, black_y + blackOffset_y, drawWidth, drawHeight);
-            spriteBatch.Draw(blackSpot, destinationRectangle, sourceRectangle, Color.White * 0.3f);
+            sourceRectangle = new Rectangle(0, 0, radiation.Width, radiation.Height);
+            destinationRectangle = new Rectangle(x + offset_x, y + offset_y, drawWidth, drawHeight);
+            spriteBatch.Draw(radiation, destinationRectangle, sourceRectangle, Color.White * 0.6f);
 
 
         }
 
         public Rectangle GetRectangle()
         {
-            rect = new Rectangle(black_x + blackOffset_x, black_y + blackOffset_y, width, height);
+            rect = new Rectangle(x + offset_x, y + offset_y, width, height);
 
             return rect;
         }

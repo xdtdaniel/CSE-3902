@@ -67,9 +67,8 @@ namespace Game1.Code.HUD.AbilitySelection
             int row = (int)((float)CurrentFrame / (float)Columns);
             int column = CurrentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(texture_width * column, texture_height * row, texture_width, texture_height);
-            Rectangle destinationRectangle = new Rectangle(selection_x, selection_y, sideLength, sideLength);
-            spriteBatch.Draw(Selection, destinationRectangle, sourceRectangle, Color.White);
+            Rectangle sourceRectangle;
+            Rectangle destinationRectangle;
 
             for (int i = 0; i < playerAbilityPanel.abilityDictList.Count; i++)
             {
@@ -84,6 +83,9 @@ namespace Game1.Code.HUD.AbilitySelection
                     }
                 }
             }
+            sourceRectangle = new Rectangle(texture_width * column, texture_height * row, texture_width, texture_height);
+            destinationRectangle = new Rectangle(selection_x, selection_y, sideLength, sideLength);
+            spriteBatch.Draw(Selection, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Update(float newStartX, float newStartY, int index, int type)

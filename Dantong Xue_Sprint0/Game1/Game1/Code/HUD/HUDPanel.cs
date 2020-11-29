@@ -27,6 +27,7 @@ namespace Game1.Code.HUD
         private AbilitySelectionController abilitySelectionController;
 
         private AchievementPanel achievementPanel;
+        private IHUDSprite displayPause;
 
         public HUDPanel(Game1 game)
         {
@@ -45,7 +46,6 @@ namespace Game1.Code.HUD
             hudList.Add(new HUDNumberOfRuby(game.link.itemList));
             hudList.Add(new DungeonMiniMap(game.link.itemList));
             hudList.Add(new DungeonPauseScreen(game.link.itemList));
-            hudList.Add(new DisplayPause(game));
             hudList.Add(new DashChargeIndicator(game));
             hudList.Add(new AbilityTreeFrame());
             hudList.Add(new AbilityBar());
@@ -54,6 +54,8 @@ namespace Game1.Code.HUD
             abilitySelectionController = new AbilitySelectionController(game.playerAbilityPanel);
 
             achievementPanel = new AchievementPanel(game);
+
+            displayPause = new DisplayPause(game);
 
 
         }
@@ -73,6 +75,7 @@ namespace Game1.Code.HUD
             itemSelectionController.Update(x, y);
             abilitySelectionController.Update(x, y);
             achievementPanel.Update((int)x, (int)y);
+            displayPause.Update(x, y);
 
             if (switched)
             {
@@ -138,6 +141,7 @@ namespace Game1.Code.HUD
             itemSelectionController.Draw();
             abilitySelectionController.Draw(game._spriteBatch);
             achievementPanel.Draw();
+            displayPause.Draw(game._spriteBatch);
         }
 
     }
