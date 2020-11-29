@@ -25,7 +25,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private Texture2D slash;
         private int width = 45 * scale;
         private int height = 50 * scale;
-        private int speed = 10 * scale;
+        private int speed = 5 * scale;
         private int x;
         private int y;
         private int offset_x;

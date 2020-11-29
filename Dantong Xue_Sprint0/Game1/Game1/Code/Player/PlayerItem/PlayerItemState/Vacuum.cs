@@ -67,7 +67,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
                     break;
             }
 
-            blackSpot = HUDFactory.LoadBlackSpot();
+            blackSpot = HUDFactory.LoadSkySpot();
             
         }
         public string GetItemName()
