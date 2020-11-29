@@ -116,7 +116,7 @@ namespace Game1.Code.Player.CollisionHandler
                         case "Crown":
                             link.itemList["Crown"]++;
                             roomItemList.RemoveAt(index);
-                            link.CrownState();
+                            link.PickUp(5);
                             //AudioPlayer.getTriforce.Play();
                             break;
                     }
