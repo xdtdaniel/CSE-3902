@@ -62,7 +62,8 @@ namespace Game1.Code.Player.PlayerCharacter
         private int numberOfBlocksBetweenRoom = 5;
         public string collisionSide = "";
 
-
+        // count  killed enemies 
+        public int expCount;
         public Link()
         {
             state = new NormalLink(this);
@@ -89,6 +90,8 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("Crown", 0);
 
             itemPool = new ItemPool(this);
+
+            expCount = 0;   // an int used to count killed enemy
         }
         public void Dash()
         {

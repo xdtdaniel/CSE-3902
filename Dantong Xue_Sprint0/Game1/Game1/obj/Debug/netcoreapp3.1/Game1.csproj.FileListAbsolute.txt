@@ -1548,3 +1548,9 @@ C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debu
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.pdb
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.genruntimeconfig.cache
 C:\Users\Lianz\OneDrive\桌面\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.csprojAssemblyReference.cache
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.dll
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.pdb
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.csprojAssemblyReference.cache
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.AssemblyInfoInputs.cache
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.AssemblyInfo.cs
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.csproj.CoreCompileInputs.cache
