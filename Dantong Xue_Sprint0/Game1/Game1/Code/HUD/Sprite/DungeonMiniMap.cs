@@ -19,8 +19,8 @@ namespace Game1.Code.HUD.Sprite
         private int greenSpotWidth = 3 * scale;
         private static int miniRoomWidth = 8 * scale;
         private static int miniRoomHeight = 4 * scale;
-
-        private static int numberOfRoom = 18;
+        /* number of room should be 22 on sprint 5 */
+        private static int numberOfRoom = 22;
         private Vector2[] miniRoomPosOnMap = new Vector2[numberOfRoom];
         private Vector2 roomPos_1 = new Vector2(2 * miniRoomWidth, miniRoomHeight);
         private Vector2 roomPos_2 = new Vector2(3 * miniRoomWidth, miniRoomHeight);
@@ -40,13 +40,18 @@ namespace Game1.Code.HUD.Sprite
         private Vector2 roomPos_16 = new Vector2(2 * miniRoomWidth, 6 * miniRoomHeight);
         private Vector2 roomPos_17 = new Vector2(3 * miniRoomWidth, 6 * miniRoomHeight);
         private Vector2 roomPos_18 = new Vector2(4 * miniRoomWidth, 6 * miniRoomHeight);
-        
+        private Vector2 roomPos_19 = new Vector2(4 * miniRoomWidth, 7 * miniRoomHeight);
+        private Vector2 roomPos_20 = new Vector2(5 * miniRoomWidth, 7 * miniRoomHeight);
+        private Vector2 roomPos_21 = new Vector2(6 * miniRoomWidth, 7 * miniRoomHeight);
+        private Vector2 roomPos_22 = new Vector2(7 * miniRoomWidth, 7 * miniRoomHeight);
         private int mapX;
         private int mapY;
         private int greenSpotX;
         private int greenSpotY;
         private int redSpotX;
         private int redSpotY;
+        private int skySpotX;
+        private int skySpotY;
         private int spotOffsetX = 0;
         private int spotOffsetY = 0;
         private Dictionary<string, int> itemList;
@@ -62,9 +67,10 @@ namespace Game1.Code.HUD.Sprite
         private Texture2D miniMap;
         private Texture2D greenSpot;
         private Texture2D redSpot; //indicate the room with triforce.
+        private Texture2D skySpot; //indicate the room with crown.
         public DungeonMiniMap(Dictionary<string, int> itemList) {
             this.itemList = itemList;
-
+            /* number of room should be 22 on sprint 5 */
             miniRoomPosOnMap = new Vector2[numberOfRoom];
             miniRoomPosOnMap[0] = roomPos_1;
             miniRoomPosOnMap[1] = roomPos_2;
@@ -84,12 +90,17 @@ namespace Game1.Code.HUD.Sprite
             miniRoomPosOnMap[15] = roomPos_16;
             miniRoomPosOnMap[16] = roomPos_17;
             miniRoomPosOnMap[17] = roomPos_18;
+            miniRoomPosOnMap[18] = roomPos_19;
+            miniRoomPosOnMap[19] = roomPos_20;
+            miniRoomPosOnMap[20] = roomPos_21;
+            miniRoomPosOnMap[21] = roomPos_22;        
 
             prevMapID = LoadAll.Instance.GetCurrentMapID();
 
             miniMap = HUDFactory.LoadDungeonMiniMapCell_Level1();
             greenSpot = HUDFactory.LoadGreenSpot();
             redSpot = HUDFactory.LoadRedSpot();
+            skySpot = HUDFactory.LoadSkySpot();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -112,18 +123,26 @@ namespace Game1.Code.HUD.Sprite
 
             spriteBatch.Draw(greenSpot, destinationRectangle, sourceRectangle, Color.White);
 
-            //draw redspot if player have compass
+            //draw red spot & sky blue spot if player have compass
             if (itemList["Compass"] > 0 && itemList["Map"] > 0) {
                 int triforceRoomID = LoadItem.getTriforceRoom() - 1; // map id starts from 1
+                int crownRoomID = LoadItem.getCrownRoom() - 1;
 
                 redSpotX += (int)miniRoomPosOnMap[triforceRoomID].X;
                 redSpotY += (int)miniRoomPosOnMap[triforceRoomID].Y;
-               
+                skySpotX += (int)miniRoomPosOnMap[crownRoomID].X;
+                skySpotY += (int)miniRoomPosOnMap[crownRoomID].Y;
+
+                /*red spot*/
                 sourceRectangle = new Rectangle(0, 0, redSpot.Width, redSpot.Height);
                 destinationRectangle = new Rectangle(redSpotX, redSpotY, greenSpotWidth, greenSpotHeight);
-
                 spriteBatch.Draw(redSpot, destinationRectangle, sourceRectangle, Color.White);
+                /*sky blue spot*/
+                sourceRectangle = new Rectangle(0, 0, skySpot.Width, skySpot.Height);
+                destinationRectangle = new Rectangle(skySpotX, skySpotY, greenSpotWidth, greenSpotHeight);
+                spriteBatch.Draw(skySpot, destinationRectangle, sourceRectangle, Color.White);
             }
+          
 
         }
 
@@ -158,7 +177,8 @@ namespace Game1.Code.HUD.Sprite
             //update red spot position wwith camera
             redSpotX = preRedSpotX + mapX;
             redSpotY = mapY;
-
+            skySpotX = preRedSpotX + mapX;
+            skySpotY = mapY;
         }
     }
 }
