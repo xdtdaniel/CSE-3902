@@ -52,11 +52,11 @@ namespace Game1.Code.HUD
             hudList.Add(new HUDExp(game.link.expCount));
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
-            abilitySelectionController = new AbilitySelectionController(game.link.playerAbilityPanel);
+            abilitySelectionController = new AbilitySelectionController(game.playerAbilityPanel);
 
             achievementPanel = new AchievementPanel(game);
 
-
+             
         }
         public void HUDUpdate()
         {
