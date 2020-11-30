@@ -19,15 +19,11 @@ namespace Game1.Code.Player.PlayerAbility
 
         private int x;
         private int y;
-        private int offset_x;
-        private int offset_y;
 
-        private int currentFrame = 0;
-        private int totalFrame = 180;
-        private int stopVacuumFrame = 140;
-
-        private int timeBetweenAbility = 10;
-        private int timeSinceAbility = 10;
+        // cooldown: 11s
+        private static int cooldown = 11;
+        private int timeBetweenAbility = cooldown * 60;
+        private int timeSinceAbility = cooldown * 60;
         private bool usingAbility = false;
 
 
@@ -46,12 +42,8 @@ namespace Game1.Code.Player.PlayerAbility
             {
                 link.state = new UseItemLink(link);
                 usingAbility = false;
-                currentFrame = 0;
 
                 itemPool.GetItemPool().Add(new Impact(link, itemPool, link.direction, x, y));
-
-                currentFrame++;
-
             }
             else
             {
@@ -78,6 +70,10 @@ namespace Game1.Code.Player.PlayerAbility
         public void Learn()
         {
             learned = true;
+        }
+        public float GetCooldownPercentage()
+        {
+            return (float)timeSinceAbility / timeBetweenAbility;
         }
     }
 }

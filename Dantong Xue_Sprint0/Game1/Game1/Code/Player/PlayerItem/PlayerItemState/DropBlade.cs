@@ -24,8 +24,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int sword_x;
         private int sword_y;
         private int sword_yThreshold = 30 * scale;
-        private int swordOffset_x;
-        private int swordOffset_y;
         private int swordWidth = 6 * scale;
         private int swordHeight = 13 * scale;
 
@@ -117,7 +115,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             {
                 float angle = (float)(Math.PI / 180) * 180; // turn blade to face downward
                 Rectangle sourceRectangle = new Rectangle(0, 0, blade.Width, blade.Height);
-                Rectangle destinationRectangle = new Rectangle(sword_x + swordOffset_x, sword_y + swordOffset_y, swordWidth, swordHeight);
+                Rectangle destinationRectangle = new Rectangle(sword_x, sword_y, swordWidth, swordHeight);
                 Vector2 origin = new Vector2(blade.Width / 2, blade.Height / 2);
 
                 spriteBatch.Draw(blade, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);

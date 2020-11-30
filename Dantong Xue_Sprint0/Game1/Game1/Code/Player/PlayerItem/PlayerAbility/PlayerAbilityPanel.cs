@@ -1,4 +1,5 @@
-﻿using Game1.Code.Player.Control.PlayerControlCommand;
+﻿using Game1.Code.Audio;
+using Game1.Code.Player.Control.PlayerControlCommand;
 using Game1.Code.Player.Interface;
 using Game1.Code.Player.PlayerCharacter;
 using Game1.Code.Player.PlayerCharacter.LinkState;
@@ -22,6 +23,8 @@ namespace Game1.Code.Player.PlayerAbility
         public List<Dictionary<int, IPlayerAbility>> abilityDictList = new List<Dictionary<int, IPlayerAbility>>();
 
         private List<Keys> availableKeys = new List<Keys>();
+        public Dictionary<int, Tuple<int, int>> registeredAbilities = new Dictionary<int, Tuple<int, int>>();
+        private int nextRegisterKey = 0;
 
         public PlayerAbilityPanel(Game1 game)
         {
@@ -41,6 +44,8 @@ namespace Game1.Code.Player.PlayerAbility
             abilityDictList.Add(swordAbilityDict);
             abilityDictList.Add(bowAbilityDict);
 
+            
+
             availableKeys.Add(Keys.D1);
             availableKeys.Add(Keys.D2);
             availableKeys.Add(Keys.D3);
@@ -56,10 +61,11 @@ namespace Game1.Code.Player.PlayerAbility
         // abilities
         public void UseAbility(int type, int index)
         {
-            //usedAbilityList.Add(dictList[type][index]);
-            link.state = new UseItemLink(link);
-            abilityDictList[type][index].Use();
-            
+            if (abilityDictList[type][index].GetCooldownPercentage() >= 1) // 1 means ability is ready
+            {
+                link.state = new UseItemLink(link);
+                abilityDictList[type][index].Use();
+            }
         }
 
 
@@ -67,11 +73,15 @@ namespace Game1.Code.Player.PlayerAbility
         {
             if (!abilityDictList[type][index].IsLearned() && link.abilityPoint > 0 && (index == 0 || abilityDictList[type][index - 1].IsLearned()))
             {
+                AudioPlayer.getRupee.Play();
                 abilityDictList[type][index].Learn();
                 link.abilityPoint--;
 
                 game.playerPanel.linkKeyboardController.RegisterCommand(availableKeys[0], new UseAbility(game, type, index));
                 availableKeys.RemoveAt(0);
+
+                registeredAbilities.Add(nextRegisterKey, new Tuple<int, int>(type, index));
+                nextRegisterKey++;
             }
         }
         public void Update()

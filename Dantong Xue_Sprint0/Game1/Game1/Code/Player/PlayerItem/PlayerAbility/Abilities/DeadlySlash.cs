@@ -24,8 +24,10 @@ namespace Game1.Code.Player.PlayerAbility
         private int totalFrame = 180;
         private int stopVacuumFrame = 140;
 
-        private int timeBetweenAbility = 10;
-        private int timeSinceAbility = 10;
+        // cooldown: 9s
+        private static int cooldown = 9;
+        private int timeBetweenAbility = cooldown * 60;
+        private int timeSinceAbility = cooldown * 60;
         private bool usingAbility = false;
 
         public DeadlySlash(Link link, ItemPool itemPool)
@@ -82,6 +84,10 @@ namespace Game1.Code.Player.PlayerAbility
         public void Learn()
         {
             learned = true;
+        }
+        public float GetCooldownPercentage()
+        {
+            return (float)timeSinceAbility / timeBetweenAbility;
         }
     }
 }

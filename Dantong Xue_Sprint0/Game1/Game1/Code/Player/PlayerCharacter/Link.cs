@@ -98,7 +98,7 @@ namespace Game1.Code.Player.PlayerCharacter
         }
         public void Dash()
         {
-            if (timeSinceDash >= timeBetweenDash)
+            if (timeSinceDash >= timeBetweenDash && state.GetStateName() == "NormalLink")
             {
                 timeSinceDash = 0;
                 state = new DashLink(this);

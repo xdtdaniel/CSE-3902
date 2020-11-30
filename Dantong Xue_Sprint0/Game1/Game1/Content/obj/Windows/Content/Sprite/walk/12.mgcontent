@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/walk/12.png</SourceFile>
-  <SourceTime>2020-11-30T05:53:09.5903915-05:00</SourceTime>
+  <SourceTime>2020-11-30T00:35:05.9057711-05:00</SourceTime>
   <DestFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Sprite/walk/12.xnb</DestFile>
-  <DestTime>2020-11-30T05:53:28.5292832-05:00</DestTime>
+  <DestTime>2020-11-30T05:48:15.572184-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

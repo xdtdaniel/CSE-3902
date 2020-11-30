@@ -4,7 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/../../../../../../../Desktop/slash.png</File>
+    <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerAbility/slash.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Achievement/MarathonRunner.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Achievement/Undefeated.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Arrow_Boomerang.wav</File>
@@ -50,12 +50,12 @@
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/ColorSpot/RedSpot.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/ColorSpot/SkySpot.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/ColorSpot/SteelSpot.png</File>
+    <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DeadlySlash.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonMiniMapCell_Level1.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonMiniMapFrame.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonPauseScreenFrame.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/DungeonPauseScreenMapCell_Level1.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/EmpoweredShot.png</File>
-    <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/FatalSlash.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/FieldBlast.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/HUDFrame.png</File>
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Indicator/DashChargeGlitter_0.png</File>
@@ -324,7 +324,7 @@
     <File>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/walk_2.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>PlayerAbility/slash.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

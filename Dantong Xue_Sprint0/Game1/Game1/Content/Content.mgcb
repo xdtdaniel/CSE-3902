@@ -392,6 +392,18 @@
 /processorParam:TextureFormat=Color
 /build:HUD/ColorSpot/SteelSpot.png
 
+#begin HUD/DeadlySlash.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD/DeadlySlash.png
+
 #begin HUD/DungeonMiniMapCell_Level1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -451,18 +463,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:HUD/EmpoweredShot.png
-
-#begin HUD/FatalSlash.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:HUD/FatalSlash.png
 
 #begin HUD/FieldBlast.png
 /importer:TextureImporter

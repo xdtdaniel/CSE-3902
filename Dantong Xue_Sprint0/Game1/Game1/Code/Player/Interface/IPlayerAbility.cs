@@ -11,5 +11,6 @@ namespace Game1.Code.Player.Interface
         string GetAbilityName();
         bool IsLearned();
         void Learn();
+        float GetCooldownPercentage();
     }
 }
