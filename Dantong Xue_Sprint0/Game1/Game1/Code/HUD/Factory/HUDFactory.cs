@@ -11,16 +11,7 @@ namespace Game1.Code.HUD.Factory
 		private static Texture2D pause;
 		private static Texture2D abilityTreeFrame;
 		private static Texture2D abilityBar;
-
-		// ability icons
-		private static Texture2D bladeBarrage;
-		private static Texture2D deadlySlash;
-		private static Texture2D lineImpact;
-		private static Texture2D fieldBlast;
-		private static Texture2D piercingArrow;
-		private static Texture2D splitArrow;
-		private static Texture2D quickShot;
-		private static Texture2D empoweredShot;
+		private static SpriteFont font;
 
 		// dungeon only
 		private static Texture2D dungeonMiniMapCell_Level1;
@@ -77,16 +68,7 @@ namespace Game1.Code.HUD.Factory
 			pause = content.Load<Texture2D>("HUD/Pause");
 			abilityTreeFrame = content.Load<Texture2D>("HUD/AbilityTreeFrame");
 			abilityBar = content.Load<Texture2D>("HUD/AbilityBar");
-
-			// ability icons
-			bladeBarrage = content.Load<Texture2D>("HUD/BladeBarrage");
-			deadlySlash = content.Load<Texture2D>("HUD/DeadlySlash");
-			lineImpact = content.Load<Texture2D>("HUD/LineImpact");
-			fieldBlast = content.Load<Texture2D>("HUD/FieldBlast");
-			piercingArrow = content.Load<Texture2D>("HUD/PiercingArrow");
-			splitArrow = content.Load<Texture2D>("HUD/SplitArrow");
-			quickShot = content.Load<Texture2D>("HUD/QuickShot");
-			empoweredShot = content.Load<Texture2D>("HUD/EmpoweredShot");
+			font = content.Load<SpriteFont>("font");
 
 			// dungeon only
 			dungeonMiniMapCell_Level1 = content.Load<Texture2D>("HUD/DungeonMiniMapCell_Level1");
@@ -162,39 +144,9 @@ namespace Game1.Code.HUD.Factory
 		{
 			return abilityBar;
 		}
-
-		// ability icons
-		public static Texture2D LoadBladeBarrage()
+		public static SpriteFont LoadLevelUpText()
 		{
-			return bladeBarrage;
-		}
-		public static Texture2D LoadDeadlySlash()
-		{
-			return deadlySlash;
-		}
-		public static Texture2D LoadLineImpact()
-		{
-			return lineImpact;
-		}
-		public static Texture2D LoadFieldBlast()
-		{
-			return fieldBlast;
-		}
-		public static Texture2D LoadPiercingArrow()
-		{
-			return piercingArrow;
-		}
-		public static Texture2D LoadSplitArrow()
-		{
-			return splitArrow;
-		}
-		public static Texture2D LoadQuickShot()
-		{
-			return quickShot;
-		}
-		public static Texture2D LoadEmpoweredShot()
-		{
-			return empoweredShot;
+			return font;
 		}
 
 		// dungeon only
