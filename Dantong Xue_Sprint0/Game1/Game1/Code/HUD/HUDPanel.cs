@@ -51,6 +51,7 @@ namespace Game1.Code.HUD
             hudList.Add(new AbilityTreeFrame());
             hudList.Add(new AbilityBar());
             hudList.Add(new HUDExp(game.link.expCount));
+            hudList.Add(new HUDExpLevel(level));
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
             abilitySelectionController = new AbilitySelectionController(game.playerAbilityPanel);
