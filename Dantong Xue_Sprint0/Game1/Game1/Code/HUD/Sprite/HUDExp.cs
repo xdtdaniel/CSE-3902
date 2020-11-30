@@ -21,7 +21,7 @@ namespace Game1.Code.HUD.Sprite
         private int expCount;
         private int x;
         private int y;
-        private int preX = 180 * scale;
+        private int preX = 184 * scale;
         private int preY = -30 * scale;
         
         static public int level;

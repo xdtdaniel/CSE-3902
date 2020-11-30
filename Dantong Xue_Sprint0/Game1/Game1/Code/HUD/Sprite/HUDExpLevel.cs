@@ -16,7 +16,7 @@ namespace Game1.Code.HUD.Sprite
         private int levelX;
         private int levelY;
        
-        private int preLevelX = 172 * scale;
+        private int preLevelX = 174 * scale;
         private int preLevelY = -30 * scale;
 
         private Texture2D expLevelTexture;
@@ -31,7 +31,7 @@ namespace Game1.Code.HUD.Sprite
            Rectangle sourceRectangle = new Rectangle(0, 0, expLevelTexture.Width, expLevelTexture.Height);
             Rectangle destinationRectangle = new Rectangle(levelX, levelY, levelNumberSideLength, levelNumberSideLength);
 
-            spriteBatch.Draw(expLevelTexture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(expLevelTexture, destinationRectangle, sourceRectangle, Color.LimeGreen);
         }
 
         public void Update(float newStartX, float newStartY)
