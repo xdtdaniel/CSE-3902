@@ -23,7 +23,7 @@ namespace Game1.Code.HUD.Sprite
         private int preY = -30 * scale;
         private int x;
         private int y;
-        private int level = 0;
+        static public int level = 0;
 
         Rectangle sourceRectangle;
         Rectangle destinationRectangle;
@@ -65,11 +65,6 @@ namespace Game1.Code.HUD.Sprite
             x = (int)newStartX + preX;
             y = (int)newStartY + preY;
             expCount = Enemy.DrawAndUpdateEnemy.numberOfKilled();
-        }
-        static public int getCurrentLevel()
-        {
-
-            return level;
         }
     }
 }

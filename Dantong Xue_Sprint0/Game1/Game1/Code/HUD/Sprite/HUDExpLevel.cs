@@ -37,7 +37,7 @@ namespace Game1.Code.HUD.Sprite
 
         public void Update(float newStartX, float newStartY)
         {
-            explevel = HUDExp.getCurrentLevel();
+            explevel = HUDExp.level;
             expLevelTexture = HUDFactory.LoadNumber(explevel)[1];
             levelX = (int)newStartX + preLevelX;
             levelY = (int)newStartY + preLevelY;
