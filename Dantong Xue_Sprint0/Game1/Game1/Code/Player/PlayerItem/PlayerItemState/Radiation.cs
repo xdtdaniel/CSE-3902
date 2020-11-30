@@ -11,7 +11,7 @@ using Game1.Code.HUD.Factory;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
-    class Vacuum : IPlayerItemState
+    class Radiation : IPlayerItemState
     {
 
         private static int scale = (int)LoadAll.Instance.scale;
@@ -40,7 +40,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private Rectangle rect = new Rectangle();
 
 
-        public Vacuum(Link link, string direction, int x, int y)
+        public Radiation(Link link, string direction, int x, int y)
         {
             this.link = link;
             this.direction = direction;
@@ -72,13 +72,13 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public string GetItemName()
         {
-            return "Vacuum";
+            return "Radiation";
         }
         public int GetDamage()
         {
             return link.basicAttackDamage * damageMultiplier;
         }
-        public void CollisionResponse()
+        public void CollisionResponse(int enemyIndex)
         {
         }
         public void Update()

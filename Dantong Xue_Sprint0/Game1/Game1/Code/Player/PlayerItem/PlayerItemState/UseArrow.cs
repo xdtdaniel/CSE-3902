@@ -56,7 +56,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         {
             return link.basicAttackDamage * damageMultiplier;
         }
-        public void CollisionResponse()
+        public void CollisionResponse(int enemyIndex)
         {
             currentFrame = maxCurrentFrame;
         }

@@ -52,7 +52,7 @@ namespace Game1.Code.Player.PlayerAbility
                 }
                 else if (currentFrame % 10 == 0 && currentFrame < stopVacuumFrame)
                 {
-                    itemPool.GetItemPool().Add(new Vacuum(link, link.direction, x, y));
+                    itemPool.GetItemPool().Add(new Radiation(link, link.direction, x, y));
                 }
                 currentFrame++;
 
@@ -68,6 +68,7 @@ namespace Game1.Code.Player.PlayerAbility
             if (timeSinceAbility >= timeBetweenAbility)
             {
                 usingAbility = true;
+                timeSinceAbility = 0;
             }
         }
         public string GetAbilityName()

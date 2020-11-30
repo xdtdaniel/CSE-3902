@@ -53,7 +53,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
                 return "BombExplosion";
             }
         }
-        public void CollisionResponse()
+        public void CollisionResponse(int enemyIndex)
         {
         }
         public void Update() 
@@ -89,7 +89,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
         public Rectangle GetRectangle()
         {
-                return rectangle;
+            return rectangle;
         }
         public bool IsDone()
         {

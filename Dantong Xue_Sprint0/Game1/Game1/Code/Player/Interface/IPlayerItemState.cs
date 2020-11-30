@@ -7,7 +7,7 @@ namespace Game1.Code.Player.Interface
     {
         string GetItemName();
         void Update();
-        void CollisionResponse();
+        void CollisionResponse(int enemyIndex);
         void Draw(SpriteBatch spriteBatch);
         Rectangle GetRectangle();
         int GetDamage();

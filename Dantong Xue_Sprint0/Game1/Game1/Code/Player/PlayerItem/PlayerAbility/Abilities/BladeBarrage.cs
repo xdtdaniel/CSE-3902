@@ -69,6 +69,7 @@ namespace Game1.Code.Player.PlayerAbility
             if (timeSinceAbility >= timeBetweenAbility)
             {
                 usingAbility = true;
+                timeSinceAbility = 0;
             }
         }
         public string GetAbilityName()

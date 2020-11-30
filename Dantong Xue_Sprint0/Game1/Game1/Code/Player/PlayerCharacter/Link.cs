@@ -56,6 +56,9 @@ namespace Game1.Code.Player.PlayerCharacter
         public int timeSinceJump = 15;
         public int timeBetweenDash = 120;
         public int timeSinceDash = 120;
+        private int timeBetweenCollision = 1;
+        private int timeSinceCollision = 0;
+
 
         // environmental informations
         private int blockSideLength = 16 * scale;
@@ -275,7 +278,15 @@ namespace Game1.Code.Player.PlayerCharacter
 
         public void Update()
         {
-            collisionSide = "";
+            if (timeSinceCollision < timeBetweenCollision && collisionSide != "")
+            {
+                timeSinceCollision++;
+            }
+            else
+            {
+                collisionSide = "";
+                timeSinceCollision = 0;
+            }
 
             if (itemList["Heart"] == 1)
             {
@@ -316,7 +327,7 @@ namespace Game1.Code.Player.PlayerCharacter
             state.Update();
 
             // update item pool
-            itemPool.Update(x, y, directionIndex);
+            itemPool.Update();
 
 
 

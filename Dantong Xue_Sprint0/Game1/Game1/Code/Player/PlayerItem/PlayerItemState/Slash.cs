@@ -8,6 +8,7 @@ using Game1.Code.Player.PlayerCharacter;
 using Game1.Code.Audio;
 using System.Diagnostics;
 using Game1.Code.HUD.Factory;
+using System.Collections.Generic;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
@@ -16,8 +17,10 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
         private static int scale = (int)LoadAll.Instance.scale;
 
-        private int damageMultiplier = 1; // test
+        private int damageMultiplier = 3; // test
+        private int currentDamage = 3;
         private bool done = false;
+        private List<int> hitEnemyList = new List<int>();
 
 
         private Link link;
@@ -25,6 +28,8 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private Texture2D slash;
         private int width = 45 * scale;
         private int height = 50 * scale;
+        int drawWidth = 0;
+        int drawHeight = 0;
         private int speed = 7 * scale;
         private int x;
         private int y;
@@ -80,10 +85,19 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public int GetDamage()
         {
-            return link.basicAttackDamage * damageMultiplier;
+            return link.basicAttackDamage * currentDamage;
         }
-        public void CollisionResponse()
+        public void CollisionResponse(int enemyIndex)
         {
+            if (hitEnemyList.Contains(enemyIndex))
+            {
+                currentDamage = 0;
+            }
+            else
+            {
+                currentDamage = damageMultiplier;
+                hitEnemyList.Add(enemyIndex);
+            }
         }
         public void Update()
         {
@@ -113,8 +127,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
-            int drawWidth = 0;
-            int drawHeight = 0;
             switch (direction)
             {
                 case "up":
@@ -144,7 +156,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         
         public Rectangle GetRectangle()
         {
-            rect = new Rectangle(x + offset_x, y + offset_y, width, height);
+            rect = new Rectangle(x + offset_x, y + offset_y, drawWidth, drawHeight);
             
             return rect;
         }

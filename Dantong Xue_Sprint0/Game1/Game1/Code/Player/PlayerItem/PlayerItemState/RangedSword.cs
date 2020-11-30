@@ -4,6 +4,7 @@ using Game1.Code.Player.Interface;
 using Game1.Code.Player.Factory;
 using Game1.Code.LoadFile;
 using Game1.Code.Player.PlayerCharacter;
+using System.Collections.Generic;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
@@ -14,6 +15,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private Link link;
         private int direction;
         private int damageMultiplier = 1;
+        private int currentDamage = 1;
 
         private int sword_x;
         private int sword_y;
@@ -36,6 +38,8 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int offsetY = 3 * scale;
         private bool used = false;
         private int numberOfSprite = 4;
+
+        private List<int> hitEnemyList = new List<int>();
 
         private IPlayerItemSprite[] sword;
         private IPlayerItemSprite[] edge;
@@ -93,13 +97,25 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public int GetDamage()
         {
-            return link.basicAttackDamage * damageMultiplier;
+            return link.basicAttackDamage * currentDamage;
         }
-        public void CollisionResponse()
+        public void CollisionResponse(int enemyIndex)
         {
             if (phase == 0)
             {
                 swordCurrentFrame = swordTotalFrame;
+            }
+            else if (phase == 1)
+            {
+                if (hitEnemyList.Contains(enemyIndex))
+                {
+                    currentDamage = 0;
+                }
+                else
+                {
+                    currentDamage = damageMultiplier;
+                    hitEnemyList.Add(enemyIndex);
+                }
             }
         }
         public void Update() 

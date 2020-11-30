@@ -7,6 +7,7 @@ using System;
 using Game1.Code.Player.PlayerCharacter;
 using Game1.Code.Audio;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
@@ -16,7 +17,9 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private static int scale = (int)LoadAll.Instance.scale;
 
         private int damageMultiplier = 2;
+        private int currentDamage = 2;
         private bool done = false;
+        private List<int> hitEnemyList = new List<int>();
 
         private int sword_x;
         private int sword_y;
@@ -77,13 +80,26 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public int GetDamage()
         {
-            return link.basicAttackDamage * damageMultiplier;
+            return link.basicAttackDamage * currentDamage;
         }
-        public void CollisionResponse()
+        public void CollisionResponse(int enemyIndex)
         {
-            swordCurrentFrame = swordTotalFrame;
+            if (phase == 0)
+            {
+                swordCurrentFrame = swordTotalFrame;
+            }
+            if (hitEnemyList.Contains(enemyIndex))
+            {
+                currentDamage = 0;
+            }
+            else
+            {
+                currentDamage = damageMultiplier;
+                hitEnemyList.Add(enemyIndex);
+            }
+
         }
-        public void Update() 
+        public void Update()
         {
             if (phase == 0)
             {

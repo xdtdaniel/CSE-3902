@@ -6,6 +6,7 @@ using System;
 using Game1.Code.LoadFile;
 using Game1.Code.Audio;
 using Game1.Code.Player.PlayerCharacter;
+using System.Collections.Generic;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
@@ -26,8 +27,10 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int linkHitboxSize = 20 * scale;
         private int boomerangSpinFrequency = 10;
         private int damageMultiplier = 1;
+        private int currentDamage = 1;
         private bool done = false;
         private bool collided = false;
+        private List<int> hitEnemyList = new List<int>();
 
 
         private IPlayerItemSprite frontBoomerang;
@@ -57,15 +60,24 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         {
             return "Boomerang";
         }
-        public void CollisionResponse()
+        public void CollisionResponse(int enemyIndex)
         {
             secondFrame = maxSecondFrame;
-            damageMultiplier = 0;
             collided = true;
+
+            if (hitEnemyList.Contains(enemyIndex))
+            {
+                currentDamage = 0;
+            }
+            else
+            {
+                currentDamage = damageMultiplier;
+                hitEnemyList.Add(enemyIndex);
+            }
         }
         public int GetDamage()
         {
-            return link.basicAttackDamage * damageMultiplier;
+            return link.basicAttackDamage * currentDamage;
         }
         public void Update() 
         {

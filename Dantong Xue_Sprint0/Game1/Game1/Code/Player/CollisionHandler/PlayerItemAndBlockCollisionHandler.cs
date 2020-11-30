@@ -22,26 +22,15 @@ namespace Game1.Code.Player.CollisionHandler
                         collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), rect);
                         if (collidedSide != "")
                         {
+                            item.CollisionResponse(i);
                             switch (item.GetItemName())
                             {
-                                case "Arrow":
-                                    item.CollisionResponse();
-                                    break;
-
                                 case "BombExplosion":
                                     if (kvp.Key == "bombWalls")
                                     {
                                         LoadAll.Instance.SwitchToAlternative(collidedSide);
                                         LoadAll.Instance.LoadRoom();
                                     }
-                                    break;
-
-                                case "Boomerang":
-                                    item.CollisionResponse();
-                                    break;
-
-                                case "RangedSword":
-                                    item.CollisionResponse();
                                     break;
 
                                 default:

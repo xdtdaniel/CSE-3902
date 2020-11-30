@@ -50,20 +50,13 @@ namespace Zelda.Code.Player.PlayerCharacter
                     break;
             }
         }
-        public void UseAbility(string abilityName)
-        {
-        }
 
         public Rectangle GetRectangle(int index)
         {
             return list[index].GetRectangle();
         }
-        public void CollisionResponse(int index)
-        {
-            list[index].CollisionResponse();
-        }
 
-        public void Update(int x, int y, int directionIndex)
+        public void Update()
         {
             for (int i = 0; i < list.Count; i++)
             {
