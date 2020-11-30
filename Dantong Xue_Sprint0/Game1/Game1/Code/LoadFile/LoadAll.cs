@@ -100,7 +100,7 @@ namespace Game1.Code.LoadFile
         private string GetRoomFileName(int mapID)
         {
             string mapName;
-            if (isSwitched[mapID])
+            if (hasAlternative.Contains(mapID) && isSwitched[mapID])
             {
                 mapName = mapID.ToString() + "_" + Convert.ToString(isUnlocked[mapID], 2).PadLeft(4, '0') + "_after.csv";
             }
