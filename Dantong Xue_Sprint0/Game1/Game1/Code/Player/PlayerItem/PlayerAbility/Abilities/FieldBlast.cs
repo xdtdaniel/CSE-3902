@@ -1,4 +1,5 @@
-﻿using Game1.Code.Player.Interface;
+﻿using Game1.Code.LoadFile;
+using Game1.Code.Player.Interface;
 using Game1.Code.Player.PlayerCharacter;
 using Game1.Code.Player.PlayerItem.PlayerItemState;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,8 +17,12 @@ namespace Game1.Code.Player.PlayerAbility
         private ItemPool itemPool;
         private bool learned = false;
 
+        private static int scale = (int)LoadAll.Instance.scale;
+
         private int x;
         private int y;
+        private int offset_y = 26 * scale;
+        private int radius = 15 * scale;
 
         private int currentFrame = 0;
         private int secondFrame = 0;
@@ -42,17 +47,26 @@ namespace Game1.Code.Player.PlayerAbility
             if (usingAbility)
             {
                 secondFrame++;
-                if (secondFrame == maxSecondFrame)
+                if (secondFrame >= maxSecondFrame)
                 {
                     secondFrame = 0;
+                    int Radius = radius + currentFrame * 20 * scale;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        float angle = (float)((Math.PI / 180) * 45 * i);
+                        int swordOffset_x = (int)(Radius * Math.Sin(angle));
+                        int swordOffset_y = -(int)(Radius * Math.Cos(angle));
+                        itemPool.GetItemPool().Add(new DropBlade(link, x + swordOffset_x, y - offset_y + swordOffset_y));
+                    }
                     currentFrame++;
-                    itemPool.GetItemPool().Add(new DropBlade(link, x, y));
                 }
-                if (currentFrame == totalFrame)
+
+                if (currentFrame >= totalFrame)
                 {
-                    currentFrame = 0;
                     usingAbility = false;
+                    currentFrame = 0;
                 }
+
             }
             else
             {

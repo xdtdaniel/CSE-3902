@@ -23,21 +23,14 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
         private int sword_x;
         private int sword_y;
+        private int sword_yThreshold = 30 * scale;
         private int swordOffset_x;
         private int swordOffset_y;
-        private int radius = 15 * scale;
         private int swordWidth = 6 * scale;
         private int swordHeight = 13 * scale;
 
-        private int swordCurrentFrame = 0;
-        private int swordTotalFrame = 3000;
-        private int swordSecondFrame = 0;
-        private int swordMaxSecondFrame = 80;
-        private int swordThirdFrame = 0;
-        private int swordMaxThirdFrame = 20;
-
-        private int swordFloatSpeed = 1 * scale;
-        private int swordShootSpeed = 10 * scale;
+        private int swordShootSpeed = 2 * scale;
+        private int swordDropAcc =(int) (1.0/3 * scale);
 
         private int edge_x;
         private int edge_y;
@@ -65,6 +58,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             this.link = link;
             sword_x = x + link.linkWidth / 2;
             sword_y = y + link.linkHeight / 2;
+            sword_yThreshold += y;
 
 
             blade = PlayerAbilityFactory.Instance.GetBlade();
@@ -83,10 +77,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         public void CollisionResponse(int enemyIndex)
         {
             Camera.ShakeCamera(1);
-            if (phase == 0)
-            {
-                swordCurrentFrame = swordTotalFrame;
-            }
             if (hitEnemyList.Contains(enemyIndex))
             {
                 currentDamage = 0;
@@ -102,20 +92,11 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         {
             if (phase == 0)
             {
-                swordSecondFrame++;
-                if (swordSecondFrame >= swordMaxSecondFrame)
+                sword_y -= swordShootSpeed;
+                swordShootSpeed -= swordDropAcc;
+
+                if (sword_y > sword_yThreshold)
                 {
-                    sword_y -= 2;
-                    swordThirdFrame++;
-                }
-                if (swordThirdFrame >= swordMaxThirdFrame)
-                {
-                    sword_y += 4;
-                    swordCurrentFrame++;
-                }
-                if (swordCurrentFrame >= swordTotalFrame)
-                {
-                    swordCurrentFrame = 0;
                     phase = 1;
                     edge_x = sword_x;
                     edge_y = sword_y;
@@ -183,7 +164,11 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         {
             if (phase == 1)
             {
-                rect = new Rectangle(sword_x, sword_y, swordHeight, swordHeight);
+                int edgeMovement_x = edgeSpeed * edgeCurrentFrame;
+                int edgeMovement_y = edgeSpeed * edgeCurrentFrame;
+                int hitboxWidth = edgeMovement_x * 2;
+                int hitboxHeight = edgeMovement_y * 2;
+                rect = new Rectangle(edge_x - edgeMovement_x, edge_y - edgeMovement_y, hitboxWidth, hitboxHeight);
             }
             return rect;
         }

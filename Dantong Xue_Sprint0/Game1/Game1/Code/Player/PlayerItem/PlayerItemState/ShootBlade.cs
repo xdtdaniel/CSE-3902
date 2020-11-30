@@ -191,9 +191,17 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         
         public Rectangle GetRectangle()
         {
-            if (swordSecondFrame >= swordMaxSecondFrame)
+            if (phase == 0)
             {
                 rect = new Rectangle(sword_x, sword_y, swordHeight, swordHeight);
+            }
+            else if (phase == 1)
+            {
+                int edgeMovement_x = edgeSpeed * edgeCurrentFrame;
+                int edgeMovement_y = edgeSpeed * edgeCurrentFrame;
+                int hitboxWidth = edgeMovement_x * 2;
+                int hitboxHeight = edgeMovement_y * 2;
+                rect = new Rectangle(edge_x - edgeMovement_x, edge_y - edgeMovement_y, hitboxWidth, hitboxHeight);
             }
             return rect;
         }
