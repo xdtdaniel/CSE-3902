@@ -21,7 +21,7 @@ namespace Game1.Code.Enemy
             }
         }
 
-        public void DrawAllEnemy(List<Tuple<IEnemy, string>> Enemies, SpriteBatch spriteBatch)
+        public void DrawAllEnemy(List<Tuple<IEnemy, string, int>> Enemies, SpriteBatch spriteBatch)
         {
             for (int i = 0; i < Enemies.Count; i++)
             {
@@ -29,7 +29,7 @@ namespace Game1.Code.Enemy
             }
         }
 
-        public void UpdateAllEnemy(List<Tuple<IEnemy, string>> Enemies, Game1 game)
+        public void UpdateAllEnemy(List<Tuple<IEnemy, string, int>> Enemies, Game1 game)
         {
             for (int i = 0; i < Enemies.Count; i++)
             {

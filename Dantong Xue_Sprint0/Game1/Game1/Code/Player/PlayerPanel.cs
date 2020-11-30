@@ -16,7 +16,7 @@ namespace Game1.Code.Player
 
         // test
         private Dictionary<string, List<Rectangle>> roomBlockList;
-        private List<Tuple<IEnemy, string>> roomEnemyList;
+        private List<Tuple<IEnemy, string, int>> roomEnemyList;
         private List<Tuple<IItemSprite, string>> roomItemList;
         private List<IBlock> movableList;
 
@@ -30,7 +30,7 @@ namespace Game1.Code.Player
 
             //
             roomBlockList = new Dictionary<string, List<Rectangle>>();
-            roomEnemyList = new List<Tuple<IEnemy, string>>();
+            roomEnemyList = new List<Tuple<IEnemy, string, int>>();
             roomItemList = new List<Tuple<IItemSprite, string>>();
             movableList = new List<IBlock>();
 

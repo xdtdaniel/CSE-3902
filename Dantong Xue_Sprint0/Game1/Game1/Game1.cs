@@ -41,7 +41,7 @@ namespace Game1
         public List<IBlock> movableBlocks;
 
         public LoadEnemy EnemyLoader;
-        public List<Tuple<IEnemy, string>> EnemyList;
+        public List<Tuple<IEnemy, string, int>> EnemyList;
 
         public LoadItem ItemLoader;
         public List<Tuple<IItemSprite, string>> inRoomList;

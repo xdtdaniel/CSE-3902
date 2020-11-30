@@ -19,7 +19,7 @@ namespace Game1.Code.Player.CollisionHandler
         private static bool[] enemyHitByBombExplosion;
         private static bool[] enemyHitByVacuum;
         private static bool[] enemyHitBySlash;
-        public static void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
+        public static void HandleCollision(Link link, List<Tuple<IEnemy, string, int>> enemyList)
         {
             for (int i = 0; i < link.itemPool.GetItemPool().Count; i++)
             {
@@ -66,7 +66,7 @@ namespace Game1.Code.Player.CollisionHandler
                 ////////////////////////////////////
 
                 int currEnemyIndex = 0;
-                foreach (Tuple<IEnemy, string> tuple in enemyList)
+                foreach (Tuple<IEnemy, string, int> tuple in enemyList)
                 {
                     Rectangle enemyRectangle = tuple.Item1.GetRectangle();
 

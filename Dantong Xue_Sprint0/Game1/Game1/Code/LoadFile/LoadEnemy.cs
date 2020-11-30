@@ -35,10 +35,10 @@ namespace Game1.Code.LoadFile
             CurrentMapID = currentMapID;
         }
 
-        private List<Tuple<IEnemy, string>>[] AllEnemyListCopy = new List<Tuple<IEnemy, string>>[MAP_COUNT];
-        private List<Tuple<IEnemy, string>>[] AllEnemyList = new List<Tuple<IEnemy, string>>[MAP_COUNT];
-        private List<Tuple<IEnemy, string>> Enemies = new List<Tuple<IEnemy, string>>();
-        private List<Tuple<IEnemy, string>> EnemiesCopy = new List<Tuple<IEnemy, string>>();
+        private List<Tuple<IEnemy, string, int>>[] AllEnemyListCopy = new List<Tuple<IEnemy, string, int>>[MAP_COUNT];
+        private List<Tuple<IEnemy, string, int>>[] AllEnemyList = new List<Tuple<IEnemy, string, int>>[MAP_COUNT];
+        private List<Tuple<IEnemy, string, int>> Enemies = new List<Tuple<IEnemy, string, int>>();
+        private List<Tuple<IEnemy, string, int>> EnemiesCopy = new List<Tuple<IEnemy, string, int>>();
 
         public void LoadAllEnemy() 
         {
@@ -58,8 +58,8 @@ namespace Game1.Code.LoadFile
                 LoadOneRoomEnemy((i + 1).ToString() + "_enemy.csv", LoadMap.Instance.GetBlocks());
                 AllEnemyList[i] = Enemies;
                 AllEnemyListCopy[i] = EnemiesCopy;
-                Enemies = new List<Tuple<IEnemy, string>>();
-                EnemiesCopy = new List<Tuple<IEnemy, string>>();
+                Enemies = new List<Tuple<IEnemy, string, int>>();
+                EnemiesCopy = new List<Tuple<IEnemy, string, int>>();
             }
         }
 
@@ -114,116 +114,116 @@ namespace Game1.Code.LoadFile
                     case "aquamentus":
                         Enemy = new Aquamentus(location);
                         EnemyCopy = new Aquamentus(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "aquamentus"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "aquamentus"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "aquamentus", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "aquamentus", index));
                         break;
                     case "gel":
                         Enemy = new Gel(location, blockList);
                         EnemyCopy = new Gel(location, blockList);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "gel"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "gel"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "gel", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "gel", index));
                         break;
                     case "keese":
                         Enemy = new Keese(location);
                         EnemyCopy = new Keese(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "keese"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "keese"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "keese", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "keese", index));
                         break;
                     case "stalfos":
                         Enemy = new Stalfos(location, blockList);
                         EnemyCopy = new Stalfos(location, blockList);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "stalfos"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "stalfos"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "stalfos", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "stalfos", index));
                         break;
                     case "goriya":
                         Enemy = new Goriya(location, blockList);
                         EnemyCopy = new Goriya(location, blockList);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "goriya"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "goriya"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "goriya", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "goriya", index));
                         break;
                     case "trap0":
                         Enemy = new Trap0(location);
                         EnemyCopy = new Trap0(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "trap"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "trap", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "trap", index));
                         break;
                     case "trap1":
                         Enemy = new Trap1(location);
                         EnemyCopy = new Trap1(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "trap"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "trap", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "trap", index));
                         break;
                     case "trap2":
                         Enemy = new Trap2(location);
                         EnemyCopy = new Trap2(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "trap"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "trap", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "trap", index));
                         break;
                     case "trap3":
                         Enemy = new Trap3(location);
                         EnemyCopy = new Trap3(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "trap"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "trap"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "trap", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "trap", index));
                         break;
                     case "wallmaster_0":
                         Enemy = new Wallmaster0(location);
                         EnemyCopy = new Wallmaster0(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "wallmaster", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "wallmaster", index));
                         break;
                     case "wallmaster_1":
                         Enemy = new Wallmaster1(location);
                         EnemyCopy = new Wallmaster1(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "wallmaster", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "wallmaster", index));
                         break;
                     case "wallmaster_2":
                         Enemy = new Wallmaster2(location);
                         EnemyCopy = new Wallmaster2(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "wallmaster", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "wallmaster", index));
                         break;
                     case "wallmaster_3":
                         Enemy = new Wallmaster3(location);
                         EnemyCopy = new Wallmaster3(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "wallmaster"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "wallmaster"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "wallmaster", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "wallmaster", index));
                         break;
                     case "merchant":
                         Enemy = new Merchant(location);
                         EnemyCopy = new Merchant(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "merchant"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "merchant"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "merchant", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "merchant", index));
                         break;
                     case "oldman":
                         Enemy = new OldMan(location);
                         EnemyCopy = new OldMan(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "oldman"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "oldman"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "oldman", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "oldman", index));
                         break;
                     case "fire":
                         Enemy = new Fire(location);
                         EnemyCopy = new Fire(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "fire"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "fire"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "fire", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "fire", index));
                         break;
                     case "newtrap":
                         Enemy = new NewTrap(location);
                         EnemyCopy = new NewTrap(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "newtrap"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "newtrap"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "newtrap", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "newtrap", index));
                         break;
                     case "newtrap1":
                         Enemy = new NewTrap1(location);
                         EnemyCopy = new NewTrap1(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "newtrap1"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "newtrap1"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "newtrap1", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "newtrap1", index));
                         break;
                     case "saw":
                         Enemy = new Saw(location);
                         EnemyCopy = new Saw(location);
-                        Enemies.Add(new Tuple<IEnemy, string>(Enemy, "saw"));
-                        EnemiesCopy.Add(new Tuple<IEnemy, string>(EnemyCopy, "saw"));
+                        Enemies.Add(new Tuple<IEnemy, string, int>(Enemy, "saw", index));
+                        EnemiesCopy.Add(new Tuple<IEnemy, string, int>(EnemyCopy, "saw", index));
                         break;
                 }
 
@@ -231,29 +231,25 @@ namespace Game1.Code.LoadFile
 
         }
 
-        public List<Tuple<IEnemy, string>> GetEnemyList() 
+        public List<Tuple<IEnemy, string, int>> GetEnemyList() 
         {
             return AllEnemyList[CurrentMapID - 1];
         }
 
         public void ResetAllEnemies() {
-            AllEnemyList = new List<Tuple<IEnemy, string>>[MAP_COUNT];
+            AllEnemyList = new List<Tuple<IEnemy, string, int>>[MAP_COUNT];
 
             Enemies.Clear();
             for (int i = 0; i < MAP_COUNT; i++) {
-                Tuple<IEnemy, string>[] Array = new Tuple<IEnemy, string>[AllEnemyListCopy[i].Count];
+                Tuple<IEnemy, string, int>[] Array = new Tuple<IEnemy, string, int>[AllEnemyListCopy[i].Count];
                 AllEnemyListCopy[i].CopyTo(Array);
                 for (int j = 0; j < AllEnemyListCopy[i].Count; j++) {
                     Enemies.Add(Array[j]);
                 }
-                /*
-                foreach (Tuple<IEnemy, string> tuple in AllEnemyListCopy[i]) {
-                    Enemies.Add(tuple);
-                }
-                */
+
                 AllEnemyList[i] = Enemies;
                 
-                Enemies = new List<Tuple<IEnemy, string>>();
+                Enemies = new List<Tuple<IEnemy, string, int>>();
             }
         }
 
@@ -289,7 +285,6 @@ namespace Game1.Code.LoadFile
 
 
         public bool NoEnemy() {
-            // for the case level 1
             if (AllEnemyList[CurrentMapID - 1].Count == 0 || CurrentMapID == 1)
             {
                 return true;

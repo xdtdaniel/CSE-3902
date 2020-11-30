@@ -19,7 +19,7 @@ namespace Game1.Code.Player.CollisionHandler
         private static bool hitAtLeastOne = false;
         private static int dmgAmount = 1;
         private static int offsetY = 56 * scale;
-        public static void HandleCollision(Link link, List<Tuple<IEnemy, string>> enemyList)
+        public static void HandleCollision(Link link, List<Tuple<IEnemy, string, int>> enemyList)
         {
             if (link.GetStateName() == "SwordBeamLink" || link.GetStateName() == "WoodenSwordLink")
             {
@@ -48,7 +48,7 @@ namespace Game1.Code.Player.CollisionHandler
                 hitAtLeastOne = false;
             }
 
-            foreach (Tuple<IEnemy, string> tuple in enemyList)
+            foreach (Tuple<IEnemy, string, int> tuple in enemyList)
             {
                 Rectangle enemyRectangle = tuple.Item1.GetRectangle();
                 int enemyRectX = (int)(enemyRectangle.X + LoadAll.Instance.startPos.X);
