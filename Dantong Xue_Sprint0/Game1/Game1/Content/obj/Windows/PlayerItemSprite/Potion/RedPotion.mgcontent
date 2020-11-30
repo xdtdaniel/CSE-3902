@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/Potion/RedPotion.png</SourceFile>
-  <SourceTime>2020-11-30T00:35:05.8658784-05:00</SourceTime>
-  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerItemSprite/Potion/RedPotion.xnb</DestFile>
-  <DestTime>2020-11-30T05:57:16.419617-05:00</DestTime>
+  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/Potion/RedPotion.png</SourceFile>
+  <SourceTime>2020-11-30T11:30:42.5114324-05:00</SourceTime>
+  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerItemSprite/Potion/RedPotion.xnb</DestFile>
+  <DestTime>2020-11-30T11:35:59.9033741-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

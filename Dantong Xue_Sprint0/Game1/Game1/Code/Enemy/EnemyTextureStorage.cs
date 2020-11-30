@@ -29,6 +29,8 @@ namespace Game1
         private static Texture2D newtrap1SpriteSheet;
         private static Texture2D aquamentusBatProjectileSheet;
         private static Texture2D sawSpriteSheet;
+        private static Texture2D burningSawSpriteSheet;
+        private static Texture2D freezingSawSpriteSheet;
 
         public static void LoadTextures(ContentManager content) {
             gelSpriteSheet = content.Load<Texture2D>("Sprite/enemies/gel_sprite");
@@ -52,6 +54,8 @@ namespace Game1
             newtrap1SpriteSheet = content.Load<Texture2D>("Sprite/enemies/newtrap1_sprite");
             aquamentusBatProjectileSheet = content.Load<Texture2D>("Sprite/enemies/redbat_sprite");
             sawSpriteSheet = content.Load<Texture2D>("Sprite/enemies/saw_sprite");
+            burningSawSpriteSheet = content.Load<Texture2D>("Sprite/enemies/burning_saw_sprite");
+            freezingSawSpriteSheet = content.Load<Texture2D>("Sprite/enemies/freezing_saw_sprite");
         }
 
         public static Texture2D GetGelSpriteSheet() {
@@ -141,5 +145,16 @@ namespace Game1
         {
             return sawSpriteSheet;
         }
+
+        public static Texture2D GetBurningSawSpriteSheet()
+        {
+            return burningSawSpriteSheet;
+        }
+           
+        public static Texture2D GetFreezingSawSpriteSheet()
+        {
+            return freezingSawSpriteSheet;
+        }
+
     }
 }

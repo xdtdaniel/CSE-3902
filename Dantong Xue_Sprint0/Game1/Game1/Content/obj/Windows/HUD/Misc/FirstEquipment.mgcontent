@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Misc/FirstEquipment.png</SourceFile>
-  <SourceTime>2020-11-30T00:35:05.8279796-05:00</SourceTime>
-  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/HUD/Misc/FirstEquipment.xnb</DestFile>
-  <DestTime>2020-11-30T05:57:15.3130536-05:00</DestTime>
+  <SourceFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Misc/FirstEquipment.png</SourceFile>
+  <SourceTime>2020-11-30T11:30:42.4635-05:00</SourceTime>
+  <DestFile>C:/Users/Lianz/OneDrive/桌面/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/HUD/Misc/FirstEquipment.xnb</DestFile>
+  <DestTime>2020-11-30T11:35:56.5202155-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

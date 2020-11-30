@@ -3,6 +3,8 @@
 Author: Jason Lian
 Last modified date: 10/25/2020
 
+THIS FILE IS OLD AND NEED FURTHER MODIFICATIONS.
+
 Enemy folder contains all the classes related to enemies and npcs in the game. 
 Interface IEnemy contains three necessary methods for all the enemy objects: draw, update, 
 and if the enemy type can fire projectile, the fire projectile method. There is no interface 
