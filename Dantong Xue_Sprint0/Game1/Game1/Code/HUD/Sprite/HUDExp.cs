@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Text;
 namespace Game1.Code.HUD.Sprite
@@ -16,49 +17,72 @@ namespace Game1.Code.HUD.Sprite
         private int height = 6 * scale;
         private int width = 4  * scale;
         
-        private int maxExpPerLine = 8;
+        private int maxExpPerLine = 10;
         private int expCount;
-
-        private int preX = 150 * scale;
-        private int preY = -30 * scale;
         private int x;
         private int y;
-        static public int level = 0;
+        private int preX = 180 * scale;
+        private int preY = -30 * scale;
+        
+        static public int level;
 
-        Rectangle sourceRectangle;
-        Rectangle destinationRectangle;
 
         public HUDExp(int killedEnemies)
         {
            expCount = killedEnemies;
             //initial values
             exp = HUDFactory.LoadExpPattern();   
-            sourceRectangle = new Rectangle();
-            destinationRectangle = new Rectangle();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
-            for (int i = 0; i < (expCount % maxExpPerLine); i++)
+
+
+
+            if ((expCount % maxExpPerLine != 0 || expCount == 0 )&& level!=8)
             {
-                sourceRectangle = new Rectangle(0, 0, exp.Width, exp.Height);
-                if ( expCount % maxExpPerLine == 0 && level != 8)
+                for (int i = 0; i < expCount-(level*maxExpPerLine); i++)
                 {
-                    level++;
-                    destinationRectangle = new Rectangle(x, y, width, height);
+                    Rectangle sourceRectangle = new Rectangle(0, 0, exp.Width, exp.Height);
+                    Rectangle destinationRectangle = new Rectangle(x + i * width, y, width, height);
                     spriteBatch.Draw(exp, destinationRectangle, sourceRectangle, Color.White);
                 }
-                else if (expCount % maxExpPerLine != 0 && level != 8)
-                {
-                    destinationRectangle = new Rectangle(x + (expCount % maxExpPerLine) * width, y, width, height);
-                    spriteBatch.Draw(exp, destinationRectangle, sourceRectangle, Color.White);
-                }
-                else {
-                    break;
-                }
+            }
+          
+
+            if (expCount/maxExpPerLine==1) {
+                level =1;
                
             }
+            if (expCount / maxExpPerLine == 2) {
+                level = 2;
+            }
+            if (expCount / maxExpPerLine ==3)
+            {
+                level = 3;
+            }
+            if (expCount / maxExpPerLine == 4)
+            {
+                level =4;
+            }
+            if (expCount / maxExpPerLine == 5)
+            {
+                level = 5;
+            }
+            if (expCount / maxExpPerLine == 6)
+            {
+                level = 6;
+            }
+            if (expCount / maxExpPerLine == 7)
+            {
+                level = 7;
+            }
+            if (expCount / maxExpPerLine == 8)
+            {
+                level = 8;
+            }
+
+
         }
         public void Update(float newStartX, float newStartY)
         {

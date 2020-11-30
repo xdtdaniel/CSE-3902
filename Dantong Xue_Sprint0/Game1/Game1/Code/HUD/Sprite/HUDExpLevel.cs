@@ -12,7 +12,7 @@ namespace Game1.Code.HUD.Sprite
     class HUDExpLevel : IHUDSprite
     {
         private static int scale = (int)LoadAll.Instance.scale;
-        private int levelNumberSideLength = 12 * scale;
+        private int levelNumberSideLength = 8 * scale;
         private int levelX;
         private int levelY;
        
@@ -20,11 +20,10 @@ namespace Game1.Code.HUD.Sprite
         private int preLevelY = -30 * scale;
 
         private Texture2D expLevelTexture;
-        private int explevel;
+      private int explevel;
         public HUDExpLevel(int level)
-        {
-            explevel = 1;
-            expLevelTexture = HUDFactory.LoadNumber(explevel)[1]; // level number has one digit
+        { 
+           // expLevelTexture = HUDFactory.LoadNumber(explevel)[1]; // level number has one digit
         }
         public void Draw(SpriteBatch spriteBatch)
         {
