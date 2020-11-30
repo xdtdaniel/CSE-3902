@@ -10,7 +10,7 @@ using Zelda.Code.Player.PlayerCharacter;
 
 namespace Game1.Code.Player.PlayerAbility
 {
-    class BladeBarrage : IPlayerAbility
+    class FieldBlast : IPlayerAbility
     {
         private Link link;
         private ItemPool itemPool;
@@ -18,8 +18,6 @@ namespace Game1.Code.Player.PlayerAbility
 
         private int x;
         private int y;
-        private float angle = 0;
-        private float angleInterval = (float)((Math.PI / 180) * 45);
 
         private int currentFrame = 0;
         private int secondFrame = 0;
@@ -30,7 +28,7 @@ namespace Game1.Code.Player.PlayerAbility
         private int timeSinceAbility = 10;
         private bool usingAbility = false;
 
-        public BladeBarrage(Link link, ItemPool itemPool)
+        public FieldBlast(Link link, ItemPool itemPool)
         {
             this.link = link;
             this.itemPool = itemPool;
@@ -48,8 +46,7 @@ namespace Game1.Code.Player.PlayerAbility
                 {
                     secondFrame = 0;
                     currentFrame++;
-                    itemPool.GetItemPool().Add(new ShootBlade(link, angle, x, y));
-                    angle += angleInterval;
+                    itemPool.GetItemPool().Add(new DropBlade(link, x, y));
                 }
                 if (currentFrame == totalFrame)
                 {

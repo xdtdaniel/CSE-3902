@@ -48,11 +48,7 @@ namespace Game1.Code.Player.PlayerAbility
                 usingAbility = false;
                 currentFrame = 0;
 
-                itemPool.GetItemPool().Add(new Impact(link, link.direction, x, y));
-                if (link.collisionSide != "")
-                {
-                    itemPool.GetItemPool().Add(new Impact(link, link.direction, x, y));
-                }
+                itemPool.GetItemPool().Add(new Impact(link, itemPool, link.direction, x, y));
 
                 currentFrame++;
 

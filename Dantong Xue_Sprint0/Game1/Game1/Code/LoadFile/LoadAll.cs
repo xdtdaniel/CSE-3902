@@ -125,7 +125,7 @@ namespace Game1.Code.LoadFile
             {
                 oldRoomMapBlocksToDraw = LoadMap.Instance.GetBlocksToDraw();
                 ScrollRoom(door);
-                game1.camera.UpdateMovingState(door);
+                Camera.UpdateMovingState(door);
                 currMapID = nextRoomID;
                 LoadRoom();
             }

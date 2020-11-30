@@ -28,7 +28,6 @@ namespace Game1.Code.Player.PlayerAbility
         private int timeSinceAbility = 10;
         private bool usingAbility = false;
 
-
         public DeadlySlash(Link link, ItemPool itemPool)
         {
             this.link = link;
@@ -48,6 +47,7 @@ namespace Game1.Code.Player.PlayerAbility
                     usingAbility = false;
                     currentFrame = 0;
 
+                    Camera.ShakeCamera(2);
                     itemPool.GetItemPool().Add(new Slash(link, link.direction, x, y));
                 }
                 else if (currentFrame % 10 == 0 && currentFrame < stopVacuumFrame)

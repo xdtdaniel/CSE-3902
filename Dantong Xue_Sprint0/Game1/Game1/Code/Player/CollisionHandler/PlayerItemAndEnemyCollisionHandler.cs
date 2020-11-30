@@ -56,6 +56,13 @@ namespace Game1.Code.Player.CollisionHandler
                                 tuple.Item1.TakeDamage(item.GetDamage());
                                 break;
 
+                            case "Impact":
+                                tuple.Item1.TakeDamage(item.GetDamage());
+                                break;
+
+                            case "Explosion":
+                                tuple.Item1.TakeDamage(item.GetDamage());
+                                break;
                             default:
                                 break;
                         }

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
-    class SingleBlade : IPlayerItemState
+    class DropBlade : IPlayerItemState
     {
 
         private static int scale = (int)LoadAll.Instance.scale;
@@ -28,12 +28,14 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int radius = 15 * scale;
         private int swordWidth = 6 * scale;
         private int swordHeight = 13 * scale;
+
         private int swordCurrentFrame = 0;
+        private int swordTotalFrame = 3000;
         private int swordSecondFrame = 0;
         private int swordMaxSecondFrame = 80;
         private int swordThirdFrame = 0;
         private int swordMaxThirdFrame = 20;
-        private int swordTotalFrame = 3000;
+
         private int swordFloatSpeed = 1 * scale;
         private int swordShootSpeed = 10 * scale;
 
@@ -47,7 +49,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
         private int phase = 0;
 
-        private float angle;
 
         private Texture2D blade;
         private Texture2D edge;
@@ -58,16 +59,13 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private Rectangle rect = new Rectangle();
 
 
-        public SingleBlade(Link link, float angle, int x, int y)
+        public DropBlade(Link link, int x, int y)
         {
             AudioPlayer.swordSlash.Play();
             this.link = link;
-            this.angle = angle;
             sword_x = x + link.linkWidth / 2;
             sword_y = y + link.linkHeight / 2;
 
-            swordOffset_x = (int)(radius * Math.Sin(angle));
-            swordOffset_y = -(int)(radius * Math.Cos(angle));
 
             blade = PlayerAbilityFactory.Instance.GetBlade();
 
@@ -84,6 +82,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public void CollisionResponse(int enemyIndex)
         {
+            Camera.ShakeCamera(1);
             if (phase == 0)
             {
                 swordCurrentFrame = swordTotalFrame;
@@ -106,26 +105,16 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
                 swordSecondFrame++;
                 if (swordSecondFrame >= swordMaxSecondFrame)
                 {
-                    swordCurrentFrame++;
+                    sword_y -= 2;
                     swordThirdFrame++;
-                    int speed_x;
-                    int speed_y;
-                    if (swordThirdFrame < swordMaxThirdFrame)
-                    {
-                        speed_x = (int)(swordFloatSpeed * Math.Sin(angle));
-                        speed_y = -(int)(swordFloatSpeed * Math.Cos(angle));
-                    }
-                    else
-                    {
-                        speed_x = (int)(swordShootSpeed * Math.Sin(angle));
-                        speed_y = -(int)(swordShootSpeed * Math.Cos(angle));
-                    }
-                    sword_x += speed_x;
-                    sword_y += speed_y;
+                }
+                if (swordThirdFrame >= swordMaxThirdFrame)
+                {
+                    sword_y += 4;
+                    swordCurrentFrame++;
                 }
                 if (swordCurrentFrame >= swordTotalFrame)
                 {
-                    swordSecondFrame++;
                     swordCurrentFrame = 0;
                     phase = 1;
                     edge_x = sword_x;
@@ -145,18 +134,20 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         {
             if (phase == 0)
             {
+                float angle = (float)(Math.PI / 180) * 180; // turn blade to face downward
                 Rectangle sourceRectangle = new Rectangle(0, 0, blade.Width, blade.Height);
                 Rectangle destinationRectangle = new Rectangle(sword_x + swordOffset_x, sword_y + swordOffset_y, swordWidth, swordHeight);
                 Vector2 origin = new Vector2(blade.Width / 2, blade.Height / 2);
 
                 spriteBatch.Draw(blade, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
+
             }
             else if (phase == 1)
             {
                 for (int i = 0; i < numberOfSprite; i++)
                 {
                     int rotationDegree = 90 * i;
-                    angle = (float)(Math.PI / 180) * rotationDegree;
+                    float angle = (float)(Math.PI / 180) * rotationDegree;
                     Rectangle sourceRectangle = new Rectangle(0, 0, edge.Width, edge.Height);
                     int xSign;
                     int ySign;
@@ -190,7 +181,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         
         public Rectangle GetRectangle()
         {
-            if (swordSecondFrame >= swordMaxSecondFrame)
+            if (phase == 1)
             {
                 rect = new Rectangle(sword_x, sword_y, swordHeight, swordHeight);
             }

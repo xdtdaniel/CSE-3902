@@ -9,53 +9,47 @@ using System.Text;
 
 namespace Game1.Code
 {
-    public class Camera
+    public static class Camera
     {
-        public Vector2 Position { get; set; }
-        public Rectangle Bounds { get; protected set; }
-        public Rectangle VisibleArea { get; protected set; }
-        public Matrix Transform { get; protected set; }
+        public static Vector2 Position = new Vector2(384, 348);
+        public static Rectangle Bounds;
+        public static Rectangle VisibleArea;
+        public static Matrix Transform;
 
-        private bool moving = false;
-        private int direction;
-        private const float defaultWidth = 256;
-        private const float defaultHeight = 176;
+        private static bool moving = false;
+        private static int direction;
+        private static  float defaultWidth = 256;
+        private static  float defaultHeight = 176;
 
-        private float speed = (float)16/3 * (int)LoadAll.Instance.scale;
+        private static float speed = (float)16/3 * (int)LoadAll.Instance.scale;
 
         private static int scale = (int)LoadAll.Instance.scale;
 
-        int moveTimer = 0;
+        static int moveTimer = 0;
 
-        double HorizontalMoveTime;
-        double VerticalMoveTime;
+        static double HorizontalMoveTime = defaultWidth / speed * scale;
+        static double VerticalMoveTime = defaultHeight / speed* scale;
 
-        private int shakeCameraMin = -3 * scale;
-        private int shakeCameraMax = 3 * scale;
-        private int shakeCameraOffset_x = 0;
-        private int shakeCameraOffset_y = 0;
-        private Vector2 shakeCameraOffset = new Vector2(0, 0);
-        public bool startShaking = false;
+        private static int shakeCameraMin = -1 * scale;
+        private static int shakeCameraMax = 1 * scale;
+        private static int shakeCameraOffset_x = 0;
+        private static int shakeCameraOffset_y = 0;
+        public static bool shaking = false;
+        private static int shakeCurrentFrame = 0;
+        private static int shakeTotalFrame = 15;
+        private static int shakeMagnitude = 0;
 
-        private KeyboardState oldState;
-        private KeyboardState newState;
-        private bool paused;
-        public int pausedType = -1; // -1 for not paused, 0 for paused, 1 for openning inventory, 2 for openning ability tree
+        private static KeyboardState oldState;
+        private static KeyboardState newState;
+        private static bool paused = false;
+        public static int pausedType = -1; // -1 for not paused, 0 for paused, 1 for openning inventory, 2 for openning ability tree
 
 
-        public Camera(Viewport viewport)
-        {
-            Bounds = viewport.Bounds;
-            //Position = Vector2.Zero;
-            Position = new Vector2(384,348);
-            HorizontalMoveTime = defaultWidth / speed * scale;
-            VerticalMoveTime = defaultHeight / speed * scale;
-            paused = false;
-        }
 
         
-        private void UpdateVisibleArea()
+        private static void UpdateVisibleArea(Viewport viewport)
         {
+            Bounds = viewport.Bounds;
             var inverseViewMatrix = Matrix.Invert(Transform);
 
             var tl = Vector2.Transform(Vector2.Zero, inverseViewMatrix);
@@ -72,39 +66,49 @@ namespace Game1.Code
             VisibleArea = new Rectangle((int)min.X, (int)min.Y, (int)(max.X - min.X), (int)(max.Y - min.Y));
         }
 
-        private void UpdateMatrix()
+        private static void UpdateMatrix(Viewport viewport)
         {
+            Bounds = viewport.Bounds;
             Transform = Matrix.CreateTranslation(new Vector3(-Position.X + shakeCameraOffset_x, -Position.Y + shakeCameraOffset_y, 0)) *
                     Matrix.CreateTranslation(new Vector3(Bounds.Width * 0.5f, Bounds.Height * 0.5f, 0));
-            UpdateVisibleArea();
+            UpdateVisibleArea(viewport);
         }
 
-        public void MoveCamera(Vector2 movePosition)
+        public static void MoveCamera(Vector2 movePosition)
         {
             Vector2 newPosition = Position + movePosition;
             Position = newPosition;
         }
-        public void ShakeCamera()
+        public static void ShakeCamera(int magnitude)
         {
-            Random rd = new Random();
-            shakeCameraOffset_x = rd.Next(shakeCameraMin, shakeCameraMax);
-            shakeCameraOffset_y = rd.Next(shakeCameraMin, shakeCameraMax);
+            shakeMagnitude = magnitude;
+            shaking = true;
         }
 
-        public void UpdateCamera(Viewport bounds)
+        public static void UpdateCamera(Viewport viewport)
         {
-            Bounds = bounds.Bounds;
-            shakeCameraOffset_x = 0;
-            shakeCameraOffset_y = 0;
-            if (startShaking)
-            {
-                ShakeCamera();
-            }
-            UpdateMatrix();
+            Bounds = viewport.Bounds;
+
+            UpdateMatrix(viewport);
 
             UpdateMovingState("");
 
             Reset();
+
+            if (shakeCurrentFrame < shakeTotalFrame && shaking)
+            {
+                Random rd = new Random();
+                shakeCameraOffset_x = rd.Next(shakeCameraMin * shakeMagnitude, shakeCameraMax * shakeMagnitude);
+                shakeCameraOffset_y = rd.Next(shakeCameraMin * shakeMagnitude, shakeCameraMax * shakeMagnitude);
+                shakeCurrentFrame++;
+            }
+            else
+            {
+                shakeCameraOffset_x = 0;
+                shakeCameraOffset_y = 0;
+                shakeCurrentFrame = 0;
+                shaking = false;
+            }
 
 
             if (moving) {
@@ -136,7 +140,7 @@ namespace Game1.Code
 
         }
 
-        public void UpdateMovingState(string movingDirection) {
+        public static void UpdateMovingState(string movingDirection) {
             if (movingDirection == "up")
             {
                 moving = true;
@@ -162,7 +166,7 @@ namespace Game1.Code
             }
         }
 
-        private void UpdateLocation() {
+        private static void UpdateLocation() {
             Vector2 cameraMovement = Vector2.Zero;
 
             if (direction == 0)
@@ -188,7 +192,7 @@ namespace Game1.Code
             MoveCamera(cameraMovement);
         }
 
-        public bool PauseGame()
+        public static bool PauseGame()
         {
             newState = Keyboard.GetState();
 
@@ -242,7 +246,7 @@ namespace Game1.Code
             return paused;
         }
 
-        public void Reset() {
+        public static void Reset() {
             newState = Keyboard.GetState();
             if (newState.IsKeyDown(Keys.H) && !moving)
             {

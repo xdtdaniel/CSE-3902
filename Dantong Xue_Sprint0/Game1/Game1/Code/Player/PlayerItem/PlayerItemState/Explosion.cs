@@ -17,8 +17,8 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
         private static int scale = (int)LoadAll.Instance.scale;
 
-        private int damageMultiplier = 1; // test
-        private int currentDamage = 1;
+        private int damageMultiplier = 4; // test
+        private int currentDamage = 4;
         private bool done = false;
         private List<int> hitEnemyList = new List<int>();
 
@@ -30,7 +30,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int currentFrame = 0;
         private int totalFrame = 3;
         private int secondFrame = 0;
-        private int maxSecondFrame = 10;
+        private int maxSecondFrame = 20;
 
         private Texture2D explosion;
         private int sourceWidth;
@@ -81,7 +81,12 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public void Update()
         {
-            currentFrame++;
+            secondFrame++;
+            if (secondFrame >= maxSecondFrame)
+            {
+                secondFrame = 0;
+                currentFrame++;
+            }
             if (currentFrame >= totalFrame)
             {
                 done = true;
@@ -109,8 +114,8 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         
         public Rectangle GetRectangle()
         {
-            rect = new Rectangle(x + offset_x, y + offset_y, drawWidth, drawHeight);
-            
+            rect = new Rectangle(x - offsetX - destinationWidth, y - destinationHeight, destinationWidth * column, destinationHeight * column);
+
             return rect;
         }
         public bool IsDone()

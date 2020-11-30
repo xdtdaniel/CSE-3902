@@ -9,6 +9,7 @@ using Game1.Code.Audio;
 using System.Diagnostics;
 using Game1.Code.HUD.Factory;
 using System.Collections.Generic;
+using Zelda.Code.Player.PlayerCharacter;
 
 namespace Game1.Code.Player.PlayerItem.PlayerItemState
 {
@@ -24,6 +25,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
 
 
         private Link link;
+        private ItemPool itemPool;
 
         private Texture2D impact;
         private int width = 45 * scale;
@@ -46,11 +48,14 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private Rectangle rect = new Rectangle();
 
 
-        public Impact(Link link, string direction, int x, int y)
+
+        public Impact(Link link, ItemPool itemPool, string direction, int x, int y)
         {
             AudioPlayer.swordSlash.Play();
 
             this.link = link;
+            link.isInvincible = true;
+            this.itemPool = itemPool;
             this.direction = direction;
             this.x = x + link.linkWidth / 2;
             this.y = y + link.linkHeight / 2;
@@ -104,6 +109,12 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             if (currentFrame >= totalFrame || link.collisionSide != "")
             {
                 done = true;
+                link.isInvincible = false;
+                x = link.x - link.linkWidth / 2;
+                y = link.y - link.linkHeight / 2;
+                Camera.ShakeCamera(3);
+                itemPool.GetItemPool().Add(new Explosion(link, x, y));
+
             }
             else
             {

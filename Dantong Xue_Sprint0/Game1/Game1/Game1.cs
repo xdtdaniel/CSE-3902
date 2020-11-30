@@ -66,7 +66,6 @@ namespace Game1
         private const int deathCounterLimit = 200;
         public bool goodToRespawn;
 
-        public Camera camera;
         private StartScreen startScreen;
 
         //public float time;
@@ -103,7 +102,6 @@ namespace Game1
             deathCounter = deathCounterLimit;
             goodToRespawn = false;
 
-            camera = new Camera(GraphicsDevice.Viewport);
             AudioPlayer.bgm.Play();
 
         }
@@ -150,20 +148,17 @@ namespace Game1
             gameStarted = startScreen.IsGameStarted();
             startScreen.Update();
 
-            paused = camera.PauseGame();
+            paused = Camera.PauseGame();
             mapID = PlayerAndItemCollisionHandler.getMapID();
 
 
             quitResetController.Update(this);
             if (!paused && gameStarted)
             {
-                if (link.isDamaged && link.damageTimeCounter < 20)
+                if (link.isDamaged && link.damageTimeCounter < 1)
                 {
-                    camera.startShaking = true;
-                }
-                else
-                {
-                    camera.startShaking = false;
+                    int magnitude = 3;
+                    Camera.ShakeCamera(magnitude);
                 }
                 playerPanel.PlayerUpdate();
                 playerAbilityPanel.Update();
@@ -207,7 +202,7 @@ namespace Game1
  
             hudPanel.HUDUpdate();
             
-            camera.UpdateCamera(GraphicsDevice.Viewport);
+            Camera.UpdateCamera(GraphicsDevice.Viewport);
 
             
 
@@ -257,7 +252,7 @@ namespace Game1
 
             base.Draw(gameTime);
 
-            _spriteBatch.Begin(transformMatrix: camera.Transform);
+            _spriteBatch.Begin(transformMatrix: Camera.Transform);
 
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[0]);
             DrawMap.Instance.DrawCurrMap(_spriteBatch, LoadAll.Instance.GetMapBlocksToDraw()[1]);
