@@ -15,13 +15,14 @@ namespace Game1.Code.HUD.Sprite
         private static int scale = (int)LoadAll.Instance.scale;
         private int height = 6 * scale;
         private int width = 4  * scale;
-        private int x;
-        private int y;
-        private int maxExpPerLine = 16;
+        
+        private int maxExpPerLine = 8;
         private int expCount;
 
-        private int preX = 172 * scale;
-        private int preY = -28 * scale;
+        private int preX = 150 * scale;
+        private int preY = -30 * scale;
+        private int x;
+        private int y;
         private int level = 0;
 
         Rectangle sourceRectangle;
@@ -29,7 +30,7 @@ namespace Game1.Code.HUD.Sprite
 
         public HUDExp(int killedEnemies)
         {
-            expCount = killedEnemies;
+           expCount = killedEnemies;
             //initial values
             exp = HUDFactory.LoadExpPattern();   
             sourceRectangle = new Rectangle();
@@ -38,26 +39,25 @@ namespace Game1.Code.HUD.Sprite
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
-            for (int i = 0; i < expCount; i++)
+            
+            for (int i = 0; i < (expCount % maxExpPerLine); i++)
             {
-                if (expCount % maxExpPerLine!=0 && level!=8)
+                sourceRectangle = new Rectangle(0, 0, exp.Width, exp.Height);
+                if ( expCount % maxExpPerLine == 0 && level != 8)
                 {
-                    sourceRectangle = new Rectangle(0, 0, exp.Width, exp.Height);
-                    destinationRectangle = new Rectangle(x + i * width, y, width, height);
+                    level++;
+                    destinationRectangle = new Rectangle(x, y, width, height);
                     spriteBatch.Draw(exp, destinationRectangle, sourceRectangle, Color.White);
                 }
-                else if (expCount % maxExpPerLine == 0 && level != 8 )
+                else if (expCount % maxExpPerLine != 0 && level != 8)
                 {
-                    i = 0;
-                    sourceRectangle = new Rectangle(0, 0, exp.Width, exp.Height);
-                    destinationRectangle = new Rectangle(x + i * width, y, width, height);
+                    destinationRectangle = new Rectangle(x + (expCount % maxExpPerLine) * width, y, width, height);
                     spriteBatch.Draw(exp, destinationRectangle, sourceRectangle, Color.White);
-                    level++;
                 }
                 else {
                     break;
                 }
+               
             }
         }
         public void Update(float newStartX, float newStartY)
@@ -65,6 +65,11 @@ namespace Game1.Code.HUD.Sprite
             x = (int)newStartX + preX;
             y = (int)newStartY + preY;
             expCount = Enemy.DrawAndUpdateEnemy.numberOfKilled();
+        }
+        static public int getCurrentLevel()
+        {
+
+            return level;
         }
     }
 }
