@@ -58,7 +58,7 @@ namespace Game1
         private QuitResetController quitResetController;
         public bool paused;
         private bool clockWorking;
-        private bool gameStarted;
+        public bool gameStarted;
         public int mapID;
         public int currentMapID;
 
@@ -68,6 +68,8 @@ namespace Game1
 
         public Camera camera;
         private StartScreen startScreen;
+
+        //public float time;
 
         public Game1()
         {
@@ -94,6 +96,7 @@ namespace Game1
             selectedItemName = "";
             LoadAll.Instance.GetGameObject(this);
             paused = false;
+            //time=0;
    
             quitResetController = new QuitResetController();
 
@@ -242,15 +245,15 @@ namespace Game1
                 AudioPlayer.bgm.Stop();
             }
 
-
             base.Update(gameTime);
+
             
         }
 
 
         protected override void Draw(GameTime gameTime)
         {
-            
+
 
             base.Draw(gameTime);
 
@@ -286,7 +289,6 @@ namespace Game1
             }
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
 
             _spriteBatch.End();
         }
