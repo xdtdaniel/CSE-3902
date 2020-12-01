@@ -35,6 +35,10 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int y;
         private int offset_x;
         private int offset_y;
+        private int hitbox_x;
+        private int hitbox_y;
+        private int hitboxWidth = 50 * scale;
+        private int hitboxHeight = 50 * scale;
 
         private int distance = 20 * scale;
 
@@ -59,19 +63,23 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             {
                 // since the original sprite is facing left, we need to rotate it to the according direction
                 case "up":
+                    offset_x = -height / 2;
                     offset_y = distance - currentFrame * speed;
                     angle = (float)((Math.PI / 180) * 90);
                     break;
                 case "down":
+                    offset_x = -height / 2;
                     offset_y = -distance + currentFrame * speed;
                     angle = (float)((Math.PI / 180) * 270);
                     break;
                 case "left":
                     offset_x = distance - currentFrame * speed;
+                    offset_y = -height / 2;
                     angle = (float)((Math.PI / 180) * 0);
                     break;
                 case "right":
                     offset_x = -distance + currentFrame * speed;
+                    offset_y = -height / 2;
                     angle = (float)((Math.PI / 180) * 180);
                     break;
             }
@@ -110,16 +118,20 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             switch (direction)
             {
                 case "up":
+                    offset_x = - height / 2;
                     offset_y = distance - currentFrame * speed;
                     break;
                 case "down":
+                    offset_x = - height / 2;
                     offset_y = - distance + currentFrame * speed;
                     break;
                 case "left":
                     offset_x = distance - currentFrame * speed;
+                    offset_y = - height / 2;
                     break;
                 case "right":
                     offset_x = - distance + currentFrame * speed;
+                    offset_y = - height / 2;
                     break;
             }
         }
@@ -148,7 +160,9 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             }
             sourceRectangle = new Rectangle(0, 0, slash.Width, slash.Height);
             destinationRectangle = new Rectangle(x + offset_x, y + offset_y, drawWidth, drawHeight);
-            Vector2 origin = new Vector2(slash.Width / 2, slash.Height / 2);
+            Vector2 origin = new Vector2(slash.Width , slash.Height );
+            hitbox_x = x + offset_x;
+            hitbox_y = y + offset_y;
 
             spriteBatch.Draw(slash, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
 
@@ -157,7 +171,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         public Rectangle GetRectangle()
         {
             rect = new Rectangle(x + offset_x, y + offset_y, drawWidth, drawHeight);
-            
             return rect;
         }
         public bool IsDone()

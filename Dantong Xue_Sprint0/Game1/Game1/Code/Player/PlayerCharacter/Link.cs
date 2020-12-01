@@ -17,7 +17,7 @@ namespace Game1.Code.Player.PlayerCharacter
     public class Link
     {
         // link's properties
-        private static int scale = (int)LoadAll.Instance.scale;           
+        private static int scale = (int)LoadAll.Instance.scale;
         public int x = (int)LoadAll.Instance.startPos.X + 122 * scale;
         public int y = (int)LoadAll.Instance.startPos.Y + 128 * scale;
         public int damageTimeCounter = 0;
@@ -372,6 +372,10 @@ namespace Game1.Code.Player.PlayerCharacter
         public string GetStateName()
         {
             return state.GetStateName();
+        }
+        public float GetDirectionAngle()
+        {
+            return (float)((Math.PI / 180) * (360 - 90 * (directionIndex + 2)));
         }
     }
 }

@@ -64,6 +64,10 @@ namespace Game1.Code.Player.CollisionHandler
                                 tuple.Item1.TakeDamage(item.GetDamage());
                                 break;
 
+                            case "ShootArrow":
+                                tuple.Item1.TakeDamage(item.GetDamage());
+                                break;
+
                             default:
                                 break;
                         }

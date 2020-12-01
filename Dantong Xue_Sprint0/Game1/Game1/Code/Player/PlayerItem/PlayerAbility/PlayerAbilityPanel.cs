@@ -37,9 +37,9 @@ namespace Game1.Code.Player.PlayerAbility
             swordAbilityDict.Add(1, new DeadlySlash(link, itemPool));
             swordAbilityDict.Add(2, new LineImpact(link, itemPool));
             swordAbilityDict.Add(3, new FieldBlast(link, itemPool));
-            bowAbilityDict.Add(0, new BladeBarrage(link, itemPool));
-            bowAbilityDict.Add(1, new BladeBarrage(link, itemPool));
-            bowAbilityDict.Add(2, new BladeBarrage(link, itemPool));
+            bowAbilityDict.Add(0, new PiercingArrow(link, itemPool));
+            bowAbilityDict.Add(1, new SplitArrow(link, itemPool));
+            bowAbilityDict.Add(2, new QuickShot(link, itemPool));
             bowAbilityDict.Add(3, new BladeBarrage(link, itemPool));
             abilityDictList.Add(swordAbilityDict);
             abilityDictList.Add(bowAbilityDict);

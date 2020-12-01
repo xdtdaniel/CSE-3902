@@ -4,6 +4,7 @@ using Game1.Code.LoadFile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Diagnostics;
 
 namespace Game1.Code.Achievement.Tracker
 {

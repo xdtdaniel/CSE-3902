@@ -22,7 +22,7 @@ namespace Game1.Code.Player.CollisionHandler
                         collidedSide = CollisionDetection.Instance.isCollided(item.GetRectangle(), rect);
                         if (collidedSide != "")
                         {
-                            item.CollisionResponse(i);
+                            item.CollisionResponse(-1); // -1 means no enemy is hit
                             switch (item.GetItemName())
                             {
                                 case "BombExplosion":

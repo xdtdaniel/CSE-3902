@@ -88,6 +88,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             if (phase == 0)
             {
                 swordCurrentFrame = swordTotalFrame;
+                currentDamage = 0;
             }
             if (hitEnemyList.Contains(enemyIndex))
             {
