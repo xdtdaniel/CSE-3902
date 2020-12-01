@@ -13,6 +13,7 @@ namespace Game1.Code.Player.Factory
         private Texture2D impact;
         private Texture2D bombExplosion;
         private Texture2D arrow;
+        private Texture2D fireExplosion;
         private Texture2D[] burstRing;
 
 
@@ -31,6 +32,7 @@ namespace Game1.Code.Player.Factory
             impact = content.Load<Texture2D>("PlayerAbility/Impact");
             bombExplosion = content.Load<Texture2D>("PlayerItemSprite/Bomb/BombExplosion");
             arrow = content.Load<Texture2D>("PlayerAbility/AbilityArrow");
+            fireExplosion = content.Load<Texture2D>("PlayerAbility/FireExplosion");
 
             burstRing = new Texture2D[3];
             burstRing[0] = content.Load<Texture2D>("PlayerAbility/BurstRing_0");
@@ -61,6 +63,10 @@ namespace Game1.Code.Player.Factory
         public Texture2D GetArrow()
         {
             return arrow;
+        }
+        public Texture2D GetFireExplosion()
+        {
+            return fireExplosion;
         }
         public Texture2D[] GetBurstRing()
         {

@@ -23,17 +23,17 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private List<int> hitEnemyList = new List<int>();
 
 
-        private int x;
-        private int y;
-        private int offset_x;
-        private int offset_y;
-        private int radius = 15 * scale;
+        private int arrow_x;
+        private int arrow_y;
+        private int arrowOffset_x;
+        private int arrowOffset_y;
+        private int arrowToLinkRadius = 15 * scale;
         private int arrowWidth = 6 * scale;
         private int arrowHeight = 12 * scale;
-        private int currentFrame = 0;
-        private int secondFrame = 0;
-        private int maxSecondFrame = 30;
-        private int totalFrame = 3000;
+        private int arrowCurrentFrame = 0;
+        private int arrowSecondFrame = 0;
+        private int arrwMaxSecondFrame = 30;
+        private int arrowTotalFrame = 3000;
         private int shootSpeed = 5 * scale;
 
         private int minRange = -10 * scale;
@@ -50,11 +50,20 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private int ringCurrentFrame = 0;
         private int ringTotalFrame = 5;
 
+        private bool hit = false;
+        private int hitCurrentFrame = 0;
+        private int hitTotalFrame = 10;
+        private int hit_x;
+        private int hit_y;
+        private int hitWidth = 10 * scale;
+        private int hitHeight = 10 * scale;
+
         private float angle;
 
         private Texture2D arrow;
         private Texture2D sfx;
         private Texture2D collision;
+        private Texture2D hitExplosion;
 
         private Link link;
 
@@ -68,18 +77,19 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             this.angle = angle;
 
             Random rd = new Random();
-            this.x = x + link.linkWidth / 2 + rd.Next(minRange, maxRange);
-            this.y = y + link.linkHeight / 2 + rd.Next(minRange, maxRange);
+            this.arrow_x = x + link.linkWidth / 2 + rd.Next(minRange, maxRange);
+            this.arrow_y = y + link.linkHeight / 2 + rd.Next(minRange, maxRange);
 
-            offset_x = (int)(radius * Math.Sin(angle));
-            offset_y = -(int)(radius * Math.Cos(angle));
-            ring_x = this.x + offset_x;
-            ring_y = this.y + offset_y;
+            arrowOffset_x = (int)(arrowToLinkRadius * Math.Sin(angle));
+            arrowOffset_y = -(int)(arrowToLinkRadius * Math.Cos(angle));
+            ring_x = this.arrow_x + arrowOffset_x;
+            ring_y = this.arrow_y + arrowOffset_y;
 
 
             arrow = PlayerAbilityFactory.Instance.GetArrow();
             sfx = PlayerAbilityFactory.Instance.GetBurstRing()[0];
             collision = PlayerAbilityFactory.Instance.GetBurstRing()[2];
+            hitExplosion = PlayerAbilityFactory.Instance.GetFireExplosion();
         }
         public string GetItemName()
         {
@@ -91,7 +101,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         }
         public void CollisionResponse(int enemyIndex)
         {
-            done = true;
+            hit = true;
             if (enemyIndex != -1)
             {
                 Camera.ShakeCamera(1);
@@ -105,28 +115,41 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             else
             {
                 hitEnemyList.Add(enemyIndex);
-                currentFrame = damageMultiplier;
+                arrowCurrentFrame = damageMultiplier;
             }
 
         }
         public void Update()
         {
-            secondFrame++;
+            arrowSecondFrame++;
             ringCurrentFrame++;
             int speed_x;
             int speed_y;
             speed_x = (int)(shootSpeed * Math.Sin(angle));
             speed_y = -(int)(shootSpeed * Math.Cos(angle));
 
-            x += speed_x;
-            y += speed_y;
-            if (secondFrame >= maxSecondFrame)
+            arrow_x += speed_x;
+            arrow_y += speed_y;
+            if (arrowSecondFrame >= arrwMaxSecondFrame)
             {
-                currentFrame++;
+                arrowCurrentFrame++;
             }
-            if (currentFrame >= totalFrame)
+            if (arrowCurrentFrame >= arrowTotalFrame)
             {
-                currentFrame = 0;
+                arrowCurrentFrame = 0;
+                done = true;
+            }
+            if (hit)
+            {
+                hitCurrentFrame++;
+            }
+            else
+            {
+                hit_x = arrow_x + arrowOffset_x - arrowWidth / 2;
+                hit_y = arrow_y + arrowOffset_y - arrowHeight / 2;
+            }
+            if (hitCurrentFrame >= hitTotalFrame)
+            {
                 done = true;
             }
 
@@ -136,6 +159,7 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
             Vector2 origin;
+
 
             if (ringCurrentFrame < ringTotalFrame)
             {
@@ -147,24 +171,36 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
                 spriteBatch.Draw(collision, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
             }
 
-            sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
-            destinationRectangle = new Rectangle(x + offset_x, y + offset_y, arrowWidth, arrowHeight);
-            origin = new Vector2(arrow.Width / 2, arrow.Height / 2);
+            if (!hit)
+            {
+                sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
+                destinationRectangle = new Rectangle(arrow_x + arrowOffset_x, arrow_y + arrowOffset_y, arrowWidth, arrowHeight);
+                origin = new Vector2(arrow.Width / 2, arrow.Height / 2);
 
-            spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
+                spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
 
-            sourceRectangle = new Rectangle(0, 0, sfx.Width, sfx.Height);
-            destinationRectangle = new Rectangle(x + offset_x, y + offset_y, sfxWidth, sfxHeight);
-            origin = new Vector2(sfx.Width / 2, sfx.Height / 2);
+                sourceRectangle = new Rectangle(0, 0, sfx.Width, sfx.Height);
+                destinationRectangle = new Rectangle(arrow_x + arrowOffset_x, arrow_y + arrowOffset_y, sfxWidth, sfxHeight);
+                origin = new Vector2(sfx.Width / 2, sfx.Height / 2);
 
-            spriteBatch.Draw(sfx, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
+                spriteBatch.Draw(sfx, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
+            }
+            else
+            {
+                sourceRectangle = new Rectangle(0, 0, hitExplosion.Width, hitExplosion.Height);
+                destinationRectangle = new Rectangle(hit_x, hit_y, hitWidth, hitHeight);
+                origin = new Vector2(hitExplosion.Width / 2, hitExplosion.Height / 2);
 
+
+                spriteBatch.Draw(hitExplosion, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
+
+            }
 
         }
 
         public Rectangle GetRectangle()
         {
-            rect = new Rectangle(x + offset_x - arrowWidth / 2, y + offset_y - arrowHeight / 2, arrowWidth, arrowHeight);
+            rect = new Rectangle(arrow_x + arrowOffset_x - arrowWidth / 2, arrow_y + arrowOffset_y - arrowHeight / 2, arrowWidth, arrowHeight);
             
             return rect;
         }
