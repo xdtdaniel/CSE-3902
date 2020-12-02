@@ -414,3 +414,5 @@ C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\n
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\FireExplosion_0.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\FireExplosion_2.xnb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\PlayerAbility\FireExplosion_1.xnb
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.dll
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.pdb

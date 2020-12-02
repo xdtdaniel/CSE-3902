@@ -884,6 +884,13 @@
 /processorParam:TextureFormat=Color
 /build:HUD/Pointer.png
 
+#begin HUD/prompt.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:HUD/prompt.spritefont
+
 #begin HUD/QuickShot.png
 /importer:TextureImporter
 /processor:TextureProcessor

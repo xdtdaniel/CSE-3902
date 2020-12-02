@@ -20,12 +20,17 @@ namespace Game1.Code.HUD.Sprite
         private int preLevelY = -30 * scale;
 
         private Texture2D expLevelTexture;
+        private promptText prompt;
         private Game1 game;
+        private int preLevel;
+        private int explevel;
 
         public HUDExpLevel(Game1 game)
         {
             this.game = game;
-           // expLevelTexture = HUDFactory.LoadNumber(explevel)[1]; // level number has one digit
+            prompt = new promptText();
+            preLevel = 1;
+            explevel = 1;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -34,14 +39,19 @@ namespace Game1.Code.HUD.Sprite
             Rectangle destinationRectangle = new Rectangle(levelX, levelY, levelNumberSideLength, levelNumberSideLength);
 
             spriteBatch.Draw(expLevelTexture, destinationRectangle, sourceRectangle, Color.LimeGreen);
+            if (explevel != preLevel) {
+                prompt.Draw();              
+            }
+            preLevel = explevel;
         }
 
         public void Update(float newStartX, float newStartY)
         {
-            int explevel = game.link.linkLevel;
+            explevel = game.link.linkLevel;
             expLevelTexture = HUDFactory.LoadNumber(explevel)[1];
             levelX = (int)newStartX + preLevelX;
             levelY = (int)newStartY + preLevelY;
+            prompt.Update();
             
         }
     }
