@@ -13,7 +13,6 @@ namespace Game1.Code.HUD
     {
         private Game1 game;
 
-        private static int scale = (int)LoadAll.Instance.scale;
 
         private int x;
         private int y;
@@ -26,7 +25,6 @@ namespace Game1.Code.HUD
         private int currentMinute = 0;
         private int minutePerHour = 60;
         private int currentHour = 0;
-        private int gameTime = 0;
 
         public GameTimer(Game1 game)
         {

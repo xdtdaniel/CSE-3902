@@ -12,5 +12,6 @@ namespace Game1.Code.Player.Interface
         bool IsLearned();
         void Learn();
         float GetCooldownPercentage();
+        float GetRemainingCooldown();
     }
 }

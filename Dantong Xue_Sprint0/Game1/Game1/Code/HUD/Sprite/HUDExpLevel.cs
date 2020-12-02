@@ -20,9 +20,11 @@ namespace Game1.Code.HUD.Sprite
         private int preLevelY = -30 * scale;
 
         private Texture2D expLevelTexture;
-      private int explevel;
-        public HUDExpLevel(int level)
-        { 
+        private Game1 game;
+
+        public HUDExpLevel(Game1 game)
+        {
+            this.game = game;
            // expLevelTexture = HUDFactory.LoadNumber(explevel)[1]; // level number has one digit
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -36,7 +38,7 @@ namespace Game1.Code.HUD.Sprite
 
         public void Update(float newStartX, float newStartY)
         {
-            explevel = HUDExp.level;
+            int explevel = game.link.linkLevel;
             expLevelTexture = HUDFactory.LoadNumber(explevel)[1];
             levelX = (int)newStartX + preLevelX;
             levelY = (int)newStartY + preLevelY;

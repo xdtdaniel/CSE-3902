@@ -40,7 +40,6 @@ namespace Game1.Code.Enemy
                     enemyDie.Play();
                     Enemies.RemoveAt(i);
                     killedEnemies++;
-                    game.link.expCount = killedEnemies;
                     if (LoadAll.Instance.GetCurrentMapID() == 22) 
                     {
                         Enemies.Clear();

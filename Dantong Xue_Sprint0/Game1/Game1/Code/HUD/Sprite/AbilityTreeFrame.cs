@@ -14,14 +14,19 @@ namespace Game1.Code.HUD.Sprite
         private int width = 256 * scale;
         private int x;
         private int y;
+        private int apOffset_x = 150 * scale;
+        private int apOffset_y = 160 * scale;
 
         private int preY = 176 * scale;
 
         private Texture2D AbilityTreeFrameTexture;
 
-        public AbilityTreeFrame()
+        private Game1 game;
+
+        public AbilityTreeFrame(Game1 game)
         {
             AbilityTreeFrameTexture = HUDFactory.LoadAbilityTreeFrame();
+            this.game = game;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -29,6 +34,9 @@ namespace Game1.Code.HUD.Sprite
             Rectangle destinationRectangle = new Rectangle(x, y, width, height);  
 
             spriteBatch.Draw(AbilityTreeFrameTexture, destinationRectangle, sourceRectangle, Color.White);
+
+            string ap = "Ability Point: " + game.link.abilityPoint;
+            spriteBatch.DrawString(game._spriteFont, ap.ToString(), new Vector2(x + apOffset_x, y + apOffset_y), Color.White);
         }
 
         public void Update(float newStartX, float newStartY)

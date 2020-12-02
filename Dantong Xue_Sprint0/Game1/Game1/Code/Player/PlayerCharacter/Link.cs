@@ -65,8 +65,10 @@ namespace Game1.Code.Player.PlayerCharacter
         private int numberOfBlocksBetweenRoom = 5;
         public string collisionSide = "";
 
-        // count  killed enemies 
-        public int expCount;
+        // experience 
+        public int linkLevel;
+        public int exp;
+        public int expPerLevel = 10;
         public Link()
         {
             state = new NormalLink(this);
@@ -74,27 +76,33 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList = new Dictionary<string, int>();
             itemList.Add("Arrow", 0);
             itemList.Add("Bomb", 2);
-            itemList.Add("Boomerang", 1);
-            itemList.Add("Bow", 1);
+            itemList.Add("Boomerang", 0);
+            itemList.Add("Bow", 0);
             itemList.Add("Clock", 0);
             itemList.Add("Compass", 0);
-            itemList.Add("Heart", 12);                      // default current health = 6
-            itemList.Add("HeartContainer", 12);             // default max health = 6, heart container cannot be odd number
+            itemList.Add("Heart", 6);                      // default current health = 6
+            itemList.Add("HeartContainer", 6);             // default max health = 6, heart container cannot be odd number
             itemList.Add("Key", 0);
             itemList.Add("Map", 0);
             itemList.Add("Ruby", 0);
             itemList.Add("Triforce", 0);
             itemList.Add("Fairy", 0);
-            itemList.Add("BlueCandle", 1);
-            itemList.Add("BluePotion", 1);
-            itemList.Add("BlueRing", 1);
+            itemList.Add("BlueCandle", 0);
+            itemList.Add("BluePotion", 0);
+            itemList.Add("BlueRing", 0);
             itemList.Add("WoodenSword", 1);                // default weapon
             itemList.Add("SwordBeam", 0);
             itemList.Add("Crown", 0);
 
             itemPool = new ItemPool(this);
 
-            expCount = 0;   // an int used to count killed enemy
+            exp = 0;   // an int used to count killed enemy
+        }
+        public void Upgrade()
+        {
+            linkLevel++;
+            abilityPoint++;
+            exp = 0;
         }
         public void Dash()
         {
@@ -278,6 +286,9 @@ namespace Game1.Code.Player.PlayerCharacter
 
         public void Update()
         {
+            exp = Enemy.DrawAndUpdateEnemy.numberOfKilled();
+            linkLevel = exp / expPerLevel + 1; // min level is 1
+
             if (timeSinceCollision < timeBetweenCollision && collisionSide != "")
             {
                 timeSinceCollision++;

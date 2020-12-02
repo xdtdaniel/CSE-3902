@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../../../../../../../Desktop/FireExplosion_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../../../Desktop/FireExplosion_0.png;PlayerAbility/FireExplosion_0.png
+
 #begin Achievement/MarathonRunner.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -968,7 +980,7 @@
 /processorParam:TextureFormat=Color
 /build:PlayerAbility/BurstRing_2.png
 
-#begin PlayerAbility/FireExplosion.png
+#begin PlayerAbility/FireExplosion_0.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -978,7 +990,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:PlayerAbility/FireExplosion.png
+/build:PlayerAbility/FireExplosion_0.png
+
+#begin PlayerAbility/FireExplosion_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerAbility/FireExplosion_1.png
+
+#begin PlayerAbility/FireExplosion_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerAbility/FireExplosion_2.png
 
 #begin PlayerAbility/Impact.png
 /importer:TextureImporter

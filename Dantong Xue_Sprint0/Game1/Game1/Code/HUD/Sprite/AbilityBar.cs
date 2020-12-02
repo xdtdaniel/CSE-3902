@@ -23,6 +23,8 @@ namespace Game1.Code.HUD.Sprite
         private int icon_x;
         private int icon_y;
         private int icon_offset_x;
+        private int cd_offset_x_UnitDigit = 1 * scale;
+        private int cd_offset_x_TenDigits = 3 * scale;
         private int iconSpacing = 13 * scale;
 
         private Texture2D abilityTreeFrameTexture;
@@ -33,8 +35,11 @@ namespace Game1.Code.HUD.Sprite
 
         private PlayerAbilityPanel pap;
 
-        public AbilityBar(PlayerAbilityPanel playerAbilityPanel)
+        private Game1 game;
+        public AbilityBar(Game1 game, PlayerAbilityPanel playerAbilityPanel)
         {
+            this.game = game;
+
             abilityTreeFrameTexture = HUDFactory.LoadAbilityBar();
             blackSpot = HUDFactory.LoadBlackSpot();
             this.pap = playerAbilityPanel;
@@ -77,6 +82,14 @@ namespace Game1.Code.HUD.Sprite
                     destinationRectangle = new Rectangle(icon_x + icon_offset_x, icon_y, iconWidth, (int)(iconHeight * (1 - percentage)));
 
                     spriteBatch.Draw(blackSpot, destinationRectangle, sourceRectangle, Color.White * 0.8f);
+
+                    int cd = (int)(pap.abilityDictList[type][index].GetRemainingCooldown() / 60) + 1; // 60 frames per second
+                    int offset = cd_offset_x_UnitDigit;
+                    if (cd < 10)
+                    {
+                        offset = cd_offset_x_TenDigits;
+                    }
+                    spriteBatch.DrawString(game._spriteFont, cd.ToString(), new Vector2(icon_x + icon_offset_x + offset, icon_y), Color.Red);
                 }
             }
         }

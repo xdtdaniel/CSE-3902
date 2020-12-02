@@ -48,10 +48,10 @@ namespace Game1.Code.HUD
             hudList.Add(new DungeonMiniMap(game.link.itemList));
             hudList.Add(new DungeonPauseScreen(game.link.itemList));
             hudList.Add(new DashChargeIndicator(game));
-            hudList.Add(new AbilityTreeFrame());
-            hudList.Add(new AbilityBar(game.playerAbilityPanel));
-            hudList.Add(new HUDExp(game.link.expCount));
-            hudList.Add(new HUDExpLevel(level));
+            hudList.Add(new AbilityTreeFrame(game));
+            hudList.Add(new AbilityBar(game, game.playerAbilityPanel));
+            hudList.Add(new HUDExp(game.link));
+            hudList.Add(new HUDExpLevel(game));
             hudList.Add(new GameTimer(game));
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
