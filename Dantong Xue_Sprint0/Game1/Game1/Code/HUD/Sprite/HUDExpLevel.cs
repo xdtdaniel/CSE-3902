@@ -28,7 +28,7 @@ namespace Game1.Code.HUD.Sprite
         public HUDExpLevel(Game1 game)
         {
             this.game = game;
-            prompt = new promptText();
+            prompt = new promptText(100,100);
             preLevel = 1;
             explevel = 1;
         }

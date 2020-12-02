@@ -15,17 +15,19 @@ namespace Game1.Code.HUD.Sprite
         SpriteFont prompt;
         private int currentFrame = 0;
         private int maxCurrentFrame = 180;
-
-        public promptText()
+        private int x;
+        private int y;
+        public promptText(int position_x, int position_y)
         {
             /*load sprite font with size 32, bold*/
             prompt =  HUDFactory.LoadLevelUpPrompt();
-
+            x = position_x;
+            y = position_y;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            spriteBatch.DrawString(prompt, "Level Up\n Press [O] to assign ability points", new Vector2(LoadAll.Instance.startPos.X+150, LoadAll.Instance.startPos.Y+260), Color.Black);
+            spriteBatch.DrawString(prompt, "Level Up\n Press [O] to assign ability points", new Vector2(LoadAll.Instance.startPos.X+x, LoadAll.Instance.startPos.Y+y), Color.Black);
 
         }
 
