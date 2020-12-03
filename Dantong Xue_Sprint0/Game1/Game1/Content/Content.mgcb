@@ -932,6 +932,13 @@
 /processorParam:TextureFormat=Color
 /build:HUD/Others/OverworldPauseScreenFrame.png
 
+#begin HUD/Others/skillDescription.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:HUD/Others/skillDescription.spritefont
+
 #begin HUD/Others/skillTreeInstruction.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
