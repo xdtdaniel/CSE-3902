@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Owner/source/repos/CSE-39022/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Get_Rupee.wav</SourceFile>
-  <SourceTime>2020-11-16T21:33:19.1053553-05:00</SourceTime>
-  <DestFile>C:/Users/Owner/source/repos/CSE-39022/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Audio/Get_Rupee.xnb</DestFile>
-  <DestTime>2020-12-02T20:30:03.3634025-05:00</DestTime>
+  <SourceFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Get_Rupee.wav</SourceFile>
+  <SourceTime>2020-11-30T20:31:59.0325953-05:00</SourceTime>
+  <DestFile>C:/Users/ybhba/Source/Repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Audio/Get_Rupee.xnb</DestFile>
+  <DestTime>2020-12-03T01:05:24.1155685-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

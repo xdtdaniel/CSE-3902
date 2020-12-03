@@ -1,17 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Dantong Xue_Sprint0",
-    "\\Dantong Xue_Sprint0\\Game1",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\HUD",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\HUD\\Sprite",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\Item",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\Player",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\Player\\PlayerCharacter",
-    "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\Player\\PlayerCharacter\\LinkState"
+    ""
   ],
-  "SelectedNode": "\\Dantong Xue_Sprint0\\Game1\\Game1\\Code\\Player\\PlayerCharacter\\LinkState\\CrownLink.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/Weapon/WoodenSword3.png</SourceFile>
-  <SourceTime>2020-12-02T12:02:05.4640382-05:00</SourceTime>
-  <DestFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerItemSprite/Weapon/WoodenSword3.xnb</DestFile>
-  <DestTime>2020-12-02T14:24:46.4817763-05:00</DestTime>
+  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/PlayerItemSprite/Weapon/WoodenSword3.png</SourceFile>
+  <SourceTime>2020-11-30T20:31:59.1166866-05:00</SourceTime>
+  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/PlayerItemSprite/Weapon/WoodenSword3.xnb</DestFile>
+  <DestTime>2020-12-03T01:05:34.2244633-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

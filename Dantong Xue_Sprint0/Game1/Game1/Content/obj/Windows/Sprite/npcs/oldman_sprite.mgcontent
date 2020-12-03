@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/npcs/oldman_sprite.png</SourceFile>
-  <SourceTime>2020-12-02T12:02:05.4969528-05:00</SourceTime>
-  <DestFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/npcs/oldman_sprite.xnb</DestFile>
-  <DestTime>2020-12-02T14:24:49.3677028-05:00</DestTime>
+  <SourceFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/npcs/oldman_sprite.png</SourceFile>
+  <SourceTime>2020-11-30T20:31:59.1366334-05:00</SourceTime>
+  <DestFile>C:/Users/ybhba/source/repos/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Sprite/npcs/oldman_sprite.xnb</DestFile>
+  <DestTime>2020-12-03T01:05:34.7480635-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

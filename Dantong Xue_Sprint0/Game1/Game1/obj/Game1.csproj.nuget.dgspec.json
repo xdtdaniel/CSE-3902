@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Owner\\source\\repos\\CSE-39022\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj": {}
+    "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Owner\\source\\repos\\CSE-39022\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj": {
+    "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Owner\\source\\repos\\CSE-39022\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
+        "projectUniqueName": "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
         "projectName": "Game1",
-        "projectPath": "C:\\Users\\Owner\\source\\repos\\CSE-39022\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Owner\\source\\repos\\CSE-39022\\Dantong Xue_Sprint0\\Game1\\Game1\\obj\\",
+        "projectPath": "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
+        "packagesPath": "C:\\Users\\ybhba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ybhba\\Source\\Repos\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ybhba\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

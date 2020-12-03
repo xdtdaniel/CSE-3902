@@ -138,9 +138,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
             Rectangle destinationRectangle = new Rectangle(x + offset_x, y + offset_y, arrowWidth, arrowHeight);
             Vector2 origin = new Vector2(arrow.Width / 2, arrow.Height / 2);
 
-            Debug.Print("offset y: " + offset_y.ToString());
-            Debug.Print("y: " + y.ToString());
-            Debug.Print("link y: " + link.y.ToString());
             spriteBatch.Draw(arrow, destinationRectangle, sourceRectangle, Color.White, angle, origin, SpriteEffects.None, 1);
 
             if (thirdFrame >= maxThirdFrame)

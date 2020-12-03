@@ -40,7 +40,7 @@ namespace Game1.Code.HUD.Sprite
 
             spriteBatch.Draw(expLevelTexture, destinationRectangle, sourceRectangle, Color.LimeGreen);
             if (explevel != preLevel) {
-                prompt.Draw();              
+                prompt.Draw(spriteBatch);              
             }
             preLevel = explevel;
         }

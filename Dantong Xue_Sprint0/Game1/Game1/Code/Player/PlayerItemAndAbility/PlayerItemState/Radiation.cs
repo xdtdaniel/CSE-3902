@@ -24,6 +24,8 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         private Texture2D radiation;
         private int width = 5 * scale;
         private int height = 70 * scale;
+        private int drawWidth;
+        private int drawHeight;
         private int decrementSpeed = 1 * scale;
         private int speed = 2 * scale;
         private int x;
@@ -119,8 +121,6 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
-            int drawWidth = 0;
-            int drawHeight = 0;
             switch (direction)
             {
                 case "up":

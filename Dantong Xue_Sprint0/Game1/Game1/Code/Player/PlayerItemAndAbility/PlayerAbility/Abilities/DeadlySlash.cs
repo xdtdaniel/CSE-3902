@@ -25,7 +25,7 @@ namespace Game1.Code.Player.PlayerAbility
         private int stopVacuumFrame = 140;
 
         // cooldown: 9s
-        private static int cooldown = 9;
+        private static int cooldown = 1;
         private int timeBetweenAbility = cooldown * 60;
         private int timeSinceAbility = cooldown * 60;
         private bool usingAbility = false;
@@ -50,7 +50,7 @@ namespace Game1.Code.Player.PlayerAbility
                     currentFrame = 0;
 
                     Camera.ShakeCamera(2);
-                    itemPool.GetItemPool().Add(new Slash(link, link.direction, x, y));
+                    itemPool.GetItemPool().Add(new Slash(link, link.GetDirectionAngle(), x, y));
                 }
                 else if (currentFrame % 10 == 0 && currentFrame < stopVacuumFrame)
                 {

@@ -139,7 +139,7 @@ namespace Game1.Code.HUD.Factory
 
 			//experience pattern
 			exp = content.Load<Texture2D>("HUD/Others/expPattern");
-			levelPrompt = content.Load<Texture2D>("HUD/prompt");
+			levelPrompt = content.Load<SpriteFont>("HUD/prompt");
 
 		}
 
