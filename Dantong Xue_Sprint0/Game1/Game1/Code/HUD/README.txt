@@ -8,8 +8,16 @@ Author: Baihua Yang, Zhihan Li.
   Each time link level up, it will have 1 ability point, and  user can use this ability point to light up new ability.
   More description on ability  will on Ability part README file.
   
+[Description of prompt text]
+   "promptText" is used to display text will Link level up, it will guide user to Ability Tree selection screen.
+  "abilityInstruction" is the instruction that displayed on Ability selection screen. 
+  It will guide user to  press [U] and  [I] to select the different branchs of the ability tree. And press [B] to select the new ability.
   
-  ----below is the features from sprint  4----
+Added classes: "HUDExp","HUDExpLevel", "promptText", "abilityInstruction"
+
+  
+  
+  ----below is the features from sprint  4-----------------------------------------------------------------------
 
 [Description of inventory Control]
   Press "P" to see the item selection screen, Press "P" again to back to the current game screen.
