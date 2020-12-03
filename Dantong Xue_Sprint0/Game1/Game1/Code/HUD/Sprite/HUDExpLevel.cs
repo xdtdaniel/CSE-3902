@@ -25,12 +25,12 @@ namespace Game1.Code.HUD.Sprite
         private int preLevel;
         private int explevel;
         private int currentFrame = 0;
-        private int maxCurrentFrame = 500;
+        private int maxCurrentFrame = 560;
 
         public HUDExpLevel(Game1 game)
         {
             this.game = game;
-            prompt = new promptText(100,100);
+            prompt = new promptText(100,300);
             preLevel = 1;
             explevel = 1;
         }

@@ -25,7 +25,7 @@ namespace Game1.Code.HUD.Sprite
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            spriteBatch.DrawString(prompt, "Level Up\nPress [O] to assign ability points", new Vector2(LoadAll.Instance.startPos.X+x, LoadAll.Instance.startPos.Y+y), Color.Azure);
+            spriteBatch.DrawString(prompt, "Level Up\nPress [O] to assign ability points", new Vector2(LoadAll.Instance.startPos.X+x, LoadAll.Instance.startPos.Y+y), Color.BlanchedAlmond);
 
         }
 
