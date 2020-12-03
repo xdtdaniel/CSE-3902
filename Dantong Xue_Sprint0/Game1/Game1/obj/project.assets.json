@@ -7373,29 +7373,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\~!\\.nuget\\packages\\": {}
+    "C:\\Users\\Owner\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\~!\\Downloads\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
+      "projectUniqueName": "C:\\Users\\Owner\\source\\repos\\CSE-39022\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
       "projectName": "Game1",
-      "projectPath": "C:\\Users\\~!\\Downloads\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
-      "packagesPath": "C:\\Users\\~!\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\~!\\Downloads\\CSE-3902\\Dantong Xue_Sprint0\\Game1\\Game1\\obj\\",
+      "projectPath": "C:\\Users\\Owner\\source\\repos\\CSE-39022\\Dantong Xue_Sprint0\\Game1\\Game1\\Game1.csproj",
+      "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Owner\\source\\repos\\CSE-39022\\Dantong Xue_Sprint0\\Game1\\Game1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\~!\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -7407,6 +7409,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "MonoGame.Content.Builder.Task": {
             "target": "Package",
@@ -7427,7 +7430,15 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

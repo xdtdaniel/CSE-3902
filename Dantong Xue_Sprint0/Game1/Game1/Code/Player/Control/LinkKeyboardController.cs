@@ -43,7 +43,7 @@ namespace Game1.Code.Player.Control
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
             game.link.isMoving = false;
-            
+
             foreach (Keys key in pressedKeys)
             {
                 if (controllerMappings.ContainsKey(key))
@@ -51,6 +51,50 @@ namespace Game1.Code.Player.Control
                     controllerMappings[key].Execute();
                 }
             }
+
+            //press wwssaaddBABA for invincible link
+            foreach(Keys k in pressedKeys)
+            {
+                if (k == Keys.W)
+                {
+                    if (k == Keys.W)
+                    {
+                        if (k == Keys.S)
+                        {
+                            if (k == Keys.S)
+                            {
+                                if (k == Keys.A)
+                                {
+                                    if (k == Keys.A)
+                                    {
+                                        if (k == Keys.D)
+                                        {
+                                            if (k == Keys.D)
+                                            {
+                                                if (k == Keys.B)
+                                                {
+                                                    if (k == Keys.A)
+                                                    {
+                                                        if (k == Keys.B)
+                                                        {
+                                                            if (k == Keys.A)
+                                                            {
+                                                                game.link.isInvincible = true;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
 
         }
     }
