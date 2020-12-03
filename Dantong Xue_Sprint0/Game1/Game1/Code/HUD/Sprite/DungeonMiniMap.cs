@@ -40,10 +40,10 @@ namespace Game1.Code.HUD.Sprite
         private Vector2 roomPos_16 = new Vector2(2 * miniRoomWidth, 6 * miniRoomHeight);
         private Vector2 roomPos_17 = new Vector2(3 * miniRoomWidth, 6 * miniRoomHeight);
         private Vector2 roomPos_18 = new Vector2(4 * miniRoomWidth, 6 * miniRoomHeight);
-        private Vector2 roomPos_19 = new Vector2(4 * miniRoomWidth, 7 * miniRoomHeight);
-        private Vector2 roomPos_20 = new Vector2(5 * miniRoomWidth, 7 * miniRoomHeight);
-        private Vector2 roomPos_21 = new Vector2(6 * miniRoomWidth, 7 * miniRoomHeight);
-        private Vector2 roomPos_22 = new Vector2(7 * miniRoomWidth, 7 * miniRoomHeight);
+        private Vector2 roomPos_19 = new Vector2(3 * miniRoomWidth, 7 * miniRoomHeight);
+        private Vector2 roomPos_20 = new Vector2(4 * miniRoomWidth, 7 * miniRoomHeight);
+        private Vector2 roomPos_21 = new Vector2(5 * miniRoomWidth, 7 * miniRoomHeight);
+        private Vector2 roomPos_22 = new Vector2(6 * miniRoomWidth, 7 * miniRoomHeight);
         private int mapX;
         private int mapY;
         private int greenSpotX;

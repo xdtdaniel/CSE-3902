@@ -35,7 +35,7 @@ namespace Game1.Code.Achievement.Tracker
         public StopRollingTracker(Game1 game)
         {
             this.game = game;
-            texture = AchievementFactory.GetMaster();
+            texture = AchievementFactory.GetStopRolling();
 
         }
 
