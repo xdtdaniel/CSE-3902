@@ -21,6 +21,7 @@ namespace Game1.Code.HUD.AbilitySelection
         private int type = 0;
         private int index = 0;
 
+
         public AbilitySelectionController(PlayerAbilityPanel playerAbilityPanel)
         {
             this.playerAbilityPanel = playerAbilityPanel;
@@ -50,25 +51,27 @@ namespace Game1.Code.HUD.AbilitySelection
 
             newState = Keyboard.GetState();
 
-            // update index when U is pressed
-            if (newState.IsKeyDown(Keys.U) && !oldState.IsKeyDown(Keys.U))
+            if (Camera.pausedType == 2)
             {
-                index--;
-            }
+                // update index when U is pressed
+                if (newState.IsKeyDown(Keys.U) && !oldState.IsKeyDown(Keys.U))
+                {
+                    index--;
+                }
 
-            // update index when I is pressed
-            if (newState.IsKeyDown(Keys.I) && !oldState.IsKeyDown(Keys.I))
-            {
-                index++;
-            }
+                // update index when I is pressed
+                if (newState.IsKeyDown(Keys.I) && !oldState.IsKeyDown(Keys.I))
+                {
+                    index++;
+                }
 
-            // update selected item index when B is pressed or it is out of bound
-            if ((newState.IsKeyDown(Keys.B) && !oldState.IsKeyDown(Keys.B)))
-            {
-                playerAbilityPanel.Learn(type, index);
+                // update selected item index when B is pressed or it is out of bound
+                if ((newState.IsKeyDown(Keys.B) && !oldState.IsKeyDown(Keys.B)))
+                {
+                    playerAbilityPanel.Learn(type, index);
 
+                }
             }
-            // always update previewed item index
 
             // update keyboard state
             oldState = newState;

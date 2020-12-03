@@ -34,44 +34,47 @@ namespace Game1.Code.HUD.ItemSelection
 
             newState = Keyboard.GetState();
 
-            // update index when U is pressed
-            if (newState.IsKeyDown(Keys.U) && !oldState.IsKeyDown(Keys.U))
+            if (Camera.pausedType == 1)
             {
-                if (inventoryItemList.Count > 0)
+                // update index when U is pressed
+                if (newState.IsKeyDown(Keys.U) && !oldState.IsKeyDown(Keys.U))
                 {
-                    inventoryItemIndex--;
-                    if (inventoryItemIndex == -1)
+                    if (inventoryItemList.Count > 0)
                     {
-                        inventoryItemIndex = inventoryItemList.Count - 1;
+                        inventoryItemIndex--;
+                        if (inventoryItemIndex == -1)
+                        {
+                            inventoryItemIndex = inventoryItemList.Count - 1;
+                        }
                     }
                 }
-            }
 
-            // update index when I is pressed
-            if (newState.IsKeyDown(Keys.I) && !oldState.IsKeyDown(Keys.I))
-            {
-                if (inventoryItemList.Count > 0)
+                // update index when I is pressed
+                if (newState.IsKeyDown(Keys.I) && !oldState.IsKeyDown(Keys.I))
                 {
-                    inventoryItemIndex++;
-                    if (inventoryItemIndex == inventoryItemList.Count)
+                    if (inventoryItemList.Count > 0)
                     {
-                        inventoryItemIndex = 0;
+                        inventoryItemIndex++;
+                        if (inventoryItemIndex == inventoryItemList.Count)
+                        {
+                            inventoryItemIndex = 0;
+                        }
                     }
                 }
-            }
 
-            // make sure index is not out of bound
-            if (inventoryItemList.Count > 0 && inventoryItemIndex >= inventoryItemList.Count)
-            {
-                inventoryItemIndex = inventoryItemList.Count - 1;
-               
-            }
+                // make sure index is not out of bound
+                if (inventoryItemList.Count > 0 && inventoryItemIndex >= inventoryItemList.Count)
+                {
+                    inventoryItemIndex = inventoryItemList.Count - 1;
 
-            // update selected item index when B is pressed or it is out of bound
-            if ((newState.IsKeyDown(Keys.B) && !oldState.IsKeyDown(Keys.B)) || selectedItemIndex >= inventoryItemList.Count)
-            {
-                selectedItemIndex = inventoryItemIndex;
-              
+                }
+
+                // update selected item index when B is pressed or it is out of bound
+                if ((newState.IsKeyDown(Keys.B) && !oldState.IsKeyDown(Keys.B)) || selectedItemIndex >= inventoryItemList.Count)
+                {
+                    selectedItemIndex = inventoryItemIndex;
+
+                }
             }
             // always update previewed item index
             previewedItemIndex = inventoryItemIndex;
