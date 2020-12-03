@@ -33,6 +33,7 @@ namespace Game1.Code.HUD.Sprite
             prompt = new promptText(100,300);
             preLevel = 1;
             explevel = 1;
+            expLevelTexture = HUDFactory.LoadNumber(explevel)[1];
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -41,9 +42,15 @@ namespace Game1.Code.HUD.Sprite
             Rectangle destinationRectangle = new Rectangle(levelX, levelY, levelNumberSideLength, levelNumberSideLength);
 
             spriteBatch.Draw(expLevelTexture, destinationRectangle, sourceRectangle, Color.LimeGreen);
-           
-            if (explevel != preLevel) {
-                prompt.Draw(spriteBatch);                             
+
+            if (explevel != preLevel)
+            {
+                prompt.Draw(spriteBatch);
+
+            }
+            if (game.link.linkLevel != preLevel) {
+                game.link.abilityPoint++;
+                preLevel = game.link.linkLevel;
             }
            
         }
@@ -58,8 +65,9 @@ namespace Game1.Code.HUD.Sprite
            
             if (currentFrame == maxCurrentFrame) //display few seconds.
             {
-                preLevel = explevel;
+                preLevel = explevel;               
                 currentFrame = 0;
+                
             }
         }
     }

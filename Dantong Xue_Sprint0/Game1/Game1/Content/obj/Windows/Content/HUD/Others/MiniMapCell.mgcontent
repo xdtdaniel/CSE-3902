@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Others/MiniMapCell.png</SourceFile>
-  <SourceTime>2020-12-03T08:51:37.7978712-05:00</SourceTime>
+  <SourceTime>2020-12-03T10:24:57.4477948-05:00</SourceTime>
   <DestFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/HUD/Others/MiniMapCell.xnb</DestFile>
-  <DestTime>2020-12-03T08:54:16.829845-05:00</DestTime>
+  <DestTime>2020-12-03T10:26:23.7416189-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

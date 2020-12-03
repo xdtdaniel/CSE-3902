@@ -45,7 +45,7 @@ namespace Game1.Code.Player.PlayerCharacter
         private int swordBeamAttackDamage = 2;
         public int bombExplosionDamage = 5;
 
-        public int abilityPoint = 8; // test
+        public int abilityPoint =-1; // change to -1, and the value display correctly
 
         // time intervals
         public int timeBetweenAttack = 40;
