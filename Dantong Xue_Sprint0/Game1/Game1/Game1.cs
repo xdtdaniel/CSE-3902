@@ -59,8 +59,6 @@ namespace Game1
         public bool paused;
         private bool clockWorking;
         public bool gameStarted;
-        public int mapID;
-        public int currentMapID;
 
         private int deathCounter;
         private const int deathCounterLimit = 200;
@@ -149,7 +147,6 @@ namespace Game1
             startScreen.Update();
 
             paused = Camera.PauseGame();
-            mapID = PlayerAndItemCollisionHandler.getMapID();
 
 
             quitResetController.Update(this);
@@ -164,7 +161,6 @@ namespace Game1
                 playerAbilityPanel.Update();
 
                 clockWorking = playerPanel.checkClockActivation();
-                currentMapID = LoadAll.Instance.GetCurrentMapID();
 
                 if (clockWorking)
                 {

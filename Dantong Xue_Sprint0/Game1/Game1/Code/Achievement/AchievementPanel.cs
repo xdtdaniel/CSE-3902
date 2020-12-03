@@ -1,6 +1,7 @@
 ﻿using Game1.Code.Achievement.Tracker;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Game1.Code.Achievement
@@ -16,7 +17,15 @@ namespace Game1.Code.Achievement
 
             trackerList = new List<ITracker>();
             trackerList.Add(new MarathonRunnerTracker(game));
-            //trackerList.Add(new UndefeatedTracker(game));
+            trackerList.Add(new UndefeatedTracker(game));
+            trackerList.Add(new DragonSlayerTracker(game));
+            trackerList.Add(new MasterTracker(game));
+            trackerList.Add(new PentaKillTracker(game));
+            trackerList.Add(new PerfectionTracker(game));
+            trackerList.Add(new StopRollingTracker(game));
+            trackerList.Add(new TrialAndErrorTracker(game));
+            trackerList.Add(new WealthyTracker(game));
+            trackerList.Add(new WrathOfTheDeadTracker(game));
         }
         public void Update(int x, int y)
         {
@@ -30,19 +39,23 @@ namespace Game1.Code.Achievement
                 {
                     // keep tracking if not done yet
                     done = trackerList[i].Update(false, x, y);
+
+                    // remove from list if display is done
+                    if (done)
+                    {
+                        trackerList.RemoveAt(i);
+                        i--;
+                    }
                 }
-                else
+                else if (completed && !done)
                 {
                     // move to wait list if completed
-                    drawingWaitList.Add(trackerList[i]);
+                    if (!drawingWaitList.Contains(trackerList[i]))
+                    {
+                        drawingWaitList.Add(trackerList[i]);
+                    }
                 }
 
-                // remove from list if display is done
-                if (done)
-                {
-                    trackerList.RemoveAt(i);
-                    i--;
-                }
             }
 
             if (drawingWaitList.Count > 0)

@@ -419,3 +419,11 @@ C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcore
 C:\Users\Owner\source\repos\CSE-39022\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.dll
 C:\Users\Owner\source\repos\CSE-39022\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.pdb
 C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\prompt.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\DragonSlayer.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\Master.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\PentaKill.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\Perfection.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\StopRolling.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\TrialAndError.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\Wealthy.xnb
+C:\Users\ybhba\Source\Repos\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\Achievement\WrathOfTheDead.xnb

@@ -80,8 +80,8 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("Bow", 0);
             itemList.Add("Clock", 0);
             itemList.Add("Compass", 0);
-            itemList.Add("Heart", 12);                      // default current health = 6
-            itemList.Add("HeartContainer", 12);             // default max health = 6, heart container cannot be odd number
+            itemList.Add("Heart", 6);                      // default current health = 6
+            itemList.Add("HeartContainer", 6);             // default max health = 6, heart container cannot be odd number
             itemList.Add("Key", 0);
             itemList.Add("Map", 0);
             itemList.Add("Ruby", 0);
@@ -102,7 +102,6 @@ namespace Game1.Code.Player.PlayerCharacter
         {
             linkLevel++;
             abilityPoint++;
-            exp = 0;
         }
         public void Dash()
         {

@@ -11,7 +11,7 @@ namespace Game1.Code.Achievement.Tracker
     class MarathonRunnerTracker: ITracker
     {
         private Game1 game;
-        private Texture2D marathonRunnerSprite;
+        private Texture2D texture;
 
         private static int scale = (int)LoadAll.Instance.scale;
 
@@ -27,12 +27,12 @@ namespace Game1.Code.Achievement.Tracker
         private int stayedTime = 0;
         private int transitionTime = 60;
 
-        private int offset_x = 68 * scale;
+        private int offset_x = 38 * scale;
         private int offset_y = 1 * scale;
         private int start_x;
         private int start_y;
-        private int drawWidth = 120 * scale;
-        private int drawHeight = 54 * scale;
+        private int drawWidth = 180 * scale;
+        private int drawHeight = 81 * scale;
 
         private int prevX;
         private int prevY;
@@ -42,7 +42,7 @@ namespace Game1.Code.Achievement.Tracker
         public MarathonRunnerTracker(Game1 game)
         {
             this.game = game;
-            marathonRunnerSprite = AchievementFactory.GetMarathonRunner();
+            texture = AchievementFactory.GetMarathonRunner();
             prevX = currX = game.link.x;
             prevY = currY = game.link.y;
 
@@ -71,6 +71,7 @@ namespace Game1.Code.Achievement.Tracker
                 if (completed)
                 { 
                     // award
+                    // rupee += 10
                     game.link.itemList["Ruby"] += 10;
                     AudioPlayer.getItem.Play();
                 }
@@ -101,9 +102,9 @@ namespace Game1.Code.Achievement.Tracker
         {
             if (completed && !doneDisplay)
             {
-                Rectangle sourceRectangle = new Rectangle(0, 0, marathonRunnerSprite.Width, marathonRunnerSprite.Height);
+                Rectangle sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
                 Rectangle destinationRectangle = new Rectangle(start_x, start_y, drawWidth, drawHeight);
-                game._spriteBatch.Draw(marathonRunnerSprite, destinationRectangle, sourceRectangle, Color.White * ((float)currentFrame / transitionTime));
+                game._spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White * ((float)currentFrame / transitionTime));
             }
         }
         public bool AchievementCompleted()

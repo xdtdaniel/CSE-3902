@@ -35,7 +35,7 @@ namespace Game1.Code.HUD.Sprite
         public void Draw(SpriteBatch spriteBatch)
         {
             // draw exp level number
-           Rectangle sourceRectangle = new Rectangle(0, 0, expLevelTexture.Width, expLevelTexture.Height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, expLevelTexture.Width, expLevelTexture.Height);
             Rectangle destinationRectangle = new Rectangle(levelX, levelY, levelNumberSideLength, levelNumberSideLength);
 
             spriteBatch.Draw(expLevelTexture, destinationRectangle, sourceRectangle, Color.LimeGreen);

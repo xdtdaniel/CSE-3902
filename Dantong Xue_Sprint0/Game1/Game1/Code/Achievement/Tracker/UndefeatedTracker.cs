@@ -10,14 +10,12 @@ namespace Game1.Code.Achievement.Tracker
     class UndefeatedTracker : ITracker
     {
         private Game1 game;
-        private Texture2D undefeatedSprite;
+        private Texture2D texture;
 
         private static int scale = (int)LoadAll.Instance.scale;
 
         private bool completed = false;
         private bool doneDisplay = false;
-        private int movedDistance = 0;
-        private int goalDistance = 300;
 
         private int currentFrame = 0;
         private int totalFrame = 100;
@@ -25,38 +23,76 @@ namespace Game1.Code.Achievement.Tracker
         private int stayedTime = 0;
         private int transitionTime = 60;
 
-        private int startX = 68 * scale;
-        private int startY = 56 * scale;
-        private int drawWidth = 120 * scale;
-        private int drawHeight = 54 * scale;
+        private int offset_x = 38 * scale;
+        private int offset_y = 1 * scale;
+        private int start_x = 68 * scale;
+        private int start_y = 56 * scale;
+        private int drawWidth = 180 * scale;
+        private int drawHeight = 81 * scale;
 
-        private int prevX;
-        private int prevY;
-        private int currX;
-        private int currY;
+        private int deathCounter;
+        private int goalDeaths = 5;
 
         public UndefeatedTracker(Game1 game)
         {
             this.game = game;
-            undefeatedSprite = AchievementFactory.GetUndefeated();
-            prevX = currX = game.link.x;
-            prevY = currY = game.link.y;
+            texture = AchievementFactory.GetUndefeated();
 
         }
 
-        public bool Update(bool startDrawing)
+        public bool Update(bool startDrawing, int x, int y)
         {
-            // to do
+            start_x = x + offset_x;
+            start_y = y + offset_y;
+
+            if (!completed)
+            {
+                if (game.link.isDead)
+                {
+                    deathCounter++;
+                }
+                if (deathCounter >= goalDeaths)
+                {
+                    completed = true;
+                }
+                
+                if (completed)
+                {
+                    // award
+                    // max health += 3
+                    game.link.itemList["HeartContainer"] += 3;
+                    AudioPlayer.getItem.Play();
+                }
+            }
+            else if (!doneDisplay && startDrawing)
+            {
+                if (currentFrame < totalFrame && stayedTime < displayTime)
+                {
+                    currentFrame++;
+                }
+                else if (currentFrame > 0 && stayedTime >= displayTime)
+                {
+                    currentFrame--;
+                }
+                else if (currentFrame == 0)
+                {
+                    doneDisplay = true;
+                }
+                else
+                {
+                    stayedTime++;
+                }
+            }
             return doneDisplay;
         }
 
-        public void Draw(int x, int y)
+        public void Draw()
         {
             if (completed && !doneDisplay)
             {
-                Rectangle sourceRectangle = new Rectangle(0, 0, undefeatedSprite.Width, undefeatedSprite.Height);
-                Rectangle destinationRectangle = new Rectangle(startX, startY, drawWidth, drawHeight);
-                game._spriteBatch.Draw(undefeatedSprite, destinationRectangle, sourceRectangle, Color.White * ((float)currentFrame / transitionTime));
+                Rectangle sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+                Rectangle destinationRectangle = new Rectangle(start_x, start_y, drawWidth, drawHeight);
+                game._spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White * ((float)currentFrame / transitionTime));
             }
         }
         public bool AchievementCompleted()
