@@ -45,7 +45,7 @@ namespace Game1.Code.Player.PlayerCharacter
         private int swordBeamAttackDamage = 2;
         public int bombExplosionDamage = 5;
 
-        public int abilityPoint =-1; // change to -1, and the value display correctly
+        public int abilityPoint = 1; // link has 1 ability point when started
 
         // time intervals
         public int timeBetweenAttack = 40;
@@ -66,9 +66,10 @@ namespace Game1.Code.Player.PlayerCharacter
         public string collisionSide = "";
 
         // experience 
-        public int linkLevel;
+        public int linkLevel = 1;
         public int exp;
         public int expPerLevel = 10;
+        private int prevKills;
         public Link()
         {
             state = new NormalLink(this);
@@ -100,6 +101,7 @@ namespace Game1.Code.Player.PlayerCharacter
         }
         public void Upgrade()
         {
+            AudioPlayer.getRupee.Play();
             linkLevel++;
             abilityPoint++;
         }
@@ -285,8 +287,12 @@ namespace Game1.Code.Player.PlayerCharacter
 
         public void Update()
         {
-            exp = Enemy.DrawAndUpdateEnemy.numberOfKilled();
-            linkLevel = exp / expPerLevel + 1; // min level is 1
+            if (exp >= expPerLevel)
+            {
+                prevKills = Enemy.DrawAndUpdateEnemy.numberOfKilled();
+                Upgrade();
+            }
+            exp = Enemy.DrawAndUpdateEnemy.numberOfKilled() - prevKills;
 
             if (timeSinceCollision < timeBetweenCollision && collisionSide != "")
             {

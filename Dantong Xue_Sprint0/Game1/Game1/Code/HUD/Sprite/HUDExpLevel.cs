@@ -22,18 +22,12 @@ namespace Game1.Code.HUD.Sprite
         private Texture2D expLevelTexture;
         private promptText prompt;
         private Game1 game;
-        private int preLevel;
         private int explevel;
-        private int currentFrame = 0;
-        private int maxCurrentFrame = 560;
 
         public HUDExpLevel(Game1 game)
         {
             this.game = game;
             prompt = new promptText(100,300);
-            preLevel = 1;
-            explevel = 1;
-            expLevelTexture = HUDFactory.LoadNumber(explevel)[1];
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -43,32 +37,15 @@ namespace Game1.Code.HUD.Sprite
 
             spriteBatch.Draw(expLevelTexture, destinationRectangle, sourceRectangle, Color.LimeGreen);
 
-            if (explevel != preLevel)
-            {
-                prompt.Draw(spriteBatch);
-
-            }
-            if (game.link.linkLevel != preLevel) {
-                game.link.abilityPoint++;
-                preLevel = game.link.linkLevel;
-            }
-           
         }
 
         public void Update(float newStartX, float newStartY)
         {
-            currentFrame++;
             explevel = game.link.linkLevel;
             expLevelTexture = HUDFactory.LoadNumber(explevel)[1];
             levelX = (int)newStartX + preLevelX;
             levelY = (int)newStartY + preLevelY;
            
-            if (currentFrame == maxCurrentFrame) //display few seconds.
-            {
-                preLevel = explevel;               
-                currentFrame = 0;
-                
-            }
         }
     }
 }
