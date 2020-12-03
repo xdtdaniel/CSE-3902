@@ -28,7 +28,7 @@ namespace Game1.Code.HUD.Sprite
         {
             AbilityTreeFrameTexture = HUDFactory.LoadAbilityTreeFrame();
             this.game = game;
-            instr = new abilityInstruction(x+ 400*scale, y + 220*scale);//pass thetext vector
+            instr = new abilityInstruction(x+ 130*scale, y + 200*scale);//pass thetext vector
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -17,8 +17,9 @@ namespace Game1.Code.HUD.Sprite
         private int y;
         public abilityInstruction(int position_x, int position_y)
         {
-            /*load sprite font with size 18, bold*/
+            /*load sprite font with size 20, bold*/
             prompt = HUDFactory.LoadSkillInstruction();
+            x = position_x;
             y = position_y;
         }
         public void Draw(SpriteBatch spriteBatch)
