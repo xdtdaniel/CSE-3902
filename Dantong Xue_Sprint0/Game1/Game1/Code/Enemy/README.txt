@@ -1,23 +1,30 @@
 ﻿This is the README file for enemy classes.
 
 Author: Jason Lian
-Last modified date: 10/25/2020
+Last modified date: 12/03/2020
 
-THIS FILE IS OLD AND NEED FURTHER MODIFICATIONS.
+This folder contains for all enemy, projectile and NPC types in the game.
 
-Enemy folder contains all the classes related to enemies and npcs in the game. 
-Interface IEnemy contains three necessary methods for all the enemy objects: draw, update, 
+Enemy and Npc calsses implement the IEnemy interface and projectile classes implement the IProjectile interface.
+
+IEnemy interface contains three necessary methods for all the enemy objects: draw, update, 
 and if the enemy type can fire projectile, the fire projectile method. There is no interface 
 for projectile objects. Classes contain implementation details for projectile is only referenced
-by the corresponding enemy class. 
+by the corresponding enemy class. The interface also contains methods for getting and changing
+the hp of enemies. It provide the method for getting the collision rectangle, it also provide a 
+freeze method to serve for the functionality of the clock item.
 
-For sprint 2, the keyboard controller of the enemy classes uses a collection of enemies that
-contains all the enemy objects implemented so far.
+The IProjectile interface allow the client class to control the initial position, direction and
+whether the projectile is on screen or not. The implementation details of each projectile class
+are known by the corresponding enemy class. It is not possible to only use projectile object and
+not use the corresponding enemy in the game.
 
-For sprint 3, LoadEnemy class is added and it load all the enemies in the dungeon, Trap is added
-to all the enemy classes, but require further implementation. Now all the enemy have collision 
-handling with other objects and are able to take damage.
+All types in the original dungeon:
 
-By far, this folder include implementation for the following enemies/npcs: 
-Aquamentus (dragon), Gel (slime), Goriya (dog-like enemy which can throw boomerang), 
-Keese (bat), Stalfos (skeleton), Walmaster (hand),Trap, Merchant, Old Man and Fire.
+Enemies: Gel, Keese, Stalfos, Goriya, Wallmaster, Trap, Aquamentus (use a different sprite and a slightly different attacking logic)
+NPCs: Merchant, Old man
+
+New enemy types for Sprint 5:
+Saw, New trap(red), New trap(Yellow)
+
+HP values of enemies are adjusted accordingly for balance reason due to the new features in the game.
