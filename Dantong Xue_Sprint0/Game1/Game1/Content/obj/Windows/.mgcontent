@@ -95,7 +95,6 @@
     <File>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Others/OverworldMiniMapCell.png</File>
     <File>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Others/OverworldMiniMapFrame.png</File>
     <File>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Others/OverworldPauseScreenFrame.png</File>
-    <File>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Others/skillDescription.spritefont</File>
     <File>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Others/skillTreeInstruction.spritefont</File>
     <File>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/Pause.png</File>
     <File>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/HUD/PiercingArrow.png</File>
@@ -344,7 +343,6 @@
     <File>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/walk_2.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
