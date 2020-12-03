@@ -20,7 +20,7 @@ namespace Game1.Code.HUD.Sprite
         private int preLevelY = -30 * scale;
 
         private Texture2D expLevelTexture;
-        private promptText prompt;
+        private abilityInstruction prompt;
         private Game1 game;
         private int preLevel;
         private int explevel;
@@ -30,7 +30,7 @@ namespace Game1.Code.HUD.Sprite
         public HUDExpLevel(Game1 game)
         {
             this.game = game;
-            prompt = new promptText(100,300);
+            prompt = new abilityInstruction(100,300);
             preLevel = 1;
             explevel = 1;
         }

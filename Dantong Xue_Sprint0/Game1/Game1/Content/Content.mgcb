@@ -932,6 +932,13 @@
 /processorParam:TextureFormat=Color
 /build:HUD/Others/OverworldPauseScreenFrame.png
 
+#begin HUD/Others/skillTreeInstruction.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:HUD/Others/skillTreeInstruction.spritefont
+
 #begin HUD/Pause.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1070,18 +1077,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerAbility/BurstRing_2.png
-
-#begin PlayerAbility/FireExplosion_0.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:PlayerAbility/FireExplosion_0.png
 
 #begin PlayerAbility/FireExplosion_0.png
 /importer:TextureImporter

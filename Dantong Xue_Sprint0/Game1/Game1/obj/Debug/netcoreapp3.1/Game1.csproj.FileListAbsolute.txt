@@ -850,3 +850,4 @@ C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcore
 C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.csproj.CoreCompileInputs.cache
 C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.csproj.CopyComplete
 C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\obj\Debug\netcoreapp3.1\Game1.genruntimeconfig.cache
+C:\Users\~!\Downloads\CSE-3902\Dantong Xue_Sprint0\Game1\Game1\bin\Debug\netcoreapp3.1\Content\HUD\Others\skillTreeInstruction.xnb

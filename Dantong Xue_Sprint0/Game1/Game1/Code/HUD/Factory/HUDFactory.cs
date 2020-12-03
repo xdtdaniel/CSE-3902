@@ -69,6 +69,7 @@ namespace Game1.Code.HUD.Factory
 		//experience pattern
 		private static Texture2D exp;
 		private static SpriteFont levelPrompt;
+		private static SpriteFont skillInstruction;
 
 		public static void LoadAllHUDTextures(ContentManager content)
 		{
@@ -139,7 +140,8 @@ namespace Game1.Code.HUD.Factory
 
 			//experience pattern
 			exp = content.Load<Texture2D>("HUD/Others/expPattern");
-			levelPrompt = content.Load<SpriteFont>("HUD/prompt");
+			levelPrompt = content.Load<SpriteFont>("HUD/prompt");		
+			skillInstruction = content.Load<SpriteFont>("HUD/Others/skillTreeInstruction");
 
 		}
 
@@ -408,6 +410,9 @@ namespace Game1.Code.HUD.Factory
         {
 			return levelPrompt;
         }
+		public static SpriteFont LoadSkillInstruction() {
+			return skillInstruction;
+		}
 	
 	}
 }

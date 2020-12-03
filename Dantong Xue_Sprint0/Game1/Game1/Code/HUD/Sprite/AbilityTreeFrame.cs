@@ -20,6 +20,7 @@ namespace Game1.Code.HUD.Sprite
         private int preY = 176 * scale;
 
         private Texture2D AbilityTreeFrameTexture;
+        private abilityInstruction instr;
 
         private Game1 game;
 
@@ -27,6 +28,7 @@ namespace Game1.Code.HUD.Sprite
         {
             AbilityTreeFrameTexture = HUDFactory.LoadAbilityTreeFrame();
             this.game = game;
+            instr = new abilityInstruction(x+ 400*scale, y + 220*scale);//pass thetext vector
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -37,6 +39,7 @@ namespace Game1.Code.HUD.Sprite
 
             string ap = "Ability Point: " + game.link.abilityPoint;
             spriteBatch.DrawString(game._spriteFont, ap.ToString(), new Vector2(x + apOffset_x, y + apOffset_y), Color.White);
+            instr.Draw(game._spriteBatch);
         }
 
         public void Update(float newStartX, float newStartY)
