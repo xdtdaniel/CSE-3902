@@ -53,6 +53,7 @@ namespace Game1.Code.HUD
             hudList.Add(new HUDExp(game.link));
             hudList.Add(new HUDExpLevel(game));
             hudList.Add(new GameTimer(game));
+            hudList.Add(new abilityInstruction(game));
 
             itemSelectionController = new ItemSelectionController(game, inventoryItemList);
             abilitySelectionController = new AbilitySelectionController(game.playerAbilityPanel);
