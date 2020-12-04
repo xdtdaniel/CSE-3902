@@ -89,6 +89,34 @@ namespace Game1.Code.Player.Control
                 _stringValue = "";
                 cheatActive = true;
             }
+            
+                        //SSWWSSDD for adding 10 exp
+            if (_stringValue.Contains("SSWWSSDD"))
+            {
+                game.link.exp+=10;
+                _stringValue = "";
+                cheatActive = true;
+            }
+
+            //WWDASSAD for adding 100 exp
+            if (_stringValue.Contains("WWDASSAD"))
+            {
+                game.link.exp += 100;
+                _stringValue = "";
+                cheatActive = true;
+            }
+
+            //WWWDDSSAAA for getting ice sword
+            if (_stringValue.Contains("WWWDDSSAAA"))
+            {
+                game.link.buffList["IceSword"]++;
+                _stringValue = "";
+                cheatActive = true;
+            }
+
+            //prevent too big of a string
+            if (_stringValue.Length > 100)
+            { _stringValue = _stringValue[85..]; }
 
             if (cheatActive)
             {
