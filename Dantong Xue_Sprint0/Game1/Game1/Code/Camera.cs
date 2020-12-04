@@ -196,11 +196,12 @@ namespace Game1.Code
         {
             newState = Keyboard.GetState();
 
+
             if (!moving)
             {
                 if (newState.IsKeyDown(Keys.P) && !oldState.IsKeyDown(Keys.P))
                 {
-                    paused = !paused;
+                    paused = true;
                     if (paused && pausedType == -1)
                     {
                         pausedType = 1;
@@ -208,13 +209,14 @@ namespace Game1.Code
                     }
                     else if (pausedType == 1)
                     {
+                        paused = false;
                         pausedType = -1;
                         UpdateMovingState("down");
                     }
                 }
                 else if (newState.IsKeyDown(Keys.O) && !oldState.IsKeyDown(Keys.O))
                 {
-                    paused = !paused;
+                    paused = true;
                     if (paused && pausedType == -1)
                     {
                         pausedType = 2;
@@ -222,6 +224,7 @@ namespace Game1.Code
                     }
                     else if (pausedType == 2)
                     {
+                        paused = false;
                         pausedType = -1;
                         UpdateMovingState("up");
                     }
@@ -229,15 +232,16 @@ namespace Game1.Code
                 //pause crrent screen by press space
                 else if (newState.IsKeyDown(Keys.Space) && !oldState.IsKeyDown(Keys.Space))
                 {
-                    if (!paused && pausedType == -1)
+                    paused = true;
+                    if (paused && pausedType == -1)
                     {
                         pausedType = 0;
                     }
                     else if (pausedType == 0)
                     {
+                        paused = false;
                         pausedType = -1;
                     }
-                    paused = !paused;
 
                 }
             }
