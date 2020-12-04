@@ -1,3 +1,7 @@
+This is the read me text file for the cheat codes class.
+
+Author: Patrick Cheng.
+
 In order to use cheat codes, directly press the keys in order during the game to perform the cheat.
 
 ADDDAAA for adding 10 arrows
