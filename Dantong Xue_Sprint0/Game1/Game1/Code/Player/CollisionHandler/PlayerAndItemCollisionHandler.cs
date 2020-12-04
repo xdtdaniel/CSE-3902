@@ -129,6 +129,7 @@ namespace Game1.Code.Player.CollisionHandler
                             break;
                         case "SwordBeam":
                             link.itemList["SwordBeam"]++;
+                            link.buffList["IceSword"]--;
                             item = new SwordBeam(X, Y);
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getRupee.Play();
