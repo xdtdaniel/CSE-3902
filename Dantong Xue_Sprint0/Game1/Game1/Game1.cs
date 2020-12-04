@@ -150,7 +150,7 @@ namespace Game1
 
 
             quitResetController.Update(this);
-            if (!paused && gameStarted)
+            if (!paused && gameStarted && !Camera.moving)
             {
                 if (link.isDamaged && link.damageTimeCounter < 1)
                 {

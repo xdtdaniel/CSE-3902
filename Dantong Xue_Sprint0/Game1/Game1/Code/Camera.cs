@@ -16,7 +16,7 @@ namespace Game1.Code
         public static Rectangle VisibleArea;
         public static Matrix Transform;
 
-        private static bool moving = false;
+        public static bool moving = false;
         private static int direction;
         private static  float defaultWidth = 256;
         private static  float defaultHeight = 176;
