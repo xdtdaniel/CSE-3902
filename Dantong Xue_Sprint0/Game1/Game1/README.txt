@@ -1,4 +1,13 @@
-This is the Readme file for Sprint 4.
+This is the Readme file for Sprint 5. It consists the info from Sprint 4 as well.
+
+[New Features Added in Sprint 5]
+- New levels (Jason Lian, Dantong Xue):
+   We added four new levels (19, 20, 21, 22) that can be accessed by going down at the initial starting level. Level 20 is designed so that you need to hide and run. Level 21 needs you to determine which path to go. Arrows are implemented as escalators. Level 22 has a new Boss of Saw.
+- New Achievement System (Baihua Yang):
+- New Weapons (Fan Shen):
+- New HUD Elements ():
+- New Skill System Including Exp Bar ():
+- New Cheat Code Option (Patrick Cheng): 
 
 [Complete List of Controls]
 [W,A,S,D / Arrow Up,Left,Down,Right] Move Up,Left,Down,Right
