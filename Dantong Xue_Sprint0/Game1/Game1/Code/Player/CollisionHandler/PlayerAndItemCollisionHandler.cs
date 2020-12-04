@@ -102,7 +102,7 @@ namespace Game1.Code.Player.CollisionHandler
                             AudioPlayer.getItem.Play();
                             break;
                         case "Ruby":
-                            link.itemList["Ruby"]++;
+                            link.itemList["Ruby"]+=25;
                             item = new Ruby(X, Y);
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getRupee.Play();
@@ -115,7 +115,7 @@ namespace Game1.Code.Player.CollisionHandler
                             break;
                         case "Crown":
                             link.itemList["Crown"]++;
-                            link.itemList["Ruby"]+=20;
+                            link.itemList["Ruby"]+=50;
                             link.itemList["Bomb"]+=10;
                             link.itemList["Heart"] += link.itemList["HeartContainer"];
                             if (link.itemList["Heart"] > link.itemList["HeartContainer"])
