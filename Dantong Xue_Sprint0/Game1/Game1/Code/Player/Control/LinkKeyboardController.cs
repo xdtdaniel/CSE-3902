@@ -1,21 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using Game1.Code.Player.Control.PlayerControlCommand;
 using Game1.Code.Player.Interface;
 using Microsoft.Xna.Framework.Input;
 
 namespace Game1.Code.Player.Control
 {
-    public class LinkKeyboardController 
+    public class LinkKeyboardController
     {
         private Dictionary<Keys, IPlayerCommand> controllerMappings;
         private Game1 game;
         public int boomerangIndex = -1;
+        public CheatCode cheat;
 
         public LinkKeyboardController(Game1 game)
         {
             controllerMappings = new Dictionary<Keys, IPlayerCommand>();
             this.game = game;
-            
+            cheat = new CheatCode(game);
+
             RegisterCommand(Keys.S, new MoveDown(game));
             RegisterCommand(Keys.D, new MoveRight(game));
             RegisterCommand(Keys.W, new MoveUp(game));
@@ -52,50 +55,7 @@ namespace Game1.Code.Player.Control
                 }
             }
 
-            //press wwssaaddBABA for invincible link
-            foreach(Keys k in pressedKeys)
-            {
-                if (k == Keys.W)
-                {
-                    if (k == Keys.W)
-                    {
-                        if (k == Keys.S)
-                        {
-                            if (k == Keys.S)
-                            {
-                                if (k == Keys.A)
-                                {
-                                    if (k == Keys.A)
-                                    {
-                                        if (k == Keys.D)
-                                        {
-                                            if (k == Keys.D)
-                                            {
-                                                if (k == Keys.B)
-                                                {
-                                                    if (k == Keys.A)
-                                                    {
-                                                        if (k == Keys.B)
-                                                        {
-                                                            if (k == Keys.A)
-                                                            {
-                                                                game.link.isInvincible = true;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                }
-            }
-
-
+            cheat.Update(pressedKeys);
         }
     }
 }
