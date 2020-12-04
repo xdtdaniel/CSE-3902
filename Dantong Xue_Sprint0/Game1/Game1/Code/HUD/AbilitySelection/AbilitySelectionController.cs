@@ -76,6 +76,7 @@ namespace Game1.Code.HUD.AbilitySelection
                 type = 0;
             }
             inventoryAbilitySelection.Update(newStartX, newStartY, index, type);
+            playerAbilityPanel.abilityDictList[type][index].Updatelocation(newStartX, newStartY);
 
         }
 

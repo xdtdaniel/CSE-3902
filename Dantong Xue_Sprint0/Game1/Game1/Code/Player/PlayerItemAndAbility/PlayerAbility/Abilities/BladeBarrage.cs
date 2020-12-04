@@ -77,7 +77,7 @@ namespace Game1.Code.Player.PlayerAbility
         public void Draw(SpriteBatch sb)
         {
             //display below instruction
-            sb.DrawString(des, "Press[1] ", new Vector2(posX+125*scale,posY+236*scale), Color.LightBlue);
+            sb.DrawString(des, "Generate 8 swords around Link\n then shoot in same time\n to different diretions. ", new Vector2(posX+125*scale,posY+260*scale), Color.LimeGreen);
 
         }
         public void Updatelocation(float newStartX, float newStartY)
