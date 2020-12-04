@@ -1,0 +1,10 @@
+Author of the code review:  Fan Shen
+Date of the code review: 12/4/2020 
+Sprint number: 5
+
+Name of the .cs file being reviewed: HUDexp.cs
+Author of the .cs file being reviewed: Zhihan Li
+Number of minutes taken to complete the code review: 1 minute
+
+Readability:
+The variable names are easy to follow. It would be nice to have more comments and less magic number.
