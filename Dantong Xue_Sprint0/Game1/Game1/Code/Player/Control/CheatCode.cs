@@ -40,7 +40,6 @@ namespace Game1.Code.Player.Control
                     }
                 }
             }
-            System.Diagnostics.Debug.WriteLine(_stringValue);
 
 
             // WDDSSDD for adding 10 bombs

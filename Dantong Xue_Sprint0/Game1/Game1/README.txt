@@ -21,7 +21,7 @@ dash charge is added, which is displayed beneath Link. A timer has also been add
 Each ability can be used by number keys from [1] to [8], and link can use these ability to attack enemies. Images for ability effects and icons are by Baihua Yang via www.pixilart.com .
 
 - New Actions for Link (Baihua Yang):
-   Added 2 new actions for Link: Jump and Dash. In current development, Link cannot be hit by any attack if he is jumping or dashing. Both actions have short cooldowns. Link cannot jump over blocks. 
+   Added 2 new actions for Link: Jump [J] and Dash [K]. In current development, Link cannot be hit by any attack if he is jumping or dashing. Both actions have short cooldowns. Link cannot jump over blocks. 
 
 - New Cheat Code Option (Patrick Cheng): 
    Keyboard input cheat code added. By directly tying in the cheat code during the game can activate the cheat code. A audio will be played when the cheat code is activated sucessfully.
