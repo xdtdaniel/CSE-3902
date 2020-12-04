@@ -2,7 +2,9 @@ This is the Readme file for Sprint 5. It consists the info from Sprint 4 as well
 
 [New Features Added in Sprint 5]
 - New levels (Jason Lian, Dantong Xue):
-   We added four new levels (19, 20, 21, 22) that can be accessed by going down at the initial starting level. Level 20 is designed so that you need to hide and run. Level 21 needs you to determine which path to go. Arrows are implemented as escalators. Level 22 has a new Boss of Saw.
+   We added four new levels (19, 20, 21, 22) that can be accessed by going down at the initial starting level. 
+   Level 20 is designed so that you need to hide and run. Level 21 needs you to determine which path to go. 
+   Arrows are implemented as escalators. Level 22 has a new boss fight.
    
 - New Achievement System (Baihua Yang):
    Added 10 achievements for player to complete. All of them have awards and will be prompted out one by one once completed. The achievement image frame is from Hollow Knight.
