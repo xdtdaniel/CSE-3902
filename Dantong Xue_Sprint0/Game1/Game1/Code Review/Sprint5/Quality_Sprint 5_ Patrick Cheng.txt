@@ -1,0 +1,14 @@
+Description: This is the qualiy Code Review file for collision hanlder PlayerAndArrowsCollisionHandler.cs
+Author: Patrick Cheng
+Date: 12/4/2020
+Sprint number: 5
+Name of the .cs file: PlayerAndArrowsCollisionHandler.cs
+Author of the .cs file: Dantong Xue
+Number of minutes taken to complete the code review: 3 minutes
+
+Specific comments on code quality:
+
+This is the class implementation for collision handler when the character gets to level 20.The  class is really simple and straight forward. The class has low coupling along with high cohesion. It uses the game.link class and loadfile class. The class is very easy to maintain and easy to add more code if needed.
+ 
+Hyporhetical change:
+The implementation of the class is very simple and easy. I feel like no changes are needed.
