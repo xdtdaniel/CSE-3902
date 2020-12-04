@@ -1,0 +1,14 @@
+Author of the code review:  Dantong Xue
+
+Date of the code review: 12/4/2020 
+Sprint number: 5
+
+Name of the .cs file being reviewed: CheatCode.cs
+Author of the .cs file being reviewed: Patrick Cheng
+Number of minutes taken to complete the code review: 3 minutes
+
+Specific comments on code quality:
+This class provided implementations to keyboard-based cheat codes. The only responsibility it has is to handle the keyboard input as cheat codes. It has high cohesion. It only knows about the game class and only use game.link, which is necessary. It also has low coupling. Adding new cheat code can be done easily, so it is very maintainable.
+
+Suggestions:
+Consider supporting different kinds of input for the cheat codes and use command to execute actions of cheat codes.

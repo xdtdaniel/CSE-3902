@@ -1,0 +1,11 @@
+Author of the code review:  Dantong Xue
+
+Date of the code review: 11/16/2020 
+Sprint number: 4
+
+Name of the .cs file being reviewed: CheatCode.cs
+Author of the .cs file being reviewed: Patrick Cheng
+Number of minutes taken to complete the code review: 3 minutes
+
+Specific comments on code quality:
+The variable names are easy to understand. Cases are well commented. One suggestion will be using switch cases instead of all these if statements.
