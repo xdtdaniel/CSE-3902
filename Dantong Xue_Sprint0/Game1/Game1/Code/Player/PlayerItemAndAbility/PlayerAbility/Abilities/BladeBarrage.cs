@@ -39,6 +39,13 @@ namespace Game1.Code.Player.PlayerAbility
         private static int scale = (int)LoadAll.Instance.scale;
         private int posX;
         private int posY;
+        private int namePre_x = 125 * scale;
+        private int namePre_y = 240 * scale;
+        private int descPre_x = 125 * scale;
+        private int descPre_y = 260 * scale;
+
+        private string abilityName = "[Blade Barrage]";
+        private string description = "Generate 8 swords around Link,\n then launch them in turn\n to different diretions. ";
 
         public BladeBarrage(Link link, ItemPool itemPool)
         {
@@ -77,8 +84,8 @@ namespace Game1.Code.Player.PlayerAbility
         public void Draw(SpriteBatch sb)
         {
             //display below instruction
-            sb.DrawString(des, "[Blade Barrage]", new Vector2(posX + 125 * scale, posY + 240 * scale), Color.White);
-            sb.DrawString(des, "Generate 8 swords around Link\n then shoot in same time\n to different diretions. ", new Vector2(posX+125*scale,posY+260*scale), Color.LimeGreen);
+            sb.DrawString(des, abilityName, new Vector2(posX + namePre_x, posY + namePre_y), Color.White);
+            sb.DrawString(des, description, new Vector2(posX + descPre_x, posY + descPre_y), Color.LimeGreen);
 
         }
         public void Updatelocation(float newStartX, float newStartY)

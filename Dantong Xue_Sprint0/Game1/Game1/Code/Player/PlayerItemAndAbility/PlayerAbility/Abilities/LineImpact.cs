@@ -33,7 +33,13 @@ namespace Game1.Code.Player.PlayerAbility
         private static int scale = (int)LoadAll.Instance.scale;
         private int posX;
         private int posY;
+        private int namePre_x = 125 * scale;
+        private int namePre_y = 240 * scale;
+        private int descPre_x = 125 * scale;
+        private int descPre_y = 260 * scale;
 
+        private string abilityName = "[Line Impact]";
+        private string description = "Sprinting forward until hitting \na wall, then cause an explosion.";
 
         public LineImpact(Link link, ItemPool itemPool)
         {
@@ -91,8 +97,8 @@ namespace Game1.Code.Player.PlayerAbility
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(des, "[Line Impact]", new Vector2(posX + 125 * scale, posY + 240 * scale), Color.White);
-            sb.DrawString(des, "Sprinting forward until hits Wall\n, then blast the wall.", new Vector2(posX + 125 * scale, posY + 260 * scale), Color.LimeGreen);
+            sb.DrawString(des, abilityName, new Vector2(posX + namePre_x, posY + namePre_y), Color.White);
+            sb.DrawString(des, description, new Vector2(posX + descPre_x, posY + descPre_y), Color.LimeGreen);
 
         }
         public void Updatelocation(float newStartX, float newStartY)

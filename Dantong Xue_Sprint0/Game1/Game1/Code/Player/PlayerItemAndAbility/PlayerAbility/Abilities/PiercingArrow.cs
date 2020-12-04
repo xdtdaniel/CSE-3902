@@ -32,8 +32,13 @@ namespace Game1.Code.Player.PlayerAbility
         private static int scale = (int)LoadAll.Instance.scale;
         private int posX;
         private int posY;
+        private int namePre_x = 125 * scale;
+        private int namePre_y = 240 * scale;
+        private int descPre_x = 125 * scale;
+        private int descPre_y = 260 * scale;
 
-
+        private string abilityName = "[Piercing Arrow]";
+        private string description = "Shoot an arrow that\n can pierce the enemies.";
         public PiercingArrow(Link link, ItemPool itemPool)
         {
             this.link = link;
@@ -90,8 +95,8 @@ namespace Game1.Code.Player.PlayerAbility
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(des, "[Piercing Arrow]", new Vector2(posX + 125 * scale, posY + 240 * scale), Color.White);
-            sb.DrawString(des, "Shoot an arrow that\n can pierce the enemies.", new Vector2(posX + 125 * scale, posY + 260 * scale), Color.LimeGreen);
+            sb.DrawString(des, abilityName, new Vector2(posX + namePre_x, posY + namePre_y), Color.White);
+            sb.DrawString(des, description, new Vector2(posX + descPre_x, posY + descPre_y), Color.LimeGreen);
 
         }
         public void Updatelocation(float newStartX, float newStartY)

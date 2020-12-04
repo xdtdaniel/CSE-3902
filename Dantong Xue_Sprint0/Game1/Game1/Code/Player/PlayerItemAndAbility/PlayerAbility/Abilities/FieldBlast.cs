@@ -41,7 +41,13 @@ namespace Game1.Code.Player.PlayerAbility
         private SpriteFont des;
         private int posX;
         private int posY;
+        private int namePre_x = 125 * scale;
+        private int namePre_y = 240 * scale;
+        private int descPre_x = 125 * scale;
+        private int descPre_y = 260 * scale;
 
+        private string abilityName = "[Field Blast]";
+        private string description = "Generate a wave of sword rain\n around Link.";
         public FieldBlast(Link link, ItemPool itemPool)
         {
             this.link = link;
@@ -115,8 +121,8 @@ namespace Game1.Code.Player.PlayerAbility
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(des, "[Field Blast]", new Vector2(posX + 125 * scale, posY + 240 * scale), Color.White);
-            sb.DrawString(des, "Generate swords rain\n around Link.", new Vector2(posX + 125 * scale, posY + 260 * scale), Color.LimeGreen);
+            sb.DrawString(des, abilityName, new Vector2(posX + namePre_x, posY + namePre_y), Color.White);
+            sb.DrawString(des, description, new Vector2(posX + descPre_x, posY + descPre_y), Color.LimeGreen);
 
         }
         public void Updatelocation(float newStartX, float newStartY)
