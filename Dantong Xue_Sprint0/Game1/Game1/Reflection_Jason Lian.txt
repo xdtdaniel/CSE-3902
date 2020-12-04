@@ -1,0 +1,12 @@
+﻿Reflection for Sprint 5
+
+For this Sprint, I had added three new enemy types to our game: two simple traps and a new kind of boss.
+I thought traps can be interesting components in level design because they could not take any damage from
+the player. So I collaborated with Dantong (who is in charge of map design) and made room #20, which 
+was a kind of puzzle-solving level. I also wanted to add a more challenging boss fight to the game. 
+More specifically, I wanted the boss to be more actively engaged in attacking and thus could force 
+the player to pay more attention to avoid damages. The three new types of enemy I added worked well 
+in the game and were easy to implement. I kind of regret that I did not have a lot of time to explore
+more interesting possible new ideas for this Sprint, after I saw some very creative features from 
+other groups. I got some ideas about expanding the attacking logic of the Saw and also some ideas for
+new bosses. I would be happy to work on the game further more after this semester.
