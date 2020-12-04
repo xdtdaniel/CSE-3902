@@ -1,0 +1,21 @@
+﻿Description: This is the qualiy Code Review file for BladeBarrage.cs class.
+
+Author: Jason Lian
+Date: 12/04/2020
+Sprint number: 5
+Name of the .cs file: HUDPanel.cs
+Author of the .cs file: Baihua Yang
+
+Specific comments on code quality: BladeBarrage.cs
+
+One of the new features added in Sprint 5 is the player's ability of using special attacks. BladeBarrage.cs
+is one of the class implementing the IPlayerAbility interface. There are many fields used in this class and
+all of them are private. The interface provide methods for getting and setting the value of specific fields,
+and this reduce the interdependenies and increase coupling. The class have high cohesion since methods in 
+the class all serve for the one clear purpose of implementing the functionality of the skill.
+
+A hypothetical change and how to implement it:
+
+Since all the player abilities are attacking skills, we can maybe add a defensive skill to the player, which 
+prevent the player from taking damage. We can implement the visual effect(update logic of sprite) with the 
+help of the interface. The avoiding damage functionality can be implementged by adding a new player state.
