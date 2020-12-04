@@ -67,6 +67,7 @@ namespace Game1.Code.Player
 
 
             PlayerAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
+            PlayerAndArrowsCollisionHandler.HandleCollision(game.link, roomBlockList);
             PlayerAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);
             PlayerItemAndBlockCollisionHandler.HandleCollision(game.link, roomBlockList);
             PlayerItemAndEnemyCollisionHandler.HandleCollision(game.link, roomEnemyList);

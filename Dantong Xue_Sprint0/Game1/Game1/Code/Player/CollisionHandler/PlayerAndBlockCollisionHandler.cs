@@ -76,34 +76,6 @@ namespace Game1.Code.Player.CollisionHandler
                             case "bombWalls":
                                 link.StopMoving(collidedSide, interRect);
                                 break;
-                            case "leftArrows":
-                                link.x -= (int)(blockWidth * LoadAll.Instance.scale);
-                                break;
-                            case "rightArrows":
-                                link.x += (int)(blockWidth * LoadAll.Instance.scale);
-                                break;
-                            case "upArrows":
-                                link.y -= (int)(blockWidth * LoadAll.Instance.scale);
-                                break;
-                            case "downArrows":
-                                link.y += (int)(blockWidth * LoadAll.Instance.scale);
-                                break;
-                            case "unlock1":
-                                LoadAll.Instance.UnlockDoor("right");
-                                link.y -= (int)(blockWidth * LoadAll.Instance.scale);
-                                break;
-                            case "unlock2":
-                                link.y += (int)(blockWidth * LoadAll.Instance.scale);
-                                LoadAll.Instance.UnlockDoor("down");
-                                break;
-                            case "unlock3":
-                                LoadAll.Instance.UnlockDoor("left");
-                                link.y -= (int)(blockWidth * LoadAll.Instance.scale);
-                                break;
-                            case "unlock4":
-                                link.x += (int)(blockWidth * LoadAll.Instance.scale);
-                                LoadAll.Instance.UnlockDoor("up");
-                                break;
                             default:
                                 break;
                         }
