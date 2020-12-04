@@ -11,6 +11,8 @@ namespace Game1.Code.Player.Factory
 
         private Texture2D[] swordBeamLink;
 
+        private Texture2D[] iceSwordLink;
+
         private Texture2D[] woodenSwordLink;
 
         private Texture2D[] useItemLink;
@@ -20,6 +22,8 @@ namespace Game1.Code.Player.Factory
         private Texture2D[][] damagedLink;
 
         private Texture2D[][] damagedSwordBeamLink;
+
+        private Texture2D[][] damagedIceSwordLink;
 
         private Texture2D[][] damagedWoodenSwordLink;
 
@@ -48,6 +52,13 @@ namespace Game1.Code.Player.Factory
             swordBeamLink[1] = content.Load<Texture2D>("PlayerCharacterSprite/RightSwordBeam");
             swordBeamLink[2] = content.Load<Texture2D>("PlayerCharacterSprite/BackSwordBeam");
             swordBeamLink[3] = content.Load<Texture2D>("PlayerCharacterSprite/LeftSwordBeam");
+
+            // Link with IceSword 
+            iceSwordLink = new Texture2D[4];
+            iceSwordLink[0] = content.Load<Texture2D>("PlayerCharacterSprite/FrontIceSword");
+            iceSwordLink[1] = content.Load<Texture2D>("PlayerCharacterSprite/RightIceSword");
+            iceSwordLink[2] = content.Load<Texture2D>("PlayerCharacterSprite/BackIceSword");
+            iceSwordLink[3] = content.Load<Texture2D>("PlayerCharacterSprite/LeftIceSword");
 
             // Link with WoodenSword
             woodenSwordLink = new Texture2D[4];
@@ -117,6 +128,32 @@ namespace Game1.Code.Player.Factory
             damagedSwordBeamLink[3][1] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_2_LeftSwordBeam");
             damagedSwordBeamLink[3][2] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_3_LeftSwordBeam");
             damagedSwordBeamLink[3][3] = swordBeamLink[3];
+
+            // damaged Link with IceSword
+            damagedIceSwordLink = new Texture2D[4][];
+            damagedIceSwordLink[0] = new Texture2D[4];
+            damagedIceSwordLink[0][0] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_1_FrontIceSword");
+            damagedIceSwordLink[0][1] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_2_FrontIceSword");
+            damagedIceSwordLink[0][2] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_3_FrontIceSword");
+            damagedIceSwordLink[0][3] = swordBeamLink[0];
+
+            damagedIceSwordLink[1] = new Texture2D[4];
+            damagedIceSwordLink[1][0] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_1_RightIceSword");
+            damagedIceSwordLink[1][1] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_2_RightIceSword");
+            damagedIceSwordLink[1][2] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_3_RightIceSword");
+            damagedIceSwordLink[1][3] = swordBeamLink[1];
+
+            damagedIceSwordLink[2] = new Texture2D[4];
+            damagedIceSwordLink[2][0] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_1_BackIceSword");
+            damagedIceSwordLink[2][1] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_2_BackIceSword");
+            damagedIceSwordLink[2][2] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_3_BackIceSword");
+            damagedIceSwordLink[2][3] = swordBeamLink[2];
+
+            damagedIceSwordLink[3] = new Texture2D[4];
+            damagedIceSwordLink[3][0] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_1_LeftIceSword");
+            damagedIceSwordLink[3][1] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_2_LeftIceSword");
+            damagedIceSwordLink[3][2] = content.Load<Texture2D>("PlayerCharacterSprite/Damaged_3_LeftIceSword");
+            damagedIceSwordLink[3][3] = swordBeamLink[3];
 
             // damaged Link with WoodenSword
             damagedWoodenSwordLink = new Texture2D[4][];
@@ -194,6 +231,13 @@ namespace Game1.Code.Player.Factory
             return new SwordLinkSprite(swordBeamLink[index]);
         }
 
+
+        // Link with IceSword 
+        public IPlayerLinkSprite CreateIceSwordLink(int index)
+        {
+            return new SwordLinkSprite(iceSwordLink[index]);
+        }
+
         // Link with WoodenSword 
         public IPlayerLinkSprite CreateWoodenSwordLink(int index)
         {
@@ -230,6 +274,16 @@ namespace Game1.Code.Player.Factory
             for (int i = 0; i < 4; i++)
             {
                 spriteArray[i] = new SwordLinkSprite(damagedSwordBeamLink[index][i]);
+            }
+
+            return spriteArray;
+        }
+        public IPlayerLinkSprite[] CreateDamagedIceSwordLink(int index)
+        {
+            IPlayerLinkSprite[] spriteArray = new IPlayerLinkSprite[4];
+            for (int i = 0; i < 4; i++)
+            {
+                spriteArray[i] = new SwordLinkSprite(damagedIceSwordLink[index][i]);
             }
 
             return spriteArray;

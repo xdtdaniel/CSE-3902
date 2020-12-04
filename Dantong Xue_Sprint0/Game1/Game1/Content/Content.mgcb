@@ -1138,6 +1138,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerAbility/slash.png
 
+#begin PlayerCharacterSprite/BackIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/BackIceSword.png
+
 #begin PlayerCharacterSprite/BackLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1185,6 +1197,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/BackWoodenSword.png
+
+#begin PlayerCharacterSprite/Damaged_1_BackIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_1_BackIceSword.png
 
 #begin PlayerCharacterSprite/Damaged_1_BackLink.png
 /importer:TextureImporter
@@ -1234,6 +1258,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_1_BackWoodenSword.png
 
+#begin PlayerCharacterSprite/Damaged_1_FrontIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_1_FrontIceSword.png
+
 #begin PlayerCharacterSprite/Damaged_1_FrontLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1281,6 +1317,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_1_FrontWoodenSword.png
+
+#begin PlayerCharacterSprite/Damaged_1_LeftIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_1_LeftIceSword.png
 
 #begin PlayerCharacterSprite/Damaged_1_LeftLink.png
 /importer:TextureImporter
@@ -1342,6 +1390,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_1_PickUp.png
 
+#begin PlayerCharacterSprite/Damaged_1_RightIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_1_RightIceSword.png
+
 #begin PlayerCharacterSprite/Damaged_1_RightLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1389,6 +1449,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_1_RightWoodenSword.png
+
+#begin PlayerCharacterSprite/Damaged_2_BackIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_2_BackIceSword.png
 
 #begin PlayerCharacterSprite/Damaged_2_BackLink.png
 /importer:TextureImporter
@@ -1438,6 +1510,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_2_BackWoodenSword.png
 
+#begin PlayerCharacterSprite/Damaged_2_FrontIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_2_FrontIceSword.png
+
 #begin PlayerCharacterSprite/Damaged_2_FrontLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1485,6 +1569,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_2_FrontWoodenSword.png
+
+#begin PlayerCharacterSprite/Damaged_2_LeftIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_2_LeftIceSword.png
 
 #begin PlayerCharacterSprite/Damaged_2_LeftLink.png
 /importer:TextureImporter
@@ -1546,6 +1642,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_2_PickUp.png
 
+#begin PlayerCharacterSprite/Damaged_2_RightIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_2_RightIceSword.png
+
 #begin PlayerCharacterSprite/Damaged_2_RightLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1593,6 +1701,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_2_RightWoodenSword.png
+
+#begin PlayerCharacterSprite/Damaged_3_BackIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_3_BackIceSword.png
 
 #begin PlayerCharacterSprite/Damaged_3_BackLink.png
 /importer:TextureImporter
@@ -1642,6 +1762,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_3_BackWoodenSword.png
 
+#begin PlayerCharacterSprite/Damaged_3_FrontIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_3_FrontIceSword.png
+
 #begin PlayerCharacterSprite/Damaged_3_FrontLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1689,6 +1821,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_3_FrontWoodenSword.png
+
+#begin PlayerCharacterSprite/Damaged_3_LeftIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_3_LeftIceSword.png
 
 #begin PlayerCharacterSprite/Damaged_3_LeftLink.png
 /importer:TextureImporter
@@ -1750,6 +1894,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_3_PickUp.png
 
+#begin PlayerCharacterSprite/Damaged_3_RightIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/Damaged_3_RightIceSword.png
+
 #begin PlayerCharacterSprite/Damaged_3_RightLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1798,6 +1954,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/Damaged_3_RightWoodenSword.png
 
+#begin PlayerCharacterSprite/FrontIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/FrontIceSword.png
+
 #begin PlayerCharacterSprite/FrontLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1821,6 +1989,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/FrontShield.png
+
+#begin PlayerCharacterSprite/FrontShieldIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/FrontShieldIceSword.png
 
 #begin PlayerCharacterSprite/FrontShieldSwordBeam.png
 /importer:TextureImporter
@@ -1882,6 +2062,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/FrontWoodenSword.png
 
+#begin PlayerCharacterSprite/LeftIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/LeftIceSword.png
+
 #begin PlayerCharacterSprite/LeftLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1905,6 +2097,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/LeftShield.png
+
+#begin PlayerCharacterSprite/LeftShieldIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/LeftShieldIceSword.png
 
 #begin PlayerCharacterSprite/LeftShieldSwordBeam.png
 /importer:TextureImporter
@@ -1978,6 +2182,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/PickUp.png
 
+#begin PlayerCharacterSprite/RightIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/RightIceSword.png
+
 #begin PlayerCharacterSprite/RightLink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2001,6 +2217,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PlayerCharacterSprite/RightShield.png
+
+#begin PlayerCharacterSprite/RightShieldIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerCharacterSprite/RightShieldIceSword.png
 
 #begin PlayerCharacterSprite/RightShieldSwordBeam.png
 /importer:TextureImporter

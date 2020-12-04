@@ -40,6 +40,7 @@ namespace Game1.Code.Player.PlayerCharacter
 
         // link's items
         public Dictionary<string, int> itemList;
+        public Dictionary<string, int> buffList;
         public ItemPool itemPool;
         public bool useItemDone = true;
         private int swordBeamAttackDamage = 2;
@@ -95,6 +96,9 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("SwordBeam", 0);
             itemList.Add("Crown", 0);
 
+            buffList = new Dictionary<string, int>();
+            buffList.Add("IceSword", 0);                   // no buffs at default
+
             itemPool = new ItemPool(this);
 
             exp = 0;   // an int used to count killed enemy
@@ -123,13 +127,22 @@ namespace Game1.Code.Player.PlayerCharacter
         }
         public void Attack()
         {
-            if (itemList["WoodenSword"] > 0)
+            // check buffed sword first
+            if (buffList["IceSword"] > 0)
             {
-                state = new WoodenSwordLink(this);
+                state = new IceSwordLink(this);
             }
-            else if (itemList["SwordBeam"] > 0)
+            // if no buffs are applied, draw default sword sprite
+            else
             {
-                state = new SwordBeamLink(this);
+                if (itemList["WoodenSword"] > 0)
+                {
+                    state = new WoodenSwordLink(this);
+                }
+                else if (itemList["SwordBeam"] > 0)
+                {
+                    state = new SwordBeamLink(this);
+                }
             }
 
         }
