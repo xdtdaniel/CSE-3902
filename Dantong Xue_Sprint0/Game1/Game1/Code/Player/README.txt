@@ -13,7 +13,7 @@ Interface: IPlayerItemDrawer.cs: Interface for item drawer. IPlayerLinkState.cs:
 
 PlayerCharacter: Contains LinkSprite and LinkState folders and Link.cs. Classes in LinkSprite provide Draw() method for classes in LinkState to draw the according sprites on screen. Classes in LinkState implement different states of Link using state pattern. Link.cs is the main class of Player.
 
-PlayerItem: Contains PlayerItemSprite and PlayerItemDrawer folders and PlayerItem.cs. Classes in PlayerItemSprite provide Draw() method for classes in PlayerItemDrawer to draw the according sprites on screen. Classes in PlayerItemDrawer implement different states of item using state pattern. PlayerItem.cs is the instance represents the item that is being used by Link. 
+PlayerItemAndAbility: Contains PlayerAbility, PlayerItemSprite and PlayerItemDrawer folders. PlayerAbility class has abilities classes that can be learned and used by Link. Classes in PlayerItemSprite provide Draw() method for classes in PlayerItemDrawer to draw the according sprites on screen. Classes in PlayerItemDrawer implement different states of items and abilities. 
 
 PlayerPanel.cs: Integrate all the commands for Player so only a PlayerCommand and a Link instances in main game class are needed. 
 
@@ -25,32 +25,7 @@ S or ↓: Move down
 D or →: Move right
 N: Sword attack
 Z: Use current selected item
+J: Jump
+K: Dash
+D1 - D8: Use learned abilities
 
-/* required in Game1.cs */
-
-public class Game1 : Game
-    {
-        public Link link;
-        private PlayerPanel playerPanel;
-
-        protected override void Initialize()
-        {
-            link = new Link();
-            playerPanel = new PlayerPanel(this);
-        }
-
-        protected override void LoadContent()
-        {
-            PlayerCharacterFactory.Instance.LoadAllTextures(Content);
-            PlayerItemFactory.Instance.LoadAllTextures(Content);
-        }
-        protected override void Update(GameTime gameTime)
-        {
-            playerPanel.PlayerUpdate();
-        }
-        protected override void Draw(GameTime gameTime)
-        {
-            playerPanel.PlayerDraw();
-        }
-    }
-}
