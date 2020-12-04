@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/Blocks/shut_door_3.png</SourceFile>
-  <SourceTime>2020-12-04T00:02:32.2935222-05:00</SourceTime>
-  <DestFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Sprite/Blocks/shut_door_3.xnb</DestFile>
-  <DestTime>2020-12-04T00:03:39.9434592-05:00</DestTime>
+  <SourceFile>C:/Users/ybhba/Source/Repos/CSE-3902_new/Dantong Xue_Sprint0/Game1/Game1/Content/Sprite/Blocks/shut_door_3.png</SourceFile>
+  <SourceTime>2020-12-04T01:10:06.7407803-05:00</SourceTime>
+  <DestFile>C:/Users/ybhba/Source/Repos/CSE-3902_new/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Sprite/Blocks/shut_door_3.xnb</DestFile>
+  <DestTime>2020-12-04T01:11:18.7997157-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

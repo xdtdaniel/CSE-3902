@@ -28,7 +28,7 @@ namespace Game1.Code.Player.PlayerAbility
         private int stopVacuumFrame = 140;
 
         // cooldown: 9s
-        private static int cooldown = 1;
+        private static int cooldown = 9;
         private int timeBetweenAbility = cooldown * 60;
         private int timeSinceAbility = cooldown * 60;
         private bool usingAbility = false;

@@ -47,10 +47,11 @@ namespace Game1.Code.Achievement.Tracker
 
             if (!completed)
             {
-                if (game.link.isDead)
+                if (game.goodToRespawn && game.link.isDead)
                 {
                     deathCounter++;
                 }
+
                 if (deathCounter >= goalDeaths)
                 {
                     completed = true;

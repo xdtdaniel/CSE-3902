@@ -67,8 +67,8 @@ namespace Game1.Code.Achievement.Tracker
                 if (completed)
                 {
                     // award
-                    // master sword
-                    game.link.itemList["SwordBeam"]++;
+                    // health += 6
+                    game.link.itemList["HeartContainer"] += 5;
                     AudioPlayer.getItem.Play();
                 }
             }
