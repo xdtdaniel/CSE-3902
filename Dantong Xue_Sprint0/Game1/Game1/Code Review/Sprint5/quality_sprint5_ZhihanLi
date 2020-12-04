@@ -1,0 +1,17 @@
+Author of the code review:  Zhihan Li
+
+Date of the code review: 12/04/2020 
+Sprint number: 5
+
+Name of the .cs file being reviewed: Saw.cs
+Author of the .cs file being reviewed: Jason Lian, Fan Shen
+Number of minutes taken to complete the code review: 2 minutes
+
+Specific comments on code quality: 
+  Fan Shen add a new method freeze to Saw.cs, and my code review is for this new method.
+  
+	Nothing violated the requirement of maintainablity, this class is easy to modify and extend.This method do not
+  have high interdependency so it is easy to maintain and change.
+
+A hypothetical change on this class is to create a new method that pass the enemy list to it, and freeze certain enemy based on it index.
+And this can reduce the coupling. But this code worked correctly, so it is not required to make this change.
