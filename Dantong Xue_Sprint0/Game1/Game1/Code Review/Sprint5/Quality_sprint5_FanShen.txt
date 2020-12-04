@@ -1,0 +1,14 @@
+Author of the code review:  Fan Shen
+
+Date of the code review: 12/04/2020 
+Sprint 5
+
+Name of the .cs file being reviewed: HUDexp.cs
+Author of the .cs file being reviewed: Zhihan Li
+Number of minutes taken to complete the code review: 2 minutes
+
+Specific comments on code quality: 
+  Zhihan Li added a new class for displaying exp on HUD under HUD class. The maintainability seems easy and has followed the same formula of other hud elements.
+
+Hypothetical Change:
+Consider adding functionality that supports scaling of exp for future items like 2x exp earning.
