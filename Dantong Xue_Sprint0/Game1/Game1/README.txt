@@ -11,10 +11,10 @@ This is the Readme file for Sprint 5. It consists the info from Sprint 4 as well
    
 - New Weapons (Fan Shen):
 
-- New HUD Elements (Zhihan Li, Baihua Yang):
+- New HUD Elements (Zhihan Li, Baihua Yang, Patrick Cheng):
    Add RPG element Experience to HUD, it count the number of killed enemies and calculate level based on it. Each time Link level up
 will have new ability point, that acn be used to learn new skill. And we also add prompt when Link level up, to guide user to ability tree screen. In addition, an indicator for
-dash charge is added, which is displayed beneath Link. 
+dash charge is added, which is displayed beneath Link. A timer has also been added to the HUD so the player can know how long has he been playing the game, and how long will it take him to finish the game.
 
 - New Ability System Including Exp Bar (Baihua Yang, Zhihan Li):
    There are two ability trees: sword and bow. Link now can upgrade by killing enemies and gain 1 ability point per level. Ability points can be used to learn new abilities on ability tree page. For each ability on ability tree, it has name and description on the right of the screen to let user get known about each ability.
@@ -24,6 +24,7 @@ Each ability can be used by number keys from [1] to [8], and link can use these 
    Added 2 new actions for Link: Jump and Dash. In current development, Link cannot be hit by any attack if he is jumping or dashing. Both actions have short cooldowns. Link cannot jump over blocks. 
 
 - New Cheat Code Option (Patrick Cheng): 
+   Keyboard input cheat code added. By directly tying in the cheat code during the game can activate the cheat code. A audio will be played when the cheat code is activated sucessfully.
 
 [Complete List of Controls]
 [W,A,S,D / Arrow Up,Left,Down,Right] Move Up,Left,Down,Right
