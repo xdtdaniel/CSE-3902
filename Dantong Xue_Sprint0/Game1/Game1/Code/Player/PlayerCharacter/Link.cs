@@ -97,7 +97,7 @@ namespace Game1.Code.Player.PlayerCharacter
             itemList.Add("Crown", 0);
 
             buffList = new Dictionary<string, int>();
-            buffList.Add("IceSword", 1);                   // no buffs at default
+            buffList.Add("IceSword", 0);                   // no buffs at default
 
             itemPool = new ItemPool(this);
 

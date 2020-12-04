@@ -26,6 +26,7 @@ namespace Game1.Code.Item.ItemFactory
 		private static Texture2D blueRing;
 		private static Texture2D crown;
 		private static Texture2D swordbeam;
+		private static Texture2D iceSword;
 
 		public static void LoadAllTextures(ContentManager content)
 		{
@@ -49,11 +50,18 @@ namespace Game1.Code.Item.ItemFactory
 			blueRing = content.Load<Texture2D>("PlayerItemSprite/Ring/BlueRing");
 			crown = content.Load<Texture2D>("Sprite/items/crown");
 			swordbeam = content.Load<Texture2D>("PlayerItemSprite/Weapon/SwordBeam0");
+			iceSword = content.Load<Texture2D>("PlayerItemSprite/Weapon/IceSword0");
 		}
 
 		public static Texture2D createSword() {
 			return swordbeam;
 		}
+
+		public static Texture2D createIceSword()
+		{
+			return iceSword;
+		}
+
 		public static Texture2D createCrown(){
 			return crown;
 		}

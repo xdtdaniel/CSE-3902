@@ -200,6 +200,12 @@ namespace Game1.Code.LoadFile
                         inRoomItems.Add(new Tuple<IItemSprite, string>(item, "SwordBeam"));
                         inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "SwordBeam"));
                         break;
+                    case "icesword":
+                        item = new IceSword(X, Y);
+                        itemCopy = new IceSword(X, Y);
+                        inRoomItems.Add(new Tuple<IItemSprite, string>(item, "IceSword"));
+                        inRoomItemsCopy.Add(new Tuple<IItemSprite, string>(item, "IceSword"));
+                        break;
                 }
 
             }

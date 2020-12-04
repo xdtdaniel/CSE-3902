@@ -136,6 +136,8 @@ namespace Game1.Code.Player.CollisionHandler
                             break;
                         case "IceSword":
                             link.buffList["IceSword"]++;
+                            roomItemList.RemoveAt(index);
+                            AudioPlayer.getRupee.Play();
                             break;
                     }
 
