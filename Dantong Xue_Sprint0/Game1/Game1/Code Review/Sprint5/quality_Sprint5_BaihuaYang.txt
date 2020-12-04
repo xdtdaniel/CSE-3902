@@ -1,0 +1,14 @@
+Author of the code review: Baihua Yang
+
+Date of the code review: 12/4/2020 
+Sprint number: 5
+
+Name of the .cs file being reviewed: Saw.cs
+Author of the .cs file being reviewed: Jason Lian
+Number of minutes taken to complete the code review: 3 minutes
+
+Specific comments on code quality:
+This is a class for a new boss enemy. It follows the general mode of other enemy classes. This class has everything that this enemy needs, therefore it has high cohesion. It only has the necessary elements such as SpriteBatch, therefore it has low coupling. Adding new methods will be easy, therefore it has good maintainability. 
+
+Suggestions:
+Remove magic numbers and add some appropriate comments. Add a method to receive values to make it easier to adjust enemies' values, such as health scaler. Use state pattern to control enemy's movement so it will be easier to add new actions in future.
