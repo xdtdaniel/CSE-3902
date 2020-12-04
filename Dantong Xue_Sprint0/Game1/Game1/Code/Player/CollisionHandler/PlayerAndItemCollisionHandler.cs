@@ -125,12 +125,16 @@ namespace Game1.Code.Player.CollisionHandler
                             item = new Heart(X, Y);
                             roomItemList.RemoveAt(index);
                             link.PickUp(5);
+                            AudioPlayer.getRupee.Play();
                             break;
                         case "SwordBeam":
                             link.itemList["SwordBeam"]++;
                             item = new SwordBeam(X, Y);
                             roomItemList.RemoveAt(index);
                             AudioPlayer.getRupee.Play();
+                            break;
+                        case "IceSword":
+                            link.buffList["IceSword"]++;
                             break;
                     }
 
