@@ -13,5 +13,7 @@ namespace Game1.Code.Player.Interface
         void Learn();
         float GetCooldownPercentage();
         float GetRemainingCooldown();
+        void Draw(SpriteBatch sb);
+        void Updatelocation(float newStartX, float newStartY);
     }
 }

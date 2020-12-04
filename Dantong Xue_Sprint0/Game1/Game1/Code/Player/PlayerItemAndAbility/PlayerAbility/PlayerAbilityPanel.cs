@@ -1,8 +1,10 @@
 ﻿using Game1.Code.Audio;
+using Game1.Code.LoadFile;
 using Game1.Code.Player.Control.PlayerControlCommand;
 using Game1.Code.Player.Interface;
 using Game1.Code.Player.PlayerCharacter;
 using Game1.Code.Player.PlayerCharacter.LinkState;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,8 @@ namespace Game1.Code.Player.PlayerAbility
         private ItemPool itemPool;
         private Game1 game;
 
+        private SpriteFont des;
+
         private Dictionary<int, IPlayerAbility> swordAbilityDict = new Dictionary<int, IPlayerAbility>();
         private Dictionary<int, IPlayerAbility> bowAbilityDict = new Dictionary<int, IPlayerAbility>();
         public List<Dictionary<int, IPlayerAbility>> abilityDictList = new List<Dictionary<int, IPlayerAbility>>();
@@ -25,6 +29,9 @@ namespace Game1.Code.Player.PlayerAbility
         private List<Keys> availableKeys = new List<Keys>();
         public Dictionary<int, Tuple<int, int>> registeredAbilities = new Dictionary<int, Tuple<int, int>>();
         private int nextRegisterKey = 0;
+
+        public float x = (int)LoadAll.Instance.startPos.X;
+        public float y = (int)LoadAll.Instance.startPos.Y;
 
         public PlayerAbilityPanel(Game1 game)
         {
@@ -95,6 +102,26 @@ namespace Game1.Code.Player.PlayerAbility
                 }
             }
 
+        }
+        public void Draw()
+        {
+            for (int i = 0; i < abilityDictList.Count; i++)
+            {
+                for (int j = 0; j < abilityDictList[i].Count; j++)
+                {
+                    abilityDictList[i][j].Draw(game._spriteBatch);
+                }
+            }         
+
+        }
+        public void Updatelocation() {
+            for (int i = 0; i < abilityDictList.Count; i++)
+            {
+                for (int j = 0; j < abilityDictList[i].Count; j++)
+                {
+                    abilityDictList[i][j].Updatelocation(x,y);
+                }
+            }
         }
         public int GetNumOfAbilities()
         {

@@ -29,26 +29,6 @@ namespace Game1.Code.HUD.AbilitySelection
         }
         public void Update(float newStartX, float newStartY)
         {
-            if (index < 0)
-            {
-                type--;
-                if (type < 0)
-                {
-                    type = playerAbilityPanel.abilityDictList.Count - 1;
-                }
-                index = playerAbilityPanel.abilityDictList[type].Count - 1;
-            }
-            else if (index > playerAbilityPanel.abilityDictList[type].Count - 1)
-            {
-                type++;
-                index = 0;
-            }
-            if (type > playerAbilityPanel.abilityDictList.Count - 1)
-            {
-                type = 0;
-            }
-            inventoryAbilitySelection.Update(newStartX, newStartY, index, type);
-
             newState = Keyboard.GetState();
 
             if (Camera.pausedType == 2)
@@ -76,11 +56,33 @@ namespace Game1.Code.HUD.AbilitySelection
             // update keyboard state
             oldState = newState;
 
+            // update type and index
+            if (index < 0)
+            {
+                type--;
+                if (type < 0)
+                {
+                    type = playerAbilityPanel.abilityDictList.Count - 1;
+                }
+                index = playerAbilityPanel.abilityDictList[type].Count - 1;
+            }
+            else if (index > playerAbilityPanel.abilityDictList[type].Count - 1)
+            {
+                type++;
+                index = 0;
+            }
+            if (type > playerAbilityPanel.abilityDictList.Count - 1)
+            {
+                type = 0;
+            }
+            inventoryAbilitySelection.Update(newStartX, newStartY, index, type);
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             inventoryAbilitySelection.Draw(spriteBatch);
+            playerAbilityPanel.abilityDictList[type][index].Draw(spriteBatch);
         }
     }
 }

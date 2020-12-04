@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using Zelda.Code.Player.PlayerCharacter;
+using Game1.Code.HUD.Factory;
+using Game1.Code.LoadFile;
+using Microsoft.Xna.Framework;
 
 namespace Game1.Code.Player.PlayerAbility
 {
@@ -35,10 +38,15 @@ namespace Game1.Code.Player.PlayerAbility
         private int timeSinceAbility = cooldown * 60;
         private bool usingAbility = false;
 
+        private SpriteFont des;
+        private int posX;
+        private int posY;
+
         public FieldBlast(Link link, ItemPool itemPool)
         {
             this.link = link;
             this.itemPool = itemPool;
+            des = HUDFactory.LoadSkillInstruction();
         }
         public void Update()
         {
@@ -104,6 +112,16 @@ namespace Game1.Code.Player.PlayerAbility
         {
             float cd = timeBetweenAbility - timeSinceAbility;
             return cd;
+        }
+        public void Draw(SpriteBatch sb)
+        {
+            sb.DrawString(des, "Press[1] ", new Vector2(posX + 125 * scale, posY + 236 * scale), Color.LightBlue);
+
+        }
+        public void Updatelocation(float newStartX, float newStartY)
+        {
+            posX = (int)newStartX;
+            posY = (int)newStartY;
         }
     }
 }
