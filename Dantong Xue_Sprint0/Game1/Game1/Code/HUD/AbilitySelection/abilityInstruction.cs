@@ -17,7 +17,7 @@ namespace Game1.Code.HUD.Sprite
         private int x;
         private int y;
         private int offX = 125*scale;
-        private int offY = 40 * scale;    
+        private int offY = 25 * scale;    
         private int preY = 176 * scale;
         private Game1 game;
         public abilityInstruction(Game1 game)

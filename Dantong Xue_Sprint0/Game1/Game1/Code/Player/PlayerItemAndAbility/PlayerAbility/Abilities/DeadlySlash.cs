@@ -105,8 +105,8 @@ namespace Game1.Code.Player.PlayerAbility
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(des, "Stop the enmies in front\n of Link, then use attack\n the stopped enemies ", new Vector2(posX + 125 * scale, posY + 260 * scale), Color.LimeGreen);
-
+            sb.DrawString(des, "Stop the enmies in front\n of Link, then attack\n the stopped enemie.", new Vector2(posX + 125 * scale, posY + 260 * scale), Color.LimeGreen);
+            sb.DrawString(des, "[Deadly Slash]", new Vector2(posX + 125 * scale, posY + 240 * scale), Color.White);
         }
         public void Updatelocation(float newStartX, float newStartY)
         {

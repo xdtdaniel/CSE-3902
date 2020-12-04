@@ -115,7 +115,8 @@ namespace Game1.Code.Player.PlayerAbility
         }
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(des, "Press[1] ", new Vector2(posX + 125 * scale, posY + 236 * scale), Color.LightBlue);
+            sb.DrawString(des, "[Field Blast]", new Vector2(posX + 125 * scale, posY + 240 * scale), Color.White);
+            sb.DrawString(des, "Generate swords rain\n around Link.", new Vector2(posX + 125 * scale, posY + 260 * scale), Color.LimeGreen);
 
         }
         public void Updatelocation(float newStartX, float newStartY)

@@ -77,6 +77,7 @@ namespace Game1.Code.Player.PlayerAbility
         public void Draw(SpriteBatch sb)
         {
             //display below instruction
+            sb.DrawString(des, "[Blade Barrage]", new Vector2(posX + 125 * scale, posY + 240 * scale), Color.White);
             sb.DrawString(des, "Generate 8 swords around Link\n then shoot in same time\n to different diretions. ", new Vector2(posX+125*scale,posY+260*scale), Color.LimeGreen);
 
         }
