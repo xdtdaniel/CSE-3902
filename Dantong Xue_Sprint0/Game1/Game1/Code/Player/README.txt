@@ -1,5 +1,8 @@
 Author: Baihua Yang
 
+Added in Sprint 5:
+    Jump, dash, 8 abilities. 
+_______________________________________________________________________________________________________
 Player has 6 folders and 1 concrete class:
     CollisionHandler, Control, Factory, Interface, PlayerCharacter, PlayerItem and PlayerPanel.cs.
     
