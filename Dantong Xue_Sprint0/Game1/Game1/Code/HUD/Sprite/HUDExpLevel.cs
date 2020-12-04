@@ -28,6 +28,7 @@ namespace Game1.Code.HUD.Sprite
         {
             this.game = game;
             prompt = new promptText(100,300);
+            expLevelTexture = HUDFactory.LoadNumber(explevel)[1];
         }
         public void Draw(SpriteBatch spriteBatch)
         {
