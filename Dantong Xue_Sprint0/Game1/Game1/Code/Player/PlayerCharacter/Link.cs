@@ -281,6 +281,9 @@ namespace Game1.Code.Player.PlayerCharacter
                     }
                     break;
                 default:
+                    x = (int)(LoadAll.Instance.startPos.X + 35 * (int)scale);
+                    y = (int)(LoadAll.Instance.startPos.Y + 56 * (int)scale + 35 * (int)scale);
+
                     break;
             }
         }
