@@ -5,8 +5,11 @@ This is the Readme file for Sprint 5. It consists the info from Sprint 4 as well
    We added four new levels (19, 20, 21, 22) that can be accessed by going down at the initial starting level. Level 20 is designed so that you need to hide and run. Level 21 needs you to determine which path to go. Arrows are implemented as escalators. Level 22 has a new Boss of Saw.
 - New Achievement System (Baihua Yang):
 - New Weapons (Fan Shen):
-- New HUD Elements (Zhihan Li, Baihua Yang):
+- New HUD Elements (Zhihan Li, Baihua Yang): Add RPG element Experience to HUD, it count the number of killed enemies and calculate level based on it. Each time Link level up
+will have new ability point, that acn be used to learn new skill. And we also add prompt when Link level up, to guide user to ability tree screen.
 - New Skill System Including Exp Bar (Baihua Yang, Zhihan Li):
+For each ability on ability tree, it has name and description on the right of the screen to let user get known about each ability.
+Each ability can be controlled by number keys from [1] to [8], and link can use these ability to attack enemies.
 - New Cheat Code Option (Patrick Cheng): 
 
 [Complete List of Controls]
@@ -15,11 +18,12 @@ This is the Readme file for Sprint 5. It consists the info from Sprint 4 as well
 [Z] Use current item
 [P] Go to/back from item selection interface
 
------[P]-----
+-----[P]-----Item Selection Screen
 [U] Item select left
 [I] Item select right
 [B] Choose item to use in inventory
------[O]-----
+
+-----[O]-----Ability Tree Screen
 [U] select previous ability
 [I] select next ability
 [B] Choose to add newww ability point
