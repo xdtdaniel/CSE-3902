@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Get_Item.wav</SourceFile>
-  <SourceTime>2020-12-04T10:33:20.9698754-05:00</SourceTime>
-  <DestFile>C:/Users/~!/Downloads/CSE-3902/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Audio/Get_Item.xnb</DestFile>
-  <DestTime>2020-12-04T10:53:56.3217658-05:00</DestTime>
+  <SourceFile>C:/Users/FanShenWork/source/repo2/Dantong Xue_Sprint0/Game1/Game1/Content/Audio/Get_Item.wav</SourceFile>
+  <SourceTime>2020-12-04T01:53:01.2289312-05:00</SourceTime>
+  <DestFile>C:/Users/FanShenWork/source/repo2/Dantong Xue_Sprint0/Game1/Game1/Content/bin/Windows/Content/Audio/Get_Item.xnb</DestFile>
+  <DestTime>2020-12-04T11:25:32.273747-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

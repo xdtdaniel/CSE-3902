@@ -35,7 +35,7 @@ namespace Game1
         private List<IProjectile> ProjectileList = new List<IProjectile>();
 
         private bool IsFreezed = false;
-
+        private int freezeTimer = 0;
         public Keese(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetKeeseSpriteSheet();
@@ -93,9 +93,14 @@ namespace Game1
                 UpdateMovingState();
                 UpdateLocation();
             }
-            else 
+            else if (freezeTimer == 0)
             {
                 IsFreezed = false;
+            }
+
+            if (freezeTimer > 0)
+            {
+                freezeTimer--;
             }
 
             if (DamageTimer > 0) 
@@ -328,8 +333,9 @@ namespace Game1
             return hp;
         }
 
-        void IEnemy.Freeze()
+        void IEnemy.Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
     }

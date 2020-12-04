@@ -17,7 +17,16 @@ namespace Game1.Code.Player.Control.PlayerControlCommand
             {
                 game.link.Attack();
                 AudioPlayer.swordSlash.Play();
-                if (game.link.itemList["WoodenSword"] > 0)
+                if (game.link.buffList["IceSword"] > 0)
+                {
+                    if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
+                    {
+                        AudioPlayer.swordShoot.Play();
+                        game.link.itemPool.UseItem("RangedIceSword");
+                    }
+                    game.link.timeSinceAttack = 0;
+                }
+                else if (game.link.itemList["WoodenSword"] > 0)
                 {
                     if (game.link.itemList["Heart"] == game.link.itemList["HeartContainer"])
                     {
@@ -35,6 +44,7 @@ namespace Game1.Code.Player.Control.PlayerControlCommand
                     }
                     game.link.timeSinceAttack = 0;
                 }
+
             }
         }
     }

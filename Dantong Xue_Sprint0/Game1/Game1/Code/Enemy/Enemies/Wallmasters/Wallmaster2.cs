@@ -33,7 +33,7 @@ namespace Game1.Enemy
         private int Heading;
 
         private bool IsFreezed = false;
-
+        private int freezeTimer = 0;
         public Wallmaster2(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetWallmaster3SpriteSheet();
@@ -138,9 +138,14 @@ namespace Game1.Enemy
 
                 UpdateLocation();
             }
-            else
+            else if (freezeTimer == 0)
             {
                 IsFreezed = false;
+            }
+
+            if (freezeTimer > 0)
+            {
+                freezeTimer--;
             }
 
             if (DamageTimer > 0)
@@ -233,8 +238,9 @@ namespace Game1.Enemy
             return hp;
         }
 
-        void IEnemy.Freeze()
+        void IEnemy.Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
     }

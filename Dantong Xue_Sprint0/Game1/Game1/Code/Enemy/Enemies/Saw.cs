@@ -36,7 +36,7 @@ namespace Game1.Code.Enemy
         private List<IProjectile> ProjectileList = new List<IProjectile>();
 
         private bool IsFreezed = false;
-
+        private int freezeTimer = 0;
         public Saw(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetSawSpriteSheet();
@@ -125,6 +125,7 @@ namespace Game1.Code.Enemy
                         }
                     }
                 }
+   
 
                 if (MovingState == 1) 
                 {
@@ -152,6 +153,15 @@ namespace Game1.Code.Enemy
                 }
 
                 UpdateLocation();
+            }
+            else if (freezeTimer == 0)
+            {
+                IsFreezed = false;
+            }
+
+            if (freezeTimer > 0)
+            {
+                freezeTimer--;
             }
 
             if (DamageTimer > 0)
@@ -301,8 +311,9 @@ namespace Game1.Code.Enemy
             // Do nothing.
         }
 
-        public void Freeze()
+        public void Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
 

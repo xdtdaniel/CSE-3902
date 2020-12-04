@@ -24,7 +24,7 @@ namespace Game1.Code.Enemy
         private int hp = 100;
 
         private bool IsFreezed = false;
-
+        private int freezeTimer = 0;
         public NewTrap1(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetNewTrap1SpriteSheet();
@@ -59,6 +59,15 @@ namespace Game1.Code.Enemy
                 }
 
                 UpdateLocation();
+            }
+            else if (freezeTimer == 0)
+            {
+                IsFreezed = false;
+            }
+
+            if (freezeTimer > 0)
+            {
+                freezeTimer--;
             }
         }
 
@@ -128,8 +137,9 @@ namespace Game1.Code.Enemy
             return hp;
         }
 
-        public void Freeze()
+        public void Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
     }

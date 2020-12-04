@@ -73,7 +73,7 @@ namespace Game1.Enemy
             return hp;
         }
 
-        void IEnemy.Freeze()
+        void IEnemy.Freeze(int timer)
         {
             // Do nothing.
         }

@@ -40,7 +40,7 @@ namespace Game1.Enemy
         private bool RightCollide = false;
 
         private bool IsFreezed = false;
-
+        private int freezeTimer = 0;
         public Goriya(Vector2 location, List<Rectangle> blockList)
         {
             Texture = EnemyTextureStorage.GetGoriyaSpriteSheet();
@@ -140,11 +140,16 @@ namespace Game1.Enemy
 
                 UpdateLocation();
             }
-            else 
+            else if (freezeTimer == 0)
             {
                 IsFreezed = false;
             }
-            
+
+            if (freezeTimer > 0)
+            {
+                freezeTimer--;
+            }
+
             if (DamageTimer > 0)
             {
                 DamageTimer--;
@@ -365,8 +370,9 @@ namespace Game1.Enemy
             return hp;
         }
 
-        void IEnemy.Freeze()
+        void IEnemy.Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
     }

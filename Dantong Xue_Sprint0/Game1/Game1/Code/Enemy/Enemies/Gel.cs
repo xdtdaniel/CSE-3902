@@ -34,7 +34,7 @@ namespace Game1
         private bool RightCollide = false;
 
         private bool IsFreezed = false;
-
+        private int freezeTimer = 0;
         public Gel(Vector2 location, List<Rectangle> blockList)
         {
             Texture = EnemyTextureStorage.GetGelSpriteSheet();
@@ -112,9 +112,14 @@ namespace Game1
                     RightCollide = false;
                 }
             }
-            else
+            else if (freezeTimer == 0)
             {
                 IsFreezed = false;
+            }
+
+            if (freezeTimer > 0)
+            {
+                freezeTimer--;
             }
 
             if (DamageTimer > 0) 
@@ -252,8 +257,9 @@ namespace Game1
             return hp;
         }
 
-        void IEnemy.Freeze()
+        void IEnemy.Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
     }

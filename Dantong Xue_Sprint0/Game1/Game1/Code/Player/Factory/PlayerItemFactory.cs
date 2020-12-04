@@ -9,6 +9,7 @@ namespace Game1.Code.Player.Factory
     {
         private Texture2D[] woodenSword;
         private Texture2D[] swordBeam;
+        private Texture2D[] iceSword;
 
         private Texture2D frontArrow;
         private Texture2D rightArrow;
@@ -29,6 +30,7 @@ namespace Game1.Code.Player.Factory
 
         private Texture2D[] woodenEdge;
         private Texture2D[] beamEdge;
+        private Texture2D[] iceEdge;
 
         public static PlayerItemFactory Instance { get; } = new PlayerItemFactory();
 
@@ -43,6 +45,12 @@ namespace Game1.Code.Player.Factory
             woodenSword[1] = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword1");
             woodenSword[2] = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword2");
             woodenSword[3] = content.Load<Texture2D>("PlayerItemSprite/Weapon/WoodenSword3");
+
+            iceSword = new Texture2D[4];
+            iceSword[0] = content.Load<Texture2D>("PlayerItemSprite/Weapon/IceSword0");
+            iceSword[1] = content.Load<Texture2D>("PlayerItemSprite/Weapon/IceSword1");
+            iceSword[2] = content.Load<Texture2D>("PlayerItemSprite/Weapon/IceSword2");
+            iceSword[3] = content.Load<Texture2D>("PlayerItemSprite/Weapon/IceSword3");
 
             swordBeam = new Texture2D[4];
             swordBeam[0] = content.Load<Texture2D>("PlayerItemSprite/Weapon/SwordBeam0");
@@ -75,6 +83,11 @@ namespace Game1.Code.Player.Factory
             woodenEdge[2] = content.Load<Texture2D>("PlayerItemSprite/Edge/WoodenEdge2");
             woodenEdge[3] = content.Load<Texture2D>("PlayerItemSprite/Edge/WoodenEdge3");
 
+            iceEdge = new Texture2D[4];
+            iceEdge[0] = content.Load<Texture2D>("PlayerItemSprite/Edge/IceEdge0");
+            iceEdge[1] = content.Load<Texture2D>("PlayerItemSprite/Edge/IceEdge1");
+            iceEdge[2] = content.Load<Texture2D>("PlayerItemSprite/Edge/IceEdge2");
+            iceEdge[3] = content.Load<Texture2D>("PlayerItemSprite/Edge/IceEdge3");
             beamEdge = new Texture2D[4];
             beamEdge[0] = content.Load<Texture2D>("PlayerItemSprite/Edge/beamEdge0");
             beamEdge[1] = content.Load<Texture2D>("PlayerItemSprite/Edge/beamEdge1");
@@ -86,6 +99,11 @@ namespace Game1.Code.Player.Factory
         public IPlayerItemSprite CreateWoodenSword(int index)
         {
             return new WoodenSword(woodenSword[index]);
+        }
+
+        public IPlayerItemSprite CreateIceSword(int index)
+        {
+            return new WoodenSword(iceSword[index]);
         }
         public IPlayerItemSprite CreateSwordBeam(int index)
         {
@@ -154,6 +172,11 @@ namespace Game1.Code.Player.Factory
         public IPlayerItemSprite CreateWoodenEdge(int index)
         {
             return new WoodenEdge(woodenEdge[index]);
+        }
+
+        public IPlayerItemSprite CreateIceEdge(int index)
+        {
+            return new WoodenEdge(iceEdge[index]);
         }
         public IPlayerItemSprite CreateBeamEdge(int index)
         {

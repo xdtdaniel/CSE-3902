@@ -166,7 +166,7 @@ namespace Game1
                 {
                     for (int i = 0; i < EnemyList.Count; i++)
                     {
-                        EnemyList[i].Item1.Freeze();
+                        EnemyList[i].Item1.Freeze(10000);
                     }
                     //                
                 }

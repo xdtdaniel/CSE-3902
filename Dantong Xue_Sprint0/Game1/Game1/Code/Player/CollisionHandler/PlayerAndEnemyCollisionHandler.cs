@@ -21,7 +21,7 @@ namespace Game1.Code.Player.CollisionHandler
         private static int offsetY = 56 * scale;
         public static void HandleCollision(Link link, List<Tuple<IEnemy, string, int>> enemyList)
         {
-            if (link.GetStateName() == "SwordBeamLink" || link.GetStateName() == "WoodenSwordLink")
+            if (link.GetStateName() == "SwordBeamLink" || link.GetStateName() == "WoodenSwordLink" || link.GetStateName() == "IceSwordLink")
             {
                 switch (link.direction)
                 {
@@ -58,6 +58,10 @@ namespace Game1.Code.Player.CollisionHandler
                 if (!hitAtLeastOne && collidedSide != "")
                 {
                     tuple.Item1.TakeDamage(link.basicAttackDamage);
+                    if(link.GetStateName() == "IceSwordLink")
+                    {
+                        tuple.Item1.Freeze(50);
+                    }
                     if (tuple.Item2 != "aquamentus")
                     {
                         AudioPlayer.enemyHit.Play();                    }

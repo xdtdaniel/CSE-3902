@@ -43,7 +43,7 @@ namespace Game1.Enemy
         private bool BossScreamPlayed;
 
         private bool IsFreezed = false;
-
+        private int freezeTimer = 0;
         public Aquamentus(Vector2 location) 
         {
             Texture = EnemyTextureStorage.GetAquamentusSpriteSheet();
@@ -196,9 +196,15 @@ namespace Game1.Enemy
 
                 FireProjectile();
             }
-            else 
+            else if (freezeTimer == 0)
             {
                 IsFreezed = false;
+            }
+
+            if (freezeTimer > 0)
+            {
+                freezeTimer--;
+                freezeTimer--;
             }
 
             if (Projectile0.GetIsOnScreen())
@@ -323,8 +329,9 @@ namespace Game1.Enemy
             return hp;
         }
 
-        void IEnemy.Freeze()
+        void IEnemy.Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
     }

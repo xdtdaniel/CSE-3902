@@ -71,6 +71,13 @@ namespace Game1.Code.Player.PlayerItem.PlayerItemState
                         edge[i] = PlayerItemFactory.Instance.CreateBeamEdge(i);
                     }
                     break;
+                case 2:
+                    for (int i = 0; i < numberOfSprite; i++)
+                    {
+                        sword[i] = PlayerItemFactory.Instance.CreateIceSword(i);
+                        edge[i] = PlayerItemFactory.Instance.CreateIceEdge(i);
+                    }
+                    break;
                 default:
                     break;
             }

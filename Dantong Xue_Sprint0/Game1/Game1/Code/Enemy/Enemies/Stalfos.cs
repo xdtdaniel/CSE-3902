@@ -37,6 +37,7 @@ namespace Game1
         private bool LeftCollide = false;
         private bool RightCollide = false;
 
+        private int freezeTimer = 0;
         private bool IsFreezed = false;
 
         public Stalfos(Vector2 location, List<Rectangle> blockList)
@@ -112,11 +113,15 @@ namespace Game1
             {
                 UpdateLocation();
             }
-            else 
+            else if(freezeTimer == 0)
             {
                 IsFreezed = false;
             }
-
+            
+            if(freezeTimer > 0)
+            {
+                freezeTimer--;
+            }
 
             if (DamageTimer > 0)
             {
@@ -303,8 +308,9 @@ namespace Game1
             return hp;
         }
 
-        void IEnemy.Freeze()
+        void IEnemy.Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
     }

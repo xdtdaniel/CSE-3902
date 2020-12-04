@@ -42,14 +42,18 @@ namespace Game1.Code.Player.CollisionHandler
 
                             case "RangedSword":
                                 tuple.Item1.TakeDamage(item.GetDamage());
+                                if (link.GetStateName() == "IceSwordLink")
+                                    tuple.Item1.Freeze(45);
                                 break;
 
                             case "SwordEdge":
                                 tuple.Item1.TakeDamage(item.GetDamage());
+                                if (link.GetStateName() == "IceSwordLink")
+                                    tuple.Item1.Freeze(30);
                                 break;
 
                             case "Radiation":
-                                tuple.Item1.Freeze();
+                                tuple.Item1.Freeze(1000);
                                 break;
 
                             case "Slash":

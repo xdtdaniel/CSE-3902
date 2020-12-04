@@ -46,6 +46,10 @@ namespace Zelda.Code.Player.PlayerCharacter
                 case "RangedSwordBeam":
                     list.Add(new RangedSword(link, 1));
                     break;
+
+                case "RangedIceSword":
+                    list.Add(new RangedSword(link, 2));
+                    break;
                 default:
                     break;
             }

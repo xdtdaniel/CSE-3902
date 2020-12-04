@@ -29,7 +29,7 @@ namespace Game1
         private bool CanChangeDirection;
 
         private bool IsFreezed = false;
-
+        private int freezeTimer = 0;
         public Trap3(Vector2 location)
         {
             Texture = EnemyTextureStorage.GetTrapSpriteSheet();
@@ -82,9 +82,14 @@ namespace Game1
 
                 UpdateLocation();
             }
-            else
+            else if (freezeTimer == 0)
             {
                 IsFreezed = false;
+            }
+
+            if (freezeTimer > 0)
+            {
+                freezeTimer--;
             }
         }
 
@@ -167,8 +172,9 @@ namespace Game1
             return hp;
         }
 
-        void IEnemy.Freeze()
+        void IEnemy.Freeze(int timer)
         {
+            freezeTimer = timer;
             IsFreezed = true;
         }
     }
