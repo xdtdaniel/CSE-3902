@@ -3,13 +3,24 @@ This is the Readme file for Sprint 5. It consists the info from Sprint 4 as well
 [New Features Added in Sprint 5]
 - New levels (Jason Lian, Dantong Xue):
    We added four new levels (19, 20, 21, 22) that can be accessed by going down at the initial starting level. Level 20 is designed so that you need to hide and run. Level 21 needs you to determine which path to go. Arrows are implemented as escalators. Level 22 has a new Boss of Saw.
+   
 - New Achievement System (Baihua Yang):
+   Added 10 achievement for player to complete. All of them have awards and will be prompted out once completed. The achievement image frame used is from Hollow Knight.
+   
 - New Weapons (Fan Shen):
-- New HUD Elements (Zhihan Li, Baihua Yang): Add RPG element Experience to HUD, it count the number of killed enemies and calculate level based on it. Each time Link level up
-will have new ability point, that acn be used to learn new skill. And we also add prompt when Link level up, to guide user to ability tree screen.
-- New Skill System Including Exp Bar (Baihua Yang, Zhihan Li):
-For each ability on ability tree, it has name and description on the right of the screen to let user get known about each ability.
-Each ability can be controlled by number keys from [1] to [8], and link can use these ability to attack enemies.
+
+- New HUD Elements (Zhihan Li, Baihua Yang):
+   Add RPG element Experience to HUD, it count the number of killed enemies and calculate level based on it. Each time Link level up
+will have new ability point, that acn be used to learn new skill. And we also add prompt when Link level up, to guide user to ability tree screen. In addition, an indicator for
+dash charge is added, which is displayed beneath Link. 
+
+- New Ability System Including Exp Bar (Baihua Yang, Zhihan Li):
+   There are two ability trees: sword and bow. Link now can upgrade by killing enemies and gain 1 ability point per level. Ability points can be used to learn new abilities on ability tree page. For each ability on ability tree, it has name and description on the right of the screen to let user get known about each ability.
+Each ability can be used by number keys from [1] to [8], and link can use these ability to attack enemies. Images for ability effects and icons are by Baihua Yang via www.pixilart.com .
+
+- New Actions for Link (Baihua Yang):
+   Added 2 new actions for Link: Jump and Dash. In current development, Link cannot be hit by any attack if he is jumping or dashing. Both actions have short cooldowns. Link cannot jump over blocks. 
+
 - New Cheat Code Option (Patrick Cheng): 
 
 [Complete List of Controls]
