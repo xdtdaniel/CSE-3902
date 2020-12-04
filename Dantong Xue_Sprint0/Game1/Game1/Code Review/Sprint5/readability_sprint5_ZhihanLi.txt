@@ -1,0 +1,12 @@
+﻿Author of the code review: Zhihan Li
+
+Date of the code review: 12/04/2020
+Sprint number: 5
+
+Name of the .cs file being reviewed: Gel.cs, Goriya.cs Stalfos.cs  
+Author of the .cs file being reviewed: Shen Fan, Jason Lian
+Number of minutes taken to complete the code review: 2 minutes
+Specific comments on code quality: 	
+    Shen Fan add new feature to the enemy classes writen by Jason Lian,
+    Overall, every parameter named clearly and easy to understand.
+    This method get the input int timer, and freezed(stop the enemy with the given time). 
