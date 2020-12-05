@@ -6,4 +6,5 @@ Jason Lian
 Fan Shen   
 Dantong Xue (xue.425)   
 Baihua Yang   
-Please check out any progress before submitting your code.
+
+This project is now done.
