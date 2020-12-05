@@ -47,8 +47,6 @@ namespace Game1.Code.Achievement.Tracker
 
             if (!completed)
             {
-                game.link.itemList["Heart"] = 1;
-
                 if (game.deaths >= goalDeaths)
                 {
                     completed = true;
