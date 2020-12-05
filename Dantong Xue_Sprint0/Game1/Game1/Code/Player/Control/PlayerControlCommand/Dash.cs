@@ -13,7 +13,7 @@ namespace Game1.Code.Player.Control.PlayerControlCommand
 
         public void Execute()
         {
-            if (game.link.GetStateName() != "DashLink")
+            if (game.link.GetStateName() != "DashLink" && game.link.GetStateName() != "DeadLink")
             {
                 game.link.Dash();
             }

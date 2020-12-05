@@ -20,7 +20,6 @@ namespace Game1.Code.Player.PlayerAbility
         private ItemPool itemPool;
         private Game1 game;
 
-        private SpriteFont des;
 
         private Dictionary<int, IPlayerAbility> swordAbilityDict = new Dictionary<int, IPlayerAbility>();
         private Dictionary<int, IPlayerAbility> bowAbilityDict = new Dictionary<int, IPlayerAbility>();

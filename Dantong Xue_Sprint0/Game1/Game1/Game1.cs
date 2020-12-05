@@ -60,9 +60,10 @@ namespace Game1
         private bool clockWorking;
         public bool gameStarted;
 
-        private int deathCounter;
+        public int deathCounter;
         private const int deathCounterLimit = 200;
         public bool goodToRespawn;
+        public int deaths = 0;
 
         private StartScreen startScreen;
 
@@ -210,10 +211,9 @@ namespace Game1
 
                 if (deathCounter <= 0 && goodToRespawn)
                 {
-                    
-
                     link = new Link();
                     playerPanel = new PlayerPanel(this);
+                    playerAbilityPanel = new PlayerAbilityPanel(this);
                     hudPanel = new HUDPanel(this);
                     selectedItemName = "";
                     LoadAll.Instance.GetGameObject(this);
@@ -226,6 +226,7 @@ namespace Game1
 
                     deathCounter = deathCounterLimit;
                     goodToRespawn = false;
+                    deaths++;
                 }
                 
             }

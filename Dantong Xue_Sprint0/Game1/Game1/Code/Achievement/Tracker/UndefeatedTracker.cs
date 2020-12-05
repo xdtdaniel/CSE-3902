@@ -4,6 +4,7 @@ using Game1.Code.LoadFile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Diagnostics;
 
 namespace Game1.Code.Achievement.Tracker
 {
@@ -30,7 +31,6 @@ namespace Game1.Code.Achievement.Tracker
         private int drawWidth = 180 * scale;
         private int drawHeight = 81 * scale;
 
-        private int deathCounter;
         private int goalDeaths = 5;
 
         public UndefeatedTracker(Game1 game)
@@ -47,12 +47,9 @@ namespace Game1.Code.Achievement.Tracker
 
             if (!completed)
             {
-                if (game.goodToRespawn && game.link.isDead)
-                {
-                    deathCounter++;
-                }
+                game.link.itemList["Heart"] = 1;
 
-                if (deathCounter >= goalDeaths)
+                if (game.deaths >= goalDeaths)
                 {
                     completed = true;
                 }
