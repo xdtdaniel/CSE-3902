@@ -1,5 +1,0 @@
-This is the final sprint for our 3902 project, we implement many new features in our legend of zelda game.
-In this sprint I add the RPG element to the game(EXPerence, leve), and add the description of abilities(new feature add by Baihua).
-I learn a lot from this project, and the most important thing I learn from this class is to use the design pattern,
-Which it can save lot of time and make others easy to understand the code.
-I appreciate all teammates effort and help on the project during this entire semester.

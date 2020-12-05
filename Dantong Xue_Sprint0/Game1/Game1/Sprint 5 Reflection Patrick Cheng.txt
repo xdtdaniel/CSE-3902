@@ -1,4 +1,0 @@
-Patrick Cheng
-Sprint 5 Reflection
-
-In this Sprint, many additional features outside of the original Legend Of Zelta game was added. One of the biggest changes was that an experience leveling up system and achievement system was added to the game. When the player defeat enemies, they will be able to gain experience and level up, which comes with the ability to learn new skills to make the game more interesting. More levels are also implemented, which contains more playstyle. Cheat codes were also added to the game, giving the player an easier difficulty if he has a hard time getting through the game. I mainly focus on how to implement the cheat code part. Think about what cheats that other people would want, it was fun writing this class and kind of breaking the game. The group discussed and came up with all kinds of ideas to make the game more fun and interesting for this sprint. I feel like if more time was provided, we could come up with more ideas.
